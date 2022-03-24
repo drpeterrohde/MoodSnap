@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D6D8127EC606C002365AC /* Quotes.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* CustomView.swift */; };
@@ -56,7 +57,7 @@
 		CA496B8C27EBEF2A0067EE63 /* HistoryNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3327EBEF290067EE63 /* HistoryNoteView.swift */; };
 		CA496B8D27EBEF2A0067EE63 /* HistoryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3427EBEF290067EE63 /* HistoryItemView.swift */; };
 		CA496B8E27EBEF2A0067EE63 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3527EBEF290067EE63 /* HistoryView.swift */; };
-		CA496B8F27EBEF2A0067EE63 /* HistoryTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3627EBEF290067EE63 /* HistoryTipView.swift */; };
+		CA496B8F27EBEF2A0067EE63 /* HistoryQuoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3627EBEF290067EE63 /* HistoryQuoteView.swift */; };
 		CA496B9027EBEF2A0067EE63 /* MoodLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */; };
 		CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3927EBEF290067EE63 /* EventView.swift */; };
 		CA496B9227EBEF2A0067EE63 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3A27EBEF290067EE63 /* SettingsView.swift */; };
@@ -102,10 +103,12 @@
 		CA496BBB27EBEF2B0067EE63 /* AverageMoodSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */; };
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
+		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA1D6D8127EC606C002365AC /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 		CA496ADD27EBEEBE0067EE63 /* IntroAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroAlertView.swift; sourceTree = "<group>"; };
@@ -154,7 +157,7 @@
 		CA496B3327EBEF290067EE63 /* HistoryNoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNoteView.swift; sourceTree = "<group>"; };
 		CA496B3427EBEF290067EE63 /* HistoryItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryItemView.swift; sourceTree = "<group>"; };
 		CA496B3527EBEF290067EE63 /* HistoryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
-		CA496B3627EBEF290067EE63 /* HistoryTipView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTipView.swift; sourceTree = "<group>"; };
+		CA496B3627EBEF290067EE63 /* HistoryQuoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryQuoteView.swift; sourceTree = "<group>"; };
 		CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodLevelsView.swift; sourceTree = "<group>"; };
 		CA496B3927EBEF290067EE63 /* EventView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
 		CA496B3A27EBEF290067EE63 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		CA496B6C27EBEF2A0067EE63 /* Influence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Influence.swift; sourceTree = "<group>"; };
 		CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatility.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
+		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,8 +221,8 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
-				CA496B4627EBEF2A0067EE63 /* FaceID */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
 				CA496B2C27EBEF290067EE63 /* HistoryView */,
 				CA496B1327EBEF290067EE63 /* InsightsView */,
@@ -245,6 +249,14 @@
 				CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		CA1D6D8027EC6057002365AC /* Quotes */ = {
+			isa = PBXGroup;
+			children = (
+				CA1D6D8127EC606C002365AC /* Quotes.swift */,
+			);
+			path = Quotes;
 			sourceTree = "<group>";
 		};
 		CA496ADB27EBEEBE0067EE63 /* CustomViews */ = {
@@ -324,7 +336,7 @@
 				CA496B3327EBEF290067EE63 /* HistoryNoteView.swift */,
 				CA496B3427EBEF290067EE63 /* HistoryItemView.swift */,
 				CA496B3527EBEF290067EE63 /* HistoryView.swift */,
-				CA496B3627EBEF290067EE63 /* HistoryTipView.swift */,
+				CA496B3627EBEF290067EE63 /* HistoryQuoteView.swift */,
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
 			);
 			path = HistoryView;
@@ -334,6 +346,7 @@
 			isa = PBXGroup;
 			children = (
 				CA496B3927EBEF290067EE63 /* EventView.swift */,
+				CA58D46827ECFC4300D071B3 /* UnlockView.swift */,
 				CA496B3A27EBEF290067EE63 /* SettingsView.swift */,
 				CA496B3B27EBEF290067EE63 /* MediaView.swift */,
 				CA496B3C27EBEF290067EE63 /* NoteView.swift */,
@@ -354,13 +367,6 @@
 				CA496B4527EBEF2A0067EE63 /* TestData.swift */,
 			);
 			path = Test;
-			sourceTree = "<group>";
-		};
-		CA496B4627EBEF2A0067EE63 /* FaceID */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = FaceID;
 			sourceTree = "<group>";
 		};
 		CA496B4727EBEF2A0067EE63 /* UX */ = {
@@ -535,7 +541,9 @@
 				CA496BB227EBEF2B0067EE63 /* ByDateWindow.swift in Sources */,
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
+				CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */,
 				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
+				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
 				CA496B9B27EBEF2B0067EE63 /* ControlView.swift in Sources */,
 				CA496BAB27EBEF2B0067EE63 /* PDFAverageMoodView.swift in Sources */,
@@ -574,7 +582,7 @@
 				CA496B0D27EBEEEF0067EE63 /* Samples.swift in Sources */,
 				CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */,
 				CA496B0E27EBEEEF0067EE63 /* DateConverters.swift in Sources */,
-				CA496B8F27EBEF2A0067EE63 /* HistoryTipView.swift in Sources */,
+				CA496B8F27EBEF2A0067EE63 /* HistoryQuoteView.swift in Sources */,
 				CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */,
 				CA496BBB27EBEF2B0067EE63 /* AverageMoodSnap.swift in Sources */,
 				CA496B0627EBEEEE0067EE63 /* DataStructures.swift in Sources */,

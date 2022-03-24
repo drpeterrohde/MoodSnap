@@ -20,7 +20,7 @@ enum SnapTypeEnum: Int, Codable {
     case note = 2
     case event = 3
     case media = 4
-    case tip = 5
+    case quote = 5
     case custom = 6
 }
 

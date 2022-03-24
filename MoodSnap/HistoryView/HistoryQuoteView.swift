@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct HistoryTipView: View {
+struct HistoryQuoteView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct
     

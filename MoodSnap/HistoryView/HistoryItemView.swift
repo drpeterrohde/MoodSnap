@@ -33,8 +33,8 @@ struct HistoryItemView: View {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .tip) {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "questionmark.circle")
+                        if (moodSnap.snapType == .quote) {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
                                 .font(.caption)
                         }
                         
@@ -109,8 +109,8 @@ struct HistoryItemView: View {
                     if (moodSnap.snapType == .custom) {
                         HistoryCustomView(which: moodSnap.customView, data: data)
                     }
-                    if (moodSnap.snapType == .tip) {
-                        HistoryTipView(moodSnap: moodSnap, data: data)
+                    if (moodSnap.snapType == .quote) {
+                        HistoryQuoteView(moodSnap: moodSnap, data: data)
                     }
                 }
             }

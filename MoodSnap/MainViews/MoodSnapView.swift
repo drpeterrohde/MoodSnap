@@ -119,6 +119,10 @@ struct MoodSnapView: View {
                     moodSnap.snapType = .mood
                     data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                     data.moodSnaps.append(moodSnap)
+                    let quoteSnap = getQuoteSnap(count: data.moodSnaps.count)
+                    if quoteSnap != nil {
+                        data.moodSnaps.append(quoteSnap!)
+                    }
                     data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
