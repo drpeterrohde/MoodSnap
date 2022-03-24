@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "charts",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/danielgindi/Charts",
+      "state" : {
+        "revision" : "7ac4a05e83d279bac305a472af9128c2a0eca3d7",
+        "version" : "3.5.0"
+      }
+    },
+    {
+      "identity" : "disk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/saoudrizwan/Disk",
+      "state" : {
+        "revision" : "b0cb4fdf23e51849cc2460bdc6de795c3bcca99d",
+        "version" : "0.6.4"
+      }
+    },
+    {
+      "identity" : "tppdf",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/techprimate/TPPDF",
+      "state" : {
+        "revision" : "e4577f5ac161d35fd4ad41e401b639ef68b81315",
+        "version" : "2.3.5"
+      }
+    }
+  ],
+  "version" : 2
+}
