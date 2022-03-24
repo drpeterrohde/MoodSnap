@@ -221,6 +221,7 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -238,7 +239,6 @@
 				CA496B1127EBEEFC0067EE63 /* Assets.xcassets */,
 				CA496AF827EBEEEE0067EE63 /* Base */,
 				CA496ADB27EBEEBE0067EE63 /* CustomViews */,
-				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
 				CA0FA5E627EBEA1700B5EEE1 /* Products */,
 			);
 			sourceTree = "<group>";

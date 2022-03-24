@@ -1,5 +1,5 @@
-import LocalAuthentication
 import SwiftUI
+import LocalAuthentication
 
 struct UnlockView: View {
     @Binding var isUnlocked: Bool
@@ -19,6 +19,9 @@ struct UnlockView: View {
                 .foregroundColor(.white)
                 Spacer()
             }
+        }
+        .onAppear {
+            authenticate()
         }
     }
 

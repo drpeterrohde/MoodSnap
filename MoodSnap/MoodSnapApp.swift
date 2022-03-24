@@ -4,6 +4,7 @@ import SwiftUI
 
 @main
 struct MoodSnapApp: App {
+    @Environment(\.scenePhase) var scenePhase
     @State private var data: DataStoreStruct = DataStoreStruct()
     @State private var isUnlocked = false
 
@@ -23,6 +24,11 @@ struct MoodSnapApp: App {
                             print("Load successful")
                         } catch {
                             print("Load failed")
+                        }
+                    }
+                    .onChange(of: scenePhase) { value in
+                        if value == .background {
+                            isUnlocked = false
                         }
                     }
             }
