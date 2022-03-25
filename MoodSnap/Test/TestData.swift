@@ -5,7 +5,7 @@ func makeDemoData() -> [MoodSnapStruct] {
     let max = 50
     
     // Size & miss rate
-    let size: Int = 3
+    let size: Int = 100
     let demoDataRandomMiss: CGFloat = 0.0
     
     // Events

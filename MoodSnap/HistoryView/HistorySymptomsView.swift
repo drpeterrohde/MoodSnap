@@ -9,7 +9,7 @@ struct HistorySymptomsView: View {
         
         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].historyGridSpacing) {
             ForEach(0..<symptomList.count, id: \.self) {i in
-                if (moodSnap.symptoms[symptomListIndex[i]] && data.settings.symptomVisibility[symptomListIndex[i]]) {
+                if (moodSnap.symptoms[i] && data.settings.symptomVisibility[i]) {
                     Text(symptomList[i])
                         .font(.caption)
                         .foregroundColor(themes[data.settings.theme].buttonColor)

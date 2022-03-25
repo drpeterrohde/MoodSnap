@@ -45,7 +45,7 @@ struct ButterflyAveragePickerView: View {
             if (selectionType == InfluenceTypeEnum.social) {
                 Picker("", selection: $selectedSocial) {
                     ForEach(0..<socialList.count, id: \.self) {i in
-                        if data.settings.socialVisibility[socialListIndex[i]] {
+                        if data.settings.socialVisibility[i] {
                             Text(socialList[i])
                                 .tag(i)
                         }
@@ -57,7 +57,7 @@ struct ButterflyAveragePickerView: View {
             if (selectionType == InfluenceTypeEnum.activity) {
                 Picker("", selection: $selectedActivity) {
                     ForEach(0..<activityList.count, id: \.self) {i in
-                        if data.settings.activityVisibility[activityListIndex[i]] {
+                        if data.settings.activityVisibility[i] {
                             Text(activityList[i])
                                 .tag(i)
                         }
@@ -69,7 +69,7 @@ struct ButterflyAveragePickerView: View {
             if (selectionType == InfluenceTypeEnum.symptom) {
                 Picker("", selection: $selectedSymptom) {
                     ForEach(0..<symptomList.count, id: \.self) {i in
-                        if data.settings.symptomVisibility[symptomListIndex[i]] {
+                        if data.settings.symptomVisibility[i] {
                             Text(symptomList[i])
                                 .tag(i)
                         }

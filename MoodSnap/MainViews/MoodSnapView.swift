@@ -51,8 +51,8 @@ struct MoodSnapView: View {
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< symptomList.count, id: \.self) { i in
-                                if data.settings.symptomVisibility[symptomListIndex[i]] {
-                                    Toggle(symptomList[i], isOn: $moodSnap.symptoms[symptomListIndex[i]])
+                                if data.settings.symptomVisibility[i] {
+                                    Toggle(symptomList[i], isOn: $moodSnap.symptoms[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
@@ -73,8 +73,8 @@ struct MoodSnapView: View {
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< activityList.count, id: \.self) { i in
-                                if data.settings.activityVisibility[activityListIndex[i]] {
-                                    Toggle(activityList[i], isOn: $moodSnap.activities[activityListIndex[i]])
+                                if data.settings.activityVisibility[i] {
+                                    Toggle(activityList[i], isOn: $moodSnap.activities[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
@@ -94,8 +94,8 @@ struct MoodSnapView: View {
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< socialList.count, id: \.self) { i in
-                                if data.settings.socialVisibility[socialListIndex[i]] {
-                                    Toggle(socialList[i], isOn: $moodSnap.social[socialListIndex[i]])
+                                if data.settings.socialVisibility[i] {
+                                    Toggle(socialList[i], isOn: $moodSnap.social[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)

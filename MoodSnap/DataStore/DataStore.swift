@@ -3,18 +3,20 @@ import Disk
 
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
+    
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
     var moodSnaps: [MoodSnapStruct] = []
-    var healthData: HealthKitDataStruct = HealthKitDataStruct()
+    var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
     
     init() {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
-        self.moodSnaps = makeDemoData()
-        self.healthData = HealthKitDataStruct()
+        self.moodSnaps = makeDemoData() // []
+        self.healthSnaps = []
         self.process()
     }
     

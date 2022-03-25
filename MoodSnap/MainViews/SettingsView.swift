@@ -59,7 +59,7 @@ struct SettingsView: View {
                 Group {
                 Section(header: Text("Symptom visibility")) {
                     ForEach(0..<symptomList.count, id: \.self) {i in
-                        Toggle(isOn: $data.settings.symptomVisibility[symptomListIndex[i]], label: {
+                        Toggle(isOn: $data.settings.symptomVisibility[i], label: {
                             Text(symptomList[i])
                         })
                     }
@@ -67,7 +67,7 @@ struct SettingsView: View {
                 
                 Section(header: Text("Activity visibility")) {
                     ForEach(0..<activityList.count, id: \.self) {i in
-                        Toggle(isOn: $data.settings.activityVisibility[activityListIndex[i]], label: {
+                        Toggle(isOn: $data.settings.activityVisibility[i], label: {
                             Text(activityList[i])
                         })
                     }
@@ -75,7 +75,7 @@ struct SettingsView: View {
                 
                 Section(header: Text("Social visibility")) {
                     ForEach(0..<socialList.count, id: \.self) {i in
-                        Toggle(isOn: $data.settings.socialVisibility[socialListIndex[i]], label: {
+                        Toggle(isOn: $data.settings.socialVisibility[i], label: {
                             Text(socialList[i])
                         })
                     }

@@ -6,13 +6,13 @@ func getVisibleActivityList(data: DataStoreStruct) -> [String] {
     var list: [String] = []
     
     for i in 0..<activityList.count {
-        if (data.settings.activityVisibility[activityListIndex[i]]) {
+        if (data.settings.activityVisibility[i]) {
             list.append(activityList[i])
         }
     }
     
     for i in 0..<socialList.count {
-        if (data.settings.socialVisibility[socialListIndex[i]]) {
+        if (data.settings.socialVisibility[i]) {
             list.append(socialList[i])
         }
     }
@@ -27,7 +27,7 @@ func getVisibleSymptomList(data: DataStoreStruct) -> [String] {
     var list: [String] = []
     
     for i in 0..<symptomList.count {
-        if (data.settings.symptomVisibility[symptomListIndex[i]]) {
+        if (data.settings.symptomVisibility[i]) {
             list.append(symptomList[i])
         }
     }

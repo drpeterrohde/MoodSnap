@@ -2,6 +2,10 @@ import SwiftUI
 
 struct SettingsStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
+    
+    // First use of the app
+    var firstUse = true
     
     // PDF report
     var username: String = ""
@@ -44,6 +48,8 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
 
 struct MoodSnapStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
+    
     var timestamp: Date = Date()
     var snapType: SnapTypeEnum = .mood
     
@@ -77,25 +83,24 @@ func DummyMoodSnapStruct() -> MoodSnapStruct {
     return moodSnap
 }
 
-struct HealthKitDataStruct: Identifiable, Codable, Hashable {
+
+struct HealthSnapStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
     
-    var lastDate: Date = Date()
+    var timestamp: Date = Date()
     
-    var walkingRunningDistance: [CGFloat?] = []
-    var activeEnergy: [CGFloat?] = []
-    var weight: [CGFloat?] = []
-    var sleepHours: [CGFloat?] = []
-    var menstrual: [CGFloat?] = []
-    
-    var dob: Date = Date()
-    var biologicalSex: String = ""
-    var genderIdentity: String = ""
-    var diagnoses: [String] = []
+    var walkingRunningDistance: CGFloat? = nil
+    var activeEnergy: CGFloat? = nil
+    var weight: CGFloat? = nil
+    var sleepHours: CGFloat? = nil
+    var menstrual: CGFloat? = nil
 }
 
 struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
+    
     var timestamp: Date = Date() // Only used for events
     
     var activity: String = ""
@@ -114,6 +119,7 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
 
 struct UXStateStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
     
     var isAverageMoodExpanded: Bool = true
     var isMoodHistoryExpanded: Bool = true
@@ -135,6 +141,7 @@ struct UXStateStruct: Identifiable, Codable, Hashable {
 
 struct StatsEntryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
     
     var levelE: CGFloat? = nil
     var levelD: CGFloat? = nil
@@ -154,6 +161,7 @@ struct StatsEntryStruct: Identifiable, Codable, Hashable {
 
 struct HistoryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
     
     var levelE: [CGFloat?] = []
     var levelD: [CGFloat?] = []

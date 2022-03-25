@@ -5,6 +5,7 @@ import SwiftUI
  */
 struct ProcessedDataStruct: Codable, Identifiable, Hashable {
     var id: UUID = UUID()
+    var version: Int = 1
     
     // Mood history
     var levelE: [CGFloat?] = []

@@ -6,6 +6,7 @@ import Charts
  */
 struct ThemeStruct: Identifiable {
     var id: UUID = UUID()
+    var version: Int = 1
     
     // Name
     var name: String = "Aqua"

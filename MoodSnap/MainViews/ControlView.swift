@@ -10,7 +10,7 @@ struct ControlView: View {
     @State private var showingNoteSheet = false
     @State private var showingEventSheet = false
     @State private var showingMediaSheet = false
-    @State private var showingIntroPopover = false
+    @State private var showingIntroPopover = true
     
     var body: some View {
         Divider()

@@ -273,15 +273,15 @@ func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStr
     for moodSnap in moodSnaps {
         switch type {
         case .activity:
-            if moodSnap.activities[activityListIndex[item]] {
+            if moodSnap.activities[item] {
                 dates.append(moodSnap.timestamp)
             }
         case .social:
-            if moodSnap.social[socialListIndex[item]] {
+            if moodSnap.social[item] {
                 dates.append(moodSnap.timestamp)
             }
         case .symptom:
-            if moodSnap.symptoms[symptomListIndex[item]] {
+            if moodSnap.symptoms[item] {
                 dates.append(moodSnap.timestamp)
             }
         default:

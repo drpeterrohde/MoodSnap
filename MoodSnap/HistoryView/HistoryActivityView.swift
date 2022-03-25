@@ -9,7 +9,7 @@ struct HistoryActivityView: View {
         
         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].historyGridSpacing) {
             ForEach(0..<activityList.count, id: \.self) {i in
-                if (moodSnap.activities[activityListIndex[i]] && data.settings.activityVisibility[activityListIndex[i]]) {
+                if (moodSnap.activities[i] && data.settings.activityVisibility[i]) {
                     Text(activityList[i])
                         .font(.caption)
                         .foregroundColor(themes[data.settings.theme].buttonColor)

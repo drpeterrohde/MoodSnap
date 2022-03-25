@@ -62,8 +62,6 @@ let symptomList = [
     "Suicidal thoughts"
 ]
 
-let symptomListIndex = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23]
-
 /// Activities
 let activityList = [
     "Alcohol", 
@@ -76,8 +74,6 @@ let activityList = [
     "Therapy"
 ]
 
-let activityListIndex = [0,1,2,3,4,5,6,7]
-
 /// Social
 let socialList = [
     "Conflict",
@@ -86,8 +82,6 @@ let socialList = [
     "Negative socialising",
     "No in-person contact",
 ]
-
-let socialListIndex = [0,1,2,3,4]
 
 // Mood labels
 let moodLabels = ["Elevation", "Depresssion", "Anxiety", "Irritability"]
