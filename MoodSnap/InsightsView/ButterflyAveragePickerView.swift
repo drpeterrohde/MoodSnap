@@ -11,10 +11,14 @@ struct ButterflyAveragePickerView: View {
     var body: some View {
         HStack {
             Picker("", selection: $selectionType) {
-                Text("Activity").tag(InfluenceTypeEnum.activity)
-                Text("Social").tag(InfluenceTypeEnum.social)
-                Text("Symptom").tag(InfluenceTypeEnum.symptom)
-                Text("Event").tag(InfluenceTypeEnum.event)
+                Text("Activity")
+                    .tag(InfluenceTypeEnum.activity)
+                Text("Social")
+                    .tag(InfluenceTypeEnum.social)
+                Text("Symptom")
+                    .tag(InfluenceTypeEnum.symptom)
+                Text("Event")
+                    .tag(InfluenceTypeEnum.event)
             }.padding(.leading, 10)
  
             Spacer()
@@ -24,11 +28,12 @@ struct ButterflyAveragePickerView: View {
                 let eventsList = getEventsList(moodSnaps: data.moodSnaps) 
                 if eventsList.count == 0 {
                     Picker("", selection: $selectedEvent) {
-                        Text("Insufficient data").tag(0)
+                        Text("Insufficient data")
+                                .tag(0)
                     }
                 } else {
-                Picker("", selection: $selectedEvent) {
-                    ForEach(0..<eventsList.count, id: \.self) {i in
+                    Picker("", selection: $selectedEvent) {
+                        ForEach(0..<eventsList.count, id: \.self) {i in
                         Text("\(eventsList[i].0) (\(eventsList[i].1.dateString()))")
                             .tag(i)
                     }

@@ -3,6 +3,9 @@ import SwiftUI
 /// Version
 let versionString = "0.1a"
 
+/// Quotes
+let quoteFrequency = 3
+
 /// Windows
 let influenceWindowShort = 7
 let butterflyWindowShort = 7

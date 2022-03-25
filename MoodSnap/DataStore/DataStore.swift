@@ -25,7 +25,6 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     func save() {
         do {
             try Disk.save(self, to: .documents, as: "data.json")
-            print("Saving successful")
         } catch {
             print("Saving failed")
         }

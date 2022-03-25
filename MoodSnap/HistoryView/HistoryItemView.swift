@@ -35,6 +35,7 @@ struct HistoryItemView: View {
                         }
                         if (moodSnap.snapType == .quote) {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
+                                //.labelStyle(.iconOnly)
                                 .font(.caption)
                         }
                         

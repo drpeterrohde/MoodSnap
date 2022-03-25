@@ -21,7 +21,6 @@ struct MoodSnapApp: App {
                                 from: .documents,
                                 as: DataStoreStruct.self)
                             data = retrieved
-                            print("Load successful")
                         } catch {
                             print("Load failed")
                         }

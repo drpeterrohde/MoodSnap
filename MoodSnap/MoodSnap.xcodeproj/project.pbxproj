@@ -79,7 +79,6 @@
 		CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */; };
 		CA496BA327EBEF2B0067EE63 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5027EBEF2A0067EE63 /* ImagePicker.swift */; };
 		CA496BA427EBEF2B0067EE63 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5227EBEF2A0067EE63 /* JSON.swift */; };
-		CA496BA527EBEF2B0067EE63 /* FilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5327EBEF2A0067EE63 /* FilesManager.swift */; };
 		CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5427EBEF2A0067EE63 /* DataStore.swift */; };
 		CA496BA827EBEF2B0067EE63 /* PDFSingleSlidingVolatilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5927EBEF2A0067EE63 /* PDFSingleSlidingVolatilityView.swift */; };
 		CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5A27EBEF2A0067EE63 /* PDFViewUI.swift */; };
@@ -179,7 +178,6 @@
 		CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		CA496B5027EBEF2A0067EE63 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CA496B5227EBEF2A0067EE63 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
-		CA496B5327EBEF2A0067EE63 /* FilesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilesManager.swift; sourceTree = "<group>"; };
 		CA496B5427EBEF2A0067EE63 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		CA496B5927EBEF2A0067EE63 /* PDFSingleSlidingVolatilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFSingleSlidingVolatilityView.swift; sourceTree = "<group>"; };
 		CA496B5A27EBEF2A0067EE63 /* PDFViewUI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PDFViewUI.swift; sourceTree = "<group>"; };
@@ -401,7 +399,6 @@
 			isa = PBXGroup;
 			children = (
 				CA496B5227EBEF2A0067EE63 /* JSON.swift */,
-				CA496B5327EBEF2A0067EE63 /* FilesManager.swift */,
 				CA496B5427EBEF2A0067EE63 /* DataStore.swift */,
 			);
 			path = DataStore;
@@ -554,7 +551,6 @@
 				CA496B9927EBEF2B0067EE63 /* HelpView.swift in Sources */,
 				CA496B9627EBEF2A0067EE63 /* IntroPopoverView.swift in Sources */,
 				CA496B7327EBEF2A0067EE63 /* InfluencesActivityView.swift in Sources */,
-				CA496BA527EBEF2B0067EE63 /* FilesManager.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
 				CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */,
@@ -763,16 +759,18 @@
 				DEVELOPMENT_TEAM = ULMGDWJT46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Taking photo diaries";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Saving data";
+				INFOPLIST_KEY_NSCameraUsageDescription = "For taking photo diaries";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "For secure login";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Adding photos to camera roll";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Adding photos to photo diary";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -801,16 +799,18 @@
 				DEVELOPMENT_TEAM = ULMGDWJT46;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSCameraUsageDescription = "Taking photo diaries";
-				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "Saving data";
+				INFOPLIST_KEY_NSCameraUsageDescription = "For taking photo diaries";
+				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "For secure login";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
-				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Adding photos to camera roll";
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Adding photos to photo diary";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

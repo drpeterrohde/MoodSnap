@@ -6,20 +6,14 @@ struct HistoryQuoteView: View {
     
     var body: some View {
         Group {
-            VStack(alignment: .center){
-                if moodSnap.event != "" {
+            VStack(alignment: .center) {
+                Spacer()
                 Divider()
-                Spacer().frame(height: 10)
-                Text(String(moodSnap.event))
+                Spacer()
+                    .frame(height: 10)
+                Text(.init("\"" + moodSnap.notes + "\""))
                     .font(.caption)
-                    .fontWeight(.bold)
-                }
-                if moodSnap.notes != "" {
-                Divider()
-                Text(String(moodSnap.notes))
-                    .font(.caption)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
     }
