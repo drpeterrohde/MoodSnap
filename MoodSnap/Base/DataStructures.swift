@@ -15,6 +15,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var symptomVisibility: [Bool] = [Bool](repeating: true, count: symptomList.count)
     var activityVisibility: [Bool] = [Bool](repeating: true, count: activityList.count)
     var socialVisibility: [Bool] = [Bool](repeating: true, count: socialList.count)
+    var quoteVisibility: Bool = true
     
     var reminderOn: [Bool] = [false, false]
     var reminderTime: [Date] = [
@@ -23,6 +24,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     ]
     
     var useFaceID: Bool = false
+    
     
     var healthDistanceOn: Bool = true
     var healthMenstrualOn: Bool = true

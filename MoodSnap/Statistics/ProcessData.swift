@@ -73,7 +73,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
     }
     
     // Hashtags
-    let hashtags = getHashtags(moodSnaps: data.moodSnaps)
+    let hashtags = getHashtags(data: data)
     for i in 0..<hashtags.count {
         let dates = getDatesForHashtag(
             hashtag: hashtags[i],

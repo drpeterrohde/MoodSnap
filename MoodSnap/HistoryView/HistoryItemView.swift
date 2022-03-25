@@ -9,7 +9,7 @@ struct HistoryItemView: View {
     @State private var showingMoodSnapSheet: Bool = false
     
     var body: some View {
-        if snapFilter(moodSnap: moodSnap, filter: filter, searchText: searchText) {
+        if snapFilter(moodSnap: moodSnap, filter: filter, searchText: searchText) && !(moodSnap.snapType == .quote && !data.settings.quoteVisibility) {
             GroupBox {
                 Group {
                     HStack {
@@ -33,7 +33,7 @@ struct HistoryItemView: View {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .quote) {
+                        if (moodSnap.snapType == .quote && data.settings.quoteVisibility) {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
                                 //.labelStyle(.iconOnly)
                                 .font(.caption)
@@ -110,7 +110,7 @@ struct HistoryItemView: View {
                     if (moodSnap.snapType == .custom) {
                         HistoryCustomView(which: moodSnap.customView, data: data)
                     }
-                    if (moodSnap.snapType == .quote) {
+                    if (moodSnap.snapType == .quote && data.settings.quoteVisibility) {
                         HistoryQuoteView(moodSnap: moodSnap, data: data)
                     }
                 }

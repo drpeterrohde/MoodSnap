@@ -11,14 +11,9 @@ struct TallyView: View {
             windowStart: -timescale, 
             windowEnd: 0)
         let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps)
-        let hashtagList = getHashtags(
-            moodSnaps: data.moodSnaps)
-        let hashtagOccurrences = countHashtagOccurrences(
-            hashtags: hashtagList,
-            moodSnaps: windowMoodSnaps)
-        let eventsList = getEventsList(
-            moodSnaps: windowMoodSnaps, 
-            window: timescale)
+        let hashtagList = getHashtags(data: data)
+        let hashtagOccurrences = countHashtagOccurrences(hashtags: hashtagList, moodSnaps: windowMoodSnaps)
+        let eventsList = getEventsList(moodSnaps: windowMoodSnaps, window: timescale)
         
         let activityTotal = activityOccurrences.reduce(0, +)
         let socialTotal = socialOccurrences.reduce(0, +)

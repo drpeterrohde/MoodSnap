@@ -44,6 +44,10 @@ struct SettingsView: View {
                     Stepper(value: $data.settings.numberOfGridColumns, in: 1...3, label: {
                         Text("Grid columns: \(data.settings.numberOfGridColumns)")
                     })
+                    
+                    Toggle(isOn: $data.settings.quoteVisibility, label: {
+                        Text("Show quotes")
+                    })
                 }
                 
                 Section(header: Text("Media")) {

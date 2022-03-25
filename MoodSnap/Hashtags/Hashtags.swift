@@ -21,12 +21,14 @@ func getHashtags(string: String) -> [String] {
 /**
  Extract an array of all the hashtags from an array of `moodSnaps`.
  */
-func getHashtags(moodSnaps: [MoodSnapStruct]) -> [String] {
+func getHashtags(data: DataStoreStruct) -> [String] {
     var bigString: String = ""
     
-    for moodSnap in moodSnaps {
-        bigString += " " + moodSnap.notes.lowercased()
-        bigString += " " + moodSnap.event.lowercased()
+    for moodSnap in data.moodSnaps {
+        if (moodSnap.snapType != .quote && !data.settings.quoteVisibility) && moodSnap.snapType != .custom {
+            bigString += " " + moodSnap.notes.lowercased()
+            bigString += " " + moodSnap.event.lowercased()
+        }
     }
     
     let hashtags: [String] = getHashtags(string: bigString)

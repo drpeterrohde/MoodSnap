@@ -22,7 +22,7 @@ func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: Stri
     
     if filterOutcome { return true }
     
-    if (filter == .none) {
+    if filter == .none {
         let eventTextOutcome = moodSnap.event.lowercased().contains(searchText.lowercased()) || (searchText == "")
         let notesTextOutcome = moodSnap.notes.lowercased().contains(searchText.lowercased())  || (searchText == "")
         
