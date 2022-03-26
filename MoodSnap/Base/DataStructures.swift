@@ -19,7 +19,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var symptomVisibility: [Bool] = [Bool](repeating: true, count: symptomList.count)
     var activityVisibility: [Bool] = [Bool](repeating: true, count: activityList.count)
     var socialVisibility: [Bool] = [Bool](repeating: true, count: socialList.count)
-    var quoteVisibility: Bool = true
+    var quoteVisibility: Bool = false
     
     var reminderOn: [Bool] = [false, false]
     var reminderTime: [Date] = [
@@ -60,9 +60,9 @@ struct MoodSnapStruct: Identifiable, Codable, Hashable {
     var irritability: CGFloat = 0
     
     // Symptoms, activities & social
-    var symptoms = [Bool](repeating: false, count: symptomList.count)
-    var activities = [Bool](repeating: false, count: activityList.count)
-    var social = [Bool](repeating: false, count: socialList.count)
+    var symptoms: [Bool] = [Bool](repeating: false, count: symptomList.count)
+    var activities: [Bool] = [Bool](repeating: false, count: activityList.count)
+    var social: [Bool] = [Bool](repeating: false, count: socialList.count)
     
     // Event
     var event: String = ""

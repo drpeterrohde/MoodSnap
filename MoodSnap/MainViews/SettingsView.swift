@@ -45,15 +45,58 @@ struct SettingsView: View {
                         Text("Grid columns: \(data.settings.numberOfGridColumns)")
                     })
                     
-                    Toggle(isOn: $data.settings.quoteVisibility, label: {
-                        Text("Show quotes")
-                    })
+//                    Toggle(isOn: $data.settings.quoteVisibility, label: {
+//                        Text("Show quotes")
+//                    })
                 }
                 
                 Section(header: Text("Media")) {
                     Toggle(isOn: $data.settings.saveMediaToCameraRoll, label: {
                         Text("Save media to camera roll")
                     })
+                }
+                
+                Section(header: Text("PDF report")) {
+                    TextField("Name (optional)", text: $data.settings.username)
+                    Picker("Period", selection: $data.settings.reportPeriod) {
+                        Text("1 month").tag(TimeScaleEnum.month.rawValue)
+                        Text("3 months").tag(TimeScaleEnum.threeMonths.rawValue)
+                        Text("6 months").tag(TimeScaleEnum.sixMonths.rawValue)
+                        Text("1 year").tag(TimeScaleEnum.year.rawValue)
+                    }
+                    Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
+                        Text("Black & white")
+                    })
+                    Toggle(isOn: $data.settings.includeNotes, label: {
+                        Text("Include notes")
+                    })
+                    
+                    Button(action: {
+                        showingReportSheet.toggle()
+                    }) {
+                        Text("Generate PDF report")
+                    }.sheet(isPresented: $showingReportSheet) {
+                        ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
+                    }
+                }
+                
+                Section(header: Text("Import/Export")) {
+                    Button(action: {
+                        if (data.moodSnaps.count == 0) {
+                            showingImporter.toggle()
+                        } else {
+                            showingImportAlert.toggle()
+                        }
+                    }) {
+                        Text("Import backup file")
+                    }
+                    Button(action: {
+                        showingExporter.toggle()
+                    }) {
+                        Text("Export backup file")
+                    }.alert(isPresented: $showingImportAlert) {
+                        Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. Try making a fresh installation first."), dismissButton: .default(Text("OK")))
+                    }
                 }
                 
                 Group {
@@ -100,49 +143,6 @@ struct SettingsView: View {
 //                    })
 //                }
                 
-                Section(header: Text("PDF report")) {
-                    TextField("Name (optional)", text: $data.settings.username)
-                    Picker("Period", selection: $data.settings.reportPeriod) {
-                        Text("1 month").tag(TimeScaleEnum.month.rawValue)
-                        Text("3 months").tag(TimeScaleEnum.threeMonths.rawValue)
-                        Text("6 months").tag(TimeScaleEnum.sixMonths.rawValue)
-                        Text("1 year").tag(TimeScaleEnum.year.rawValue)
-                    }
-                    Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
-                        Text("Black & white")
-                    })
-                    Toggle(isOn: $data.settings.includeNotes, label: {
-                        Text("Include notes")
-                    })
-                    
-                    Button(action: {
-                        showingReportSheet.toggle()
-                    }) {
-                        Text("Generate PDF report")
-                    }.sheet(isPresented: $showingReportSheet) {
-                        ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
-                    }
-                }
-                
-                Section(header: Text("Import/Export")) {
-                    Button(action: {
-                        if (data.moodSnaps.count == 0) {
-                            showingImporter.toggle()
-                        } else {
-                            showingImportAlert.toggle()
-                        }
-                    }) {
-                        Text("Import backup file")
-                    }
-                    Button(action: {
-                        showingExporter.toggle()
-                    }) {
-                        Text("Export backup file")
-                    }.alert(isPresented: $showingImportAlert) {
-                        Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. Try making a fresh installation first."), dismissButton: .default(Text("OK")))
-                    }
-                }
-                
                 Section(header: Text("About")) {
                     HStack {
                         Text("Website")
@@ -184,7 +184,7 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("Are you sure you want to delete all data?"), message: Text("There action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
-                        data.moodSnaps = []
+                        data = DataStoreStruct()
                         DispatchQueue.global(qos: .userInteractive).async {
                             data.process()
                             data.save()

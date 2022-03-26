@@ -8,7 +8,7 @@ let quotes = [quote_1, quote_2, quote_3]
 
 func getQuoteSnap(count: Int) -> MoodSnapStruct? {
     let remainder: Int = count % quoteFrequency
-    let multiple: Int = count / quoteFrequency - 1
+    let multiple: Int = (count / quoteFrequency - 1) % quotes.count
     
     if remainder == 0 && multiple < quotes.count && count != 0 {
         var quoteSnap = MoodSnapStruct()

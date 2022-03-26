@@ -77,10 +77,11 @@ let activityList = [
 /// Social
 let socialList = [
     "Conflict",
+    "Intimacy",
     "Isolation",
     "Positive socialising",
     "Negative socialising",
-    "No in-person contact",
+    "No in-person contact"
 ]
 
 // Mood labels
