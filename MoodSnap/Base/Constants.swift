@@ -32,7 +32,8 @@ let yearInterval: CGFloat = 365 * dayInterval
 let zeroGraphicalBarOffset: CGFloat = 0.3
 let midLineWidth: CGFloat = 3.0
 let iconWidth: CGFloat = 15
-var numericFont: Font = Font.system(.caption, design: .monospaced)
+let faceIDWidth: CGFloat = 40
+let numericFont: Font = Font.system(.caption, design: .monospaced)
 
 // Symptoms
 let symptomList = [

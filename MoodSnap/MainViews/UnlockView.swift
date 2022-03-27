@@ -1,5 +1,5 @@
-import SwiftUI
 import LocalAuthentication
+import SwiftUI
 
 struct UnlockView: View {
     @Binding var isUnlocked: Bool
@@ -13,10 +13,22 @@ struct UnlockView: View {
                 Image("moodsnap_logo")
                     .resizable()
                     .frame(width: 100, height: 100)
-                Button("Unlock") {
+                Spacer()
+                Button(action: {
                     authenticate()
+                }) {
+                    VStack {
+                        Image(systemName: "faceid")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: faceIDWidth, height: faceIDWidth)
+                            .foregroundColor(.white)
+                        Text("Unlock")
+                            .font(.caption)
+                            .foregroundColor(.white)
+                    }
                 }
-                .foregroundColor(.white)
+
                 Spacer()
             }
         }

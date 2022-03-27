@@ -45,3 +45,7 @@ let intro_popover_note_string = "When taking MoodSnaps your entries should refle
 let privacy_string = "MoodSnap respects your privacy and does not share any of your information with the developer or third parties. Your data only leaves the app if you manually export it."
 
 let notes_on_interpretationa_string = "\nNotes on interpretation"// ???
+
+let intro_snap_title = "Welcome to MoodSnap"
+
+let intro_snap_notes = "This is your MoodSnap feed where your MoodSnaps events, diary and photo diary appear."
