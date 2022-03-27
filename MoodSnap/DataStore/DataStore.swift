@@ -15,7 +15,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
-        self.moodSnaps = makeIntroSnap() //makeDemoData()
+        self.moodSnaps = makeDemoData() // makeIntroSnap()
         self.healthSnaps = []
         self.process()
     }

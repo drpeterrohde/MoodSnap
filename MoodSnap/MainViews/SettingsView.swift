@@ -184,11 +184,9 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("Are you sure you want to delete all data?"), message: Text("There action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
-                        data = DataStoreStruct()
-                        DispatchQueue.global(qos: .userInteractive).async {
-                            data.process()
-                            data.save()
-                        }
+                        data.moodSnaps = []
+                        data.process()
+                        data.save()
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
