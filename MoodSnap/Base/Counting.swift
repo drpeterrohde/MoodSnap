@@ -15,26 +15,26 @@ func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
 /**
  Count the total occurrences of symptoms, activites & social within the array `moodSnaps`.
  */
-func countAllOccurrences(moodSnaps: [MoodSnapStruct]) -> ([Int], [Int], [Int]) {
+func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreStruct) -> ([Int], [Int], [Int]) {
     var symptomCount: [Int] = Array(repeating: 0, count: symptomList.count)
     var activityCount: [Int] = Array(repeating: 0, count: activityList.count)
     var socialCount: [Int] = Array(repeating: 0, count: socialList.count)
     
     for moodSnap in moodSnaps {
         for i in 0..<symptomList.count { // optimise with item???
-            if (moodSnap.symptoms[i]) {
+            if moodSnap.symptoms[i] && data.settings.symptomVisibility[i] {
                 symptomCount[i] += 1
             }
         }
         
         for i in 0..<activityList.count {
-            if (moodSnap.activities[i]) {
+            if moodSnap.activities[i] && data.settings.activityVisibility[i] {
                 activityCount[i] += 1
             }
         }
         
         for i in 0..<socialList.count {
-            if (moodSnap.social[i]) {
+            if moodSnap.social[i] && data.settings.socialVisibility[i] {
                 socialCount[i] += 1
             }
         }

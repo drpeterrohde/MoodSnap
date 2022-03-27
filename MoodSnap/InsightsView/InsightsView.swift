@@ -207,7 +207,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Activities & social", systemImage: "eye").font(.subheadline)
                                     HStack {
                                         Image(systemName: "figure.walk")
                                             .resizable()
@@ -240,7 +239,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Activities & social", systemImage: "eye").font(.subheadline)
                                     HStack {
                                         Image(systemName: "person.2")
                                             .resizable()

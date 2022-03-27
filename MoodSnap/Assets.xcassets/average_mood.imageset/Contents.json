@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Image Asset.png",
-      "idiom" : "universal"
+      "filename" : "average_mood.heic",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

@@ -4,7 +4,7 @@ import SwiftUI
 let versionString = "0.1a"
 
 /// Quotes
-let quoteFrequency = 3
+let quoteFrequency = 11
 
 /// Windows
 let influenceWindowShort = 7

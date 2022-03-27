@@ -10,7 +10,7 @@ struct TallyView: View {
             date: Date(), 
             windowStart: -timescale, 
             windowEnd: 0)
-        let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps)
+        let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps, data: data)
         let hashtagList = getHashtags(data: data)
         let hashtagOccurrences = countHashtagOccurrences(hashtags: hashtagList, moodSnaps: windowMoodSnaps)
         let eventsList = getEventsList(moodSnaps: windowMoodSnaps, window: timescale)
@@ -40,7 +40,7 @@ struct TallyView: View {
         HStack {
             VStack(alignment: .leading) {
                 ForEach(0 ..< activityList.count, id: \.self) {i in
-                    if activityOccurrences[i] > 0 {
+                    if activityOccurrences[i] > 0 && data.settings.activityVisibility[i] {
                     Text(activityList[i] + "  ")
                         .font(.caption)
                     }
@@ -48,7 +48,7 @@ struct TallyView: View {
             }
             VStack(alignment: .leading) {
                 ForEach(0 ..< activityList.count, id: \.self) {i in
-                    if activityOccurrences[i] > 0 {
+                    if activityOccurrences[i] > 0 && data.settings.activityVisibility[i] {
                     Text(String(activityOccurrences[i]))
                         .font(numericFont)
                     }
@@ -70,7 +70,7 @@ struct TallyView: View {
         HStack {
             VStack(alignment: .leading) {
                 ForEach(0 ..< socialList.count, id: \.self) {i in
-                    if socialOccurrences[i] > 0 {
+                    if socialOccurrences[i] > 0 && data.settings.socialVisibility[i] {
                     Text(socialList[i] + "  ")
                         .font(.caption)
                     }
@@ -78,7 +78,7 @@ struct TallyView: View {
             }
             VStack(alignment: .leading) {
                 ForEach(0 ..< socialList.count, id: \.self) {i in
-                    if socialOccurrences[i] > 0 {
+                    if socialOccurrences[i] > 0 && data.settings.socialVisibility[i] {
                         Text(String(socialOccurrences[i]))
                             .font(numericFont)
                     }
@@ -100,7 +100,7 @@ struct TallyView: View {
             HStack {
                 VStack(alignment: .leading) {
                     ForEach(0 ..< symptomList.count, id: \.self) {i in
-                        if symptomOccurrences[i] > 0 {
+                        if symptomOccurrences[i] > 0 && data.settings.symptomVisibility[i] {
                             Text(symptomList[i] + "  ")
                                 .font(.caption)
                         }
@@ -108,7 +108,7 @@ struct TallyView: View {
                 }
                 VStack(alignment: .leading) {
                     ForEach(0 ..< symptomList.count, id: \.self) {i in
-                        if symptomOccurrences[i] > 0 {
+                        if symptomOccurrences[i] > 0 && data.settings.symptomVisibility[i] {
                             Text(String(symptomOccurrences[i]))
                                 .font(numericFont)
                         }
