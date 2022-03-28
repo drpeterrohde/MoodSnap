@@ -42,6 +42,8 @@ let intro_popover_description_string = "MoodSnap is your free mood diary with ad
 
 let intro_popover_note_string = "When taking MoodSnaps your entries should reflect the _maximum_ respective degrees experienced _since the most recent_ MoodSnap and _within the last 24 hours_."
 
+let intro_popover_disclaimer_string = "MoodSnap is designed for self-awareness and should not be used as a medical device. Medical decisions should only be made in consultation with medical professionals."
+
 let privacy_string = "MoodSnap respects your privacy and does not share any of your information with the developer or third parties. Your data only leaves the app if you manually export it."
 
 let notes_on_interpretationa_string = "\nNotes on interpretation"// ???

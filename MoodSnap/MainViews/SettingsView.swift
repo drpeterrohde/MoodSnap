@@ -45,9 +45,9 @@ struct SettingsView: View {
                         Text("Grid columns: \(data.settings.numberOfGridColumns)")
                     })
                     
-//                    Toggle(isOn: $data.settings.quoteVisibility, label: {
-//                        Text("Show quotes")
-//                    })
+                    Toggle(isOn: $data.settings.quoteVisibility, label: {
+                        Text("Show quotes")
+                    })
                 }
                 
                 Section(header: Text("Media")) {

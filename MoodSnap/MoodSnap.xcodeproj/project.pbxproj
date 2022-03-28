@@ -103,6 +103,7 @@
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
+		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -200,6 +201,7 @@
 		CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatility.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +255,7 @@
 			isa = PBXGroup;
 			children = (
 				CA1D6D8127EC606C002365AC /* Quotes.swift */,
+				CACD6FED27F1619500D71730 /* QuoteSnap.swift */,
 			);
 			path = Quotes;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
+				CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */,
 				CA496B9B27EBEF2B0067EE63 /* ControlView.swift in Sources */,
 				CA496BAB27EBEF2B0067EE63 /* PDFAverageMoodView.swift in Sources */,
 				CA496BB527EBEF2B0067EE63 /* GenerateStats.swift in Sources */,
