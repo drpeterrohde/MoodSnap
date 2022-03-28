@@ -2,15 +2,15 @@ import SwiftUI
 
 struct ControlView: View {
     @Binding var data: DataStoreStruct
-    @State private var showingMoodSnapSheet = false
-    @State private var showingSettingsSheet = false
-    @State private var showingStatsSheet = false
-    @State private var showingEmergencySheet = false
-    @State private var showingHelpSheet = false
-    @State private var showingNoteSheet = false
-    @State private var showingEventSheet = false
-    @State private var showingMediaSheet = false
-    @State private var showingIntroPopover = false
+    @State private var showingMoodSnapSheet: Bool = false
+    @State private var showingSettingsSheet: Bool = false
+    @State private var showingStatsSheet: Bool = false
+    @State private var showingEmergencySheet: Bool = false
+    @State private var showingHelpSheet: Bool = false
+    @State private var showingNoteSheet: Bool = false
+    @State private var showingEventSheet: Bool = false
+    @State private var showingMediaSheet: Bool = false
+    @State private var showingIntroPopover: Bool = false
 
     init(data: Binding<DataStoreStruct>) {
         self._data = data
@@ -108,10 +108,6 @@ struct ControlView: View {
             }
         }.popover(isPresented: $showingIntroPopover) {
             IntroPopoverView(data: data)
-                .onDisappear {
-                    data.settings.firstUse = false
-                    data.save()
-                }
         }
     }
 }

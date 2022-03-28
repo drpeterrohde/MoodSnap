@@ -22,12 +22,14 @@ struct MoodSnapApp: App {
                                 as: DataStoreStruct.self)
                             data = retrieved
                         } catch {
-                            print("Load failed")
+                            //print("Load failed")
                         }
                     }
                     .onChange(of: scenePhase) { value in
                         if value == .background {
                             isUnlocked = false
+                            data.settings.firstUse = false
+                            data.save()
                         }
                     }
             }

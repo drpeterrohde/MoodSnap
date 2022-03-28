@@ -27,21 +27,30 @@ struct HelpView: View {
                     GroupBox(label: Label("Controls", systemImage: "gearshape").foregroundColor(themes[data.settings.theme].iconColor)) {
                         Group {
                             Divider()
-
-                            // let gridItemLayout = [GridItem(.flexible()), GridItem(.flexible())]
-
-                            // LazyVGrid(columns: gridItemLayout, alignment: .leading, spacing: 5) {
-//                    Label("Settings", systemImage: "slider.horizontal.3").font(.subheadline)
-//                    Label("Statistics", systemImage: "waveform.path.ecg.rectangle").font(.subheadline)
-//                    Label("Add event", systemImage: "star.square").font(.subheadline)
-//                    Label("Take MoodSnap", systemImage: "plus.circle").font(.subheadline)
-//                    Label("Diary entry", systemImage: "note.text.badge.plus").font(.subheadline)
-//                    Label("Photo diary", systemImage: "photo.on.rectangle.angled").font(.subheadline)
-//                    Label("Help", systemImage: "questionmark.circle").font(.subheadline)
-                            Image("control_bar_legend")
-                                .resizable()
-                                .scaledToFit()
-                                .cornerRadius(5)
+                            let gridItemLayout = Array(repeating: GridItem(.flexible()), count: 2)
+                            LazyVGrid(columns: gridItemLayout, alignment: .leading, spacing: themes[data.settings.theme].historyGridSpacing) {
+                                Label("Settings", systemImage: "slider.horizontal.3")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Insights", systemImage: "waveform.path.ecg.rectangle")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Add event", systemImage: "star.square")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Take MoodSnap", systemImage: "plus.circle")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Diary entry", systemImage: "note.text.badge.plus")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Photo diary", systemImage: "photo.on.rectangle.angled")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                                Label("Help", systemImage: "questionmark.circle")
+                                    .foregroundColor(.primary)
+                                    .font(.subheadline)
+                            }
                         }
 
                         Group {
@@ -92,7 +101,7 @@ struct HelpView: View {
                 }
 
                 Group {
-                    GroupBox(label: Label("Statistics", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)) {
+                    GroupBox(label: Label("Insights", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)) {
                         Group {
                             Divider()
                             Text(.init(statistics_intro_string)).font(.subheadline)
@@ -144,6 +153,18 @@ struct HelpView: View {
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                 Text(.init(statistics_volatility_string_2)).font(.subheadline)
+                            }
+                        }
+                        
+                        Group {
+                            Divider()
+                            VStack(alignment: .leading) {
+                                Label("Tally", systemImage: "chart.bar.doc.horizontal").foregroundColor(themes[data.settings.theme].iconColor)
+                                Spacer() //tally
+                                Text(.init(statistics_tally_string)).font(.subheadline)
+                                Image("tally")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
                             }
                         }
 

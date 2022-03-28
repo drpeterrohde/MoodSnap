@@ -49,3 +49,7 @@ let notes_on_interpretationa_string = "\nNotes on interpretation"// ???
 let intro_snap_title = "Welcome to MoodSnap"
 
 let intro_snap_notes = "This is your MoodSnap feed where your MoodSnaps events, diary and photo diary appear."
+
+let intro_snap_quickstart = "Quickstart: MoodSnaps should reflect the maximum mood levels experienced in the last 24 hours and since the last MoodSnap. It is recommended taking MoodSnaps regularly every day for the most reliable insights, and additionally whenever you notice changes in mood. You can take MoodSnaps as often as you like. See the help page for more information."
+
+let statistics_tally_string = "The tally displays the number of occurrences of different activites, symptoms, social and hashtag events within the specified time window."

@@ -192,8 +192,8 @@ struct SettingsView: View {
                 }
             }.fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(data: data)), contentType: .plainText) { result in
                 switch result {
-                case .success(let url):
-                    print("Saved to \(url)")
+                case .success: //.success(let url):
+                    break //print("Saved to \(url)")
                 case .failure(let error):
                     print(error.localizedDescription)
                 }

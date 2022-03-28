@@ -7,11 +7,11 @@ import UserNotifications
 func toggleReminder(which: Int, settings: SettingsStruct) {
     if (settings.reminderOn[which]) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
-            if success {
-                print("Notifications enabled")
-            } else {
-                print("Notifications denied")
-            }
+//            if success {
+//                print("Notifications enabled")
+//            } else {
+//                print("Notifications denied")
+//            }
         }
     }
     updateNotifications(settings: settings)

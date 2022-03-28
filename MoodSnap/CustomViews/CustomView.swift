@@ -8,16 +8,22 @@ struct HistoryCustomView: View {
         if which == 1 {
             Group {
                 VStack(alignment: .center) {
+                    Group {
                     Divider()
                     Spacer()
                         .frame(height: 10)
-                    Text(String(intro_snap_title))
+                    Text(.init(intro_snap_title))
                         .font(.caption)
                         .fontWeight(.bold)
                     Divider()
-                    Text(String(intro_snap_notes))
+                    Text(.init(intro_snap_notes))
                         .font(.caption)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    Divider()
+                    Text(.init(intro_snap_quickstart))
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                     Divider()
                     VStack(alignment: .center) {
                         Text("Controls")
