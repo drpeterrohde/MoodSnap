@@ -32,7 +32,7 @@ func averageMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
  Return a `MoodSnapStruct` of the volatility of those in a given `timescale`.
  */
 func averageVolatilitySnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
-    let samples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps)
+    let samples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps) // shouldn't be flattened???
     
     // ??? uses wrong samples
     let dataE = Array(samples[0].suffix(timescale))

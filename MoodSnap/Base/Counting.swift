@@ -21,7 +21,7 @@ func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreStruct) -> 
     var socialCount: [Int] = Array(repeating: 0, count: socialList.count)
     
     for moodSnap in moodSnaps {
-        for i in 0..<symptomList.count { // optimise with item???
+        for i in 0..<symptomList.count {
             if moodSnap.symptoms[i] && data.settings.symptomVisibility[i] {
                 symptomCount[i] += 1
             }

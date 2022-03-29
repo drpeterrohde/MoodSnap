@@ -30,7 +30,6 @@ func influence() -> [CGFloat?] {
     var influenceVolatilityA: CGFloat? = nil
     var influenceVolatilityI: CGFloat? = nil
     
-    // ??? disabled
     if self.elevationVolatility.count > 0 && self.elevationVolatility[0] != nil && self.elevationVolatility[self.elevationVolatility.count-1] != nil {
         influenceVolatilityE = self.elevationVolatility[self.elevationVolatility.count-1]! - self.elevationVolatility[0]!
     }

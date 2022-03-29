@@ -74,7 +74,7 @@ func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool =
  */
 func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
-    for time in windowStart...windowEnd { //???
+    for time in windowStart...windowEnd {
         let thisDate = date.addDays(days: time)
         let theseSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: thisDate, flatten: flatten)
         filtered.append(contentsOf: theseSnaps)
