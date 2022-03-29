@@ -416,3 +416,22 @@ func getVisibleSymptomList(data: DataStoreStruct) -> [String] {
 //    moodSnap.irritability = -1
 //    return moodSnap
 //}
+
+
+///**
+// Linearly translate a series such that its midpoint is 0.
+// */
+//func normSeries(series: [CGFloat?]) -> [CGFloat?] {
+//    let midValue: CGFloat? = series[(series.count - 1)/2]
+//    var normSeries: [CGFloat?] = []
+//
+//    for index in 0 ..< series.count {
+//        if series[index] != nil && midValue != nil {
+//            normSeries.append(series[index]! - midValue!)
+//        } else {
+//            normSeries.append(nil)
+//        }
+//    }
+//
+//    return normSeries
+//}
