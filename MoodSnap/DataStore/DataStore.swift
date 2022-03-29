@@ -10,7 +10,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
-    var moodSnaps: [MoodSnapStruct] = makeDemoData() //[]
+    var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
     
@@ -18,7 +18,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
-        self.moodSnaps = makeDemoData() //makeIntroSnap()
+        self.moodSnaps = makeIntroSnap()
         self.healthSnaps = []
         self.process()
     }

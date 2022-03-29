@@ -164,3 +164,18 @@ func makeIntroSnap() -> [MoodSnapStruct] {
     mediaSnap.customView = 1
     return [mediaSnap]
 }
+
+/**
+ How many user-created `moodSnaps` entries are there?
+ */
+func countMoodSnaps(moodSnaps: [MoodSnapStruct]) -> Int {
+    var count: Int = 0
+    
+    for moodSnap in moodSnaps {
+        if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
+            count += 1
+        }
+    }
+    
+    return count
+}

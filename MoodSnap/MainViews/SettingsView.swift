@@ -163,7 +163,7 @@ struct SettingsView: View {
                     HStack {
                         Text("MoodSnaps taken")
                         Spacer()
-                        Text("\(data.moodSnaps.count)")
+                        Text("\(countMoodSnaps(moodSnaps: data.moodSnaps))")
                             .foregroundColor(.secondary)
                     }
                     if (data.moodSnaps.count > 0) {
@@ -184,7 +184,7 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("Are you sure you want to delete all data?"), message: Text("There action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
-                        data.moodSnaps = makeIntroSnap()
+                        data.moodSnaps = []
                         data.process()
                         data.save()
                         dismiss()

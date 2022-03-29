@@ -52,6 +52,9 @@ struct HistoryCustomView: View {
                             Label("Help", systemImage: "questionmark.circle")
                                 .foregroundColor(themes[data.settings.theme].iconColor)
                                 .font(.subheadline)
+                            Label("Save", systemImage: "arrowtriangle.right.circle")
+                                .foregroundColor(themes[data.settings.theme].iconColor)
+                                .font(.subheadline)
                         }
                     }
                 }
