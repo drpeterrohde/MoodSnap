@@ -1,13 +1,16 @@
 import SwiftUI
 import Disk
 
+/**
+ Struct for main data storage type.
+ */
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
     
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
-    var moodSnaps: [MoodSnapStruct] = []
+    var moodSnaps: [MoodSnapStruct] = makeDemoData() //[]
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
     
@@ -15,7 +18,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
-        self.moodSnaps = makeIntroSnap()
+        self.moodSnaps = makeDemoData() //makeIntroSnap()
         self.healthSnaps = []
         self.process()
     }

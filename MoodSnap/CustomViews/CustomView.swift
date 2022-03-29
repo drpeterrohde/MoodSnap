@@ -63,10 +63,3 @@ struct HistoryCustomView: View {
         }
     }
 }
-
-func makeIntroSnap() -> [MoodSnapStruct] {
-    var mediaSnap = MoodSnapStruct()
-    mediaSnap.snapType = .custom
-    mediaSnap.customView = 1
-    return [mediaSnap]
-}

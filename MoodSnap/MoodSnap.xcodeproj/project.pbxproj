@@ -90,7 +90,7 @@
 		CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6027EBEF2A0067EE63 /* ReportView.swift */; };
 		CA496BB027EBEF2B0067EE63 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6127EBEF2A0067EE63 /* GeneratePDF.swift */; };
 		CA496BB127EBEF2B0067EE63 /* Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6327EBEF2A0067EE63 /* Hashtags.swift */; };
-		CA496BB227EBEF2B0067EE63 /* ByDateWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6527EBEF2A0067EE63 /* ByDateWindow.swift */; };
+		CA496BB227EBEF2B0067EE63 /* Differentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6527EBEF2A0067EE63 /* Differentials.swift */; };
 		CA496BB327EBEF2B0067EE63 /* Butterfly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6627EBEF2A0067EE63 /* Butterfly.swift */; };
 		CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6727EBEF2A0067EE63 /* Volatility.swift */; };
 		CA496BB527EBEF2B0067EE63 /* GenerateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */; };
@@ -103,6 +103,7 @@
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
+		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
 
@@ -190,7 +191,7 @@
 		CA496B6027EBEF2A0067EE63 /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		CA496B6127EBEF2A0067EE63 /* GeneratePDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
 		CA496B6327EBEF2A0067EE63 /* Hashtags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtags.swift; sourceTree = "<group>"; };
-		CA496B6527EBEF2A0067EE63 /* ByDateWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ByDateWindow.swift; sourceTree = "<group>"; };
+		CA496B6527EBEF2A0067EE63 /* Differentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Differentials.swift; sourceTree = "<group>"; };
 		CA496B6627EBEF2A0067EE63 /* Butterfly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Butterfly.swift; sourceTree = "<group>"; };
 		CA496B6727EBEF2A0067EE63 /* Volatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Volatility.swift; sourceTree = "<group>"; };
 		CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateStats.swift; sourceTree = "<group>"; };
@@ -201,6 +202,7 @@
 		CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatility.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -441,7 +443,8 @@
 		CA496B6427EBEF2A0067EE63 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				CA496B6527EBEF2A0067EE63 /* ByDateWindow.swift */,
+				CA496B6527EBEF2A0067EE63 /* Differentials.swift */,
+				CAAA2D1927F284380096AD22 /* GetDates.swift */,
 				CA496B6627EBEF2A0067EE63 /* Butterfly.swift */,
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */,
@@ -538,11 +541,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA496BB227EBEF2B0067EE63 /* ByDateWindow.swift in Sources */,
+				CA496BB227EBEF2B0067EE63 /* Differentials.swift in Sources */,
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
 				CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */,
 				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
+				CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
 				CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */,

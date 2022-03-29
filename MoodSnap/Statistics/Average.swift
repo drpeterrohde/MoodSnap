@@ -46,3 +46,25 @@ func average(moodSnaps: [MoodSnapStruct]) -> [CGFloat?] {
     
     return [averageE, averageD, averageA, averageI]
 }
+
+/**
+ Generate an average series from an array of `series`.
+ */
+func averageSeries(series: [[CGFloat?]]) -> [CGFloat?] {
+    if series.count == 0 {
+        return []
+    }
+    
+    var newSeries: [CGFloat?] = []
+    
+    for index in 0..<series[0].count {
+        var theseVals: [CGFloat?] = []
+        for whichSeries in series {
+            theseVals.append(whichSeries[index])
+        }
+        let thisAverage = average(data: theseVals)
+        newSeries.append(thisAverage)
+    }
+    
+    return newSeries
+}

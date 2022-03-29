@@ -39,22 +39,7 @@ func encodeJSONString(data: DataStoreStruct) -> String {
 }
 
 /**
- Decode a JSON `data` string into a struct.
- */
-//func decodeJSONString(data: String) -> DataStoreStruct? {
-//    do {
-//        let jsonData = try JSONEncoder().encode(data)
-//        let decoded = try JSONDecoder().decode(DataStoreStruct.self, from: jsonData)
-//        return decoded
-//    } catch {
-//        print("JSON decoding error")
-//    }
-//    return nil
-//}
-// data = try! JSONDecoder().decode(DataStoreStruct.self, from: rawData)
-
-/**
- Decode a JSON `data` string into a struct.
+ Decode a JSON `url`  into a `DataStoreStruct`.
  */
 func decodeJSONString(url: URL) -> DataStoreStruct {
     var data = DataStoreStruct()
@@ -70,6 +55,9 @@ func decodeJSONString(url: URL) -> DataStoreStruct {
     return data
 }
 
+/**
+ Decode JSON `data` into a `DataStoreSturct`.
+ */
 func decodeJSONString(data: Data) -> DataStoreStruct {
     var decodedData = DataStoreStruct()
     do {

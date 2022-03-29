@@ -153,3 +153,14 @@ func hasData(data: [CGFloat?]) -> Bool {
     }
     return false
 }
+
+
+/**
+ Make introductory MoodSnap with quick start information
+ */
+func makeIntroSnap() -> [MoodSnapStruct] {
+    var mediaSnap = MoodSnapStruct()
+    mediaSnap.snapType = .custom
+    mediaSnap.customView = 1
+    return [mediaSnap]
+}

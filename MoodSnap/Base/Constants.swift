@@ -1,12 +1,12 @@
 import SwiftUI
 
 /// Version
-let versionString = "0.1a"
+let versionString = "1.0b"
 
-/// Quotes
+/// Quote frequency
 let quoteFrequency = 11
 
-/// Windows
+/// Time windows
 let influenceWindowShort = 7
 let butterflyWindowShort = 7
 let influenceWindowLong = 28
@@ -35,7 +35,7 @@ let iconWidth: CGFloat = 15
 let faceIDWidth: CGFloat = 40
 let numericFont: Font = Font.system(.caption, design: .monospaced)
 
-// Symptoms
+/// Symptom list
 let symptomList = [
     "Anhedonia",
     "Increased apetite",
@@ -63,27 +63,28 @@ let symptomList = [
     "Suicidal thoughts"
 ]
 
-/// Activities
+/// Activity list
 let activityList = [
     "Alcohol", 
     "Caffeine", 
     "Excercise",
     "Meditation",
     "Missed medication",
+    "Nicotine",
     "Sexual activity",
     "Substance use",
     "Therapy"
 ]
 
-/// Social
+/// Social event list
 let socialList = [
+    "Affection",
     "Conflict",
-    "Intimacy",
     "Isolation",
     "Positive socialising",
     "Negative socialising",
     "No in-person contact"
 ]
 
-// Mood labels
+/// Mood labels
 let moodLabels = ["Elevation", "Depresssion", "Anxiety", "Irritability"]

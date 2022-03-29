@@ -184,7 +184,7 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("Are you sure you want to delete all data?"), message: Text("There action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
-                        data.moodSnaps = []
+                        data.moodSnaps = makeIntroSnap()
                         data.process()
                         data.save()
                         dismiss()
