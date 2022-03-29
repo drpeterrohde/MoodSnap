@@ -74,16 +74,6 @@ struct MoodSnapStruct: Identifiable, Codable, Hashable {
     var customView: Int = 0
 }
 
-func DummyMoodSnapStruct() -> MoodSnapStruct {
-    var moodSnap = MoodSnapStruct()
-    moodSnap.elevation = -1
-    moodSnap.depression = -1
-    moodSnap.anxiety = -1
-    moodSnap.irritability = -1
-    return moodSnap
-}
-
-
 struct HealthSnapStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1

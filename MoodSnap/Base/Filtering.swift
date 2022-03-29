@@ -1,16 +1,6 @@
 import SwiftUI
 
 /**
- Return the element from `moodSnaps` with UUID `id` if it exists.
- */
-func getMoodSnapByUUID(moodSnaps: [MoodSnapStruct], id: UUID) -> MoodSnapStruct? {
-    if let item = moodSnaps.first(where: { $0.id == id }) {
-        return item
-    }
-    return nil
-}
-
-/**
  Does `moodSnap` satisfy the given filtering constriants?
  */
 func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: String) -> Bool {
@@ -90,14 +80,4 @@ func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowSta
         filtered.append(contentsOf: theseSnaps)
     }
     return filtered
-}
-
-/**
- Returns array of `moodSnaps` flattened on a per-day basis.
- */
-func getFlattenedMoodSnaps(moodSnaps: [MoodSnapStruct]) -> [MoodSnapStruct] {
-    let flattened = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -100, windowEnd: 1, flatten: true)
-    // Make this more efficient ???
-    //print(flattened)
-    return flattened
 }

@@ -22,26 +22,26 @@ func normSeries(series: [CGFloat?]) -> [CGFloat?] {
  Average `ButterflyEntryStruct` from data centered around an array of `dates`.
  */
 func averageButterflyForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
-    let diffsMood = averageDifferentialWindowForDates(
+    let butterflyMood = averageDifferentialWindowForDates(
         moodSnaps: moodSnaps,
         dates: dates,
         maxWindow: maxWindow)
-    let diffsVolatility = volatilityDifferentialWindowForDates(
+    let butterflyVolatility = volatilityDifferentialWindowForDates(
         moodSnaps: moodSnaps,
         dates: dates,
         maxWindow: maxWindow)
 
     var thisButterfly = ButterflyEntryStruct()
     
-    thisButterfly.elevation = diffsMood[0]
-    thisButterfly.depression = diffsMood[1]
-    thisButterfly.anxiety = diffsMood[2]
-    thisButterfly.irritability = diffsMood[3]
+    thisButterfly.elevation = butterflyMood[0]
+    thisButterfly.depression = butterflyMood[1]
+    thisButterfly.anxiety = butterflyMood[2]
+    thisButterfly.irritability = butterflyMood[3]
 
-    thisButterfly.elevationVolatility = diffsVolatility[0]
-    thisButterfly.depressionVolatility = diffsVolatility[1]
-    thisButterfly.anxietyVolatility = diffsVolatility[2]
-    thisButterfly.irritabilityVolatility = diffsVolatility[3]
+    thisButterfly.elevationVolatility = butterflyVolatility[0]
+    thisButterfly.depressionVolatility = butterflyVolatility[1]
+    thisButterfly.anxietyVolatility = butterflyVolatility[2]
+    thisButterfly.irritabilityVolatility = butterflyVolatility[3]
 
     thisButterfly.occurrences = dates.count
 

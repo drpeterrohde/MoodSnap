@@ -1,27 +1,5 @@
 import SwiftUI
 
-func averageByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int) -> [CGFloat?] {
-    let samples = getMoodSnapsByDateWindow(
-        moodSnaps: moodSnaps,
-        date: date,
-        windowStart: windowStart,
-        windowEnd: windowEnd,
-        flatten: true)
-    let average = average(moodSnaps: samples)
-    return average
-}
-
-func volatilityByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int) -> [CGFloat?] {
-    let samples = getMoodSnapsByDateWindow(
-        moodSnaps: moodSnaps,
-        date: date,
-        windowStart: windowStart,
-        windowEnd: windowEnd,
-        flatten: false)
-    let volatility = volatility(moodSnaps: samples)
-    return volatility
-}
-
 func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     let today = getMoodSnapsByDate(
         moodSnaps: moodSnaps, 
@@ -90,56 +68,6 @@ func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int
     
     let windowVolatility = volatility(moodSnaps: samples)
     return windowVolatility
-}
-
-func averageDifferentialForDates(moodSnaps: [MoodSnapStruct], dates: [Date], window: Int) -> [CGFloat?] {
-    var diffsE: [CGFloat?] = []
-    var diffsD: [CGFloat?] = []
-    var diffsA: [CGFloat?] = []
-    var diffsI: [CGFloat?] = []
-    
-    for date in dates {
-        let thisDiff = averageDifferential(
-            moodSnaps: moodSnaps, 
-            date: date,
-            window: window)
-        diffsE.append(thisDiff[0])
-        diffsD.append(thisDiff[1])
-        diffsA.append(thisDiff[2])
-        diffsI.append(thisDiff[3])
-    }
-    
-    let diffE = average(data: diffsE)
-    let diffD = average(data: diffsD)
-    let diffA = average(data: diffsA)
-    let diffI = average(data: diffsI)
-    
-    return [diffE, diffD, diffA, diffI]
-}
-
-func volatilityDifferentialForDates(moodSnaps: [MoodSnapStruct], dates: [Date], window: Int) -> [CGFloat?] {
-    var diffsE: [CGFloat?] = []
-    var diffsD: [CGFloat?] = []
-    var diffsA: [CGFloat?] = []
-    var diffsI: [CGFloat?] = []
-    
-    for date in dates {
-        let thisDiff = volatilityDifferential(
-            moodSnaps: moodSnaps,
-            date: date, 
-            window: window)
-        diffsE.append(thisDiff[0])
-        diffsD.append(thisDiff[1])
-        diffsA.append(thisDiff[2])
-        diffsI.append(thisDiff[3])
-    }
-    
-    let diffE = average(data: diffsE)
-    let diffD = average(data: diffsE)
-    let diffA = average(data: diffsE)
-    let diffI = average(data: diffsE)
-    
-    return [diffE, diffD, diffA, diffI]
 }
 
 func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {

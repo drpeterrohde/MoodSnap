@@ -35,20 +35,6 @@ enum MoodsEnum: Int, CaseIterable {
 }
 
 /**
- Enumeration of the different mood level and mood volatility types.
- */
-enum LevelsEnum: Int, CaseIterable {
-    case elevation = 0
-    case depression = 1
-    case anxiety = 2
-    case irritability = 3
-    case elevationVolatility = 4
-    case depressionVolatility = 5
-    case anxietyVolatility = 6
-    case irritabilityVolatility = 7
-}
-
-/**
  Enumeration of the different viewing timescales available to the user in the `StatsView`.
  */
 enum TimeScaleEnum: Int, Codable {

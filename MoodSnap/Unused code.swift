@@ -294,3 +294,125 @@ func getVisibleSymptomList(data: DataStoreStruct) -> [String] {
 //
 //    return averageButterfly
 //}
+
+
+///**
+// Returns array of `moodSnaps` flattened on a per-day basis.
+// */
+//func getFlattenedMoodSnaps(moodSnaps: [MoodSnapStruct]) -> [MoodSnapStruct] {
+//    let flattened = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -100, windowEnd: 1, flatten: true)
+//    // Make this more efficient ???
+//    //print(flattened)
+//    return flattened
+//} ???
+
+///**
+// Return the element from `moodSnaps` with UUID `id` if it exists.
+// */
+//func getMoodSnapByUUID(moodSnaps: [MoodSnapStruct], id: UUID) -> MoodSnapStruct? {
+//    if let item = moodSnaps.first(where: { $0.id == id }) {
+//        return item
+//    }
+//    return nil
+//} ???
+
+
+
+// ???
+//func averageByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int) -> [CGFloat?] {
+//    let samples = getMoodSnapsByDateWindow(
+//        moodSnaps: moodSnaps,
+//        date: date,
+//        windowStart: windowStart,
+//        windowEnd: windowEnd,
+//        flatten: true)
+//    let average = average(moodSnaps: samples)
+//    return average
+//}
+
+//func volatilityByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int) -> [CGFloat?] {
+//    let samples = getMoodSnapsByDateWindow(
+//        moodSnaps: moodSnaps,
+//        date: date,
+//        windowStart: windowStart,
+//        windowEnd: windowEnd,
+//        flatten: false)
+//    let volatility = volatility(moodSnaps: samples)
+//    return volatility
+//}
+
+//func averageDifferentialForDates(moodSnaps: [MoodSnapStruct], dates: [Date], window: Int) -> [CGFloat?] {
+//    var diffsE: [CGFloat?] = []
+//    var diffsD: [CGFloat?] = []
+//    var diffsA: [CGFloat?] = []
+//    var diffsI: [CGFloat?] = []
+//
+//    for date in dates {
+//        let thisDiff = averageDifferential(
+//            moodSnaps: moodSnaps,
+//            date: date,
+//            window: window)
+//        diffsE.append(thisDiff[0])
+//        diffsD.append(thisDiff[1])
+//        diffsA.append(thisDiff[2])
+//        diffsI.append(thisDiff[3])
+//    }
+//
+//    let diffE = average(data: diffsE)
+//    let diffD = average(data: diffsD)
+//    let diffA = average(data: diffsA)
+//    let diffI = average(data: diffsI)
+//
+//    return [diffE, diffD, diffA, diffI]
+//}
+
+//func volatilityDifferentialForDates(moodSnaps: [MoodSnapStruct], dates: [Date], window: Int) -> [CGFloat?] {
+//    var diffsE: [CGFloat?] = []
+//    var diffsD: [CGFloat?] = []
+//    var diffsA: [CGFloat?] = []
+//    var diffsI: [CGFloat?] = []
+//
+//    for date in dates {
+//        let thisDiff = volatilityDifferential(
+//            moodSnaps: moodSnaps,
+//            date: date,
+//            window: window)
+//        diffsE.append(thisDiff[0])
+//        diffsD.append(thisDiff[1])
+//        diffsA.append(thisDiff[2])
+//        diffsI.append(thisDiff[3])
+//    }
+//
+//    let diffE = average(data: diffsE)
+//    let diffD = average(data: diffsE)
+//    let diffA = average(data: diffsE)
+//    let diffI = average(data: diffsE)
+//
+//    return [diffE, diffD, diffA, diffI]
+//}
+
+
+
+///**
+// Enumeration of the different mood level and mood volatility types.
+// */
+//enum LevelsEnum: Int, CaseIterable {
+//    case elevation = 0
+//    case depression = 1
+//    case anxiety = 2
+//    case irritability = 3
+//    case elevationVolatility = 4
+//    case depressionVolatility = 5
+//    case anxietyVolatility = 6
+//    case irritabilityVolatility = 7
+//}
+
+
+//func DummyMoodSnapStruct() -> MoodSnapStruct {
+//    var moodSnap = MoodSnapStruct()
+//    moodSnap.elevation = -1
+//    moodSnap.depression = -1
+//    moodSnap.anxiety = -1
+//    moodSnap.irritability = -1
+//    return moodSnap
+//}
