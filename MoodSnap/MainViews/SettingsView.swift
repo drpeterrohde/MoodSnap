@@ -95,7 +95,7 @@ struct SettingsView: View {
                     }) {
                         Text("Export backup file")
                     }.alert(isPresented: $showingImportAlert) {
-                        Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. Try making a fresh installation first."), dismissButton: .default(Text("OK")))
+                        Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. You must delete exisiting data first."), dismissButton: .default(Text("OK")))
                     }
                 }
                 
