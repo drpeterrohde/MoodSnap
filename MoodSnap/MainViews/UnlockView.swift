@@ -43,7 +43,7 @@ struct UnlockView: View {
             var error: NSError?
 
             if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-                let reason = "Unlock to acces your information."
+                let reason = "Unlock to acces MoodSnap."
 
                 context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
                     if success {

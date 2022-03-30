@@ -31,9 +31,9 @@ struct SettingsView: View {
                 }
                 
                 Section(header: Text("Accessibility")) {
-                    Toggle(isOn: $data.settings.useFaceID, label: {
-                        Text("Use FaceID")
-                    })
+//                    Toggle(isOn: $data.settings.useFaceID, label: {
+//                        Text("Use FaceID")
+//                    })
                     
                     Picker("Theme", selection: $data.settings.theme) {
                         ForEach(0..<themes.count, id: \.self) {i in
