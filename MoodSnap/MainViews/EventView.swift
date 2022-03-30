@@ -44,6 +44,7 @@ struct EventView: View {
             } label:{Image(systemName: "arrowtriangle.right.circle")
                 .resizable()
                 .scaledToFill()
+                .foregroundColor(themes[data.settings.theme].buttonColor)
                 .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)}
         }
     }

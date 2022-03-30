@@ -110,7 +110,9 @@ struct MoodSnapView: View {
                     VStack {
                         Divider()
                         Label("Notes", systemImage: "note.text").font(.caption)
-                        TextEditor(text: $moodSnap.notes).font(.caption).frame(minHeight: 50, alignment: .leading)
+                        TextEditor(text: $moodSnap.notes)
+                            .font(.caption)
+                            .frame(minHeight: 50, alignment: .leading)
                     }
                 }
 
@@ -132,6 +134,7 @@ struct MoodSnapView: View {
                 } label: { Image(systemName: "arrowtriangle.right.circle")
                     .resizable()
                     .scaledToFill()
+                    .foregroundColor(themes[data.settings.theme].buttonColor)
                     .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)
                 }
             }

@@ -28,6 +28,7 @@ struct DatePickerView: View {
             } label:{Image(systemName: "arrowtriangle.right.circle")
                     .resizable()
                     .scaledToFill()
+                    .foregroundColor(themes[settings.theme].buttonColor)
                     .frame(width: themes[settings.theme].controlBigIconSize, height: themes[settings.theme].controlBigIconSize)
             }
         }
