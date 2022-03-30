@@ -13,7 +13,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var includeActivities: Bool = true
     var includeEvents: Bool = true
     var reportPeriod: Int = TimeScaleEnum.month.rawValue
-    var reportBlackAndWhite: Bool = false
+    var reportBlackAndWhite: Bool = true
     
     // Visibility
     var symptomVisibility: [Bool] = [Bool](repeating: true, count: symptomList.count)

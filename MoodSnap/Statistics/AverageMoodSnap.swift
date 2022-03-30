@@ -4,26 +4,21 @@ import SwiftUI
  Return a `MoodSnapStruct` of the average of those in a given `timescale`.
  */
 func averageMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
-    let samples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps)
+    let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps,
+                                               date: Date(),
+                                               windowStart: -timescale,
+                                               windowEnd: 0,
+                                               flatten: true)
+    let average: [CGFloat?] = average(moodSnaps: windowSnaps)
     
-    let dataE = Array(samples[0].suffix(timescale))
-    let dataD = Array(samples[1].suffix(timescale))
-    let dataA = Array(samples[2].suffix(timescale))
-    let dataI = Array(samples[3].suffix(timescale))
-    
-    let averageE = average(data: dataE)
-    let averageD = average(data: dataD)
-    let averageA = average(data: dataA)
-    let averageI = average(data: dataI)
-    
-    if ((averageE == nil) || (averageD == nil) || (averageA == nil) || (averageI == nil)) {
+    if (average[0] == nil) || (average[1] == nil) || (average[2] == nil) || (average[3] == nil) {
         return nil
     } else {
         var averageMoodSnap = MoodSnapStruct()
-        averageMoodSnap.elevation = averageE!
-        averageMoodSnap.depression = averageD!
-        averageMoodSnap.anxiety = averageA!
-        averageMoodSnap.irritability = averageI!
+        averageMoodSnap.elevation = average[0]!
+        averageMoodSnap.depression = average[1]!
+        averageMoodSnap.anxiety = average[2]!
+        averageMoodSnap.irritability = average[3]!
         return averageMoodSnap
     }
 }
@@ -31,28 +26,22 @@ func averageMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
 /**
  Return a `MoodSnapStruct` of the volatility of those in a given `timescale`.
  */
-func averageVolatilitySnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
-    let samples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps) // shouldn't be flattened???
+func averageVolatilityMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
+    let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps,
+                                               date: Date(),
+                                               windowStart: -timescale,
+                                               windowEnd: 0,
+                                               flatten: false)
+    let volatility: [CGFloat?] = volatility(moodSnaps: windowSnaps)
     
-    // ??? uses wrong samples
-    let dataE = Array(samples[0].suffix(timescale))
-    let dataD = Array(samples[1].suffix(timescale))
-    let dataA = Array(samples[2].suffix(timescale))
-    let dataI = Array(samples[3].suffix(timescale))
-    
-    let volatilityE = volatility(data: dataE)
-    let volatilityD = volatility(data: dataD)
-    let volatilityA = volatility(data: dataA)
-    let volatilityI = volatility(data: dataI)
-    
-    if ((volatilityE == nil) || (volatilityD == nil) || (volatilityA == nil) || (volatilityI == nil)) {
+    if (volatility[0] == nil) || (volatility[1] == nil) || (volatility[2] == nil) || (volatility[3] == nil) {
         return nil
     } else {
         var averageMoodSnap = MoodSnapStruct()
-        averageMoodSnap.elevation = 2 * volatilityE!
-        averageMoodSnap.depression = 2 * volatilityD!
-        averageMoodSnap.anxiety = 2 * volatilityA! 
-        averageMoodSnap.irritability = 2 * volatilityI!
+        averageMoodSnap.elevation = 2 * volatility[0]!
+        averageMoodSnap.depression = 2 * volatility[1]!
+        averageMoodSnap.anxiety = 2 * volatility[2]!
+        averageMoodSnap.irritability = 2 * volatility[3]!
         return averageMoodSnap
     }
 }

@@ -8,18 +8,22 @@ struct PDFSingleSlidingVolatilityView: View {
     var blackAndWhite: Bool
     
     var body: some View {
-        let allSamples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps)
-        let samples = allSamples[type.rawValue]
-        let slidingVol = slidingVolatility(data: samples, windowSize: data.settings.slidingWindowSize)
-        let entries = makeLineData(y: slidingVol, timescale: timescale)
+        let entriesE = makeBarData(y: data.processedData.volatilityE, timescale: timescale)
+        let entriesD = makeBarData(y: data.processedData.volatilityD, timescale: timescale)
+        let entriesA = makeBarData(y: data.processedData.volatilityA, timescale: timescale)
+        let entriesI = makeBarData(y: data.processedData.volatilityI, timescale: timescale)
         
+        let entries = [entriesE, entriesD, entriesA, entriesI]
+       
         if blackAndWhite {
-            MultipleLineChart(entries: [entries], color: [UIColor.black], max: 2, guides: 2)
-                .frame(height: 170)
+            VerticalBarChart(entries: entries[type.rawValue],
+                         color: UIColor.black,
+                         settings: data.settings).frame(height: 65)
         } else {
             let color = moodUIColors(settings: data.settings)[type.rawValue]
-            MultipleLineChart(entries: [entries], color: [color], max: 2, guides: 2)
-                .frame(height: 170)
+            VerticalBarChart(entries: entries[type.rawValue],
+                             color: color,
+                             settings: data.settings).frame(height: 65)
         }
     }
 }

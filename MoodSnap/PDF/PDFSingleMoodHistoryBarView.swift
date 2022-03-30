@@ -8,17 +8,20 @@ struct PDFSingleMoodHistoryBarView: View {
     var blackAndWhite: Bool
     
     var body: some View {
-        let allSamples = getFlattenedPaddedSamples(moodSnaps: data.moodSnaps)
-        let samples = allSamples[type.rawValue]
-        let entries = makeBarData(y: samples, timescale: timescale)
+        let entriesE = makeBarData(y: data.processedData.levelE, timescale: timescale)
+        let entriesD = makeBarData(y: data.processedData.levelD, timescale: timescale)
+        let entriesA = makeBarData(y: data.processedData.levelA, timescale: timescale)
+        let entriesI = makeBarData(y: data.processedData.levelI, timescale: timescale)
         
+        let entries = [entriesE, entriesD, entriesA, entriesI]
+       
         if blackAndWhite {
-            VerticalBarChart(entries: entries,
+            VerticalBarChart(entries: entries[type.rawValue],
                          color: UIColor.black,
                          settings: data.settings).frame(height: 65)
         } else {
             let color = moodUIColors(settings: data.settings)[type.rawValue]
-            VerticalBarChart(entries: entries,
+            VerticalBarChart(entries: entries[type.rawValue],
                              color: color,
                              settings: data.settings).frame(height: 65)
         }

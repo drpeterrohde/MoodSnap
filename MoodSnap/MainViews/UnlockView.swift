@@ -3,7 +3,7 @@ import SwiftUI
 
 struct UnlockView: View {
     @Binding var isUnlocked: Bool
-    var data: DataStoreStruct
+    @Binding var data: DataStoreStruct
 
     var body: some View {
         ZStack {
@@ -53,6 +53,8 @@ struct UnlockView: View {
                     }
                 }
             } else {
+                isUnlocked = true
+                data.settings.useFaceID = false
                 print("FaceID not available.")
             }
         }

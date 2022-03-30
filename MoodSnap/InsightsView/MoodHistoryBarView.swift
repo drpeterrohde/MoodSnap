@@ -5,7 +5,6 @@ struct MoodHistoryBarView: View {
     var timescale: Int
     var data: DataStoreStruct
     
-    
     var body: some View {
         let entriesE = makeBarData(y: data.processedData.levelE, timescale: timescale)
         let entriesD = makeBarData(y: data.processedData.levelD, timescale: timescale)

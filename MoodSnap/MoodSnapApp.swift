@@ -11,7 +11,7 @@ struct MoodSnapApp: App {
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
-                UnlockView(isUnlocked: $isUnlocked, data: data)
+                UnlockView(isUnlocked: $isUnlocked, data: $data)
             } else {
                 ContentView(data: $data)
                     .onAppear {

@@ -4,9 +4,9 @@ struct AverageMoodView: View {
     var timescale: Int
     var data: DataStoreStruct
     var blackAndWhite: Bool = false
-    
+
     var body: some View {
-        if (data.moodSnaps.count == 0) {
+        if data.moodSnaps.count == 0 {
             Spacer()
             Text("Insufficient data")
                 .font(.caption)
@@ -21,14 +21,14 @@ struct AverageMoodView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-        
+
             let averageMoodSnap = averageMoodSnap(
                 timescale: timescale,
                 data: data)
-        
-            if (averageMoodSnap != nil) {
+
+            if averageMoodSnap != nil {
                 MoodLevelsView(moodSnap: averageMoodSnap!,
-                               data: data, 
+                               data: data,
                                blackAndWhite: blackAndWhite)
             } else {
                 VStack(alignment: .center) {
@@ -37,7 +37,7 @@ struct AverageMoodView: View {
                         .foregroundColor(.secondary)
                 }
             }
-        
+
             Divider()
             if blackAndWhite {
                 Label("Volatility", systemImage: "waveform.path.ecg")
@@ -47,14 +47,13 @@ struct AverageMoodView: View {
                 Label("Volatility", systemImage: "waveform.path.ecg")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                
             }
-            let averageVolatilitySnap = averageVolatilitySnap(
-                timescale: timescale, 
+            let averageVolatilityMoodSnap = averageVolatilityMoodSnap(
+                timescale: timescale,
                 data: data)
-            if (averageVolatilitySnap != nil) {
-                MoodLevelsView(moodSnap: averageVolatilitySnap!, 
-                               data: data, 
+            if averageVolatilityMoodSnap != nil {
+                MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
+                               data: data,
                                blackAndWhite: blackAndWhite)
             } else {
                 VStack(alignment: .center) {
