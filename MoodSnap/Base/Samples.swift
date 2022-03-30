@@ -6,7 +6,7 @@ import SwiftUI
 func flattenAndPad(moodSnaps: [MoodSnapStruct]) -> [MoodSnapStruct?] {
     var flattened: [MoodSnapStruct?] = []
     let firstDate = getFirstDate(moodSnaps: moodSnaps).addDays(days: -1)
-    let lastDate = getLastDate(moodSnaps: moodSnaps).addDays(days: 1) // ???? need this?
+    let lastDate = getLastDate(moodSnaps: moodSnaps)
     var currentDate = firstDate
     
     while (currentDate <= lastDate) {
