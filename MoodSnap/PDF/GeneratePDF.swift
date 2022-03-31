@@ -137,7 +137,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
     
     // Statistics
-    let attributedStatistics = NSAttributedString(string: "\nStatistics\n", attributes: subtitleAttributes)
+    let attributedStatistics = NSAttributedString(string: "\nInsights\n", attributes: subtitleAttributes)
     var textElement = PDFAttributedText(text: attributedStatistics)
     document.add(.contentLeft, attributedTextObject: textElement)
     
@@ -264,7 +264,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreStruct, ti
     document.add(.contentLeft, attributedTextObject: textElement2)
     
     let view2 = PDFMoodHistoryBarView(timescale: timescale, data: data, blackAndWhite: blackAndWhite)
-        .frame(width: 400)
+        .frame(width: 500)
         .background(Color.white)
     let image2 = view2.asImage()
     addImage(document: document, image: image2, width: pageWidth/2)
@@ -309,7 +309,7 @@ func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreSt
     
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
     
-    let attributedNotes = NSAttributedString(string: notes_on_interpretationa_string, attributes: notesAttributes)
+    let attributedNotes = NSAttributedString(string: notes_on_interpretation_string, attributes: notesAttributes)
     
     textElement = PDFAttributedText(text: attributedNotes)
     document.add(.contentLeft, attributedTextObject: textElement)

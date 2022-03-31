@@ -7,58 +7,60 @@ struct HistoryItemView: View {
     @Binding var data: DataStoreStruct
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
-    
+
     var body: some View {
         if snapFilter(moodSnap: moodSnap, filter: filter, searchText: searchText) && !(moodSnap.snapType == .quote && !data.settings.quoteVisibility) {
             GroupBox {
                 Group {
                     HStack {
-                        if (moodSnap.snapType == .mood) {
+                        if moodSnap.snapType == .mood {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "brain.head.profile")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .note) {
+                        if moodSnap.snapType == .note {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "note.text")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .event) {
+                        if moodSnap.snapType == .event {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "star.fill")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .media) {
+                        if moodSnap.snapType == .media {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .custom) {
+                        if moodSnap.snapType == .custom {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
                                 .font(.caption)
                         }
-                        if (moodSnap.snapType == .quote && data.settings.quoteVisibility) {
+                        if moodSnap.snapType == .quote && data.settings.quoteVisibility {
                             Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
-                                //.labelStyle(.iconOnly)
+                                .labelStyle(.iconOnly)
                                 .font(.caption)
                         }
-                        
+
                         Spacer()
                         Menu {
-                            Button(action: {
-                                showingMoodSnapSheet.toggle()
-                            }, label: {
-                                Image(systemName: "pencil")
-                                Text("Edit")
-                            })
-                            
+                            if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event {
+                                Button(action: {
+                                    showingMoodSnapSheet.toggle()
+                                }, label: {
+                                    Image(systemName: "pencil")
+                                    Text("Edit")
+                                })
+                            }
+
                             Button(role: .destructive, action: {
                                 showingDeleteAlert = true
                             }, label: {
                                 Image(systemName: "trash")
                                 Text("Delete")
                             })
-                        } label:{Image(systemName: "gearshape")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(Color.primary)
+                        } label: { Image(systemName: "gearshape")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(Color.primary)
                         }
                         .sheet(isPresented: $showingMoodSnapSheet) {
                             switch moodSnap.snapType {
@@ -93,24 +95,24 @@ struct HistoryItemView: View {
                         }
                     }
                 }
-                
+
                 Group {
-                    if (moodSnap.snapType == .event) {
+                    if moodSnap.snapType == .event {
                         HistoryEventView(moodSnap: moodSnap, data: data)
                     }
-                    if (moodSnap.snapType == .mood) {
+                    if moodSnap.snapType == .mood {
                         HistoryMoodView(moodSnap: moodSnap, data: data)
                     }
-                    if (moodSnap.snapType == .note) {
+                    if moodSnap.snapType == .note {
                         HistoryNoteView(moodSnap: moodSnap, data: data)
                     }
-                    if (moodSnap.snapType == .media) {
+                    if moodSnap.snapType == .media {
                         HistoryMediaView(moodSnap: moodSnap, data: data)
                     }
-                    if (moodSnap.snapType == .custom) {
+                    if moodSnap.snapType == .custom {
                         HistoryCustomView(which: moodSnap.customView, data: data)
                     }
-                    if (moodSnap.snapType == .quote && data.settings.quoteVisibility) {
+                    if moodSnap.snapType == .quote && data.settings.quoteVisibility {
                         HistoryQuoteView(moodSnap: moodSnap, data: data)
                     }
                 }
