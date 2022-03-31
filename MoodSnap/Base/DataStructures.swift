@@ -14,6 +14,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var includeEvents: Bool = true
     var reportPeriod: Int = TimeScaleEnum.month.rawValue
     var reportBlackAndWhite: Bool = true
+    var reportIncludeInterpretation: Bool = true
     
     // Visibility
     var symptomVisibility: [Bool] = [Bool](repeating: true, count: symptomList.count)
@@ -29,7 +30,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     
     var useFaceID: Bool = false
     
-    
+    var healthUnits: MeasurementUnitsEnum = .metric
     var healthDistanceOn: Bool = true
     var healthMenstrualOn: Bool = true
     var healthSleepOn: Bool = true

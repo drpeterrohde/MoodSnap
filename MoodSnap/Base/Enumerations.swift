@@ -1,6 +1,14 @@
 import SwiftUI
 
 /**
+ Enumeration for units of measurement (metric or imperial)
+ */
+enum MeasurementUnitsEnum: Int, Codable {
+    case metric = 0
+    case imperial = 1
+}
+
+/**
  Enumeration for different influence types.
  */
 enum InfluenceTypeEnum: Int, Codable {

@@ -168,11 +168,11 @@ func makeIntroSnap() -> [MoodSnapStruct] {
 /**
  How many user-created `moodSnaps` entries are there?
  */
-func countMoodSnaps(moodSnaps: [MoodSnapStruct]) -> Int {
+func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
     var count: Int = 0
     
     for moodSnap in moodSnaps {
-        if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
+        if moodSnap.snapType == type {
             count += 1
         }
     }
