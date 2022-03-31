@@ -181,7 +181,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     // Cells (activity)
     for activityCount in 0..<activityList.count {
         let cell = table[activityCount+1,0]
-        cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 10))
+        cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 8))
         
         // Activity labels
         do {
@@ -198,7 +198,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
                 let str = formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount-1]) + "/" + formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount+3]) // only has activities ???
                 try tableContent = PDFTableContent(content: str)
                 cell.content = tableContent
-                cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 10, weight: .regular))
+                cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
                 print("PDF table eror")
             }
@@ -208,7 +208,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     // Cells (social)
     for socialCount in 0..<socialList.count {
         let cell = table[socialCount+activityList.count+1,0]
-        cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 10))
+        cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 8))
         
         // Activity labels
         do {
@@ -225,7 +225,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
                 let str = formatMoodLevelString(value: data.processedData.activityButterfly[socialCount].influence()[moodCount-1]) + "/" + formatMoodLevelString(value: data.processedData.activityButterfly[socialCount].influence()[moodCount+3]) // only has activities ???
                 try tableContent = PDFTableContent(content: str)
                 cell.content = tableContent
-                cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 10, weight: .regular))
+                cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
                 print("PDF table eror")
             }
