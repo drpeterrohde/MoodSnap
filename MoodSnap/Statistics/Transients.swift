@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Average `ButterflyEntryStruct` from data centered around an array of `dates`.
  */
-func averageButterflyForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
+func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
     let butterflyMood = averageDifferentialWindowForDates(
         moodSnaps: moodSnaps,
         dates: dates,
@@ -163,7 +163,7 @@ func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [D
 }
 
 /**
- Differential (average) foccused on `date` over a window.
+ Differential (average) foccused on `date` over a `maxWindow`.
  */
 func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []
@@ -186,7 +186,7 @@ func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindo
 }
 
 /**
- Differential (volatility) foccused on `date` over a window.
+ Differential (volatility) foccused on `date` over a `maxWindow`.
  */
 func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []

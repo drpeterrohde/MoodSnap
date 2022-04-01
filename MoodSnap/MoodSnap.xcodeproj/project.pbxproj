@@ -71,7 +71,6 @@
 		CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4827EBEF2A0067EE63 /* Strings.swift */; };
 		CA496B9E27EBEF2B0067EE63 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4927EBEF2A0067EE63 /* UX.swift */; };
 		CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4A27EBEF2A0067EE63 /* Color.swift */; };
-		CA496BA027EBEF2B0067EE63 /* Unused code.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4C27EBEF2A0067EE63 /* Unused code.swift */; };
 		CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */; };
 		CA496BA327EBEF2B0067EE63 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5027EBEF2A0067EE63 /* ImagePicker.swift */; };
 		CA496BA427EBEF2B0067EE63 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5227EBEF2A0067EE63 /* JSON.swift */; };
@@ -167,7 +166,6 @@
 		CA496B4827EBEF2A0067EE63 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA496B4927EBEF2A0067EE63 /* UX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
 		CA496B4A27EBEF2A0067EE63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		CA496B4C27EBEF2A0067EE63 /* Unused code.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Unused code.swift"; sourceTree = "<group>"; };
 		CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
 		CA496B5027EBEF2A0067EE63 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		CA496B5227EBEF2A0067EE63 /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -214,7 +212,6 @@
 			isa = PBXGroup;
 			children = (
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
-				CA496B4C27EBEF2A0067EE63 /* Unused code.swift */,
 				CA496B5727EBEF2A0067EE63 /* Resources */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
@@ -587,7 +584,6 @@
 				CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
-				CA496BA027EBEF2B0067EE63 /* Unused code.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
 				CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */,
 				CA496BA827EBEF2B0067EE63 /* PDFSingleSlidingVolatilityView.swift in Sources */,

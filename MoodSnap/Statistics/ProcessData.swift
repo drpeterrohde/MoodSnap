@@ -64,7 +64,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
     // Event
     for i in 0..<eventList.count {
         let dates = [eventList[i].1]
-        var thisButterfly = averageButterflyForDates(
+        var thisButterfly = averageTransientForDates(
             dates: dates,
             moodSnaps: data.moodSnaps,
             maxWindow: butterflyWindowLong)
@@ -79,7 +79,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
         let dates = getDatesForHashtag(
             hashtag: hashtags[i],
             moodSnaps: data.moodSnaps)
-        var thisButterfly = averageButterflyForDates(
+        var thisButterfly = averageTransientForDates(
             dates: dates,
             moodSnaps: data.moodSnaps,
             maxWindow: butterflyWindowShort)
@@ -93,7 +93,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
             type: .activity,
             item: i,
             moodSnaps: data.moodSnaps)
-        var thisButterfly = averageButterflyForDates(
+        var thisButterfly = averageTransientForDates(
             dates: dates,
             moodSnaps: data.moodSnaps,
             maxWindow: butterflyWindowShort)
@@ -107,7 +107,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
             type: .social,
             item: i,
             moodSnaps: data.moodSnaps)
-        var thisButterfly = averageButterflyForDates(
+        var thisButterfly = averageTransientForDates(
             dates: dates,
             moodSnaps: data.moodSnaps,
             maxWindow: butterflyWindowShort)
@@ -121,7 +121,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
             type: .symptom,
             item: i,
             moodSnaps: data.moodSnaps)
-        var thisButterfly = averageButterflyForDates(
+        var thisButterfly = averageTransientForDates(
             dates: dates,
             moodSnaps: data.moodSnaps,
             maxWindow: butterflyWindowShort)

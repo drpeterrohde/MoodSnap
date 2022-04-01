@@ -198,13 +198,15 @@ struct SettingsView: View {
                     }) {
                         Text("Load demo data")
                     }
+                    .disabled(data.moodSnaps.count != 0)
                     Button(action: {
                         showingDeleteData.toggle()
                     }) {
-                        Text("Delete all data").foregroundColor(.red)
+                        Text("Delete all data")
+                            .foregroundColor(.red)
                     }
                 }.alert(isPresented: $showingDeleteData) {
-                    Alert(title: Text("Are you sure you want to delete all data?"), message: Text("There action cannot be undone."), primaryButton: .destructive(Text("Delete")) {
+                    Alert(title: Text("Are you sure you want to delete all data?"), message: Text("This action cannot be undone. You may wish to export your data before deleting."), primaryButton: .destructive(Text("Delete")) {
                         data.moodSnaps = []
                         data.process()
                         data.save()
