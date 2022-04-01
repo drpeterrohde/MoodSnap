@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Convert `data` to sliding average array.
+ */
 func slidingAverage(data: [CGFloat?], windowSize: Int) -> [CGFloat?] {
     var averages: [CGFloat?] = []
     

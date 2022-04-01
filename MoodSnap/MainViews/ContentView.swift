@@ -1,6 +1,9 @@
 import Charts
 import SwiftUI
 
+/**
+ Main content view.
+ */
 struct ContentView: View {
     @Binding var data: DataStoreStruct
     @State var searchText: String = ""

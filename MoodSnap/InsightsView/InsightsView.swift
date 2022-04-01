@@ -1,6 +1,9 @@
 import Charts
 import SwiftUI
 
+/**
+ View showing insights panel.
+ */
 struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var data: DataStoreStruct
@@ -399,7 +402,7 @@ struct InsightsView: View {
                             if data.uxState.isButterflyAverageExpanded {
                                 Divider()
                                 // InfluenceTransientView(timescale: timescale, data: data)
-                                ButterflyAverageView(timescale: timescale, data: data)
+                                TransientView(timescale: timescale, data: data)
                                 EmptyView()
                             }
                         }

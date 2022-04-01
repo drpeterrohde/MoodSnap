@@ -43,8 +43,6 @@ func updateNotifications(settings: SettingsStruct) {
     content.title = "MoodSnap"
     content.body = "It's time to take a MoodSnap."
     content.sound = UNNotificationSound.default
-    //content.categoryIdentifier = "customIdentifier"
-    //content.userInfo = ["customData": "fizzbuzz"]
     
     let requests = [
         UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: triggers[0]),

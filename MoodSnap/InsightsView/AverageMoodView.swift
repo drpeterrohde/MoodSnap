@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing average mood over `timescale`.
+ */
 struct AverageMoodView: View {
     var timescale: Int
     var data: DataStoreStruct

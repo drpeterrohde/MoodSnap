@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for diary entry sheet.
+ */
 struct NoteView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct

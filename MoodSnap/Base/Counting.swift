@@ -11,7 +11,6 @@ func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
     return occurrences
 }
 
-// add hashtag???
 /**
  Count the total occurrences of symptoms, activites & social within the array `moodSnaps`.
  */

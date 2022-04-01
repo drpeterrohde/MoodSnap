@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing symptom list.
+ */
 struct HistorySymptomsView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

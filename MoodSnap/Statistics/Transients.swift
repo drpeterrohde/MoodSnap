@@ -30,6 +30,9 @@ func averageButterflyForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWin
     return thisButterfly
 }
 
+/**
+ Differential (average) foccused on `date`.
+ */
 func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     let today = getMoodSnapsByDate(
         moodSnaps: moodSnaps,
@@ -77,6 +80,9 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
     return [diffE, diffD, diffA, diffI]
 }
 
+/**
+ Differential (volatility) foccused on `date`.
+ */
 func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     var samples: [MoodSnapStruct] = []
     
@@ -100,6 +106,9 @@ func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int
     return windowVolatility
 }
 
+/**
+ Differential (average) foccused on `dates` array.
+ */
 func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
     var diffsE: [[CGFloat?]] = []
     var diffsD: [[CGFloat?]] = []
@@ -125,6 +134,9 @@ func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date
     return [diffE, diffD, diffA, diffI]
 }
 
+/**
+ Differential (volatility) foccused on `dates` array.
+ */
 func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
     var diffsE: [[CGFloat?]] = []
     var diffsD: [[CGFloat?]] = []
@@ -150,6 +162,9 @@ func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [D
     return [diffE, diffD, diffA, diffI]
 }
 
+/**
+ Differential (average) foccused on `date` over a window.
+ */
 func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []
     var seriesD: [CGFloat?] = []
@@ -170,6 +185,9 @@ func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindo
     return [seriesE, seriesD, seriesA, seriesI]
 }
 
+/**
+ Differential (volatility) foccused on `date` over a window.
+ */
 func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []
     var seriesD: [CGFloat?] = []

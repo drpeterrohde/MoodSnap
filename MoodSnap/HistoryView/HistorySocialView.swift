@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing social activity history.
+ */
 struct HistorySocialView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

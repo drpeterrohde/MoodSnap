@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for photo diary sheet.
+ */
 struct MediaView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct

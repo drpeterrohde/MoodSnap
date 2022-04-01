@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing activity influences.
+ */
 struct InfluencesActivityView: View {
     var data: DataStoreStruct
     

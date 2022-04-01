@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View with line chart.
+ */
 struct LineChart : UIViewRepresentable {
     var entries : [ChartDataEntry]
     var color: NSUIColor

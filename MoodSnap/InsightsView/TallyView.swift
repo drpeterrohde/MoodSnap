@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for displaying an activity tally.
+ */
 struct TallyView: View {
     var timescale: Int
     var data: DataStoreStruct

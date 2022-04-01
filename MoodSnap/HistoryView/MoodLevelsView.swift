@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing mood levels for `moodSnap`.
+ */
 struct MoodLevelsView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

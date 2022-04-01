@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for dislpaying hashtag influences.
+ */
 struct InfluencesHashtagView: View {
     var data: DataStoreStruct
     

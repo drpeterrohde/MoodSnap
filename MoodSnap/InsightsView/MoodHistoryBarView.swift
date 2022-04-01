@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View for displaying mood history over given `timescale`.
+ */
 struct MoodHistoryBarView: View {
     var timescale: Int
     var data: DataStoreStruct

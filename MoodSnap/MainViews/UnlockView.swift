@@ -1,6 +1,9 @@
 import LocalAuthentication
 import SwiftUI
 
+/**
+ View for unlock sheet.
+ */
 struct UnlockView: View {
     @Binding var isUnlocked: Bool
     @Binding var data: DataStoreStruct

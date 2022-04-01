@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View with vertical bar chart.
+ */
 struct VerticalBarChart : UIViewRepresentable {
     var entries : [BarChartDataEntry]
     var color: NSUIColor

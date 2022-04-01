@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View with multiple line charts.
+ */
 struct MultipleLineChart : UIViewRepresentable {
     var entries : [[ChartDataEntry]]
     var color: [NSUIColor]

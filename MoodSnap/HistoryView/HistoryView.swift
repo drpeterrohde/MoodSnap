@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing history based on `filter` with `searchText`.
+ */
 struct HistoryView: View {
     @Environment(\.dismissSearch) var dismissSearch
     @Environment(\.isSearching) var isSearching

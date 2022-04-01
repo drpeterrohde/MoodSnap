@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Convert `data` to sliding volatility.
+ */
 func slidingVolatility(data: [CGFloat?], windowSize: Int) -> [CGFloat?] {
     var volatilities: [CGFloat?] = []
     

@@ -1,5 +1,9 @@
 import SwiftUI
 
+/**
+ Strings.
+ */
+
 let help_how_to_use_moodsnap_string = "MoodSnap records your mood history by taking _MoodSnaps_, a single sheet questionaire about your mood levels, symptoms and activities.\n\nFor the analytics tools to work correctly it is best to take MoodSnaps on a regular basis, for example at the same time every evening. You can enable reminders for this in the _settings_ page.\n\nWhen taking a MoodSnap your entries should reflect the _maximum_ respective degrees experienced _since the most recent_ MoodSnap and _within the last 24 hours_.\n\nFor people with mood disorders it is recommended taking additional MoodSnaps anytime you become aware of significant changes in mood levels or symptoms, as this additional data benefits analysis. There aren't any limits on how often you take MoodSnaps.\n\nFurther details can be found on the MoodSnap homepage: [www.moodsnap.app](https://www.moodsnap.app)"
 
 let help_taking_moodsnaps_string = "The sliders at the top of the _MoodSnap_ panel snap to five increments, ranging from _none_ to _extreme_. The toggle buttons below allow you to specify symptoms you've experience and activites you've undertaken in the same period. Since many of these aren't relevant to everyone, you can toggle their visibility in the settings page."

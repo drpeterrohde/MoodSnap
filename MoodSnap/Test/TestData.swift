@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Make demonstration data.
+ */
 func makeDemoData() -> [MoodSnapStruct] {
     var moodSnaps: [MoodSnapStruct] = []
     let max = 50
@@ -63,6 +66,9 @@ func makeDemoData() -> [MoodSnapStruct] {
     return sorted
 }
 
+/**
+ Make demonstration data.
+ */
 func makeDemoData2(size: Int) -> [MoodSnapStruct] {
     var moodSnaps: [MoodSnapStruct] = []
     

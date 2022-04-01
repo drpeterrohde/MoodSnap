@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for event sheet.
+ */
 struct EventView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct

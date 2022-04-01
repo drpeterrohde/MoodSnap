@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View with date picker.
+ */
 struct DatePickerView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var moodSnap: MoodSnapStruct

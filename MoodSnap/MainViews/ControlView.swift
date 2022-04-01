@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View with controls.
+ */
 struct ControlView: View {
     @Binding var data: DataStoreStruct
     @State private var showingMoodSnapSheet: Bool = false

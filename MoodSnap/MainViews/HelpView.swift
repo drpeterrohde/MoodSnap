@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for help page.
+ */
 struct HelpView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var data: DataStoreStruct

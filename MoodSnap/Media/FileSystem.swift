@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Extensino for saving and loading images.
+ */
 extension UIImage {
     func saveImage(imageName: String) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return }

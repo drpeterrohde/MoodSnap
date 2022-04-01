@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Data structure for settings.
+ */
 struct SettingsStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -48,6 +51,9 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var theme: Int = 0
 }
 
+/**
+ Data structure for MoodSnaps.
+ */
 struct MoodSnapStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -76,6 +82,9 @@ struct MoodSnapStruct: Identifiable, Codable, Hashable {
     var customView: Int = 0
 }
 
+/**
+ Data structure for HealthSnaps.
+ */
 struct HealthSnapStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -89,6 +98,9 @@ struct HealthSnapStruct: Identifiable, Codable, Hashable {
     var menstrual: CGFloat? = nil
 }
 
+/**
+ Data structure for transient butterfly plot.
+ */
 struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -109,6 +121,9 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var irritabilityVolatility: [CGFloat?] = []
 }
 
+/**
+ Data structure for user interface state.
+ */
 struct UXStateStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -131,6 +146,9 @@ struct UXStateStruct: Identifiable, Codable, Hashable {
     var isSleepExpanded: Bool = false
 }
 
+/**
+ Data structure for statistics at a point.
+ */
 struct StatsEntryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -151,6 +169,9 @@ struct StatsEntryStruct: Identifiable, Codable, Hashable {
     var volatilityI: CGFloat? = nil
 }
 
+/**
+ Data structure for full history.
+ */
 struct HistoryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1

@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing symptom influences.
+ */
 struct InfluencesSymptomView: View {
     var data: DataStoreStruct
     

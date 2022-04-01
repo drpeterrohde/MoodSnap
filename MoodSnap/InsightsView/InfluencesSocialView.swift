@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing social influences.
+ */
 struct InfluencesSocialView: View {
     var data: DataStoreStruct
     

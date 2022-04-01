@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View showing sliding average over given `timescale`.
+ */
 struct SlidingAverageView: View {
     var timescale: Int
     var data: DataStoreStruct

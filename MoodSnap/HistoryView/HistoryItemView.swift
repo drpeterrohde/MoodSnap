@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing `moodSnap` history item with `filter` based on `searchText`.
+ */
 struct HistoryItemView: View {
     @Binding var moodSnap: MoodSnapStruct
     @Binding var filter: SnapTypeEnum

@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for introduction popover sheet.
+ */
 struct IntroPopoverView: View {
     @Environment(\.dismiss) var dismiss
     var data: DataStoreStruct

@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View with scatter chart.
+ */
 struct ScatterChart : UIViewRepresentable {
     var entries : [ChartDataEntry]
     var color: UIColor

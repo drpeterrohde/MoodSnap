@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing history quote `moodSnap`.
+ */
 struct HistoryQuoteView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for settings.
+ */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var data: DataStoreStruct

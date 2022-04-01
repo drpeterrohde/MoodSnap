@@ -22,7 +22,7 @@ struct MoodSnapApp: App {
                                 as: DataStoreStruct.self)
                             data = retrieved
                         } catch {
-                            //print("Load failed")
+                            // print("Load failed")
                         }
                     }
                     .onChange(of: scenePhase) { value in

@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for dislpaying event influences.
+ */
 struct InfluencesEventsView: View {
     var data: DataStoreStruct
     

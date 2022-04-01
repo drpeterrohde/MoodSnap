@@ -10,7 +10,7 @@
 		CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D6D8127EC606C002365AC /* Quotes.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
-		CA496ADE27EBEEBE0067EE63 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* CustomView.swift */; };
+		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
 		CA496B0527EBEEEE0067EE63 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AF927EBEEEE0067EE63 /* Constants.swift */; };
 		CA496B0627EBEEEE0067EE63 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFA27EBEEEE0067EE63 /* DataStructures.swift */; };
 		CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFB27EBEEEE0067EE63 /* Utilities.swift */; };
@@ -33,9 +33,9 @@
 		CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */; };
 		CA496B7627EBEF2A0067EE63 /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1B27EBEF290067EE63 /* SleepView.swift */; };
 		CA496B7727EBEF2A0067EE63 /* InsightsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1C27EBEF290067EE63 /* InsightsView.swift */; };
-		CA496B7827EBEF2A0067EE63 /* ButterflyAveragePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1D27EBEF290067EE63 /* ButterflyAveragePickerView.swift */; };
+		CA496B7827EBEF2A0067EE63 /* TransientReferencePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */; };
 		CA496B7927EBEF2A0067EE63 /* TallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1E27EBEF290067EE63 /* TallyView.swift */; };
-		CA496B7A27EBEF2A0067EE63 /* ButterflyAverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1F27EBEF290067EE63 /* ButterflyAverageView.swift */; };
+		CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1F27EBEF290067EE63 /* TransientView.swift */; };
 		CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2027EBEF290067EE63 /* MenstrualView.swift */; };
 		CA496B7C27EBEF2A0067EE63 /* InfluencesHashtagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2127EBEF290067EE63 /* InfluencesHashtagView.swift */; };
 		CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2227EBEF290067EE63 /* WeightView.swift */; };
@@ -46,7 +46,6 @@
 		CA496B8227EBEF2A0067EE63 /* ScatterChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2827EBEF290067EE63 /* ScatterChart.swift */; };
 		CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */; };
 		CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */; };
-		CA496B8527EBEF2A0067EE63 /* HorizontalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2B27EBEF290067EE63 /* HorizontalBarChart.swift */; };
 		CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */; };
 		CA496B8727EBEF2A0067EE63 /* HistoryMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */; };
 		CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */; };
@@ -64,7 +63,6 @@
 		CA496B9427EBEF2A0067EE63 /* NoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3C27EBEF290067EE63 /* NoteView.swift */; };
 		CA496B9527EBEF2A0067EE63 /* MoodSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3D27EBEF290067EE63 /* MoodSnapView.swift */; };
 		CA496B9627EBEF2A0067EE63 /* IntroPopoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3E27EBEF290067EE63 /* IntroPopoverView.swift */; };
-		CA496B9727EBEF2B0067EE63 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3F27EBEF290067EE63 /* SearchBarView.swift */; };
 		CA496B9827EBEF2B0067EE63 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4027EBEF290067EE63 /* DatePickerView.swift */; };
 		CA496B9927EBEF2B0067EE63 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4127EBEF290067EE63 /* HelpView.swift */; };
 		CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4227EBEF290067EE63 /* ContentView.swift */; };
@@ -88,7 +86,7 @@
 		CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6027EBEF2A0067EE63 /* ReportView.swift */; };
 		CA496BB027EBEF2B0067EE63 /* GeneratePDF.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6127EBEF2A0067EE63 /* GeneratePDF.swift */; };
 		CA496BB127EBEF2B0067EE63 /* Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6327EBEF2A0067EE63 /* Hashtags.swift */; };
-		CA496BB327EBEF2B0067EE63 /* Butterfly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6627EBEF2A0067EE63 /* Butterfly.swift */; };
+		CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6627EBEF2A0067EE63 /* Transients.swift */; };
 		CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6727EBEF2A0067EE63 /* Volatility.swift */; };
 		CA496BB527EBEF2B0067EE63 /* GenerateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */; };
 		CA496BB627EBEF2B0067EE63 /* SlidingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */; };
@@ -108,7 +106,7 @@
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1D6D8127EC606C002365AC /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
-		CA496ADC27EBEEBE0067EE63 /* CustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
 		CA496AF927EBEEEE0067EE63 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CA496AFA27EBEEEE0067EE63 /* DataStructures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStructures.swift; sourceTree = "<group>"; };
 		CA496AFB27EBEEEE0067EE63 /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -131,9 +129,9 @@
 		CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodView.swift; sourceTree = "<group>"; };
 		CA496B1B27EBEF290067EE63 /* SleepView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		CA496B1C27EBEF290067EE63 /* InsightsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsightsView.swift; sourceTree = "<group>"; };
-		CA496B1D27EBEF290067EE63 /* ButterflyAveragePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterflyAveragePickerView.swift; sourceTree = "<group>"; };
+		CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientReferencePickerView.swift; sourceTree = "<group>"; };
 		CA496B1E27EBEF290067EE63 /* TallyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TallyView.swift; sourceTree = "<group>"; };
-		CA496B1F27EBEF290067EE63 /* ButterflyAverageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButterflyAverageView.swift; sourceTree = "<group>"; };
+		CA496B1F27EBEF290067EE63 /* TransientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransientView.swift; sourceTree = "<group>"; };
 		CA496B2027EBEF290067EE63 /* MenstrualView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenstrualView.swift; sourceTree = "<group>"; };
 		CA496B2127EBEF290067EE63 /* InfluencesHashtagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfluencesHashtagView.swift; sourceTree = "<group>"; };
 		CA496B2227EBEF290067EE63 /* WeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
@@ -144,7 +142,6 @@
 		CA496B2827EBEF290067EE63 /* ScatterChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScatterChart.swift; sourceTree = "<group>"; };
 		CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLineChart.swift; sourceTree = "<group>"; };
 		CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
-		CA496B2B27EBEF290067EE63 /* HorizontalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalBarChart.swift; sourceTree = "<group>"; };
 		CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryActivityView.swift; sourceTree = "<group>"; };
 		CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoodView.swift; sourceTree = "<group>"; };
 		CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySymptomsView.swift; sourceTree = "<group>"; };
@@ -162,7 +159,6 @@
 		CA496B3C27EBEF290067EE63 /* NoteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteView.swift; sourceTree = "<group>"; };
 		CA496B3D27EBEF290067EE63 /* MoodSnapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodSnapView.swift; sourceTree = "<group>"; };
 		CA496B3E27EBEF290067EE63 /* IntroPopoverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroPopoverView.swift; sourceTree = "<group>"; };
-		CA496B3F27EBEF290067EE63 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		CA496B4027EBEF290067EE63 /* DatePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		CA496B4127EBEF290067EE63 /* HelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		CA496B4227EBEF290067EE63 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -186,7 +182,7 @@
 		CA496B6027EBEF2A0067EE63 /* ReportView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		CA496B6127EBEF2A0067EE63 /* GeneratePDF.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratePDF.swift; sourceTree = "<group>"; };
 		CA496B6327EBEF2A0067EE63 /* Hashtags.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtags.swift; sourceTree = "<group>"; };
-		CA496B6627EBEF2A0067EE63 /* Butterfly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Butterfly.swift; sourceTree = "<group>"; };
+		CA496B6627EBEF2A0067EE63 /* Transients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transients.swift; sourceTree = "<group>"; };
 		CA496B6727EBEF2A0067EE63 /* Volatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Volatility.swift; sourceTree = "<group>"; };
 		CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateStats.swift; sourceTree = "<group>"; };
 		CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingAverage.swift; sourceTree = "<group>"; };
@@ -219,6 +215,7 @@
 			children = (
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
 				CA496B4C27EBEF2A0067EE63 /* Unused code.swift */,
+				CA496B5727EBEF2A0067EE63 /* Resources */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -228,7 +225,6 @@
 				CA496B4E27EBEF2A0067EE63 /* Media */,
 				CA496B5827EBEF2A0067EE63 /* PDF */,
 				CA496B2627EBEF290067EE63 /* Plotting */,
-				CA496B5727EBEF2A0067EE63 /* Resources */,
 				CA496B6427EBEF2A0067EE63 /* Statistics */,
 				CA496B4427EBEF2A0067EE63 /* Test */,
 				CA496B4727EBEF2A0067EE63 /* UX */,
@@ -286,9 +282,9 @@
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
 				CA496B1B27EBEF290067EE63 /* SleepView.swift */,
 				CA496B1C27EBEF290067EE63 /* InsightsView.swift */,
-				CA496B1D27EBEF290067EE63 /* ButterflyAveragePickerView.swift */,
+				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
 				CA496B1E27EBEF290067EE63 /* TallyView.swift */,
-				CA496B1F27EBEF290067EE63 /* ButterflyAverageView.swift */,
+				CA496B1F27EBEF290067EE63 /* TransientView.swift */,
 				CA496B2027EBEF290067EE63 /* MenstrualView.swift */,
 				CA496B2127EBEF290067EE63 /* InfluencesHashtagView.swift */,
 				CA496B2227EBEF290067EE63 /* WeightView.swift */,
@@ -306,7 +302,6 @@
 				CA496B2827EBEF290067EE63 /* ScatterChart.swift */,
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
 				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
-				CA496B2B27EBEF290067EE63 /* HorizontalBarChart.swift */,
 			);
 			path = Plotting;
 			sourceTree = "<group>";
@@ -314,6 +309,7 @@
 		CA496B2C27EBEF290067EE63 /* HistoryView */ = {
 			isa = PBXGroup;
 			children = (
+				CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */,
 				CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */,
 				CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */,
 				CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */,
@@ -332,7 +328,6 @@
 		CA496B3827EBEF290067EE63 /* MainViews */ = {
 			isa = PBXGroup;
 			children = (
-				CA496ADC27EBEEBE0067EE63 /* CustomView.swift */,
 				CA496B3927EBEF290067EE63 /* EventView.swift */,
 				CA58D46827ECFC4300D071B3 /* UnlockView.swift */,
 				CA496B3A27EBEF290067EE63 /* SettingsView.swift */,
@@ -340,7 +335,6 @@
 				CA496B3C27EBEF290067EE63 /* NoteView.swift */,
 				CA496B3D27EBEF290067EE63 /* MoodSnapView.swift */,
 				CA496B3E27EBEF290067EE63 /* IntroPopoverView.swift */,
-				CA496B3F27EBEF290067EE63 /* SearchBarView.swift */,
 				CA496B4027EBEF290067EE63 /* DatePickerView.swift */,
 				CA496B4127EBEF290067EE63 /* HelpView.swift */,
 				CA496B4227EBEF290067EE63 /* ContentView.swift */,
@@ -420,7 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				CAAA2D1927F284380096AD22 /* GetDates.swift */,
-				CA496B6627EBEF2A0067EE63 /* Butterfly.swift */,
+				CA496B6627EBEF2A0067EE63 /* Transients.swift */,
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */,
 				CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */,
@@ -555,7 +549,7 @@
 				CA496BAA27EBEF2B0067EE63 /* PDFSingleSlidingAverageView.swift in Sources */,
 				CA496B7C27EBEF2A0067EE63 /* InfluencesHashtagView.swift in Sources */,
 				CA496BB027EBEF2B0067EE63 /* GeneratePDF.swift in Sources */,
-				CA496ADE27EBEEBE0067EE63 /* CustomView.swift in Sources */,
+				CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */,
 				CA496B9827EBEF2B0067EE63 /* DatePickerView.swift in Sources */,
 				CA496B0D27EBEEEF0067EE63 /* Samples.swift in Sources */,
 				CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */,
@@ -567,7 +561,7 @@
 				CA496BA427EBEF2B0067EE63 /* JSON.swift in Sources */,
 				CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */,
 				CA496BA327EBEF2B0067EE63 /* ImagePicker.swift in Sources */,
-				CA496B7827EBEF2A0067EE63 /* ButterflyAveragePickerView.swift in Sources */,
+				CA496B7827EBEF2A0067EE63 /* TransientReferencePickerView.swift in Sources */,
 				CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */,
 				CA496BB127EBEF2B0067EE63 /* Hashtags.swift in Sources */,
 				CA496B9E27EBEF2B0067EE63 /* UX.swift in Sources */,
@@ -575,13 +569,13 @@
 				CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */,
 				CA496B7627EBEF2A0067EE63 /* SleepView.swift in Sources */,
 				CA496BAC27EBEF2B0067EE63 /* PDFMoodHistoryBarView.swift in Sources */,
-				CA496BB327EBEF2B0067EE63 /* Butterfly.swift in Sources */,
+				CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */,
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
 				CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
-				CA496B7A27EBEF2A0067EE63 /* ButterflyAverageView.swift in Sources */,
+				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
 				CA496BB627EBEF2B0067EE63 /* SlidingAverage.swift in Sources */,
 				CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */,
 				CA496B8C27EBEF2A0067EE63 /* HistoryNoteView.swift in Sources */,
@@ -593,14 +587,12 @@
 				CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
-				CA496B8527EBEF2A0067EE63 /* HorizontalBarChart.swift in Sources */,
 				CA496BA027EBEF2B0067EE63 /* Unused code.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
 				CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */,
 				CA496BA827EBEF2B0067EE63 /* PDFSingleSlidingVolatilityView.swift in Sources */,
 				CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */,
 				CA496B7427EBEF2A0067EE63 /* InfluencesSocialView.swift in Sources */,
-				CA496B9727EBEF2B0067EE63 /* SearchBarView.swift in Sources */,
 				CA496B0527EBEEEE0067EE63 /* Constants.swift in Sources */,
 				CA496BAD27EBEF2B0067EE63 /* ViewAsImage.swift in Sources */,
 				CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */,

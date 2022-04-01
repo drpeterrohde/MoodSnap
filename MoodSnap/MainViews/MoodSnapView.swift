@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for MoodSnap sheet.
+ */
 struct MoodSnapView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct

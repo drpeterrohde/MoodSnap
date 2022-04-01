@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View with camera.
+ */
 struct ImagePicker: UIViewControllerRepresentable {
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     

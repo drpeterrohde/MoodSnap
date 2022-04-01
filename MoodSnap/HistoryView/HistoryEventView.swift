@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing history event `moodSnap`.
+ */
 struct HistoryEventView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

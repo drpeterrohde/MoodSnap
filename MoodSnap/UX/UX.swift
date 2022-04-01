@@ -97,4 +97,7 @@ func OrangeTheme() -> ThemeStruct {
     return theme
 }
 
+/**
+ Themes list.
+ */
 let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme()]

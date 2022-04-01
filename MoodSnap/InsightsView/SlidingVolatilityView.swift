@@ -1,6 +1,9 @@
 import SwiftUI
 import Charts
 
+/**
+ View for dislaying sliding volatility.
+ */
 struct SlidingVolatilityView: View {
     var timescale: Int
     var data: DataStoreStruct

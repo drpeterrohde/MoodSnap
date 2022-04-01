@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing history diary entry `moodSnap`.
+ */
 struct HistoryNoteView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

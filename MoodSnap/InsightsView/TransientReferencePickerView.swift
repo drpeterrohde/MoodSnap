@@ -1,6 +1,9 @@
 import SwiftUI
 
-struct ButterflyAveragePickerView: View {
+/**
+ View showing menus for choosing point of reference for a `TransientView`.
+ */
+struct TransientReferencePickerView: View {
     @Binding var selectedActivity: Int
     @Binding var selectedSocial: Int
     @Binding var selectedSymptom: Int

@@ -32,4 +32,3 @@ let quotes = [quote_1, quote_2, quote_3, quote_4, quote_5,
               quote_16, quote_17, quote_18, quote_19, quote_20,
               quote_21, quote_22, quote_23, quote_24, quote_25
 ]
-

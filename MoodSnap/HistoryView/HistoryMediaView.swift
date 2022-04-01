@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing history media `moodSnap`.
+ */
 struct HistoryMediaView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct

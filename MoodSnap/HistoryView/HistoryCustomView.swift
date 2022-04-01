@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View for dislpaying custom history item.
+ */
 struct HistoryCustomView: View {
     var which: Int
     var data: DataStoreStruct
