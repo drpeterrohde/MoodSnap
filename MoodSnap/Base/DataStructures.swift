@@ -30,6 +30,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     
     var useFaceID: Bool = false
     
+    var useHealthKit: Bool = false
     var healthUnits: MeasurementUnitsEnum = .metric
     var healthDistanceOn: Bool = true
     var healthMenstrualOn: Bool = true

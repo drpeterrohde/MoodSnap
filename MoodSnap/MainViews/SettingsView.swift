@@ -7,8 +7,7 @@ struct SettingsView: View {
     @State private var showingReportSheet = false
     @State private var showingImporter = false
     @State private var showingExporter = false
-    @State private var showingImportAlert1 = false
-    @State private var showingImportAlert2 = false
+    @State private var showingImportAlert = false
     @State private var showingDeleteData = false
 
     var body: some View {
@@ -93,18 +92,18 @@ struct SettingsView: View {
                         if data.moodSnaps.count == 0 {
                             showingImporter.toggle()
                         } else {
-                            showingImportAlert1.toggle()
+                            showingImportAlert.toggle()
                         }
                     }) {
                         Text("Import backup file")
-                    }.alert(isPresented: $showingImportAlert1) {
-                        Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. You must delete exisiting data first."), dismissButton: .default(Text("OK")))
                     }
                     Button(action: {
                         showingExporter.toggle()
                     }) {
                         Text("Export backup file")
                     }
+                }.alert(isPresented: $showingImportAlert) {
+                    Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. You must delete exisiting data first."), dismissButton: .default(Text("OK")))
                 }
 
                 Group {

@@ -46,6 +46,7 @@ enum MoodsEnum: Int, CaseIterable {
  Enumeration of the different viewing timescales available to the user in the `StatsView`.
  */
 enum TimeScaleEnum: Int, Codable {
+    case all = 0
     case month = 30
     case threeMonths = 90
     case sixMonths = 180

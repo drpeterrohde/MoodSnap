@@ -106,7 +106,7 @@ struct ControlView: View {
                 }
                 Spacer()
             }
-        }.popover(isPresented: $showingIntroPopover) {
+        }.sheet(isPresented: $showingIntroPopover) {
             IntroPopoverView(data: data)
         }
     }
