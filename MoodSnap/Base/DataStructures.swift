@@ -191,3 +191,36 @@ struct HistoryStruct: Identifiable, Codable, Hashable {
     var volatilityA: [CGFloat?] = []
     var volatilityI: [CGFloat?] = []
 }
+
+/**
+ Struct for processed data.
+ */
+struct ProcessedDataStruct: Codable, Identifiable, Hashable {
+    var id: UUID = UUID()
+    var version: Int = 1
+    
+    // Mood history
+    var levelE: [CGFloat?] = []
+    var levelD: [CGFloat?] = []
+    var levelA: [CGFloat?] = []
+    var levelI: [CGFloat?] = []
+    
+    // Sliding average history
+    var averageE: [CGFloat?] = []
+    var averageD: [CGFloat?] = []
+    var averageA: [CGFloat?] = []
+    var averageI: [CGFloat?] = []
+    
+    // Volatility history
+    var volatilityE: [CGFloat?] = []
+    var volatilityD: [CGFloat?] = []
+    var volatilityA: [CGFloat?] = []
+    var volatilityI: [CGFloat?] = []
+    
+    // Butterflies
+    var activityButterfly: [ButterflyEntryStruct] = []
+    var socialButterfly: [ButterflyEntryStruct] = []
+    var symptomButterfly: [ButterflyEntryStruct] = []
+    var eventButterfly: [ButterflyEntryStruct] = []
+    var hashtagButterfly: [ButterflyEntryStruct] = []
+}

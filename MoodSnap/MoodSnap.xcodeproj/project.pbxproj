@@ -88,11 +88,9 @@
 		CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6627EBEF2A0067EE63 /* Transients.swift */; };
 		CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6727EBEF2A0067EE63 /* Volatility.swift */; };
 		CA496BB527EBEF2B0067EE63 /* GenerateStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */; };
-		CA496BB627EBEF2B0067EE63 /* SlidingAverage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */; };
 		CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6A27EBEF2A0067EE63 /* Average.swift */; };
 		CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */; };
 		CA496BB927EBEF2B0067EE63 /* Influence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6C27EBEF2A0067EE63 /* Influence.swift */; };
-		CA496BBA27EBEF2B0067EE63 /* SlidingVolatility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */; };
 		CA496BBB27EBEF2B0067EE63 /* AverageMoodSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */; };
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
@@ -183,11 +181,9 @@
 		CA496B6627EBEF2A0067EE63 /* Transients.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transients.swift; sourceTree = "<group>"; };
 		CA496B6727EBEF2A0067EE63 /* Volatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Volatility.swift; sourceTree = "<group>"; };
 		CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateStats.swift; sourceTree = "<group>"; };
-		CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingAverage.swift; sourceTree = "<group>"; };
 		CA496B6A27EBEF2A0067EE63 /* Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessData.swift; sourceTree = "<group>"; };
 		CA496B6C27EBEF2A0067EE63 /* Influence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Influence.swift; sourceTree = "<group>"; };
-		CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatility.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
@@ -212,7 +208,6 @@
 			isa = PBXGroup;
 			children = (
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
-				CA496B5727EBEF2A0067EE63 /* Resources */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -376,13 +371,6 @@
 			path = DataStore;
 			sourceTree = "<group>";
 		};
-		CA496B5727EBEF2A0067EE63 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
-			sourceTree = "<group>";
-		};
 		CA496B5827EBEF2A0067EE63 /* PDF */ = {
 			isa = PBXGroup;
 			children = (
@@ -414,11 +402,9 @@
 				CA496B6627EBEF2A0067EE63 /* Transients.swift */,
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateStats.swift */,
-				CA496B6927EBEF2A0067EE63 /* SlidingAverage.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
 				CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */,
 				CA496B6C27EBEF2A0067EE63 /* Influence.swift */,
-				CA496B6D27EBEF2A0067EE63 /* SlidingVolatility.swift */,
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
 			);
 			path = Statistics;
@@ -573,7 +559,6 @@
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
-				CA496BB627EBEF2B0067EE63 /* SlidingAverage.swift in Sources */,
 				CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */,
 				CA496B8C27EBEF2A0067EE63 /* HistoryNoteView.swift in Sources */,
 				CA496B0927EBEEEF0067EE63 /* Sorting.swift in Sources */,
@@ -594,7 +579,6 @@
 				CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */,
 				CA496B7927EBEF2A0067EE63 /* TallyView.swift in Sources */,
 				CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */,
-				CA496BBA27EBEF2B0067EE63 /* SlidingVolatility.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

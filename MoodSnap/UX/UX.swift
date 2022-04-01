@@ -9,7 +9,7 @@ struct ThemeStruct: Identifiable {
     var version: Int = 1
     
     // Name
-    var name: String = "Aqua"
+    var name: String = "Primary"
     
     // Colors
     var elevationColor: Color = Color.green
@@ -100,4 +100,4 @@ func OrangeTheme() -> ThemeStruct {
 /**
  Themes list.
  */
-let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme()]
+let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme(), PrimaryTheme()]

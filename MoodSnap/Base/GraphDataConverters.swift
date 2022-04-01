@@ -127,33 +127,3 @@ func makeVerticalLine(x: CGFloat) -> [ChartDataEntry] {
     
     return [bottom, top]
 }
-
-/**
- Truncate bar chart `data` to fit a given `timescale`.
- */
-func truncateEntries(data: [BarChartDataEntry], timescale: Int) -> [BarChartDataEntry] {
-        let trunc = data.suffix(timescale)
-        return Array(trunc)
-}
-
-/**
-Truncate line chart `data` to fit a given `timescale`.
-*/
-func truncateEntries(data: [ChartDataEntry], timescale: Int) -> [ChartDataEntry] {
-    let trunc = data.suffix(timescale)
-    return Array(trunc)
-}
-
-/**
-Truncate an array of line chart `data` to fit a given `timescale`.
-*/
-func truncateEntriesArray(data: [[ChartDataEntry]], timescale: Int) -> [[ChartDataEntry]] {
-    var newData: [[ChartDataEntry]] = []
-    
-    for item in data {
-        let truncatedItem = truncateEntries(data: item, timescale: timescale)
-        newData.append(truncatedItem)
-    }
-    
-    return newData
-}
