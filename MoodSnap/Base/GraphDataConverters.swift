@@ -76,7 +76,7 @@ func makeBarData(y: [CGFloat?], timescale: Int) -> [BarChartDataEntry] {
     var yTotal: [CGFloat?] = []
     
     if timescale > yTrunc.count {
-        let x1: [CGFloat] = Array(stride(from: 0.0, to: CGFloat(timescale-yTrunc.count), by: 1.0)) // removed -1???
+        let x1: [CGFloat] = Array(stride(from: 0.0, to: CGFloat(timescale-yTrunc.count), by: 1.0))
         let y1: [CGFloat?] = Array(repeating: nil, count: timescale-yTrunc.count)
         let x2: [CGFloat] = Array(stride(from: CGFloat(timescale-yTrunc.count), to: CGFloat(timescale), by: 1.0))
         let y2: [CGFloat?] = yTrunc

@@ -45,6 +45,7 @@ let symptomList = [
     "Euphoria",
     "Fatigue",
     "Flashbacks",
+    "Flattening",
     "Headaches",
     "Hypersomnia",
     "Hypomania",
@@ -59,7 +60,6 @@ let symptomList = [
     "Restless",
     "Rumination",
     "Self harm",
-    "Stimming",
     "Suicidal thoughts"
 ]
 

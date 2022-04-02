@@ -52,7 +52,7 @@ let privacy_string = "MoodSnap respects your privacy and does not share any of y
 
 let intro_snap_title = "Welcome to MoodSnap"
 
-let intro_snap_notes = "This is your MoodSnap feed where your MoodSnaps events, diary and photo diary appear."
+let intro_snap_notes = "This is your MoodSnap feed where your MoodSnaps, events, diary and photo diary entries appear."
 
 let intro_snap_quickstart = "Quickstart: MoodSnaps should reflect the maximum mood levels experienced in the last 24 hours and since the last MoodSnap. It is recommended taking MoodSnaps regularly every day for the most reliable insights, and additionally whenever you notice changes in mood. You can take MoodSnaps as often as you like. See the help page for more information."
 
