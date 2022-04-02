@@ -60,6 +60,10 @@ struct HistoryCustomView: View {
                                 .font(.subheadline)
                         }
                     }
+                    Divider()
+                    Text(.init(intro_snap_tip))
+                        .font(.caption)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
         }

@@ -56,6 +56,8 @@ let intro_snap_notes = "This is your MoodSnap feed where your MoodSnaps, events,
 
 let intro_snap_quickstart = "Quickstart: MoodSnaps should reflect the maximum mood levels experienced in the last 24 hours and since the last MoodSnap. It is recommended taking MoodSnaps regularly every day for the most reliable insights, and additionally whenever you notice changes in mood. You can take MoodSnaps as often as you like. See the help page for more information."
 
+let intro_snap_tip = "Tip: in _settings_ you can toggle the visibility of symptoms and activities to declutter the interface and focus on what's relevant to you."
+
 let statistics_tally_string = "The tally displays the number of occurrences of different activites, symptoms, social and hashtag events within the specified time window."
 
 let notes_on_interpretation_string_1 = "\n• Moving average and volatility are lagging indicators, calculated over a 14 day sliding window. The moving average is a simple moving average (SMA) within the sliding window, and the volatility similarly defined using the window standard deviation.\n"
