@@ -6,14 +6,14 @@ import SwiftUI
 func getHashtags(string: String) -> [String] {
     let delimiters = [".", ":", ",", "?"]
     var delimited = string
-    for i in 0..<delimiters.count {
+    for i in 0 ..< delimiters.count {
         delimited = delimited.replacingOccurrences(of: delimiters[i], with: " ")
     }
     let separated = delimited.components(separatedBy: " ")
     let hashtags = separated.filter { $0.hasPrefix("#") }
     let unique = Array(Set(hashtags))
-    let sorted = unique.sorted { 
-        $0.lowercased() < $1.lowercased() 
+    let sorted = unique.sorted {
+        $0.lowercased() < $1.lowercased()
     }
     return sorted
 }
@@ -23,14 +23,12 @@ func getHashtags(string: String) -> [String] {
  */
 func getHashtags(data: DataStoreStruct) -> [String] {
     var bigString: String = ""
-    
+
     for moodSnap in data.moodSnaps {
-        if (moodSnap.snapType != .quote && !data.settings.quoteVisibility) && moodSnap.snapType != .custom {
-            bigString += " " + moodSnap.notes.lowercased()
-            bigString += " " + moodSnap.event.lowercased()
-        }
+        bigString += " " + moodSnap.notes.lowercased()
+        bigString += " " + moodSnap.event.lowercased()
     }
-    
+
     let hashtags: [String] = getHashtags(string: bigString)
     return hashtags
 }
@@ -40,13 +38,13 @@ func getHashtags(data: DataStoreStruct) -> [String] {
  */
 func countHashtagOccurrences(hashtag: String, moodSnaps: [MoodSnapStruct]) -> Int {
     var occurrences = 0
-    
+
     for moodSnap in moodSnaps {
         if moodSnap.notes.contains(hashtag) || moodSnap.event.contains(hashtag) {
             occurrences += 1
         }
     }
-    
+
     return occurrences
 }
 
@@ -55,11 +53,11 @@ func countHashtagOccurrences(hashtag: String, moodSnaps: [MoodSnapStruct]) -> In
  */
 func countHashtagOccurrences(hashtags: [String], moodSnaps: [MoodSnapStruct]) -> [Int] {
     var occurrences: [Int] = []
-    
+
     for hashtag in hashtags {
         let thisCount = countHashtagOccurrences(hashtag: hashtag, moodSnaps: moodSnaps)
         occurrences.append(thisCount)
     }
-    
+
     return occurrences
 }

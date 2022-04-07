@@ -10,9 +10,7 @@ struct InfluencesHashtagView: View {
         let butterflies = data.processedData.hashtagButterfly
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
         
-        //Label("Activities & social", systemImage: "figure.walk").font(.subheadline)
-        
-        if (occurrenceCount == 0) {
+        if occurrenceCount == 0 {
             Text("Insufficient data")
                 .font(.caption)
                 .foregroundColor(.secondary)
