@@ -31,6 +31,9 @@ struct MoodSnapApp: App {
                             data.settings.firstUse = false
                             data.save()
                         }
+                        if value == .active {
+                            data.process()
+                        }
                     }
             }
         }

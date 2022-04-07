@@ -34,6 +34,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var useFaceID: Bool = false
     
     var useHealthKit: Bool = false
+    var workoutsOn: Bool = false
     var healthUnits: MeasurementUnitsEnum = .metric
     var healthDistanceOn: Bool = true
     var healthMenstrualOn: Bool = true
@@ -47,6 +48,8 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     //var influenceEventWindow: Int = 7
     
     var saveMediaToCameraRoll: Bool = true
+    
+    var addedSnaps: Int = 0
     
     var theme: Int = 0
 }
