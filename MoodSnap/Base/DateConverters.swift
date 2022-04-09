@@ -57,4 +57,9 @@ extension Date {
         let dateString = dateFormatter.string(from: self)
         return dateString
     }
+    
+    func startOfDay() -> Date {
+        let start = Calendar.current.startOfDay(for: self)
+        return start
+    }
 }

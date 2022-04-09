@@ -5,13 +5,15 @@ import SwiftUI
  */
 func generateHistory(data: DataStoreStruct) -> HistoryStruct {
     var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
     var statsHistory: [StatsEntryStruct] = []
 
     while date >= earliest {
         var thisStats = StatsEntryStruct()
 
-        let todaySnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps, date: date)
+        let todaySnaps = getMoodSnapsByDate(
+            moodSnaps: data.moodSnaps,
+            date: date)
         let windowSnaps = getMoodSnapsByDateWindow(
             moodSnaps: data.moodSnaps,
             date: date,
