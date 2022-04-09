@@ -8,8 +8,7 @@ func makeDemoData() -> [MoodSnapStruct] {
     let max = 50
     
     // Size & miss rate
-    let size: Int = 100
-    let demoDataRandomMiss: CGFloat = 0.0
+    let demoDataRandomMiss: CGFloat = 0.1
     
     // Events
     var event1 = MoodSnapStruct()
@@ -18,8 +17,14 @@ func makeDemoData() -> [MoodSnapStruct] {
     event1.event = "New job"
     moodSnaps.append(event1)
     
+    var event2 = MoodSnapStruct()
+    event2.snapType = .event
+    event2.timestamp = Date().addDays(days: -20)
+    event2.event = "Changed meds"
+    moodSnaps.append(event2)
+    
     // Segment
-    for i in 1...max {
+    for i in 1...50 {
         var moodSnap = MoodSnapStruct()
         moodSnap.elevation = CGFloat(Int.random(in: 1...2))
         moodSnap.depression = 4.0//CGFloat(Int.random(in: 3...4))
@@ -27,7 +32,7 @@ func makeDemoData() -> [MoodSnapStruct] {
         moodSnap.irritability = round(CGFloat.random(in: 1...1.6))
         moodSnap.timestamp = Date().addDays(days: -i)
         //moodSnap.notes = "Test notes round 1"
-        if (demoDataRandomMiss < CGFloat.random(in: 0.0..<1.0)) {
+        if demoDataRandomMiss < CGFloat.random(in: 0.0..<1.0) {
             moodSnaps.append(moodSnap)
         }
     }
@@ -41,7 +46,7 @@ func makeDemoData() -> [MoodSnapStruct] {
         moodSnap.irritability = round(CGFloat.random(in: 2...2.5))
         moodSnap.timestamp = Date().addDays(days: -(i+max))
         //moodSnap.notes = "Test notes round 1"
-        if (demoDataRandomMiss < CGFloat.random(in: 0.0..<1.0)) {
+        if demoDataRandomMiss < CGFloat.random(in: 0.0..<1.0) {
             moodSnaps.append(moodSnap)
         }
     }
@@ -61,29 +66,5 @@ func makeDemoData() -> [MoodSnapStruct] {
         }
     }
     
-    let subseq = Array(moodSnaps.prefix(size))
-    let sorted = sortByDate(moodSnaps: subseq)
-    return sorted
-}
-
-/**
- Make demonstration data.
- */
-func makeDemoData2(size: Int) -> [MoodSnapStruct] {
-    var moodSnaps: [MoodSnapStruct] = []
-    
-    // Segment
-    for i in 1...size {
-        var moodSnap = MoodSnapStruct()
-        moodSnap.elevation = 4
-        moodSnap.timestamp = Date().addDays(days: -2*i)
-        moodSnaps.append(moodSnap)
-        
-        moodSnap = MoodSnapStruct()
-        moodSnap.elevation = 0
-        moodSnap.timestamp = Date().addDays(days: -2*i-1)
-        moodSnaps.append(moodSnap)
-    }
-    
-    return moodSnaps
+    return sortByDate(moodSnaps: moodSnaps)
 }
