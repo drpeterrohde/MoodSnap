@@ -1,14 +1,14 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 /**
  View with scatter chart.
  */
-struct ScatterChart : UIViewRepresentable {
-    var entries : [ChartDataEntry]
+struct ScatterChart: UIViewRepresentable {
+    var entries: [ChartDataEntry]
     var color: UIColor
     var zeroOrigin: Bool = false
-    
+
     func makeUIView(context: Context) -> ScatterChartView {
         let chart = ScatterChartView()
         chart.data = addData()
@@ -23,14 +23,14 @@ struct ScatterChart : UIViewRepresentable {
         }
         chart.highlightPerTapEnabled = false
         chart.isUserInteractionEnabled = false
-        
+
         return chart
     }
-    
+
     func updateUIView(_ uiView: ScatterChartView, context: Context) {
         uiView.data = addData()
     }
-    
+
     func addData() -> ChartData {
         let data = ScatterChartData()
         let dataSet = ScatterChartDataSet(entries: entries)
@@ -41,6 +41,6 @@ struct ScatterChart : UIViewRepresentable {
         data.addDataSet(dataSet)
         return data
     }
-    
+
     typealias UIViewType = ScatterChartView
 }

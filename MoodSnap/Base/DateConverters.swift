@@ -6,22 +6,22 @@ import SwiftUI
 extension DateComponents: Comparable {
     public static func < (lhs: DateComponents, rhs: DateComponents) -> Bool {
         let now = Date()
-        let comparison =  Calendar.current.date(byAdding: lhs, to: now)! < Calendar.current.date(byAdding: rhs, to: now)!
+        let comparison = Calendar.current.date(byAdding: lhs, to: now)! < Calendar.current.date(byAdding: rhs, to: now)!
         return comparison
     }
-    
+
     public static func <= (lhs: DateComponents, rhs: DateComponents) -> Bool {
         let now = Date()
         let comparison = Calendar.current.date(byAdding: lhs, to: now)! <= Calendar.current.date(byAdding: rhs, to: now)!
         return comparison
     }
-    
+
     public static func > (lhs: DateComponents, rhs: DateComponents) -> Bool {
         let now = Date()
         let comparison = Calendar.current.date(byAdding: lhs, to: now)! > Calendar.current.date(byAdding: rhs, to: now)!
         return comparison
     }
-    
+
     public static func >= (lhs: DateComponents, rhs: DateComponents) -> Bool {
         let now = Date()
         let comparison = Calendar.current.date(byAdding: lhs, to: now)! >= Calendar.current.date(byAdding: rhs, to: now)!
@@ -36,12 +36,12 @@ extension Date {
     func getComponents() -> DateComponents {
         return Calendar.current.dateComponents([.day, .month, .year], from: self)
     }
-    
+
     func addDays(days: Int) -> Date {
         let daysComponents = DateComponents(day: days)
         return Calendar.current.date(byAdding: daysComponents, to: self)!
     }
-    
+
     func dateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
@@ -49,7 +49,7 @@ extension Date {
         let dateString = dateFormatter.string(from: self)
         return dateString
     }
-    
+
     func dateTimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short

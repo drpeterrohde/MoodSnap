@@ -18,13 +18,13 @@ func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] 
  */
 func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStruct]) -> [Date] {
     var dates: [Date] = []
-    
+
     if type == .event {
         let event = getEventsList(moodSnaps: moodSnaps)[item]
         dates.append(event.1)
         return dates
     }
-    
+
     for moodSnap in moodSnaps {
         switch type {
         case .activity:
@@ -43,6 +43,6 @@ func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStr
             break
         }
     }
-    
+
     return dates
 }

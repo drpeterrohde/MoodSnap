@@ -1,5 +1,5 @@
-import SwiftUI
 import Disk
+import SwiftUI
 
 /**
  Struct for main data storage type.
@@ -7,26 +7,26 @@ import Disk
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
-    
+
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
-    
+
     init() {
-        self.id = UUID()
-        self.settings = SettingsStruct()
-        self.uxState = UXStateStruct()
-        self.moodSnaps = makeIntroSnap()
-        self.healthSnaps = []
-        self.process()
+        id = UUID()
+        settings = SettingsStruct()
+        uxState = UXStateStruct()
+        moodSnaps = makeIntroSnap()
+        healthSnaps = []
+        process()
     }
-    
+
     mutating func process() {
-        self.processedData = processData(data: self)
+        processedData = processData(data: self)
     }
-    
+
     func save() {
         do {
             try Disk.save(self, to: .documents, as: "data.json")

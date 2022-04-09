@@ -5,22 +5,22 @@ import SwiftUI
  */
 func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: String) -> Bool {
     let filterOutcome =
-    (filter == .mood && moodSnap.snapType == .mood) || 
-    (filter == .event && moodSnap.snapType == .event) || 
-    (filter == .note && moodSnap.snapType == .note) ||
-    (filter == .media && moodSnap.snapType == .media)
-    
+        (filter == .mood && moodSnap.snapType == .mood) ||
+        (filter == .event && moodSnap.snapType == .event) ||
+        (filter == .note && moodSnap.snapType == .note) ||
+        (filter == .media && moodSnap.snapType == .media)
+
     if filterOutcome { return true }
-    
+
     if filter == .none {
         let eventTextOutcome = moodSnap.event.lowercased().contains(searchText.lowercased()) || (searchText == "")
-        let notesTextOutcome = moodSnap.notes.lowercased().contains(searchText.lowercased())  || (searchText == "")
-        
-        if (eventTextOutcome || notesTextOutcome) {
+        let notesTextOutcome = moodSnap.notes.lowercased().contains(searchText.lowercased()) || (searchText == "")
+
+        if eventTextOutcome || notesTextOutcome {
             return true
         }
     }
-    
+
     return false
 }
 
@@ -31,7 +31,7 @@ func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
     var firstDate = Date()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp < firstDate {
-            firstDate = moodSnap.timestamp 
+            firstDate = moodSnap.timestamp
         }
     }
     return firstDate
@@ -44,7 +44,7 @@ func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
     var lastDate = Date()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp > lastDate {
-            lastDate = moodSnap.timestamp 
+            lastDate = moodSnap.timestamp
         }
     }
     return lastDate
@@ -57,12 +57,12 @@ func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool =
     var filtered: [MoodSnapStruct] = []
     let dateComponents = date.getComponents()
     for moodSnap in moodSnaps {
-        if (moodSnap.timestamp.getComponents() == dateComponents) {
+        if moodSnap.timestamp.getComponents() == dateComponents {
             filtered.append(moodSnap)
         }
     }
     if flatten {
-        if (filtered.count > 0) {
+        if filtered.count > 0 {
             filtered = [mergeMoodSnaps(moodSnaps: filtered)!]
         }
     }
@@ -74,7 +74,7 @@ func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool =
  */
 func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
-    for time in windowStart...windowEnd {
+    for time in windowStart ... windowEnd {
         let thisDate = date.addDays(days: time)
         let theseSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: thisDate, flatten: flatten)
         filtered.append(contentsOf: theseSnaps)

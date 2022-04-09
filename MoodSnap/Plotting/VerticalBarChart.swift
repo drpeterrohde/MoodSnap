@@ -1,14 +1,14 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 /**
  View with vertical bar chart.
  */
-struct VerticalBarChart : UIViewRepresentable {
-    var entries : [BarChartDataEntry]
+struct VerticalBarChart: UIViewRepresentable {
+    var entries: [BarChartDataEntry]
     var color: NSUIColor
     var settings: SettingsStruct
-    
+
     func makeUIView(context: Context) -> BarChartView {
         let chart = BarChartView()
         chart.data = addData()
@@ -36,31 +36,31 @@ struct VerticalBarChart : UIViewRepresentable {
         chart.leftAxis.labelFont = .systemFont(ofSize: 0)
         chart.rightAxis.labelFont = .systemFont(ofSize: 0)
         chart.xAxis.labelFont = .systemFont(ofSize: 0)
-        
+
         return chart
     }
-    
+
     func updateUIView(_ uiView: BarChartView, context: Context) {
         uiView.data = addData()
     }
-    
-    func addData() -> BarChartData{
+
+    func addData() -> BarChartData {
         let data = BarChartData()
-        //data.barWidth = 0.9
+        // data.barWidth = 0.9
         let dataSet = BarChartDataSet(entries: entries)
-        
+
         // Color transparency scheme
         var colors: [NSUIColor] = []
         for item in entries {
-            let thisColor = NSUIColor(Color(color).opacity((item.y+themes[settings.theme].barShadeOffset)/(themes[settings.theme].barShadeOffset + 4.0)))
+            let thisColor = NSUIColor(Color(color).opacity((item.y + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)))
             colors.append(thisColor)
         }
-        
+
         dataSet.colors = colors
         dataSet.valueFont = UIFont.systemFont(ofSize: 0)
         data.addDataSet(dataSet)
         return data
     }
-    
+
     typealias UIViewType = BarChartView
 }

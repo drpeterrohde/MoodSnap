@@ -29,7 +29,7 @@ struct HistoryItemView: View {
                                 .font(.caption)
                         }
                         if moodSnap.snapType == .media {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo")
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo.on.rectangle.angled")
                                 .font(.caption)
                         }
                         if moodSnap.snapType == .custom {

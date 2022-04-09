@@ -23,6 +23,6 @@ func moodUIColors(settings: SettingsStruct) -> [UIColor] {
     let colorD = UIColor(themes[settings.theme].depressionColor)
     let colorA = UIColor(themes[settings.theme].anxietyColor)
     let colorI = UIColor(themes[settings.theme].irritabilityColor)
-    
+
     return [colorE, colorD, colorA, colorI]
 }

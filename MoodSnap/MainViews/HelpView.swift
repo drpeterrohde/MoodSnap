@@ -161,12 +161,12 @@ struct HelpView: View {
                                 Text(.init(statistics_volatility_string_2)).font(.subheadline)
                             }
                         }
-                        
+
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
                                 Label("Tally", systemImage: "chart.bar.doc.horizontal").foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer() //tally
+                                Spacer() // tally
                                 Text(.init(statistics_tally_string)).font(.subheadline)
                                 Image("tally")
                                     .resizable()

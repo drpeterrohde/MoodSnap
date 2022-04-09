@@ -60,21 +60,19 @@ let symptomList = [
     "Restless",
     "Rumination",
     "Self harm",
-    "Suicidal thoughts"
-]
+    "Suicidal thoughts"]
 
 /// Activity list
 let activityList = [
-    "Alcohol", 
-    "Caffeine", 
+    "Alcohol",
+    "Caffeine",
     "Excercise",
     "Meditation",
     "Missed medication",
     "Nicotine",
     "Sexual activity",
     "Substance use",
-    "Therapy"
-]
+    "Therapy"]
 
 /// Social event list
 let socialList = [
@@ -83,8 +81,7 @@ let socialList = [
     "Isolation",
     "Positive socialising",
     "Negative socialising",
-    "No in-person contact"
-]
+    "No in-person contact"]
 
 /// Mood labels
 let moodLabels = ["Elevation", "Depresssion", "Anxiety", "Irritability"]

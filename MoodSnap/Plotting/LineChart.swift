@@ -1,13 +1,13 @@
-import SwiftUI
 import Charts
+import SwiftUI
 
 /**
  View with line chart.
  */
-struct LineChart : UIViewRepresentable {
-    var entries : [ChartDataEntry]
+struct LineChart: UIViewRepresentable {
+    var entries: [ChartDataEntry]
     var color: NSUIColor
-    
+
     func makeUIView(context: Context) -> LineChartView {
         let chart = LineChartView()
         chart.data = addData()
@@ -20,15 +20,15 @@ struct LineChart : UIViewRepresentable {
         chart.drawMarkers = false
         chart.highlightPerTapEnabled = false
         chart.isUserInteractionEnabled = false
-        
+
         return chart
     }
-    
+
     func updateUIView(_ uiView: LineChartView, context: Context) {
         uiView.data = addData()
     }
-    
-    func addData() -> LineChartData{
+
+    func addData() -> LineChartData {
         let data = LineChartData()
         let dataSet = LineChartDataSet(entries: entries)
         dataSet.colors = [color]
@@ -38,6 +38,6 @@ struct LineChart : UIViewRepresentable {
         data.addDataSet(dataSet)
         return data
     }
-    
+
     typealias UIViewType = LineChartView
 }

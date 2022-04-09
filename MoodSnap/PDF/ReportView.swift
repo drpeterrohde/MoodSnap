@@ -1,16 +1,16 @@
-import SwiftUI
 import PDFKit
+import SwiftUI
 
 struct ReportView: View {
     @Environment(\.dismiss) var dismiss
     var data: DataStoreStruct
     var timescale: Int
     var blackAndWhite: Bool
-    
+
     var body: some View {
         let url = generatePDF(data: data, timescale: timescale, blackAndWhite: blackAndWhite)
-        
-        ZStack{
+
+        ZStack {
             PDFViewUI(pdfView: PDFView(), url: url)
             VStack {
                 HStack {
@@ -23,22 +23,22 @@ struct ReportView: View {
                             .frame(width: themes[data.settings.theme].closeButtonIconSize, height: themes[data.settings.theme].closeButtonIconSize)
                         Spacer()
                     }.foregroundColor(.gray)
-                    .padding([.top, .leading], 20)
+                        .padding([.top, .leading], 20)
                 }
                 Spacer()
-                    Spacer()
-                    Button(action: {
-                        shareSheet(url: url)
-                    }) {
-                        Image(systemName: "square.and.arrow.up.circle.fill")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)
-                    }.padding(.bottom, 20)
+                Spacer()
+                Button(action: {
+                    shareSheet(url: url)
+                }) {
+                    Image(systemName: "square.and.arrow.up.circle.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)
+                }.padding(.bottom, 20)
             }
         }
     }
-    
+
     func shareSheet(url: URL?) {
         let activityVC = UIActivityViewController(activityItems: [url!], applicationActivities: nil)
         let scenes = UIApplication.shared.connectedScenes

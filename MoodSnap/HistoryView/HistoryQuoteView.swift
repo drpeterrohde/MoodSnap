@@ -6,7 +6,7 @@ import SwiftUI
 struct HistoryQuoteView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct
-    
+
     var body: some View {
         Group {
             VStack(alignment: .center) {

@@ -10,21 +10,21 @@ struct HistoryView: View {
     @Binding var searchText: String
     @Binding var data: DataStoreStruct
     @State var searchPrompt: String = "Search all"
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach($data.moodSnaps, id: \.id) {moodSnap in
+                ForEach($data.moodSnaps, id: \.id) { moodSnap in
                     HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText, data: $data)
                 }
                 Spacer()
             }
             .navigationBarTitle(Text("History"))
             .navigationBarTitleDisplayMode(.inline)
-        .searchable(
+            .searchable(
                 text: $searchText,
                 placement: .navigationBarDrawer(displayMode: .always),
-                prompt: searchPrompt//,
+                prompt: searchPrompt // ,
 //                suggestions: {
 //                    Button(action: {
 //                        filter = .none
@@ -67,14 +67,14 @@ struct HistoryView: View {
 //                            .font(.subheadline)
 //                    }
 //                }
-        )
-        .onChange(of: isSearching) { newValue in
-            if !newValue {
-                filter = .none
-                searchText = ""
-                searchPrompt = "Search all"
-            } // Not doing anything ???
+            )
+            .onChange(of: isSearching) { newValue in
+                if !newValue {
+                    filter = .none
+                    searchText = ""
+                    searchPrompt = "Search all"
+                } // Not doing anything ???
+            }
         }
-        }
-}
+    }
 }

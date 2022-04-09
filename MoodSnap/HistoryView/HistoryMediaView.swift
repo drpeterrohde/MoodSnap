@@ -6,7 +6,7 @@ import SwiftUI
 struct HistoryMediaView: View {
     let moodSnap: MoodSnapStruct
     let data: DataStoreStruct
-    
+
     var body: some View {
         Group {
             Divider()

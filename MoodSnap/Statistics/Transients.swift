@@ -14,7 +14,7 @@ func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWin
         maxWindow: maxWindow)
 
     var thisButterfly = ButterflyEntryStruct()
-    
+
     thisButterfly.elevation = butterflyMood[0]
     thisButterfly.depression = butterflyMood[1]
     thisButterfly.anxiety = butterflyMood[2]
@@ -38,9 +38,9 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
         moodSnaps: moodSnaps,
         date: date,
         flatten: true)
-    
+
     var samples: [MoodSnapStruct] = []
-    if (window >= 0) {
+    if window >= 0 {
         samples = getMoodSnapsByDateWindow(
             moodSnaps: moodSnaps,
             date: date,
@@ -55,28 +55,28 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
             windowEnd: 0,
             flatten: true)
     }
-    
+
     let todayAverage = average(moodSnaps: today)
     let windowAverage = average(moodSnaps: samples)
-    
-    var diffE: CGFloat? = nil
-    var diffD: CGFloat? = nil
-    var diffA: CGFloat? = nil
-    var diffI: CGFloat? = nil
-    
-    if (todayAverage[0] != nil && windowAverage[0] != nil) {
+
+    var diffE: CGFloat?
+    var diffD: CGFloat?
+    var diffA: CGFloat?
+    var diffI: CGFloat?
+
+    if todayAverage[0] != nil && windowAverage[0] != nil {
         diffE = windowAverage[0]! - todayAverage[0]!
     }
-    if (todayAverage[1] != nil && windowAverage[1] != nil) {
+    if todayAverage[1] != nil && windowAverage[1] != nil {
         diffD = windowAverage[1]! - todayAverage[1]!
     }
-    if (todayAverage[2] != nil && windowAverage[2] != nil) {
+    if todayAverage[2] != nil && windowAverage[2] != nil {
         diffA = windowAverage[2]! - todayAverage[2]!
     }
-    if (todayAverage[3] != nil && windowAverage[3] != nil) {
+    if todayAverage[3] != nil && windowAverage[3] != nil {
         diffI = windowAverage[3]! - todayAverage[3]!
     }
-    
+
     return [diffE, diffD, diffA, diffI]
 }
 
@@ -85,8 +85,8 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
  */
 func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     var samples: [MoodSnapStruct] = []
-    
-    if (window >= 0) {
+
+    if window >= 0 {
         samples = getMoodSnapsByDateWindow(
             moodSnaps: moodSnaps,
             date: date,
@@ -101,7 +101,7 @@ func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int
             windowEnd: 0,
             flatten: false)
     }
-    
+
     let windowVolatility = volatility(moodSnaps: samples)
     return windowVolatility
 }
@@ -114,7 +114,7 @@ func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date
     var diffsD: [[CGFloat?]] = []
     var diffsA: [[CGFloat?]] = []
     var diffsI: [[CGFloat?]] = []
-    
+
     for date in dates {
         let thisDiff = averageDifferentialWindow(
             moodSnaps: moodSnaps,
@@ -125,12 +125,12 @@ func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date
         diffsA.append(thisDiff[2])
         diffsI.append(thisDiff[3])
     }
-    
+
     let diffE = averageSeries(series: diffsE)
     let diffD = averageSeries(series: diffsD)
     let diffA = averageSeries(series: diffsA)
     let diffI = averageSeries(series: diffsI)
-    
+
     return [diffE, diffD, diffA, diffI]
 }
 
@@ -142,7 +142,7 @@ func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [D
     var diffsD: [[CGFloat?]] = []
     var diffsA: [[CGFloat?]] = []
     var diffsI: [[CGFloat?]] = []
-    
+
     for date in dates {
         let thisDiff = volatilityDifferentialWindow(
             moodSnaps: moodSnaps,
@@ -153,12 +153,12 @@ func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [D
         diffsA.append(thisDiff[2])
         diffsI.append(thisDiff[3])
     }
-    
+
     let diffE = averageSeries(series: diffsE)
     let diffD = averageSeries(series: diffsD)
     let diffA = averageSeries(series: diffsA)
     let diffI = averageSeries(series: diffsI)
-    
+
     return [diffE, diffD, diffA, diffI]
 }
 
@@ -170,8 +170,8 @@ func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindo
     var seriesD: [CGFloat?] = []
     var seriesA: [CGFloat?] = []
     var seriesI: [CGFloat?] = []
-    
-    for window in -maxWindow...maxWindow {
+
+    for window in -maxWindow ... maxWindow {
         let thisDiff: [CGFloat?] = averageDifferential(
             moodSnaps: moodSnaps,
             date: date,
@@ -181,7 +181,7 @@ func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindo
         seriesA.append(thisDiff[2])
         seriesI.append(thisDiff[3])
     }
-    
+
     return [seriesE, seriesD, seriesA, seriesI]
 }
 
@@ -193,8 +193,8 @@ func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWi
     var seriesD: [CGFloat?] = []
     var seriesA: [CGFloat?] = []
     var seriesI: [CGFloat?] = []
-    
-    for window in -maxWindow...maxWindow {
+
+    for window in -maxWindow ... maxWindow {
         let thisDiff: [CGFloat?] = volatilityDifferential(
             moodSnaps: moodSnaps,
             date: date,
@@ -204,6 +204,6 @@ func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWi
         seriesA.append(thisDiff[2])
         seriesI.append(thisDiff[3])
     }
-    
+
     return [seriesE, seriesD, seriesA, seriesI]
 }

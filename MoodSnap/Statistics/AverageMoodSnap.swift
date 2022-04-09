@@ -10,7 +10,7 @@ func averageMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSnapStruct? {
                                                windowEnd: 0,
                                                flatten: true)
     let average: [CGFloat?] = average(moodSnaps: windowSnaps)
-    
+
     if (average[0] == nil) || (average[1] == nil) || (average[2] == nil) || (average[3] == nil) {
         return nil
     } else {
@@ -33,7 +33,7 @@ func averageVolatilityMoodSnap(timescale: Int, data: DataStoreStruct) -> MoodSna
                                                windowEnd: 0,
                                                flatten: false)
     let volatility: [CGFloat?] = volatility(moodSnaps: windowSnaps)
-    
+
     if (volatility[0] == nil) || (volatility[1] == nil) || (volatility[2] == nil) || (volatility[3] == nil) {
         return nil
     } else {

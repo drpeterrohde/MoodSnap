@@ -10,7 +10,7 @@ func getAxisBound(data: [CGFloat?]) -> CGFloat {
             bound = max(bound, abs(item!))
         }
     }
-    return ceil(2*bound)/2.0
+    return ceil(2 * bound) / 2.0
 }
 
 /**
@@ -18,10 +18,10 @@ func getAxisBound(data: [CGFloat?]) -> CGFloat {
  */
 func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
-    for i in 0..<symptomList.count {
+    for i in 0 ..< symptomList.count {
         mask.append(moodSnap.symptoms[i] && settings.symptomVisibility[i])
     }
-    let total = mask.filter{$0}.count
+    let total = mask.filter { $0 }.count
     return total
 }
 
@@ -30,10 +30,10 @@ func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
  */
 func totalActivities(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
-    for i in 0..<activityList.count {
+    for i in 0 ..< activityList.count {
         mask.append(moodSnap.activities[i] && settings.activityVisibility[i])
     }
-    let total = mask.filter{$0}.count
+    let total = mask.filter { $0 }.count
     return total
 }
 
@@ -42,10 +42,10 @@ func totalActivities(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int 
  */
 func totalSocial(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
-    for i in 0..<socialList.count {
+    for i in 0 ..< socialList.count {
         mask.append(moodSnap.social[i] && settings.socialVisibility[i])
     }
-    let total = mask.filter{$0}.count
+    let total = mask.filter { $0 }.count
     return total
 }
 
@@ -54,20 +54,20 @@ func totalSocial(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
  */
 func visibleSymptomsCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
-    for i in 0..<symptomList.count {
+    for i in 0 ..< symptomList.count {
         if settings.symptomVisibility[i] {
             count += 1
         }
     }
     return count
 }
-    
+
 /**
  How many visible activities are there?
  */
 func visibleActivitiesCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
-    for i in 0..<activityList.count {
+    for i in 0 ..< activityList.count {
         if settings.activityVisibility[i] {
             count += 1
         }
@@ -80,7 +80,7 @@ func visibleActivitiesCount(settings: SettingsStruct) -> Int {
  */
 func visibleSocialCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
-    for i in 0..<socialList.count {
+    for i in 0 ..< socialList.count {
         if settings.socialVisibility[i] {
             count += 1
         }
@@ -92,7 +92,7 @@ func visibleSocialCount(settings: SettingsStruct) -> Int {
  Delete a `moodSnap` from an array of `moodSnaps`.
  */
 func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
-    return moodSnaps.filter {$0.id != moodSnap.id}
+    return moodSnaps.filter { $0.id != moodSnap.id }
 }
 
 /**
@@ -101,9 +101,9 @@ func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) ->
 func formatMoodLevelString(value: CGFloat?) -> String {
     if value != nil {
         var floatVal: CGFloat = value!
-        
+
         floatVal = CGFloat(round(10 * floatVal) / 10)
-        
+
         var str = ""
         if floatVal < 0 {
             str = String(format: " %.1f", floatVal)
@@ -112,7 +112,7 @@ func formatMoodLevelString(value: CGFloat?) -> String {
         } else {
             str = String(format: "  %.1f", abs(floatVal))
         }
-        
+
         return str
     } else {
         return "    -"
@@ -124,21 +124,21 @@ func formatMoodLevelString(value: CGFloat?) -> String {
  */
 func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String, Date)] {
     var list: [(String, Date)] = []
-    
+
     var filteredMoodSnaps: [MoodSnapStruct] = []
-    
+
     if window == nil {
         filteredMoodSnaps = moodSnaps
     } else {
         filteredMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -window!, windowEnd: 0)
     }
-    
+
     for moodSnap in sortByDate(moodSnaps: filteredMoodSnaps) {
-        if (moodSnap.snapType == .event) {
+        if moodSnap.snapType == .event {
             list.append((moodSnap.event, moodSnap.timestamp))
         }
     }
-    
+
     return list
 }
 
@@ -148,12 +148,11 @@ func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String,
 func hasData(data: [CGFloat?]) -> Bool {
     for item in data {
         if item != nil {
-            return true 
+            return true
         }
     }
     return false
 }
-
 
 /**
  Make introductory MoodSnap with quick start information
@@ -170,12 +169,12 @@ func makeIntroSnap() -> [MoodSnapStruct] {
  */
 func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
     var count: Int = 0
-    
+
     for moodSnap in moodSnaps {
         if moodSnap.snapType == type {
             count += 1
         }
     }
-    
+
     return count
 }
