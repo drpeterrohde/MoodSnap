@@ -221,8 +221,7 @@ struct SettingsView: View {
                 case let .failure(error):
                     print(error.localizedDescription)
                 }
-            }
-            .fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
+            }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
                     data = decodeJSONString(url: fileUrl)
@@ -235,8 +234,7 @@ struct SettingsView: View {
                     print(error.localizedDescription)
                 }
                 dismiss()
-            }
-            .navigationBarTitle(Text("settings"))
+            }.navigationBarTitle(Text("settings"))
         }
     }
 }

@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1D6D8127EC606C002365AC /* Quotes.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
@@ -100,7 +99,6 @@
 
 /* Begin PBXFileReference section */
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA1D6D8127EC606C002365AC /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
 		CA496AF927EBEEEE0067EE63 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -236,7 +234,6 @@
 		CA1D6D8027EC6057002365AC /* Quotes */ = {
 			isa = PBXGroup;
 			children = (
-				CA1D6D8127EC606C002365AC /* Quotes.swift */,
 				CACD6FED27F1619500D71730 /* QuoteSnap.swift */,
 			);
 			path = Quotes;
@@ -494,7 +491,6 @@
 			files = (
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
-				CA1D6D8227EC606C002365AC /* Quotes.swift in Sources */,
 				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
 				CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,

@@ -14,7 +14,7 @@ struct HistoryQuoteView: View {
                 Divider()
                 Spacer()
                     .frame(height: 10)
-                Text(.init("\"" + moodSnap.notes + "\""))
+                Text(.init(moodSnap.notes))
                     .font(.caption)
                     .frame(maxWidth: .infinity, alignment: .center)
             }

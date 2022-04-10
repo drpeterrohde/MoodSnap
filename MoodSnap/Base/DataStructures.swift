@@ -44,8 +44,6 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
 
     var numberOfGridColumns: Int = 3
     var slidingWindowSize: Int = 14
-    // var influenceActivityWindow: Int = 7
-    // var influenceEventWindow: Int = 7
 
     var saveMediaToCameraRoll: Bool = true
 
