@@ -15,19 +15,17 @@ struct InfluencesHashtagView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            //HStack{
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            //Spacer()
-            //}
             Spacer()
             HStack{
                 // Activity
                 VStack(alignment: .leading) {
                     ForEach(butterflies, id: \.id) {butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text(butterfly.activity).font(.caption)
+                            Text(butterfly.activity)
+                                .font(.caption)
                         }
                     }
                 }
@@ -35,11 +33,12 @@ struct InfluencesHashtagView: View {
                 VStack(alignment: .leading) {
                     ForEach(butterflies, id: \.id) {butterfly in
                         if hasData(data: butterfly.influence())  {
-                            Text("(\(butterfly.occurrences))").font(.caption)
+                            Text("(\(butterfly.occurrences))")
+                                .font(.caption)
                         }
                     }
                 }
-                Spacer()//.frame(maxWidth: .infinity)
+                Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
                     ForEach(butterflies, id: \.id) {butterfly in
@@ -61,12 +60,9 @@ struct InfluencesHashtagView: View {
             }
             
             Divider()
-            //HStack{
             Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            //Spacer()
-            //}
             Spacer()
             
             HStack {
@@ -74,7 +70,8 @@ struct InfluencesHashtagView: View {
                 VStack(alignment: .leading) {
                     ForEach(butterflies, id: \.id) {butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text(butterfly.activity).font(.caption)
+                            Text(butterfly.activity)
+                                .font(.caption)
                         }
                     }
                 }
@@ -82,7 +79,8 @@ struct InfluencesHashtagView: View {
                 VStack(alignment: .leading) {
                     ForEach(butterflies, id: \.id) {butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text("(\(butterfly.occurrences))").font(.caption)
+                            Text("(\(butterfly.occurrences))")
+                                .font(.caption)
                         }
                     }
                 }

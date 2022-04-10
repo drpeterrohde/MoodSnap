@@ -32,15 +32,6 @@ struct MediaView: View {
                         dismiss()
                     }
                 })
-
-//            Button {
-//                moodSnap.snapType = .media
-//                image.saveImage(imageName: moodSnap.id.uuidString)
-//                moodSnaps = deleteHistoryItem(moodSnaps: moodSnaps, moodSnap: moodSnap)
-//                moodSnaps.append(moodSnap)
-//                moodSnaps = sortByDate(moodSnaps: moodSnaps)
-//                dismiss()
-//            } label:{Image(systemName: "arrowtriangle.right.circle").resizable().scaledToFill().frame(width: 30, height: 30)}
         }
     }
 }

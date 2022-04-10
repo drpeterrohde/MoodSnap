@@ -5,76 +5,24 @@ import SwiftUI
  */
 struct InfluencesActivityView: View {
     var data: DataStoreStruct
-    
+
     var body: some View {
         let butterflies = data.processedData.activityButterfly
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
-        
-        //Label("Activities & social", systemImage: "figure.walk").font(.subheadline)
-        
-        if (occurrenceCount == 0) {
+
+        if occurrenceCount == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-        //HStack{
-        Label("mood_levels", systemImage: "brain.head.profile")
+            Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
-        //Spacer()
-        //}
-        Spacer()
-        HStack{
-            // Activity
-            VStack(alignment: .leading) {
-                ForEach(butterflies, id: \.id) {butterfly in
-                    if hasData(data: butterfly.influence()) {
-                        Text(.init(butterfly.activity)).font(.caption)
-                    }
-                }
-            }
-            // Occurrences
-            VStack(alignment: .leading) {
-                ForEach(butterflies, id: \.id) {butterfly in
-                    if hasData(data: butterfly.influence())  {
-                        Text("(\(butterfly.occurrences))").font(.caption)
-                    }
-                }
-            }
-            Spacer()//.frame(maxWidth: .infinity)
-            // Numbers
-            VStack(alignment: .trailing) {
-                ForEach(butterflies, id: \.id) {butterfly in
-                    if hasData(data: butterfly.influence())  {
-                        HStack {
-                        Text(formatMoodLevelString(value: butterfly.influence()[0]))
-                            .font(numericFont)
-                            .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[1]))
-                            .font(numericFont)
-                            .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: butterfly.influence()[2]))
-                            .font(numericFont)
-                            .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[3]))
-                            .font(numericFont)
-                            .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                        }.frame(width: 150)
-                    }
-                }
-            }
-        }
-        
-        Divider()
-        //HStack{
-        Label("volatility", systemImage: "waveform.path.ecg")
-                .font(.caption)
-                .foregroundColor(.secondary)
-        //Spacer()
-        //}
             Spacer()
-        
             HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(butterflies, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             Text(.init(butterfly.activity)).font(.caption)
                         }
@@ -82,27 +30,71 @@ struct InfluencesActivityView: View {
                 }
                 // Occurrences
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(butterflies, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
-                        Text("(\(butterfly.occurrences))").font(.caption)
+                            Text("(\(butterfly.occurrences))").font(.caption)
                         }
                     }
                 }
-                Spacer()//.frame(maxWidth: .infinity)
+                Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(butterflies, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             HStack {
-                            Text(formatMoodLevelString(value: butterfly.influence()[4]))
-                                .font(numericFont)
-                                .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[5]))
-                                .font(numericFont)
-                                .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: butterfly.influence()[6]))
-                                .font(numericFont)
-                                .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[7]))
-                                .font(numericFont)
-                                .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                                Text(formatMoodLevelString(value: butterfly.influence()[0]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[1]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: butterfly.influence()[2]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[3]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                            }.frame(width: 150)
+                        }
+                    }
+                }
+            }
+
+            Divider()
+            Label("volatility", systemImage: "waveform.path.ecg")
+                .font(.caption)
+                .foregroundColor(.secondary)
+            Spacer()
+            
+            HStack {
+                // Activity
+                VStack(alignment: .leading) {
+                    ForEach(butterflies, id: \.id) { butterfly in
+                        if hasData(data: butterfly.influence()) {
+                            Text(.init(butterfly.activity)).font(.caption)
+                        }
+                    }
+                }
+                // Occurrences
+                VStack(alignment: .leading) {
+                    ForEach(butterflies, id: \.id) { butterfly in
+                        if hasData(data: butterfly.influence()) {
+                            Text("(\(butterfly.occurrences))").font(.caption)
+                        }
+                    }
+                }
+                Spacer()
+                // Numbers
+                VStack(alignment: .trailing) {
+                    ForEach(butterflies, id: \.id) { butterfly in
+                        if hasData(data: butterfly.influence()) {
+                            HStack {
+                                Text(formatMoodLevelString(value: butterfly.influence()[4]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[5]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: butterfly.influence()[6]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[7]))
+                                    .font(numericFont)
+                                    .foregroundColor(themes[data.settings.theme].irritabilityColor)
                             }.frame(width: 150)
                         }
                     }

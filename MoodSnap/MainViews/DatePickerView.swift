@@ -24,9 +24,6 @@ struct DatePickerView: View {
 
             // Save button
             Button {
-//                moodSnaps = deleteHistoryItem(moodSnaps: moodSnaps, moodSnap: moodSnap)
-//                moodSnaps.append(moodSnap)
-//                moodSnaps = sortByDate(moodSnaps: moodSnaps)
                 dismiss()
             } label: { Image(systemName: "arrowtriangle.right.circle")
                 .resizable()

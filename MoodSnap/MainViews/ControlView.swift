@@ -54,9 +54,10 @@ struct ControlView: View {
                     Image(systemName: "waveform.path.ecg.rectangle")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize).foregroundColor(themes[data.settings.theme].controlColor).sheet(isPresented: $showingStatsSheet) {
-                            InsightsView(data: $data)
-                        }
+                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
+                        .foregroundColor(themes[data.settings.theme].controlColor)
+                }.sheet(isPresented: $showingStatsSheet) { // ??? reordered
+                    InsightsView(data: $data)
                 }
 
                 Spacer()
@@ -67,7 +68,8 @@ struct ControlView: View {
                     Image(systemName: "star.square")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize).foregroundColor(themes[data.settings.theme].controlColor)
+                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
+                        .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingEventSheet) {
                     EventView(moodSnap: MoodSnapStruct(), data: $data)
                 }
@@ -81,7 +83,8 @@ struct ControlView: View {
                 Image(systemName: "plus.circle")
                     .resizable()
                     .scaledToFill()
-                    .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize).foregroundColor(themes[data.settings.theme].controlColor)
+                    .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)
+                    .foregroundColor(themes[data.settings.theme].controlColor)
             }.sheet(isPresented: $showingMoodSnapSheet) {
                 MoodSnapView(moodSnap: MoodSnapStruct(), data: $data)
             }
@@ -95,7 +98,8 @@ struct ControlView: View {
                     Image(systemName: "note.text.badge.plus")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize).foregroundColor(themes[data.settings.theme].controlColor)
+                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
+                        .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingNoteSheet) {
                     NoteView(moodSnap: MoodSnapStruct(), data: $data)
                 }
@@ -108,7 +112,8 @@ struct ControlView: View {
                     Image(systemName: "photo.on.rectangle.angled")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize).foregroundColor(themes[data.settings.theme].controlColor)
+                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
+                        .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingMediaSheet) {
                     MediaView(moodSnap: MoodSnapStruct(), data: $data)
                 }
@@ -121,7 +126,8 @@ struct ControlView: View {
                     Image(systemName: "questionmark.circle")
                         .resizable()
                         .scaledToFill()
-                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize).foregroundColor(themes[data.settings.theme].controlColor)
+                        .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
+                        .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingHelpSheet) {
                     HelpView(data: $data)
                 }

@@ -34,7 +34,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Average mood", systemImage: "brain.head.profile").font(.subheadline)
                                     HStack {
                                         Image(systemName: "brain.head.profile")
                                             .resizable()
@@ -67,7 +66,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Mood history", systemImage: "chart.bar.xaxis").font(.subheadline)
                                     HStack {
                                         Image(systemName: "chart.bar.xaxis")
                                             .resizable()
@@ -100,7 +98,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Moving average", systemImage: "chart.line.uptrend.xyaxis").font(.subheadline)
                                     HStack {
                                         Image(systemName: "chart.line.uptrend.xyaxis")
                                             .resizable()
@@ -133,7 +130,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Volatility", systemImage: "waveform.path.ecg").font(.subheadline)
                                     HStack {
                                         Image(systemName: "waveform.path.ecg")
                                             .resizable()
@@ -166,7 +162,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Volatility", systemImage: "waveform.path.ecg").font(.subheadline)
                                     HStack {
                                         Image(systemName: "chart.bar.doc.horizontal")
                                             .resizable()
@@ -274,7 +269,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Symptoms", systemImage: "heart.text.square").font(.subheadline)
                                     HStack {
                                         Image(systemName: "heart.text.square")
                                             .resizable()
@@ -307,7 +301,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Events", systemImage: "star.fill").font(.subheadline)
                                     HStack {
                                         Image(systemName: "star.fill")
                                             .resizable()
@@ -340,7 +333,6 @@ struct InsightsView: View {
 
                             GroupBox {
                                 HStack {
-                                    // Label("Symptoms", systemImage: "heart.text.square").font(.subheadline)
                                     HStack {
                                         Image(systemName: "number")
                                             .resizable()
@@ -374,7 +366,6 @@ struct InsightsView: View {
 
                         GroupBox {
                             HStack {
-                                // Label("Butterfly average", systemImage: "waveform.path.ecg.rectangle").font(.subheadline)
                                 HStack {
                                     Image(systemName: "waveform.path.ecg.rectangle")
                                         .resizable()
@@ -401,7 +392,6 @@ struct InsightsView: View {
                             }
                             if data.uxState.isButterflyAverageExpanded {
                                 Divider()
-                                // InfluenceTransientView(timescale: timescale, data: data)
                                 TransientView(timescale: timescale, data: data)
                                 EmptyView()
                             }

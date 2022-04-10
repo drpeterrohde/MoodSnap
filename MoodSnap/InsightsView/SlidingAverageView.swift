@@ -22,7 +22,8 @@ struct SlidingAverageView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            MultipleLineChart(entries: entries, color: color).frame(height: 170)
+            MultipleLineChart(entries: entries, color: color)
+                .frame(height: 170)
         }
     }
 }

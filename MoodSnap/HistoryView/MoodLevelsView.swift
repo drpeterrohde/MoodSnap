@@ -40,7 +40,10 @@ struct MoodLevelsView: View {
     var body: some View {
         GeometryReader { geometry in
             let hBarStep: CGFloat = (geometry.size.width - 35) / 4
-
+            let hBarRadius = themes[data.settings.theme].hBarRadius
+            let hBarHeight = themes[data.settings.theme].hBarHeight
+            let hBarFontSize = themes[data.settings.theme].hBarFontSize
+            
             ZStack {
                 // Grid
                 Path { path in
@@ -66,23 +69,35 @@ struct MoodLevelsView: View {
                 // Graph
                 VStack(alignment: .leading, spacing: 0) {
                     HStack {
-                        Text("E").font(Font.system(size: themes[data.settings.theme].hBarFontSize, design: .monospaced)).foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: themes[data.settings.theme].hBarRadius, style: .continuous).foregroundColor(self.elevationColor).frame(width: moodSnap.elevation * hBarStep + themes[data.settings.theme].hBarHeight, height: themes[data.settings.theme].hBarHeight)
+                        Text("E").font(Font.system(size: hBarFontSize, design: .monospaced))
+                            .foregroundColor(self.fontColor)
+                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                            .foregroundColor(self.elevationColor)
+                            .frame(width: moodSnap.elevation * hBarStep + hBarHeight, height: hBarHeight)
                         Spacer()
                     }
                     HStack {
-                        Text("D").font(Font.system(size: themes[data.settings.theme].hBarFontSize, design: .monospaced)).foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: themes[data.settings.theme].hBarRadius, style: .continuous).foregroundColor(self.depressionColor).frame(width: moodSnap.depression * hBarStep + themes[data.settings.theme].hBarHeight, height: themes[data.settings.theme].hBarHeight)
+                        Text("D").font(Font.system(size: hBarFontSize, design: .monospaced))
+                            .foregroundColor(self.fontColor)
+                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                            .foregroundColor(self.depressionColor)
+                            .frame(width: moodSnap.depression * hBarStep + hBarHeight, height: hBarHeight)
                         Spacer()
                     }
                     HStack {
-                        Text("A").font(Font.system(size: themes[data.settings.theme].hBarFontSize, design: .monospaced)).foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: themes[data.settings.theme].hBarRadius, style: .continuous).foregroundColor(self.anxietyColor).frame(width: moodSnap.anxiety * hBarStep + themes[data.settings.theme].hBarHeight, height: themes[data.settings.theme].hBarHeight)
+                        Text("A").font(Font.system(size: hBarFontSize, design: .monospaced))
+                            .foregroundColor(self.fontColor)
+                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                            .foregroundColor(self.anxietyColor)
+                            .frame(width: moodSnap.anxiety * hBarStep + hBarHeight, height: hBarHeight)
                         Spacer()
                     }
                     HStack {
-                        Text("I").font(Font.system(size: themes[data.settings.theme].hBarFontSize, design: .monospaced)).foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: themes[data.settings.theme].hBarRadius, style: .continuous).foregroundColor(self.irritabilityColor).frame(width: moodSnap.irritability * hBarStep + themes[data.settings.theme].hBarHeight, height: themes[data.settings.theme].hBarHeight)
+                        Text("I").font(Font.system(size: hBarFontSize, design: .monospaced))
+                            .foregroundColor(self.fontColor)
+                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                            .foregroundColor(self.irritabilityColor)
+                            .frame(width: moodSnap.irritability * hBarStep + hBarHeight, height: hBarHeight)
                     }
                 }
             }

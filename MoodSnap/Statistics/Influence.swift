@@ -6,10 +6,10 @@ import SwiftUI
 extension ButterflyEntryStruct {
     func influence() -> [CGFloat?] {
         // Averages
-        var influenceAverageE: CGFloat?
-        var influenceAverageD: CGFloat?
-        var influenceAverageA: CGFloat?
-        var influenceAverageI: CGFloat?
+        var influenceAverageE: CGFloat? = nil // addeed nils?
+        var influenceAverageD: CGFloat? = nil
+        var influenceAverageA: CGFloat? = nil
+        var influenceAverageI: CGFloat? = nil
 
         if elevation.count > 0 && elevation[0] != nil && elevation[elevation.count - 1] != nil {
             influenceAverageE = elevation[elevation.count - 1]! - elevation[0]!
@@ -28,10 +28,10 @@ extension ButterflyEntryStruct {
         }
 
         // Volatilities
-        var influenceVolatilityE: CGFloat?
-        var influenceVolatilityD: CGFloat?
-        var influenceVolatilityA: CGFloat?
-        var influenceVolatilityI: CGFloat?
+        var influenceVolatilityE: CGFloat? = nil //??? added nils
+        var influenceVolatilityD: CGFloat? = nil
+        var influenceVolatilityA: CGFloat? = nil
+        var influenceVolatilityI: CGFloat? = nil
 
         if elevationVolatility.count > 0 && elevationVolatility[0] != nil && elevationVolatility[elevationVolatility.count - 1] != nil {
             influenceVolatilityE = elevationVolatility[elevationVolatility.count - 1]! - elevationVolatility[0]!

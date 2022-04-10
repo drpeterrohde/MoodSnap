@@ -79,7 +79,8 @@ struct TransientView: View {
                         if entriesLevels[0].count > 0 {
                             VStack {
                                 HStack {
-                                    Text("(\(butterfly.occurrences))").font(.caption)
+                                    Text("(\(butterfly.occurrences))")
+                                        .font(.caption)
                                     Text(formatMoodLevelString(value: butterfly.influence()[0]))
                                         .font(.caption)
                                         .foregroundColor(themes[data.settings.theme].elevationColor)
