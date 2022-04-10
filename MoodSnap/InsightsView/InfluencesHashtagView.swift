@@ -11,12 +11,12 @@ struct InfluencesHashtagView: View {
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
         
         if occurrenceCount == 0 {
-            Text("Insufficient data")
+            Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
             //HStack{
-            Label("Mood levels", systemImage: "brain.head.profile")
+            Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
             //Spacer()
@@ -62,7 +62,7 @@ struct InfluencesHashtagView: View {
             
             Divider()
             //HStack{
-            Label("Volatility", systemImage: "waveform.path.ecg")
+            Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
             //Spacer()

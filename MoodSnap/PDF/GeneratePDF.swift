@@ -4,7 +4,7 @@ import TPPDF
 func generatePDF(data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) -> URL? {
     let document = PDFDocument(format: .a4)
     document.info.author = "MoodSnap"
-    document.info.title = "MoodSnap report"
+    document.info.title = "moodsnap_report"
 
     generatePDFContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
 
@@ -165,13 +165,13 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     table.widths = [0.2, 0.2, 0.2, 0.2, 0.2]
 
     // Column labels
-    let columnLabels = ["Activity", "Elevation", "Depression", "Anxiety", "Irritability"]
+    let columnLabels = ["activity", "elevation", "depression", "anxiety", "irritability"]
 
     for column in 0 ... 4 {
         let cell = table[0, column]
         cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 8, weight: .bold))
         do {
-            try tableContent = PDFTableContent(content: columnLabels[column])
+            try tableContent = PDFTableContent(content: NSLocalizedString(columnLabels[column], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -185,7 +185,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
         // Activity labels
         do {
-            try tableContent = PDFTableContent(content: activityList[activityCount])
+            try tableContent = PDFTableContent(content: NSLocalizedString(activityList[activityCount], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -196,7 +196,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
             let cell = table[activityCount + 1, moodCount]
             do {
                 let str = formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount - 1]) + "/" + formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount + 3]) // only has activities ???
-                try tableContent = PDFTableContent(content: str)
+                try tableContent = PDFTableContent(content: NSLocalizedString(str, comment: ""))
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
@@ -212,7 +212,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
         // Activity labels
         do {
-            try tableContent = PDFTableContent(content: socialList[socialCount])
+            try tableContent = PDFTableContent(content: NSLocalizedString(socialList[socialCount], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -311,7 +311,7 @@ func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreSt
 
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
-    let attributedNotes = NSAttributedString(string: notes_on_interpretation_string, attributes: notesAttributes)
+    let attributedNotes = NSAttributedString(string: "notes_on_interpretation_string", attributes: notesAttributes)
 
     textElement = PDFAttributedText(text: attributedNotes)
     document.add(.contentLeft, attributedTextObject: textElement)

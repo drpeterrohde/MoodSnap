@@ -49,7 +49,7 @@ struct HistoryItemView: View {
                                     showingMoodSnapSheet.toggle()
                                 }, label: {
                                     Image(systemName: "pencil")
-                                    Text("Edit")
+                                    Text("edit")
                                 })
                             }
 
@@ -57,7 +57,7 @@ struct HistoryItemView: View {
                                 showingDeleteAlert = true
                             }, label: {
                                 Image(systemName: "trash")
-                                Text("Delete")
+                                Text("delete")
                             })
                         } label: { Image(systemName: "gearshape")
                             .resizable()
@@ -81,11 +81,11 @@ struct HistoryItemView: View {
                         }
                         .alert(isPresented: $showingDeleteAlert) {
                             Alert(
-                                title: Text("Delete this MoodSnap?"),
-                                message: Text("Are you sure you want to delete this item? This action cannot be undone."),
+                                title: Text("delete_this_moodsnap"),
+                                message: Text("sure_to_delete"),
                                 primaryButton: .cancel(),
                                 secondaryButton: .destructive(
-                                    Text("Delete"),
+                                    Text("delete"),
                                     action: {
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                         DispatchQueue.global(qos: .userInteractive).async {

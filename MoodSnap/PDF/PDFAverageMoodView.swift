@@ -15,7 +15,7 @@ struct PDFAverageMoodView: View {
                     // .foregroundColor(.secondary)
                     // } else {
                     // if blackAndWhite {
-                    Label("Mood levels", systemImage: "brain.head.profile")
+                    Label("mood_levels", systemImage: "brain.head.profile")
                         .font(.caption)
                         .foregroundColor(.black)
                     // } else {
@@ -34,7 +34,7 @@ struct PDFAverageMoodView: View {
                                        blackAndWhite: blackAndWhite)
                     } else {
                         VStack(alignment: .center) {
-                            Text("Insufficient data")
+                            Text("insufficient_data")
                                 .foregroundColor(.secondary)
                         }
                     }
@@ -44,7 +44,7 @@ struct PDFAverageMoodView: View {
             Group {
                 VStack {
                     // if blackAndWhite {
-                    Label("Volatility", systemImage: "waveform.path.ecg")
+                    Label("volatility", systemImage: "waveform.path.ecg")
                         .font(.caption)
                         .foregroundColor(.black)
                     // } else {
@@ -64,7 +64,7 @@ struct PDFAverageMoodView: View {
                                        blackAndWhite: blackAndWhite)
                     } else {
                         VStack(alignment: .center) {
-                            Text("Insufficient data")
+                            Text("insufficient_data")
                                 .foregroundColor(.secondary)
                         }
                     }

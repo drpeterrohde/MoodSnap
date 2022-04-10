@@ -27,7 +27,7 @@ struct TallyView: View {
         // No information
         if activityTotal == 0 && socialTotal == 0 && symptomTotal == 0 && eventsTotal == 0 && hashtagTotal == 0 {
             Divider()
-            Text("Insufficient data")
+            Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
@@ -36,7 +36,7 @@ struct TallyView: View {
         if activityTotal > 0 {
             Group {
                 Divider()
-                Label("Activity", systemImage: "figure.walk")
+                Label("activity", systemImage: "figure.walk")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -66,7 +66,7 @@ struct TallyView: View {
         if socialTotal > 0 {
             Group {
                 Divider()
-                Label("Social", systemImage: "person.2")
+                Label("social", systemImage: "person.2")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -96,7 +96,7 @@ struct TallyView: View {
         if symptomTotal > 0 {
             Group {
                 Divider()
-                Label("Symptoms", systemImage: "heart.text.square")
+                Label("symptoms", systemImage: "heart.text.square")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -126,7 +126,7 @@ struct TallyView: View {
         if eventsTotal > 0 {
             Group {
                 Divider()
-                Label("Events", systemImage: "star.fill")
+                Label("events", systemImage: "star.fill")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -152,7 +152,7 @@ struct TallyView: View {
         if hashtagTotal > 0 {
             Group {
                 Divider()
-                Label("Hashtags", systemImage: "number")
+                Label("hashtags", systemImage: "number")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()

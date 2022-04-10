@@ -9,7 +9,7 @@ struct HistoryView: View {
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
     @Binding var data: DataStoreStruct
-    @State var searchPrompt: String = "Search all"
+    @State var searchPrompt: String = "search_all"
 
     var body: some View {
         NavigationView {
@@ -19,12 +19,12 @@ struct HistoryView: View {
                 }
                 Spacer()
             }
-            .navigationBarTitle(Text("History"))
+            .navigationBarTitle(Text("history"))
             .navigationBarTitleDisplayMode(.inline)
             .searchable(
                 text: $searchText,
                 placement: .navigationBarDrawer(displayMode: .always),
-                prompt: searchPrompt // ,
+                prompt: LocalizedStringKey(searchPrompt) // ,
 //                suggestions: {
 //                    Button(action: {
 //                        filter = .none
@@ -72,7 +72,7 @@ struct HistoryView: View {
                 if !newValue {
                     filter = .none
                     searchText = ""
-                    searchPrompt = "Search all"
+                    searchPrompt = "search_all"
                 } // Not doing anything ???
             }
         }

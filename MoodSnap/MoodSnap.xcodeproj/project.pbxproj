@@ -94,6 +94,7 @@
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
+		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
@@ -184,6 +185,7 @@
 		CA496B6C27EBEF2A0067EE63 /* Influence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Influence.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,6 +207,7 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA5C61AA2802464F003151FD /* Localizable.strings */,
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
 				CA1C458328015DFC0073613F /* Localization */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
@@ -466,6 +469,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = CA0FA5DC27EBEA1700B5EEE1;
 			packageReferences = (
@@ -488,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA496B1227EBEEFC0067EE63 /* Assets.xcassets in Resources */,
+				CA5C61A82802464F003151FD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,6 +592,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CA5C61AA2802464F003151FD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA5C61A92802464F003151FD /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CA0FA5F127EBEA1A00B5EEE1 /* Debug */ = {

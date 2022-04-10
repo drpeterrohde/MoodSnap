@@ -38,8 +38,8 @@ let numericFont: Font = Font.system(.caption, design: .monospaced)
 /// Symptom list
 let symptomList = [
     "Anhedonia",
-    "Increased apetite",
-    "Reduced apetite",
+    "Increased_apetite",
+    "Reduced_apetite",
     "Compulsions",
     "Dissociation",
     "Euphoria",
@@ -51,16 +51,16 @@ let symptomList = [
     "Hypomania",
     "Insomnia",
     "Mania",
-    "Mixed state",
+    "Mixed_state",
     "Nightmares",
-    "Panic attacks",
+    "Panic_attacks",
     "Paranoia",
     "Physical",
     "Psychosis",
     "Restless",
     "Rumination",
-    "Self harm",
-    "Suicidal thoughts"]
+    "Self_harm",
+    "Suicidal_thoughts"]
 
 /// Activity list
 let activityList = [
@@ -68,10 +68,10 @@ let activityList = [
     "Caffeine",
     "Excercise",
     "Meditation",
-    "Missed medication",
+    "Missed_medication",
     "Nicotine",
-    "Sexual activity",
-    "Substance use",
+    "Sexual_activity",
+    "Substance_use",
     "Therapy"]
 
 /// Social event list
@@ -79,9 +79,9 @@ let socialList = [
     "Affection",
     "Conflict",
     "Isolation",
-    "Positive socialising",
-    "Negative socialising",
-    "No in-person contact"]
+    "Positive_socialising",
+    "Negative_socialising",
+    "No_in_person_contact"]
 
 /// Mood labels
 let moodLabels = ["Elevation", "Depresssion", "Anxiety", "Irritability"]

@@ -31,15 +31,15 @@ struct MoodSnapView: View {
                 Group {
                     Divider()
                     VStack(spacing: themes[data.settings.theme].sliderSpacing) {
-                        Label("Mood", systemImage: "brain.head.profile").font(.caption)
+                        Label("mood", systemImage: "brain.head.profile").font(.caption)
                         Spacer().frame(height: 20)
-                        Text("Elevation").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].elevationColor)
+                        Text("elevation").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].elevationColor)
                         Slider(value: $moodSnap.elevation, in: 0 ... 4, step: 1)
-                        Text("Depression").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].depressionColor)
+                        Text("depression").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].depressionColor)
                         Slider(value: $moodSnap.depression, in: 0 ... 4, step: 1)
-                        Text("Anxiety").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].anxietyColor)
+                        Text("anxiety").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].anxietyColor)
                         Slider(value: $moodSnap.anxiety, in: 0 ... 4, step: 1)
-                        Text("Irritability").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].irritabilityColor)
+                        Text("irritability").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].irritabilityColor)
                         Slider(value: $moodSnap.irritability, in: 0 ... 4, step: 1)
                     }
                 }
@@ -48,14 +48,14 @@ struct MoodSnapView: View {
                 if visibleSymptomsCount(settings: data.settings) > 0 {
                     Group {
                         Divider()
-                        Label("Symptoms", systemImage: "heart.text.square").font(.caption)
+                        Label("symptoms", systemImage: "heart.text.square").font(.caption)
 
                         let gridItemLayout = Array(repeating: GridItem(.flexible()), count: data.settings.numberOfGridColumns)
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< symptomList.count, id: \.self) { i in
                                 if data.settings.symptomVisibility[i] {
-                                    Toggle(symptomList[i], isOn: $moodSnap.symptoms[i])
+                                    Toggle(.init(symptomList[i]), isOn: $moodSnap.symptoms[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
@@ -70,14 +70,14 @@ struct MoodSnapView: View {
                 if visibleActivitiesCount(settings: data.settings) > 0 {
                     Group {
                         Divider()
-                        Label("Activity", systemImage: "figure.walk").font(.caption)
+                        Label("activity", systemImage: "figure.walk").font(.caption)
 
                         let gridItemLayout = Array(repeating: GridItem(.flexible()), count: data.settings.numberOfGridColumns)
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< activityList.count, id: \.self) { i in
                                 if data.settings.activityVisibility[i] {
-                                    Toggle(activityList[i], isOn: $moodSnap.activities[i])
+                                    Toggle(.init(activityList[i]), isOn: $moodSnap.activities[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
@@ -91,14 +91,14 @@ struct MoodSnapView: View {
                 if visibleSocialCount(settings: data.settings) > 0 {
                     Group {
                         Divider()
-                        Label("Social", systemImage: "person.2").font(.caption)
+                        Label("social", systemImage: "person.2").font(.caption)
 
                         let gridItemLayout = Array(repeating: GridItem(.flexible()), count: data.settings.numberOfGridColumns)
 
                         LazyVGrid(columns: gridItemLayout, spacing: themes[data.settings.theme].moodSnapGridSpacing) {
                             ForEach(0 ..< socialList.count, id: \.self) { i in
                                 if data.settings.socialVisibility[i] {
-                                    Toggle(socialList[i], isOn: $moodSnap.social[i])
+                                    Toggle(.init(socialList[i]), isOn: $moodSnap.social[i])
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
@@ -112,7 +112,7 @@ struct MoodSnapView: View {
                 Group {
                     VStack {
                         Divider()
-                        Label("Notes", systemImage: "note.text").font(.caption)
+                        Label("notes", systemImage: "note.text").font(.caption)
                         TextEditor(text: $moodSnap.notes)
                             .font(.caption)
                             .frame(minHeight: 50, alignment: .leading)

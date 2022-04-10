@@ -10,70 +10,66 @@ struct TransientReferencePickerView: View {
     @Binding var selectedEvent: Int
     @Binding var selectionType: InfluenceTypeEnum
     var data: DataStoreStruct
-    
+
     var body: some View {
+        let eventsList = getEventsList(moodSnaps: data.moodSnaps)
+
         HStack {
             Picker("", selection: $selectionType) {
-                Text("Activity")
+                Text("activity")
                     .tag(InfluenceTypeEnum.activity)
-                Text("Social")
+                Text("social")
                     .tag(InfluenceTypeEnum.social)
-                Text("Symptom")
+                Text("symptom")
                     .tag(InfluenceTypeEnum.symptom)
-                Text("Event")
-                    .tag(InfluenceTypeEnum.event)
+                if eventsList.count > 0 {
+                    Text("event")
+                        .tag(InfluenceTypeEnum.event)
+                }
             }.padding(.leading, 10)
- 
+
             Spacer()
- 
+
             // Events
-            if (selectionType == InfluenceTypeEnum.event) {
-                let eventsList = getEventsList(moodSnaps: data.moodSnaps) 
-                if eventsList.count == 0 {
-                    Picker("", selection: $selectedEvent) {
-                        Text("Insufficient data")
-                                .tag(0)
-                    }
-                } else {
-                    Picker("", selection: $selectedEvent) {
-                        ForEach(0..<eventsList.count, id: \.self) {i in
+            if selectionType == InfluenceTypeEnum.event {
+                Picker("", selection: $selectedEvent) {
+                    ForEach(0 ..< eventsList.count, id: \.self) { i in
                         Text("\(eventsList[i].0) (\(eventsList[i].1.dateString()))")
                             .tag(i)
                     }
                 }.padding(.trailing, 10)
-                }
             }
- 
+
             // Social
-            if (selectionType == InfluenceTypeEnum.social) {
+            if selectionType == InfluenceTypeEnum.social {
                 Picker("", selection: $selectedSocial) {
-                    ForEach(0..<socialList.count, id: \.self) {i in
+                    ForEach(0 ..< socialList.count, id: \.self) { i in
                         if data.settings.socialVisibility[i] {
-                            Text(socialList[i])
+                            Text(.init(socialList[i]))
                                 .tag(i)
                         }
                     }
                 }.padding(.trailing, 10)
             }
- 
+
             // Activity
-            if (selectionType == InfluenceTypeEnum.activity) {
+            if selectionType == InfluenceTypeEnum.activity {
                 Picker("", selection: $selectedActivity) {
-                    ForEach(0..<activityList.count, id: \.self) {i in
+                    ForEach(0 ..< activityList.count, id: \.self) { i in
                         if data.settings.activityVisibility[i] {
-                            Text(activityList[i])
+                            Text(.init(activityList[i]))
                                 .tag(i)
                         }
                     }
                 }.padding(.trailing, 10)
             }
- 
+
             // Symptoms
-            if (selectionType == InfluenceTypeEnum.symptom) {
+            if selectionType == InfluenceTypeEnum.symptom {
                 Picker("", selection: $selectedSymptom) {
-                    ForEach(0..<symptomList.count, id: \.self) {i in
+                    ForEach(0 ..< symptomList.count, id: \.self) { i in
                         if data.settings.symptomVisibility[i] {
-                            Text(symptomList[i])
+                            Text(.init(symptomList[i]))
                                 .tag(i)
                         }
                     }
