@@ -29,7 +29,7 @@ struct InfluencesActivityView: View {
             VStack(alignment: .leading) {
                 ForEach(butterflies, id: \.id) {butterfly in
                     if hasData(data: butterfly.influence()) {
-                        Text(butterfly.activity).font(.caption)
+                        Text(.init(butterfly.activity)).font(.caption)
                     }
                 }
             }
@@ -76,7 +76,7 @@ struct InfluencesActivityView: View {
                 VStack(alignment: .leading) {
                     ForEach(butterflies, id: \.id) {butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text(butterfly.activity).font(.caption)
+                            Text(.init(butterfly.activity)).font(.caption)
                         }
                     }
                 }

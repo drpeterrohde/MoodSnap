@@ -44,8 +44,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< activityList.count, id: \.self) { i in
                             if activityOccurrences[i] > 0 && data.settings.activityVisibility[i] {
-                                Text(activityList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(activityList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }
@@ -74,8 +73,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< socialList.count, id: \.self) { i in
                             if socialOccurrences[i] > 0 && data.settings.socialVisibility[i] {
-                                Text(socialList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(socialList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }
@@ -104,8 +102,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< symptomList.count, id: \.self) { i in
                             if symptomOccurrences[i] > 0 && data.settings.symptomVisibility[i] {
-                                Text(symptomList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(symptomList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }

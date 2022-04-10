@@ -263,10 +263,10 @@
 		CA496B1327EBEF290067EE63 /* InsightsView */ = {
 			isa = PBXGroup;
 			children = (
-				CA496B1427EBEF290067EE63 /* InfluencesSymptomView.swift */,
 				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
 				CA496B1627EBEF290067EE63 /* ActiveEnergyView.swift */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
+				CA496B1427EBEF290067EE63 /* InfluencesSymptomView.swift */,
 				CA496B1827EBEF290067EE63 /* InfluencesActivityView.swift */,
 				CA496B1927EBEF290067EE63 /* InfluencesSocialView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
