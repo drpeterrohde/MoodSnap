@@ -152,7 +152,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
     document.add(.contentLeft, attributedTextObject: textElement)
 
-    let attributedElevation = NSAttributedString(string: NSLocalizedString("mood_level_mood_volatility", comment: "Mood level / Mood volatility"), attributes: notesAttributes)
+    let attributedElevation = NSAttributedString(string: NSLocalizedString("mood_level_mood_volatility", comment: "Mood level / Mood volatility") + "\n", attributes: notesAttributes)
     textElement = PDFAttributedText(text: attributedElevation)
     document.add(.contentLeft, attributedTextObject: textElement)
 
