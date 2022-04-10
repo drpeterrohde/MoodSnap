@@ -67,7 +67,6 @@
 		CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4227EBEF290067EE63 /* ContentView.swift */; };
 		CA496B9B27EBEF2B0067EE63 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4327EBEF290067EE63 /* ControlView.swift */; };
 		CA496B9C27EBEF2B0067EE63 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4527EBEF2A0067EE63 /* TestData.swift */; };
-		CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4827EBEF2A0067EE63 /* Strings.swift */; };
 		CA496B9E27EBEF2B0067EE63 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4927EBEF2A0067EE63 /* UX.swift */; };
 		CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4A27EBEF2A0067EE63 /* Color.swift */; };
 		CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */; };
@@ -160,7 +159,6 @@
 		CA496B4227EBEF290067EE63 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA496B4327EBEF290067EE63 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		CA496B4527EBEF2A0067EE63 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		CA496B4827EBEF2A0067EE63 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA496B4927EBEF2A0067EE63 /* UX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
 		CA496B4A27EBEF2A0067EE63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
@@ -209,7 +207,6 @@
 			children = (
 				CA5C61AA2802464F003151FD /* Localizable.strings */,
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
-				CA1C458328015DFC0073613F /* Localization */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -234,14 +231,6 @@
 				CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CA1C458328015DFC0073613F /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				CA496B4827EBEF2A0067EE63 /* Strings.swift */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		CA1D6D8027EC6057002365AC /* Quotes */ = {
@@ -563,7 +552,6 @@
 				CA496BAC27EBEF2B0067EE63 /* PDFMoodHistoryBarView.swift in Sources */,
 				CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */,
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
-				CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,

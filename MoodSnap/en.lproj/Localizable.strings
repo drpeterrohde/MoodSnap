@@ -247,3 +247,17 @@
 "Positive_socialising" = "Positive socialising";
 "Negative_socialising" = "Negative socialising";
 "No_in_person_contact" = "No in-person contact";
+
+"moodsnap_report" = "MoodSnap report";
+"report_generated_on" = "Report generated on";
+"analysis" = "Analysis";
+"sliding_average" = "Sliding average";
+"insights" = "Insights";
+"influneces" = "Influences";
+"mood_level_mood_volatility" = "Mood level / Mood volatility";
+"average_mood_volatility" = "Average mood level / volatility";
+"mood_history" = "Mood history";
+
+"interpretation_guide" = "Interpretation guide";
+
+"notes_on_interpretation_string" = "\n• Moving average and volatility are lagging indicators, calculated over a 14 day sliding window. The moving average is a simple moving average (SMA) within the sliding window, and the volatility similarly defined using the window standard deviation.\n• All insights are univariate measures that correlate moods with single parameters. In reality such correlations are more accurately describe via multi-variate analysis. This can lead to misleading conclusions about cause and effect when multiple correlations are at play. For example, if elevated mood correlates with increased sleep, and increased sleep correlated with exercise, it is impossible to determine whether the underlying causality was between mood and sleep or mood and exercise.\n• Correlation does not imply causality. Taking transients as an example, it is not possible to differentiate whether a mood trend was caused by a correlated activity or caused the correlated activity. The transient plots are therefore in a time-symmetric manner — the positive and negative values relative to the point of reference are symmetrically defined as the average between the reference point and the time offset on the horizontal axis. For example, a correlation between increased appetite and elevated mood could equally suggest that:\n    • Eating more results in increased elevation.\n    • Increased elevation results in increased appetite.\n    • Neither are caused by one another and both are correlated with another parameter.\n• Missing data points make analysis less reliable. All provided measures are most accurate if the associated data is complete with daily data points. Volatility measures are most reliable if additional data points capture intermittent mood changes.\n• MoodSnaps should reflect maximum values within the last 24 hours and since the last MoodSnap, and should not capture overlapping information.\n• All measures under the History heading are calculated over the timescale specified in the tab at the top of the page. Measures under the Influences heading are calculated using all data.\n• Transients are shown over a ±7day timescale for activities, symptoms and hashtags, and over a ±30day timescale for events.\n• Influences and Transients are averaged over all instances of the chosen reference, except Events which are one-off points of reference.\n• Transients are normalised to be relative to the point of reference, displayed at the center, which always has value zero. Hence Transient plots indicate relative changes rather than absolute values.\n• Influences are defined as the difference between the rightmost and leftmost values of the respective Transient plot, also printed directly above the respective Transient plot.\n";
