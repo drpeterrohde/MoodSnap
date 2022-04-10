@@ -27,7 +27,7 @@ struct TallyView: View {
         // No information
         if activityTotal == 0 && socialTotal == 0 && symptomTotal == 0 && eventsTotal == 0 && hashtagTotal == 0 {
             Divider()
-            Text("Insufficient data")
+            Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         }
@@ -36,7 +36,7 @@ struct TallyView: View {
         if activityTotal > 0 {
             Group {
                 Divider()
-                Label("Activity", systemImage: "figure.walk")
+                Label("activity", systemImage: "figure.walk")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -44,8 +44,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< activityList.count, id: \.self) { i in
                             if activityOccurrences[i] > 0 && data.settings.activityVisibility[i] {
-                                Text(activityList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(activityList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }
@@ -66,7 +65,7 @@ struct TallyView: View {
         if socialTotal > 0 {
             Group {
                 Divider()
-                Label("Social", systemImage: "person.2")
+                Label("social", systemImage: "person.2")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -74,8 +73,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< socialList.count, id: \.self) { i in
                             if socialOccurrences[i] > 0 && data.settings.socialVisibility[i] {
-                                Text(socialList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(socialList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }
@@ -96,7 +94,7 @@ struct TallyView: View {
         if symptomTotal > 0 {
             Group {
                 Divider()
-                Label("Symptoms", systemImage: "heart.text.square")
+                Label("symptoms", systemImage: "heart.text.square")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -104,8 +102,7 @@ struct TallyView: View {
                     VStack(alignment: .leading) {
                         ForEach(0 ..< symptomList.count, id: \.self) { i in
                             if symptomOccurrences[i] > 0 && data.settings.symptomVisibility[i] {
-                                Text(symptomList[i] + "  ")
-                                    .font(.caption)
+                                Text(.init(symptomList[i])).font(.caption) + Text("  ").font(.caption)
                             }
                         }
                     }
@@ -126,7 +123,7 @@ struct TallyView: View {
         if eventsTotal > 0 {
             Group {
                 Divider()
-                Label("Events", systemImage: "star.fill")
+                Label("events", systemImage: "star.fill")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()
@@ -152,7 +149,7 @@ struct TallyView: View {
         if hashtagTotal > 0 {
             Group {
                 Divider()
-                Label("Hashtags", systemImage: "number")
+                Label("hashtags", systemImage: "number")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 Spacer()

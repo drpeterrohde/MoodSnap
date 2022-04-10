@@ -9,7 +9,7 @@ struct DatePickerView: View {
     var settings: SettingsStruct
 
     var body: some View {
-        GroupBox(label: Label("Edit timestamp", systemImage: "clock").foregroundColor(themes[settings.theme].iconColor)) {
+        GroupBox(label: Label("edit_timestamp", systemImage: "clock").foregroundColor(themes[settings.theme].iconColor)) {
             Divider()
             VStack(alignment: .center) {
                 Text(moodSnap.timestamp.dateTimeString()).font(.caption)

@@ -11,12 +11,12 @@ struct InfluencesSymptomView: View {
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
         
         if (occurrenceCount == 0) {
-            Text("Insufficient data")
+            Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
         //HStack {
-        Label("Mood levels", systemImage: "brain.head.profile")
+        Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
         //Spacer()
@@ -27,7 +27,7 @@ struct InfluencesSymptomView: View {
             VStack(alignment: .leading) {
                 ForEach(butterflies, id: \.id) {butterfly in
                     if hasData(data: butterfly.influence()) {
-                    Text(butterfly.activity).font(.caption)
+                        Text(.init(butterfly.activity)).font(.caption)
                     }
                 }
             }
@@ -61,7 +61,7 @@ struct InfluencesSymptomView: View {
         }
         
         Divider()
-        Label("Volatility", systemImage: "waveform.path.ecg")
+        Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
         Spacer()
@@ -71,7 +71,7 @@ struct InfluencesSymptomView: View {
             VStack(alignment: .leading) {
                 ForEach(butterflies, id: \.id) {butterfly in
                     if hasData(data: butterfly.influence()) {
-                    Text(butterfly.activity).font(.caption)
+                        Text(.init(butterfly.activity)).font(.caption)
                     }
                 }
             }

@@ -16,9 +16,9 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Reminders")) {
+                Section(header: Text("reminders")) {
                     Toggle(isOn: $data.settings.reminderOn[0], label: {
-                        DatePicker("Morning", selection: $data.settings.reminderTime[0], displayedComponents: .hourAndMinute)
+                        DatePicker("morning", selection: $data.settings.reminderTime[0], displayedComponents: .hourAndMinute)
                     })
                         .onChange(of: data.settings.reminderOn[0]) {
                             _ in toggleReminder(which: 0, settings: data.settings)
@@ -27,7 +27,7 @@ struct SettingsView: View {
                             _ in updateNotifications(settings: data.settings)
                         }
                     Toggle(isOn: $data.settings.reminderOn[1], label: {
-                        DatePicker("Evening", selection: $data.settings.reminderTime[1], displayedComponents: .hourAndMinute)
+                        DatePicker("evening", selection: $data.settings.reminderTime[1], displayedComponents: .hourAndMinute)
                     })
                         .onChange(of: data.settings.reminderOn[1]) {
                             _ in toggleReminder(which: 1, settings: data.settings)
@@ -37,60 +37,61 @@ struct SettingsView: View {
                         }
                 }
 
-                Section(header: Text("Accessibility")) {
+                Section(header: Text("accessibility")) {
 //                    Toggle(isOn: $data.settings.useFaceID, label: {
 //                        Text("Use FaceID")
 //                    })
 
-                    Picker("Theme", selection: $data.settings.theme) {
+                    Picker("theme", selection: $data.settings.theme) {
                         ForEach(0 ..< themes.count, id: \.self) { i in
-                            Text(themes[i].name).tag(i)
+                            Text(.init(themes[i].name))
+                                .tag(i)
                         }
                     }
 
                     Stepper(value: $data.settings.numberOfGridColumns, in: 1 ... 3, label: {
-                        Text("Grid columns: \(data.settings.numberOfGridColumns)")
+                        Text("grid_columns") + Text(" \(data.settings.numberOfGridColumns)")
                     })
 
                     Toggle(isOn: $data.settings.quoteVisibility, label: {
-                        Text("Show quotes")
+                        Text("show_quotes")
                     })
                 }
 
-                Section(header: Text("Media")) {
+                Section(header: Text("media")) {
                     Toggle(isOn: $data.settings.saveMediaToCameraRoll, label: {
-                        Text("Save media to camera roll")
+                        Text("save_to_camera_roll")
                     })
                 }
 
-                Section(header: Text("PDF report")) {
-                    TextField("Name (optional)", text: $data.settings.username)
-                    Picker("Period", selection: $data.settings.reportPeriod) {
-                        Text("1 month").tag(TimeScaleEnum.month.rawValue)
-                        Text("3 months").tag(TimeScaleEnum.threeMonths.rawValue)
-                        Text("6 months").tag(TimeScaleEnum.sixMonths.rawValue)
-                        Text("1 year").tag(TimeScaleEnum.year.rawValue)
+                Section(header: Text("PDF_report")) {
+                    TextField("name_optional", text: $data.settings.username)
+                    Picker("period", selection: $data.settings.reportPeriod) {
+                        Text("1_month").tag(TimeScaleEnum.month.rawValue)
+                        Text("3_months").tag(TimeScaleEnum.threeMonths.rawValue)
+                        Text("6_months").tag(TimeScaleEnum.sixMonths.rawValue)
+                        Text("1_year").tag(TimeScaleEnum.year.rawValue)
                     }
                     Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
-                        Text("Black & white")
+                        Text("black_and_white")
                     })
                     Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
-                        Text("Include guide")
+                        Text("include_guide")
                     })
                     Toggle(isOn: $data.settings.includeNotes, label: {
-                        Text("Include notes")
+                        Text("include_notes")
                     })
 
                     Button(action: {
                         showingReportSheet.toggle()
                     }) {
-                        Text("Generate PDF report")
+                        Text("generate_PDF_report")
                     }.sheet(isPresented: $showingReportSheet) {
                         ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
                     }
                 }
 
-                Section(header: Text("Import/Export")) {
+                Section(header: Text("import_export")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
                             showingImporter.toggle()
@@ -98,38 +99,38 @@ struct SettingsView: View {
                             showingImportAlert.toggle()
                         }
                     }) {
-                        Text("Import backup file")
+                        Text("import_backup_file")
                     }
                     Button(action: {
                         showingExporter.toggle()
                     }) {
-                        Text("Export backup file")
+                        Text("export_backup_file")
                     }
                 }.alert(isPresented: $showingImportAlert) {
-                    Alert(title: Text("Unable to import"), message: Text("You can only import a backup file into an empty MoodSnap history. You must delete exisiting data first."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("unable_to_import"), message: Text("unable_import_warning"), dismissButton: .default(Text("OK")))
                 }
 
                 Group {
-                    Section(header: Text("Symptom visibility")) {
+                    Section(header: Text("symptom_visibility")) {
                         ForEach(0 ..< symptomList.count, id: \.self) { i in
                             Toggle(isOn: $data.settings.symptomVisibility[i], label: {
-                                Text(symptomList[i])
+                                Text(.init(symptomList[i]))
                             })
                         }
                     }
 
-                    Section(header: Text("Activity visibility")) {
+                    Section(header: Text("activity_visibility")) {
                         ForEach(0 ..< activityList.count, id: \.self) { i in
                             Toggle(isOn: $data.settings.activityVisibility[i], label: {
-                                Text(activityList[i])
+                                Text(.init(activityList[i]))
                             })
                         }
                     }
 
-                    Section(header: Text("Social visibility")) {
+                    Section(header: Text("social_visibility")) {
                         ForEach(0 ..< socialList.count, id: \.self) { i in
                             Toggle(isOn: $data.settings.socialVisibility[i], label: {
-                                Text(socialList[i])
+                                Text(.init(socialList[i]))
                             })
                         }
                     }
@@ -153,32 +154,32 @@ struct SettingsView: View {
 //                    })
 //                }
 
-                Section(header: Text("About")) {
+                Section(header: Text("about")) {
                     HStack {
-                        Text("Website")
+                        Text("website")
                         Spacer()
                         Text("[www.moodsnap.app](https://www.moodsnap.app)")
                     }
                     HStack {
-                        Text("Developer")
+                        Text("developer")
                         Spacer()
                         Text("[Peter Rohde](https://www.peterrohde.org)")
                     }
                     HStack {
-                        Text("Version")
+                        Text("version")
                         Spacer()
                         Text(versionString)
                             .foregroundColor(.secondary)
                     }
                     HStack {
-                        Text("MoodSnaps taken")
+                        Text("moodsnaps_taken")
                         Spacer()
                         Text("\(countMoodSnaps(moodSnaps: data.moodSnaps))")
                             .foregroundColor(.secondary)
                     }
                     if data.moodSnaps.count > 0 {
                         HStack {
-                            Text("First MoodSnap")
+                            Text("first_moodsnap")
                             Spacer()
                             Text("\(getFirstDate(moodSnaps: data.moodSnaps).dateString())")
                                 .foregroundColor(.secondary)
@@ -186,7 +187,7 @@ struct SettingsView: View {
                     }
                 }
 
-                Section(header: Text("Danger zone")) {
+                Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
                             DispatchQueue.global(qos: .userInteractive).async {
@@ -196,17 +197,17 @@ struct SettingsView: View {
                             }
                         }
                     }) {
-                        Text("Load demo data")
+                        Text("load_demo_data")
                     }
                     .disabled(data.moodSnaps.count != 0)
                     Button(action: {
                         showingDeleteData.toggle()
                     }) {
-                        Text("Delete all data")
+                        Text("delete_all_data")
                             .foregroundColor(.red)
                     }
                 }.alert(isPresented: $showingDeleteData) {
-                    Alert(title: Text("Are you sure you want to delete all data?"), message: Text("This action cannot be undone. You may wish to export your data before deleting."), primaryButton: .destructive(Text("Delete")) {
+                    Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         data.moodSnaps = []
                         data.process()
                         data.save()
@@ -235,7 +236,7 @@ struct SettingsView: View {
                 }
                 dismiss()
             }
-            .navigationBarTitle(Text("Settings"))
+            .navigationBarTitle(Text("settings"))
         }
     }
 }

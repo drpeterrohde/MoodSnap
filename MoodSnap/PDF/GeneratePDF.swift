@@ -4,7 +4,7 @@ import TPPDF
 func generatePDF(data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) -> URL? {
     let document = PDFDocument(format: .a4)
     document.info.author = "MoodSnap"
-    document.info.title = "MoodSnap report"
+    document.info.title = "moodsnap_report"
 
     generatePDFContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
 
@@ -42,7 +42,7 @@ func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreStru
     let headerAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorItalic!, size: headerFontSizePDF)]
 
     // Header
-    var headerStr = "MoodSnap report"
+    var headerStr = NSLocalizedString("moodsnap_report", comment: "MoodSnap report")
     if data.settings.username != "" {
         headerStr += " for \(data.settings.username)"
     }
@@ -51,14 +51,14 @@ func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreStru
     document.add(.headerCenter, attributedTextObject: textElement)
 
     // Footer
-    let footerStr = "Report generated on " + Date().dateTimeString()
+    let footerStr = NSLocalizedString("report_generated_on", comment: "Report generated on ") + Date().dateTimeString()
 
     let attributedFooter = NSAttributedString(string: footerStr, attributes: headerAttributes)
     textElement = PDFAttributedText(text: attributedFooter)
     document.add(.footerRight, attributedTextObject: textElement)
 
     // Title
-    let attributedTitle = NSAttributedString(string: "MoodSnap report\n", attributes: titleAttributes)
+    let attributedTitle = NSAttributedString(string: NSLocalizedString("moodsnap_report", comment: "MoodSnap report") + "\n", attributes: titleAttributes)
     textElement = PDFAttributedText(text: attributedTitle)
     document.add(.contentCenter, attributedTextObject: textElement)
 }
@@ -72,7 +72,7 @@ func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale
     let subtitleAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: subtitleFontSizePDF)]
     let bodyAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: bodyFontSizePDF)]
     let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
-    let attributedStatistics = NSAttributedString(string: "\nAnalysis\n", attributes: subtitleAttributes)
+    let attributedStatistics = NSAttributedString(string: "\n" + NSLocalizedString("analysis", comment: "Analysis") + "\n", attributes: subtitleAttributes)
 
     for mood in MoodsEnum.allCases {
         document.createNewPage()
@@ -84,13 +84,13 @@ func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale
         document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
         // Mood type
-        let attributedElevation = NSAttributedString(string: "\n" + moodLabels[mood.rawValue], attributes: bodyAttributes)
+        let attributedElevation = NSAttributedString(string: "\n" + NSLocalizedString(moodLabels[mood.rawValue], comment: "EDAI"), attributes: bodyAttributes)
         textElement = PDFAttributedText(text: attributedElevation)
         document.add(.contentLeft, attributedTextObject: textElement)
 
         // Mood level
 
-        let moodLevelsAttributedString = NSAttributedString(string: "Mood levels", attributes: notesAttributes)
+        let moodLevelsAttributedString = NSAttributedString(string: NSLocalizedString("mood_levels", comment: "Mood levels"), attributes: notesAttributes)
         textElement = PDFAttributedText(text: moodLevelsAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
@@ -108,7 +108,7 @@ func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale
 
         // Sliding average
 
-        let slidingAverageAttributedString = NSAttributedString(string: "Sliding average", attributes: notesAttributes)
+        let slidingAverageAttributedString = NSAttributedString(string: NSLocalizedString("sliding_average", comment: "Sliding average"), attributes: notesAttributes)
         textElement = PDFAttributedText(text: slidingAverageAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
@@ -118,7 +118,7 @@ func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale
 
         // Volatility
 
-        let volatilityAttributedString = NSAttributedString(string: "Volatility", attributes: notesAttributes)
+        let volatilityAttributedString = NSAttributedString(string: NSLocalizedString("volatility", comment: "Volatility"), attributes: notesAttributes)
         textElement = PDFAttributedText(text: volatilityAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
@@ -139,7 +139,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
 
     // Statistics
-    let attributedStatistics = NSAttributedString(string: "\nInsights\n", attributes: subtitleAttributes)
+    let attributedStatistics = NSAttributedString(string: "\n" + NSLocalizedString("insights", comment: "Insights") + "\n", attributes: subtitleAttributes)
     var textElement = PDFAttributedText(text: attributedStatistics)
     document.add(.contentLeft, attributedTextObject: textElement)
 
@@ -147,12 +147,12 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
     // Influences
 
-    let attributedInfluences = NSAttributedString(string: "\nInfluences\n\n", attributes: bodyAttributes)
+    let attributedInfluences = NSAttributedString(string: "\n" + NSLocalizedString("influences", comment: "Influences") + "\n\n", attributes: bodyAttributes)
     textElement = PDFAttributedText(text: attributedInfluences)
 
     document.add(.contentLeft, attributedTextObject: textElement)
 
-    let attributedElevation = NSAttributedString(string: "Mood level / Mood volatility", attributes: notesAttributes)
+    let attributedElevation = NSAttributedString(string: NSLocalizedString("mood_level_mood_volatility", comment: "Mood level / Mood volatility"), attributes: notesAttributes)
     textElement = PDFAttributedText(text: attributedElevation)
     document.add(.contentLeft, attributedTextObject: textElement)
 
@@ -165,13 +165,13 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     table.widths = [0.2, 0.2, 0.2, 0.2, 0.2]
 
     // Column labels
-    let columnLabels = ["Activity", "Elevation", "Depression", "Anxiety", "Irritability"]
+    let columnLabels = ["activity", "elevation", "depression", "anxiety", "irritability"]
 
     for column in 0 ... 4 {
         let cell = table[0, column]
         cell.style = PDFTableCellStyle(colors: (fill: UIColor.white, text: UIColor.black), font: UIFont.systemFont(ofSize: 8, weight: .bold))
         do {
-            try tableContent = PDFTableContent(content: columnLabels[column])
+            try tableContent = PDFTableContent(content: NSLocalizedString(columnLabels[column], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -185,7 +185,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
         // Activity labels
         do {
-            try tableContent = PDFTableContent(content: activityList[activityCount])
+            try tableContent = PDFTableContent(content: NSLocalizedString(activityList[activityCount], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -196,7 +196,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
             let cell = table[activityCount + 1, moodCount]
             do {
                 let str = formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount - 1]) + "/" + formatMoodLevelString(value: data.processedData.activityButterfly[activityCount].influence()[moodCount + 3]) // only has activities ???
-                try tableContent = PDFTableContent(content: str)
+                try tableContent = PDFTableContent(content: NSLocalizedString(str, comment: ""))
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
@@ -212,7 +212,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
 
         // Activity labels
         do {
-            try tableContent = PDFTableContent(content: socialList[socialCount])
+            try tableContent = PDFTableContent(content: NSLocalizedString(socialList[socialCount], comment: ""))
             cell.content = tableContent
         } catch {
             print("PDF table eror")
@@ -249,7 +249,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreStruct, ti
 
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
-    let attributedMood = NSAttributedString(string: "\nAverage mood level / volatility\n", attributes: bodyAttributes)
+    let attributedMood = NSAttributedString(string: "\n" + NSLocalizedString("average_mood_volatility", comment: "Average mood level / volatility") + "\n", attributes: bodyAttributes)
     let textElement = PDFAttributedText(text: attributedMood)
     document.add(.contentLeft, attributedTextObject: textElement)
 
@@ -261,7 +261,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreStruct, ti
 
     // Bar chart summary
 
-    let attributedLevels = NSAttributedString(string: "\nMood history\n", attributes: bodyAttributes)
+    let attributedLevels = NSAttributedString(string: "\n" + NSLocalizedString("mood_history", comment: "Mood history") + "\n", attributes: bodyAttributes)
     let textElement2 = PDFAttributedText(text: attributedLevels)
     document.add(.contentLeft, attributedTextObject: textElement2)
 
@@ -280,7 +280,7 @@ func generateNotesContent(document: PDFDocument, data: DataStoreStruct, timescal
 
     document.createNewPage()
 
-    let attributedSubtitle = NSAttributedString(string: "\nNotes\n", attributes: subtitleAttributes)
+    let attributedSubtitle = NSAttributedString(string: "\n" + NSLocalizedString("notes", comment: "Notes") + "\n", attributes: subtitleAttributes)
     let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
     let textElement = PDFAttributedText(text: attributedSubtitle)
     document.add(.contentLeft, attributedTextObject: textElement)
@@ -288,7 +288,7 @@ func generateNotesContent(document: PDFDocument, data: DataStoreStruct, timescal
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
     for moodSnap in sortByDate(moodSnaps: data.moodSnaps) {
-        if moodSnap.notes != "" {
+        if moodSnap.notes != "" && moodSnap.snapType != .quote && moodSnap.snapType != .custom {
             let attributedNotes = NSAttributedString(string: "\n" + moodSnap.timestamp.dateTimeString() + "\n" + moodSnap.notes + "\n", attributes: notesAttributes)
             let textElement = PDFAttributedText(text: attributedNotes)
             document.add(.contentLeft, attributedTextObject: textElement)
@@ -304,14 +304,14 @@ func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreSt
         .withDesign(.serif)
     let subtitleAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: subtitleFontSizePDF)]
 
-    let attributedSubtitle = NSAttributedString(string: "\nInterpretation guide\n", attributes: subtitleAttributes)
+    let attributedSubtitle = NSAttributedString(string: "\n" + NSLocalizedString("interpretation_guide", comment: "") + "\n", attributes: subtitleAttributes)
     let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
     var textElement = PDFAttributedText(text: attributedSubtitle)
     document.add(.contentLeft, attributedTextObject: textElement)
 
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
-    let attributedNotes = NSAttributedString(string: notes_on_interpretation_string, attributes: notesAttributes)
+    let attributedNotes = NSAttributedString(string: NSLocalizedString("notes_on_interpretation_string", comment: ""), attributes: notesAttributes)
 
     textElement = PDFAttributedText(text: attributedNotes)
     document.add(.contentLeft, attributedTextObject: textElement)

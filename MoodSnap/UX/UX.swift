@@ -61,7 +61,7 @@ func ColorBlindTheme() -> ThemeStruct {
     // let ibmColorBlindPaletteWhite = Color(0xFFFFFF)
 
     var theme: ThemeStruct = ThemeStruct()
-    theme.name = "Color blind"
+    theme.name = "color_blind"
     theme.buttonColor = Color.primary
     theme.iconColor = ibmColorBlindPaletteBlue
     theme.controlColor = ibmColorBlindPaletteBlue

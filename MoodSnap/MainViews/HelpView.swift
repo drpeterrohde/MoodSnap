@@ -10,50 +10,50 @@ struct HelpView: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                GroupBox(label: Label("Need help?", systemImage: "heart.fill").foregroundColor(themes[data.settings.theme].emergencyColor)) {
+                GroupBox(label: Label("need_help", systemImage: "heart.fill").foregroundColor(themes[data.settings.theme].emergencyColor)) {
                     Divider()
                     VStack(alignment: .leading) {
-                        Text(.init(emergency_string)).font(.subheadline)
+                        Text(.init("emergency_string")).font(.subheadline)
                     }
                 }
 
-                GroupBox(label: Label("How to use MoodSnap", systemImage: "info.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
+                GroupBox(label: Label("how_to_use_moodsnap", systemImage: "info.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Group {
                         Divider()
                         VStack(alignment: .leading) {
-                            Text(.init(help_how_to_use_moodsnap_string)).font(.subheadline)
+                            Text(.init("help_how_to_use_moodsnap_string")).font(.subheadline)
                         }
                     }
                 }
 
                 Group {
-                    GroupBox(label: Label("Controls", systemImage: "gearshape").foregroundColor(themes[data.settings.theme].iconColor)) {
+                    GroupBox(label: Label("controls", systemImage: "gearshape").foregroundColor(themes[data.settings.theme].iconColor)) {
                         Group {
                             Divider()
                             let gridItemLayout = Array(repeating: GridItem(.flexible()), count: 2)
                             LazyVGrid(columns: gridItemLayout, alignment: .leading, spacing: themes[data.settings.theme].historyGridSpacing) {
-                                Label("Settings", systemImage: "slider.horizontal.3")
+                                Label("settings", systemImage: "slider.horizontal.3")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Insights", systemImage: "waveform.path.ecg.rectangle")
+                                Label("insights", systemImage: "waveform.path.ecg.rectangle")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Add event", systemImage: "star.square")
+                                Label("add_event", systemImage: "star.square")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Take MoodSnap", systemImage: "plus.circle")
+                                Label("take_moodsnap", systemImage: "plus.circle")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Diary entry", systemImage: "note.text.badge.plus")
+                                Label("diary_entry", systemImage: "note.text.badge.plus")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Photo diary", systemImage: "photo.on.rectangle.angled")
+                                Label("photo_diary", systemImage: "photo.on.rectangle.angled")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Help", systemImage: "questionmark.circle")
+                                Label("help", systemImage: "questionmark.circle")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
-                                Label("Save", systemImage: "arrowtriangle.right.circle")
+                                Label("save", systemImage: "arrowtriangle.right.circle")
                                     .foregroundColor(.secondary)
                                     .font(.subheadline)
                             }
@@ -62,36 +62,36 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Taking MoodSnaps", systemImage: "plus.circle").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("taking_moodsnaps", systemImage: "plus.circle").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(help_taking_moodsnaps_string)).font(.subheadline)
+                                Text(.init("help_taking_moodsnaps_string")).font(.subheadline)
                             }
                         }
 
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Events", systemImage: "star.square").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("events", systemImage: "star.square").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(help_events_string)).font(.subheadline)
+                                Text(.init("help_events_string")).font(.subheadline)
                             }
                         }
 
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Diary", systemImage: "note.text.badge.plus").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("diary", systemImage: "note.text.badge.plus").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(help_notes_string)).font(.subheadline)
+                                Text(.init("help_notes_string")).font(.subheadline)
                             }
                         }
 
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Photo diary", systemImage: "photo.on.rectangle.angled").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("photo_diary", systemImage: "photo.on.rectangle.angled").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(photo_diary_string)).font(.subheadline)
+                                Text(.init("photo_diary_string")).font(.subheadline)
                             }
                         }
 
@@ -100,25 +100,25 @@ struct HelpView: View {
                             VStack(alignment: .leading) {
                                 Label("Settings", systemImage: "slider.horizontal.3").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(help_settings_string)).font(.subheadline)
+                                Text(.init("help_settings_string")).font(.subheadline)
                             }
                         }
                     }
                 }
 
                 Group {
-                    GroupBox(label: Label("Insights", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)) {
+                    GroupBox(label: Label("insights", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)) {
                         Group {
                             Divider()
-                            Text(.init(statistics_intro_string)).font(.subheadline)
+                            Text(.init("statistics_intro_string")).font(.subheadline)
                         }
 
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Average mood", systemImage: "brain.head.profile").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("average_mood", systemImage: "brain.head.profile").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(average_mood_string)).font(.subheadline)
+                                Text(.init("average_mood_string")).font(.subheadline)
                                 Image("average_mood")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -128,9 +128,9 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Mood history", systemImage: "chart.bar.xaxis").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("mood_history", systemImage: "chart.bar.xaxis").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(statistics_mood_history_string)).font(.subheadline)
+                                Text(.init("statistics_mood_history_string")).font(.subheadline)
                                 Image("mood_history")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -140,9 +140,9 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Moving average", systemImage: "chart.line.uptrend.xyaxis").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("moving_average", systemImage: "chart.line.uptrend.xyaxis").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(statistics_moving_average_string)).font(.subheadline)
+                                Text(.init("statistics_moving_average_string")).font(.subheadline)
                                 Image("moving_average")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -152,22 +152,22 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Volatility", systemImage: "waveform.path.ecg").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("volatility", systemImage: "waveform.path.ecg").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(statistics_volatility_string_1)).font(.subheadline)
+                                Text(.init("statistics_volatility_string_1")).font(.subheadline)
                                 Image("volatility")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                Text(.init(statistics_volatility_string_2)).font(.subheadline)
+                                Text(.init("statistics_volatility_string_2")).font(.subheadline)
                             }
                         }
 
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Tally", systemImage: "chart.bar.doc.horizontal").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("tally", systemImage: "chart.bar.doc.horizontal").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer() // tally
-                                Text(.init(statistics_tally_string)).font(.subheadline)
+                                Text(.init("statistics_tally_string")).font(.subheadline)
                                 Image("tally")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -177,9 +177,9 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Influences", systemImage: "eye").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("influences", systemImage: "eye").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(influences_string)).font(.subheadline)
+                                Text(.init("influences_string")).font(.subheadline)
                                 Image("influences")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
@@ -189,39 +189,39 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Transients", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)
+                                Label("transients", systemImage: "waveform.path.ecg.rectangle").foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
-                                Text(.init(statistics_butterfly_average_string_1)).font(.subheadline)
+                                Text(.init("statistics_butterfly_average_string_1")).font(.subheadline)
                                 Image("transients")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
-                                Text(.init(statistics_butterfly_average_string_2)).font(.subheadline)
+                                Text(.init("statistics_butterfly_average_string_2")).font(.subheadline)
                             }
                         }
                     }
                 }
 
-                GroupBox(label: Label("PDF reports", systemImage: "doc").foregroundColor(themes[data.settings.theme].iconColor)) {
+                GroupBox(label: Label("PDF_reports", systemImage: "doc").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
-                        Text(.init(pdf_report_string)).font(.subheadline)
+                        Text(.init("pdf_report_string")).font(.subheadline)
                     }
                 }
 
-                GroupBox(label: Label("Privacy", systemImage: "lock.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
+                GroupBox(label: Label("privacy", systemImage: "lock.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
-                        Text(.init(privacy_string)).font(.subheadline)
+                        Text(.init("privacy_string")).font(.subheadline)
                     }
                 }
 
-                GroupBox(label: Label("Disclaimer", systemImage: "exclamationmark.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
+                GroupBox(label: Label("disclaimer", systemImage: "exclamationmark.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
-                        Text(.init(disclaimer_string)).font(.subheadline)
+                        Text(.init("disclaimer_string")).font(.subheadline)
                     }
                 }
-            }.navigationBarTitle(Text("Information"))
+            }.navigationBarTitle(Text("information"))
         }
     }
 }

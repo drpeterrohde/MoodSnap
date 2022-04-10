@@ -14,7 +14,7 @@ struct HistoryMoodView: View {
         Group {
             if totalSymptoms(moodSnap: moodSnap, settings: data.settings) != 0 {
                 Divider()
-                Label("Symptoms", systemImage: "heart.text.square")
+                Label("symptoms", systemImage: "heart.text.square")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 HistorySymptomsView(moodSnap: moodSnap, data: data)
@@ -24,7 +24,7 @@ struct HistoryMoodView: View {
         Group {
             if totalActivities(moodSnap: moodSnap, settings: data.settings) != 0 {
                 Divider()
-                Label("Activity", systemImage: "figure.walk")
+                Label("activity", systemImage: "figure.walk")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 HistoryActivityView(moodSnap: moodSnap, data: data)
@@ -34,7 +34,7 @@ struct HistoryMoodView: View {
         Group {
             if totalSocial(moodSnap: moodSnap, settings: data.settings) != 0 {
                 Divider()
-                Label("Social", systemImage: "person.2")
+                Label("social", systemImage: "person.2")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 HistorySocialView(moodSnap: moodSnap, data: data)

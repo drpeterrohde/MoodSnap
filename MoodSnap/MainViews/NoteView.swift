@@ -25,7 +25,7 @@ struct NoteView: View {
             // Notes
             VStack {
                 Divider()
-                Label("Notes", systemImage: "note.text").font(.caption)
+                Label("notes", systemImage: "note.text").font(.caption)
                 TextEditor(text: $moodSnap.notes).font(.caption)
             }
 

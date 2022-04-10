@@ -26,7 +26,7 @@ struct UnlockView: View {
                             .scaledToFit()
                             .frame(width: faceIDWidth, height: faceIDWidth)
                             .foregroundColor(.white)
-                        Text("Unlock")
+                        Text("unlock")
                             .font(.caption)
                             .foregroundColor(.white)
                     }

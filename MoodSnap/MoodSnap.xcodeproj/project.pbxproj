@@ -67,7 +67,6 @@
 		CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4227EBEF290067EE63 /* ContentView.swift */; };
 		CA496B9B27EBEF2B0067EE63 /* ControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4327EBEF290067EE63 /* ControlView.swift */; };
 		CA496B9C27EBEF2B0067EE63 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4527EBEF2A0067EE63 /* TestData.swift */; };
-		CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4827EBEF2A0067EE63 /* Strings.swift */; };
 		CA496B9E27EBEF2B0067EE63 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4927EBEF2A0067EE63 /* UX.swift */; };
 		CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4A27EBEF2A0067EE63 /* Color.swift */; };
 		CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */; };
@@ -94,6 +93,7 @@
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
+		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
@@ -159,7 +159,6 @@
 		CA496B4227EBEF290067EE63 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CA496B4327EBEF290067EE63 /* ControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlView.swift; sourceTree = "<group>"; };
 		CA496B4527EBEF2A0067EE63 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
-		CA496B4827EBEF2A0067EE63 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		CA496B4927EBEF2A0067EE63 /* UX.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UX.swift; sourceTree = "<group>"; };
 		CA496B4A27EBEF2A0067EE63 /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		CA496B4F27EBEF2A0067EE63 /* FileSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
@@ -184,6 +183,7 @@
 		CA496B6C27EBEF2A0067EE63 /* Influence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Influence.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
+		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,8 +205,8 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA5C61AA2802464F003151FD /* Localizable.strings */,
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
-				CA1C458328015DFC0073613F /* Localization */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -231,14 +231,6 @@
 				CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		CA1C458328015DFC0073613F /* Localization */ = {
-			isa = PBXGroup;
-			children = (
-				CA496B4827EBEF2A0067EE63 /* Strings.swift */,
-			);
-			path = Localization;
 			sourceTree = "<group>";
 		};
 		CA1D6D8027EC6057002365AC /* Quotes */ = {
@@ -271,10 +263,10 @@
 		CA496B1327EBEF290067EE63 /* InsightsView */ = {
 			isa = PBXGroup;
 			children = (
-				CA496B1427EBEF290067EE63 /* InfluencesSymptomView.swift */,
 				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
 				CA496B1627EBEF290067EE63 /* ActiveEnergyView.swift */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
+				CA496B1427EBEF290067EE63 /* InfluencesSymptomView.swift */,
 				CA496B1827EBEF290067EE63 /* InfluencesActivityView.swift */,
 				CA496B1927EBEF290067EE63 /* InfluencesSocialView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
@@ -466,6 +458,7 @@
 			knownRegions = (
 				en,
 				Base,
+				de,
 			);
 			mainGroup = CA0FA5DC27EBEA1700B5EEE1;
 			packageReferences = (
@@ -488,6 +481,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA496B1227EBEEFC0067EE63 /* Assets.xcassets in Resources */,
+				CA5C61A82802464F003151FD /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,7 +552,6 @@
 				CA496BAC27EBEF2B0067EE63 /* PDFMoodHistoryBarView.swift in Sources */,
 				CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */,
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
-				CA496B9D27EBEF2B0067EE63 /* Strings.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
@@ -587,6 +580,17 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CA5C61AA2802464F003151FD /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CA5C61A92802464F003151FD /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		CA0FA5F127EBEA1A00B5EEE1 /* Debug */ = {

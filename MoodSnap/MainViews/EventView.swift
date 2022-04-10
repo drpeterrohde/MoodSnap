@@ -24,12 +24,12 @@ struct EventView: View {
 
             VStack {
                 Divider()
-                Label("Event", systemImage: "star.fill").font(.caption)
+                Label("event", systemImage: "star.fill").font(.caption)
                 TextEditor(text: $moodSnap.event).font(.caption).frame(height: 30)
             }
 
             VStack {
-                Label("Notes", systemImage: "note.text").font(.caption)
+                Label("notes", systemImage: "note.text").font(.caption)
                 TextEditor(text: $moodSnap.notes).font(.caption)
             }
 

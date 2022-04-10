@@ -68,7 +68,7 @@ struct TransientView: View {
                         guides: 0)
                         .padding(.top, -15)
                     HStack(alignment: .center) {
-                        Text("Insufficient data")
+                        Text("insufficient_data")
                             .font(.caption)
                             .foregroundColor(.secondary)
                             .padding(.top, -10)
@@ -103,13 +103,13 @@ struct TransientView: View {
                                     .padding(.top, -15)
                                 HStack(alignment: .center) {
                                     if selectionType == .event {
-                                        Text("±30days")
+                                        Text("pm_30_days")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                             .padding(.top, -10)
                                             .padding(.leading, 15)
                                     } else {
-                                        Text("±7days")
+                                        Text("pm_7_days")
                                             .font(.caption)
                                             .foregroundColor(.secondary)
                                             .padding(.top, -10)

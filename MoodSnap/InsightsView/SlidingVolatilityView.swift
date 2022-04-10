@@ -19,7 +19,7 @@ struct SlidingVolatilityView: View {
         let color = moodUIColors(settings: data.settings)
         
         if (data.moodSnaps.count == 0) {
-            Text("Insufficient data")
+            Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
