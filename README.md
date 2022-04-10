@@ -1,4 +1,4 @@
-![](https://moodsnap.app/wp-content/uploads/2022/02/cropped-moodsnap-logos-e1645919651702-1.jpeg)
+![](https://moodsnap.app/wp-content/uploads/2022/04/MoodSnap-header.png)
 
 # MoodSnap
 
