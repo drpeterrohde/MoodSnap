@@ -1,4 +1,4 @@
-![](https://moodsnap.app/wp-content/uploads/2022/04/MoodSnap-header.png)
+![ACC2B905-FDC9-479A-B4EF-6053A4E2670D](https://user-images.githubusercontent.com/4382522/162642930-583e55ab-3890-4d0c-b458-3218451d2c97.jpeg)
 
 # MoodSnap
 
