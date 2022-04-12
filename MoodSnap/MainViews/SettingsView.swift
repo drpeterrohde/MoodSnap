@@ -106,8 +106,6 @@ struct SettingsView: View {
                     }) {
                         Text("export_backup_file")
                     }
-                }.alert(isPresented: $showingImportAlert) {
-                    Alert(title: Text("unable_to_import"), message: Text("unable_import_warning"), dismissButton: .default(Text("OK")))
                 }
 
                 Group {
@@ -195,11 +193,12 @@ struct SettingsView: View {
                                 data.process()
                                 data.save()
                             }
+                        } else {
+                            showingImportAlert.toggle()
                         }
                     }) {
                         Text("load_demo_data")
                     }
-                    .disabled(data.moodSnaps.count != 0)
                     Button(action: {
                         showingDeleteData.toggle()
                     }) {
@@ -234,6 +233,8 @@ struct SettingsView: View {
                     print(error.localizedDescription)
                 }
                 dismiss()
+            }.alert(isPresented: $showingImportAlert) {
+                Alert(title: Text("unable_to_import"), message: Text("unable_import_warning"), dismissButton: .default(Text("OK")))
             }.navigationBarTitle(Text("settings"))
         }
     }

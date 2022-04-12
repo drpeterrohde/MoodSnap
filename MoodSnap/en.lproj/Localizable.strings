@@ -203,7 +203,7 @@
 "tally" = "Tally";
 "theme" = "Theme";
 "transients" = "Transients";
-"unable_import_warning" = "You can only import a backup file into an empty MoodSnap history. You must delete exisiting data first.";
+"unable_import_warning" = "You can only import data into an empty MoodSnap history. You must delete exisiting data first.";
 "unable_to_import" = "Unable to import";
 "unlock" = "Unlock";
 "version" = "Version";
