@@ -193,7 +193,7 @@
 "statistics_tally_string" = "The tally displays the number of occurrences of different activites, symptoms, social and hashtag events within the specified time window.";
 "statistics_volatility_string_1" = "People with some mood-related conditions often experience highly volatile moods which they aim to stabilise. The _volatility_ plot visualises this as a sliding standard deviation for each of the four mood indicators. When mood levels remain constant over time the volatility is zero. If they oscillate or abruptly change it increases.";
 "statistics_volatility_string_2" = "In the figures above, note how the increase in volatility of depression corresponds to the sudden major change in the mood history's depression level, and the increased volatility of elevation is associated with bigger oscillations in the elevation level.";
-"sure_delete" = "Are you sure you want to delete all data? This action cannot be undone.";
+"sure_delete" = "Are you sure you want to delete all data?";
 "sure_to_delete" = "Are you sure you want to delete this item? This action cannot be undone.";
 "symptom" = "Symptom";
 "symptom_visibility" = "Symptom visibility";
