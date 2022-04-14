@@ -32,14 +32,14 @@ let yearInterval: CGFloat = 365 * dayInterval
 let zeroGraphicalBarOffset: CGFloat = 0.3
 let midLineWidth: CGFloat = 3.0
 let iconWidth: CGFloat = 15
-let faceIDWidth: CGFloat = 40
+let faceIDWidth: CGFloat = 50
 let numericFont: Font = Font.system(.caption, design: .monospaced)
 
 /// Symptom list
 let symptomList = [
     "Anhedonia",
-    "Increased_apetite",
-    "Reduced_apetite",
+    "Increased_appetite",
+    "Reduced_appetite",
     "Compulsions",
     "Dissociation",
     "Euphoria",

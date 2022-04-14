@@ -40,25 +40,38 @@ struct UnlockView: View {
         }
     }
 
+    /**
+     FaceID authentication
+     */
     func authenticate() {
+        // If we're using FaceID and we're locked
         if data.settings.useFaceID && !isUnlocked {
             let context = LAContext()
             var error: NSError?
 
-            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // Is biometric authentication available?
+            if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
                 let reason = "Unlock to acces MoodSnap."
 
-                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, _ in
+                context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
                     if success {
-                        isUnlocked = true
+                        // Authentication success
+                        DispatchQueue.main.async {
+                            isUnlocked = true
+                        }
                     } else {
-                        isUnlocked = false
+                        // Authentication failure
+                        DispatchQueue.main.async {
+                            isUnlocked = false
+                        }
                     }
                 }
             } else {
-                isUnlocked = true
-                data.settings.useFaceID = false
-                print("FaceID not available.")
+                // Biometrics not available
+                DispatchQueue.main.async {
+                    isUnlocked = true
+                    data.settings.useFaceID = false
+                }
             }
         }
     }
