@@ -34,8 +34,7 @@ struct UnlockView: View {
 
                 Spacer()
             }
-        }
-        .onAppear {
+        }.onAppear {
             authenticate()
         }
     }
@@ -56,23 +55,19 @@ struct UnlockView: View {
                 context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
                     if success {
                         // Authentication success
-                        DispatchQueue.main.async {
-                            isUnlocked = true
-                        }
+                        isUnlocked = true
                     } else {
                         // Authentication failure
-                        DispatchQueue.main.async {
-                            isUnlocked = false
-                        }
+                        isUnlocked = false
                     }
                 }
             } else {
                 // Biometrics not available
-                DispatchQueue.main.async {
-                    isUnlocked = true
-                    data.settings.useFaceID = false
-                }
+                isUnlocked = true
+                data.settings.useFaceID = false
             }
+        } else {
+            isUnlocked = true
         }
     }
 }
