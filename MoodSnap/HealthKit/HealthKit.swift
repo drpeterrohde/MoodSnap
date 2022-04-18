@@ -68,19 +68,13 @@ class HealthManager {
         if results!.count == 0 {
             return nil
         }
-
-        print("Samples = ", results!.count)
-        var maxPounds: Double = 0
+        
         var maxKg: Double = 0
 
         for result in results! {
-            // let thisDate: Date = result.startDate
             let thisMassSample = result as! HKQuantitySample
-            let thisMassPound = thisMassSample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
-            let thisMassKg = thisMassSample.quantity.doubleValue(for: HKUnit.pound())
-
+            let thisMassKg = thisMassSample.quantity.doubleValue(for: HKUnit.gramUnit(with: .kilo))
             maxKg = max(maxKg, thisMassKg)
-            maxPounds = max(maxPounds, thisMassPound)
         }
 
         return maxKg
