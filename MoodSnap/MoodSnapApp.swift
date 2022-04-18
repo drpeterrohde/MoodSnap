@@ -1,13 +1,16 @@
 import Disk
 import LocalAuthentication
 import SwiftUI
+import HealthKit
+import HealthKitUI
 
 @main
 struct MoodSnapApp: App {
     @Environment(\.scenePhase) var scenePhase
     @State private var data: DataStoreStruct = DataStoreStruct()
     @State private var isUnlocked = false
-
+    private var healthManager = HealthManager()
+    
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
@@ -22,7 +25,16 @@ struct MoodSnapApp: App {
                                 as: DataStoreStruct.self)
                             data = retrieved
                         } catch {
-                            // print("Load failed")
+                            print("Load failed")
+                        }
+
+                        if HKHealthStore.isHealthDataAvailable() {
+                            print("HealthKit is Available")
+                            healthManager.requestPermissions()
+                            let firstDate = getFirstDate(moodSnaps: data.moodSnaps)
+                            healthManager.makeHealthSnapsForDates(startDate: firstDate, endDate: Date())
+                        } else {
+                            print("There is a problem accessing HealthKit")
                         }
                     }
             }
@@ -41,7 +53,7 @@ struct MoodSnapApp: App {
             }
         }
     }
-
+    
     /**
      FaceID authentication
      */

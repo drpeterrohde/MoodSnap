@@ -93,6 +93,8 @@
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
 		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
+		CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthKit.swift */; };
+		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
@@ -182,6 +184,9 @@
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA7775AA280CD44C0045A202 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
+		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
+		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -192,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */,
+				CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */,
 				CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */,
 				CA3CD64427EC0074008F0AAE /* Disk in Frameworks */,
 			);
@@ -203,8 +209,10 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA7775AC280CDB370045A202 /* MoodSnap.entitlements */,
 				CA5C61AA2802464F003151FD /* Localizable.strings */,
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
+				CA7775A9280CD43B0045A202 /* HealthKit */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
 				CA496B5127EBEF2A0067EE63 /* DataStore */,
 				CA496B6227EBEF2A0067EE63 /* Hashtags */,
@@ -220,6 +228,7 @@
 				CA496B1127EBEEFC0067EE63 /* Assets.xcassets */,
 				CA496AF827EBEEEE0067EE63 /* Base */,
 				CA0FA5E627EBEA1700B5EEE1 /* Products */,
+				CA7775AD280CDB380045A202 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -404,6 +413,22 @@
 			path = Statistics;
 			sourceTree = "<group>";
 		};
+		CA7775A9280CD43B0045A202 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				CA7775AA280CD44C0045A202 /* HealthKit.swift */,
+			);
+			path = HealthKit;
+			sourceTree = "<group>";
+		};
+		CA7775AD280CDB380045A202 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA7775AE280CDB380045A202 /* HealthKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -548,6 +573,7 @@
 				CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */,
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
+				CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
@@ -708,6 +734,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MoodSnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -721,6 +748,8 @@
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "For secure login";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Health data for insights";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -749,6 +778,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = MoodSnap.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
@@ -762,6 +792,8 @@
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "For secure login";
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
+				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Health data for insights";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
