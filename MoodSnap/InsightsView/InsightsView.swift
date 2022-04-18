@@ -433,10 +433,10 @@ struct InsightsView: View {
                                                     Image(systemName: "chevron.right").foregroundColor(.secondary)
                                                 }
                                             }
-                                            if data.uxState.isWeightExpanded {
-                                                Divider()
-                                                WeightView(data: data)
-                                            }
+                                        }
+                                        if data.uxState.isWeightExpanded {
+                                            Divider()
+                                            WeightView(data: data)
                                         }
                                     }
                                 }

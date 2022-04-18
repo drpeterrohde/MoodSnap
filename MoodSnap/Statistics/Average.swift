@@ -6,15 +6,36 @@ import SwiftUI
 func average(data: [CGFloat?]) -> CGFloat? {
     var sum: CGFloat = 0
     var count: CGFloat = 0
-    
+
     for value in data {
-        if (value != nil) {
+        if value != nil {
             sum += value!
             count += 1
         }
     }
-    
-    if (count > 0) {
+
+    if count > 0 {
+        return sum / count
+    } else {
+        return nil
+    }
+}
+
+/**
+ Calculate the joint average of `dataX` and `dataY`, nil if no data.
+ */
+func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+    var sum: CGFloat = 0
+    var count: CGFloat = 0
+
+    for i in 0 ..< dataX.count {
+        if dataX[i] != nil && dataY[i] != nil {
+            sum += dataX[i]! * dataY[i]!
+            count += 1
+        }
+    }
+
+    if count > 0 {
         return sum / count
     } else {
         return nil
@@ -29,21 +50,21 @@ func average(moodSnaps: [MoodSnapStruct]) -> [CGFloat?] {
     var dataD: [CGFloat] = []
     var dataA: [CGFloat] = []
     var dataI: [CGFloat] = []
-    
+
     for moodSnap in moodSnaps {
-        if (moodSnap.snapType == .mood) {
+        if moodSnap.snapType == .mood {
             dataE.append(moodSnap.elevation)
             dataD.append(moodSnap.depression)
             dataA.append(moodSnap.anxiety)
             dataI.append(moodSnap.irritability)
         }
     }
-    
+
     let averageE = average(data: dataE)
     let averageD = average(data: dataD)
     let averageA = average(data: dataA)
     let averageI = average(data: dataI)
-    
+
     return [averageE, averageD, averageA, averageI]
 }
 
@@ -54,10 +75,10 @@ func averageSeries(series: [[CGFloat?]]) -> [CGFloat?] {
     if series.count == 0 {
         return []
     }
-    
+
     var newSeries: [CGFloat?] = []
-    
-    for index in 0..<series[0].count {
+
+    for index in 0 ..< series[0].count {
         var theseVals: [CGFloat?] = []
         for whichSeries in series {
             theseVals.append(whichSeries[index])
@@ -65,6 +86,6 @@ func averageSeries(series: [[CGFloat?]]) -> [CGFloat?] {
         let thisAverage = average(data: theseVals)
         newSeries.append(thisAverage)
     }
-    
+
     return newSeries
 }

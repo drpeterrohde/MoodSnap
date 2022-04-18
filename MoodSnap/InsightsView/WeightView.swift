@@ -41,5 +41,5 @@ struct WeightView: View {
 }
 
 func getWeightMoodDistribution(type: MoodsEnum, data: DataStoreStruct) -> ([CGFloat], [CGFloat]) {
-    return ([0,1,2],[2,3,5])
+    return ([1,2,3,4],[0,4,2,3])
 }
