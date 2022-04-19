@@ -34,7 +34,7 @@ func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
             firstDate = moodSnap.timestamp
         }
     }
-    return firstDate
+    return firstDate.startOfDay()
 }
 
 /**

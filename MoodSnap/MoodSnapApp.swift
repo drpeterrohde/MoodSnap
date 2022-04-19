@@ -49,7 +49,6 @@ struct MoodSnapApp: App {
             if value == .active {
                 authenticate()
                 DispatchQueue.global(qos: .userInteractive).async {
-                    data.healthSnaps = healthManager.healthSnaps
                     data.process()
                     data.save()
                 }
