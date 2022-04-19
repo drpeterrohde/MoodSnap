@@ -31,8 +31,7 @@ struct MoodSnapApp: App {
                         if HKHealthStore.isHealthDataAvailable() {
                             print("HealthKit is Available")
                             healthManager.requestPermissions()
-                            let firstDate = getFirstDate(moodSnaps: data.moodSnaps)
-                            healthManager.makeHealthSnapsForDates(startDate: firstDate, endDate: Date())
+                            healthManager.makeHealthSnaps(data: data)
                             data.healthSnaps = healthManager.healthSnaps
                         } else {
                             print("There is a problem accessing HealthKit")

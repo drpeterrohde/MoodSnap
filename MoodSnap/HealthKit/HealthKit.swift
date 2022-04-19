@@ -21,11 +21,13 @@ class HealthManager {
         })
     }
 
-    func makeHealthSnapsForDates(startDate: Date, endDate: Date) {
-        var thisDate = startDate.startOfDay()
-        while thisDate <= endDate {
-            makeHealthSnapForDate(date: thisDate)
-            thisDate = thisDate.addDays(days: 1)
+    func makeHealthSnaps(data: DataStoreStruct) {
+        var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
+        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
+        
+        while date >= earliest {
+            makeHealthSnapForDate(date: date)
+            date = date.addDays(days: -1)
         }
     }
     
@@ -60,6 +62,9 @@ class HealthManager {
         healthStore.execute(sampleQuery)
     }
 
+    /**
+     Maximum weight for given HealthKit `results`
+     */
     func maxWeight(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
