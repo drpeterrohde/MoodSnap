@@ -1,5 +1,10 @@
 import SwiftUI
 
+enum HealthTypeEnum: Int, Codable {
+    case weight = 1
+    case distance = 2
+}
+
 /**
  Enumeration for units of measurement (metric or imperial)
  */

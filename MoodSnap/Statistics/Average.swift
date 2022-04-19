@@ -22,6 +22,24 @@ func average(data: [CGFloat?]) -> CGFloat? {
 }
 
 /**
+ Average `type` of `healthSnaps`
+ */
+func average(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> CGFloat? {
+    var data: [CGFloat?] = []
+    
+    for healthSnap in healthSnaps {
+        switch type {
+        case .weight:
+            data.append(healthSnap.weight)
+        case .distance:
+            data.append(healthSnap.walkingRunningDistance)
+        }
+    }
+    
+    return average(data: data)
+}
+
+/**
  Calculate the joint average of `dataX` and `dataY`, nil if no data.
  */
 func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {

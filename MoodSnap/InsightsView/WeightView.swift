@@ -1,4 +1,3 @@
-import Charts
 import SwiftUI
 
 struct WeightView: View {
@@ -6,8 +5,10 @@ struct WeightView: View {
 
     var body: some View {
         let samples: Int = data.healthSnaps.count
-        let r2mood: [CGFloat?] = getWeightR2(data: data)
-        let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
+        let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
+        let averageStr: String = String(format: "%.1f", average) + "kg"
+        let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
+        // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
 
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
@@ -19,10 +20,18 @@ struct WeightView: View {
                 .foregroundColor(.secondary)
             Spacer()
             HStack {
+                Text("Average weight")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(averageStr)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
+            HStack {
                 // R2
                 Text(.init("R2"))
                     .font(.caption)
-
                 // Occurrences
                 Text("(\(samples))")
                     .font(.caption)

@@ -55,8 +55,8 @@ func nonNilSamples(dataX: [CGFloat?], dataY: [CGFloat?]) -> Int {
 /**
  Get R2 for weight versus mood levels
  */
-func getWeightR2(data: DataStoreStruct) -> [CGFloat?] {
-    var weightSamples: [CGFloat] = []
+func getR2(data: DataStoreStruct, type: HealthTypeEnum) -> [CGFloat?] {
+    var samples: [CGFloat] = []
     var elevationSamples: [CGFloat] = []
     var depressionSamples: [CGFloat] = []
     var anxietySamples: [CGFloat] = []
@@ -70,7 +70,13 @@ func getWeightR2(data: DataStoreStruct) -> [CGFloat?] {
         let volatilitySnap = volatility(moodSnaps: moodSnaps)
         if moodSnaps.count > 0 {
             if healthSnap.weight != nil {
-                weightSamples.append(healthSnap.weight!)
+                switch type {
+                case .weight:
+                    samples.append(healthSnap.weight!)
+                case .distance:
+                    samples.append(healthSnap.walkingRunningDistance!)
+                    
+                }
                 elevationSamples.append(averageSnap[0]!)
                 depressionSamples.append(averageSnap[1]!)
                 anxietySamples.append(averageSnap[2]!)
@@ -79,10 +85,10 @@ func getWeightR2(data: DataStoreStruct) -> [CGFloat?] {
         }
     }
 
-    let elevationR2 = r2(dataX: weightSamples, dataY: elevationSamples)
-    let depressionR2 = r2(dataX: weightSamples, dataY: depressionSamples)
-    let anxietyR2 = r2(dataX: weightSamples, dataY: anxietySamples)
-    let irritabilityR2 = r2(dataX: weightSamples, dataY: irritabilitySamples)
+    let elevationR2 = r2(dataX: samples, dataY: elevationSamples)
+    let depressionR2 = r2(dataX: samples, dataY: depressionSamples)
+    let anxietyR2 = r2(dataX: samples, dataY: anxietySamples)
+    let irritabilityR2 = r2(dataX: samples, dataY: irritabilitySamples)
 
     return [elevationR2, depressionR2, anxietyR2, irritabilityR2]
 }
