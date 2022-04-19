@@ -38,8 +38,8 @@ let numericFont: Font = Font.system(.caption, design: .monospaced)
 /// Symptom list
 let symptomList = [
     "Anhedonia",
-    "Increased_apetite",
-    "Reduced_apetite",
+    "Increased_appetite",
+    "Reduced_appetite",
     "Compulsions",
     "Dissociation",
     "Euphoria",
