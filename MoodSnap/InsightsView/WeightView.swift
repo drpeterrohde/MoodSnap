@@ -4,7 +4,7 @@ struct WeightView: View {
     var data: DataStoreStruct
 
     var body: some View {
-        let samples: Int = data.healthSnaps.count
+        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) //data.healthSnaps.count
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
         let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
@@ -23,6 +23,9 @@ struct WeightView: View {
                 Text("Average weight")
                     .font(.caption)
                     .foregroundColor(.primary)
+                // Occurrences
+                Text("(\(samples))")
+                    .font(.caption)
                 Spacer()
                 Text(averageStr)
                     .font(.caption)
@@ -31,9 +34,6 @@ struct WeightView: View {
             HStack {
                 // R2
                 Text(.init("R2"))
-                    .font(.caption)
-                // Occurrences
-                Text("(\(samples))")
                     .font(.caption)
                 Spacer()
                 // Numbers

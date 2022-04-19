@@ -119,3 +119,22 @@ class HealthManager {
         return distance
     }
 }
+
+func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> Int {
+    var count = 0
+    
+    for healthSnap in healthSnaps {
+        switch type {
+        case .weight:
+            if healthSnap.weight != nil {
+                count += 1
+            }
+        case .distance:
+            if healthSnap.walkingRunningDistance != nil {
+                count += 1
+            }
+        }
+    }
+    
+    return count
+}

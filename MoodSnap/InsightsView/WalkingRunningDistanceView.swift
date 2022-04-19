@@ -1,22 +1,22 @@
-//import SwiftUI
-//import Charts
+// import SwiftUI
+// import Charts
 //
-//struct WalkingRunningDistanceView: View {
+// struct WalkingRunningDistanceView: View {
 //    var data: DataStoreStruct
-//    
+//
 //    var body: some View {
 //        let samplesE = getWalkingRunningMoodDistribution(type: .elevation, data: data)
 //        let samplesD = getWalkingRunningMoodDistribution(type: .depression, data: data)
 //        let samplesA = getWalkingRunningMoodDistribution(type: .anxiety, data: data)
 //        let samplesI = getWalkingRunningMoodDistribution(type: .irritability, data: data)
-//        
+//
 //        let scatterE = makeLineData(x: samplesE.0, y: samplesE.1)
 //        let scatterD = makeLineData(x: samplesD.0, y: samplesD.1)
 //        let scatterA = makeLineData(x: samplesA.0, y: samplesA.1)
 //        let scatterI = makeLineData(x: samplesI.0, y: samplesI.1)
-//        
+//
 //        let color = moodUIColors(settings: data.settings)
-//        
+//
 //        VStack(alignment: .center) {
 //                if (samplesE.0.count == 0) {
 //                    Text("Insufficient data")
@@ -37,7 +37,7 @@
 //                .padding([.top], -10)
 //        }
 //    }
-//}
+// }
 //    }
 
 import SwiftUI
@@ -46,7 +46,7 @@ struct WalkingRunningDistanceView: View {
     var data: DataStoreStruct
 
     var body: some View {
-        let samples: Int = data.healthSnaps.count // update???
+        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .distance) // data.healthSnaps.count // update???
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .distance) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "km"
         let r2mood: [CGFloat?] = getR2(data: data, type: .distance)
@@ -65,6 +65,9 @@ struct WalkingRunningDistanceView: View {
                 Text("Average distance")
                     .font(.caption)
                     .foregroundColor(.primary)
+                // Occurrences
+                Text("(\(samples))")
+                    .font(.caption)
                 Spacer()
                 Text(averageStr)
                     .font(.caption)
@@ -73,9 +76,6 @@ struct WalkingRunningDistanceView: View {
             HStack {
                 // R2
                 Text(.init("R2"))
-                    .font(.caption)
-                // Occurrences
-                Text("(\(samples))")
                     .font(.caption)
                 Spacer()
                 // Numbers
