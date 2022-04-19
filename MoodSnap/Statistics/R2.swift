@@ -5,23 +5,23 @@ import SwiftUI
  */
 func r2(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
     let (reducedX, reducedY) = reduceNils(dataX: dataX, dataY: dataY)
-    
+
     if reducedX.count == 0 || reducedY.count == 0 || reducedX.count != reducedY.count {
         return nil
     }
-    
+
     let barX: CGFloat = average(data: reducedX)!
     let barY: CGFloat = average(data: reducedY)!
     let barXX: CGFloat = average(dataX: reducedX, dataY: reducedX)!
     let barYY: CGFloat = average(dataX: reducedY, dataY: reducedY)!
     let barXY: CGFloat = average(dataX: reducedX, dataY: reducedY)!
- 
+
     var r2: CGFloat = 0
-    
+
     if barXY - barX * barY != 0 && ((barXX - barX * barX) * (barYY - barY * barY)) != 0 {
         r2 = pow(barXY - barX * barY, 2) / ((barXX - barX * barX) * (barYY - barY * barY))
     }
-    
+
     return r2
 }
 
@@ -64,19 +64,20 @@ func getR2(data: DataStoreStruct, type: HealthTypeEnum) -> [CGFloat?] {
 
     for healthSnap in data.healthSnaps {
         let thisDate = healthSnap.timestamp
-     //   let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps, date: thisDate, flatten: true)
+        //   let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps, date: thisDate, flatten: true)
         let moodSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps, date: thisDate, windowStart: 0, windowEnd: weightWindow, flatten: false)
         let averageSnap = average(moodSnaps: moodSnaps)
         let volatilitySnap = volatility(moodSnaps: moodSnaps)
         if moodSnaps.count > 0 {
-            if healthSnap.weight != nil {
-                switch type {
-                case .weight:
-                    samples.append(healthSnap.weight!)
-                case .distance:
-                    samples.append(healthSnap.walkingRunningDistance!)
-                    
-                }
+            if type == .weight && healthSnap.weight != nil {
+                samples.append(healthSnap.weight!)
+                elevationSamples.append(averageSnap[0]!)
+                depressionSamples.append(averageSnap[1]!)
+                anxietySamples.append(averageSnap[2]!)
+                irritabilitySamples.append(averageSnap[3]!)
+            }
+            if type == .distance && healthSnap.walkingRunningDistance != nil {
+                samples.append(healthSnap.walkingRunningDistance!)
                 elevationSamples.append(averageSnap[0]!)
                 depressionSamples.append(averageSnap[1]!)
                 anxietySamples.append(averageSnap[2]!)

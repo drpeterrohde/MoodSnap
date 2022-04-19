@@ -441,37 +441,37 @@ struct InsightsView: View {
                                     }
                                 }
 
-//                                if data.settings.healthDistanceOn {
-//                                    GroupBox {
-//                                        HStack {
-//                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
-//                                            HStack {
-//                                                Image(systemName: "figure.walk")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: iconWidth, height: iconWidth)
-//                                                Text("Walking & running distance").font(.subheadline)
-//                                                Spacer()
-//                                            }
-//                                            Spacer()
-//                                            Button(action: {
-//                                                withAnimation(.easeInOut) {
-//                                                    data.uxState.isWalkingRunningDistanceExpanded.toggle()
-//                                                }
-//                                            }) {
-//                                                if data.uxState.isWalkingRunningDistanceExpanded {
-//                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                } else {
-//                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                }
-//                                            }
-//                                        }
-//                                        if data.uxState.isWalkingRunningDistanceExpanded {
-//                                            Divider()
-//                                            WalkingRunningDistanceView(data: data)
-//                                        }
-//                                    }
-//                                }
+                                if data.settings.healthDistanceOn {
+                                    GroupBox {
+                                        HStack {
+                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
+                                            HStack {
+                                                Image(systemName: "figure.walk")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                Text("Walking & running distance").font(.subheadline)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isWalkingRunningDistanceExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isWalkingRunningDistanceExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isWalkingRunningDistanceExpanded {
+                                            Divider()
+                                            WalkingRunningDistanceView(data: data)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
