@@ -11,6 +11,7 @@ let influenceWindowShort = 7
 let butterflyWindowShort = 7
 let influenceWindowLong = 28
 let butterflyWindowLong = 28
+let weightWindow = 3
 
 /// PDF
 let marginPDF = 0.5 * 72

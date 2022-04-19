@@ -22,7 +22,7 @@ class HealthManager {
     }
 
     func makeHealthSnapsForDates(startDate: Date, endDate: Date) {
-        var thisDate = startDate
+        var thisDate = startDate.startOfDay()
         while thisDate <= endDate {
             makeHealthSnapForDate(date: thisDate)
             thisDate = thisDate.addDays(days: 1)
@@ -47,13 +47,13 @@ class HealthManager {
                                         resultsHandler: { _, results, _ in
                                             DispatchQueue.main.async(execute: {
                                                 let maxWeight = self.maxWeight(results: results)
-                                                var healthSnap = HealthSnapStruct()
-                                                healthSnap.timestamp = date
                                                 if maxWeight != nil {
+                                                    var healthSnap = HealthSnapStruct()
+                                                    healthSnap.timestamp = date
                                                     healthSnap.weight = CGFloat(maxWeight!)
+                                                    self.healthSnaps.append(healthSnap)
+                                                    print("HealthSnap", healthSnap)
                                                 }
-                                                self.healthSnaps.append(healthSnap)
-                                                print("HealthSnap", healthSnap)
                                             })
                                         })
 

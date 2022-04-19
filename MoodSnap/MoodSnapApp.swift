@@ -33,6 +33,7 @@ struct MoodSnapApp: App {
                             healthManager.requestPermissions()
                             let firstDate = getFirstDate(moodSnaps: data.moodSnaps)
                             healthManager.makeHealthSnapsForDates(startDate: firstDate, endDate: Date())
+                            data.healthSnaps = healthManager.healthSnaps
                         } else {
                             print("There is a problem accessing HealthKit")
                         }
@@ -42,11 +43,13 @@ struct MoodSnapApp: App {
             if value == .background {
                 isUnlocked = false
                 data.settings.firstUse = false
+                data.healthSnaps = healthManager.healthSnaps
                 data.save()
             }
             if value == .active {
                 authenticate()
                 DispatchQueue.global(qos: .userInteractive).async {
+                    data.healthSnaps = healthManager.healthSnaps
                     data.process()
                     data.save()
                 }
