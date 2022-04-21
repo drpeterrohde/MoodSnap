@@ -8,6 +8,7 @@ struct VerticalBarChart: UIViewRepresentable {
     var entries: [BarChartDataEntry]
     var color: NSUIColor
     var settings: SettingsStruct
+    var shaded: Bool = true
 
     func makeUIView(context: Context) -> BarChartView {
         let chart = BarChartView()
@@ -52,8 +53,14 @@ struct VerticalBarChart: UIViewRepresentable {
         // Color transparency scheme
         var colors: [NSUIColor] = []
         for item in entries {
-            let thisColor = NSUIColor(Color(color).opacity((item.y + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)))
-            colors.append(thisColor)
+            if shaded {
+                let thisColor = NSUIColor(Color(color).opacity((item.y + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)))
+                colors.append(thisColor)
+            } else {
+                let thisColor = color
+                colors.append(thisColor)
+            }
+            
         }
 
         dataSet.colors = colors

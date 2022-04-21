@@ -70,6 +70,25 @@ func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool =
 }
 
 /**
+ Returns an array of elements from `healthSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
+ */
+func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
+    var filtered: [HealthSnapStruct] = []
+    let dateComponents = date.getComponents()
+    for healthSnap in healthSnaps {
+        if healthSnap.timestamp.getComponents() == dateComponents {
+            filtered.append(healthSnap)
+        }
+    }
+    if flatten {
+        if filtered.count > 0 {
+            filtered = [mergeHealthSnaps(healthSnaps: filtered)!]
+        }
+    }
+    return filtered
+}
+
+/**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
  */
 func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
@@ -77,6 +96,19 @@ func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowSta
     for time in windowStart ... windowEnd {
         let thisDate = date.addDays(days: time)
         let theseSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: thisDate, flatten: flatten)
+        filtered.append(contentsOf: theseSnaps)
+    }
+    return filtered
+}
+
+/**
+ Returns an array of elements from `healthSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
+ */
+func getHealthSnapsByDateWindow(healthSnaps: [HealthSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [HealthSnapStruct] {
+    var filtered: [HealthSnapStruct] = []
+    for time in windowStart ... windowEnd {
+        let thisDate = date.addDays(days: time)
+        let theseSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps, date: thisDate, flatten: flatten)
         filtered.append(contentsOf: theseSnaps)
     }
     return filtered

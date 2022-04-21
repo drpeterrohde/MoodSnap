@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct WeightView: View {
+    var timescale: Int
     var data: DataStoreStruct
 
     var body: some View {
@@ -8,13 +9,15 @@ struct WeightView: View {
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
         let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
-        // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
-
+     //   let weightData: [CGFloat?] = getWeightData(data: data)
+    //   let entries = makeBarData(y: weightData, timescale: timescale) // ???
+     
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
+//            VerticalBarChart(entries: entries, color: UIColor.purple, settings: data.settings, shaded: false).frame(height: 65)
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -78,4 +81,19 @@ struct WeightView: View {
 //            }
         }
     }
+}
+
+func getWeightData(data: DataStoreStruct) -> [CGFloat?] {
+    var weightData: [CGFloat?] = []
+    
+    var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
+
+    while date >= earliest {
+        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: data.healthSnaps, date: date, flatten: true)
+        weightData.append(thisHealthSnap[0].weight)
+        date = date.addDays(days: -1)
+    }
+    
+    return weightData
 }

@@ -436,7 +436,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isWeightExpanded {
                                             Divider()
-                                            WeightView(data: data)
+                                            WeightView(timescale: timescale, data: data)
                                         }
                                     }
                                 }
