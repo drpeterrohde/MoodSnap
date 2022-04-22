@@ -1,8 +1,12 @@
 import SwiftUI
 
 enum HealthTypeEnum: Int, Codable {
+    case all = 0
     case weight = 1
     case distance = 2
+    case sleep = 3
+    case energy = 4
+    case menstrual = 5
 }
 
 /**

@@ -43,7 +43,7 @@ struct MoodSnapApp: App {
                 isUnlocked = false
                 data.settings.firstUse = false
                 data.healthSnaps = healthManager.healthSnaps
-                data.save()
+                data.save() // add process???
             }
             if value == .active {
                 authenticate()

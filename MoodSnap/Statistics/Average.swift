@@ -29,10 +29,18 @@ func average(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> CGFloat? 
     
     for healthSnap in healthSnaps {
         switch type {
+        case .all:
+            break
         case .weight:
             data.append(healthSnap.weight)
         case .distance:
             data.append(healthSnap.walkingRunningDistance)
+        case .sleep:
+            data.append(healthSnap.sleepHours)
+        case .menstrual:
+            data.append(healthSnap.menstrual)
+        case .energy:
+            data.append(healthSnap.activeEnergy)
         }
     }
     

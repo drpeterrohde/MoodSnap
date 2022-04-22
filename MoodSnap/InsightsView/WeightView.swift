@@ -5,13 +5,13 @@ struct WeightView: View {
     var data: DataStoreStruct
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) //data.healthSnaps.count
+        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) // data.healthSnaps.count
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
         let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
         let weightData: [CGFloat?] = getWeightData(data: data)
-       let entries = makeBarData(y: weightData, timescale: timescale)
-     
+        let entries = makeBarData(y: weightData, timescale: timescale)
+
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
@@ -86,7 +86,7 @@ struct WeightView: View {
 
 func getWeightData(data: DataStoreStruct) -> [CGFloat?] {
     var weightData: [CGFloat?] = []
-    
+
     var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
     let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
 
@@ -97,6 +97,6 @@ func getWeightData(data: DataStoreStruct) -> [CGFloat?] {
         }
         date = date.addDays(days: -1)
     }
-    
+
     return weightData.reversed()
 }
