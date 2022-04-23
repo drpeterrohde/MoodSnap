@@ -80,11 +80,11 @@ func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: 
             filtered.append(healthSnap)
         }
     }
-//    if flatten {
-//        if filtered.count > 0 {
-//            filtered = [mergeHealthSnaps(healthSnaps: filtered)!]
-//        }
-//    }???
+    if flatten {
+        if filtered.count > 0 {
+            filtered = [mergeHealthSnaps(healthSnaps: filtered)!]
+        }
+    }
     return filtered
 }
 
