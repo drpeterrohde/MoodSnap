@@ -13,16 +13,17 @@ func generateHistory(data: DataStoreStruct) -> HistoryStruct {
 
         let todaySnaps = getMoodSnapsByDate(
             moodSnaps: data.moodSnaps,
-            date: date) // use flatten???
+            date: date,
+            flatten: false)
         let windowSnaps = getMoodSnapsByDateWindow(
             moodSnaps: data.moodSnaps,
-            date: date,//.endOfDay(),???
+            date: date,
             windowStart: -data.settings.slidingWindowSize + 1,
             windowEnd: 0,
             flatten: false)
         let mergedWindowSnaps = getMoodSnapsByDateWindow(
             moodSnaps: data.moodSnaps,
-            date: date,//.endOfDay(),
+            date: date,
             windowStart: -data.settings.slidingWindowSize + 1,
             windowEnd: 0,
             flatten: true)

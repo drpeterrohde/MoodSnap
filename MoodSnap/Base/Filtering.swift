@@ -28,13 +28,12 @@ func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: Stri
  Returns the earliest `Date` amongst `moodSnaps`.
  */
 func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
-    var firstDate = Date()
+    var firstDate = Date().startOfDay()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp < firstDate {
             firstDate = moodSnap.timestamp
         }
     }
-    firstDate = firstDate.startOfDay()
     return firstDate
 }
 
@@ -48,7 +47,6 @@ func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
             lastDate = moodSnap.timestamp
         }
     }
-    lastDate = max(Date(), lastDate)
     return lastDate
 }
 
@@ -86,7 +84,7 @@ func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: 
 //        if filtered.count > 0 {
 //            filtered = [mergeHealthSnaps(healthSnaps: filtered)!]
 //        }
-//    }
+//    }???
     return filtered
 }
 
@@ -95,11 +93,13 @@ func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: 
  */
 func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
+    
     for time in windowStart ... windowEnd {
         let thisDate = date.addDays(days: time)
         let theseSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: thisDate, flatten: flatten)
         filtered.append(contentsOf: theseSnaps)
     }
+
     return filtered
 }
 
@@ -108,10 +108,12 @@ func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowSta
  */
 func getHealthSnapsByDateWindow(healthSnaps: [HealthSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [HealthSnapStruct] {
     var filtered: [HealthSnapStruct] = []
+    
     for time in windowStart ... windowEnd {
         let thisDate = date.addDays(days: time)
         let theseSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps, date: thisDate, flatten: flatten)
         filtered.append(contentsOf: theseSnaps)
     }
+    
     return filtered
 }
