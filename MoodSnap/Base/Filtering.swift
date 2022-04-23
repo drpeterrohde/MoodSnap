@@ -34,7 +34,8 @@ func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
             firstDate = moodSnap.timestamp
         }
     }
-    return firstDate.startOfDay()
+    firstDate = firstDate.startOfDay()
+    return firstDate
 }
 
 /**
@@ -47,6 +48,7 @@ func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
             lastDate = moodSnap.timestamp
         }
     }
+    lastDate = max(Date(), lastDate)
     return lastDate
 }
 

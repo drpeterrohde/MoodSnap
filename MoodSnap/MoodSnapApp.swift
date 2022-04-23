@@ -8,15 +8,15 @@ import HealthKitUI
 struct MoodSnapApp: App {
     @Environment(\.scenePhase) var scenePhase
     @State private var data: DataStoreStruct = DataStoreStruct()
+    @State private var health = HealthManager()
     @State private var isUnlocked = false
-    private var healthManager = HealthManager()
     
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
                 UnlockView(isUnlocked: $isUnlocked, data: $data)
             } else {
-                ContentView(data: $data)
+                ContentView(data: $data, health: $health)
                     .onAppear {
                         do {
                             let retrieved = try Disk.retrieve(
@@ -30,9 +30,9 @@ struct MoodSnapApp: App {
 
                         if HKHealthStore.isHealthDataAvailable() {
                             print("HealthKit is Available")
-                            healthManager.requestPermissions()
-                            healthManager.makeHealthSnaps(data: data)
-                            data.healthSnaps = healthManager.healthSnaps
+                            health.requestPermissions()
+                            health.makeHealthSnaps(data: data)
+                            data.healthSnaps = health.healthSnaps
                         } else {
                             print("There is a problem accessing HealthKit")
                         }
@@ -42,15 +42,23 @@ struct MoodSnapApp: App {
             if value == .background {
                 isUnlocked = false
                 data.settings.firstUse = false
-                data.healthSnaps = healthManager.healthSnaps
+                data.healthSnaps = health.healthSnaps
                 data.save() // add process???
             }
             if value == .active {
-                authenticate()
+                if HKHealthStore.isHealthDataAvailable() {
+                    print("HealthKit is Available")
+                    health.requestPermissions()
+                    health.makeHealthSnaps(data: data)
+                    data.healthSnaps = health.healthSnaps
+                } else {
+                    print("There is a problem accessing HealthKit")
+                }
                 DispatchQueue.global(qos: .userInteractive).async {
                     data.process()
                     data.save()
                 }
+                authenticate()
             }
         }
     }

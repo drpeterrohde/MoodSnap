@@ -4,8 +4,8 @@ import SwiftUI
  Generate the complete history of mood levels, moving averages and moving volatilities from `data`.
  */
 func generateHistory(data: DataStoreStruct) -> HistoryStruct {
-    var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
     var statsHistory: [StatsEntryStruct] = []
 
     while date >= earliest {
@@ -16,13 +16,13 @@ func generateHistory(data: DataStoreStruct) -> HistoryStruct {
             date: date) // use flatten???
         let windowSnaps = getMoodSnapsByDateWindow(
             moodSnaps: data.moodSnaps,
-            date: date.endOfDay(),
+            date: date,//.endOfDay(),???
             windowStart: -data.settings.slidingWindowSize + 1,
             windowEnd: 0,
             flatten: false)
         let mergedWindowSnaps = getMoodSnapsByDateWindow(
             moodSnaps: data.moodSnaps,
-            date: date.endOfDay(),
+            date: date,//.endOfDay(),
             windowStart: -data.settings.slidingWindowSize + 1,
             windowEnd: 0,
             flatten: true)

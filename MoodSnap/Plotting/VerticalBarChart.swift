@@ -11,7 +11,7 @@ struct VerticalBarChart: UIViewRepresentable {
     var shaded: Bool = true
     var min: CGFloat = 0
     var max: CGFloat = 4
-    var labelCount = 4
+    var labelCount: Int = 4
 
     func makeUIView(context: Context) -> BarChartView {
         let chart = BarChartView()

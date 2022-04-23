@@ -23,8 +23,8 @@ class HealthManager: ObservableObject {
     }
 
     func makeHealthSnaps(data: DataStoreStruct) {
-        var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
-        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
+        var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
         while date >= earliest {
             makeHealthSnapForDate(date: date)
@@ -49,7 +49,7 @@ class HealthManager: ObservableObject {
                                               limit: HKObjectQueryNoLimit,
                                               sortDescriptors: nil,
                                               resultsHandler: { _, results, _ in
-                                                  DispatchQueue.main.async(execute: {
+                                                  DispatchQueue.main.async {
                                                       let maxWeight = self.maxWeight(results: results)
                                                       if maxWeight != nil {
                                                           var healthSnap = HealthSnapStruct()
@@ -58,7 +58,7 @@ class HealthManager: ObservableObject {
                                                           self.healthSnaps.append(healthSnap)
                                                           print("HealthSnap", healthSnap)
                                                       }
-                                                  })
+                                                  }
                                               })
         
         let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance.first!,
@@ -66,7 +66,7 @@ class HealthManager: ObservableObject {
                                                 limit: HKObjectQueryNoLimit,
                                                 sortDescriptors: nil,
                                                 resultsHandler: { _, results, _ in
-                                                    DispatchQueue.main.async(execute: {
+                                                    DispatchQueue.main.async {
                                                         let distance = self.totalDistance(results: results)
                                                         if distance != nil {
                                                             var healthSnap = HealthSnapStruct()
@@ -75,7 +75,7 @@ class HealthManager: ObservableObject {
                                                             self.healthSnaps.append(healthSnap)
                                                             print("HealthSnap", healthSnap)
                                                         }
-                                                    })
+                                                    }
                                                 })
 
         healthStore.execute(sampleQueryWeight)
