@@ -1,7 +1,7 @@
 import HealthKit
 import SwiftUI
 
-class HealthManager { // make observable object???
+class HealthManager: ObservableObject {
     public var healthSnaps: [HealthSnapStruct] = [] // make published???
 
     public let healthStore = HKHealthStore()
@@ -35,7 +35,7 @@ class HealthManager { // make observable object???
     func makeHealthSnapForDate(date: Date) {
         print("Fetching data")
         let startDate = date.startOfDay()
-        let endDate = date.addDays(days: 1).startOfDay()
+        let endDate = date.endOfDay()
 
         let quantityTypeWeight: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!]
         let quantityTypeDistance: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]

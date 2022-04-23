@@ -62,4 +62,9 @@ extension Date {
         let start = Calendar.current.startOfDay(for: self)
         return start
     }
+    
+    func endOfDay() -> Date {
+        let end = Calendar.current.startOfDay(for: self).addDays(days: 1)
+        return end
+    }
 }
