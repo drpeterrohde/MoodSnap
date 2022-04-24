@@ -20,7 +20,7 @@ struct MediaView: View {
 
             ImagePicker(sourceType: .camera, selectedImage: $image)
                 .onDisappear(perform: {
-                    if image != nil {
+                    if image != nil {// put in async main???
                         moodSnap.snapType = .media
                         image!.saveImage(imageName: moodSnap.id.uuidString)
                         if data.settings.saveMediaToCameraRoll {

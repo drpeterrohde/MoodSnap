@@ -1,8 +1,8 @@
 import HealthKit
 import SwiftUI
 
-class HealthManager {
-    public var healthSnaps: [HealthSnapStruct] = []
+class HealthManager: ObservableObject {
+    public var healthSnaps: [HealthSnapStruct] = [] // make published???
 
     public let healthStore = HKHealthStore()
 
@@ -23,8 +23,8 @@ class HealthManager {
     }
 
     func makeHealthSnaps(data: DataStoreStruct) {
-        var date: Date = max(Date(), getLastDate(moodSnaps: data.moodSnaps))
-        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps).startOfDay()
+        var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
         while date >= earliest {
             makeHealthSnapForDate(date: date)
@@ -35,7 +35,7 @@ class HealthManager {
     func makeHealthSnapForDate(date: Date) {
         print("Fetching data")
         let startDate = date.startOfDay()
-        let endDate = date.addDays(days: 1).startOfDay()
+        let endDate = date.endOfDay()
 
         let quantityTypeWeight: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!]
         let quantityTypeDistance: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
@@ -49,7 +49,7 @@ class HealthManager {
                                               limit: HKObjectQueryNoLimit,
                                               sortDescriptors: nil,
                                               resultsHandler: { _, results, _ in
-                                                  DispatchQueue.main.async(execute: {
+                                                  DispatchQueue.main.async {
                                                       let maxWeight = self.maxWeight(results: results)
                                                       if maxWeight != nil {
                                                           var healthSnap = HealthSnapStruct()
@@ -58,7 +58,7 @@ class HealthManager {
                                                           self.healthSnaps.append(healthSnap)
                                                           print("HealthSnap", healthSnap)
                                                       }
-                                                  })
+                                                  }
                                               })
         
         let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance.first!,
@@ -66,7 +66,7 @@ class HealthManager {
                                                 limit: HKObjectQueryNoLimit,
                                                 sortDescriptors: nil,
                                                 resultsHandler: { _, results, _ in
-                                                    DispatchQueue.main.async(execute: {
+                                                    DispatchQueue.main.async {
                                                         let distance = self.totalDistance(results: results)
                                                         if distance != nil {
                                                             var healthSnap = HealthSnapStruct()
@@ -75,7 +75,7 @@ class HealthManager {
                                                             self.healthSnaps.append(healthSnap)
                                                             print("HealthSnap", healthSnap)
                                                         }
-                                                    })
+                                                    }
                                                 })
 
         healthStore.execute(sampleQueryWeight)
@@ -118,23 +118,4 @@ class HealthManager {
         
         return distance
     }
-}
-
-func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> Int {
-    var count = 0
-    
-    for healthSnap in healthSnaps {
-        switch type {
-        case .weight:
-            if healthSnap.weight != nil {
-                count += 1
-            }
-        case .distance:
-            if healthSnap.walkingRunningDistance != nil {
-                count += 1
-            }
-        }
-    }
-    
-    return count
 }

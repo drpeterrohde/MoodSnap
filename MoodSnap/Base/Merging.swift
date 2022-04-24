@@ -36,3 +36,37 @@ func mergeMoodSnaps(moodSnaps: [MoodSnapStruct]) -> MoodSnapStruct? {
 
     return collapsed
 }
+
+/**
+ Merge array `healthSnaps` into a single `HealthSnapStruct` representing maximum values and combined `symptoms`, `activities` and `social` values (via logical AND).
+ */
+func mergeHealthSnaps(healthSnaps: [HealthSnapStruct]) -> HealthSnapStruct? {
+    if healthSnaps.count == 0 {
+        return nil
+    }
+
+    var collapsed = HealthSnapStruct()
+
+    for healthSnap in healthSnaps {
+        collapsed.timestamp = healthSnap.timestamp
+        
+        if collapsed.walkingRunningDistance == nil {
+            collapsed.walkingRunningDistance = healthSnap.walkingRunningDistance
+        } else {
+            if healthSnap.walkingRunningDistance != nil {
+                collapsed.walkingRunningDistance! += healthSnap.walkingRunningDistance!
+            }
+        }
+
+        if collapsed.weight == nil {
+            collapsed.weight = healthSnap.weight
+        } else {
+            if healthSnap.weight != nil {
+                collapsed.weight! = max(collapsed.weight!, healthSnap.weight!)
+            }
+        }
+        
+    }
+
+    return collapsed
+}

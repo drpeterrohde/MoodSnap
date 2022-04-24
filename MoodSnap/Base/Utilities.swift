@@ -178,3 +178,77 @@ func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> 
 
     return count
 }
+
+/**
+ How many user-created `healthSnaps` entries are there of a given `type`?
+ */
+func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> Int {
+    var count = 0
+
+    for healthSnap in healthSnaps {
+        switch type {
+        case .all:
+            count += 1
+        case .weight:
+            if healthSnap.weight != nil {
+                count += 1
+            }
+        case .distance:
+            if healthSnap.walkingRunningDistance != nil {
+                count += 1
+            }
+        case .sleep:
+            if healthSnap.sleepHours != nil {
+                count += 1
+            }
+        case .energy:
+            if healthSnap.activeEnergy != nil {
+                count += 1
+            }
+        case .menstrual:
+            if healthSnap.menstrual != nil {
+                count += 1
+            }
+        }
+    }
+
+    return count
+}
+
+/**
+ Minimum of a set of `data` that may contain nil values.
+ */
+func minWithNils(data: [CGFloat?]) -> CGFloat? {
+    var minimum: CGFloat? = nil
+    
+    for item in data {
+        if minimum == nil {
+            minimum = item
+        } else {
+            if item != nil {
+                minimum = min(minimum!, item!)
+            }
+        }
+    }
+    
+    return minimum
+}
+
+/**
+ Maximum of a set of `data` that may contain nil values.
+ */
+func maxWithNils(data: [CGFloat?]) -> CGFloat? {
+    var maximum: CGFloat? = nil
+    
+    for item in data {
+        if maximum == nil {
+            maximum = item
+        } else {
+            if item != nil {
+                maximum = max(maximum!, item!)
+            }
+        }
+    }
+    
+    return maximum
+}

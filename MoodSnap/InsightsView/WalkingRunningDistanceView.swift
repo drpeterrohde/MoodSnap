@@ -43,26 +43,39 @@
 import SwiftUI
 
 struct WalkingRunningDistanceView: View {
+    var timescale: Int
     var data: DataStoreStruct
-
+    var health: HealthManager
+    
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .distance) // data.healthSnaps.count // update???
-        let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .distance) ?? 0.0
+        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance) // data.healthSnaps.count // update???
+        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "km"
-        let r2mood: [CGFloat?] = getR2(data: data, type: .distance)
+        let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
+        let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .distance) // fix ??? to health
         // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
-
+        let entries = makeBarData(y: distanceData, timescale: timescale)
+        let entries2 = makeBarData2(y: distanceData, timescale: timescale)
+        
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
+            let minDistance: CGFloat = 0.0
+            let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0 + 1
+//            VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minDistance, max: maxDistance, labelCount: 0)
+  //              .frame(height: 65)
+            
+            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minDistance, max: maxDistance, settings: data.settings)
+                .frame(height: 60)
+          
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
             HStack {
-                Text("Average distance")
+                Text("Average_distance")
                     .font(.caption)
                     .foregroundColor(.primary)
                 // Occurrences
@@ -75,7 +88,7 @@ struct WalkingRunningDistanceView: View {
             }
             HStack {
                 // R2
-                Text(.init("R2"))
+                Text("Correlation")
                     .font(.caption)
                 Spacer()
                 // Numbers
@@ -120,4 +133,21 @@ struct WalkingRunningDistanceView: View {
 //            }
         }
     }
+}
+
+func getDistanceData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+    var distanceData: [CGFloat?] = []
+
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+
+    while date >= earliest {
+        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        if thisHealthSnap.count > 0 {
+            distanceData.append(thisHealthSnap[0].walkingRunningDistance)
+        }
+        date = date.addDays(days: -1)
+    }
+
+    return distanceData.reversed()
 }

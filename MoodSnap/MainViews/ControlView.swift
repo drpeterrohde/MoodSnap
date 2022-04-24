@@ -5,6 +5,7 @@ import SwiftUI
  */
 struct ControlView: View {
     @Binding var data: DataStoreStruct
+    @Binding var health: HealthManager
     @State private var showingMoodSnapSheet: Bool = false
     @State private var showingSettingsSheet: Bool = false
     @State private var showingStatsSheet: Bool = false
@@ -15,8 +16,9 @@ struct ControlView: View {
     @State private var showingMediaSheet: Bool = false
     @State private var showingIntroPopover: Bool = false
 
-    init(data: Binding<DataStoreStruct>) {
+    init(data: Binding<DataStoreStruct>, health: Binding<HealthManager>) {
         _data = data
+        _health = health
         showingMoodSnapSheet = false
         showingSettingsSheet = false
         showingStatsSheet = false
@@ -57,7 +59,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingStatsSheet) { // ??? reordered
-                    InsightsView(data: $data)
+                    InsightsView(data: $data, health: $health)
                 }
 
                 Spacer()

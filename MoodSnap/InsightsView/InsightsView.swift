@@ -7,6 +7,7 @@ import SwiftUI
 struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
     @Binding var data: DataStoreStruct
+    @Binding var health: HealthManager
     @State var timescale: Int = TimeScaleEnum.month.rawValue
 
     var body: some View {
@@ -436,7 +437,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isWeightExpanded {
                                             Divider()
-                                            WeightView(data: data)
+                                            WeightView(timescale: timescale, data: data, health: health)
                                         }
                                     }
                                 }
@@ -468,7 +469,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isWalkingRunningDistanceExpanded {
                                             Divider()
-                                            WalkingRunningDistanceView(data: data)
+                                            WalkingRunningDistanceView(timescale: timescale, data: data, health: health)
                                         }
                                     }
                                 }

@@ -6,6 +6,7 @@ import SwiftUI
  */
 struct ContentView: View {
     @Binding var data: DataStoreStruct
+    @Binding var health: HealthManager
     @State var searchText: String = ""
     @State var filter: SnapTypeEnum = .none
 
@@ -13,7 +14,7 @@ struct ContentView: View {
         HistoryView(filter: $filter, searchText: $searchText, data: $data)
             .padding(.bottom, -8)
         Divider()
-        ControlView(data: $data)
+        ControlView(data: $data, health: $health)
             .padding(.top, -10)
     }
 }

@@ -1,26 +1,38 @@
 import SwiftUI
 
 struct WeightView: View {
+    var timescale: Int
     var data: DataStoreStruct
+    var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) //data.healthSnaps.count
+        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) // data.healthSnaps.count
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
-        let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
-        // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
-
+        let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .weight)
+        let weightData: [CGFloat?] = getWeightData(data: data, health: health)
+       // let entries = makeBarData(y: weightData, timescale: timescale)
+        let entries2 = makeBarData2(y: weightData, timescale: timescale)
+        
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
+            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 - 5
+            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0 + 5
+           // VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minWeight, max: maxWeight, labelCount: 0)
+             //   .frame(height: 65)
+            
+            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minWeight, max: maxWeight, settings: data.settings)
+                .frame(height: 60)
+            
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
             HStack {
-                Text("Average weight")
+                Text("Average_weight")
                     .font(.caption)
                     .foregroundColor(.primary)
                 // Occurrences
@@ -33,7 +45,7 @@ struct WeightView: View {
             }
             HStack {
                 // R2
-                Text(.init("R2"))
+                Text("Correlation")
                     .font(.caption)
                 Spacer()
                 // Numbers
@@ -78,4 +90,21 @@ struct WeightView: View {
 //            }
         }
     }
+}
+
+func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+    var weightData: [CGFloat?] = []
+
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+
+    while date >= earliest {
+        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        if thisHealthSnap.count > 0 {
+            weightData.append(thisHealthSnap[0].weight)
+        }
+        date = date.addDays(days: -1)
+    }
+
+    return weightData.reversed()
 }
