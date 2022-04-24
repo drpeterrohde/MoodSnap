@@ -399,7 +399,7 @@ struct InsightsView: View {
                         }
 
                         Group {
-                            if data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn {
+                            if data.settings.useHealthKit && (data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn) {
                                 HStack {
                                     Text("HEALTH")
                                         .font(.caption)
@@ -470,6 +470,38 @@ struct InsightsView: View {
                                         if data.uxState.isWalkingRunningDistanceExpanded {
                                             Divider()
                                             WalkingRunningDistanceView(timescale: timescale, data: data, health: health)
+                                        }
+                                    }
+                                }
+                                
+                                if data.settings.healthEnergyOn {
+                                    GroupBox {
+                                        HStack {
+                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
+                                            HStack {
+                                                Image(systemName: "bolt.heart")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                Text("Active energy").font(.subheadline)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isActiveEnergyExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isActiveEnergyExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isActiveEnergyExpanded {
+                                            Divider()
+                                            ActiveEnergyView(timescale: timescale, data: data, health: health)
                                         }
                                     }
                                 }

@@ -8,7 +8,8 @@ class HealthManager: ObservableObject {
 
     public func requestPermissions() {
         let readDataTypes: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
-                                  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
+                                  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
+                                  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!]
 
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
             if success {
@@ -25,9 +26,9 @@ class HealthManager: ObservableObject {
     func makeHealthSnaps(data: DataStoreStruct) {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
-        
+
         healthSnaps = []
-        
+
         while date >= earliest {
             makeHealthSnapForDate(date: date)
             date = date.addDays(days: -1)
@@ -39,14 +40,15 @@ class HealthManager: ObservableObject {
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
 
-        let quantityTypeWeight: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!]
-        let quantityTypeDistance: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
-        
+        let quantityTypeWeight = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
+        let quantityTypeDistance = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
+        let quantityTypeActiveEnergy = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
                                                     options: .strictStartDate)
 
-        let sampleQueryWeight = HKSampleQuery(sampleType: quantityTypeWeight.first!,
+        let sampleQueryWeight = HKSampleQuery(sampleType: quantityTypeWeight,
                                               predicate: predicate,
                                               limit: HKObjectQueryNoLimit,
                                               sortDescriptors: nil,
@@ -61,8 +63,8 @@ class HealthManager: ObservableObject {
                                                       }
                                                   }
                                               })
-        
-        let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance.first!,
+
+        let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance,
                                                 predicate: predicate,
                                                 limit: HKObjectQueryNoLimit,
                                                 sortDescriptors: nil,
@@ -78,8 +80,25 @@ class HealthManager: ObservableObject {
                                                     }
                                                 })
 
+        let sampleQueryActiveEnergy = HKSampleQuery(sampleType: quantityTypeActiveEnergy,
+                                                    predicate: predicate,
+                                                    limit: HKObjectQueryNoLimit,
+                                                    sortDescriptors: nil,
+                                                    resultsHandler: { _, results, _ in
+                                                        DispatchQueue.main.async {
+                                                            let energy = self.totalEnergy(results: results)
+                                                            if energy != nil {
+                                                                var healthSnap = HealthSnapStruct()
+                                                                healthSnap.timestamp = date
+                                                                healthSnap.walkingRunningDistance = CGFloat(energy!)
+                                                                self.healthSnaps.append(healthSnap)
+                                                            }
+                                                        }
+                                                    })
+
         healthStore.execute(sampleQueryWeight)
         healthStore.execute(sampleQueryDistance)
+        healthStore.execute(sampleQueryActiveEnergy)
     }
 
     /**
@@ -109,13 +128,43 @@ class HealthManager: ObservableObject {
      Total distance for given HealthKit `results`
      */
     func totalDistance(results: [HKSample]?) -> Double? {
+        if results == nil {
+            return nil
+        }
+
+        if results!.count == 0 {
+            return nil
+        }
+
         var distance: Double = 0.0
 
         for result in results! {
             let thisDistanceSample = result as! HKQuantitySample
             distance += thisDistanceSample.quantity.doubleValue(for: HKUnit.meterUnit(with: .kilo))
         }
-        
+
         return distance
+    }
+
+    /**
+     Total active energy for given HealthKit `results`
+     */
+    func totalEnergy(results: [HKSample]?) -> Double? {
+        if results == nil {
+            return nil
+        }
+
+        if results!.count == 0 {
+            return nil
+        }
+
+        var energy: Double = 0.0
+
+        for result in results! {
+            let thisEnergySample = result as! HKQuantitySample
+            energy += thisEnergySample.quantity.doubleValue(for: HKUnit.jouleUnit(with: .kilo))
+        }
+
+        return energy
     }
 }

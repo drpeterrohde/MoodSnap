@@ -1,8 +1,8 @@
 import Disk
-import LocalAuthentication
-import SwiftUI
 import HealthKit
 import HealthKitUI
+import LocalAuthentication
+import SwiftUI
 
 @main
 struct MoodSnapApp: App {
@@ -10,7 +10,7 @@ struct MoodSnapApp: App {
     @State private var data: DataStoreStruct = DataStoreStruct()
     @State private var health = HealthManager()
     @State private var isUnlocked = false
-    
+
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
@@ -27,15 +27,6 @@ struct MoodSnapApp: App {
                         } catch {
                             print("Load failed")
                         }
-
-//                        if HKHealthStore.isHealthDataAvailable() {
-//                            print("HealthKit is Available")
-//                            health.requestPermissions()
-//                            health.makeHealthSnaps(data: data)
-//                            data.healthSnaps = health.healthSnaps
-//                        } else {
-//                            print("There is a problem accessing HealthKit")
-//                        }
                     }
             }
         }.onChange(of: scenePhase) { value in
@@ -62,7 +53,7 @@ struct MoodSnapApp: App {
             }
         }
     }
-    
+
     /**
      FaceID authentication
      */
@@ -95,14 +86,6 @@ struct MoodSnapApp: App {
         }
     }
 }
-
-
-
-
-
-
-
-
 
 //        let samplesE = getWeightMoodDistribution(type: .elevation, data: data)
 //        let samplesD = getWeightMoodDistribution(type: .depression, data: data)

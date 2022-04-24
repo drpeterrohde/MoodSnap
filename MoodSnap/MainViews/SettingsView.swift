@@ -108,6 +108,32 @@ struct SettingsView: View {
                     }
                 }
 
+                Section(header: Text("Health")) {
+                    Toggle(isOn: $data.settings.useHealthKit, label: {
+                        Text("Use Apple Health")
+                    })
+                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
+                        Text("Walking & running distance")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthSleepOn, label: {
+                        Text("Sleep")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
+                        Text("Active energy")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthWeightOn, label: {
+                        Text("Weight")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
+                        Text("Menstrual cycle")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                }
+
                 Group {
                     Section(header: Text("symptom_visibility")) {
                         ForEach(0 ..< symptomList.count, id: \.self) { i in
@@ -133,24 +159,6 @@ struct SettingsView: View {
                         }
                     }
                 }
-
-//                Section(header: Text("Health")) {
-//                    Toggle(isOn: $data.settings.healthDistanceOn , label: {
-//                        Text("Walking & running distance")
-//                    })
-//                    Toggle(isOn: $data.settings.healthSleepOn , label: {
-//                                                Text("Sleep")
-//                    })
-//                    Toggle(isOn: $data.settings.healthEnergyOn , label: {
-//                        Text("Active energy")
-//                    })
-//                    Toggle(isOn: $data.settings.healthWeightOn , label: {
-//                        Text("Weight")
-//                    })
-//                    Toggle(isOn: $data.settings.healthMenstrualOn , label: {
-//                        Text("Menstrual cycle")
-//                    })
-//                }
 
                 Section(header: Text("about")) {
                     HStack {

@@ -65,6 +65,14 @@ func getCorrelation(data: DataStoreStruct, health: HealthManager, type: HealthTy
                     anxietySamples.append(moodSnaps[0].anxiety)
                     irritabilitySamples.append(moodSnaps[0].irritability)
                 }
+            case .energy:
+                if healthSnaps[0].activeEnergy != nil {
+                    samples.append(healthSnaps[0].activeEnergy!)
+                    elevationSamples.append(moodSnaps[0].elevation)
+                    depressionSamples.append(moodSnaps[0].depression)
+                    anxietySamples.append(moodSnaps[0].anxiety)
+                    irritabilitySamples.append(moodSnaps[0].irritability)
+                }
             default:
                 break
             }
