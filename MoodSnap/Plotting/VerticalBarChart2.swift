@@ -41,7 +41,7 @@ struct VerticalBarChart2: View {
     }
 
     var body: some View {
-        let spacing: CGFloat = 2.0
+        let spacing: CGFloat = 1.0
 
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -79,7 +79,7 @@ struct VerticalBarChart2: View {
                     let thisColor = self.lineColor.opacity(opacity)
                     Path { path in
                         if values[i] != nil {
-                            let barWidth: CGFloat = CGFloat(width) / CGFloat(values.count) - spacing
+                            let barWidth: CGFloat = [CGFloat(width) / CGFloat(values.count) - spacing, 1.0].max()!
                             var barHeight: CGFloat
                             if values[i]! == 0 {
                                 barHeight = (values[i]! + zeroGraphicalBarOffset - min) * CGFloat(height) / (max - min)
