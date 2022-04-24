@@ -99,6 +99,7 @@
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
 		CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart2.swift */; };
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */; };
+		CA8D840928160563002F6281 /* BorderlessLineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D840828160563002F6281 /* BorderlessLineChart2.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
@@ -196,6 +197,7 @@
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		CA87642B2814D7A1000FEEEC /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart2.swift; sourceTree = "<group>"; };
+		CA8D840828160563002F6281 /* BorderlessLineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderlessLineChart2.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
 				CA496B2727EBEF290067EE63 /* LineChart.swift */,
 				CA87642B2814D7A1000FEEEC /* LineChart2.swift */,
+				CA8D840828160563002F6281 /* BorderlessLineChart2.swift */,
 				CA496B2827EBEF290067EE63 /* ScatterChart.swift */,
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
 				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
@@ -580,6 +583,7 @@
 				CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */,
 				CA496BA327EBEF2B0067EE63 /* ImagePicker.swift in Sources */,
 				CA496B7827EBEF2A0067EE63 /* TransientReferencePickerView.swift in Sources */,
+				CA8D840928160563002F6281 /* BorderlessLineChart2.swift in Sources */,
 				CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */,
 				CA496BB127EBEF2B0067EE63 /* Hashtags.swift in Sources */,
 				CA496B9E27EBEF2B0067EE63 /* UX.swift in Sources */,
