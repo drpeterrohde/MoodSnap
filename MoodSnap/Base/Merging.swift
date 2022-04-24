@@ -66,6 +66,13 @@ func mergeHealthSnaps(healthSnaps: [HealthSnapStruct]) -> HealthSnapStruct? {
             }
         }
         
+        if collapsed.activeEnergy == nil {
+            collapsed.activeEnergy = healthSnap.activeEnergy
+        } else {
+            if healthSnap.activeEnergy != nil {
+                collapsed.activeEnergy! = max(collapsed.activeEnergy!, healthSnap.activeEnergy!)
+            }
+        }
     }
 
     return collapsed

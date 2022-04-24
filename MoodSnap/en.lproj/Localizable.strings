@@ -10,6 +10,7 @@
 "Alcohol" = "Alcohol";
 "Anhedonia" = "Anhedonia";
 "Average_distance" = "Average distance";
+"Average_energy" = "Average energy";
 "Average_weight" = "Average weight";
 "Caffeine" = "Caffeine";
 "Compulsions" = "Compulsions";
@@ -31,6 +32,7 @@
 "Isolation" = "Isolation";
 "Mania" = "Mania";
 "Maximum_distance" = "Maximum distance";
+"Maximum_energy" = "Maximum energy";
 "Maximum_weight" = "Maximum weight";
 "Meditation" = "Meditation";
 "Minimum_weight" = "Minimum weight";

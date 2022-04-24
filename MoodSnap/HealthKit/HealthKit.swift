@@ -36,7 +36,6 @@ class HealthManager: ObservableObject {
     }
 
     func makeHealthSnapForDate(date: Date) {
-        print("Fetching data")
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
 
@@ -90,7 +89,7 @@ class HealthManager: ObservableObject {
                                                             if energy != nil {
                                                                 var healthSnap = HealthSnapStruct()
                                                                 healthSnap.timestamp = date
-                                                                healthSnap.walkingRunningDistance = CGFloat(energy!)
+                                                                healthSnap.activeEnergy = CGFloat(energy!)
                                                                 self.healthSnaps.append(healthSnap)
                                                             }
                                                         }
@@ -164,7 +163,7 @@ class HealthManager: ObservableObject {
             let thisEnergySample = result as! HKQuantitySample
             energy += thisEnergySample.quantity.doubleValue(for: HKUnit.jouleUnit(with: .kilo))
         }
-
+        
         return energy
     }
 }
