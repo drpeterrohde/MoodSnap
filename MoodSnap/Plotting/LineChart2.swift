@@ -26,7 +26,7 @@ struct LineChart2: View {
         self.blackAndWhite = blackAndWhite
         
         fontColor = Color.secondary
-        gridColor = Color.secondary
+        gridColor = Color.gray.opacity(0.3)
         lineColor = Color.red
         
         if blackAndWhite {
@@ -87,6 +87,6 @@ struct LineChart2: View {
                     }.stroke(self.color[graph], lineWidth: 2)
                 }
             }
-        }.frame(width: 300, height: 60)
+        }.frame(height: 170)
     }
 }
