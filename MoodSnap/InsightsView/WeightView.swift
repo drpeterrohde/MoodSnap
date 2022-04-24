@@ -6,8 +6,8 @@ struct WeightView: View {
     var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) // data.healthSnaps.count
-        let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
+        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .weight)
+        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
         let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .weight)
         let weightData: [CGFloat?] = getWeightData(data: data, health: health)
@@ -19,17 +19,18 @@ struct WeightView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 - 5
-            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0 + 5
+            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 // use health data???
+            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0
+            
+            let minimumStr: String = String(format: "%.1f", minWeight) + "kg"
+            let maximumStr: String = String(format: "%.1f", maxWeight) + "kg"
+
            // VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minWeight, max: maxWeight, labelCount: 0)
              //   .frame(height: 65)
             
             VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minWeight, max: maxWeight, settings: data.settings)
                 .frame(height: 60)
             
-            Label("mood_levels", systemImage: "brain.head.profile")
-                .font(.caption)
-                .foregroundColor(.secondary)
             Spacer()
             HStack {
                 Text("Average_weight")
@@ -43,6 +44,27 @@ struct WeightView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
+            HStack {
+                Text("Minimum_weight")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(minimumStr)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
+            HStack {
+                Text("Maximum_weight")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(maximumStr)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
+            Label("mood_levels", systemImage: "brain.head.profile")
+                .font(.caption)
+                .foregroundColor(.secondary)
             HStack {
                 // R2
                 Text("Correlation")

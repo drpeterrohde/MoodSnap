@@ -25,7 +25,9 @@ class HealthManager: ObservableObject {
     func makeHealthSnaps(data: DataStoreStruct) {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
-
+        
+        healthSnaps = []
+        
         while date >= earliest {
             makeHealthSnapForDate(date: date)
             date = date.addDays(days: -1)

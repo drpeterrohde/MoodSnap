@@ -48,7 +48,7 @@ struct WalkingRunningDistanceView: View {
     var health: HealthManager
     
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance) // data.healthSnaps.count // update???
+        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance)
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "km"
         let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
@@ -62,17 +62,15 @@ struct WalkingRunningDistanceView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let minDistance: CGFloat = 0.0
-            let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0 + 1
+            let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0 // use health data ???
+            let maximumStr: String = String(format: "%.1f", maxDistance) + "km"
+
 //            VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minDistance, max: maxDistance, labelCount: 0)
   //              .frame(height: 65)
             
-            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minDistance, max: maxDistance, settings: data.settings)
+            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
                 .frame(height: 60)
           
-            Label("mood_levels", systemImage: "brain.head.profile")
-                .font(.caption)
-                .foregroundColor(.secondary)
             Spacer()
             HStack {
                 Text("Average_distance")
@@ -86,6 +84,18 @@ struct WalkingRunningDistanceView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
+            HStack {
+                Text("Maximum_distance")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(maximumStr)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
+            Label("mood_levels", systemImage: "brain.head.profile")
+                .font(.caption)
+                .foregroundColor(.secondary)
             HStack {
                 // R2
                 Text("Correlation")

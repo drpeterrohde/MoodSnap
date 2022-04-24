@@ -28,14 +28,14 @@ struct MoodSnapApp: App {
                             print("Load failed")
                         }
 
-                        if HKHealthStore.isHealthDataAvailable() {
-                            print("HealthKit is Available")
-                            health.requestPermissions()
-                            health.makeHealthSnaps(data: data)
-                            data.healthSnaps = health.healthSnaps
-                        } else {
-                            print("There is a problem accessing HealthKit")
-                        }
+//                        if HKHealthStore.isHealthDataAvailable() {
+//                            print("HealthKit is Available")
+//                            health.requestPermissions()
+//                            health.makeHealthSnaps(data: data)
+//                            data.healthSnaps = health.healthSnaps
+//                        } else {
+//                            print("There is a problem accessing HealthKit")
+//                        }
                     }
             }
         }.onChange(of: scenePhase) { value in
