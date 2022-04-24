@@ -9,7 +9,8 @@ class HealthManager: ObservableObject {
     public func requestPermissions() {
         let readDataTypes: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
                                   HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
-                                  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!]
+                                  HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
+                                  HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!]
 
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
             if success {
@@ -42,6 +43,7 @@ class HealthManager: ObservableObject {
         let quantityTypeWeight = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
         let quantityTypeDistance = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
         let quantityTypeActiveEnergy = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
+        let quantityTypeMenstrual = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!
 
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
@@ -95,9 +97,28 @@ class HealthManager: ObservableObject {
                                                         }
                                                     })
 
+        let sampleQueryMenstrual = HKSampleQuery(sampleType: quantityTypeMenstrual,
+                                                 predicate: predicate,
+                                                 limit: HKObjectQueryNoLimit,
+                                                 sortDescriptors: nil,
+                                                 resultsHandler: { _, results, _ in
+                                                     DispatchQueue.main.async {
+                                                            let menstrual = self.maxMenstrual(results: results)
+                                                            if menstrual != nil {
+                                                                var healthSnap = HealthSnapStruct()
+                                                                healthSnap.timestamp = date
+                                                                healthSnap.menstrual = CGFloat(menstrual!)
+                                                                self.healthSnaps.append(healthSnap)
+                                                            }
+                                                         print("menstrual")
+                                                         print(menstrual)
+                                                     }
+                                                 })
+
         healthStore.execute(sampleQueryWeight)
         healthStore.execute(sampleQueryDistance)
         healthStore.execute(sampleQueryActiveEnergy)
+        healthStore.execute(sampleQueryMenstrual)
     }
 
     /**
@@ -163,7 +184,22 @@ class HealthManager: ObservableObject {
             let thisEnergySample = result as! HKQuantitySample
             energy += thisEnergySample.quantity.doubleValue(for: HKUnit.jouleUnit(with: .kilo))
         }
-        
+
         return energy
+    }
+
+    /**
+     Maximum menstrual flow for given HealthKit `results`
+     */
+    func maxMenstrual(results: [HKSample]?) -> Double? {
+        if results == nil {
+            return nil
+        }
+
+        if results!.count == 0 {
+            return nil
+        }
+
+        return 1
     }
 }

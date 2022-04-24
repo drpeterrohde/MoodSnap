@@ -29,7 +29,7 @@ struct MoodHistoryBarView: View {
         } else {
             VStack {
                 Group {
-                VerticalBarChart2(values: entriesE2, color: Color(color[0]), horizontalGridLines: 3, settings: data.settings)
+                    VerticalBarChart2(values: entriesE2, color: Color(color[0]), horizontalGridLines: 3, shaded: true, settings: data.settings)
                     .frame(height: 60)
 //                VerticalBarChart(entries: entries[0], color: color[0], settings: data.settings)
 //                    .frame(height: 65)
@@ -40,7 +40,7 @@ struct MoodHistoryBarView: View {
                 }
                 
                 Group {
-                VerticalBarChart2(values: entriesD2, color: Color(color[1]), horizontalGridLines: 3, settings: data.settings)
+                VerticalBarChart2(values: entriesD2, color: Color(color[1]), horizontalGridLines: 3, shaded: true, settings: data.settings)
                     .frame(height: 60)
                    // .padding(.top, -10)
 //                VerticalBarChart(entries: entries[1], color: color[1], settings: data.settings)
@@ -53,7 +53,7 @@ struct MoodHistoryBarView: View {
                 }
                 
                 Group {
-                VerticalBarChart2(values: entriesA2, color: Color(color[2]), horizontalGridLines: 3, settings: data.settings)
+                VerticalBarChart2(values: entriesA2, color: Color(color[2]), horizontalGridLines: 3, shaded: true, settings: data.settings)
                     .frame(height: 60)
                   //  .padding(.top, -10)
 //                VerticalBarChart(entries: entries[2], color: color[2], settings: data.settings)
@@ -66,7 +66,7 @@ struct MoodHistoryBarView: View {
                 }
                 
                 Group {
-                    VerticalBarChart2(values: entriesI2, color: Color(color[3]), horizontalGridLines: 3, settings: data.settings)
+                    VerticalBarChart2(values: entriesI2, color: Color(color[3]), horizontalGridLines: 3, shaded: true, settings: data.settings)
                         .frame(height: 60)
                    //     .padding(.top, -10)
 //                VerticalBarChart(entries: entries[3], color: color[3], settings: data.settings)

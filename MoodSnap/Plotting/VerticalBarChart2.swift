@@ -11,14 +11,14 @@ struct VerticalBarChart2: View {
     var horizontalGridLines: Int = 0
     var verticalGridLines: Int = 0
     var blackAndWhite: Bool = false
-    var shaded: Bool = true
+    var shaded: Bool = false
     var settings: SettingsStruct
 
     private var fontColor: Color
     private var lineColor: Color
     private var gridColor: Color
 
-    init(values: [CGFloat?], color: Color = .blue, min: CGFloat = 0.0, max: CGFloat = 4.0, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, shaded: Bool = true, settings: SettingsStruct) {
+    init(values: [CGFloat?], color: Color = .blue, min: CGFloat = 0.0, max: CGFloat = 4.0, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, shaded: Bool = false, settings: SettingsStruct) {
         self.values = values
         self.color = color
         self.min = min
@@ -75,7 +75,7 @@ struct VerticalBarChart2: View {
                 // Graph
                 ForEach(0 ..< values.count, id: \.self) { i in
                     let thisData = values[i] ?? 0
-                    let opacity = (thisData + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)
+                    let opacity = chooseOpacity(value: thisData, shaded: shaded, settings: settings)
                     let thisColor = self.lineColor.opacity(opacity)
                     Path { path in
                         if values[i] != nil {
@@ -113,4 +113,12 @@ func chooseSpacing(values: [CGFloat?]) -> CGFloat {
         return 0.0
     }
     return 2.0
+}
+
+func chooseOpacity(value: CGFloat, shaded: Bool, settings: SettingsStruct) -> CGFloat {
+    var opacity: CGFloat = 1.0
+    if shaded {
+        opacity = (value + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)
+    }
+    return opacity
 }

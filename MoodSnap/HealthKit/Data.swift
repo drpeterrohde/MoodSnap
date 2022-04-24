@@ -60,3 +60,23 @@ func getEnergyData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
 
     return energyData.reversed()
 }
+
+/**
+ Return an array of all the menstrual data.
+ */
+func getMenstrualData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+    var menstrualData: [CGFloat?] = []
+
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+
+    while date >= earliest {
+        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        if thisHealthSnap.count > 0 {
+            menstrualData.append(thisHealthSnap[0].menstrual)
+        }
+        date = date.addDays(days: -1)
+    }
+
+    return menstrualData.reversed()
+}

@@ -505,6 +505,37 @@ struct InsightsView: View {
                                         }
                                     }
                                 }
+                                
+                                if data.settings.healthMenstrualOn {
+                                    GroupBox {
+                                        HStack {
+                                            HStack {
+                                                Image(systemName: "staroflife")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                Text("Menstrual cycle").font(.subheadline)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isMenstrualExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isMenstrualExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isMenstrualExpanded {
+                                            Divider()
+                                            MenstrualView(timescale: timescale, data: data, health: health)
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
