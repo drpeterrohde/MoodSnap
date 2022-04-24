@@ -41,7 +41,7 @@ class HealthManager: ObservableObject {
 
         let quantityTypeWeight: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!]
         let quantityTypeDistance: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!]
-
+        
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
                                                     options: .strictStartDate)
@@ -58,7 +58,6 @@ class HealthManager: ObservableObject {
                                                           healthSnap.timestamp = date
                                                           healthSnap.weight = CGFloat(maxWeight!)
                                                           self.healthSnaps.append(healthSnap)
-                                                          print("HealthSnap", healthSnap)
                                                       }
                                                   }
                                               })
@@ -75,7 +74,6 @@ class HealthManager: ObservableObject {
                                                             healthSnap.timestamp = date
                                                             healthSnap.walkingRunningDistance = CGFloat(distance!)
                                                             self.healthSnaps.append(healthSnap)
-                                                            print("HealthSnap", healthSnap)
                                                         }
                                                     }
                                                 })

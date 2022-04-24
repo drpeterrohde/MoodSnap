@@ -93,6 +93,8 @@
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
 		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
+		CA69217728154B2900E99864 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217628154B2900E99864 /* Data.swift */; };
+		CA69217928154B8500E99864 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthKit.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
 		CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart2.swift */; };
@@ -187,6 +189,8 @@
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA69217628154B2900E99864 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CA69217828154B8500E99864 /* Nils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nils.swift; sourceTree = "<group>"; };
 		CA7775AA280CD44C0045A202 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -415,6 +419,7 @@
 				CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
 				CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */,
+				CA69217828154B8500E99864 /* Nils.swift */,
 				CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */,
 				CA496B6C27EBEF2A0067EE63 /* Influence.swift */,
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
@@ -426,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7775AA280CD44C0045A202 /* HealthKit.swift */,
+				CA69217628154B2900E99864 /* Data.swift */,
 			);
 			path = HealthKit;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 				CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */,
 				CA496B9927EBEF2B0067EE63 /* HelpView.swift in Sources */,
 				CA496B9627EBEF2A0067EE63 /* IntroPopoverView.swift in Sources */,
+				CA69217728154B2900E99864 /* Data.swift in Sources */,
 				CA496B7327EBEF2A0067EE63 /* InfluencesActivityView.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
@@ -563,6 +570,7 @@
 				CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */,
 				CA496B9827EBEF2B0067EE63 /* DatePickerView.swift in Sources */,
 				CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */,
+				CA69217928154B8500E99864 /* Nils.swift in Sources */,
 				CA496B0E27EBEEEF0067EE63 /* DateConverters.swift in Sources */,
 				CA496B8F27EBEF2A0067EE63 /* HistoryQuoteView.swift in Sources */,
 				CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */,

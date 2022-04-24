@@ -36,9 +36,6 @@ struct WeightView: View {
                 Text("Average_weight")
                     .font(.caption)
                     .foregroundColor(.primary)
-                // Occurrences
-                Text("(\(samples))")
-                    .font(.caption)
                 Spacer()
                 Text(averageStr)
                     .font(.caption)
@@ -67,11 +64,11 @@ struct WeightView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             HStack {
-                // R2
                 Text("Correlation")
                     .font(.caption)
+                Text("(\(samples))")
+                    .font(.caption)
                 Spacer()
-                // Numbers
                 HStack {
                     Text(formatMoodLevelString(value: r2mood[0]!))
                         .font(numericFont)
@@ -84,50 +81,6 @@ struct WeightView: View {
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
                 }.frame(width: 150)
             }
-
-//            Divider()
-//            Label("volatility", systemImage: "waveform.path.ecg")
-//                .font(.caption)
-//                .foregroundColor(.secondary)
-//            Spacer()
-//            HStack {
-//                // R2
-//                Text(.init("R2"))
-//                    .font(.caption)
-//                // Occurrences
-//                Text("(\(samples))")
-//                    .font(.caption)
-//                Spacer()
-//                // Numbers
-//                HStack {
-//                    Text(formatMoodLevelString(value: r2volatility[0]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: r2volatility[1]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: r2volatility[2]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: r2volatility[3]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].irritabilityColor)
-//                }.frame(width: 150)
-//            }
         }
     }
-}
-
-func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
-    var weightData: [CGFloat?] = []
-
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
-
-    while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
-        if thisHealthSnap.count > 0 {
-            weightData.append(thisHealthSnap[0].weight)
-        }
-        date = date.addDays(days: -1)
-    }
-
-    return weightData.reversed()
 }
