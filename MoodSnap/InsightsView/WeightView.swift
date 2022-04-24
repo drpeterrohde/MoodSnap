@@ -62,6 +62,7 @@ struct WeightView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
+            Divider()
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
