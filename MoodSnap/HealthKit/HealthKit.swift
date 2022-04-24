@@ -196,10 +196,14 @@ class HealthManager: ObservableObject {
             return nil
         }
 
-        if results!.count == 0 {
-            return nil
+        var flow = 0
+        
+        for result in results! {
+       // if results!.count == 0 {
+            let thisMenstrualSample = result as! HKCategorySample
+            flow = max(flow, thisMenstrualSample.value)
         }
 
-        return 1
+        return Double(flow)
     }
 }

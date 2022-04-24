@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0C523D281614A000B1595C /* VerticalBarChartOpacity2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C523C281614A000B1595C /* VerticalBarChartOpacity2.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
@@ -106,6 +107,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA0C523C281614A000B1595C /* VerticalBarChartOpacity2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChartOpacity2.swift; sourceTree = "<group>"; };
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
 				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
 				CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */,
+				CA0C523C281614A000B1595C /* VerticalBarChartOpacity2.swift */,
 			);
 			path = Plotting;
 			sourceTree = "<group>";
@@ -607,6 +610,7 @@
 				CA496B9027EBEF2A0067EE63 /* MoodLevelsView.swift in Sources */,
 				CA496B8E27EBEF2A0067EE63 /* HistoryView.swift in Sources */,
 				CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */,
+				CA0C523D281614A000B1595C /* VerticalBarChartOpacity2.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,

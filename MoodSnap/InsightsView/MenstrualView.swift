@@ -28,10 +28,11 @@ struct MenstrualView: View {
                 .foregroundColor(.secondary)
         } else {
             ZStack {
-                VerticalBarChart2(values: entries2,
+                VerticalBarChartOpacity2(values: entries2,
                                   color: themes[data.settings.theme].buttonColor,
                                   min: 0,
                                   max: 1,
+                                  shaded: true,
                                   settings: data.settings)
                     .frame(height: 60)
                 BorderlessLineChart2(data: [entriesE2, entriesD2, entriesA2, entriesI2],
