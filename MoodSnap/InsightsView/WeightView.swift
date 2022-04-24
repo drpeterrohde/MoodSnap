@@ -11,17 +11,22 @@ struct WeightView: View {
         let averageStr: String = String(format: "%.1f", average) + "kg"
         let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
         let weightData: [CGFloat?] = getWeightData(data: data, health: health)
-        let entries = makeBarData(y: weightData, timescale: timescale)
-
+       // let entries = makeBarData(y: weightData, timescale: timescale)
+        let entries2 = makeBarData2(y: weightData, timescale: timescale)
+        
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 - 1
-            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0 + 1
-            VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minWeight, max: maxWeight, labelCount: 0)
-                .frame(height: 65)
+            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 - 5
+            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0 + 5
+           // VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minWeight, max: maxWeight, labelCount: 0)
+             //   .frame(height: 65)
+            
+            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minWeight, max: maxWeight, settings: data.settings)
+                .frame(height: 60)
+            
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)

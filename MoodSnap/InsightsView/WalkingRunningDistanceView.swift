@@ -55,6 +55,7 @@ struct WalkingRunningDistanceView: View {
         let r2mood: [CGFloat?] = getR2(data: data, type: .distance) // fix ??? to health
         // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
         let entries = makeBarData(y: distanceData, timescale: timescale)
+        let entries2 = makeBarData2(y: distanceData, timescale: timescale)
         
         if samples == 0 || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
@@ -63,8 +64,12 @@ struct WalkingRunningDistanceView: View {
         } else {
             let minDistance: CGFloat = 0.0
             let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0 + 1
-            VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minDistance, max: maxDistance, labelCount: 0)
-                .frame(height: 65)
+//            VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minDistance, max: maxDistance, labelCount: 0)
+  //              .frame(height: 65)
+            
+            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: minDistance, max: maxDistance, settings: data.settings)
+                .frame(height: 60)
+          
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
