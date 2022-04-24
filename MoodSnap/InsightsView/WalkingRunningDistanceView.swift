@@ -52,7 +52,7 @@ struct WalkingRunningDistanceView: View {
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "km"
         let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
-        let r2mood: [CGFloat?] = getR2(data: data, type: .distance) // fix ??? to health
+        let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .distance) // fix ??? to health
         // let r2volatility: [CGFloat?] = [0.0, 0.0, 0.0, 0.0]
         let entries = makeBarData(y: distanceData, timescale: timescale)
         let entries2 = makeBarData2(y: distanceData, timescale: timescale)
@@ -75,7 +75,7 @@ struct WalkingRunningDistanceView: View {
                 .foregroundColor(.secondary)
             Spacer()
             HStack {
-                Text("Average distance")
+                Text("Average_distance")
                     .font(.caption)
                     .foregroundColor(.primary)
                 // Occurrences
@@ -88,7 +88,7 @@ struct WalkingRunningDistanceView: View {
             }
             HStack {
                 // R2
-                Text(.init("R2"))
+                Text("Correlation")
                     .font(.caption)
                 Spacer()
                 // Numbers

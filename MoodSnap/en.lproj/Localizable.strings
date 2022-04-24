@@ -9,9 +9,12 @@
 "Affection" = "Affection";
 "Alcohol" = "Alcohol";
 "Anhedonia" = "Anhedonia";
+"Average_distance" = "Average distance";
+"Average_weight" = "Average weight";
 "Caffeine" = "Caffeine";
 "Compulsions" = "Compulsions";
 "Conflict" = "Conflict";
+"Correlation" = "Correlation";
 "Dissociation" = "Dissociation";
 "Euphoria" = "Euphoria";
 "Excercise" = "Excercise";

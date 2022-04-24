@@ -9,7 +9,7 @@ struct WeightView: View {
         let samples: Int = countHealthSnaps(healthSnaps: data.healthSnaps, type: .weight) // data.healthSnaps.count
         let average: CGFloat = average(healthSnaps: data.healthSnaps, type: .weight) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "kg"
-        let r2mood: [CGFloat?] = getR2(data: data, type: .weight)
+        let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .weight)
         let weightData: [CGFloat?] = getWeightData(data: data, health: health)
        // let entries = makeBarData(y: weightData, timescale: timescale)
         let entries2 = makeBarData2(y: weightData, timescale: timescale)
@@ -32,7 +32,7 @@ struct WeightView: View {
                 .foregroundColor(.secondary)
             Spacer()
             HStack {
-                Text("Average weight")
+                Text("Average_weight")
                     .font(.caption)
                     .foregroundColor(.primary)
                 // Occurrences
@@ -45,7 +45,7 @@ struct WeightView: View {
             }
             HStack {
                 // R2
-                Text(.init("R2"))
+                Text("Correlation")
                     .font(.caption)
                 Spacer()
                 // Numbers

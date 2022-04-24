@@ -41,7 +41,7 @@ struct VerticalBarChart2: View {
     }
 
     var body: some View {
-        let spacing: CGFloat = 1.0
+        let spacing: CGFloat = chooseSpacing(values: values)
 
         GeometryReader { geometry in
             let width = geometry.size.width
@@ -97,4 +97,20 @@ struct VerticalBarChart2: View {
             }
         }.frame(height: 60)
     }
+}
+
+func chooseSpacing(values: [CGFloat?]) -> CGFloat {
+    if values.count <= TimeScaleEnum.month.rawValue {
+        return 2.0
+    }
+    if values.count <= TimeScaleEnum.threeMonths.rawValue {
+        return 1.0
+    }
+    if values.count <= TimeScaleEnum.sixMonths.rawValue {
+        return 0.0
+    }
+    if values.count <= TimeScaleEnum.year.rawValue {
+        return 0.0
+    }
+    return 2.0
 }

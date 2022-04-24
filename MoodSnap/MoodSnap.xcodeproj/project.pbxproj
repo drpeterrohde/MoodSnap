@@ -98,7 +98,7 @@
 		CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart2.swift */; };
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
-		CAB7F2DA280DFFFF00E8A823 /* R2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* R2.swift */; };
+		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
 
@@ -193,7 +193,7 @@
 		CA87642B2814D7A1000FEEEC /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart2.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
-		CAB7F2D9280DFFFF00E8A823 /* R2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = R2.swift; sourceTree = "<group>"; };
+		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -414,7 +414,7 @@
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
-				CAB7F2D9280DFFFF00E8A823 /* R2.swift */,
+				CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */,
 				CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */,
 				CA496B6C27EBEF2A0067EE63 /* Influence.swift */,
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
@@ -579,7 +579,7 @@
 				CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */,
 				CA496B7627EBEF2A0067EE63 /* SleepView.swift in Sources */,
 				CA496BAC27EBEF2B0067EE63 /* PDFMoodHistoryBarView.swift in Sources */,
-				CAB7F2DA280DFFFF00E8A823 /* R2.swift in Sources */,
+				CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */,
 				CA496BB327EBEF2B0067EE63 /* Transients.swift in Sources */,
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
