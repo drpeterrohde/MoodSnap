@@ -10,7 +10,8 @@ class HealthManager: ObservableObject {
         let readDataTypes: Set = [HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
                                   HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!,
                                   HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!,
-                                  HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!]
+                                  HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!,
+                                  HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!]
 
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
             if success {
@@ -44,6 +45,7 @@ class HealthManager: ObservableObject {
         let quantityTypeDistance = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.distanceWalkingRunning)!
         let quantityTypeActiveEnergy = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
         let quantityTypeMenstrual = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!
+        let quantityTypeSleep = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
 
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
@@ -103,22 +105,37 @@ class HealthManager: ObservableObject {
                                                  sortDescriptors: nil,
                                                  resultsHandler: { _, results, _ in
                                                      DispatchQueue.main.async {
-                                                            let menstrual = self.maxMenstrual(results: results)
-                                                            if menstrual != nil {
-                                                                var healthSnap = HealthSnapStruct()
-                                                                healthSnap.timestamp = date
-                                                                healthSnap.menstrual = CGFloat(menstrual!)
-                                                                self.healthSnaps.append(healthSnap)
-                                                            }
-                                                         print("menstrual")
-                                                         print(menstrual)
+                                                         let menstrual = self.maxMenstrual(results: results)
+                                                         if menstrual != nil {
+                                                             var healthSnap = HealthSnapStruct()
+                                                             healthSnap.timestamp = date
+                                                             healthSnap.menstrual = CGFloat(menstrual!)
+                                                             self.healthSnaps.append(healthSnap)
+                                                         }
                                                      }
                                                  })
+
+        let sampleQuerySleep = HKSampleQuery(sampleType: quantityTypeSleep,
+                                             predicate: predicate,
+                                             limit: HKObjectQueryNoLimit,
+                                             sortDescriptors: nil,
+                                             resultsHandler: { _, results, _ in
+                                                 DispatchQueue.main.async {
+                                                     let sleep = self.totalSleep(results: results)
+                                                     if sleep != nil {
+                                                         var healthSnap = HealthSnapStruct()
+                                                         healthSnap.timestamp = date
+                                                         healthSnap.sleepHours = CGFloat(sleep!)
+                                                         self.healthSnaps.append(healthSnap)
+                                                     }
+                                                 }
+                                             })
 
         healthStore.execute(sampleQueryWeight)
         healthStore.execute(sampleQueryDistance)
         healthStore.execute(sampleQueryActiveEnergy)
         healthStore.execute(sampleQueryMenstrual)
+        healthStore.execute(sampleQuerySleep)
     }
 
     /**
@@ -144,6 +161,34 @@ class HealthManager: ObservableObject {
         return maxKg
     }
 
+    /**
+     Total sleep for given HealthKit `results`
+     */
+    func totalSleep(results: [HKSample]?) -> Double? {
+        if results == nil {
+            return nil
+        }
+
+        if results!.count == 0 {
+            return nil
+        }
+
+        var sleep: Double = 0.0
+
+        for result in results! {
+            let thisSleepSample = result as! HKCategorySample
+            if thisSleepSample.value == HKCategoryValueSleepAnalysis.inBed.rawValue {
+                let endDate = thisSleepSample.endDate
+                let startDate = thisSleepSample.startDate
+                let timeInterval = endDate.timeIntervalSince(startDate) / (60*60)
+                sleep += Double(timeInterval)
+            }
+        }
+
+        return sleep
+    }
+    
+    
     /**
      Total distance for given HealthKit `results`
      */
@@ -197,11 +242,11 @@ class HealthManager: ObservableObject {
         }
 
         var flow = 0
-        
+
         for result in results! {
-       // if results!.count == 0 {
+            // if results!.count == 0 {
             let thisMenstrualSample = result as! HKCategorySample
-            flow = max(flow, thisMenstrualSample.value)
+            flow = thisMenstrualSample.value
         }
 
         return Double(flow)

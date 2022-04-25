@@ -20,6 +20,26 @@ func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
     return weightData.reversed()
 }
 
+/**
+ Return an array of all the sleep data.
+ */
+func getSleepData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+    var sleepData: [CGFloat?] = []
+
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+
+    while date >= earliest {
+        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        if thisHealthSnap.count > 0 {
+            sleepData.append(thisHealthSnap[0].sleepHours)
+        }
+        date = date.addDays(days: -1)
+    }
+
+    return sleepData.reversed()
+}
+
 
 /**
  Return an array of all the distance data.

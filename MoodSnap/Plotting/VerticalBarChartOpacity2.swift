@@ -109,7 +109,7 @@ func chooseMenstrualOpacity(value: CGFloat, shaded: Bool, settings: SettingsStru
     case HKCategoryValueMenstrualFlow.light.rawValue:
         return 0.4
     case HKCategoryValueMenstrualFlow.medium.rawValue:
-        return 0.7
+        return 0.65
     case HKCategoryValueMenstrualFlow.heavy.rawValue:
         return 1.0
     default:

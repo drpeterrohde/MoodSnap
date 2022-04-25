@@ -84,7 +84,7 @@ struct BorderlessLineChart2: View {
                                 }
                             }
                         }
-                    }.stroke(self.color[graph].opacity(0.7), lineWidth: 2)
+                    }.stroke(self.color[graph].opacity(0.6), lineWidth: 2)
                 }
             }
         }.frame(height: 60)
