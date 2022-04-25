@@ -45,7 +45,7 @@ func makeLineData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
         xTotal = x1 + x2
         yTotal = y1 + y2
     } else {
-      //  xTotal = Array(stride(from: 0.0, to: CGFloat(yTrunc.count), by: 1.0))
+        //  xTotal = Array(stride(from: 0.0, to: CGFloat(yTrunc.count), by: 1.0))
         yTotal = yTrunc
     }
 
@@ -121,7 +121,7 @@ func makeBarData(y: [CGFloat?], timescale: Int) -> [BarChartDataEntry] {
 /**
  Make bar chart data using `y` coordinates, truncated and padded to given `timescale`.
  */
-func makeBarData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
+func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
     let yTrunc = Array(y.suffix(timescale))
 
     var xTotal: [CGFloat] = []

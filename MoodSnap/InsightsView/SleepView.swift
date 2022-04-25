@@ -9,23 +9,17 @@ struct SleepView: View {
         let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .sleep)
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .sleep) ?? 0.0
         let averageStr: String = String(format: "%.1f", average) + "hrs"
-        let r2mood: [CGFloat?] = getCorrelation(data: data, health: health, type: .sleep)
+        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .sleep)
         let sleepData: [CGFloat?] = getSleepData(data: data, health: health)
-        let entries2 = makeBarData2(y: sleepData, timescale: timescale)
+        let entries = makeChartData(y: sleepData, timescale: timescale)
         
         if samples == 0 {//|| r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-          //  let maxSleep: CGFloat = maxWithNils(data: sleepData) ?? 0
-
-            // VerticalBarChart(entries: entries, color: UIColor(themes[data.settings.theme].buttonColor), settings: data.settings, shaded: false, min: minWeight, max: maxWeight, labelCount: 0)
-            //   .frame(height: 65)
-            
-            VerticalBarChart2(values: entries2, color: themes[data.settings.theme].buttonColor, min: 0, max: 24, settings: data.settings)
+            VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: 24, settings: data.settings)
                 .frame(height: 60)
-
             Spacer()
             HStack {
                 Text("Average_sleep")
@@ -48,13 +42,13 @@ struct SleepView: View {
                     .font(.caption)
                 Spacer()
                 HStack {
-                    Text(formatMoodLevelString(value: r2mood[0]!))
+                    Text(formatMoodLevelString(value: correlationsMood[0]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: r2mood[1]!))
+                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: correlationsMood[1]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: r2mood[2]!))
+                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: correlationsMood[2]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: r2mood[3]!))
+                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: correlationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
                 }.frame(width: 150)
