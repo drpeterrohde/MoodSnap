@@ -76,30 +76,3 @@ struct WalkingRunningDistanceView: View {
         }
     }
 }
-
-//            Divider()
-//            Label("volatility", systemImage: "waveform.path.ecg")
-//                .font(.caption)
-//                .foregroundColor(.secondary)
-//            Spacer()
-//            HStack {
-//                // R2
-//                Text(.init("R2"))
-//                    .font(.caption)
-//                // Occurrences
-//                Text("(\(samples))")
-//                    .font(.caption)
-//                Spacer()
-//                // Numbers
-//                HStack {
-//                    Text(formatMoodLevelString(value: r2volatility[0]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: r2volatility[1]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: r2volatility[2]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: r2volatility[3]))
-//                        .font(numericFont)
-//                        .foregroundColor(themes[data.settings.theme].irritabilityColor)
-//                }.frame(width: 150)
-//            }

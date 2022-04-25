@@ -55,19 +55,27 @@ struct UnlockView: View {
                 context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { success, _ in
                     if success {
                         // Authentication success
-                        isUnlocked = true
+                        DispatchQueue.main.async {
+                            isUnlocked = true
+                        }
                     } else {
                         // Authentication failure
-                        isUnlocked = false
+                        DispatchQueue.main.async {
+                            isUnlocked = false
+                        }
                     }
                 }
             } else {
                 // Biometrics not available
-                isUnlocked = true
-                data.settings.useFaceID = false
+                DispatchQueue.main.async {
+                    isUnlocked = true
+                    data.settings.useFaceID = false
+                }
             }
         } else {
-            isUnlocked = true
+            DispatchQueue.main.async {
+                isUnlocked = true
+            }
         }
     }
 }
