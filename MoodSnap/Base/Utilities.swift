@@ -1,3 +1,4 @@
+import HealthKit
 import SwiftUI
 
 /**
@@ -143,6 +144,23 @@ func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String,
 }
 
 /**
+ Get list of menstruation dates.
+ */
+func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
+    var dates: [Date] = []
+
+    for healthSnap in healthSnaps {
+        if healthSnap.menstrual != nil {
+            if healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) && healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.unspecified.rawValue) {
+                dates.append(healthSnap.timestamp)
+            }
+        }
+    }
+
+    return dates
+}
+
+/**
  Does an array of `data` contain any non-nil entries?
  */
 func hasData(data: [CGFloat?]) -> Bool {
@@ -219,8 +237,8 @@ func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> 
  Minimum of a set of `data` that may contain nil values.
  */
 func minWithNils(data: [CGFloat?]) -> CGFloat? {
-    var minimum: CGFloat? = nil
-    
+    var minimum: CGFloat?
+
     for item in data {
         if minimum == nil {
             minimum = item
@@ -230,7 +248,7 @@ func minWithNils(data: [CGFloat?]) -> CGFloat? {
             }
         }
     }
-    
+
     return minimum
 }
 
@@ -238,8 +256,8 @@ func minWithNils(data: [CGFloat?]) -> CGFloat? {
  Maximum of a set of `data` that may contain nil values.
  */
 func maxWithNils(data: [CGFloat?]) -> CGFloat? {
-    var maximum: CGFloat? = nil
-    
+    var maximum: CGFloat?
+
     for item in data {
         if maximum == nil {
             maximum = item
@@ -249,6 +267,6 @@ func maxWithNils(data: [CGFloat?]) -> CGFloat? {
             }
         }
     }
-    
+
     return maximum
 }
