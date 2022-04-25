@@ -31,18 +31,25 @@ struct MenstrualView: View {
                 .foregroundColor(.secondary)
         } else {
             ZStack {
-                VerticalBarChartOpacity2(values: entries,
-                                         color: themes[data.settings.theme].buttonColor,
-                                         min: 0,
-                                         max: 1,
+//                VerticalBarChartOpacity2(values: entries,
+//                                         color: themes[data.settings.theme].buttonColor,
+//                                         min: 0,
+//                                         max: 1,
+//                                         shaded: true,
+//                                         settings: data.settings)
+//                    .frame(height: 60)
+//                BorderlessLineChart2(data: moodEntries,
+//                                     color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])])
+//                    .frame(height: 60)
+                
+                SuperimposedCharLineChart(barData: entries,
+                                         lineData: moodEntries,
+                                         barColor: themes[data.settings.theme].buttonColor,
+                                         lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                                          shaded: true,
                                          settings: data.settings)
-                    .frame(height: 60)
-                BorderlessLineChart2(data: moodEntries,
-                                     color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])])
-                    .frame(height: 60)
             }
-            LineChart2(data: butterflyData, color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])], min: -bound, max: bound) // ???
+            LineChart2(data: butterflyData, color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])], min: -bound, max: bound, horizontalGridLines: 1, verticalGridLines: 1) // ???
         }
     }
 }
