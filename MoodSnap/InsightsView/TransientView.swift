@@ -8,6 +8,7 @@ struct TransientView: View {
     var butterfly: ButterflyEntryStruct
     var label: String
     var timescale: Int
+    var showNumbers: Bool = true
     var data: DataStoreStruct
 
     var body: some View {
@@ -31,20 +32,22 @@ struct TransientView: View {
             VStack {
                 Group {
                     if entries[0].count == 0 {
-                        HStack {
-                            Text("(-)").font(.caption)
-                            Text("-")
-                                .font(.caption)
-                                .foregroundColor(themes[data.settings.theme].elevationColor)
-                            Text("-")
-                                .font(.caption)
-                                .foregroundColor(themes[data.settings.theme].depressionColor)
-                            Text("-")
-                                .font(.caption)
-                                .foregroundColor(themes[data.settings.theme].anxietyColor)
-                            Text("-")
-                                .font(.caption)
-                                .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                        if showNumbers {
+                            HStack {
+                                Text("(-)").font(.caption)
+                                Text("-")
+                                    .font(.caption)
+                                    .foregroundColor(themes[data.settings.theme].elevationColor)
+                                Text("-")
+                                    .font(.caption)
+                                    .foregroundColor(themes[data.settings.theme].depressionColor)
+                                Text("-")
+                                    .font(.caption)
+                                    .foregroundColor(themes[data.settings.theme].anxietyColor)
+                                Text("-")
+                                    .font(.caption)
+                                    .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                            }
                         }
                         MultipleLineChart(
                             entries: [[], [], [], []],
@@ -65,21 +68,23 @@ struct TransientView: View {
                         Group {
                             if entries[0].count > 0 {
                                 VStack {
-                                    HStack {
-                                        Text("(\(butterfly.occurrences))")
-                                            .font(.caption)
-                                        Text(formatMoodLevelString(value: butterfly.influence()[0]))
-                                            .font(.caption)
-                                            .foregroundColor(themes[data.settings.theme].elevationColor)
-                                        Text(formatMoodLevelString(value: butterfly.influence()[1]))
-                                            .font(.caption)
-                                            .foregroundColor(themes[data.settings.theme].depressionColor)
-                                        Text(formatMoodLevelString(value: butterfly.influence()[2]))
-                                            .font(.caption)
-                                            .foregroundColor(themes[data.settings.theme].anxietyColor)
-                                        Text(formatMoodLevelString(value: butterfly.influence()[3]))
-                                            .font(.caption)
-                                            .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                                    if showNumbers {
+                                        HStack {
+                                            Text("(\(butterfly.occurrences))")
+                                                .font(.caption)
+                                            Text(formatMoodLevelString(value: butterfly.influence()[0]))
+                                                .font(.caption)
+                                                .foregroundColor(themes[data.settings.theme].elevationColor)
+                                            Text(formatMoodLevelString(value: butterfly.influence()[1]))
+                                                .font(.caption)
+                                                .foregroundColor(themes[data.settings.theme].depressionColor)
+                                            Text(formatMoodLevelString(value: butterfly.influence()[2]))
+                                                .font(.caption)
+                                                .foregroundColor(themes[data.settings.theme].anxietyColor)
+                                            Text(formatMoodLevelString(value: butterfly.influence()[3]))
+                                                .font(.caption)
+                                                .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                                        }
                                     }
                                     MultipleLineChart(entries: entries,
                                                       color: color,

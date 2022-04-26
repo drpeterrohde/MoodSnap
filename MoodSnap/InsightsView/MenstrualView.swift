@@ -33,17 +33,19 @@ struct MenstrualView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-          //  ZStack {
-                SuperimposedCharLineChart(barData: entries,
-                                          lineData: moodEntries,
-                                          barColor: themes[data.settings.theme].buttonColor,
-                                          lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
-                                          shaded: true,
-                                          settings: data.settings)
-                    .frame(height: 100)
-           // }
+            SuperimposedCharLineChart(barData: entries,
+                                      lineData: moodEntries,
+                                      barColor: themes[data.settings.theme].buttonColor,
+                                      lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
+                                      shaded: true,
+                                      settings: data.settings)
+                .frame(height: 100)
             Spacer(minLength: 20)
-            TransientView(butterfly: butterfly, label: "pm_14_days", timescale: timescale, data: data)
+            TransientView(butterfly: butterfly,
+                          label: "pm_14_days",
+                          timescale: timescale,
+                          showNumbers: false,
+                          data: data)
         }
     }
 }
