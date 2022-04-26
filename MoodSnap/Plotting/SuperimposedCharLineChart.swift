@@ -135,7 +135,7 @@ struct SuperimposedCharLineChart: View {
                     }
                 }
             }
-        }.frame(height: 60)
+        }.frame(height: 100)
     }
 }
 

@@ -44,7 +44,7 @@ struct MenstrualView: View {
                                           lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                                           shaded: true,
                                           settings: data.settings)
-                    .frame(height: 60)
+                    .frame(height: 100)
             }
             // LineChart2(data: butterflyData, color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])], min: -bound, max: bound, horizontalGridLines: 1, verticalGridLines: 1) // ???
         }
