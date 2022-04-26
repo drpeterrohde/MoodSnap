@@ -18,7 +18,7 @@ struct WeightView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0 // use health data???
+            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0
             let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0
             
             let minimumStr: String = String(format: "%.1f", minWeight) + "kg"

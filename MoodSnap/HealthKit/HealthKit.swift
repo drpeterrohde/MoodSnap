@@ -3,7 +3,6 @@ import SwiftUI
 
 class HealthManager: ObservableObject {
     public var healthSnaps: [HealthSnapStruct] = [] // make published???
-
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {

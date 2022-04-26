@@ -120,16 +120,18 @@ struct MoodSnapView: View {
                 }
 
                 // Save button
-                Button { // put in async main???
-                    moodSnap.snapType = .mood
-                    data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                    data.moodSnaps.append(moodSnap)
-                    data.settings.addedSnaps += 1
-                    let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
-                    if quoteSnap != nil {
-                        data.moodSnaps.append(quoteSnap!)
+                Button {
+                    DispatchQueue.main.async { // ???
+                        moodSnap.snapType = .mood
+                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                        data.moodSnaps.append(moodSnap)
+                        data.settings.addedSnaps += 1
+                        let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
+                        if quoteSnap != nil {
+                            data.moodSnaps.append(quoteSnap!)
+                        }
+                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                     }
-                    data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
                         data.save()

@@ -102,6 +102,7 @@
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
+		CAC8A1E828177D0400BC20A6 /* Slope.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC8A1E728177D0400BC20A6 /* Slope.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
 
@@ -200,6 +201,7 @@
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart2.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
+		CAC8A1E728177D0400BC20A6 /* Slope.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slope.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -421,6 +423,7 @@
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
+				CAC8A1E728177D0400BC20A6 /* Slope.swift */,
 				CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */,
 				CA69217828154B8500E99864 /* Nils.swift */,
 				CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */,
@@ -596,6 +599,7 @@
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
+				CAC8A1E828177D0400BC20A6 /* Slope.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
 				CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */,

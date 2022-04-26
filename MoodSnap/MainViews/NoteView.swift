@@ -29,11 +29,13 @@ struct NoteView: View {
                 TextEditor(text: $moodSnap.notes).font(.caption)
             }
 
-            Button { // put in async main???
-                moodSnap.snapType = .note
-                data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                data.moodSnaps.append(moodSnap)
-                data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+            Button {
+                DispatchQueue.main.async { // ???
+                    moodSnap.snapType = .note
+                    data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                    data.moodSnaps.append(moodSnap)
+                    data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+                }
                 DispatchQueue.global(qos: .userInteractive).async {
                     data.process()
                     data.save()

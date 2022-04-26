@@ -3,7 +3,7 @@ import SwiftUI
 /**
  View for displaying mulptiple line chart.
  */
-struct LineChart2: View { // add bounds???
+struct LineChart2: View {
     var data: [[CGFloat?]]
     var color: [Color]
     var min: CGFloat
