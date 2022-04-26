@@ -178,12 +178,12 @@ struct SettingsView: View {
                         Spacer()
                         Text("[Peter Rohde](https://www.peterrohde.org)")
                     }
-                    HStack {
-                        Text("version")
-                        Spacer()
-                        Text(versionString)
-                            .foregroundColor(.secondary)
-                    }
+//                    HStack {
+//                        Text("version")
+//                        Spacer()
+//                        Text(versionString)
+//                            .foregroundColor(.secondary)
+//                    }
                     HStack {
                         Text("moodsnaps_taken")
                         Spacer()
