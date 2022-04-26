@@ -270,3 +270,42 @@ func maxWithNils(data: [CGFloat?]) -> CGFloat? {
 
     return maximum
 }
+
+func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "kg"
+    case .imperial:
+        str = String(format: "%.1f", 2.20462 * value) + "lb"
+    }
+    
+    return str
+}
+
+func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "km"
+    case .imperial:
+        str = String(format: "%.1f", 0.621371 * value) + "mi"
+    }
+    
+    return str
+}
+
+func getEnergyString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "kJ"
+    case .imperial:
+        str = String(format: "%.1f", 0.239006 * value) + "kcal"
+    }
+    
+    return str
+}

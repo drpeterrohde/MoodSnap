@@ -56,6 +56,13 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.quoteVisibility, label: {
                         Text("show_quotes")
                     })
+                    
+                    Picker("measurement_units", selection: $data.settings.healthUnits) {
+                        Text("metric")
+                            .tag(MeasurementUnitsEnum.metric)
+                        Text("imperial")
+                            .tag(MeasurementUnitsEnum.imperial)
+                    }
                 }
 
                 Section(header: Text("media")) {

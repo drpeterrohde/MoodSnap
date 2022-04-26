@@ -107,6 +107,7 @@
 "help_taking_moodsnaps_string" = "The sliders at the top of the _MoodSnap_ panel snap to five increments, ranging from _none_ to _extreme_. The toggle buttons below allow you to specify symptoms you've experience and activites you've undertaken in the same period. Since many of these aren't relevant to everyone, you can toggle their visibility in the _settings_ page. Custom symptoms and activities can be entered using #hashtags in any text field.";
 "history" = "History";
 "how_to_use_moodsnap" = "How to use MoodSnap";
+"imperial" = "Imperial";
 "import_backup_file" = "Import backup file";
 "import_export" = "Import/Export";
 "include_guide" = "Include guide";
@@ -127,7 +128,9 @@
 "intro_snap_title" = "Welcome to MoodSnap";
 "irritability" = "Irritability";
 "load_demo_data" = "Load demo data";
+"measurement_units" = "Measurement units";
 "media" = "Media";
+"metric" = "Metric";
 "mood" = "Mood";
 "mood_history" = "Mood history";
 "mood_level_mood_volatility" = "Mood level / Mood volatility";
