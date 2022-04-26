@@ -6,6 +6,7 @@
 "3mo" = "3mo";
 "6_months" = "6 months";
 "6mo" = "6mo";
+"Active_energy" = "Active energy";
 "Affection" = "Affection";
 "Alcohol" = "Alcohol";
 "Anhedonia" = "Anhedonia";
@@ -36,6 +37,7 @@
 "Maximum_energy" = "Maximum energy";
 "Maximum_weight" = "Maximum weight";
 "Meditation" = "Meditation";
+"Menstrual_cycle" = "Menstrual cycle";
 "Minimum_weight" = "Minimum weight";
 "Missed_medication" = "Missed medication";
 "Mixed_state" = "Mixed state";
@@ -56,6 +58,7 @@
 "Rumination" = "Rumination";
 "Self_harm" = "Self harm";
 "Sexual_activity" = "Sexual activity";
+"Sleep" = "Sleep";
 "Substance_use" = "Substance use";
 "Suicidal_thoughts" = "Suicidal thoughts";
 "Therapy" = "Therapy";
@@ -217,4 +220,6 @@
 "unlock" = "Unlock";
 "version" = "Version";
 "volatility" = "Volatility";
+"Walking_running_distance" = "Walking & running distance";
 "website" = "Website";
+"Weight" = "Weight";
