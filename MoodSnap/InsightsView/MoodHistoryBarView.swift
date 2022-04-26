@@ -13,7 +13,7 @@ struct MoodHistoryBarView: View {
         let entriesD = makeChartData(y: data.processedData.levelD, timescale: timescale)
         let entriesA = makeChartData(y: data.processedData.levelA, timescale: timescale)
         let entriesI = makeChartData(y: data.processedData.levelI, timescale: timescale)
-        let entries = [entriesE, entriesD, entriesA, entriesI]
+//        let entries = [entriesE, entriesD, entriesA, entriesI]
 
         let color = moodUIColors(settings: data.settings)
 
