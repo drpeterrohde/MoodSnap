@@ -34,12 +34,10 @@ struct EventView: View {
             }
 
             Button {
-                DispatchQueue.main.async { // ???
-                    moodSnap.snapType = .event
-                    data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                    data.moodSnaps.append(moodSnap)
-                    data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                }
+                moodSnap.snapType = .event
+                data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                data.moodSnaps.append(moodSnap)
+                data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                 DispatchQueue.global(qos: .userInteractive).async {
                     data.process()
                     data.save()

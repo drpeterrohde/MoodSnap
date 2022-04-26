@@ -26,11 +26,9 @@ struct MediaView: View {
                         if data.settings.saveMediaToCameraRoll {
                             UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
                         }
-                        DispatchQueue.main.async { // ???
-                            data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                            data.moodSnaps.append(moodSnap)
-                            data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                        }
+                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                        data.moodSnaps.append(moodSnap)
+                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         dismiss()
                     }
                 })
