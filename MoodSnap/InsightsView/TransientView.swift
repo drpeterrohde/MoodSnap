@@ -23,15 +23,14 @@ struct TransientView: View {
         let entriesButterflyD = makeLineData(y: dataD)
         let entriesButterflyA = makeLineData(y: dataA)
         let entriesButterflyI = makeLineData(y: dataI)
-
-        let entriesLevels = [entriesButterflyE, entriesButterflyD, entriesButterflyA, entriesButterflyI]
+        let entries = [entriesButterflyE, entriesButterflyD, entriesButterflyA, entriesButterflyI]
 
         let color = moodUIColors(settings: data.settings)
 
         VStack {
             VStack {
                 Group {
-                    if entriesLevels[0].count == 0 {
+                    if entries[0].count == 0 {
                         HStack {
                             Text("(-)").font(.caption)
                             Text("-")
@@ -64,7 +63,7 @@ struct TransientView: View {
                         }
                     } else {
                         Group {
-                            if entriesLevels[0].count > 0 {
+                            if entries[0].count > 0 {
                                 VStack {
                                     HStack {
                                         Text("(\(butterfly.occurrences))")
@@ -82,13 +81,12 @@ struct TransientView: View {
                                             .font(.caption)
                                             .foregroundColor(themes[data.settings.theme].irritabilityColor)
                                     }
-                                    MultipleLineChart(
-                                        entries: entriesLevels,
-                                        color: color,
-                                        showMidBar: true,
-                                        min: -bound,
-                                        max: bound,
-                                        guides: 2)
+                                    MultipleLineChart(entries: entries,
+                                                      color: color,
+                                                      showMidBar: true,
+                                                      min: -bound,
+                                                      max: bound,
+                                                      guides: 2)
                                         .padding(.top, -15)
                                     HStack(alignment: .center) {
                                         Text(.init(label))
@@ -97,7 +95,10 @@ struct TransientView: View {
                                             .padding(.top, -10)
                                             .padding(.leading, 15)
                                     }
-                                }.padding(.bottom, 5)
+//                                    LineChart2(data: entriesLevels,
+//                                               color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])])
+//                                    .frame(height: 170)
+                                }
                             }
                         }
                     }

@@ -50,7 +50,6 @@ struct VerticalBarChart: UIViewRepresentable {
 
     func addData() -> BarChartData {
         let data = BarChartData()
-        // data.barWidth = 0.9
         let dataSet = BarChartDataSet(entries: entries)
 
         // Color transparency scheme
