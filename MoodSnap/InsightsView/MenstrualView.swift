@@ -6,13 +6,16 @@ struct MenstrualView: View {
     var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps,
-                                            type: .menstrual)
+//        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps,
+//                                            type: .menstrual)
         let menstrualData: [CGFloat?] = getMenstrualData(data: data,
                                                          health: health)
         let entries = makeChartData(y: menstrualData,
                                     timescale: timescale)
         let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
+//      let dates = filterMenstrualDates(dates: getMenstrualDates(healthSnaps: health.healthSnaps),
+//                                         data: data,
+//                                         health: health)
         let butterfly = averageMenstrualTransientForDates(dates: dates,
                                                           moodSnaps: data.moodSnaps,
                                                           maxWindow: menstrualTransientWindow)
@@ -25,7 +28,7 @@ struct MenstrualView: View {
 
         let color = moodUIColors(settings: data.settings)
 
-        if samples == 0 {
+        if dates.count == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)

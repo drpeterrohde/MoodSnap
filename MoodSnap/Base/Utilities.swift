@@ -151,7 +151,7 @@ func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
 
     for healthSnap in healthSnaps {
         if healthSnap.menstrual != nil {
-            if healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) && healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.unspecified.rawValue) {
+            if healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) {
                 dates.append(healthSnap.timestamp)
             }
         }

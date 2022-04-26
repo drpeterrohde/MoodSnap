@@ -243,7 +243,7 @@ class HealthManager: ObservableObject {
         for result in results! {
             let thisMenstrualSample = result as! HKCategorySample
 
-            if Int(thisMenstrualSample.value) != HKCategoryValueMenstrualFlow.none.rawValue && Int(thisMenstrualSample.value) != HKCategoryValueMenstrualFlow.unspecified.rawValue {
+            if Int(thisMenstrualSample.value) != HKCategoryValueMenstrualFlow.none.rawValue {
                 flow = thisMenstrualSample.value
             }
         }

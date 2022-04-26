@@ -1,5 +1,5 @@
-import SwiftUI
 import HealthKit
+import SwiftUI
 
 func filterMenstrualDates(dates: [Date], data: DataStoreStruct, health: HealthManager) -> [Date] {
     var date: Date = getFirstDate(moodSnaps: data.moodSnaps)
@@ -8,14 +8,15 @@ func filterMenstrualDates(dates: [Date], data: DataStoreStruct, health: HealthMa
 
     while date <= latest {
         let healthSnaps = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
-        if healthSnaps[0].menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) && healthSnaps[0].menstrual != CGFloat(
-            HKCategoryValueMenstrualFlow.unspecified.rawValue) {
-            dates.append(date)
-            date = date.addDays(days: menstrualFilterJump)
-            continue
+        if healthSnaps.count > 0 {
+            if healthSnaps[0].menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) {
+                dates.append(date)
+                date = date.addDays(days: menstrualFilterJump)
+                continue
+            }
         }
         date = date.addDays(days: 1)
     }
-    
+
     return dates
 }
