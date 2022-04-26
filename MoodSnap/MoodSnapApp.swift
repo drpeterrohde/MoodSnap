@@ -1,6 +1,5 @@
 import Disk
 import HealthKit
-import HealthKitUI
 import LocalAuthentication
 import SwiftUI
 

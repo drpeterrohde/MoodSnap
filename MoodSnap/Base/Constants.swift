@@ -12,6 +12,7 @@ let butterflyWindowShort = 7
 let influenceWindowLong = 28
 let butterflyWindowLong = 28
 let healthWindow = 7
+let menstrualTransientWindow = 14
 
 /// PDF
 let marginPDF = 0.5 * 72
@@ -28,6 +29,8 @@ let monthInterval: CGFloat = 4 * weekInterval
 let threeMonthInterval: CGFloat = 3 * monthInterval
 let sixMonthInterval: CGFloat = 6 * monthInterval
 let yearInterval: CGFloat = 365 * dayInterval
+
+let menstrualFilterJump = 10
 
 /// UX
 let zeroGraphicalBarOffset: CGFloat = 0.3

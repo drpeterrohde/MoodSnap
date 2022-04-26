@@ -12,23 +12,16 @@ struct MenstrualView: View {
                                                          health: health)
         let entries = makeChartData(y: menstrualData,
                                     timescale: timescale)
-//        let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
-//        let butterfly = averageMenstrualTransientForDates(dates: dates,
-//                                                          moodSnaps: data.moodSnaps,
-//                                                          maxWindow: 1)
-//        let butterflyData = [butterfly.elevation,
-//                             butterfly.depression,
-//                             butterfly.anxiety,
-//                             butterfly.irritability]
+        let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
+        let butterfly = averageMenstrualTransientForDates(dates: dates,
+                                                          moodSnaps: data.moodSnaps,
+                                                          maxWindow: menstrualTransientWindow)
 
         let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)
         let entriesD = makeChartData(y: data.processedData.levelD, timescale: timescale)
         let entriesA = makeChartData(y: data.processedData.levelA, timescale: timescale)
         let entriesI = makeChartData(y: data.processedData.levelI, timescale: timescale)
         let moodEntries = [entriesE, entriesD, entriesA, entriesI]
-
-//        let allData: [CGFloat?] = entriesE + entriesD + entriesA + entriesI
-//        let bound = getAxisBound(data: allData)
 
         let color = moodUIColors(settings: data.settings)
 
@@ -37,7 +30,7 @@ struct MenstrualView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            ZStack {
+          //  ZStack {
                 SuperimposedCharLineChart(barData: entries,
                                           lineData: moodEntries,
                                           barColor: themes[data.settings.theme].buttonColor,
@@ -45,8 +38,18 @@ struct MenstrualView: View {
                                           shaded: true,
                                           settings: data.settings)
                     .frame(height: 100)
-            }
-            // LineChart2(data: butterflyData, color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])], min: -bound, max: bound, horizontalGridLines: 1, verticalGridLines: 1) // ???
+           // }
+            Spacer(minLength: 20)
+            TransientView(butterfly: butterfly, label: "pm_14_days", timescale: timescale, data: data)
         }
     }
+}
+
+func makeMenstrualButterfly(entriesE: [CGFloat?], entriesD: [CGFloat?], entriesA: [CGFloat?], entriesI: [CGFloat?]) -> ButterflyEntryStruct {
+    var butterfly = ButterflyEntryStruct()
+    butterfly.elevation = entriesE
+    butterfly.depression = entriesD
+    butterfly.anxiety = entriesA
+    butterfly.irritability = entriesI
+    return butterfly
 }

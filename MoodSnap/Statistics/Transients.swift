@@ -237,3 +237,18 @@ func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWi
 
     return [seriesE, seriesD, seriesA, seriesI]
 }
+
+func transientByType(type: InfluenceTypeEnum, activity: Int, social: Int, symptom: Int, event: Int, hashtag: Int, processedData: ProcessedDataStruct) -> ButterflyEntryStruct {
+    switch type {
+    case .activity:
+        return processedData.activityButterfly[activity]
+    case .social:
+        return processedData.socialButterfly[social]
+    case .symptom:
+        return processedData.symptomButterfly[symptom]
+    case .event:
+        return processedData.eventButterfly[event]
+    case .hashtag:
+        return processedData.hashtagButterfly[hashtag]
+    }
+}
