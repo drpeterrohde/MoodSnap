@@ -2,7 +2,7 @@ import HealthKit
 import SwiftUI
 
 class HealthManager: ObservableObject {
-    public var healthSnaps: [HealthSnapStruct] = [] // make published???
+    public var healthSnaps: [HealthSnapStruct] = []
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
@@ -15,11 +15,8 @@ class HealthManager: ObservableObject {
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
             if success {
                 print("Authorization complete")
-                //  return true
-                // self.fetchWeightData()
             } else {
                 print("Authorization error: \(String(describing: error?.localizedDescription))")
-                // return false
             }
         })
     }
@@ -109,7 +106,9 @@ class HealthManager: ObservableObject {
                                                              var healthSnap = HealthSnapStruct()
                                                              healthSnap.timestamp = date
                                                              healthSnap.menstrual = CGFloat(menstrual!)
-                                                             self.healthSnaps.append(healthSnap)
+                                                             if healthSnap.menstrual != 0 {
+                                                                 self.healthSnaps.append(healthSnap)
+                                                             }
                                                          }
                                                      }
                                                  })
@@ -179,15 +178,14 @@ class HealthManager: ObservableObject {
             if thisSleepSample.value == HKCategoryValueSleepAnalysis.inBed.rawValue {
                 let endDate = thisSleepSample.endDate
                 let startDate = thisSleepSample.startDate
-                let timeInterval = endDate.timeIntervalSince(startDate) / (60*60)
+                let timeInterval = endDate.timeIntervalSince(startDate) / (60 * 60)
                 sleep += Double(timeInterval)
             }
         }
 
         return sleep
     }
-    
-    
+
     /**
      Total distance for given HealthKit `results`
      */
@@ -243,9 +241,11 @@ class HealthManager: ObservableObject {
         var flow = 0
 
         for result in results! {
-            // if results!.count == 0 {
             let thisMenstrualSample = result as! HKCategorySample
-            flow = thisMenstrualSample.value
+
+            if Int(thisMenstrualSample.value) != HKCategoryValueMenstrualFlow.none.rawValue && Int(thisMenstrualSample.value) != HKCategoryValueMenstrualFlow.unspecified.rawValue {
+                flow = thisMenstrualSample.value
+            }
         }
 
         return Double(flow)
