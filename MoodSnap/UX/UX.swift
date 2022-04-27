@@ -95,6 +95,29 @@ func PastelTheme() -> ThemeStruct {
 }
 
 /**
+ Summer theme constructor.
+ */
+func SummerTheme() -> ThemeStruct {
+    let summerWhite = Color(0xF0F2E7)
+    let summerRed = Color(0xFF8296)
+    let summerCyan = Color(0x75CDD8)
+    let summerOrange = Color(0xFFCA27)
+    let summerYellow = Color(0xFFEC00)
+
+    var theme: ThemeStruct = ThemeStruct()
+    theme.name = "summer"
+    theme.buttonColor = summerWhite
+    theme.iconColor = summerWhite
+    theme.controlColor = summerWhite
+    theme.elevationColor = summerCyan
+    theme.depressionColor = summerRed
+    theme.anxietyColor = summerOrange
+    theme.irritabilityColor = summerYellow
+    theme.emergencyColor = summerRed
+    return theme
+}
+
+/**
  Aqua theme constructor.
  */
 func AquaTheme() -> ThemeStruct {
@@ -121,4 +144,4 @@ func OrangeTheme() -> ThemeStruct {
 /**
  Themes list.
  */
-let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme(), PrimaryTheme(), PastelTheme()]
+let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme(), PrimaryTheme(), PastelTheme(), SummerTheme()]
