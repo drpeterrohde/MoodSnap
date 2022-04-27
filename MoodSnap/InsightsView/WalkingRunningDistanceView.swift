@@ -21,7 +21,7 @@ struct WalkingRunningDistanceView: View {
             let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0
             let maximumStr: String = getDistanceString(value: maxDistance, units: data.settings.healthUnits) // String(format: "%.1f", maxDistance) + "km"
 
-            VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
                 .frame(height: 60)
 
             Spacer()

@@ -56,7 +56,7 @@ struct TransientView: View {
                             }
                         }
                         Group {
-                            LineChart2(data: [[], [], [], []],
+                            LineChart(data: [[], [], [], []],
                                        color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                                        horizontalGridLines: 1,
                                        verticalGridLines: 1,
@@ -102,7 +102,7 @@ struct TransientView: View {
                                     }
                                 }
                                 Group {
-                                    LineChart2(data: entries2,
+                                    LineChart(data: entries2,
                                                color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                                                horizontalGridLines: 1,
                                                verticalGridLines: 1,

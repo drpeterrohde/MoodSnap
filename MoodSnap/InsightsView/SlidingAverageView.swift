@@ -22,7 +22,7 @@ struct SlidingAverageView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            LineChart2(data: entries,
+            LineChart(data: entries,
                        color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                        horizontalGridLines: 3,
                        verticalGridLines: 0,

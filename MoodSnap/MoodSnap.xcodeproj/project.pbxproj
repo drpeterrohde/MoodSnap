@@ -42,9 +42,9 @@
 		CA496B7E27EBEF2A0067EE63 /* InfluencesEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2327EBEF290067EE63 /* InfluencesEventsView.swift */; };
 		CA496B7F27EBEF2A0067EE63 /* SlidingVolatilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */; };
 		CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */; };
-		CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2727EBEF290067EE63 /* LineChart.swift */; };
+		CA496B8127EBEF2A0067EE63 /* LineChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2727EBEF290067EE63 /* LineChartOld.swift */; };
 		CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */; };
-		CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */; };
+		CA496B8427EBEF2A0067EE63 /* VerticalBarChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */; };
 		CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */; };
 		CA496B8727EBEF2A0067EE63 /* HistoryMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */; };
 		CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */; };
@@ -98,8 +98,8 @@
 		CA69217928154B8500E99864 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthKit.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
-		CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart2.swift */; };
-		CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */; };
+		CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
+		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
@@ -143,9 +143,9 @@
 		CA496B2327EBEF290067EE63 /* InfluencesEventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfluencesEventsView.swift; sourceTree = "<group>"; };
 		CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatilityView.swift; sourceTree = "<group>"; };
 		CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodHistoryBarView.swift; sourceTree = "<group>"; };
-		CA496B2727EBEF290067EE63 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		CA496B2727EBEF290067EE63 /* LineChartOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartOld.swift; sourceTree = "<group>"; };
 		CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLineChart.swift; sourceTree = "<group>"; };
-		CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
+		CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChartOld.swift; sourceTree = "<group>"; };
 		CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryActivityView.swift; sourceTree = "<group>"; };
 		CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoodView.swift; sourceTree = "<group>"; };
 		CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySymptomsView.swift; sourceTree = "<group>"; };
@@ -198,8 +198,8 @@
 		CA7775AA280CD44C0045A202 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		CA87642B2814D7A1000FEEEC /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
-		CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart2.swift; sourceTree = "<group>"; };
+		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
 		CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientWithPickerView.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
@@ -312,11 +312,11 @@
 			isa = PBXGroup;
 			children = (
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
-				CA496B2727EBEF290067EE63 /* LineChart.swift */,
-				CA87642B2814D7A1000FEEEC /* LineChart2.swift */,
+				CA496B2727EBEF290067EE63 /* LineChartOld.swift */,
+				CA87642B2814D7A1000FEEEC /* LineChart.swift */,
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
-				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
-				CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */,
+				CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */,
+				CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */,
 				CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */,
 			);
 			path = Plotting;
@@ -539,7 +539,7 @@
 			files = (
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
-				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
+				CA496B8127EBEF2A0067EE63 /* LineChartOld.swift in Sources */,
 				CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
@@ -616,7 +616,7 @@
 				CA0C523D281614A000B1595C /* SuperimposedBarLineChart.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
-				CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */,
+				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
 				CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */,
@@ -624,11 +624,11 @@
 				CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */,
 				CA496B7427EBEF2A0067EE63 /* InfluencesSocialView.swift in Sources */,
 				CA496B0527EBEEEE0067EE63 /* Constants.swift in Sources */,
-				CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */,
+				CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */,
 				CA496BAD27EBEF2B0067EE63 /* ViewAsImage.swift in Sources */,
 				CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */,
 				CA496B7927EBEF2A0067EE63 /* TallyView.swift in Sources */,
-				CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */,
+				CA496B8427EBEF2A0067EE63 /* VerticalBarChartOld.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

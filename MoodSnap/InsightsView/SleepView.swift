@@ -18,7 +18,7 @@ struct SleepView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: 24, settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: 24, settings: data.settings)
                 .frame(height: 60)
             Spacer()
             HStack {

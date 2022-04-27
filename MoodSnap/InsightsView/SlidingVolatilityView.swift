@@ -22,7 +22,7 @@ struct SlidingVolatilityView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            LineChart2(data: entries,
+            LineChart(data: entries,
                        color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                        max: 2,
                        horizontalGridLines: 1,

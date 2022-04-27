@@ -21,7 +21,7 @@ struct ActiveEnergyView: View {
             let maxEnergy: CGFloat = maxWithNils(data: energyData) ?? 0
             let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits) // String = String(format: "%.1f", maxEnergy) + "kJ"
 
-            VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
                 .frame(height: 60)
 
             Spacer()
