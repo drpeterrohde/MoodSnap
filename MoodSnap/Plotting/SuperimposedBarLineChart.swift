@@ -2,9 +2,9 @@ import HealthKit
 import SwiftUI
 
 /**
- View for displaying vertical bar chart.
+ View for displaying vertical bar chart with superimposed line chart.
  */
-struct SuperimposedCharLineChart: View {
+struct SuperimposedBarLineChart: View {
     var barData: [CGFloat?]
     var lineData: [[CGFloat?]]
     var barColor: Color

@@ -33,7 +33,7 @@ struct MenstrualView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            SuperimposedCharLineChart(barData: entries,
+            SuperimposedBarLineChart(barData: entries, // name????
                                       lineData: moodEntries,
                                       barColor: themes[data.settings.theme].buttonColor,
                                       lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
@@ -43,7 +43,7 @@ struct MenstrualView: View {
             Spacer(minLength: 20)
             TransientView(butterfly: butterfly,
                           label: "pm_14_days",
-                          timescale: timescale,
+                          timescale: 2 * menstrualTransientWindow + 1,
                           showNumbers: false,
                           data: data)
         }

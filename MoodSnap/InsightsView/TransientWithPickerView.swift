@@ -24,12 +24,12 @@ struct TransientWithPickerView: View {
             hashtag: selectedHashtag,
             processedData: data.processedData)
 
-        let label = transientLabel(selectionType: selectionType)
+        let (label, int) = transientLabel(selectionType: selectionType)
 
         VStack {
             TransientView(butterfly: butterfly,
                           label: label,
-                          timescale: timescale,
+                          timescale: 2 * int + 1,
                           data: data)
             TransientReferencePickerView(selectedActivity: $selectedActivity,
                                          selectedSocial: $selectedSocial,
@@ -41,14 +41,17 @@ struct TransientWithPickerView: View {
     }
 }
 
-func transientLabel(selectionType: InfluenceTypeEnum) -> String {
+func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
     var str: String = ""
+    var int: Int = 0
 
     if selectionType == .event {
         str = "pm_30_days"
+        int = butterflyWindowLong
     } else {
         str = "pm_7_days"
+        int = butterflyWindowShort
     }
 
-    return str
+    return (str, int)
 }
