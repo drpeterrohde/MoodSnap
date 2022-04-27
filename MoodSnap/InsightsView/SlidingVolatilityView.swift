@@ -27,7 +27,8 @@ struct SlidingVolatilityView: View {
                        max: 2,
                        horizontalGridLines: 1,
                        verticalGridLines: 0,
-                       blackAndWhite: false)
+                       blackAndWhite: false,
+                       settings: data.settings)
                 .frame(height: 170)
         }
     }

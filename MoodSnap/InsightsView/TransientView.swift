@@ -49,20 +49,22 @@ struct TransientView: View {
                                     .foregroundColor(themes[data.settings.theme].irritabilityColor)
                             }
                         }
-                        MultipleLineChart(
-                            entries: [[], [], [], []],
-                            color: color,
-                            showMidBar: true,
-                            min: -1,
-                            max: 1,
-                            guides: 0)
-                            .padding(.top, -15)
-                        HStack(alignment: .center) {
-                            Text("insufficient_data")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                                .padding(.top, -10)
-                                .padding(.leading, 15)
+                        Group {
+                            MultipleLineChart(
+                                entries: [[], [], [], []],
+                                color: color,
+                                showMidBar: true,
+                                min: -1,
+                                max: 1,
+                                guides: 0)
+                                .padding(.top, -15)
+                            HStack(alignment: .center) {
+                                Text("insufficient_data")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .padding(.top, -10)
+                                    .padding(.leading, 15)
+                            }
                         }
                     } else {
                         Group {
@@ -86,23 +88,26 @@ struct TransientView: View {
                                                 .foregroundColor(themes[data.settings.theme].irritabilityColor)
                                         }
                                     }
-                                    MultipleLineChart(entries: entries,
-                                                      color: color,
-                                                      showMidBar: true,
-                                                      min: -bound,
-                                                      max: bound,
-                                                      guides: 2)
-                                        .padding(.top, -15)
-                                    HStack(alignment: .center) {
-                                        Text(.init(label))
-                                            .font(.caption)
-                                            .foregroundColor(.secondary)
-                                            .padding(.top, -10)
-                                            .padding(.leading, 15)
+                                    Group {
+//                                        LineChart2(data: entries,
+//                                                   color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
+//                                                   settings: data.settings)
+//                                            .frame(height: 170)
+                                        MultipleLineChart(entries: entries,
+                                                          color: color,
+                                                          showMidBar: true,
+                                                          min: -bound,
+                                                          max: bound,
+                                                          guides: 2)
+                                            .padding(.top, -15)
+                                        HStack(alignment: .center) {
+                                            Text(.init(label))
+                                                .font(.caption)
+                                                .foregroundColor(.secondary)
+                                                .padding(.top, -10)
+                                                .padding(.leading, 15)
+                                        }
                                     }
-//                                    LineChart2(data: entriesLevels,
-//                                               color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])])
-//                                    .frame(height: 170)
                                 }
                             }
                         }

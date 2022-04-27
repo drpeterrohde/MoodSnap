@@ -38,7 +38,7 @@ let midLineWidth: CGFloat = 3.0
 let iconWidth: CGFloat = 15
 let faceIDWidth: CGFloat = 50
 let numericFont: Font = Font.system(.caption, design: .monospaced)
-let lineChartOpacity = 1.0
+let lineChartOpacity = 1
 
 /// Symptom list
 let symptomList = [

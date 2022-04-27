@@ -6,17 +6,14 @@ import SwiftUI
 struct LineChart2: View {
     var data: [[CGFloat?]]
     var color: [Color]
-    var min: CGFloat
-    var max: CGFloat
+    var min: CGFloat = 0
+    var max: CGFloat = 0
     var horizontalGridLines: Int = 0
     var verticalGridLines: Int = 0
     var blackAndWhite: Bool = false
+    var settings: SettingsStruct
 
-    private var fontColor: Color
-    private var lineColor: Color
-    private var gridColor: Color
-
-    init(data: [[CGFloat?]], color: [Color], min: CGFloat = 0.0, max: CGFloat = 4.0, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false) {
+    init(data: [[CGFloat?]], color: [Color], min: CGFloat = 0, max: CGFloat = 4, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, settings: SettingsStruct) {
         self.data = data
         self.color = color
         self.min = min
@@ -24,15 +21,10 @@ struct LineChart2: View {
         self.horizontalGridLines = horizontalGridLines
         self.verticalGridLines = verticalGridLines
         self.blackAndWhite = blackAndWhite
-
-        fontColor = Color.secondary
-        gridColor = Color.gray.opacity(0.3)
-        lineColor = Color.red
+        self.settings = settings
 
         if blackAndWhite {
-            fontColor = Color.gray
             self.color = [.black, .black, .black, .black]
-            gridColor = Color.gray
         }
     }
 
@@ -61,7 +53,7 @@ struct LineChart2: View {
                     }
 
                     path.closeSubpath()
-                }.stroke(self.gridColor, lineWidth: 1)
+                }.stroke(themes[settings.theme].gridColor, lineWidth: 1)
 
                 // Graph
                 ForEach(0 ..< data.count, id: \.self) { graph in
@@ -84,7 +76,8 @@ struct LineChart2: View {
                                 }
                             }
                         }
-                    }.stroke(self.color[graph].opacity(lineChartOpacity), lineWidth: 2)
+                    }
+                    .stroke(self.color[graph].opacity(lineChartOpacity), lineWidth: 2)
                 }
             }
         }.frame(height: 170)

@@ -25,7 +25,8 @@ struct SlidingAverageView: View {
             LineChart2(data: entries,
                        color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                        horizontalGridLines: 3,
-                       verticalGridLines: 0)
+                       verticalGridLines: 0,
+                       settings: data.settings)
                 .frame(height: 170)
         }
     }
