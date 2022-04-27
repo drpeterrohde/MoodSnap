@@ -57,8 +57,6 @@ func ColorBlindTheme() -> ThemeStruct {
     let ibmColorBlindPalettePink = Color(0xDC267F)
     let ibmColorBlindPaletteOrange = Color(0xFE6100)
     let ibmColorBlindPaletteYellow = Color(0xFFB000)
-    // let ibmColorBlindPaletteBlack = Color(0x000000)
-    // let ibmColorBlindPaletteWhite = Color(0xFFFFFF)
 
     var theme: ThemeStruct = ThemeStruct()
     theme.name = "color_blind"
@@ -70,6 +68,29 @@ func ColorBlindTheme() -> ThemeStruct {
     theme.anxietyColor = ibmColorBlindPaletteOrange
     theme.irritabilityColor = ibmColorBlindPaletteYellow
     theme.emergencyColor = ibmColorBlindPalettePurple
+    return theme
+}
+
+/**
+ Pastel theme constructor.
+ */
+func PastelTheme() -> ThemeStruct {
+    let pastelBlue = Color(0x55CBCD)
+    let pastelRed = Color(0xFF968A)
+    let pastelCyan = Color(0xA2E1DB)
+    let pastelOrange = Color(0xFFC8A2)
+    let pastelYellow = Color(0xFFFFB5)
+
+    var theme: ThemeStruct = ThemeStruct()
+    theme.name = "pastel"
+    theme.buttonColor = pastelBlue
+    theme.iconColor = pastelBlue
+    theme.controlColor = pastelBlue
+    theme.elevationColor = pastelCyan
+    theme.depressionColor = pastelRed
+    theme.anxietyColor = pastelOrange
+    theme.irritabilityColor = pastelYellow
+    theme.emergencyColor = pastelRed
     return theme
 }
 
@@ -100,4 +121,4 @@ func OrangeTheme() -> ThemeStruct {
 /**
  Themes list.
  */
-let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme(), PrimaryTheme()]
+let themes = [AquaTheme(), ColorBlindTheme(), OrangeTheme(), PrimaryTheme(), PastelTheme()]

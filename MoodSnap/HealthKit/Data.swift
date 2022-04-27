@@ -6,7 +6,7 @@ import SwiftUI
 func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
     var weightData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps).endOfDay()
     let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {

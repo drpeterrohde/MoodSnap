@@ -157,6 +157,7 @@
 "notes_on_interpretation_string_7" = "• Missing data points make analysis less reliable. All provided measures are most accurate if the associated data is complete with daily data points. Volatility measures are most reliable if additional data points capture intermittent mood changes.\n";
 "notes_on_interpretation_string_8" = "• MoodSnaps should reflect maximum values within the last 24 hours and since the last MoodSnap, and should not capture overlapping information.\n";
 "notes_on_interpretation_string_9" = "• All measures under the History heading are calculated over the timescale specified in the tab at the top of the page. Measures under the Influences heading are calculated using all data.\n";
+"pastel" = "Pastel";
 "pdf_report_string" = "You can generate customisable PDF reports of your mood history and statistics within the settings page, suitable for printing, saving or sharing.";
 "period" = "Period";
 "photo_diary" = "Photo diary";
