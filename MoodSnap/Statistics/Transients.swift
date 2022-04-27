@@ -89,10 +89,10 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
     let todayAverage = average(moodSnaps: today)
     let windowAverage = average(moodSnaps: samples)
 
-    var diffE: CGFloat? = nil
-    var diffD: CGFloat? = nil
-    var diffA: CGFloat? = nil
-    var diffI: CGFloat? = nil
+    var diffE: CGFloat?
+    var diffD: CGFloat?
+    var diffA: CGFloat?
+    var diffI: CGFloat?
 
     if todayAverage[0] != nil && windowAverage[0] != nil {
         diffE = windowAverage[0]! - todayAverage[0]!

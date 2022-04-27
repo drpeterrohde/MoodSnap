@@ -12,8 +12,8 @@ struct SleepView: View {
         let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .sleep)
         let sleepData: [CGFloat?] = getSleepData(data: data, health: health)
         let entries = makeChartData(y: sleepData, timescale: timescale)
-        
-        if samples == 0 {//|| r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
+
+        if samples == 0 { // || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -30,7 +30,7 @@ struct SleepView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
-            
+
             Divider()
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)

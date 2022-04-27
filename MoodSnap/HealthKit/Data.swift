@@ -40,7 +40,6 @@ func getSleepData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
     return sleepData.reversed()
 }
 
-
 /**
  Return an array of all the distance data.
  */

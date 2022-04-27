@@ -8,7 +8,7 @@ struct WalkingRunningDistanceView: View {
     var body: some View {
         let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance)
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
-        let averageStr: String = getDistanceString(value: average, units: data.settings.healthUnits) //String(format: "%.1f", average) + "km"
+        let averageStr: String = getDistanceString(value: average, units: data.settings.healthUnits) // String(format: "%.1f", average) + "km"
         let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
         let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .distance)
         let entries = makeChartData(y: distanceData, timescale: timescale)
@@ -19,7 +19,7 @@ struct WalkingRunningDistanceView: View {
                 .foregroundColor(.secondary)
         } else {
             let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0
-            let maximumStr: String = getDistanceString(value: maxDistance, units: data.settings.healthUnits)//String(format: "%.1f", maxDistance) + "km"
+            let maximumStr: String = getDistanceString(value: maxDistance, units: data.settings.healthUnits) // String(format: "%.1f", maxDistance) + "km"
 
             VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
                 .frame(height: 60)

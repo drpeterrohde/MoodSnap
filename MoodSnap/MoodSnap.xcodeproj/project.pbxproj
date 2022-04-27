@@ -43,7 +43,6 @@
 		CA496B7F27EBEF2A0067EE63 /* SlidingVolatilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */; };
 		CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */; };
 		CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2727EBEF290067EE63 /* LineChart.swift */; };
-		CA496B8227EBEF2A0067EE63 /* ScatterChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2827EBEF290067EE63 /* ScatterChart.swift */; };
 		CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */; };
 		CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */; };
 		CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */; };
@@ -145,7 +144,6 @@
 		CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatilityView.swift; sourceTree = "<group>"; };
 		CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodHistoryBarView.swift; sourceTree = "<group>"; };
 		CA496B2727EBEF290067EE63 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		CA496B2827EBEF290067EE63 /* ScatterChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScatterChart.swift; sourceTree = "<group>"; };
 		CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLineChart.swift; sourceTree = "<group>"; };
 		CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryActivityView.swift; sourceTree = "<group>"; };
@@ -316,7 +314,6 @@
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
 				CA496B2727EBEF290067EE63 /* LineChart.swift */,
 				CA87642B2814D7A1000FEEEC /* LineChart2.swift */,
-				CA496B2827EBEF290067EE63 /* ScatterChart.swift */,
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
 				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
 				CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */,
@@ -561,7 +558,6 @@
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
 				CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */,
-				CA496B8227EBEF2A0067EE63 /* ScatterChart.swift in Sources */,
 				CA496B9427EBEF2A0067EE63 /* NoteView.swift in Sources */,
 				CA496B7E27EBEF2A0067EE63 /* InfluencesEventsView.swift in Sources */,
 				CA496B8A27EBEF2A0067EE63 /* HistoryMediaView.swift in Sources */,

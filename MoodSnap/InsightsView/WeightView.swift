@@ -8,11 +8,11 @@ struct WeightView: View {
     var body: some View {
         let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .weight)
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .weight) ?? 0.0
-        let averageStr: String = getWeightString(value: average, units: data.settings.healthUnits) //String(format: "%.1f", average) + "kg"
+        let averageStr: String = getWeightString(value: average, units: data.settings.healthUnits) // String(format: "%.1f", average) + "kg"
         let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .weight)
         let weightData: [CGFloat?] = getWeightData(data: data, health: health)
         let entries = makeChartData(y: weightData, timescale: timescale)
-        
+
         if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
@@ -20,13 +20,13 @@ struct WeightView: View {
         } else {
             let minWeight: CGFloat = minWithNils(data: weightData) ?? 0
             let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0
-            
-            let minimumStr: String = getWeightString(value: minWeight, units: data.settings.healthUnits) //String(format: "%.1f", minWeight) + "kg"
-            let maximumStr: String = getWeightString(value: maxWeight, units: data.settings.healthUnits) //String(format: "%.1f", maxWeight) + "kg"
-            
+
+            let minimumStr: String = getWeightString(value: minWeight, units: data.settings.healthUnits) // String(format: "%.1f", minWeight) + "kg"
+            let maximumStr: String = getWeightString(value: maxWeight, units: data.settings.healthUnits) // String(format: "%.1f", maxWeight) + "kg"
+
             VerticalBarChart2(values: entries, color: themes[data.settings.theme].buttonColor, min: minWeight, max: maxWeight, settings: data.settings)
                 .frame(height: 60)
-            
+
             Spacer()
             HStack {
                 Text("Average_weight")
