@@ -98,7 +98,7 @@ func PastelTheme() -> ThemeStruct {
  Summer theme constructor.
  */
 func SummerTheme() -> ThemeStruct {
-    let summerWhite = Color(0xF0F2E7)
+    // let summerWhite = Color(0xF0F2E7)
     let summerRed = Color(0xFF8296)
     let summerCyan = Color(0x75CDD8)
     let summerOrange = Color(0xFFCA27)
@@ -106,9 +106,9 @@ func SummerTheme() -> ThemeStruct {
 
     var theme: ThemeStruct = ThemeStruct()
     theme.name = "summer"
-    theme.buttonColor = summerWhite
-    theme.iconColor = summerWhite
-    theme.controlColor = summerWhite
+    theme.buttonColor = summerYellow
+    theme.iconColor = summerYellow
+    theme.controlColor = summerYellow
     theme.elevationColor = summerCyan
     theme.depressionColor = summerRed
     theme.anxietyColor = summerOrange
