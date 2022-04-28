@@ -24,7 +24,11 @@ struct WeightView: View {
             let minimumStr: String = getWeightString(value: minWeight, units: data.settings.healthUnits)
             let maximumStr: String = getWeightString(value: maxWeight, units: data.settings.healthUnits)
 
-            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: minWeight - 0.5, max: maxWeight, settings: data.settings)
+            VerticalBarChart(values: entries,
+                             color: themes[data.settings.theme].buttonColor,
+                             min: 0/*minWeight - 0.5*/,
+                             max: maxWeight,
+                             settings: data.settings)
                 .frame(height: 60)
 
             Spacer()
