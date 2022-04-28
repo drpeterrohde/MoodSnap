@@ -224,6 +224,7 @@
 "unable_import_warning" = "You can only import data into an empty MoodSnap history. You must delete exisiting data first.";
 "unable_to_import" = "Unable to import";
 "unlock" = "Unlock";
+"use_lockscreen" = "Use FaceID";
 "version" = "Version";
 "volatility" = "Volatility";
 "Walking_running_distance" = "Walking & running distance";

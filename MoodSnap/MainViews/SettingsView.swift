@@ -39,7 +39,7 @@ struct SettingsView: View {
 
                 Section(header: Text("accessibility")) {
                     Toggle(isOn: $data.settings.useFaceID, label: {
-                        Text("Use FaceID")
+                        Text("use_lockscreen")
                     })
 
                     Picker("theme", selection: $data.settings.theme) {
