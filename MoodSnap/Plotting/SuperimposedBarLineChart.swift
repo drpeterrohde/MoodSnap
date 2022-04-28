@@ -50,7 +50,7 @@ struct SuperimposedBarLineChart: View {
             let width = geometry.size.width
             let height = geometry.size.height
             let spacing: CGFloat = chooseSpacing(values: barData)
-            let barWidth: CGFloat = [CGFloat(width) / CGFloat(barData.count) - spacing, 1.0].max()!
+            let barWidth: CGFloat = CGFloat(width) / CGFloat(barData.count) - spacing
 
             ZStack {
                 // Grid

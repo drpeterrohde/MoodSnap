@@ -8,7 +8,7 @@ struct ActiveEnergyView: View {
     var body: some View {
         let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .energy)
         let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .energy) ?? 0.0
-        let averageStr: String = getEnergyString(value: average, units: data.settings.healthUnits) // String(format: "%.1f", average) + "kJ"
+        let averageStr: String = getEnergyString(value: average, units: data.settings.healthUnits)
         let energyData: [CGFloat?] = getEnergyData(data: data, health: health)
         let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .energy)
         let entries = makeChartData(y: energyData, timescale: timescale)
@@ -19,7 +19,7 @@ struct ActiveEnergyView: View {
                 .foregroundColor(.secondary)
         } else {
             let maxEnergy: CGFloat = maxWithNils(data: energyData) ?? 0
-            let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits) // String = String(format: "%.1f", maxEnergy) + "kJ"
+            let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits)
 
             VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
                 .frame(height: 60)

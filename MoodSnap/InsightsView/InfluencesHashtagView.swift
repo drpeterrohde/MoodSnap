@@ -84,7 +84,7 @@ struct InfluencesHashtagView: View {
                         }
                     }
                 }
-                Spacer()//.frame(maxWidth: .infinity)
+                Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
                     ForEach(butterflies, id: \.id) {butterfly in

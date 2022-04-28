@@ -10,19 +10,14 @@ struct InfluencesSocialView: View {
         let butterflies = data.processedData.socialButterfly
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
         
-        //Label("Activities & social", systemImage: "figure.walk").font(.subheadline)
-        
         if (occurrenceCount == 0) {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            //HStack{
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            //Spacer()
-            //}
             Spacer()
             HStack{
                 // Activity
@@ -41,7 +36,7 @@ struct InfluencesSocialView: View {
                         }
                     }
                 }
-                Spacer()//.frame(maxWidth: .infinity)
+                Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
                     ForEach(butterflies, id: \.id) {butterfly in
@@ -63,12 +58,9 @@ struct InfluencesSocialView: View {
             }
             
             Divider()
-            //HStack{
             Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
-            //Spacer()
-            //}
             Spacer()
             
             HStack {
@@ -88,7 +80,7 @@ struct InfluencesSocialView: View {
                         }
                     }
                 }
-                Spacer()//.frame(maxWidth: .infinity)
+                Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
                     ForEach(butterflies, id: \.id) {butterfly in

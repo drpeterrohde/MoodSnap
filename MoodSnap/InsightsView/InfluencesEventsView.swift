@@ -10,7 +10,6 @@ struct InfluencesEventsView: View {
         let butterflies = data.processedData.eventButterfly
         let occurrenceCount = countAllOccurrences(butterflies: butterflies)
         
-        //HStack{
         if (occurrenceCount == 0) {
             Text("insufficient_data")
                 .font(.caption)
@@ -19,8 +18,6 @@ struct InfluencesEventsView: View {
         Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
                 .foregroundColor(.secondary)
-        //Spacer()
-        //}
         Spacer()
         HStack {
             // Activity
@@ -51,12 +48,9 @@ struct InfluencesEventsView: View {
         }
         
         Divider()
-        //HStack{
             Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
-        //Spacer()
-        //}
         Spacer()
         
         HStack {
