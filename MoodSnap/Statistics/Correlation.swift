@@ -65,10 +65,76 @@ func getCorrelation(data: DataStoreStruct, health: HealthManager, type: HealthTy
         date = date.addDays(days: -1)
     }
 
-    let elevationCorr = slope(dataX: samples, dataY: elevationSamples)
-    let depressionCorr = slope(dataX: samples, dataY: depressionSamples)
-    let anxietyCorr = slope(dataX: samples, dataY: anxietySamples)
-    let irritabilityCorr = slope(dataX: samples, dataY: irritabilitySamples)
+    let elevationCorr = pearson(dataX: samples, dataY: elevationSamples)
+    let depressionCorr = pearson(dataX: samples, dataY: depressionSamples)
+    let anxietyCorr = pearson(dataX: samples, dataY: anxietySamples)
+    let irritabilityCorr = pearson(dataX: samples, dataY: irritabilitySamples)
 
     return [elevationCorr, depressionCorr, anxietyCorr, irritabilityCorr]
+}
+
+/**
+ Calculate the slope of the line of best fit from `dataX` and `dataY`.
+ */
+func slope(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+    let (reducedX, reducedY) = reduceNils(dataX: dataX, dataY: dataY)
+
+    if reducedX.count == 0 || reducedY.count == 0 || reducedX.count != reducedY.count {
+        return nil
+    }
+
+    let barX: CGFloat = average(data: reducedX)!
+    let barY: CGFloat = average(data: reducedY)!
+
+    var numerator: CGFloat = 0
+    var denominator: CGFloat = 0
+
+    for i in 0 ..< reducedX.count {
+        numerator += (reducedX[i]! - barX) * (reducedY[i]! - barY)
+        denominator += (reducedX[i]! - barX) * (reducedX[i]! - barX)
+    }
+
+    if denominator == 0 {
+        return nil
+    }
+
+    let slope = numerator / denominator
+
+    return slope
+}
+
+/**
+ Calculate the Pearson correlation coefficient from `dataX` and `dataY`.
+ */
+func pearson(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+    let (reducedX, reducedY) = reduceNils(dataX: dataX, dataY: dataY)
+
+    if reducedX.count == 0 || reducedY.count == 0 || reducedX.count != reducedY.count {
+        return nil
+    }
+
+    let barX: CGFloat = average(data: reducedX)!
+    let barY: CGFloat = average(data: reducedY)!
+
+    var numerator: CGFloat = 0
+    var denominatorTermsX: CGFloat = 0
+    var denominatorTermsY: CGFloat = 0
+    
+    for i in 0 ..< reducedX.count {
+        numerator += (reducedX[i]! - barX) * (reducedY[i]! - barY)
+        denominatorTermsX += pow((reducedX[i]! - barX), 2)
+        denominatorTermsY += pow((reducedY[i]! - barY), 2)
+    }
+
+    if numerator == 0 {
+        return 0
+    }
+    
+    if denominatorTermsX * denominatorTermsY == 0 {
+        return nil
+    }
+
+    let pearson = numerator / sqrt(denominatorTermsX * denominatorTermsY)
+
+    return pearson
 }
