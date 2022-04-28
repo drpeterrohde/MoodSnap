@@ -271,6 +271,9 @@ func maxWithNils(data: [CGFloat?]) -> CGFloat? {
     return maximum
 }
 
+/**
+ Get string for weight `value` depending on type of `units`.
+ */
 func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     
@@ -284,6 +287,9 @@ func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
     return str
 }
 
+/**
+ Get string for distance `value` depending on type of `units`.
+ */
 func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     
@@ -297,6 +303,9 @@ func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
     return str
 }
 
+/**
+ Get string for energy `value` depending on type of `units`.
+ */
 func getEnergyString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     

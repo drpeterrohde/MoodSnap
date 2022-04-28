@@ -75,7 +75,7 @@ struct VerticalBarChart: View {
                 // Graph
                 ForEach(0 ..< values.count, id: \.self) { i in
                     let thisData = values[i] ?? 0
-                    let opacity = chooseOpacity(value: thisData, shaded: shaded, settings: settings)
+                    let opacity = chooseOpacity(value: thisData, shaded: shaded, offset: themes[settings.theme].barShadeOffset, settings: settings)
                     let thisColor = self.lineColor.opacity(opacity)
                     Path { path in
                         if values[i] != nil {
@@ -100,6 +100,9 @@ struct VerticalBarChart: View {
     }
 }
 
+/**
+ Choose bar spcaing for differen timecsales given by number of elements in `values`.
+ */
 func chooseSpacing(values: [CGFloat?]) -> CGFloat {
     if values.count <= TimeScaleEnum.month.rawValue {
         return 2.0
@@ -116,10 +119,13 @@ func chooseSpacing(values: [CGFloat?]) -> CGFloat {
     return 2.0
 }
 
-func chooseOpacity(value: CGFloat, shaded: Bool, settings: SettingsStruct) -> CGFloat {
+/**
+ Choose the opacity of bars.
+ */
+func chooseOpacity(value: CGFloat, shaded: Bool, offset: CGFloat, max: CGFloat = 4, settings: SettingsStruct) -> CGFloat {
     var opacity: CGFloat = 1.0
     if shaded {
-        opacity = (value + themes[settings.theme].barShadeOffset) / (themes[settings.theme].barShadeOffset + 4.0)
+        opacity = (value + offset) / (themes[settings.theme].barShadeOffset + max)
     }
     return opacity
 }

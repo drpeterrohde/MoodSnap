@@ -18,7 +18,6 @@ struct SuperimposedBarLineChart: View {
     var settings: SettingsStruct
 
     private var fontColor: Color
-    // private var lineColor: Color
     private var gridColor: Color
 
     init(barData: [CGFloat?], lineData: [[CGFloat?]], barColor: Color = .blue, lineColor: [Color], min: CGFloat = 0.0, max: CGFloat = 4.0, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, shaded: Bool = false, settings: SettingsStruct) {
@@ -139,19 +138,26 @@ struct SuperimposedBarLineChart: View {
     }
 }
 
+/**
+ Choose opacity of menstrual bar based on `value`.
+ */
 func chooseMenstrualOpacity(value: CGFloat, shaded: Bool, settings: SettingsStruct) -> CGFloat {
-    switch Int(value) {
-    case HKCategoryValueMenstrualFlow.none.rawValue:
-        return 0
-    case HKCategoryValueMenstrualFlow.unspecified.rawValue:
+    if shaded {
+        switch Int(value) {
+        case HKCategoryValueMenstrualFlow.none.rawValue:
+            return 0
+        case HKCategoryValueMenstrualFlow.unspecified.rawValue:
+            return 1.0
+        case HKCategoryValueMenstrualFlow.light.rawValue:
+            return 0.4
+        case HKCategoryValueMenstrualFlow.medium.rawValue:
+            return 0.65
+        case HKCategoryValueMenstrualFlow.heavy.rawValue:
+            return 1.0
+        default:
+            return 0
+        }
+    } else {
         return 1.0
-    case HKCategoryValueMenstrualFlow.light.rawValue:
-        return 0.4
-    case HKCategoryValueMenstrualFlow.medium.rawValue:
-        return 0.65
-    case HKCategoryValueMenstrualFlow.heavy.rawValue:
-        return 1.0
-    default:
-        return 0
     }
 }
