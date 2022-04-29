@@ -16,12 +16,16 @@ func getCorrelation(data: DataStoreStruct, health: HealthManager, type: HealthTy
     while date >= earliest {
         var dayOffset: Int = 0
         
-        if type == .sleep {
+        if type == .sleep || type == .distance || type == .energy {
             dayOffset = 1
         }
         
-        let healthSnaps = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
-        let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps, date: date.addDays(days: dayOffset), flatten: true)
+        let healthSnaps = getHealthSnapsByDate(healthSnaps: health.healthSnaps,
+                                               date: date,
+                                               flatten: true)
+        let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps,
+                                           date: date.addDays(days: dayOffset),
+                                           flatten: true)
 
         if healthSnaps.count != 0 && moodSnaps.count != 0 {
             switch type {
