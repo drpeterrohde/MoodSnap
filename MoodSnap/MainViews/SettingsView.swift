@@ -38,9 +38,9 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("accessibility")) {
-                    Toggle(isOn: $data.settings.useFaceID, label: {
-                        Text("use_lockscreen")
-                    })
+//                    Toggle(isOn: $data.settings.useFaceID, label: {
+//                        Text("use_lockscreen")
+//                    })
 
                     Picker("theme", selection: $data.settings.theme) {
                         ForEach(0 ..< themes.count, id: \.self) { i in
@@ -172,6 +172,11 @@ struct SettingsView: View {
                         Text("website")
                         Spacer()
                         Text("[www.moodsnap.app](https://www.moodsnap.app)")
+                    }
+                    HStack {
+                        Text("Twitter")
+                        Spacer()
+                        Text("[@moodsnapapp](https://twitter.com/moodsnapapp)")
                     }
                     HStack {
                         Text("developer")
