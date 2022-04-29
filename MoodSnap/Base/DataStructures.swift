@@ -33,7 +33,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
 
     var useFaceID: Bool = false
 
-    var useHealthKit: Bool = false
+    var useHealthKit: Bool = true
     var workoutsOn: Bool = false
     var healthUnits: MeasurementUnitsEnum = .metric
     var healthDistanceOn: Bool = true
