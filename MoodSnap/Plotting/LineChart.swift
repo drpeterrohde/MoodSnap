@@ -67,9 +67,9 @@ struct LineChart: View {
                             var yPos: CGFloat?
                             if thisData[i] != nil {
                                 yPos = CGFloat(geometry.size.height) - (thisData[i]! - min) * CGFloat(geometry.size.height) / (max - min)
-                                if centered {
-                                    yPos! -= geometry.size.height / 2
-                                }
+//                                if centered {
+//                                    yPos! -= geometry.size.height / 2
+//                                } // ???
                             }
 
                             if yPos != nil {

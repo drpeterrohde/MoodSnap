@@ -17,9 +17,6 @@ struct TransientView: View {
         let dataA = butterfly.anxiety
         let dataI = butterfly.irritability
 
-       // let allData: [CGFloat?] = dataE + dataD + dataA + dataI
-     //   let bound = getAxisBound(data: allData)
-
         let entriesButterflyE = makeLineData2(y: dataE, timescale: timescale)
         let entriesButterflyD = makeLineData2(y: dataD, timescale: timescale)
         let entriesButterflyA = makeLineData2(y: dataA, timescale: timescale)
@@ -51,11 +48,12 @@ struct TransientView: View {
                         }
                         Group {
                             LineChart(data: [[], [], [], []],
-                                       color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
-                                       horizontalGridLines: 1,
-                                       verticalGridLines: 1,
-                                       centered: true,
-                                       settings: data.settings)
+                                      color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
+                                      min: -4,
+                                      max: 4,
+                                      horizontalGridLines: 1,
+                                      verticalGridLines: 1,
+                                      settings: data.settings)
                                 .frame(height: 170)
                             HStack(alignment: .center) {
                                 Text("insufficient_data")
@@ -86,11 +84,12 @@ struct TransientView: View {
                                 }
                                 Group {
                                     LineChart(data: entries,
-                                               color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
-                                               horizontalGridLines: 1,
-                                               verticalGridLines: 1,
-                                               centered: true,
-                                               settings: data.settings)
+                                              color: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
+                                              min: -4,
+                                              max: 4,
+                                              horizontalGridLines: 1,
+                                              verticalGridLines: 1,
+                                              settings: data.settings)
                                         .frame(height: 170)
                                     HStack(alignment: .center) {
                                         Text(.init(label))
