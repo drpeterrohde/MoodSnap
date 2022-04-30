@@ -13,7 +13,7 @@ struct SleepView: View {
         let sleepData: [CGFloat?] = getSleepData(data: data, health: health)
         let entries = makeChartData(y: sleepData, timescale: timescale)
 
-        if samples == 0 { // || r2mood[0] == nil || r2mood[1] == nil || r2mood[2] == nil || r2mood[3] == nil {
+        if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
