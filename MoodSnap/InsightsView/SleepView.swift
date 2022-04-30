@@ -18,7 +18,13 @@ struct SleepView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: 24, settings: data.settings)
+            let maxSleep: CGFloat = maxWithNils(data: sleepData) ?? 0
+
+            VerticalBarChart(values: entries,
+                             color: themes[data.settings.theme].buttonColor,
+                             min: 0,
+                             max: maxSleep,
+                             settings: data.settings)
                 .frame(height: 60)
             Spacer()
             HStack {
