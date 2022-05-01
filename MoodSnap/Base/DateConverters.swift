@@ -41,6 +41,11 @@ extension Date {
         let daysComponents = DateComponents(day: days)
         return Calendar.current.date(byAdding: daysComponents, to: self)!
     }
+    
+    func addSeconds(seconds: Int) -> Date {
+        let daysComponents = DateComponents(second: seconds)
+        return Calendar.current.date(byAdding: daysComponents, to: self)!
+    }
 
     func dateString() -> String {
         let dateFormatter = DateFormatter()
@@ -64,7 +69,9 @@ extension Date {
     }
     
     func endOfDay() -> Date {
-        let end = Calendar.current.startOfDay(for: self).addDays(days: 1)
+        var end = Calendar.current.startOfDay(for: self)
+        end = end.addDays(days: 1)
+        end = end.addSeconds(seconds: -1)
         return end
     }
 }
