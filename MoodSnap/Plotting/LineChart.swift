@@ -76,8 +76,7 @@ struct LineChart: View {
                                 }
                             }
                         }
-                    }
-                    .stroke(self.color[graph].opacity(lineChartOpacity), lineWidth: 2)
+                    }.stroke(self.color[graph].opacity(lineChartOpacity), lineWidth: 2)
                 }
             }
         }.frame(height: 170)

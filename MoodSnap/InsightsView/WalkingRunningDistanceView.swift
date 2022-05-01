@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing walking & running distance.
+ */
 struct WalkingRunningDistanceView: View {
     var timescale: Int
     var data: DataStoreStruct

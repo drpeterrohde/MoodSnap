@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing sleeping time.
+ */
 struct SleepView: View {
     var timescale: Int
     var data: DataStoreStruct

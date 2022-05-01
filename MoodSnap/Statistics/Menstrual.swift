@@ -23,3 +23,15 @@ func filterMenstrualDates(dates: [Date], data: DataStoreStruct, health: HealthMa
 
     return dates
 }
+
+/**
+ Make menstrual butterfly plot.
+ */
+func makeMenstrualButterfly(entriesE: [CGFloat?], entriesD: [CGFloat?], entriesA: [CGFloat?], entriesI: [CGFloat?]) -> ButterflyEntryStruct {
+    var butterfly = ButterflyEntryStruct()
+    butterfly.elevation = entriesE
+    butterfly.depression = entriesD
+    butterfly.anxiety = entriesA
+    butterfly.irritability = entriesI
+    return butterfly
+}

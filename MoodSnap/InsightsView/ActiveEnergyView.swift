@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing active energy.
+ */
 struct ActiveEnergyView: View {
     var timescale: Int
     var data: DataStoreStruct

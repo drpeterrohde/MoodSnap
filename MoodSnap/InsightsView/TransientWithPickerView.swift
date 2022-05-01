@@ -41,6 +41,9 @@ struct TransientWithPickerView: View {
     }
 }
 
+/**
+ Get axis label for `TransientView`.
+ */
 func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
     var str: String = ""
     var int: Int = 0

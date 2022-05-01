@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing menstrual data.
+ */
 struct MenstrualView: View {
     var timescale: Int
     var data: DataStoreStruct
@@ -43,13 +46,4 @@ struct MenstrualView: View {
                           data: data)
         }
     }
-}
-
-func makeMenstrualButterfly(entriesE: [CGFloat?], entriesD: [CGFloat?], entriesA: [CGFloat?], entriesI: [CGFloat?]) -> ButterflyEntryStruct {
-    var butterfly = ButterflyEntryStruct()
-    butterfly.elevation = entriesE
-    butterfly.depression = entriesD
-    butterfly.anxiety = entriesA
-    butterfly.irritability = entriesI
-    return butterfly
 }

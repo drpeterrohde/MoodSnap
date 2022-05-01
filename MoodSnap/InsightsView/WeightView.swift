@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ View showing weight data.
+ */
 struct WeightView: View {
     var timescale: Int
     var data: DataStoreStruct
