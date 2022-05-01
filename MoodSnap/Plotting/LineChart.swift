@@ -11,10 +11,9 @@ struct LineChart: View {
     var horizontalGridLines: Int = 0
     var verticalGridLines: Int = 0
     var blackAndWhite: Bool = false
-    var centered: Bool = false
     var settings: SettingsStruct
 
-    init(data: [[CGFloat?]], color: [Color], min: CGFloat = 0, max: CGFloat = 4, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, centered: Bool = false, settings: SettingsStruct) {
+    init(data: [[CGFloat?]], color: [Color], min: CGFloat = 0, max: CGFloat = 4, horizontalGridLines: Int = 0, verticalGridLines: Int = 0, blackAndWhite: Bool = false, settings: SettingsStruct) {
         self.data = data
         self.color = color
         self.min = min
@@ -22,7 +21,6 @@ struct LineChart: View {
         self.horizontalGridLines = horizontalGridLines
         self.verticalGridLines = verticalGridLines
         self.blackAndWhite = blackAndWhite
-        self.centered = centered
         self.settings = settings
 
         if blackAndWhite {
@@ -67,9 +65,6 @@ struct LineChart: View {
                             var yPos: CGFloat?
                             if thisData[i] != nil {
                                 yPos = CGFloat(geometry.size.height) - (thisData[i]! - min) * CGFloat(geometry.size.height) / (max - min)
-//                                if centered {
-//                                    yPos! -= geometry.size.height / 2
-//                                } // ???
                             }
 
                             if yPos != nil {

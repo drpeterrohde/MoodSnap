@@ -2,19 +2,6 @@ import HealthKit
 import SwiftUI
 
 /**
- Get y-axis bound from maximum range of `data` snapped to multiple of 0.5.
- */
-//func getAxisBound(data: [CGFloat?]) -> CGFloat {
-//    var bound: CGFloat = 0
-//    for item in data {
-//        if item != nil {
-//            bound = max(bound, abs(item!))
-//        }
-//    }
-//    return ceil(2 * bound) / 2.0
-//}
-
-/**
  The total number of recorded symptoms in a given `moodSnap`
  */
 func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {

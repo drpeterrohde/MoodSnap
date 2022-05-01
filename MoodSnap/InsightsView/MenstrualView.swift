@@ -6,16 +6,11 @@ struct MenstrualView: View {
     var health: HealthManager
 
     var body: some View {
-//        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps,
-//                                            type: .menstrual)
         let menstrualData: [CGFloat?] = getMenstrualData(data: data,
                                                          health: health)
         let entries = makeChartData(y: menstrualData,
                                     timescale: timescale)
         let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
-//      let dates = filterMenstrualDates(dates: getMenstrualDates(healthSnaps: health.healthSnaps),
-//                                         data: data,
-//                                         health: health)
         let butterfly = averageMenstrualTransientForDates(dates: dates,
                                                           moodSnaps: data.moodSnaps,
                                                           maxWindow: menstrualTransientWindow)
@@ -33,7 +28,7 @@ struct MenstrualView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            SuperimposedBarLineChart(barData: entries, // name????
+            SuperimposedBarLineChart(barData: entries,
                                       lineData: moodEntries,
                                       barColor: themes[data.settings.theme].buttonColor,
                                       lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],

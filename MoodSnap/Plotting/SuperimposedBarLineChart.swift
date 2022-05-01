@@ -34,7 +34,7 @@ struct SuperimposedBarLineChart: View {
         self.settings = settings
 
         fontColor = Color.secondary
-        gridColor = Color.gray.opacity(0.4) // clean up???
+        gridColor = Color.gray.opacity(0.4)
 
         if blackAndWhite {
             fontColor = Color.gray
