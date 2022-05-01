@@ -105,10 +105,10 @@ struct SuperimposedBarLineChart: View {
                         let thisData = lineData[graph]
                         var first: Bool = true
                         for i in 0 ..< thisData.count {
-                            let xPos: CGFloat = CGFloat(i) * (CGFloat(geometry.size.width) / CGFloat(thisData.count - 1)) - (barWidth / 2) + 2
+                            let xPos: CGFloat = spacing + (barWidth / 2) + CGFloat(i) * (barWidth + spacing)
                             var yPos: CGFloat?
                             if thisData[i] != nil {
-                                yPos = CGFloat(geometry.size.height) - (thisData[i]! - min) * CGFloat(geometry.size.height) / (max - min)
+                                yPos = CGFloat(height) - (thisData[i]! - min) * CGFloat(height) / (max - min)
                                 if first {
                                     path.move(to: CGPoint(x: xPos, y: yPos!))
                                     first = false
@@ -124,11 +124,15 @@ struct SuperimposedBarLineChart: View {
                     ForEach(0 ..< thisData.count, id: \.self) { i in
                         Path { path in
                             // for i in 0 ..< thisData.count {
-                            let xPos: CGFloat = CGFloat(i) * (CGFloat(geometry.size.width) / CGFloat(thisData.count - 1)) - (barWidth / 2) + 2
+                            let xPos: CGFloat = spacing + (barWidth / 2) + CGFloat(i) * (barWidth + spacing)
                             var yPos: CGFloat?
                             if thisData[i] != nil {
-                                yPos = CGFloat(geometry.size.height) - (thisData[i]! - min) * CGFloat(geometry.size.height) / (max - min)
-                                path.addArc(center: CGPoint(x: xPos, y: yPos!), radius: 2, startAngle: .degrees(0), endAngle: .degrees(360), clockwise: true)
+                                yPos = CGFloat(height) - (thisData[i]! - min) * CGFloat(height) / (max - min)
+                                path.addArc(center: CGPoint(x: xPos, y: yPos!),
+                                            radius: 2,
+                                            startAngle: .degrees(0),
+                                            endAngle: .degrees(360),
+                                            clockwise: true)
                             }
                         }.stroke(self.lineColor[graph].opacity(1.0), lineWidth: 2)
                     }
