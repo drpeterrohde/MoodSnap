@@ -41,7 +41,7 @@ func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
  Returns the most recent `Date` amongst `moodSnaps`.
  */
 func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
-    var lastDate = Date()
+    var lastDate = Date().endOfDay()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp > lastDate {
             lastDate = moodSnap.timestamp

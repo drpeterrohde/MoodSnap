@@ -1,5 +1,8 @@
 import SwiftUI
 
+/**
+ Enumeration for health data types.
+ */
 enum HealthTypeEnum: Int, Codable {
     case all = 0
     case weight = 1

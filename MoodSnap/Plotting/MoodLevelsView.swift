@@ -43,7 +43,7 @@ struct MoodLevelsView: View {
             let hBarRadius = themes[data.settings.theme].hBarRadius
             let hBarHeight = themes[data.settings.theme].hBarHeight
             let hBarFontSize = themes[data.settings.theme].hBarFontSize
-            
+
             ZStack {
                 // Grid
                 Path { path in

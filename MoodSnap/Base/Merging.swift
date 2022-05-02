@@ -66,6 +66,25 @@ func mergeHealthSnaps(healthSnaps: [HealthSnapStruct]) -> HealthSnapStruct? {
             }
         }
         
+        if collapsed.activeEnergy == nil {
+            collapsed.activeEnergy = healthSnap.activeEnergy
+        } else {
+            if healthSnap.activeEnergy != nil {
+                collapsed.activeEnergy! += healthSnap.activeEnergy!
+            }
+        }
+        
+        if collapsed.sleepHours == nil {
+            collapsed.sleepHours = healthSnap.sleepHours
+        } else {
+            if healthSnap.sleepHours != nil {
+                collapsed.sleepHours! += healthSnap.sleepHours!
+            }
+        }
+        
+        if collapsed.menstrual == nil {
+            collapsed.menstrual = healthSnap.menstrual
+        }
     }
 
     return collapsed

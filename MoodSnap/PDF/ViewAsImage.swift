@@ -4,7 +4,7 @@ extension View {
     func asImage() -> UIImage {
         let controller = UIHostingController(rootView: self)
 
-        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1000, height: 1000) // ??? changed 1 to 1000
+        controller.view.frame = CGRect(x: 0, y: CGFloat(Int.max), width: 1000, height: 1000)
 
         let scenes = UIApplication.shared.connectedScenes
         let windowScene = scenes.first as? UIWindowScene

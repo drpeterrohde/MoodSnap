@@ -29,7 +29,7 @@ struct NoteView: View {
                 TextEditor(text: $moodSnap.notes).font(.caption)
             }
 
-            Button { // put in async main???
+            Button {
                 moodSnap.snapType = .note
                 data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                 data.moodSnaps.append(moodSnap)

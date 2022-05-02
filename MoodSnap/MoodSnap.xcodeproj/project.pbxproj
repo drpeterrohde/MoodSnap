@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0C523D281614A000B1595C /* SuperimposedBarLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
+		CA4547FF2817CE78006037DA /* Menstrual.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4547FE2817CE78006037DA /* Menstrual.swift */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
 		CA496B0527EBEEEE0067EE63 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AF927EBEEEE0067EE63 /* Constants.swift */; };
@@ -40,10 +42,9 @@
 		CA496B7E27EBEF2A0067EE63 /* InfluencesEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2327EBEF290067EE63 /* InfluencesEventsView.swift */; };
 		CA496B7F27EBEF2A0067EE63 /* SlidingVolatilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */; };
 		CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */; };
-		CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2727EBEF290067EE63 /* LineChart.swift */; };
-		CA496B8227EBEF2A0067EE63 /* ScatterChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2827EBEF290067EE63 /* ScatterChart.swift */; };
+		CA496B8127EBEF2A0067EE63 /* LineChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2727EBEF290067EE63 /* LineChartOld.swift */; };
 		CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */; };
-		CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */; };
+		CA496B8427EBEF2A0067EE63 /* VerticalBarChartOld.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */; };
 		CA496B8627EBEF2A0067EE63 /* HistoryActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */; };
 		CA496B8727EBEF2A0067EE63 /* HistoryMoodView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */; };
 		CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */; };
@@ -93,17 +94,22 @@
 		CA496BCA27EBF35E0067EE63 /* Charts in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC927EBF35E0067EE63 /* Charts */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
 		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
+		CA69217728154B2900E99864 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217628154B2900E99864 /* Data.swift */; };
+		CA69217928154B8500E99864 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthKit.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
-		CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart2.swift */; };
-		CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */; };
+		CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
+		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
+		CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperimposedBarLineChart.swift; sourceTree = "<group>"; };
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA4547FE2817CE78006037DA /* Menstrual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menstrual.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
 		CA496AF927EBEEEE0067EE63 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -136,10 +142,9 @@
 		CA496B2327EBEF290067EE63 /* InfluencesEventsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfluencesEventsView.swift; sourceTree = "<group>"; };
 		CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingVolatilityView.swift; sourceTree = "<group>"; };
 		CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodHistoryBarView.swift; sourceTree = "<group>"; };
-		CA496B2727EBEF290067EE63 /* LineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
-		CA496B2827EBEF290067EE63 /* ScatterChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScatterChart.swift; sourceTree = "<group>"; };
+		CA496B2727EBEF290067EE63 /* LineChartOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineChartOld.swift; sourceTree = "<group>"; };
 		CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipleLineChart.swift; sourceTree = "<group>"; };
-		CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
+		CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalBarChartOld.swift; sourceTree = "<group>"; };
 		CA496B2D27EBEF290067EE63 /* HistoryActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryActivityView.swift; sourceTree = "<group>"; };
 		CA496B2E27EBEF290067EE63 /* HistoryMoodView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryMoodView.swift; sourceTree = "<group>"; };
 		CA496B2F27EBEF290067EE63 /* HistorySymptomsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistorySymptomsView.swift; sourceTree = "<group>"; };
@@ -187,12 +192,15 @@
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA69217628154B2900E99864 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		CA69217828154B8500E99864 /* Nils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nils.swift; sourceTree = "<group>"; };
 		CA7775AA280CD44C0045A202 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
-		CA87642B2814D7A1000FEEEC /* LineChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart2.swift; sourceTree = "<group>"; };
-		CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart2.swift; sourceTree = "<group>"; };
+		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
+		CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientWithPickerView.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -287,6 +295,7 @@
 				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
 				CA496B1E27EBEF290067EE63 /* TallyView.swift */,
 				CA496B1F27EBEF290067EE63 /* TransientView.swift */,
+				CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */,
 				CA496B2027EBEF290067EE63 /* MenstrualView.swift */,
 				CA496B2127EBEF290067EE63 /* InfluencesHashtagView.swift */,
 				CA496B2227EBEF290067EE63 /* WeightView.swift */,
@@ -301,12 +310,12 @@
 			isa = PBXGroup;
 			children = (
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
-				CA496B2727EBEF290067EE63 /* LineChart.swift */,
-				CA87642B2814D7A1000FEEEC /* LineChart2.swift */,
-				CA496B2827EBEF290067EE63 /* ScatterChart.swift */,
+				CA496B2727EBEF290067EE63 /* LineChartOld.swift */,
+				CA87642B2814D7A1000FEEEC /* LineChart.swift */,
 				CA496B2927EBEF290067EE63 /* MultipleLineChart.swift */,
-				CA496B2A27EBEF290067EE63 /* VerticalBarChart.swift */,
-				CA87642D2814D7EC000FEEEC /* VerticalBarChart2.swift */,
+				CA496B2A27EBEF290067EE63 /* VerticalBarChartOld.swift */,
+				CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */,
+				CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */,
 			);
 			path = Plotting;
 			sourceTree = "<group>";
@@ -410,11 +419,13 @@
 			isa = PBXGroup;
 			children = (
 				CAAA2D1927F284380096AD22 /* GetDates.swift */,
+				CA4547FE2817CE78006037DA /* Menstrual.swift */,
 				CA496B6627EBEF2A0067EE63 /* Transients.swift */,
 				CA496B6727EBEF2A0067EE63 /* Volatility.swift */,
 				CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
 				CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */,
+				CA69217828154B8500E99864 /* Nils.swift */,
 				CA496B6B27EBEF2A0067EE63 /* ProcessData.swift */,
 				CA496B6C27EBEF2A0067EE63 /* Influence.swift */,
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
@@ -426,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7775AA280CD44C0045A202 /* HealthKit.swift */,
+				CA69217628154B2900E99864 /* Data.swift */,
 			);
 			path = HealthKit;
 			sourceTree = "<group>";
@@ -524,7 +536,7 @@
 			files = (
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
-				CA496B8127EBEF2A0067EE63 /* LineChart.swift in Sources */,
+				CA496B8127EBEF2A0067EE63 /* LineChartOld.swift in Sources */,
 				CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
@@ -537,11 +549,12 @@
 				CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */,
 				CA496B9927EBEF2B0067EE63 /* HelpView.swift in Sources */,
 				CA496B9627EBEF2A0067EE63 /* IntroPopoverView.swift in Sources */,
+				CA69217728154B2900E99864 /* Data.swift in Sources */,
 				CA496B7327EBEF2A0067EE63 /* InfluencesActivityView.swift in Sources */,
+				CA4547FF2817CE78006037DA /* Menstrual.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
 				CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */,
-				CA496B8227EBEF2A0067EE63 /* ScatterChart.swift in Sources */,
 				CA496B9427EBEF2A0067EE63 /* NoteView.swift in Sources */,
 				CA496B7E27EBEF2A0067EE63 /* InfluencesEventsView.swift in Sources */,
 				CA496B8A27EBEF2A0067EE63 /* HistoryMediaView.swift in Sources */,
@@ -563,6 +576,7 @@
 				CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */,
 				CA496B9827EBEF2B0067EE63 /* DatePickerView.swift in Sources */,
 				CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */,
+				CA69217928154B8500E99864 /* Nils.swift in Sources */,
 				CA496B0E27EBEEEF0067EE63 /* DateConverters.swift in Sources */,
 				CA496B8F27EBEF2A0067EE63 /* HistoryQuoteView.swift in Sources */,
 				CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */,
@@ -595,8 +609,10 @@
 				CA496B9027EBEF2A0067EE63 /* MoodLevelsView.swift in Sources */,
 				CA496B8E27EBEF2A0067EE63 /* HistoryView.swift in Sources */,
 				CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */,
+				CA0C523D281614A000B1595C /* SuperimposedBarLineChart.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
-				CA87642E2814D7EC000FEEEC /* VerticalBarChart2.swift in Sources */,
+				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
+				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
 				CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */,
@@ -604,11 +620,11 @@
 				CA496B8327EBEF2A0067EE63 /* MultipleLineChart.swift in Sources */,
 				CA496B7427EBEF2A0067EE63 /* InfluencesSocialView.swift in Sources */,
 				CA496B0527EBEEEE0067EE63 /* Constants.swift in Sources */,
-				CA87642C2814D7A1000FEEEC /* LineChart2.swift in Sources */,
+				CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */,
 				CA496BAD27EBEF2B0067EE63 /* ViewAsImage.swift in Sources */,
 				CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */,
 				CA496B7927EBEF2A0067EE63 /* TallyView.swift in Sources */,
-				CA496B8427EBEF2A0067EE63 /* VerticalBarChart.swift in Sources */,
+				CA496B8427EBEF2A0067EE63 /* VerticalBarChartOld.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -762,6 +778,7 @@
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health data for insights";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -774,7 +791,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -806,6 +823,7 @@
 				INFOPLIST_KEY_NSFileProviderPresenceUsageDescription = "FS access";
 				INFOPLIST_KEY_NSHealthClinicalHealthRecordsShareUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Health data for insights";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -818,7 +836,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

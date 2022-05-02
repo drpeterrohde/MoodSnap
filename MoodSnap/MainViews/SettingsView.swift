@@ -38,9 +38,9 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("accessibility")) {
-                    Toggle(isOn: $data.settings.useFaceID, label: {
-                        Text("Use FaceID")
-                    })
+//                    Toggle(isOn: $data.settings.useFaceID, label: {
+//                        Text("use_lockscreen")
+//                    })
 
                     Picker("theme", selection: $data.settings.theme) {
                         ForEach(0 ..< themes.count, id: \.self) { i in
@@ -56,6 +56,13 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.quoteVisibility, label: {
                         Text("show_quotes")
                     })
+                    
+                    Picker("measurement_units", selection: $data.settings.healthUnits) {
+                        Text("metric")
+                            .tag(MeasurementUnitsEnum.metric)
+                        Text("imperial")
+                            .tag(MeasurementUnitsEnum.imperial)
+                    }
                 }
 
                 Section(header: Text("media")) {
@@ -108,6 +115,32 @@ struct SettingsView: View {
                     }
                 }
 
+                Section(header: Text("Health")) {
+                    Toggle(isOn: $data.settings.useHealthKit, label: {
+                        Text("Use Apple Health")
+                    })
+                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
+                        Text("Walking & running distance")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthSleepOn, label: {
+                        Text("Sleep")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
+                        Text("Active energy")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthWeightOn, label: {
+                        Text("Weight")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
+                        Text("Menstrual cycle")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                }
+
                 Group {
                     Section(header: Text("symptom_visibility")) {
                         ForEach(0 ..< symptomList.count, id: \.self) { i in
@@ -134,24 +167,6 @@ struct SettingsView: View {
                     }
                 }
 
-//                Section(header: Text("Health")) {
-//                    Toggle(isOn: $data.settings.healthDistanceOn , label: {
-//                        Text("Walking & running distance")
-//                    })
-//                    Toggle(isOn: $data.settings.healthSleepOn , label: {
-//                                                Text("Sleep")
-//                    })
-//                    Toggle(isOn: $data.settings.healthEnergyOn , label: {
-//                        Text("Active energy")
-//                    })
-//                    Toggle(isOn: $data.settings.healthWeightOn , label: {
-//                        Text("Weight")
-//                    })
-//                    Toggle(isOn: $data.settings.healthMenstrualOn , label: {
-//                        Text("Menstrual cycle")
-//                    })
-//                }
-
                 Section(header: Text("about")) {
                     HStack {
                         Text("website")
@@ -159,15 +174,14 @@ struct SettingsView: View {
                         Text("[www.moodsnap.app](https://www.moodsnap.app)")
                     }
                     HStack {
+                        Text("Twitter")
+                        Spacer()
+                        Text("[@moodsnapapp](https://twitter.com/moodsnapapp)")
+                    }
+                    HStack {
                         Text("developer")
                         Spacer()
                         Text("[Peter Rohde](https://www.peterrohde.org)")
-                    }
-                    HStack {
-                        Text("version")
-                        Spacer()
-                        Text(versionString)
-                            .foregroundColor(.secondary)
                     }
                     HStack {
                         Text("moodsnaps_taken")

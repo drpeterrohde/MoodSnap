@@ -18,7 +18,9 @@ struct UnlockView: View {
                     .frame(width: 100, height: 100)
                 Spacer()
                 Button(action: {
-                    authenticate()
+                    DispatchQueue.main.async {
+                        authenticate()
+                    }
                 }) {
                     VStack {
                         Image(systemName: "faceid")
@@ -35,7 +37,9 @@ struct UnlockView: View {
                 Spacer()
             }
         }.onAppear {
-            authenticate()
+            DispatchQueue.main.async {
+                authenticate()
+            }
         }
     }
 
@@ -43,12 +47,12 @@ struct UnlockView: View {
      FaceID authentication
      */
     func authenticate() {
-        // If we're using FaceID and we're locked
+        // If we're using authentication and we're locked
         if data.settings.useFaceID && !isUnlocked {
             let context = LAContext()
             var error: NSError?
 
-            // Is biometric authentication available?
+            // Is authentication available?
             if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
                 let reason = "Unlock to acces MoodSnap."
 
@@ -62,7 +66,7 @@ struct UnlockView: View {
                     }
                 }
             } else {
-                // Biometrics not available
+                // Authentication not available
                 isUnlocked = true
                 data.settings.useFaceID = false
             }

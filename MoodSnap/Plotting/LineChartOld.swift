@@ -2,15 +2,14 @@ import Charts
 import SwiftUI
 
 /**
- View with scatter chart.
+ View with line chart.
  */
-struct ScatterChart: UIViewRepresentable {
+struct LineChartOld: UIViewRepresentable {
     var entries: [ChartDataEntry]
-    var color: UIColor
-    var zeroOrigin: Bool = false
+    var color: NSUIColor
 
-    func makeUIView(context: Context) -> ScatterChartView {
-        let chart = ScatterChartView()
+    func makeUIView(context: Context) -> LineChartView {
+        let chart = LineChartView()
         chart.data = addData()
         chart.leftAxis.labelCount = 4
         chart.leftAxis.axisMinimum = 0
@@ -18,29 +17,27 @@ struct ScatterChart: UIViewRepresentable {
         chart.rightAxis.enabled = false
         chart.legend.enabled = false
         chart.xAxis.granularity = 1
-        if zeroOrigin {
-            chart.xAxis.axisMinimum = 0
-        }
+        chart.drawMarkers = false
         chart.highlightPerTapEnabled = false
         chart.isUserInteractionEnabled = false
 
         return chart
     }
 
-    func updateUIView(_ uiView: ScatterChartView, context: Context) {
+    func updateUIView(_ uiView: LineChartView, context: Context) {
         uiView.data = addData()
     }
 
-    func addData() -> ChartData {
-        let data = ScatterChartData()
-        let dataSet = ScatterChartDataSet(entries: entries)
+    func addData() -> LineChartData {
+        let data = LineChartData()
+        let dataSet = LineChartDataSet(entries: entries)
         dataSet.colors = [color]
-        dataSet.setScatterShape(.circle)
+        dataSet.lineWidth = 1.5
+        dataSet.circleRadius = 0
         dataSet.valueFont = UIFont.systemFont(ofSize: 0)
-        dataSet.scatterShapeSize = 8
         data.addDataSet(dataSet)
         return data
     }
 
-    typealias UIViewType = ScatterChartView
+    typealias UIViewType = LineChartView
 }

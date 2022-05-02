@@ -120,7 +120,7 @@ struct MoodSnapView: View {
                 }
 
                 // Save button
-                Button { // put in async main???
+                Button {
                     moodSnap.snapType = .mood
                     data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                     data.moodSnaps.append(moodSnap)

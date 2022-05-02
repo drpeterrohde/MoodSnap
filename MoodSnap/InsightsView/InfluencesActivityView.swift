@@ -62,7 +62,7 @@ struct InfluencesActivityView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
-            
+
             HStack {
                 // Activity
                 VStack(alignment: .leading) {

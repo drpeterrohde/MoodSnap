@@ -16,12 +16,12 @@ struct PDFSingleSlidingAverageView: View {
         let entries = [entriesE, entriesD, entriesA, entriesI]
 
         if blackAndWhite {
-            VerticalBarChart(entries: entries[type.rawValue],
+            VerticalBarChartOld(entries: entries[type.rawValue],
                              color: UIColor.black,
                              settings: data.settings).frame(height: 65)
         } else {
             let color = moodUIColors(settings: data.settings)[type.rawValue]
-            VerticalBarChart(entries: entries[type.rawValue],
+            VerticalBarChartOld(entries: entries[type.rawValue],
                              color: color,
                              settings: data.settings).frame(height: 65)
         }

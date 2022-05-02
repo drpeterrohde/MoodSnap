@@ -33,7 +33,7 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
 
     var useFaceID: Bool = false
 
-    var useHealthKit: Bool = false
+    var useHealthKit: Bool = true
     var workoutsOn: Bool = false
     var healthUnits: MeasurementUnitsEnum = .metric
     var healthDistanceOn: Bool = true
@@ -140,11 +140,11 @@ struct UXStateStruct: Identifiable, Codable, Hashable {
     var isEventSummaryExpanded: Bool = true
     var isHashtagSummaryExpanded: Bool = true
     var isButterflyAverageExpanded: Bool = true
-    var isWeightExpanded: Bool = false
-    var isWalkingRunningDistanceExpanded: Bool = false
-    var isActiveEnergyExpanded: Bool = false
-    var isMenstrualExpanded: Bool = false
-    var isSleepExpanded: Bool = false
+    var isWeightExpanded: Bool = true
+    var isWalkingRunningDistanceExpanded: Bool = true
+    var isActiveEnergyExpanded: Bool = true
+    var isMenstrualExpanded: Bool = true
+    var isSleepExpanded: Bool = true
 }
 
 /**

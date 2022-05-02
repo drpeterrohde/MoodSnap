@@ -58,7 +58,7 @@ struct ControlView: View {
                         .scaledToFill()
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
-                }.sheet(isPresented: $showingStatsSheet) { // ??? reordered
+                }.sheet(isPresented: $showingStatsSheet) {
                     InsightsView(data: $data, health: $health)
                 }
 

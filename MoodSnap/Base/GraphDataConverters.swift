@@ -32,20 +32,13 @@ func makeLineData(y: [CGFloat?], timescale: Int) -> [ChartDataEntry] {
  */
 func makeLineData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
     let yTrunc = Array(y.suffix(timescale))
-
-    var xTotal: [CGFloat] = []
     var yTotal: [CGFloat?] = []
 
     if timescale > yTrunc.count {
-        let x1: [CGFloat] = Array(stride(from: 0.0, to: CGFloat(timescale - yTrunc.count - 1), by: 1.0))
-        let y1: [CGFloat?] = Array(repeating: 0.0, count: timescale - yTrunc.count)
-        let x2: [CGFloat] = Array(stride(from: CGFloat(timescale - yTrunc.count), to: CGFloat(timescale), by: 1.0))
+        let y1: [CGFloat?] = Array(repeating: nil, count: timescale - yTrunc.count)
         let y2: [CGFloat?] = yTrunc
-
-        xTotal = x1 + x2
         yTotal = y1 + y2
     } else {
-        xTotal = Array(stride(from: 0.0, to: CGFloat(yTrunc.count), by: 1.0))
         yTotal = yTrunc
     }
 
@@ -97,7 +90,6 @@ func makeBarData(y: [CGFloat?]) -> [BarChartDataEntry] {
  */
 func makeBarData(y: [CGFloat?], timescale: Int) -> [BarChartDataEntry] {
     let yTrunc = Array(y.suffix(timescale))
-
     var xTotal: [CGFloat] = []
     var yTotal: [CGFloat?] = []
 
@@ -121,22 +113,15 @@ func makeBarData(y: [CGFloat?], timescale: Int) -> [BarChartDataEntry] {
 /**
  Make bar chart data using `y` coordinates, truncated and padded to given `timescale`.
  */
-func makeBarData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
+func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
     let yTrunc = Array(y.suffix(timescale))
-
-    var xTotal: [CGFloat] = []
     var yTotal: [CGFloat?] = []
 
     if timescale > yTrunc.count {
-        let x1: [CGFloat] = Array(stride(from: 0.0, to: CGFloat(timescale - yTrunc.count), by: 1.0))
         let y1: [CGFloat?] = Array(repeating: nil, count: timescale - yTrunc.count)
-        let x2: [CGFloat] = Array(stride(from: CGFloat(timescale - yTrunc.count), to: CGFloat(timescale), by: 1.0))
         let y2: [CGFloat?] = yTrunc
-
-        xTotal = x1 + x2
         yTotal = y1 + y2
     } else {
-        xTotal = Array(stride(from: 0.0, to: CGFloat(yTrunc.count), by: 1.0))
         yTotal = yTrunc
     }
 

@@ -6,10 +6,13 @@
 "3mo" = "3mo";
 "6_months" = "6 months";
 "6mo" = "6mo";
+"Active_energy" = "Active energy";
 "Affection" = "Affection";
 "Alcohol" = "Alcohol";
 "Anhedonia" = "Anhedonia";
 "Average_distance" = "Average distance";
+"Average_energy" = "Average energy";
+"Average_sleep" = "Average sleep";
 "Average_weight" = "Average weight";
 "Caffeine" = "Caffeine";
 "Compulsions" = "Compulsions";
@@ -30,7 +33,12 @@
 "Insomnia" = "Insomnia";
 "Isolation" = "Isolation";
 "Mania" = "Mania";
+"Maximum_distance" = "Maximum distance";
+"Maximum_energy" = "Maximum energy";
+"Maximum_weight" = "Maximum weight";
 "Meditation" = "Meditation";
+"Menstrual_cycle" = "Menstrual cycle";
+"Minimum_weight" = "Minimum weight";
 "Missed_medication" = "Missed medication";
 "Mixed_state" = "Mixed state";
 "Negative_socialising" = "Negative socialising";
@@ -50,6 +58,7 @@
 "Rumination" = "Rumination";
 "Self_harm" = "Self harm";
 "Sexual_activity" = "Sexual activity";
+"Sleep" = "Sleep";
 "Substance_use" = "Substance use";
 "Suicidal_thoughts" = "Suicidal thoughts";
 "Therapy" = "Therapy";
@@ -98,6 +107,7 @@
 "help_taking_moodsnaps_string" = "The sliders at the top of the _MoodSnap_ panel snap to five increments, ranging from _none_ to _extreme_. The toggle buttons below allow you to specify symptoms you've experience and activites you've undertaken in the same period. Since many of these aren't relevant to everyone, you can toggle their visibility in the _settings_ page. Custom symptoms and activities can be entered using #hashtags in any text field.";
 "history" = "History";
 "how_to_use_moodsnap" = "How to use MoodSnap";
+"imperial" = "Imperial";
 "import_backup_file" = "Import backup file";
 "import_export" = "Import/Export";
 "include_guide" = "Include guide";
@@ -118,7 +128,9 @@
 "intro_snap_title" = "Welcome to MoodSnap";
 "irritability" = "Irritability";
 "load_demo_data" = "Load demo data";
+"measurement_units" = "Measurement units";
 "media" = "Media";
+"metric" = "Metric";
 "mood" = "Mood";
 "mood_history" = "Mood history";
 "mood_level_mood_volatility" = "Mood level / Mood volatility";
@@ -145,10 +157,12 @@
 "notes_on_interpretation_string_7" = "• Missing data points make analysis less reliable. All provided measures are most accurate if the associated data is complete with daily data points. Volatility measures are most reliable if additional data points capture intermittent mood changes.\n";
 "notes_on_interpretation_string_8" = "• MoodSnaps should reflect maximum values within the last 24 hours and since the last MoodSnap, and should not capture overlapping information.\n";
 "notes_on_interpretation_string_9" = "• All measures under the History heading are calculated over the timescale specified in the tab at the top of the page. Measures under the Influences heading are calculated using all data.\n";
+"pastel" = "Pastel";
 "pdf_report_string" = "You can generate customisable PDF reports of your mood history and statistics within the settings page, suitable for printing, saving or sharing.";
 "period" = "Period";
 "photo_diary" = "Photo diary";
 "photo_diary_string" = "Sometimes words just aren't enough, especially when it comes to emotions. You can take photos from within the app that get saved into your MoodSnap history as a photo diary.";
+"pm_14_days" = "±14days";
 "pm_30_days" = "±30days";
 "pm_7_days" = "±7days";
 "privacy" = "Privacy";
@@ -196,6 +210,7 @@
 "statistics_tally_string" = "The tally displays the number of occurrences of different activites, symptoms, social and hashtag events within the specified time window.";
 "statistics_volatility_string_1" = "People with some mood-related conditions often experience highly volatile moods which they aim to stabilise. The _volatility_ plot visualises this as a sliding standard deviation for each of the four mood indicators. When mood levels remain constant over time the volatility is zero. If they oscillate or abruptly change it increases.";
 "statistics_volatility_string_2" = "In the figures above, note how the increase in volatility of depression corresponds to the sudden major change in the mood history's depression level, and the increased volatility of elevation is associated with bigger oscillations in the elevation level.";
+"summer" = "Summer";
 "sure_delete" = "Are you sure you want to delete all data?";
 "sure_to_delete" = "Are you sure you want to delete this item? This action cannot be undone.";
 "symptom" = "Symptom";
@@ -206,9 +221,13 @@
 "tally" = "Tally";
 "theme" = "Theme";
 "transients" = "Transients";
+"Twitter" = "Twitter";
 "unable_import_warning" = "You can only import data into an empty MoodSnap history. You must delete exisiting data first.";
 "unable_to_import" = "Unable to import";
 "unlock" = "Unlock";
+"use_lockscreen" = "Use FaceID";
 "version" = "Version";
 "volatility" = "Volatility";
+"Walking_running_distance" = "Walking & running distance";
 "website" = "Website";
+"Weight" = "Weight";

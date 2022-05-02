@@ -4,7 +4,7 @@ import SwiftUI
  Extract an array of all the hashtags from `string`.
  */
 func getHashtags(string: String) -> [String] {
-    let delimiters = [".", ":", ",", "?"]
+    let delimiters = [".", ":", ",", "?", "!", "\n"]
     var delimited = string
     for i in 0 ..< delimiters.count {
         delimited = delimited.replacingOccurrences(of: delimiters[i], with: " ")

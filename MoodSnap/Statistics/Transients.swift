@@ -31,6 +31,36 @@ func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWin
 }
 
 /**
+ Average `ButterflyEntryStruct` from data centered around an array of `dates`.
+ */
+func averageMenstrualTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
+    let butterflyMood = averageDifferentialWindowForDates(
+        moodSnaps: moodSnaps,
+        dates: dates,
+        maxWindow: maxWindow)
+    let butterflyVolatility = volatilityDifferentialWindowForDates(
+        moodSnaps: moodSnaps,
+        dates: dates,
+        maxWindow: maxWindow)
+
+    var thisButterfly = ButterflyEntryStruct()
+
+    thisButterfly.elevation = butterflyMood[0]
+    thisButterfly.depression = butterflyMood[1]
+    thisButterfly.anxiety = butterflyMood[2]
+    thisButterfly.irritability = butterflyMood[3]
+
+    thisButterfly.elevationVolatility = butterflyVolatility[0]
+    thisButterfly.depressionVolatility = butterflyVolatility[1]
+    thisButterfly.anxietyVolatility = butterflyVolatility[2]
+    thisButterfly.irritabilityVolatility = butterflyVolatility[3]
+
+    thisButterfly.occurrences = dates.count
+
+    return thisButterfly
+}
+
+/**
  Differential (average) foccused on `date`.
  */
 func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
@@ -59,10 +89,10 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
     let todayAverage = average(moodSnaps: today)
     let windowAverage = average(moodSnaps: samples)
 
-    var diffE: CGFloat? = nil // added nils???
-    var diffD: CGFloat? = nil
-    var diffA: CGFloat? = nil
-    var diffI: CGFloat? = nil
+    var diffE: CGFloat?
+    var diffD: CGFloat?
+    var diffA: CGFloat?
+    var diffI: CGFloat?
 
     if todayAverage[0] != nil && windowAverage[0] != nil {
         diffE = windowAverage[0]! - todayAverage[0]!
@@ -206,4 +236,22 @@ func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWi
     }
 
     return [seriesE, seriesD, seriesA, seriesI]
+}
+
+/**
+ Dispatch transient calculation depending on `type`.
+ */
+func transientByType(type: InfluenceTypeEnum, activity: Int, social: Int, symptom: Int, event: Int, hashtag: Int, processedData: ProcessedDataStruct) -> ButterflyEntryStruct {
+    switch type {
+    case .activity:
+        return processedData.activityButterfly[activity]
+    case .social:
+        return processedData.socialButterfly[social]
+    case .symptom:
+        return processedData.symptomButterfly[symptom]
+    case .event:
+        return processedData.eventButterfly[event]
+    case .hashtag:
+        return processedData.hashtagButterfly[hashtag]
+    }
 }

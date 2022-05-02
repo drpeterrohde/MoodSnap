@@ -1,17 +1,5 @@
+import HealthKit
 import SwiftUI
-
-/**
- Get y-axis bound from maximum range of `data` snapped to multiple of 0.5.
- */
-func getAxisBound(data: [CGFloat?]) -> CGFloat {
-    var bound: CGFloat = 0
-    for item in data {
-        if item != nil {
-            bound = max(bound, abs(item!))
-        }
-    }
-    return ceil(2 * bound) / 2.0
-}
 
 /**
  The total number of recorded symptoms in a given `moodSnap`
@@ -143,6 +131,23 @@ func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String,
 }
 
 /**
+ Get list of menstruation dates.
+ */
+func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
+    var dates: [Date] = []
+
+    for healthSnap in healthSnaps {
+        if healthSnap.menstrual != nil {
+            if healthSnap.menstrual != CGFloat(HKCategoryValueMenstrualFlow.none.rawValue) {
+                dates.append(healthSnap.timestamp)
+            }
+        }
+    }
+
+    return dates
+}
+
+/**
  Does an array of `data` contain any non-nil entries?
  */
 func hasData(data: [CGFloat?]) -> Bool {
@@ -219,8 +224,8 @@ func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> 
  Minimum of a set of `data` that may contain nil values.
  */
 func minWithNils(data: [CGFloat?]) -> CGFloat? {
-    var minimum: CGFloat? = nil
-    
+    var minimum: CGFloat?
+
     for item in data {
         if minimum == nil {
             minimum = item
@@ -230,7 +235,7 @@ func minWithNils(data: [CGFloat?]) -> CGFloat? {
             }
         }
     }
-    
+
     return minimum
 }
 
@@ -238,8 +243,8 @@ func minWithNils(data: [CGFloat?]) -> CGFloat? {
  Maximum of a set of `data` that may contain nil values.
  */
 func maxWithNils(data: [CGFloat?]) -> CGFloat? {
-    var maximum: CGFloat? = nil
-    
+    var maximum: CGFloat?
+
     for item in data {
         if maximum == nil {
             maximum = item
@@ -249,6 +254,54 @@ func maxWithNils(data: [CGFloat?]) -> CGFloat? {
             }
         }
     }
-    
+
     return maximum
+}
+
+/**
+ Get string for weight `value` depending on type of `units`.
+ */
+func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "kg"
+    case .imperial:
+        str = String(format: "%.1f", 2.20462 * value) + "lb"
+    }
+    
+    return str
+}
+
+/**
+ Get string for distance `value` depending on type of `units`.
+ */
+func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "km"
+    case .imperial:
+        str = String(format: "%.1f", 0.621371 * value) + "mi"
+    }
+    
+    return str
+}
+
+/**
+ Get string for energy `value` depending on type of `units`.
+ */
+func getEnergyString(value: Double, units: MeasurementUnitsEnum) -> String {
+    var str: String = ""
+    
+    switch units {
+    case .metric:
+        str = String(format: "%.1f", value) + "kJ"
+    case .imperial:
+        str = String(format: "%.1f", 0.239006 * value) + "kcal"
+    }
+    
+    return str
 }

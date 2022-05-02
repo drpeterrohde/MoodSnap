@@ -1,7 +1,7 @@
 import SwiftUI
 
 /// Version
-let versionString = "1.0b"
+let versionString = "1.1"
 
 /// Quote frequency
 let quoteFrequency = 11
@@ -12,6 +12,7 @@ let butterflyWindowShort = 7
 let influenceWindowLong = 28
 let butterflyWindowLong = 28
 let healthWindow = 7
+let menstrualTransientWindow = 14
 
 /// PDF
 let marginPDF = 0.5 * 72
@@ -29,12 +30,15 @@ let threeMonthInterval: CGFloat = 3 * monthInterval
 let sixMonthInterval: CGFloat = 6 * monthInterval
 let yearInterval: CGFloat = 365 * dayInterval
 
+let menstrualFilterJump = 10
+
 /// UX
 let zeroGraphicalBarOffset: CGFloat = 0.3
 let midLineWidth: CGFloat = 3.0
 let iconWidth: CGFloat = 15
 let faceIDWidth: CGFloat = 50
 let numericFont: Font = Font.system(.caption, design: .monospaced)
+let lineChartOpacity: CGFloat = 1.0
 
 /// Symptom list
 let symptomList = [

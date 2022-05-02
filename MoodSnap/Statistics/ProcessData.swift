@@ -7,7 +7,7 @@ func processData(data: DataStoreStruct) -> ProcessedDataStruct {
     var processedData = ProcessedDataStruct()
     let history = generateHistory(data: data)
     let eventList = getEventsList(moodSnaps: data.moodSnaps)
-
+    
     // Mood history
     processedData.levelE = history.levelE
     processedData.levelD = history.levelD

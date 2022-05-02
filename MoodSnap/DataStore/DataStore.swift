@@ -23,10 +23,16 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         process()
     }
 
+    /**
+     Pre-process data.
+     */
     mutating func process() {
         processedData = processData(data: self)
     }
 
+    /**
+     Dave `DataStoreStruct` to disk.
+     */
     func save() {
         do {
             try Disk.save(self, to: .documents, as: "data.json")
