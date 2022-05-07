@@ -98,6 +98,7 @@
 		CA69217928154B8500E99864 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthKit.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
+		CA78ABC02825F769002C6A3B /* TickSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78ABBF2825F769002C6A3B /* TickSlider.swift */; };
 		CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
@@ -197,6 +198,7 @@
 		CA7775AA280CD44C0045A202 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CA78ABBF2825F769002C6A3B /* TickSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TickSlider.swift; sourceTree = "<group>"; };
 		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				CA496B4927EBEF2A0067EE63 /* UX.swift */,
 				CA496B4A27EBEF2A0067EE63 /* Color.swift */,
+				CA78ABBF2825F769002C6A3B /* TickSlider.swift */,
 			);
 			path = UX;
 			sourceTree = "<group>";
@@ -623,6 +626,7 @@
 				CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */,
 				CA496BAD27EBEF2B0067EE63 /* ViewAsImage.swift in Sources */,
 				CA496BB827EBEF2B0067EE63 /* ProcessData.swift in Sources */,
+				CA78ABC02825F769002C6A3B /* TickSlider.swift in Sources */,
 				CA496B7927EBEF2A0067EE63 /* TallyView.swift in Sources */,
 				CA496B8427EBEF2A0067EE63 /* VerticalBarChartOld.swift in Sources */,
 			);

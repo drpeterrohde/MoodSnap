@@ -14,13 +14,18 @@ struct MoodSnapView: View {
             ScrollView {
                 Group {
                     HStack {
-                        Label(moodSnap.timestamp.dateTimeString(), systemImage: "clock").font(.caption)
+                        Label(moodSnap.timestamp.dateTimeString(), systemImage: "clock")
+                            .font(.caption)
 
                         Spacer()
 
                         Button {
                             showingDatePickerSheet.toggle()
-                        } label: { Image(systemName: "calendar.badge.clock").resizable().scaledToFill().frame(width: 15, height: 15).foregroundColor(Color.primary)
+                        } label: { Image(systemName: "calendar.badge.clock")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(Color.primary)
                         }.sheet(isPresented: $showingDatePickerSheet) {
                             DatePickerView(moodSnap: $moodSnap, settings: data.settings)
                         }
@@ -32,15 +37,28 @@ struct MoodSnapView: View {
                     Divider()
                     VStack(spacing: themes[data.settings.theme].sliderSpacing) {
                         Label("mood", systemImage: "brain.head.profile").font(.caption)
-                        Spacer().frame(height: 20)
-                        Text("elevation").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].elevationColor)
-                        Slider(value: $moodSnap.elevation, in: 0 ... 4, step: 1)
-                        Text("depression").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].depressionColor)
-                        Slider(value: $moodSnap.depression, in: 0 ... 4, step: 1)
-                        Text("anxiety").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].anxietyColor)
-                        Slider(value: $moodSnap.anxiety, in: 0 ... 4, step: 1)
-                        Text("irritability").font(Font.caption.bold()).foregroundColor(themes[data.settings.theme].irritabilityColor)
-                        Slider(value: $moodSnap.irritability, in: 0 ... 4, step: 1)
+                        Spacer()
+                            .frame(height: 20)
+                        Text("elevation")
+                            .font(Font.caption.bold())
+                            .foregroundColor(themes[data.settings.theme].elevationColor)
+                        //Slider(value: $moodSnap.elevation, in: 0 ... 4, step: 1)
+                        TickSlider(value: $moodSnap.elevation)
+                        Text("depression")
+                            .font(Font.caption.bold())
+                            .foregroundColor(themes[data.settings.theme].depressionColor)
+                        //Slider(value: $moodSnap.depression, in: 0 ... 4, step: 1)
+                        TickSlider(value: $moodSnap.depression)
+                        Text("anxiety")
+                            .font(Font.caption.bold())
+                            .foregroundColor(themes[data.settings.theme].anxietyColor)
+                        //Slider(value: $moodSnap.anxiety, in: 0 ... 4, step: 1)
+                        TickSlider(value: $moodSnap.anxiety)
+                        Text("irritability")
+                            .font(Font.caption.bold())
+                            .foregroundColor(themes[data.settings.theme].irritabilityColor)
+                        //Slider(value: $moodSnap.irritability, in: 0 ... 4, step: 1)
+                        TickSlider(value: $moodSnap.irritability)
                     }
                 }
 
