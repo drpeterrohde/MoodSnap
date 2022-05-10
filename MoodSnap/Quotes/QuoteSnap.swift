@@ -11,7 +11,8 @@ let quotes = ["quote_1", "quote_2", "quote_3", "quote_4", "quote_5",
               "quote_26", "quote_27", "quote_28", "quote_29", "quote_30",
               "quote_31", "quote_32", "quote_33", "quote_34", "quote_35",
               "quote_36", "quote_37", "quote_38", "quote_39", "quote_40",
-              "quote_41", "quote_42"]
+              "quote_41", "quote_42", "quote_43", "quote_44", "quote_45",
+              "quote_46", "quote_47", "quote_48", "quote_49", "quote_50"]
 
 /**
  Generate a QuoteSnap bsaed on MoodSnap `count` and `quoteFrequency`.
