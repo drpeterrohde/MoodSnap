@@ -41,7 +41,7 @@ struct AverageMoodView: View {
                 }
             }
 
-            Divider()
+            //Divider()
             if blackAndWhite {
                 Label("volatility", systemImage: "waveform.path.ecg")
                     .font(.caption)
