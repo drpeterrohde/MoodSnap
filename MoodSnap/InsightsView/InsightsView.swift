@@ -403,7 +403,7 @@ struct InsightsView: View {
                                 }
                             }
                             if data.uxState.isButterflyAverageExpanded {
-                                Divider()
+                                //Divider()
                                 TransientWithPickerView(timescale: timescale, data: data)
                                 EmptyView()
                             }
