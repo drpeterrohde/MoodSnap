@@ -41,8 +41,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("average_mood")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -73,8 +74,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("mood_history")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -92,7 +94,7 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isMoodHistoryExpanded {
-                                    Divider()
+                                    //Divider()
                                     MoodHistoryBarView(timescale: timescale, data: data)
                                 }
                             }
@@ -105,8 +107,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("moving_average")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -124,7 +127,7 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isMovingAverageExpanded {
-                                    Divider()
+                                    //Divider()
                                     SlidingAverageView(timescale: timescale, data: data)
                                 }
                             }
@@ -137,8 +140,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("volatility")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -156,7 +160,7 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isVolatilityExpanded {
-                                    Divider()
+                                    //Divider()
                                     SlidingVolatilityView(timescale: timescale, data: data)
                                 }
                             }
@@ -169,8 +173,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("tally")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -212,8 +217,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("activities")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -244,8 +250,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("social")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -276,8 +283,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("symptoms")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -308,8 +316,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("events")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -340,8 +349,9 @@ struct InsightsView: View {
                                             .scaledToFit()
                                             .frame(width: iconWidth, height: iconWidth)
                                             .foregroundColor(themes[data.settings.theme].iconColor)
+                                            .font(.subheadline.bold())
                                         Text("hashtags")
-                                            .font(.subheadline)
+                                            .font(.subheadline.bold())
                                             .foregroundColor(themes[data.settings.theme].iconColor)
                                         Spacer()
                                     }
@@ -373,8 +383,9 @@ struct InsightsView: View {
                                         .scaledToFit()
                                         .frame(width: iconWidth, height: iconWidth)
                                         .foregroundColor(themes[data.settings.theme].iconColor)
+                                        .font(.subheadline.bold())
                                     Text("transients")
-                                        .font(.subheadline)
+                                        .font(.subheadline.bold())
                                         .foregroundColor(themes[data.settings.theme].iconColor)
                                     Spacer()
                                 }
@@ -420,9 +431,9 @@ struct InsightsView: View {
                                                     .scaledToFit()
                                                     .frame(width: iconWidth, height: iconWidth)
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
-
+                                                    .font(.subheadline.bold())
                                                 Text("Weight")
-                                                    .font(.subheadline)
+                                                    .font(.subheadline.bold())
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                                 Spacer()
                                             }
@@ -440,7 +451,7 @@ struct InsightsView: View {
                                             }
                                         }
                                         if data.uxState.isWeightExpanded {
-                                            Divider()
+                                            //Divider()
                                             WeightView(timescale: timescale, data: data, health: health)
                                         }
                                     }
@@ -456,8 +467,9 @@ struct InsightsView: View {
                                                     .scaledToFit()
                                                     .frame(width: iconWidth, height: iconWidth)
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
                                                 Text("Walking_running_distance")
-                                                    .font(.subheadline)
+                                                    .font(.subheadline.bold())
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                                 Spacer()
                                             }
@@ -475,7 +487,7 @@ struct InsightsView: View {
                                             }
                                         }
                                         if data.uxState.isWalkingRunningDistanceExpanded {
-                                            Divider()
+                                            //Divider()
                                             WalkingRunningDistanceView(timescale: timescale, data: data, health: health)
                                         }
                                     }
@@ -491,8 +503,9 @@ struct InsightsView: View {
                                                     .scaledToFit()
                                                     .frame(width: iconWidth, height: iconWidth)
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
                                                 Text("Active_energy")
-                                                    .font(.subheadline)
+                                                    .font(.subheadline.bold())
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                                 Spacer()
                                             }
@@ -510,7 +523,7 @@ struct InsightsView: View {
                                             }
                                         }
                                         if data.uxState.isActiveEnergyExpanded {
-                                            Divider()
+                                            //Divider()
                                             ActiveEnergyView(timescale: timescale, data: data, health: health)
                                         }
                                     }
@@ -525,8 +538,9 @@ struct InsightsView: View {
                                                     .scaledToFit()
                                                     .frame(width: iconWidth, height: iconWidth)
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
                                                 Text("Sleep")
-                                                    .font(.subheadline)
+                                                    .font(.subheadline.bold())
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                                 Spacer()
                                             }
@@ -544,7 +558,7 @@ struct InsightsView: View {
                                             }
                                         }
                                         if data.uxState.isSleepExpanded {
-                                            Divider()
+                                            //Divider()
                                             SleepView(timescale: timescale, data: data, health: health)
                                         }
                                     }
@@ -559,8 +573,9 @@ struct InsightsView: View {
                                                     .scaledToFit()
                                                     .frame(width: iconWidth, height: iconWidth)
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
                                                 Text("Menstrual_cycle")
-                                                    .font(.subheadline)
+                                                    .font(.subheadline.bold())
                                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                                 Spacer()
                                             }
@@ -578,7 +593,7 @@ struct InsightsView: View {
                                             }
                                         }
                                         if data.uxState.isMenstrualExpanded {
-                                            Divider()
+                                            //Divider()
                                             MenstrualView(timescale: timescale, data: data, health: health)
                                         }
                                     }
