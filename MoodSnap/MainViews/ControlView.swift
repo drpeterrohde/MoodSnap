@@ -44,7 +44,7 @@ struct ControlView: View {
                         .scaledToFill()
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
-                }.sheet(isPresented: $showingSettingsSheet, onDismiss: { data.save() }) {
+                }.sheet(isPresented: $showingSettingsSheet/*, onDismiss: { data.save() }*/) {
                     SettingsView(data: $data)
                 }
 

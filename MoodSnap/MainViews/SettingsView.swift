@@ -205,7 +205,7 @@ struct SettingsView: View {
                             DispatchQueue.global(qos: .userInteractive).async {
                                 data.moodSnaps = makeDemoData()
                                 data.process()
-                                data.save()
+                                //data.save()
                             }
                         } else {
                             showingImportAlert.toggle()
@@ -223,7 +223,7 @@ struct SettingsView: View {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         data.moodSnaps = []
                         data.process()
-                        data.save()
+                        //data.save()
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
@@ -240,7 +240,7 @@ struct SettingsView: View {
                     data = decodeJSONString(url: fileUrl)
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
-                        data.save()
+                        //data.save()
                     }
                 } catch {
                     print("Failed to import backup file")

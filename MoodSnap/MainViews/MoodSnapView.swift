@@ -150,7 +150,7 @@ struct MoodSnapView: View {
                     data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
-                        data.save()
+                        //data.save()
                     }
                     dismiss()
                 } label: { Image(systemName: "arrowtriangle.right.circle")

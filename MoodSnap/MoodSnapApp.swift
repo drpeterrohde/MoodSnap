@@ -48,7 +48,7 @@ struct MoodSnapApp: App {
                 }
                 DispatchQueue.global(qos: .userInteractive).async {
                     data.process()
-                    data.save()
+                    //data.save()
                 }
             }
             if value == .inactive {

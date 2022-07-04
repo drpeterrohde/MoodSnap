@@ -90,7 +90,7 @@ struct HistoryItemView: View {
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                         DispatchQueue.global(qos: .userInteractive).async {
                                             data.process()
-                                            data.save()
+                                            //data.save()
                                         }
                                     }
                                 )
