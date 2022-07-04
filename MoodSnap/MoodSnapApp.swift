@@ -37,6 +37,7 @@ struct MoodSnapApp: App {
                     data.save() // add process???
                 }
             }
+            
             if value == .active {
                 if HKHealthStore.isHealthDataAvailable() {
                     print("HealthKit is Available")
@@ -48,9 +49,9 @@ struct MoodSnapApp: App {
                 }
                 DispatchQueue.global(qos: .userInteractive).async {
                     data.process()
-                    //data.save()
                 }
             }
+            
             if value == .inactive {
                 DispatchQueue.main.async {
                     isUnlocked = false
