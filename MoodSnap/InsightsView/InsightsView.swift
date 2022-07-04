@@ -61,7 +61,7 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isAverageMoodExpanded {
-                                    Divider()
+                                    //Divider()
                                     AverageMoodView(timescale: timescale, data: data)
                                 }
                             }
