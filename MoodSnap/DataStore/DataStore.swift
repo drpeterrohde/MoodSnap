@@ -21,17 +21,17 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         moodSnaps = makeIntroSnap()
         healthSnaps = []
         
+        process()
+        
         do {
             let retrieved = try Disk.retrieve(
                 "data.json",
                 from: .documents,
                 as: DataStoreStruct.self)
-            self.moodSnaps = retrieved.moodSnaps
+            self = retrieved
         } catch {
             print("Load failed")
         }
-        
-        process()
     }
 
     /**
