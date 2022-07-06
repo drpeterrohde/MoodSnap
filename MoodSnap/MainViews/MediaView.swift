@@ -21,14 +21,16 @@ struct MediaView: View {
             ImagePicker(sourceType: .camera, selectedImage: $image)
                 .onDisappear(perform: {
                     if image != nil {
-                        moodSnap.snapType = .media
-                        image!.saveImage(imageName: moodSnap.id.uuidString)
-                        if data.settings.saveMediaToCameraRoll {
-                            UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+                        DispatchQueue.main.async {
+                            moodSnap.snapType = .media
+                            image!.saveImage(imageName: moodSnap.id.uuidString)
+                            if data.settings.saveMediaToCameraRoll {
+                                UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
+                            }
+                            data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                            data.moodSnaps.append(moodSnap)
+                            data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         }
-                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                        data.moodSnaps.append(moodSnap)
-                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         dismiss()
                     }
                 })

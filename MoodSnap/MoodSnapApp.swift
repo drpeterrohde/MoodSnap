@@ -7,26 +7,15 @@ import SwiftUI
 struct MoodSnapApp: App {
     @Environment(\.scenePhase) var scenePhase
     @State private var data: DataStoreStruct = DataStoreStruct()
-    @State private var health = HealthManager()
-    @State private var isUnlocked = false
-
+    @State private var health: HealthManager = HealthManager()
+    @State private var isUnlocked: Bool = false
+    
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
                 UnlockView(isUnlocked: $isUnlocked, data: $data)
             } else {
                 ContentView(data: $data, health: $health)
-                    .onAppear {
-                        do {
-                            let retrieved = try Disk.retrieve(
-                                "data.json",
-                                from: .documents,
-                                as: DataStoreStruct.self)
-                            data = retrieved
-                        } catch {
-                            print("Load failed")
-                        }
-                    }
             }
         }.onChange(of: scenePhase) { value in
             if value == .background {
@@ -34,7 +23,10 @@ struct MoodSnapApp: App {
                     isUnlocked = false
                     data.settings.firstUse = false
                     data.healthSnaps = health.healthSnaps
-                    data.save() // add process???
+                    data.save()
+//                    DispatchQueue.global(qos: .background).async {
+//                        data.process()
+//                    } ???
                 }
             }
             

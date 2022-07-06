@@ -20,6 +20,17 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         uxState = UXStateStruct()
         moodSnaps = makeIntroSnap()
         healthSnaps = []
+        
+        do {
+            let retrieved = try Disk.retrieve(
+                "data.json",
+                from: .documents,
+                as: DataStoreStruct.self)
+            self.moodSnaps = retrieved.moodSnaps
+        } catch {
+            print("Load failed")
+        }
+        
         process()
     }
 
