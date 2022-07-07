@@ -1,9 +1,6 @@
 import Disk
 import SwiftUI
 
-/**
- Struct for main data storage type.
- */
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -13,6 +10,20 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
+}
+
+/**
+ Class for main data storage type.
+ */
+class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
+    var id: UUID = UUID()
+    var version: Int = 1
+
+    @Published var settings: SettingsStruct = SettingsStruct()
+    @Published var uxState: UXStateStruct = UXStateStruct()
+    @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
+    @Published var healthSnaps: [HealthSnapStruct] = []
+    @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
 
     init() {
         id = UUID()
@@ -27,22 +38,57 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
             let retrieved = try Disk.retrieve(
                 "data.json",
                 from: .documents,
-                as: DataStoreStruct.self)
-            self = retrieved
+                as: DataStoreClass.self)
+            
+            id = retrieved.id
+            version = retrieved.version
+            settings = retrieved.settings
+            uxState = retrieved.uxState
+            moodSnaps = retrieved.moodSnaps
+            healthSnaps = retrieved.healthSnaps
+            processedData = retrieved.processedData
         } catch {
             print("Load failed")
         }
     }
 
+    enum CodingKeys: CodingKey {
+       case id, version, settings, uxState, moodSnaps, healthSnaps, processedData
+    }
+    
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+
+        try container.encode(id, forKey: .id)
+        try container.encode(version, forKey: .version)
+        try container.encode(settings, forKey: .settings)
+        try container.encode(uxState, forKey: .uxState)
+        try container.encode(moodSnaps, forKey: .moodSnaps)
+        try container.encode(healthSnaps, forKey: .healthSnaps)
+        try container.encode(processedData, forKey: .processedData)
+    }
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        id = try container.decode(UUID.self, forKey: .id)
+        version = try container.decode(Int.self, forKey: .version)
+        settings = try container.decode(SettingsStruct.self, forKey: .settings)
+        uxState = try container.decode(UXStateStruct.self, forKey: .uxState)
+        moodSnaps = try container.decode([MoodSnapStruct].self, forKey: .id)
+        healthSnaps = try container.decode([HealthSnapStruct].self, forKey: .healthSnaps)
+        processedData = try container.decode(ProcessedDataStruct.self, forKey: .processedData)
+    }
+    
     /**
      Pre-process data.
      */
-    mutating func process() {
+    func process() {
         processedData = processData(data: self)
     }
 
     /**
-     Dave `DataStoreStruct` to disk.
+     Dave `DataStoreClass` to disk.
      */
     func save() {
         do {

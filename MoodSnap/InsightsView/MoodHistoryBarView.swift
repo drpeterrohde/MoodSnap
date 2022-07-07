@@ -6,7 +6,7 @@ import SwiftUI
  */
 struct MoodHistoryBarView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
 
     var body: some View {
         let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)

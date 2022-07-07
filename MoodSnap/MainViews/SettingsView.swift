@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var data: DataStoreStruct
+    @ObservedObject var data: DataStoreClass
     @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
@@ -235,7 +235,16 @@ struct SettingsView: View {
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
-                    data = decodeJSONString(url: fileUrl)
+                    let dataStruct: DataStoreStruct = decodeJSONString(url: fileUrl)
+                    
+                    data.id = dataStruct.id
+                    data.version = dataStruct.version
+                    data.settings = dataStruct.settings
+                    data.uxState = dataStruct.uxState
+                    data.moodSnaps = dataStruct.moodSnaps
+                    data.healthSnaps = dataStruct.healthSnaps
+                    data.processedData = dataStruct.processedData
+                    
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
                     }

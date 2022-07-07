@@ -7,7 +7,7 @@ struct HistoryItemView: View {
     @Binding var moodSnap: MoodSnapStruct
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
-    @Binding var data: DataStoreStruct
+    @ObservedObject var data: DataStoreClass
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
 
@@ -16,30 +16,32 @@ struct HistoryItemView: View {
             GroupBox {
                 Group {
                     HStack {
-                        if moodSnap.snapType == .mood {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "brain.head.profile")
-                                .font(.caption)
-                        }
-                        if moodSnap.snapType == .note {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "note.text")
-                                .font(.caption)
-                        }
-                        if moodSnap.snapType == .event {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "star.fill")
-                                .font(.caption)
-                        }
-                        if moodSnap.snapType == .media {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo.on.rectangle.angled")
-                                .font(.caption)
-                        }
-                        if moodSnap.snapType == .custom {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
-                                .font(.caption)
-                        }
-                        if moodSnap.snapType == .quote && data.settings.quoteVisibility {
-                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
-                                .labelStyle(.iconOnly)
-                                .font(.caption)
+                        Group {
+                            if moodSnap.snapType == .mood {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "brain.head.profile")
+                                    .font(.caption)
+                            }
+                            if moodSnap.snapType == .note {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "note.text")
+                                    .font(.caption)
+                            }
+                            if moodSnap.snapType == .event {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "star.fill")
+                                    .font(.caption)
+                            }
+                            if moodSnap.snapType == .media {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo.on.rectangle.angled")
+                                    .font(.caption)
+                            }
+                            if moodSnap.snapType == .custom {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
+                                    .font(.caption)
+                            }
+                            if moodSnap.snapType == .quote && data.settings.quoteVisibility {
+                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
+                                    .labelStyle(.iconOnly)
+                                    .font(.caption)
+                            }
                         }
 
                         Spacer()

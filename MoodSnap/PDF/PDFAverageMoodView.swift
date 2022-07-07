@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PDFAverageMoodView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     var blackAndWhite: Bool = true
 
     var body: some View {

@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Process all `MoodSnapStruct` entries from `data` into a `ProcessedDataStruct`.
  */
-func processData(data: DataStoreStruct) -> ProcessedDataStruct {
+func processData(data: DataStoreClass) -> ProcessedDataStruct {
     var processedData = ProcessedDataStruct()
     let history = generateHistory(data: data)
     let eventList = getEventsList(moodSnaps: data.moodSnaps)
