@@ -4,13 +4,13 @@ import SwiftUI
  View showing `moodSnap` history item with `filter` based on `searchText`.
  */
 struct HistoryItemView: View {
-    @Binding var moodSnap: MoodSnapStruct
+    var moodSnap: MoodSnapStruct
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
-    @ObservedObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
-
+    
     var body: some View {
         if snapFilter(moodSnap: moodSnap, filter: filter, searchText: searchText) && !(moodSnap.snapType == .quote && !data.settings.quoteVisibility) {
             GroupBox {
@@ -43,7 +43,7 @@ struct HistoryItemView: View {
                                     .font(.caption)
                             }
                         }
-
+                        
                         Spacer()
                         Menu {
                             if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event {
@@ -54,7 +54,7 @@ struct HistoryItemView: View {
                                     Text("edit")
                                 })
                             }
-
+                            
                             Button(role: .destructive, action: {
                                 showingDeleteAlert = true
                             }, label: {
@@ -62,21 +62,21 @@ struct HistoryItemView: View {
                                 Text("delete")
                             })
                         } label: { Image(systemName: "gearshape")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 15, height: 15)
-                            .foregroundColor(Color.primary)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(Color.primary)
                         }
                         .sheet(isPresented: $showingMoodSnapSheet) {
                             switch moodSnap.snapType {
                             case .mood:
-                                MoodSnapView(moodSnap: moodSnap, data: $data)
+                                MoodSnapView(moodSnap: moodSnap)
                             case .event:
-                                EventView(moodSnap: moodSnap, data: $data)
+                                EventView(moodSnap: moodSnap)
                             case .note:
-                                NoteView(moodSnap: moodSnap, data: $data)
+                                NoteView(moodSnap: moodSnap)
                             case .media:
-                                MediaView(moodSnap: moodSnap, data: $data)
+                                MediaView(moodSnap: moodSnap)
                             default:
                                 EmptyView()
                             }
@@ -99,25 +99,25 @@ struct HistoryItemView: View {
                         }
                     }
                 }
-
+                
                 Group {
                     if moodSnap.snapType == .event {
-                        HistoryEventView(moodSnap: moodSnap, data: data)
+                        HistoryEventView(moodSnap: moodSnap)
                     }
                     if moodSnap.snapType == .mood {
-                        HistoryMoodView(moodSnap: moodSnap, data: data)
+                        HistoryMoodView(moodSnap: moodSnap)
                     }
                     if moodSnap.snapType == .note {
-                        HistoryNoteView(moodSnap: moodSnap, data: data)
+                        HistoryNoteView(moodSnap: moodSnap)
                     }
                     if moodSnap.snapType == .media {
-                        HistoryMediaView(moodSnap: moodSnap, data: data)
+                        HistoryMediaView(moodSnap: moodSnap)
                     }
                     if moodSnap.snapType == .custom {
-                        HistoryCustomView(which: moodSnap.customView, data: data)
+                        HistoryCustomView(which: moodSnap.customView)
                     }
                     if moodSnap.snapType == .quote && data.settings.quoteVisibility {
-                        HistoryQuoteView(moodSnap: moodSnap, data: data)
+                        HistoryQuoteView(moodSnap: moodSnap)
                     }
                 }
             }

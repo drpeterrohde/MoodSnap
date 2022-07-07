@@ -13,9 +13,10 @@ struct MoodSnapApp: App {
     var body: some Scene {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
-                UnlockView(isUnlocked: $isUnlocked, data: data)
+                UnlockView(isUnlocked: $isUnlocked)
             } else {
-                ContentView(data: data, health: health)
+                ContentView()
+                    .environmentObject(data)
             }
         }.onChange(of: scenePhase) { value in
             if value == .background {

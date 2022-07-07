@@ -8,14 +8,16 @@ struct HistoryView: View {
     @Environment(\.isSearching) var isSearching
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
-    @ObservedObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State var searchPrompt: String = "search_all"
 
     var body: some View {
         NavigationView {
             ScrollView {
-                ForEach($data.moodSnaps, id: \.id) { moodSnap in
-                    HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText, data: data)
+                ForEach(data.moodSnaps, id: \.id) { moodSnap in
+                    HistoryItemView(moodSnap: moodSnap,
+                                    filter: $filter,
+                                    searchText: $searchText)
                 }
                 Spacer()
             }

@@ -30,8 +30,8 @@ struct PDFAverageMoodView: View {
 
                     if averageMoodSnap != nil {
                         MoodLevelsView(moodSnap: averageMoodSnap!,
-                                       data: data,
-                                       blackAndWhite: blackAndWhite)
+                                       blackAndWhite: blackAndWhite,
+                                       dataParse: data)
                     } else {
                         VStack(alignment: .center) {
                             Text("insufficient_data")
@@ -60,8 +60,8 @@ struct PDFAverageMoodView: View {
                     if averageVolatilityMoodSnap != nil {
                         Divider()
                         MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
-                                       data: data,
-                                       blackAndWhite: blackAndWhite)
+                                       blackAndWhite: blackAndWhite,
+                                       dataParse: data)
                     } else {
                         VStack(alignment: .center) {
                             Text("insufficient_data")

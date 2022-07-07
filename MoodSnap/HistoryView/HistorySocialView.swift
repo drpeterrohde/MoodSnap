@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistorySocialView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         let gridItemLayout = Array(repeating: GridItem(.flexible()), count: data.settings.numberOfGridColumns)

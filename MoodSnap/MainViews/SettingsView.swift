@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
@@ -94,7 +94,7 @@ struct SettingsView: View {
                     }) {
                         Text("generate_PDF_report")
                     }.sheet(isPresented: $showingReportSheet) {
-                        ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
+                        ReportView(timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
                     }
                 }
 

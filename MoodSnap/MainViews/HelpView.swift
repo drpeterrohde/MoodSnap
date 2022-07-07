@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HelpView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         NavigationView {
