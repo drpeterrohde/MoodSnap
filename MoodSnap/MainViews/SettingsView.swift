@@ -236,15 +236,7 @@ struct SettingsView: View {
                 do {
                     let fileUrl = try res.get()
                     let dataStruct: DataStoreStruct = decodeJSONString(url: fileUrl)
-                    
-                    data.id = dataStruct.id
-                    data.version = dataStruct.version
-                    data.settings = dataStruct.settings
-                    data.uxState = dataStruct.uxState
-                    data.moodSnaps = dataStruct.moodSnaps
-                    data.healthSnaps = dataStruct.healthSnaps
-                    data.processedData = dataStruct.processedData
-                    
+                    data.fromStruct(data: dataStruct)
                     DispatchQueue.global(qos: .userInteractive).async {
                         data.process()
                     }

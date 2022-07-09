@@ -25,6 +25,9 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
     @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
 
+    /**
+     Initialiser from disk or default to empty
+     */
     init() {
         id = UUID()
         settings = SettingsStruct()
@@ -38,7 +41,7 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
             let retrieved = try Disk.retrieve(
                 "data.json",
                 from: .documents,
-                as: DataStoreClass.self)
+                as: DataStoreStruct.self)
             
             id = retrieved.id
             version = retrieved.version
@@ -52,10 +55,16 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
         }
     }
 
+    /**
+     Encoding keys
+     */
     enum CodingKeys: CodingKey {
        case id, version, settings, uxState, moodSnaps, healthSnaps, processedData
     }
     
+    /**
+     Encoder
+     */
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
@@ -68,6 +77,9 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
         try container.encode(processedData, forKey: .processedData)
     }
     
+    /**
+     Initialiser usign decoding keys
+     */
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -78,6 +90,19 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
         moodSnaps = try container.decode([MoodSnapStruct].self, forKey: .id)
         healthSnaps = try container.decode([HealthSnapStruct].self, forKey: .healthSnaps)
         processedData = try container.decode(ProcessedDataStruct.self, forKey: .processedData)
+    }
+    
+    /**
+     Convert `DataStoreStruct` to `DataStoreClass`
+     */
+    func fromStruct(data: DataStoreStruct) {
+        id = data.id
+        version = data.version
+        settings = data.settings
+        uxState = data.uxState
+        moodSnaps = data.moodSnaps
+        healthSnaps = data.healthSnaps
+        processedData = data.processedData
     }
     
     /**

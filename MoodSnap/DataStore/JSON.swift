@@ -39,7 +39,7 @@ func encodeJSONString(data: DataStoreClass) -> String {
 }
 
 /**
- Decode a JSON `url`  into a `DataStoreClass`.
+ Decode a JSON `url`  into a `DataStoreStruct`.
  */
 func decodeJSONString(url: URL) -> DataStoreStruct {
     var data = DataStoreStruct()
@@ -55,16 +55,16 @@ func decodeJSONString(url: URL) -> DataStoreStruct {
     return data
 }
 
-/**
- Decode JSON `data` into a `DataStoreSturct`.
- */
-func decodeJSONString(data: Data) -> DataStoreClass {
-    var decodedData = DataStoreClass()
-    do {
-        decodedData = try JSONDecoder().decode(DataStoreClass.self, from: data)
-    } catch {
-        print("Failed to import backup file")
-        print(error.localizedDescription)
-    }
-    return decodedData
-}
+///**
+// Decode JSON `data` into a `DataStoreSturct`.
+// */
+//func decodeJSONString(data: Data) -> DataStoreClass {
+//    var decodedData = DataStoreClass()
+//    do {
+//        decodedData = try JSONDecoder().decode(DataStoreClass.self, from: data)
+//    } catch {
+//        print("Failed to import backup file")
+//        print(error.localizedDescription)
+//    }
+//    return decodedData
+//}
