@@ -220,8 +220,10 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
-                        data.moodSnaps = []
-                        data.process()
+                        DispatchQueue.global(qos: .userInteractive).async {
+                            data.moodSnaps = []
+                            data.process()
+                        }
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
