@@ -62,6 +62,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
 
         // Event
         let eventList = getEventsList(moodSnaps: self.moodSnaps)
+        var eventButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< eventList.count {
             let dates = [eventList[i].1]
             var thisButterfly = averageTransientForDates(
@@ -70,11 +71,13 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 maxWindow: butterflyWindowLong)
             thisButterfly.activity = eventList[i].0
             thisButterfly.timestamp = eventList[i].1
-            self.processedData.eventButterfly.append(thisButterfly)
+            eventButterflies.append(thisButterfly)
         }
+        self.processedData.eventButterfly = eventButterflies
 
         // Hashtags
         let hashtags = getHashtags(data: self)
+        var hashtagButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< hashtags.count {
             let dates = getDatesForHashtag(
                 hashtag: hashtags[i],
@@ -84,10 +87,12 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 moodSnaps: self.moodSnaps,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = hashtags[i]
-            self.processedData.hashtagButterfly.append(thisButterfly)
+            hashtagButterflies.append(thisButterfly)
         }
+        self.processedData.hashtagButterfly = hashtagButterflies
 
         // Activity
+        var activityButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< activityList.count {
             let dates = getDatesForType(
                 type: .activity,
@@ -98,10 +103,12 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 moodSnaps: self.moodSnaps,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = activityList[i]
-            self.processedData.activityButterfly.append(thisButterfly)
+            activityButterflies.append(thisButterfly)
         }
+        self.processedData.activityButterfly = activityButterflies
 
         // Social
+        var socialButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< socialList.count {
             let dates = getDatesForType(
                 type: .social,
@@ -112,10 +119,12 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 moodSnaps: self.moodSnaps,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = socialList[i]
-            self.processedData.socialButterfly.append(thisButterfly)
+            socialButterflies.append(thisButterfly)
         }
+        self.processedData.socialButterfly = socialButterflies
 
         // Symptom
+        var symptomButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< symptomList.count {
             let dates = getDatesForType(
                 type: .symptom,
@@ -126,8 +135,9 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 moodSnaps: self.moodSnaps,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = symptomList[i]
-            self.processedData.symptomButterfly.append(thisButterfly)
+            symptomButterflies.append(thisButterfly)
         }
+        self.processedData.symptomButterfly = symptomButterflies
     }
 
     /**

@@ -24,9 +24,6 @@ struct MoodSnapApp: App {
                     data.settings.firstUse = false
                     data.healthSnaps = health.healthSnaps
                     data.save()
-//                    DispatchQueue.global(qos: .background).async {
-//                        data.process()
-//                    } ???
                 }
             }
             
