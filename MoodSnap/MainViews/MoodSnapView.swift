@@ -143,6 +143,7 @@ struct MoodSnapView: View {
                         moodSnap.snapType = .mood
                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                         data.moodSnaps.append(moodSnap)
+                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps) // ??? added
                         data.settings.addedSnaps += 1
                         let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
                         if quoteSnap != nil {
