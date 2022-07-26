@@ -21,7 +21,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         moodSnaps = makeIntroSnap()
         healthSnaps = []
         
-        process()
+        //???process()
         
         do {
             let retrieved = try Disk.retrieve(
@@ -37,8 +37,8 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     /**
      Pre-process data.
      */
-    mutating func process() {
-        let history = generateHistory(data: self)
+    mutating func process() async {
+        let history = await generateHistory(data: self)
         
         // Mood history
         self.processedData.levelE = history.levelE
