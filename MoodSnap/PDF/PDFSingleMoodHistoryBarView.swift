@@ -7,10 +7,10 @@ struct PDFSingleMoodHistoryBarView: View {
     var blackAndWhite: Bool
 
     var body: some View {
-        let entries = [Array(data.processedData.averageA.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageD.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageA.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageI.suffix(Int(monthInterval)))]
+        let entries = [Array(data.processedData.levelE.suffix(28)),
+                       Array(data.processedData.levelD.suffix(28)),
+                       Array(data.processedData.levelA.suffix(28)),
+                       Array(data.processedData.levelI.suffix(28))]
 
         if blackAndWhite {
             VerticalBarChart(values: entries[type.rawValue],

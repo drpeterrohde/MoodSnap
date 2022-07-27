@@ -7,10 +7,10 @@ struct PDFSingleSlidingAverageView: View {
     var blackAndWhite: Bool
     
     var body: some View {
-        let entries = [Array(data.processedData.averageA.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageD.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageA.suffix(Int(monthInterval))),
-                       Array(data.processedData.averageI.suffix(Int(monthInterval)))]
+        let entries = [Array(data.processedData.averageE.suffix(28)),
+                       Array(data.processedData.averageD.suffix(28)),
+                       Array(data.processedData.averageA.suffix(28)),
+                       Array(data.processedData.averageI.suffix(28))]
         
         if blackAndWhite {
             VerticalBarChart(values: entries[type.rawValue],

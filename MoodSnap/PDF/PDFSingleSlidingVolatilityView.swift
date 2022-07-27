@@ -7,10 +7,10 @@ struct PDFSingleSlidingVolatilityView: View {
     var blackAndWhite: Bool
     
     var body: some View {
-        let entries = [Array(data.processedData.volatilityE.suffix(Int(monthInterval))),
-                       Array(data.processedData.volatilityD.suffix(Int(monthInterval))),
-                       Array(data.processedData.volatilityA.suffix(Int(monthInterval))),
-                       Array(data.processedData.volatilityI.suffix(Int(monthInterval)))]
+        let entries = [Array(data.processedData.volatilityE.suffix(28)),
+                       Array(data.processedData.volatilityD.suffix(28)),
+                       Array(data.processedData.volatilityA.suffix(28)),
+                       Array(data.processedData.volatilityI.suffix(28))]
         
         if blackAndWhite {
             VerticalBarChart(values: entries[type.rawValue],
