@@ -31,7 +31,7 @@ struct PDFSingleSlidingVolatilityView: View {
                              max: 4,
                              horizontalGridLines: 0,
                              verticalGridLines: 0,
-                             blackAndWhite: true,
+                             blackAndWhite: false,
                              shaded: true,
                              settings: data.settings)
             .frame(height: 65)

@@ -21,12 +21,12 @@ struct PDFMoodHistoryBarView: View {
             if !blackAndWhite {
                 VStack {
                     VerticalBarChart(values: entries[0],
-                                     color: Color.black,
+                                     color: Color(color[0]),
                                      min: 0,
                                      max: 4,
                                      horizontalGridLines: 0,
                                      verticalGridLines: 0,
-                                     blackAndWhite: true,
+                                     blackAndWhite: false,
                                      shaded: true,
                                      settings: data.settings)
                     .frame(height: 65)
@@ -35,12 +35,12 @@ struct PDFMoodHistoryBarView: View {
                         .foregroundColor(Color.black)
                         .padding([.top, .bottom], -15)
                     VerticalBarChart(values: entries[1],
-                                     color: Color.black,
+                                     color: Color(color[1]),
                                      min: 0,
                                      max: 4,
                                      horizontalGridLines: 0,
                                      verticalGridLines: 0,
-                                     blackAndWhite: true,
+                                     blackAndWhite: false,
                                      shaded: true,
                                      settings: data.settings)
                     .frame(height: 65)
@@ -50,12 +50,12 @@ struct PDFMoodHistoryBarView: View {
                         .foregroundColor(Color.black)
                         .padding([.top, .bottom], -15)
                     VerticalBarChart(values: entries[2],
-                                     color: Color.black,
+                                     color: Color(color[2]),
                                      min: 0,
                                      max: 4,
                                      horizontalGridLines: 0,
                                      verticalGridLines: 0,
-                                     blackAndWhite: true,
+                                     blackAndWhite: false,
                                      shaded: true,
                                      settings: data.settings)
                     .frame(height: 65)
@@ -65,12 +65,12 @@ struct PDFMoodHistoryBarView: View {
                         .foregroundColor(Color.black)
                         .padding([.top, .bottom], -15)
                     VerticalBarChart(values: entries[3],
-                                     color: Color.black,
+                                     color: Color(color[3]),
                                      min: 0,
                                      max: 4,
                                      horizontalGridLines: 0,
                                      verticalGridLines: 0,
-                                     blackAndWhite: true,
+                                     blackAndWhite: false,
                                      shaded: true,
                                      settings: data.settings)
                     .frame(height: 65)
@@ -90,7 +90,7 @@ struct PDFMoodHistoryBarView: View {
                                  blackAndWhite: true,
                                  shaded: true,
                                  settings: data.settings)
-                .frame(height: 65)                    .frame(height: 65)
+                .frame(height: 65)
                 Text("elevation")
                     .font(.caption)
                     .foregroundColor(Color.black)
