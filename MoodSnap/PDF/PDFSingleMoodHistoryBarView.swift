@@ -1,4 +1,3 @@
-import Charts
 import SwiftUI
 
 struct PDFSingleMoodHistoryBarView: View {
@@ -8,22 +7,34 @@ struct PDFSingleMoodHistoryBarView: View {
     var blackAndWhite: Bool
 
     var body: some View {
-        let entriesE = makeBarData(y: data.processedData.levelE, timescale: timescale)
-        let entriesD = makeBarData(y: data.processedData.levelD, timescale: timescale)
-        let entriesA = makeBarData(y: data.processedData.levelA, timescale: timescale)
-        let entriesI = makeBarData(y: data.processedData.levelI, timescale: timescale)
-
-        let entries = [entriesE, entriesD, entriesA, entriesI]
+        let entries = [Array(data.processedData.averageA.suffix(Int(monthInterval))),
+                       Array(data.processedData.averageD.suffix(Int(monthInterval))),
+                       Array(data.processedData.averageA.suffix(Int(monthInterval))),
+                       Array(data.processedData.averageI.suffix(Int(monthInterval)))]
 
         if blackAndWhite {
-            VerticalBarChartOld(entries: entries[type.rawValue],
-                             color: UIColor.black,
-                             settings: data.settings).frame(height: 65)
+            VerticalBarChart(values: entries[type.rawValue],
+                             color: Color.black,
+                             min: 0,
+                             max: 4,
+                             horizontalGridLines: 0,
+                             verticalGridLines: 0,
+                             blackAndWhite: true,
+                             shaded: true,
+                             settings: data.settings)
+            .frame(height: 65)
         } else {
             let color = moodUIColors(settings: data.settings)[type.rawValue]
-            VerticalBarChartOld(entries: entries[type.rawValue],
-                             color: color,
-                             settings: data.settings).frame(height: 65)
+            VerticalBarChart(values: entries[type.rawValue],
+                             color: Color(color),
+                             min: 0,
+                             max: 4,
+                             horizontalGridLines: 0,
+                             verticalGridLines: 0,
+                             blackAndWhite: true,
+                             shaded: true,
+                             settings: data.settings)
+            .frame(height: 65)
         }
     }
 }

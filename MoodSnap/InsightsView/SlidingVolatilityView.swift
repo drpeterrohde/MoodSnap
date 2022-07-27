@@ -1,5 +1,4 @@
 import SwiftUI
-import Charts
 
 /**
  View for dislaying sliding volatility.
