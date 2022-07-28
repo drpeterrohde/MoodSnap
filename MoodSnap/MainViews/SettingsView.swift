@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @EnvironmentObject var data: DataStoreClass
+    @Binding var data: DataStoreStruct
     @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
@@ -94,7 +94,7 @@ struct SettingsView: View {
                     }) {
                         Text("generate_PDF_report")
                     }.sheet(isPresented: $showingReportSheet) {
-                        ReportView(timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
+                        ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
                     }
                 }
 
@@ -202,9 +202,10 @@ struct SettingsView: View {
                 Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
-                            DispatchQueue.global(qos: .userInteractive).async {
-                                data.moodSnaps = makeDemoData()
-                                data.process()
+                            //DispatchQueue.global(qos: .userInteractive).async {
+                            data.moodSnaps = makeDemoData()
+                            Task(priority: .high) {
+                                await data.process()
                             }
                         } else {
                             showingImportAlert.toggle()
@@ -220,8 +221,11 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
+                        //DispatchQueue.global(qos: .userInteractive).async {
                         data.moodSnaps = []
-                        data.process()
+                        Task(priority: .high) {
+                            await data.process()
+                        }
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
@@ -235,10 +239,10 @@ struct SettingsView: View {
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
-                    let dataStruct: DataStoreStruct = decodeJSONString(url: fileUrl)
-                    data.fromStruct(data: dataStruct)
-                    DispatchQueue.global(qos: .userInteractive).async {
-                        data.process()
+                    data = decodeJSONString(url: fileUrl)
+                    //DispatchQueue.global(qos: .userInteractive).async {
+                    Task(priority: .high) {
+                        await data.process()
                     }
                 } catch {
                     print("Failed to import backup file")

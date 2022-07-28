@@ -90,8 +90,9 @@ struct HistoryItemView: View {
                                     Text("delete"),
                                     action: {
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                                        DispatchQueue.global(qos: .userInteractive).async {
-                                            data.process()
+                                        //DispatchQueue.global(qos: .userInteractive).async {
+                                        Task(priority: .high) {
+                                            await data.process()
                                         }
                                     }
                                 )
