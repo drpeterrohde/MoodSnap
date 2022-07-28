@@ -6,7 +6,6 @@ import SwiftUI
 func processData(data: DataStoreClass) -> ProcessedDataStruct {
     var processedData = ProcessedDataStruct()
     let history = generateHistory(data: data)
-    let eventList = getEventsList(moodSnaps: data.moodSnaps)
     
     // Mood history
     processedData.levelE = history.levelE
@@ -26,9 +25,10 @@ func processData(data: DataStoreClass) -> ProcessedDataStruct {
     processedData.volatilityA = history.volatilityA
     processedData.volatilityI = history.volatilityI
 
-    // Butterflies
+    // Transients
 
     // Event
+    let eventList = getEventsList(moodSnaps: data.moodSnaps)
     for i in 0 ..< eventList.count {
         let dates = [eventList[i].1]
         var thisButterfly = averageTransientForDates(
