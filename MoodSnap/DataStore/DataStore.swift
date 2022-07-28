@@ -87,7 +87,7 @@ class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
         version = try container.decode(Int.self, forKey: .version)
         settings = try container.decode(SettingsStruct.self, forKey: .settings)
         uxState = try container.decode(UXStateStruct.self, forKey: .uxState)
-        moodSnaps = try container.decode([MoodSnapStruct].self, forKey: .id)
+        moodSnaps = try container.decode([MoodSnapStruct].self, forKey: .moodSnaps)
         healthSnaps = try container.decode([HealthSnapStruct].self, forKey: .healthSnaps)
         processedData = try container.decode(ProcessedDataStruct.self, forKey: .processedData)
     }
