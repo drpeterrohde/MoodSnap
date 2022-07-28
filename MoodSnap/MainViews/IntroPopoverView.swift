@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct IntroPopoverView: View {
     @Environment(\.dismiss) var dismiss
-    var data: DataStoreStruct
+    var data: DataStoreClass
 
     var body: some View {
         ZStack {

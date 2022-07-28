@@ -1,9 +1,6 @@
 import Disk
 import SwiftUI
 
-/**
- Struct for main data storage type.
- */
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
@@ -13,7 +10,24 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
+}
 
+/**
+ Class for main data storage type.
+ */
+class DataStoreClass: ObservableObject, Identifiable, Codable {//, Hashable {
+    var id: UUID = UUID()
+    var version: Int = 1
+
+    @Published var settings: SettingsStruct = SettingsStruct()
+    @Published var uxState: UXStateStruct = UXStateStruct()
+    @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
+    @Published var healthSnaps: [HealthSnapStruct] = []
+    @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
+
+    /**
+     Initialiser from disk or default to empty
+     */
     init() {
         id = UUID()
         settings = SettingsStruct()
@@ -21,153 +35,85 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         moodSnaps = makeIntroSnap()
         healthSnaps = []
         
-        //???process()
+        process()
         
         do {
             let retrieved = try Disk.retrieve(
                 "data.json",
                 from: .documents,
                 as: DataStoreStruct.self)
-            self = retrieved
+            
+            id = retrieved.id
+            version = retrieved.version
+            settings = retrieved.settings
+            uxState = retrieved.uxState
+            moodSnaps = retrieved.moodSnaps
+            healthSnaps = retrieved.healthSnaps
+            processedData = retrieved.processedData
         } catch {
             print("Load failed")
         }
     }
 
-    mutating func processHistory() async -> Bool {
-        let history = await generateHistory(data: self)
-        
-        // Mood history
-        self.processedData.levelE = history.levelE
-        self.processedData.levelD = history.levelD
-        self.processedData.levelA = history.levelA
-        self.processedData.levelI = history.levelI
+    /**
+     Encoding keys
+     */
+    enum CodingKeys: CodingKey {
+       case id, version, settings, uxState, moodSnaps, healthSnaps, processedData
+    }
+    
+    /**
+     Encoder
+     */
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
 
-        // Sliding average history
-        self.processedData.averageE = history.averageE
-        self.processedData.averageD = history.averageD
-        self.processedData.averageA = history.averageA
-        self.processedData.averageI = history.averageI
+        try container.encode(id, forKey: .id)
+        try container.encode(version, forKey: .version)
+        try container.encode(settings, forKey: .settings)
+        try container.encode(uxState, forKey: .uxState)
+        try container.encode(moodSnaps, forKey: .moodSnaps)
+        try container.encode(healthSnaps, forKey: .healthSnaps)
+        try container.encode(processedData, forKey: .processedData)
+    }
+    
+    /**
+     Initialiser usign decoding keys
+     */
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        // Volatility history
-        self.processedData.volatilityE = history.volatilityE
-        self.processedData.volatilityD = history.volatilityD
-        self.processedData.volatilityA = history.volatilityA
-        self.processedData.volatilityI = history.volatilityI
-        
-        return true
+        id = try container.decode(UUID.self, forKey: .id)
+        version = try container.decode(Int.self, forKey: .version)
+        settings = try container.decode(SettingsStruct.self, forKey: .settings)
+        uxState = try container.decode(UXStateStruct.self, forKey: .uxState)
+        moodSnaps = try container.decode([MoodSnapStruct].self, forKey: .moodSnaps)
+        healthSnaps = try container.decode([HealthSnapStruct].self, forKey: .healthSnaps)
+        processedData = try container.decode(ProcessedDataStruct.self, forKey: .processedData)
     }
     
-    mutating func processEvents() async -> Bool {
-        let eventList = getEventsList(moodSnaps: self.moodSnaps)
-        var eventButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< eventList.count {
-            let dates = [eventList[i].1]
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowLong)
-            thisButterfly.activity = eventList[i].0
-            thisButterfly.timestamp = eventList[i].1
-            eventButterflies.append(thisButterfly)
-        }
-        self.processedData.eventButterfly = eventButterflies
-        
-        return true
-    }
-    
-    mutating func processActivities() async -> Bool {
-        var activityButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< activityList.count {
-            let dates = getDatesForType(
-                type: .activity,
-                item: i,
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowShort)
-            thisButterfly.activity = activityList[i]
-            activityButterflies.append(thisButterfly)
-        }
-        self.processedData.activityButterfly = activityButterflies
-        
-        return true
-    }
-    
-    mutating func processSymptoms() async -> Bool {
-        var symptomButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< symptomList.count {
-            let dates = getDatesForType(
-                type: .symptom,
-                item: i,
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowShort)
-            thisButterfly.activity = symptomList[i]
-            symptomButterflies.append(thisButterfly)
-        }
-        self.processedData.symptomButterfly = symptomButterflies
-        
-        return true
-    }
-    
-    mutating func processSocial() async -> Bool {
-        var socialButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< socialList.count {
-            let dates = getDatesForType(
-                type: .social,
-                item: i,
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowShort)
-            thisButterfly.activity = socialList[i]
-            socialButterflies.append(thisButterfly)
-        }
-        self.processedData.socialButterfly = socialButterflies
-        
-        return true
-    }
-    
-    mutating func processHashtags() async -> Bool {
-        let hashtags = getHashtags(data: self)
-        var hashtagButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< hashtags.count {
-            let dates = getDatesForHashtag(
-                hashtag: hashtags[i],
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowShort)
-            thisButterfly.activity = hashtags[i]
-            hashtagButterflies.append(thisButterfly)
-        }
-        self.processedData.hashtagButterfly = hashtagButterflies
-        
-        return true
+    /**
+     Convert `DataStoreStruct` to `DataStoreClass`
+     */
+    func fromStruct(data: DataStoreStruct) {
+        id = data.id
+        version = data.version
+        settings = data.settings
+        uxState = data.uxState
+        moodSnaps = data.moodSnaps
+        healthSnaps = data.healthSnaps
+        processedData = data.processedData
     }
     
     /**
      Pre-process data.
      */
-    mutating func process() async {
-        let dummy1 = await self.processHistory()
-        let dummy2 = await self.processEvents()
-        let dummy3 = await self.processActivities()
-        let dummy4 = await self.processSymptoms()
-        let dummy5 = await self.processSocial()
-        let dummy6 = await self.processHashtags()
-        
-        //await [dummy1, dummy2, dummy3, dummy4, dummy5, dummy6]
+    func process() {
+        processedData = processData(data: self)
     }
 
     /**
-     Dave `DataStoreStruct` to disk.
+     Dave `DataStoreClass` to disk.
      */
     func save() {
         do {

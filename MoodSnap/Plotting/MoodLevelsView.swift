@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct MoodLevelsView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreStruct
+    @EnvironmentObject var data: DataStoreClass
     let blackAndWhite: Bool
 
     private var fontColor: Color
@@ -15,17 +15,17 @@ struct MoodLevelsView: View {
     private var irritabilityColor: Color
     private var gridColor: Color
 
-    init(moodSnap: MoodSnapStruct, data: DataStoreStruct, blackAndWhite: Bool = false) {
+    init(moodSnap: MoodSnapStruct, blackAndWhite: Bool = false, dataParse: DataStoreClass) {
         self.moodSnap = moodSnap
-        self.data = data
+        //self.data = data
         self.blackAndWhite = blackAndWhite
 
         fontColor = Color.secondary
-        elevationColor = themes[data.settings.theme].elevationColor
-        depressionColor = themes[data.settings.theme].depressionColor
-        anxietyColor = themes[data.settings.theme].anxietyColor
-        irritabilityColor = themes[data.settings.theme].irritabilityColor
-        gridColor = themes[data.settings.theme].gridColor
+        elevationColor = themes[dataParse.settings.theme].elevationColor
+        depressionColor = themes[dataParse.settings.theme].depressionColor
+        anxietyColor = themes[dataParse.settings.theme].anxietyColor
+        irritabilityColor = themes[dataParse.settings.theme].irritabilityColor
+        gridColor = themes[dataParse.settings.theme].gridColor
 
         if blackAndWhite {
             fontColor = Color.black

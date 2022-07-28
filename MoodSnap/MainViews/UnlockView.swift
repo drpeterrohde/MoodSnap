@@ -6,7 +6,7 @@ import SwiftUI
  */
 struct UnlockView: View {
     @Binding var isUnlocked: Bool
-    @Binding var data: DataStoreStruct
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         ZStack {

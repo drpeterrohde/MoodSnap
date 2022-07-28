@@ -5,8 +5,8 @@ import SwiftUI
  */
 struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var data: DataStoreStruct
-    @Binding var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State var timescale: Int = TimeScaleEnum.month.rawValue
 
     var body: some View {

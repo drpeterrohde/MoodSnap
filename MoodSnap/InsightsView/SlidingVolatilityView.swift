@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SlidingVolatilityView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     
     var body: some View {
         let entriesE = makeLineData2(y: data.processedData.volatilityE, timescale: timescale)

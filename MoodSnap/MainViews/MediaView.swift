@@ -6,7 +6,7 @@ import SwiftUI
 struct MediaView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
-    @Binding var data: DataStoreStruct
+    @EnvironmentObject var data: DataStoreClass
     @State var image: UIImage? = nil
 
     var body: some View {

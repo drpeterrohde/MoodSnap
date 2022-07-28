@@ -6,7 +6,7 @@ import SwiftUI
 struct NoteView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
-    @Binding var data: DataStoreStruct
+    @EnvironmentObject var data: DataStoreClass
     @State private var showingDatePickerSheet = false
 
     var body: some View {

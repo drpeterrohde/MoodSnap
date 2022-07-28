@@ -4,7 +4,7 @@ import SwiftUI
  View showing symptom influences.
  */
 struct InfluencesSymptomView: View {
-    var data: DataStoreStruct
+    var data: DataStoreClass
 
     var body: some View {
         let butterflies = data.processedData.symptomButterfly

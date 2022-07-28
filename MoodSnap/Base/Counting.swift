@@ -14,7 +14,7 @@ func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
 /**
  Count the total occurrences of symptoms, activites & social within the array `moodSnaps`.
  */
-func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreStruct) -> ([Int], [Int], [Int]) {
+func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreClass) -> ([Int], [Int], [Int]) {
     var symptomCount: [Int] = Array(repeating: 0, count: symptomList.count)
     var activityCount: [Int] = Array(repeating: 0, count: activityList.count)
     var socialCount: [Int] = Array(repeating: 0, count: socialList.count)

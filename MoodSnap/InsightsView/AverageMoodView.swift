@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct AverageMoodView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     var blackAndWhite: Bool = false
 
     var body: some View {
@@ -31,8 +31,8 @@ struct AverageMoodView: View {
 
             if averageMoodSnap != nil {
                 MoodLevelsView(moodSnap: averageMoodSnap!,
-                               data: data,
-                               blackAndWhite: blackAndWhite)
+                               blackAndWhite: blackAndWhite,
+                               dataParse: data)
             } else {
                 VStack(alignment: .center) {
                     Text("insufficient_data")
@@ -56,8 +56,8 @@ struct AverageMoodView: View {
                 data: data)
             if averageVolatilityMoodSnap != nil {
                 MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
-                               data: data,
-                               blackAndWhite: blackAndWhite)
+                               blackAndWhite: blackAndWhite,
+                               dataParse: data)
             } else {
                 VStack(alignment: .center) {
                     Spacer()

@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct TransientWithPickerView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     @State private var selectedActivity: Int = 0
     @State private var selectedSocial: Int = 0
     @State private var selectedSymptom: Int = 0

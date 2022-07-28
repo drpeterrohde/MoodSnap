@@ -21,7 +21,7 @@ func getHashtags(string: String) -> [String] {
 /**
  Extract an array of all the hashtags from an array of `moodSnaps`.
  */
-func getHashtags(data: DataStoreStruct) -> [String] {
+func getHashtags(data: DataStoreClass) -> [String] {
     var bigString: String = ""
 
     for moodSnap in data.moodSnaps {

@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct WalkingRunningDistanceView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     var health: HealthManager
 
     var body: some View {
