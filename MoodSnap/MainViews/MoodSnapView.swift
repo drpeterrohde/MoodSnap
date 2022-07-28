@@ -150,8 +150,9 @@ struct MoodSnapView: View {
                             data.moodSnaps.append(quoteSnap!)
                         }
                         data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                        DispatchQueue.global(qos: .userInteractive).async {
-                            data.process()
+                        //DispatchQueue.global(qos: .userInteractive).async {
+                        Task(priority: .high) {
+                            await data.process()
                         }
                     }
                     dismiss()

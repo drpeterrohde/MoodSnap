@@ -36,8 +36,9 @@ struct MoodSnapApp: App {
                 } else {
                     print("There is a problem accessing HealthKit")
                 }
-                DispatchQueue.global(qos: .userInteractive).async {
-                    data.process()
+                //DispatchQueue.global(qos: .userInteractive).async {
+                Task(priority: .high) {
+                    await data.process()
                 }
             }
             
@@ -45,6 +46,9 @@ struct MoodSnapApp: App {
                 DispatchQueue.main.async {
                     isUnlocked = false
                 }
+                //Task(priority: .background) {
+                //    await data.process()
+                //}
             }
         }
     }

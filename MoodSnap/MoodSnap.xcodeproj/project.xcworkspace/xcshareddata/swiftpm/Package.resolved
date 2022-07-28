@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "charts",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/danielgindi/Charts",
-      "state" : {
-        "revision" : "7ac4a05e83d279bac305a472af9128c2a0eca3d7",
-        "version" : "3.5.0"
-      }
-    },
-    {
       "identity" : "disk",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/saoudrizwan/Disk",
