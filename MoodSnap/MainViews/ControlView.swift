@@ -4,8 +4,8 @@ import SwiftUI
  View with controls.
  */
 struct ControlView: View {
-    @Binding var data: DataStoreStruct
-    @Binding var health: HealthManager
+    @ObservedObject var data: DataStoreClass
+    @ObservedObject var health: HealthManager
     @State private var showingMoodSnapSheet: Bool = false
     @State private var showingSettingsSheet: Bool = false
     @State private var showingStatsSheet: Bool = false
@@ -16,19 +16,19 @@ struct ControlView: View {
     @State private var showingMediaSheet: Bool = false
     @State private var showingIntroPopover: Bool = false
 
-    init(data: Binding<DataStoreStruct>, health: Binding<HealthManager>) {
-        _data = data
-        _health = health
-        showingMoodSnapSheet = false
-        showingSettingsSheet = false
-        showingStatsSheet = false
-        showingEmergencySheet = false
-        showingHelpSheet = false
-        showingNoteSheet = false
-        showingEventSheet = false
-        showingMediaSheet = false
-        showingIntroPopover = self.data.settings.firstUse
-    }
+//    init(data: DataStoreClass, health: HealthManager) {
+//        //data = data
+//        //health = health
+//        showingMoodSnapSheet = false
+//        showingSettingsSheet = false
+//        showingStatsSheet = false
+//        showingEmergencySheet = false
+//        showingHelpSheet = false
+//        showingNoteSheet = false
+//        showingEventSheet = false
+//        showingMediaSheet = false
+//        showingIntroPopover = self.data.settings.firstUse
+//    }
 
     var body: some View {
         Divider()
@@ -45,7 +45,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingSettingsSheet) {
-                    SettingsView(data: $data)
+                    SettingsView(data: data)
                 }
 
                 Spacer()
@@ -59,7 +59,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingStatsSheet) {
-                    InsightsView(data: $data, health: $health)
+                    InsightsView(data: data, health: health)
                 }
 
                 Spacer()
@@ -73,7 +73,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingEventSheet) {
-                    EventView(moodSnap: MoodSnapStruct(), data: $data)
+                    EventView(moodSnap: MoodSnapStruct(), data: data)
                 }
 
                 Spacer()
@@ -88,7 +88,7 @@ struct ControlView: View {
                     .frame(width: themes[data.settings.theme].controlBigIconSize, height: themes[data.settings.theme].controlBigIconSize)
                     .foregroundColor(themes[data.settings.theme].controlColor)
             }.sheet(isPresented: $showingMoodSnapSheet) {
-                MoodSnapView(moodSnap: MoodSnapStruct(), data: $data)
+                MoodSnapView(moodSnap: MoodSnapStruct(), data: data)
             }
 
             Group {
@@ -103,7 +103,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingNoteSheet) {
-                    NoteView(moodSnap: MoodSnapStruct(), data: $data)
+                    NoteView(moodSnap: MoodSnapStruct(), data: data)
                 }
 
                 Spacer()
@@ -117,7 +117,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingMediaSheet) {
-                    MediaView(moodSnap: MoodSnapStruct(), data: $data)
+                    MediaView(moodSnap: MoodSnapStruct(), data: data)
                 }
 
                 Spacer()
@@ -131,7 +131,7 @@ struct ControlView: View {
                         .frame(width: themes[data.settings.theme].controlIconSize, height: themes[data.settings.theme].controlIconSize)
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingHelpSheet) {
-                    HelpView(data: $data)
+                    HelpView(data: data)
                 }
                 Spacer()
             }

@@ -5,8 +5,8 @@ import SwiftUI
  */
 struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var data: DataStoreStruct
-    @Binding var health: HealthManager
+    @ObservedObject var data: DataStoreClass
+    @ObservedObject var health: HealthManager
     @State var timescale: Int = TimeScaleEnum.month.rawValue
 
     var body: some View {
@@ -604,6 +604,14 @@ struct InsightsView: View {
             }
             .navigationBarTitle(Text("insights"))
             .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: ToolbarItemPlacement.automatic) {
+                    if data.isProcessing {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle())
+                    }
+                }
+            }
         }
     }
 }

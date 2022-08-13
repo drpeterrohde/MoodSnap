@@ -13,7 +13,40 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
+    
+    /**
+     Convert struct to class
+     */
+    func toClass() -> DataStoreClass {
+        let dataStore: DataStoreClass = DataStoreClass()
+        
+        dataStore.id = self.id
+        dataStore.version = self.version
+        dataStore.settings = self.settings
+        dataStore.uxState = self.uxState
+        dataStore.moodSnaps = self.moodSnaps
+        dataStore.healthSnaps = self.healthSnaps
+        dataStore.processedData = self.processedData
+        
+        return dataStore
+    }
+}
 
+/**
+ Class for main data storage type.
+ */
+class DataStoreClass: Identifiable, ObservableObject {
+    var id: UUID = UUID()
+    var version: Int = 1
+
+    @Published var settings: SettingsStruct = SettingsStruct()
+    @Published var uxState: UXStateStruct = UXStateStruct()
+    @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
+    @Published var healthSnaps: [HealthSnapStruct] = []
+    @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
+    var processingTask: Task<Void, Never>? = nil
+    @Published var isProcessing: Bool = false
+    
     init() {
         id = UUID()
         settings = SettingsStruct()
@@ -28,16 +61,22 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
                 "data.json",
                 from: .documents,
                 as: DataStoreStruct.self)
-            self = retrieved
+            self.id = retrieved.id
+            self.version = retrieved.version
+            self.settings = retrieved.settings
+            self.uxState = retrieved.uxState
+            self.moodSnaps = retrieved.moodSnaps
+            self.healthSnaps = retrieved.healthSnaps
+            self.processedData = retrieved.processedData
         } catch {
-            print("Load failed")
+            //print("Load failed")
         }
     }
 
     /**
-     Pre-process data.
+     Process history
      */
-    mutating func process() async {
+    func processHistory() async -> Bool {
         let history = await generateHistory(data: self)
         
         // Mood history
@@ -57,10 +96,14 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
         self.processedData.volatilityD = history.volatilityD
         self.processedData.volatilityA = history.volatilityA
         self.processedData.volatilityI = history.volatilityI
-
-        // Butterflies
-
-        // Event
+        
+        return true
+    }
+    
+    /**
+     Process events
+     */
+    func processEvents() async -> Bool {
         let eventList = getEventsList(moodSnaps: self.moodSnaps)
         var eventButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< eventList.count {
@@ -74,8 +117,13 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
             eventButterflies.append(thisButterfly)
         }
         self.processedData.eventButterfly = eventButterflies
-
-        // Hashtags
+        return true
+    }
+    
+    /**
+     Process hashtags
+     */
+    func processHashtags() async -> Bool {
         let hashtags = getHashtags(data: self)
         var hashtagButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< hashtags.count {
@@ -90,8 +138,13 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
             hashtagButterflies.append(thisButterfly)
         }
         self.processedData.hashtagButterfly = hashtagButterflies
+        return true
+    }
 
-        // Activity
+    /**
+     Process activities
+     */
+    func processActivities() async -> Bool {
         var activityButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< activityList.count {
             let dates = getDatesForType(
@@ -106,24 +159,13 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
             activityButterflies.append(thisButterfly)
         }
         self.processedData.activityButterfly = activityButterflies
-
-        // Social
-        var socialButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< socialList.count {
-            let dates = getDatesForType(
-                type: .social,
-                item: i,
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                moodSnaps: self.moodSnaps,
-                maxWindow: butterflyWindowShort)
-            thisButterfly.activity = socialList[i]
-            socialButterflies.append(thisButterfly)
-        }
-        self.processedData.socialButterfly = socialButterflies
-
-        // Symptom
+        return true
+    }
+    
+    /**
+     Process symptoms
+     */
+    func processSymptoms() async -> Bool {
         var symptomButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< symptomList.count {
             let dates = getDatesForType(
@@ -138,16 +180,85 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
             symptomButterflies.append(thisButterfly)
         }
         self.processedData.symptomButterfly = symptomButterflies
+        return true
+    }
+    
+    /**
+     Process social
+     */
+    func processSocial() async -> Bool {
+        var socialButterflies: [ButterflyEntryStruct] = []
+        for i in 0 ..< socialList.count {
+            let dates = getDatesForType(
+                type: .social,
+                item: i,
+                moodSnaps: self.moodSnaps)
+            var thisButterfly = averageTransientForDates(
+                dates: dates,
+                moodSnaps: self.moodSnaps,
+                maxWindow: butterflyWindowShort)
+            thisButterfly.activity = socialList[i]
+            socialButterflies.append(thisButterfly)
+        }
+        self.processedData.socialButterfly = socialButterflies
+        return true
+    }
+    
+    /**
+     Pre-process data.
+     */
+    func process() async {
+        async let historyComplete = processHistory()
+        async let eventsComplete = processEvents()
+        async let hashtagsComplete = processHashtags()
+        async let activitiesComplete = processActivities()
+        async let socialComplete = processSocial()
+        async let symptomsComplete = processSymptoms()
+        
+        await _ = [historyComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
 
     /**
-     Dave `DataStoreStruct` to disk.
+     Start asynchronous processing of data
+     */
+    func startProcessing(priority: TaskPriority = .high) {
+        if self.processingTask != nil {
+            self.processingTask?.cancel()
+        }
+        self.processingTask = Task(priority: priority) {
+            self.isProcessing = true
+            await self.process()
+            self.isProcessing = false
+        }
+    }
+    
+    /**
+     Dave `DataStoreClass` to disk.
      */
     func save() {
         do {
-            try Disk.save(self, to: .documents, as: "data.json")
+            try Disk.save(self.toStruct(),
+                          to: .documents,
+                          as: "data.json")
         } catch {
-            print("Saving failed")
+            //print("Saving failed")
         }
+    }
+    
+    /**
+     Convert class to struct
+     */
+    func toStruct() -> DataStoreStruct {
+        var dataStore: DataStoreStruct = DataStoreStruct()
+        
+        dataStore.id = self.id
+        dataStore.version = self.version
+        dataStore.settings = self.settings
+        dataStore.uxState = self.uxState
+        dataStore.moodSnaps = self.moodSnaps
+        dataStore.healthSnaps = self.healthSnaps
+        dataStore.processedData = self.processedData
+        
+        return dataStore
     }
 }

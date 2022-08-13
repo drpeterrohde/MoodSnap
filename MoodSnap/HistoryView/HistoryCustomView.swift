@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistoryCustomView: View {
     var which: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
 
     var body: some View {
         if which == 1 {

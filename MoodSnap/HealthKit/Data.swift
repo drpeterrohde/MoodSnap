@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Return an array of all the weight data.
  */
-func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+func getWeightData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var weightData: [CGFloat?] = []
 
     var date: Date = getLastDate(moodSnaps: data.moodSnaps).endOfDay()
@@ -23,7 +23,7 @@ func getWeightData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
 /**
  Return an array of all the sleep data.
  */
-func getSleepData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+func getSleepData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var sleepData: [CGFloat?] = []
 
     var date: Date = getLastDate(moodSnaps: data.moodSnaps)
@@ -43,7 +43,7 @@ func getSleepData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
 /**
  Return an array of all the distance data.
  */
-func getDistanceData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+func getDistanceData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var distanceData: [CGFloat?] = []
 
     var date: Date = getLastDate(moodSnaps: data.moodSnaps)
@@ -63,7 +63,7 @@ func getDistanceData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?]
 /**
  Return an array of all the distance data.
  */
-func getEnergyData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+func getEnergyData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var energyData: [CGFloat?] = []
 
     var date: Date = getLastDate(moodSnaps: data.moodSnaps)
@@ -83,7 +83,7 @@ func getEnergyData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
 /**
  Return an array of all the menstrual data.
  */
-func getMenstrualData(data: DataStoreStruct, health: HealthManager) -> [CGFloat?] {
+func getMenstrualData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var menstrualData: [CGFloat?] = []
 
     var date: Date = getLastDate(moodSnaps: data.moodSnaps)

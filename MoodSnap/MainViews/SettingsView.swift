@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var data: DataStoreStruct
+    @ObservedObject var data: DataStoreClass
     @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
@@ -38,9 +38,9 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("accessibility")) {
-//                    Toggle(isOn: $data.settings.useFaceID, label: {
-//                        Text("use_lockscreen")
-//                    })
+                    Toggle(isOn: $data.settings.useFaceID, label: {
+                        Text("use_lockscreen")
+                    })
 
                     Picker("theme", selection: $data.settings.theme) {
                         ForEach(0 ..< themes.count, id: \.self) { i in
@@ -56,7 +56,7 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.quoteVisibility, label: {
                         Text("show_quotes")
                     })
-                    
+
                     Picker("measurement_units", selection: $data.settings.healthUnits) {
                         Text("metric")
                             .tag(MeasurementUnitsEnum.metric)
@@ -204,9 +204,10 @@ struct SettingsView: View {
                         if data.moodSnaps.count == 0 {
                             //DispatchQueue.global(qos: .userInteractive).async {
                             data.moodSnaps = makeDemoData()
-                            Task(priority: .high) {
-                                await data.process()
-                            }
+//                            Task(priority: .high) {
+//                                await data.process()
+//                            }
+                            data.startProcessing()
                         } else {
                             showingImportAlert.toggle()
                         }
@@ -223,9 +224,10 @@ struct SettingsView: View {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         //DispatchQueue.global(qos: .userInteractive).async {
                         data.moodSnaps = []
-                        Task(priority: .high) {
-                            await data.process()
-                        }
+//                        Task(priority: .high) {
+//                            await data.process()
+//                        }
+                        data.startProcessing()
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
@@ -239,14 +241,24 @@ struct SettingsView: View {
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
-                    data = decodeJSONString(url: fileUrl)
+                    let retrieved = decodeJSONString(url: fileUrl)
+
+                    data.id = retrieved.id
+                    data.version = retrieved.version
+                    data.settings = retrieved.settings
+                    data.uxState = retrieved.uxState
+                    data.moodSnaps = retrieved.moodSnaps
+                    data.healthSnaps = retrieved.healthSnaps
+                    data.processedData = retrieved.processedData
+
                     //DispatchQueue.global(qos: .userInteractive).async {
-                    Task(priority: .high) {
-                        await data.process()
-                    }
+//                    Task(priority: .high) {
+//                        await data.process()
+//                    }
+                    data.startProcessing()
                 } catch {
-                    print("Failed to import backup file")
-                    print(error.localizedDescription)
+                    //print("Failed to import backup file")
+                    //print(error.localizedDescription)
                 }
                 dismiss()
             }.alert(isPresented: $showingImportAlert) {

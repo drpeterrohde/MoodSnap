@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Get `health` correlations for a given health `type`.
  */
-func getCorrelation(data: DataStoreStruct, health: HealthManager, type: HealthTypeEnum) -> [CGFloat?] {
+func getCorrelation(data: DataStoreClass, health: HealthManager, type: HealthTypeEnum) -> [CGFloat?] {
     var samples: [CGFloat] = []
     var elevationSamples: [CGFloat] = []
     var depressionSamples: [CGFloat] = []

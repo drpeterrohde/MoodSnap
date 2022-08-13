@@ -27,19 +27,19 @@ struct JSONFile: FileDocument {
 /**
  Encode `data` struct into a JSON `String`.
  */
-func encodeJSONString(data: DataStoreStruct) -> String {
+func encodeJSONString(data: DataStoreClass) -> String {
     do {
-        let jsonData = try JSONEncoder().encode(data)
+        let jsonData = try JSONEncoder().encode(data.toStruct())
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return jsonString
     } catch {
-        print("JSON encoding error")
+        //print("JSON encoding error")
     }
     return ""
 }
 
 /**
- Decode a JSON `url`  into a `DataStoreStruct`.
+ Decode a JSON `url`  into a `DataStoreClass`.
  */
 func decodeJSONString(url: URL) -> DataStoreStruct {
     var data = DataStoreStruct()
@@ -49,8 +49,8 @@ func decodeJSONString(url: URL) -> DataStoreStruct {
         data = try JSONDecoder().decode(DataStoreStruct.self, from: rawData)
         url.stopAccessingSecurityScopedResource()
     } catch {
-        print("Failed to import backup file")
-        print(error.localizedDescription)
+        //print("Failed to import backup file")
+        //print(error.localizedDescription)
     }
     return data
 }
@@ -63,8 +63,8 @@ func decodeJSONString(data: Data) -> DataStoreStruct {
     do {
         decodedData = try JSONDecoder().decode(DataStoreStruct.self, from: data)
     } catch {
-        print("Failed to import backup file")
-        print(error.localizedDescription)
+        //print("Failed to import backup file")
+        //print(error.localizedDescription)
     }
     return decodedData
 }

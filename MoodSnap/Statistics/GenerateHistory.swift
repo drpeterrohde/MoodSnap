@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Generate the complete history of mood levels, moving averages and moving volatilities from `data`.
  */
-func generateHistory(data: DataStoreStruct) async -> HistoryStruct {
+func generateHistory(data: DataStoreClass) async -> HistoryStruct {
     var date: Date = getLastDate(moodSnaps: data.moodSnaps)
     let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
     var statsHistory: [StatsEntryStruct] = []

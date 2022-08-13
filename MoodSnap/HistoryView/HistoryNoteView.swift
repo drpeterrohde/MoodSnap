@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistoryNoteView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreStruct
+    let data: DataStoreClass
 
     var body: some View {
         if !String(moodSnap.notes).isEmpty {

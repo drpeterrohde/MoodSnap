@@ -4,10 +4,10 @@ import SwiftUI
  View showing `moodSnap` history item with `filter` based on `searchText`.
  */
 struct HistoryItemView: View {
-    @Binding var moodSnap: MoodSnapStruct
+    var moodSnap: MoodSnapStruct
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
-    @Binding var data: DataStoreStruct
+    @ObservedObject var data: DataStoreClass
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
 
@@ -68,13 +68,13 @@ struct HistoryItemView: View {
                         .sheet(isPresented: $showingMoodSnapSheet) {
                             switch moodSnap.snapType {
                             case .mood:
-                                MoodSnapView(moodSnap: moodSnap, data: $data)
+                                MoodSnapView(moodSnap: moodSnap, data: data)
                             case .event:
-                                EventView(moodSnap: moodSnap, data: $data)
+                                EventView(moodSnap: moodSnap, data: data)
                             case .note:
-                                NoteView(moodSnap: moodSnap, data: $data)
+                                NoteView(moodSnap: moodSnap, data: data)
                             case .media:
-                                MediaView(moodSnap: moodSnap, data: $data)
+                                MediaView(moodSnap: moodSnap, data: data)
                             default:
                                 EmptyView()
                             }
@@ -89,9 +89,10 @@ struct HistoryItemView: View {
                                     action: {
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                         //DispatchQueue.global(qos: .userInteractive).async {
-                                        Task(priority: .high) {
-                                            await data.process()
-                                        }
+//                                        Task(priority: .high) {
+//                                            await data.process()
+//                                        }
+                                        data.startProcessing()
                                     }
                                 )
                             )

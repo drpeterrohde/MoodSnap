@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistoryMediaView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreStruct
+    let data: DataStoreClass
 
     var body: some View {
         Group {

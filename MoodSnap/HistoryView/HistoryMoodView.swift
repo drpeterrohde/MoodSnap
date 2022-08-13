@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistoryMoodView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreStruct
+    let data: DataStoreClass
 
     var body: some View {
         Divider()

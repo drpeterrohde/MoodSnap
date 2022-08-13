@@ -13,15 +13,15 @@ class HealthManager: ObservableObject {
                                   HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!]
 
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
-            if success {
-                print("Authorization complete")
-            } else {
-                print("Authorization error: \(String(describing: error?.localizedDescription))")
-            }
+//            if success {
+//                print("Authorization complete")
+//            } else {
+//                print("Authorization error: \(String(describing: error?.localizedDescription))")
+//            }
         })
     }
 
-    func makeHealthSnaps(data: DataStoreStruct) {
+    func makeHealthSnaps(data: DataStoreClass) {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 

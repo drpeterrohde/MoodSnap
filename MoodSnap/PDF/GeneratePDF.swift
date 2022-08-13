@@ -1,7 +1,7 @@
 import SwiftUI
 import TPPDF
 
-func generatePDF(data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) -> URL? {
+func generatePDF(data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) -> URL? {
     let document = PDFDocument(format: .a4)
     document.info.author = "MoodSnap"
     document.info.title = "moodsnap_report"
@@ -20,7 +20,7 @@ func generatePDF(data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.raw
     return url
 }
 
-func generatePDFContent(document: PDFDocument, data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
+func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
     generateTitleHeaderFooterContent(document: document, data: data)
     generateInfluencesContent(document: document, data: data, timescale: timescale)
     generateAverageMoodContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
@@ -33,7 +33,7 @@ func generatePDFContent(document: PDFDocument, data: DataStoreStruct, timescale:
     }
 }
 
-func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreStruct) {
+func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreClass) {
     // Font styles
     let descriptorBody = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
         .withDesign(.serif)
@@ -63,7 +63,7 @@ func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreStru
     document.add(.contentCenter, attributedTextObject: textElement)
 }
 
-func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
+func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -128,7 +128,7 @@ func generateMoodContent(document: PDFDocument, data: DataStoreStruct, timescale
     }
 }
 
-func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue) {
+func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -235,7 +235,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreStruct, tim
     document.add(.contentCenter, table: table)
 }
 
-func generateAverageMoodContent(document: PDFDocument, data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
+func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -272,7 +272,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreStruct, ti
     addImage(document: document, image: image2, width: pageWidth / 2)
 }
 
-func generateNotesContent(document: PDFDocument, data: DataStoreStruct, timescale: Int = TimeScaleEnum.month.rawValue) {
+func generateNotesContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
     let descriptorBody = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
         .withDesign(.serif)
@@ -296,7 +296,7 @@ func generateNotesContent(document: PDFDocument, data: DataStoreStruct, timescal
     }
 }
 
-func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreStruct) {
+func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreClass) {
     document.createNewPage()
 
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)

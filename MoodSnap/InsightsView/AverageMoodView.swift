@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct AverageMoodView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
     var blackAndWhite: Bool = false
 
     var body: some View {

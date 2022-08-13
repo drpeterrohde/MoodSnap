@@ -4,7 +4,7 @@ import SwiftUI
 /**
  Filter mestrual dates to jump consective `dates`.
  */
-func filterMenstrualDates(dates: [Date], data: DataStoreStruct, health: HealthManager) -> [Date] {
+func filterMenstrualDates(dates: [Date], data: DataStoreClass, health: HealthManager) -> [Date] {
     var date: Date = getFirstDate(moodSnaps: data.moodSnaps)
     let latest: Date = getLastDate(moodSnaps: data.moodSnaps)
     var dates: [Date] = []

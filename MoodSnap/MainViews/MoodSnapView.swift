@@ -6,7 +6,7 @@ import SwiftUI
 struct MoodSnapView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
-    @Binding var data: DataStoreStruct
+    @ObservedObject var data: DataStoreClass
     @State private var showingDatePickerSheet = false
 
     var body: some View {
@@ -151,9 +151,10 @@ struct MoodSnapView: View {
                         }
                         data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         //DispatchQueue.global(qos: .userInteractive).async {
-                        Task(priority: .high) {
-                            await data.process()
-                        }
+//                        Task(priority: .high) {
+//                            await data.process()
+//                        }
+                        data.startProcessing()
                     }
                     dismiss()
                 } label: { Image(systemName: "arrowtriangle.right.circle")

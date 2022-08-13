@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct TallyView: View {
     var timescale: Int
-    var data: DataStoreStruct
+    var data: DataStoreClass
 
     var body: some View {
         let windowMoodSnaps = getMoodSnapsByDateWindow(
