@@ -4,7 +4,7 @@ import SwiftUI
  View for dislpaying event influences.
  */
 struct InfluencesEventsView: View {
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     
     var body: some View {
         let butterflies = data.processedData.eventButterfly

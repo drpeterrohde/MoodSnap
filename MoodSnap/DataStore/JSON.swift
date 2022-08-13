@@ -44,7 +44,7 @@ func encodeJSONString(data: DataStoreClass) -> String {
 func decodeJSONString(url: URL) -> DataStoreStruct {
     var data = DataStoreStruct()
     do {
-        url.startAccessingSecurityScopedResource()
+        _ = url.startAccessingSecurityScopedResource()
         let rawData = try Data(contentsOf: url)
         data = try JSONDecoder().decode(DataStoreStruct.self, from: rawData)
         url.stopAccessingSecurityScopedResource()

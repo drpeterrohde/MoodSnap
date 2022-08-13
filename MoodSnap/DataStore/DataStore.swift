@@ -45,7 +45,6 @@ class DataStoreClass: Identifiable, ObservableObject {
     @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     var processingTask: Task<Void, Never>? = nil
-    @Published var isProcessing: Bool = false
     
     init() {
         id = UUID()
@@ -227,9 +226,8 @@ class DataStoreClass: Identifiable, ObservableObject {
             self.processingTask?.cancel()
         }
         self.processingTask = Task(priority: priority) {
-            self.isProcessing = true
             await self.process()
-            self.isProcessing = false
+            self.processingTask = nil
         }
     }
     

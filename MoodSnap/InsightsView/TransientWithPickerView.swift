@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct TransientWithPickerView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State private var selectedActivity: Int = 0
     @State private var selectedSocial: Int = 0
     @State private var selectedSymptom: Int = 0
@@ -28,14 +28,12 @@ struct TransientWithPickerView: View {
         VStack {
             TransientView(butterfly: butterfly,
                           label: label,
-                          timescale: 2 * int + 1,
-                          data: data)
+                          timescale: 2 * int + 1)
             TransientReferencePickerView(selectedActivity: $selectedActivity,
                                          selectedSocial: $selectedSocial,
                                          selectedSymptom: $selectedSymptom,
                                          selectedEvent: $selectedEvent,
-                                         selectionType: $selectionType,
-                                         data: data)
+                                         selectionType: $selectionType)
         }
     }
 }

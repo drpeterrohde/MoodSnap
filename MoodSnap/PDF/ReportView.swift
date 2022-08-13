@@ -3,7 +3,7 @@ import SwiftUI
 
 struct ReportView: View {
     @Environment(\.dismiss) var dismiss
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var timescale: Int
     var blackAndWhite: Bool
 

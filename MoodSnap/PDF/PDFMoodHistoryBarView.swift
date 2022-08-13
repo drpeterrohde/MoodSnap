@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PDFMoodHistoryBarView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool
     
     var body: some View {

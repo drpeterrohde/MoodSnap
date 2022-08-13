@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PDFAverageMoodView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool = true
 
     var body: some View {
@@ -30,7 +30,7 @@ struct PDFAverageMoodView: View {
 
                     if averageMoodSnap != nil {
                         MoodLevelsView(moodSnap: averageMoodSnap!,
-                                       data: data,
+                                       theme: themes[data.settings.theme],
                                        blackAndWhite: blackAndWhite)
                     } else {
                         VStack(alignment: .center) {
@@ -60,7 +60,7 @@ struct PDFAverageMoodView: View {
                     if averageVolatilityMoodSnap != nil {
                         Divider()
                         MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
-                                       data: data,
+                                       theme: themes[data.settings.theme],
                                        blackAndWhite: blackAndWhite)
                     } else {
                         VStack(alignment: .center) {

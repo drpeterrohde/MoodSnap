@@ -6,7 +6,7 @@ import SwiftUI
 struct EventView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
-    @ObservedObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State private var showingDatePickerSheet = false
 
     var body: some View {

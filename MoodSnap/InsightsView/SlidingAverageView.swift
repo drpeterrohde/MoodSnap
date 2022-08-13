@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SlidingAverageView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         let entriesE = makeLineData2(y: data.processedData.averageE, timescale: timescale)

@@ -4,7 +4,7 @@ import SwiftUI
  View for dislpaying hashtag influences.
  */
 struct InfluencesHashtagView: View {
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     
     var body: some View {
         let butterflies = data.processedData.hashtagButterfly

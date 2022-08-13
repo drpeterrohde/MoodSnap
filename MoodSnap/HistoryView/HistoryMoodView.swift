@@ -5,11 +5,11 @@ import SwiftUI
  */
 struct HistoryMoodView: View {
     let moodSnap: MoodSnapStruct
-    let data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         Divider()
-        MoodLevelsView(moodSnap: moodSnap, data: data)
+        MoodLevelsView(moodSnap: moodSnap, theme: themes[data.settings.theme])
 
         Group {
             if totalSymptoms(moodSnap: moodSnap, settings: data.settings) != 0 {
@@ -17,7 +17,7 @@ struct HistoryMoodView: View {
                 Label("symptoms", systemImage: "heart.text.square")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                HistorySymptomsView(moodSnap: moodSnap, data: data)
+                HistorySymptomsView(moodSnap: moodSnap)
             }
         }
 
@@ -27,7 +27,7 @@ struct HistoryMoodView: View {
                 Label("activity", systemImage: "figure.walk")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                HistoryActivityView(moodSnap: moodSnap, data: data)
+                HistoryActivityView(moodSnap: moodSnap)
             }
         }
 
@@ -37,7 +37,7 @@ struct HistoryMoodView: View {
                 Label("social", systemImage: "person.2")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                HistorySocialView(moodSnap: moodSnap, data: data)
+                HistorySocialView(moodSnap: moodSnap)
             }
         }
 

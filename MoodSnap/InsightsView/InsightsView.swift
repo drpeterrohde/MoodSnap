@@ -5,8 +5,8 @@ import SwiftUI
  */
 struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
-    @ObservedObject var data: DataStoreClass
-    @ObservedObject var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State var timescale: Int = TimeScaleEnum.month.rawValue
 
     var body: some View {
@@ -61,7 +61,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isAverageMoodExpanded {
                                     //Divider()
-                                    AverageMoodView(timescale: timescale, data: data)
+                                    AverageMoodView(timescale: timescale)
                                 }
                             }
 
@@ -94,7 +94,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isMoodHistoryExpanded {
                                     //Divider()
-                                    MoodHistoryBarView(timescale: timescale, data: data)
+                                    MoodHistoryBarView(timescale: timescale)
                                 }
                             }
 
@@ -127,7 +127,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isMovingAverageExpanded {
                                     //Divider()
-                                    SlidingAverageView(timescale: timescale, data: data)
+                                    SlidingAverageView(timescale: timescale)
                                 }
                             }
 
@@ -160,7 +160,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isVolatilityExpanded {
                                     //Divider()
-                                    SlidingVolatilityView(timescale: timescale, data: data)
+                                    SlidingVolatilityView(timescale: timescale)
                                 }
                             }
 
@@ -192,7 +192,7 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isTallyExpanded {
-                                    TallyView(timescale: timescale, data: data)
+                                    TallyView(timescale: timescale)
                                 }
                             }
                         }
@@ -237,7 +237,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isActivitiesExpanded {
                                     Divider()
-                                    InfluencesActivityView(data: data)
+                                    InfluencesActivityView()
                                 }
                             }
 
@@ -270,7 +270,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isSocialExpanded {
                                     Divider()
-                                    InfluencesSocialView(data: data)
+                                    InfluencesSocialView()
                                 }
                             }
 
@@ -303,7 +303,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isSymptomSummaryExpanded {
                                     Divider()
-                                    InfluencesSymptomView(data: data)
+                                    InfluencesSymptomView()
                                 }
                             }
 
@@ -336,7 +336,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isEventSummaryExpanded {
                                     Divider()
-                                    InfluencesEventsView(data: data)
+                                    InfluencesEventsView()
                                 }
                             }
 
@@ -369,7 +369,7 @@ struct InsightsView: View {
                                 }
                                 if data.uxState.isHashtagSummaryExpanded {
                                     Divider()
-                                    InfluencesHashtagView(data: data)
+                                    InfluencesHashtagView()
                                 }
                             }
                         }
@@ -403,7 +403,7 @@ struct InsightsView: View {
                             }
                             if data.uxState.isButterflyAverageExpanded {
                                 //Divider()
-                                TransientWithPickerView(timescale: timescale, data: data)
+                                TransientWithPickerView(timescale: timescale)
                                 EmptyView()
                             }
                         }
@@ -451,7 +451,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isWeightExpanded {
                                             //Divider()
-                                            WeightView(timescale: timescale, data: data, health: health)
+                                            WeightView(timescale: timescale)
                                         }
                                     }
                                 }
@@ -487,7 +487,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isWalkingRunningDistanceExpanded {
                                             //Divider()
-                                            WalkingRunningDistanceView(timescale: timescale, data: data, health: health)
+                                            WalkingRunningDistanceView(timescale: timescale)
                                         }
                                     }
                                 }
@@ -523,7 +523,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isActiveEnergyExpanded {
                                             //Divider()
-                                            ActiveEnergyView(timescale: timescale, data: data, health: health)
+                                            ActiveEnergyView(timescale: timescale)
                                         }
                                     }
                                 }
@@ -558,7 +558,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isSleepExpanded {
                                             //Divider()
-                                            SleepView(timescale: timescale, data: data, health: health)
+                                            SleepView(timescale: timescale)
                                         }
                                     }
                                 }
@@ -593,7 +593,7 @@ struct InsightsView: View {
                                         }
                                         if data.uxState.isMenstrualExpanded {
                                             //Divider()
-                                            MenstrualView(timescale: timescale, data: data, health: health)
+                                            MenstrualView(timescale: timescale)
                                         }
                                     }
                                 }
@@ -606,7 +606,7 @@ struct InsightsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                    if data.isProcessing {
+                    if data.processingTask != nil {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                     }

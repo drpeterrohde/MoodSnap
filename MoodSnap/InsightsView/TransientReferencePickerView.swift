@@ -9,7 +9,7 @@ struct TransientReferencePickerView: View {
     @Binding var selectedSymptom: Int
     @Binding var selectedEvent: Int
     @Binding var selectionType: InfluenceTypeEnum
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         let eventsList = getEventsList(moodSnaps: data.moodSnaps)

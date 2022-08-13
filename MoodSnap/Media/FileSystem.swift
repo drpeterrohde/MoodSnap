@@ -14,13 +14,13 @@ extension UIImage {
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
-            } catch let removeError {
+            } catch {
                 //print("Couldn't remove file at path", removeError)
             }
         }
         do {
             try data.write(to: fileURL)
-        } catch let error {
+        } catch {
             //print("Error saving file with error", error)
         }
     }
@@ -47,7 +47,7 @@ extension UIImage {
         if FileManager.default.fileExists(atPath: fileURL.path) {
             do {
                 try FileManager.default.removeItem(atPath: fileURL.path)
-            } catch let removeError {
+            } catch {
                 //print("Couldn't remove file at path", removeError)
             }
         }

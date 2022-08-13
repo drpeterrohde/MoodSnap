@@ -8,7 +8,7 @@ struct TransientView: View {
     var label: String
     var timescale: Int
     var showNumbers: Bool = true
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         let dataE = butterfly.elevation

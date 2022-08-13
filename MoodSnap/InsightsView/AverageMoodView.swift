@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct AverageMoodView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool = false
 
     var body: some View {
@@ -31,7 +31,7 @@ struct AverageMoodView: View {
 
             if averageMoodSnap != nil {
                 MoodLevelsView(moodSnap: averageMoodSnap!,
-                               data: data,
+                               theme: themes[data.settings.theme],
                                blackAndWhite: blackAndWhite)
             } else {
                 VStack(alignment: .center) {
@@ -56,7 +56,7 @@ struct AverageMoodView: View {
                 data: data)
             if averageVolatilityMoodSnap != nil {
                 MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
-                               data: data,
+                               theme: themes[data.settings.theme],
                                blackAndWhite: blackAndWhite)
             } else {
                 VStack(alignment: .center) {

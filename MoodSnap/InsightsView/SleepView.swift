@@ -5,8 +5,8 @@ import SwiftUI
  */
 struct SleepView: View {
     var timescale: Int
-    var data: DataStoreClass
-    var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
 
     var body: some View {
         let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .sleep)
