@@ -79,23 +79,25 @@ final class DataStoreClass: Identifiable, ObservableObject {
         let history = await generateHistory(data: self)
         //history = await newGenerateHistory(data: self)
 
-        // Mood history
-        self.processedData.levelE = history.levelE
-        self.processedData.levelD = history.levelD
-        self.processedData.levelA = history.levelA
-        self.processedData.levelI = history.levelI
-        
-        // Sliding average history
-        self.processedData.averageE = history.averageE
-        self.processedData.averageD = history.averageD
-        self.processedData.averageA = history.averageA
-        self.processedData.averageI = history.averageI
-        
-        // Volatility history
-        self.processedData.volatilityE = history.volatilityE
-        self.processedData.volatilityD = history.volatilityD
-        self.processedData.volatilityA = history.volatilityA
-        self.processedData.volatilityI = history.volatilityI
+        DispatchQueue.main.async {
+            // Mood history
+            self.processedData.levelE = history.levelE
+            self.processedData.levelD = history.levelD
+            self.processedData.levelA = history.levelA
+            self.processedData.levelI = history.levelI
+            
+            // Sliding average history
+            self.processedData.averageE = history.averageE
+            self.processedData.averageD = history.averageD
+            self.processedData.averageA = history.averageA
+            self.processedData.averageI = history.averageI
+            
+            // Volatility history
+            self.processedData.volatilityE = history.volatilityE
+            self.processedData.volatilityD = history.volatilityD
+            self.processedData.volatilityA = history.volatilityA
+            self.processedData.volatilityI = history.volatilityI
+        }
         
         return true
     }
@@ -116,7 +118,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.timestamp = eventList[i].1
             eventButterflies.append(thisButterfly)
         }
-        self.processedData.eventButterfly = eventButterflies
+        let eventButterfliesUI = eventButterflies
+        DispatchQueue.main.async {
+            self.processedData.eventButterfly = eventButterfliesUI
+        }
         return true
     }
     
@@ -137,7 +142,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = hashtags[i]
             hashtagButterflies.append(thisButterfly)
         }
-        self.processedData.hashtagButterfly = hashtagButterflies
+        let hashtagButterfliesUI = hashtagButterflies
+        DispatchQueue.main.async {
+            self.processedData.hashtagButterfly = hashtagButterfliesUI
+        }
         return true
     }
 
@@ -158,7 +166,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = activityList[i]
             activityButterflies.append(thisButterfly)
         }
-        self.processedData.activityButterfly = activityButterflies
+        let activityButterfliesUI = activityButterflies
+        DispatchQueue.main.async {
+            self.processedData.activityButterfly = activityButterfliesUI
+        }
         return true
     }
     
@@ -179,7 +190,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = symptomList[i]
             symptomButterflies.append(thisButterfly)
         }
-        self.processedData.symptomButterfly = symptomButterflies
+        let symptomButterfliesUI = symptomButterflies
+        DispatchQueue.main.async {
+            self.processedData.symptomButterfly = symptomButterfliesUI
+        }
         return true
     }
     
@@ -200,7 +214,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = socialList[i]
             socialButterflies.append(thisButterfly)
         }
-        self.processedData.socialButterfly = socialButterflies
+        let socialButterfliesUI = socialButterflies
+        DispatchQueue.main.async {
+            self.processedData.socialButterfly = socialButterfliesUI
+        }
         return true
     }
     
