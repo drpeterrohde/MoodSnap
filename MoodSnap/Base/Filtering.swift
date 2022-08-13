@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Does `moodSnap` satisfy the given filtering constriants?
  */
-func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: String) -> Bool {
+@inline(__always) func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: String) -> Bool {
     let filterOutcome =
         (filter == .mood && moodSnap.snapType == .mood) ||
         (filter == .event && moodSnap.snapType == .event) ||
@@ -27,7 +27,7 @@ func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: Stri
 /**
  Returns the earliest `Date` amongst `moodSnaps`.
  */
-func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
+@inline(__always) func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
     var firstDate = Date().startOfDay()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp < firstDate {
@@ -40,7 +40,7 @@ func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
 /**
  Returns the most recent `Date` amongst `moodSnaps`.
  */
-func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
+@inline(__always) func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
     var lastDate = Date().endOfDay()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp > lastDate {
@@ -53,7 +53,7 @@ func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
 /**
  Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
+@inline(__always) func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
     let dateComponents = date.getComponents()
     for moodSnap in moodSnaps {
@@ -72,7 +72,7 @@ func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool =
 /**
  Returns an array of elements from `healthSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
+@inline(__always) func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
     var filtered: [HealthSnapStruct] = []
     let dateComponents = date.getComponents()
     for healthSnap in healthSnaps {
@@ -91,7 +91,7 @@ func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: 
 /**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
  */
-func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
+@inline(__always) func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
     
     for time in windowStart ... windowEnd {
@@ -106,7 +106,7 @@ func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowSta
 /**
  Returns an array of elements from `healthSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
  */
-func getHealthSnapsByDateWindow(healthSnaps: [HealthSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [HealthSnapStruct] {
+@inline(__always) func getHealthSnapsByDateWindow(healthSnaps: [HealthSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [HealthSnapStruct] {
     var filtered: [HealthSnapStruct] = []
     
     for time in windowStart ... windowEnd {

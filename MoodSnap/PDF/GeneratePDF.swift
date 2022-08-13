@@ -101,6 +101,7 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         let graphHeight = pageHeight / 5
 
         let view1 = PDFSingleMoodHistoryBarView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite)
+            .environmentObject(data)
             .frame(width: pageWidth)
             .background(Color.white)
         let image1 = view1.asImage()
@@ -112,7 +113,10 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         textElement = PDFAttributedText(text: slidingAverageAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
-        let view2 = PDFSingleSlidingAverageView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite).frame(width: 400).background(Color.white)
+        let view2 = PDFSingleSlidingAverageView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite)
+            .environmentObject(data)
+            .frame(width: 400)
+            .background(Color.white)
         let image2 = view2.asImage()
         addImage(document: document, image: image2, width: pageWidth, height: graphHeight)
 
@@ -122,7 +126,10 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         textElement = PDFAttributedText(text: volatilityAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
-        let view3 = PDFSingleSlidingVolatilityView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite).frame(width: 400).background(Color.white)
+        let view3 = PDFSingleSlidingVolatilityView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite)
+            .environmentObject(data)
+            .frame(width: 400)
+            .background(Color.white)
         let image3 = view3.asImage()
         addImage(document: document, image: image3, width: pageWidth, height: graphHeight)
     }
@@ -254,6 +261,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, tim
     document.add(.contentLeft, attributedTextObject: textElement)
 
     let view1 = PDFAverageMoodView(timescale: timescale, blackAndWhite: blackAndWhite)
+        .environmentObject(data)
         .frame(width: 400, height: 200)
         .background(Color.white)
     let image1 = view1.asImage()
@@ -266,6 +274,7 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, tim
     document.add(.contentLeft, attributedTextObject: textElement2)
 
     let view2 = PDFMoodHistoryBarView(timescale: timescale, blackAndWhite: blackAndWhite)
+        .environmentObject(data)
         .frame(width: 500)
         .background(Color.white)
     let image2 = view2.asImage()

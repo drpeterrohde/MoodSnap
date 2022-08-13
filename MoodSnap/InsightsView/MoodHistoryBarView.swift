@@ -22,7 +22,11 @@ struct MoodHistoryBarView: View {
         } else {
             VStack {
                 Group {
-                    VerticalBarChart(values: entriesE, color: Color(color[0]), horizontalGridLines: 3, shaded: true, settings: data.settings)
+                    VerticalBarChart(values: entriesE,
+                                     color: Color(color[0]),
+                                     horizontalGridLines: 3,
+                                     shaded: true,
+                                     settings: data.settings)
                         .frame(height: 60)
                     Text("elevation")
                         .font(.caption)
@@ -30,7 +34,11 @@ struct MoodHistoryBarView: View {
                 }
 
                 Group {
-                    VerticalBarChart(values: entriesD, color: Color(color[1]), horizontalGridLines: 3, shaded: true, settings: data.settings)
+                    VerticalBarChart(values: entriesD,
+                                     color: Color(color[1]),
+                                     horizontalGridLines: 3,
+                                     shaded: true,
+                                     settings: data.settings)
                         .frame(height: 60)
                     Text("depression")
                         .font(.caption)
@@ -38,7 +46,11 @@ struct MoodHistoryBarView: View {
                 }
 
                 Group {
-                    VerticalBarChart(values: entriesA, color: Color(color[2]), horizontalGridLines: 3, shaded: true, settings: data.settings)
+                    VerticalBarChart(values: entriesA,
+                                     color: Color(color[2]),
+                                     horizontalGridLines: 3,
+                                     shaded: true,
+                                     settings: data.settings)
                         .frame(height: 60)
                     Text("anxiety")
                         .font(.caption)
@@ -46,7 +58,11 @@ struct MoodHistoryBarView: View {
                 }
 
                 Group {
-                    VerticalBarChart(values: entriesI, color: Color(color[3]), horizontalGridLines: 3, shaded: true, settings: data.settings)
+                    VerticalBarChart(values: entriesI,
+                                     color: Color(color[3]),
+                                     horizontalGridLines: 3,
+                                     shaded: true,
+                                     settings: data.settings)
                         .frame(height: 60)
                     Text("irritability")
                         .font(.caption)

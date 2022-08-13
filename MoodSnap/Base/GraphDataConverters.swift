@@ -124,8 +124,7 @@ func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
         yTotal = yTrunc
     }
 
-    let entries = yTotal
-    return entries
+    return yTotal
 }
 
 /**

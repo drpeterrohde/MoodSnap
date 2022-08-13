@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Merge array `moodSnaps` into a single `MoodSnapStruct` representing maximum values and combined `symptoms`, `activities` and `social` values (via logical AND).
  */
-func mergeMoodSnaps(moodSnaps: [MoodSnapStruct]) -> MoodSnapStruct? {
+@inline(__always) func mergeMoodSnaps(moodSnaps: [MoodSnapStruct]) -> MoodSnapStruct? {
     if moodSnaps.count == 0 {
         return nil
     }
@@ -40,7 +40,7 @@ func mergeMoodSnaps(moodSnaps: [MoodSnapStruct]) -> MoodSnapStruct? {
 /**
  Merge array `healthSnaps` into a single `HealthSnapStruct` representing maximum values and combined `symptoms`, `activities` and `social` values (via logical AND).
  */
-func mergeHealthSnaps(healthSnaps: [HealthSnapStruct]) -> HealthSnapStruct? {
+@inline(__always) func mergeHealthSnaps(healthSnaps: [HealthSnapStruct]) -> HealthSnapStruct? {
     if healthSnaps.count == 0 {
         return nil
     }
