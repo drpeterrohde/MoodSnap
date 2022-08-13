@@ -36,10 +36,6 @@ struct MoodSnapApp: App {
                 } else {
                     //print("There is a problem accessing HealthKit")
                 }
-                //DispatchQueue.global(qos: .userInteractive).async {
-//                Task(priority: .high) {
-//                    await data.process()
-//                }
                 data.startProcessing()
             }
             

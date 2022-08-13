@@ -84,13 +84,13 @@ class DataStoreClass: Identifiable, ObservableObject {
         self.processedData.levelD = history.levelD
         self.processedData.levelA = history.levelA
         self.processedData.levelI = history.levelI
-
+        
         // Sliding average history
         self.processedData.averageE = history.averageE
         self.processedData.averageD = history.averageD
         self.processedData.averageA = history.averageA
         self.processedData.averageI = history.averageI
-
+        
         // Volatility history
         self.processedData.volatilityE = history.volatilityE
         self.processedData.volatilityD = history.volatilityD
@@ -222,6 +222,7 @@ class DataStoreClass: Identifiable, ObservableObject {
      Start asynchronous processing of data
      */
     func startProcessing(priority: TaskPriority = .high) {
+        self.save()
         if self.processingTask != nil {
             self.processingTask?.cancel()
         }

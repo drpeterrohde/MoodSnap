@@ -202,11 +202,7 @@ struct SettingsView: View {
                 Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
-                            //DispatchQueue.global(qos: .userInteractive).async {
                             data.moodSnaps = makeDemoData()
-//                            Task(priority: .high) {
-//                                await data.process()
-//                            }
                             data.startProcessing()
                         } else {
                             showingImportAlert.toggle()
@@ -222,11 +218,7 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
-                        //DispatchQueue.global(qos: .userInteractive).async {
                         data.moodSnaps = []
-//                        Task(priority: .high) {
-//                            await data.process()
-//                        }
                         data.startProcessing()
                         dismiss()
                     }, secondaryButton: .cancel())
@@ -250,11 +242,6 @@ struct SettingsView: View {
                     data.moodSnaps = retrieved.moodSnaps
                     data.healthSnaps = retrieved.healthSnaps
                     data.processedData = retrieved.processedData
-
-                    //DispatchQueue.global(qos: .userInteractive).async {
-//                    Task(priority: .high) {
-//                        await data.process()
-//                    }
                     data.startProcessing()
                 } catch {
                     //print("Failed to import backup file")

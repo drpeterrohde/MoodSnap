@@ -39,10 +39,6 @@ struct EventView: View {
                     data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                     data.moodSnaps.append(moodSnap)
                     data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                    //DispatchQueue.global(qos: .userInteractive).async {
-//                    Task(priority: .high) {
-//                        await data.process()
-//                    }
                     data.startProcessing()
                 }
                 dismiss()
