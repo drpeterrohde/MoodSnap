@@ -35,7 +35,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
 /**
  Class for main data storage type.
  */
-class DataStoreClass: Identifiable, ObservableObject {
+final class DataStoreClass: Identifiable, ObservableObject {
     var id: UUID = UUID()
     var version: Int = 1
 

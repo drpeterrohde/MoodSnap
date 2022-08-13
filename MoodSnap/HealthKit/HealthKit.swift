@@ -1,7 +1,7 @@
 import HealthKit
 import SwiftUI
 
-class HealthManager: ObservableObject {
+final class HealthManager: ObservableObject {
     public var healthSnaps: [HealthSnapStruct] = []
     public let healthStore = HKHealthStore()
 

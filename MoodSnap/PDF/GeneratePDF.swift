@@ -14,7 +14,7 @@ func generatePDF(data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawV
     do {
         try url = generator.generateURL(filename: "MoodSnap report.pdf")
     } catch {
-        print("PDF error")
+        // print("PDF error")
     }
 
     return url
@@ -181,7 +181,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(columnLabels[column], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
     }
 
@@ -195,7 +195,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(activityList[activityCount], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
 
         // Numerical cells
@@ -207,7 +207,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
-                print("PDF table eror")
+                // print("PDF table eror")
             }
         }
     }
@@ -222,7 +222,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(socialList[socialCount], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
 
         // Numerical cells
@@ -234,7 +234,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
-                print("PDF table eror")
+                // print("PDF table eror")
             }
         }
     }
