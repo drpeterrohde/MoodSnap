@@ -29,18 +29,20 @@ func volatility(data: [CGFloat?]) -> CGFloat? {
 /**
  Calculate the volatiliy (standard deviation) of `moodSnaps`, nil if no data.
  */
-func volatility(moodSnaps: [MoodSnapStruct]) -> [CGFloat?] {
+func volatility(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
     var dataE: [CGFloat] = []
     var dataD: [CGFloat] = []
     var dataA: [CGFloat] = []
     var dataI: [CGFloat] = []
 
     for moodSnap in moodSnaps {
-        if moodSnap.snapType == .mood {
-            dataE.append(moodSnap.elevation)
-            dataD.append(moodSnap.depression)
-            dataA.append(moodSnap.anxiety)
-            dataI.append(moodSnap.irritability)
+        if moodSnap != nil {
+            if moodSnap!.snapType == .mood {
+                dataE.append(moodSnap!.elevation)
+                dataD.append(moodSnap!.depression)
+                dataA.append(moodSnap!.anxiety)
+                dataI.append(moodSnap!.irritability)
+            }
         }
     }
 

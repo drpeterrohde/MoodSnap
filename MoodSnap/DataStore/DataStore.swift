@@ -77,7 +77,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
      */
     func processHistory() async -> Bool {
         let history = await generateHistory(data: self)
-        
+        //history = await newGenerateHistory(data: self)
+
         // Mood history
         self.processedData.levelE = history.levelE
         self.processedData.levelD = history.levelD

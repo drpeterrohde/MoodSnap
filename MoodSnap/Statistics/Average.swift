@@ -71,18 +71,20 @@ func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
 /**
  Calculate the mood averages of `moodSnaps`, nil if no data.
  */
-func average(moodSnaps: [MoodSnapStruct]) -> [CGFloat?] {
+func average(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
     var dataE: [CGFloat] = []
     var dataD: [CGFloat] = []
     var dataA: [CGFloat] = []
     var dataI: [CGFloat] = []
 
     for moodSnap in moodSnaps {
-        if moodSnap.snapType == .mood {
-            dataE.append(moodSnap.elevation)
-            dataD.append(moodSnap.depression)
-            dataA.append(moodSnap.anxiety)
-            dataI.append(moodSnap.irritability)
+        if moodSnap != nil {
+            if moodSnap!.snapType == .mood {
+                dataE.append(moodSnap!.elevation)
+                dataD.append(moodSnap!.depression)
+                dataA.append(moodSnap!.anxiety)
+                dataI.append(moodSnap!.irritability)
+            }
         }
     }
 
