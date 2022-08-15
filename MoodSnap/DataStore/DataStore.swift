@@ -44,7 +44,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
-    var processingTask: Task<Void, Never>? = nil
+    @Published var processingTask: Task<Void, Never>? = nil
     
     init() {
         id = UUID()

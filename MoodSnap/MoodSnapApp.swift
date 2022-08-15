@@ -31,14 +31,11 @@ struct MoodSnapApp: App {
             }
             
             if value == .active {
-                if HKHealthStore.isHealthDataAvailable() {
-                    //print("HealthKit is Available")
-                    health.requestPermissions()
-                    health.makeHealthSnaps(data: data)
-                    data.healthSnaps = health.healthSnaps
-                } else {
-                    //print("There is a problem accessing HealthKit")
-                }
+//                if HKHealthStore.isHealthDataAvailable() {
+//                    health.requestPermissions()
+//                    health.makeHealthSnaps(data: data)
+//                    data.healthSnaps = health.healthSnaps
+//                }
                 data.startProcessing()
             }
             

@@ -2,7 +2,7 @@ import HealthKit
 import SwiftUI
 
 final class HealthManager: ObservableObject {
-    public var healthSnaps: [HealthSnapStruct] = []
+    @Published public var healthSnaps: [HealthSnapStruct] = []
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
