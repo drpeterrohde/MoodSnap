@@ -82,9 +82,9 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
                         Text("black_and_white")
                     })
-                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
-                        Text("include_guide")
-                    })
+//                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
+//                        Text("include_guide")
+//                    })
                     Toggle(isOn: $data.settings.includeNotes, label: {
                         Text("include_notes")
                     })

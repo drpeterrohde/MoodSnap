@@ -119,6 +119,7 @@
 "insights" = "Insights";
 "insufficient_data" = "Insufficient data";
 "interpretation_guide" = "Interpretation guide";
+"interpretation_guide_at" = "Interpretation guide available at: https://moodsnap.app/interpretation-guide/";
 "intro_popover_description_string" = "MoodSnap is your free mood diary with advanced analytics to understand your mood patterns and provide insight into what affects them.\n\nMoodSnap has features written for people with mood disorders in mind, allowing symptom tracking and analysis.\n\nNot everything available in MoodSnap is relevant to everyone. It is recommended that before you start using MoodSnap:\n\n • You quickly read the information in the help page to understand the features.\n • Go to settings to toggle the visibility of features not relevant to you to streamline the interface.";
 "intro_popover_disclaimer_string" = "MoodSnap is designed for self-awareness and should not be used as a medical device. Medical decisions should only be made in consultation with medical professionals.";
 "intro_popover_note_string" = "When taking MoodSnaps your entries should reflect the _maximum_ respective degrees experienced _since the most recent_ MoodSnap and _within the last 24 hours_.";
