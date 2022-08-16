@@ -100,6 +100,15 @@ import SwiftUI
         filtered.append(contentsOf: theseSnaps)
     }
 
+//    let startDate = date.addDays(days: windowStart).startOfDay()
+//    let endDate = date.addDays(days: windowEnd).endOfDay()
+//
+//    for moodSnap in moodSnaps {
+//        if moodSnap.timestamp >= startDate && moodSnap.timestamp <= endDate {
+//            filtered.append(moodSnap)
+//        }
+//    }
+    
     return filtered
 }
 
