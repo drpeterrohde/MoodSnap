@@ -28,6 +28,7 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
+                data.startProcessing(priority: .background)
             }
             
             if value == .active {
