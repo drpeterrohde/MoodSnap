@@ -12,7 +12,7 @@ struct TransientWithPickerView: View {
     @State private var selectedEvent: Int = 0
     @State private var selectedHashtag: Int = 0
     @State private var selectionType: InfluenceTypeEnum = .activity
-
+    
     var body: some View {
         let butterfly = transientByType(
             type: selectionType,
@@ -22,9 +22,9 @@ struct TransientWithPickerView: View {
             event: selectedEvent,
             hashtag: selectedHashtag,
             processedData: data.processedData)
-
+        
         let (label, int) = transientLabel(selectionType: selectionType)
-
+        
         VStack {
             TransientView(butterfly: butterfly,
                           label: label,
@@ -45,7 +45,7 @@ struct TransientWithPickerView: View {
 func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
     var str: String = ""
     var int: Int = 0
-
+    
     if selectionType == .event {
         str = "pm_30_days"
         int = butterflyWindowLong
@@ -53,6 +53,6 @@ func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
         str = "pm_7_days"
         int = butterflyWindowShort
     }
-
+    
     return (str, int)
 }
