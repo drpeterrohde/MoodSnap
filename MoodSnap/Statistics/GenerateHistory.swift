@@ -1,6 +1,35 @@
 import SwiftUI
 
 /**
+ Sequence MoodSnaps into chronological array.
+ ???
+ */
+@inline(__always) func sequenceMoodSnaps(data: DataStoreClass) async -> [[MoodSnapStruct]] {
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
+    var sequence: [[MoodSnapStruct]] = Array(repeating: [], count: length)
+    
+    for moodSnap in data.moodSnaps {
+        let offset = length - Calendar.current.numberOfDaysBetween(from: moodSnap.timestamp, to: Date())
+        sequence[offset].append(moodSnap)
+    }
+    
+    return sequence
+}
+
+/**
+ Flatten sequence of MoodSnaps on a per-day basis.
+ */
+@inline(__always) func flattenSequence(sequence: [[MoodSnapStruct]]) async -> [MoodSnapStruct?] {
+    var flattenedSequence: [MoodSnapStruct?] = []
+    for snaps in sequence {
+        let flattened: MoodSnapStruct? = mergeMoodSnaps(moodSnaps: snaps)
+        flattenedSequence.append(flattened)
+    }
+    return flattenedSequence
+}
+
+/**
  Generate the complete history of mood levels, moving averages and moving volatilities from `data`.
  */
 @inline(__always) func generateHistory(data: DataStoreClass) async -> HistoryStruct {
