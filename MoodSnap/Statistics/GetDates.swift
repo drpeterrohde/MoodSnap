@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Get a `[Date]` array for all instances of a `hashtag`.
  */
-func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] {
+@inline(__always) func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] {
     var dates: [Date] = []
     for moodSnap in moodSnaps {
         if moodSnap.notes.lowercased().contains(hashtag) || moodSnap.event.lowercased().contains(hashtag) {
@@ -16,7 +16,7 @@ func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] 
 /**
  Get a `[Date]` array for all instances of a `type` and type `item`.
  */
-func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStruct]) -> [Date] {
+@inline(__always) func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStruct]) -> [Date] {
     var dates: [Date] = []
 
     if type == .event {

@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Average `ButterflyEntryStruct` from data centered around an array of `dates`.
  */
-func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
+@inline(__always) func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
     let butterflyMood = averageDifferentialWindowForDates(
         moodSnaps: moodSnaps,
         dates: dates,
@@ -33,7 +33,7 @@ func averageTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWin
 /**
  Average `ButterflyEntryStruct` from data centered around an array of `dates`.
  */
-func averageMenstrualTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
+@inline(__always) func averageMenstrualTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct], maxWindow: Int) -> ButterflyEntryStruct {
     let butterflyMood = averageDifferentialWindowForDates(
         moodSnaps: moodSnaps,
         dates: dates,
@@ -63,7 +63,7 @@ func averageMenstrualTransientForDates(dates: [Date], moodSnaps: [MoodSnapStruct
 /**
  Differential (average) foccused on `date`.
  */
-func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
+@inline(__always) func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     let today = getMoodSnapsByDate(
         moodSnaps: moodSnaps,
         date: date,
@@ -113,7 +113,7 @@ func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -
 /**
  Differential (volatility) foccused on `date`.
  */
-func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
+@inline(__always) func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     var samples: [MoodSnapStruct] = []
 
     if window >= 0 {
@@ -139,7 +139,7 @@ func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int
 /**
  Differential (average) foccused on `dates` array.
  */
-func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
+@inline(__always) func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
     var diffsE: [[CGFloat?]] = []
     var diffsD: [[CGFloat?]] = []
     var diffsA: [[CGFloat?]] = []
@@ -167,7 +167,7 @@ func averageDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date
 /**
  Differential (volatility) foccused on `dates` array.
  */
-func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
+@inline(__always) func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [Date], maxWindow: Int) -> [[CGFloat?]] {
     var diffsE: [[CGFloat?]] = []
     var diffsD: [[CGFloat?]] = []
     var diffsA: [[CGFloat?]] = []
@@ -195,7 +195,7 @@ func volatilityDifferentialWindowForDates(moodSnaps: [MoodSnapStruct], dates: [D
 /**
  Differential (average) foccused on `date` over a `maxWindow`.
  */
-func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
+@inline(__always) func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []
     var seriesD: [CGFloat?] = []
     var seriesA: [CGFloat?] = []
@@ -218,7 +218,7 @@ func averageDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindo
 /**
  Differential (volatility) foccused on `date` over a `maxWindow`.
  */
-func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
+@inline(__always) func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWindow: Int) -> [[CGFloat?]] {
     var seriesE: [CGFloat?] = []
     var seriesD: [CGFloat?] = []
     var seriesA: [CGFloat?] = []
@@ -241,7 +241,7 @@ func volatilityDifferentialWindow(moodSnaps: [MoodSnapStruct], date: Date, maxWi
 /**
  Dispatch transient calculation depending on `type`.
  */
-func transientByType(type: InfluenceTypeEnum, activity: Int, social: Int, symptom: Int, event: Int, hashtag: Int, processedData: ProcessedDataStruct) -> ButterflyEntryStruct {
+@inline(__always) func transientByType(type: InfluenceTypeEnum, activity: Int, social: Int, symptom: Int, event: Int, hashtag: Int, processedData: ProcessedDataStruct) -> ButterflyEntryStruct {
     switch type {
     case .activity:
         return processedData.activityButterfly[activity]

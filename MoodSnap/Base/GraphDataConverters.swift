@@ -29,7 +29,7 @@ import SwiftUI
 /**
  Make line chart data using `y` coordinates, truncated and padded to given `timescale`.
  */
-func makeLineData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
+@inline(__always) func makeLineData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
     let yTrunc = Array(y.suffix(timescale))
     var yTotal: [CGFloat?] = []
 
@@ -112,7 +112,7 @@ func makeLineData2(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
 /**
  Make bar chart data using `y` coordinates, truncated and padded to given `timescale`.
  */
-func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
+@inline(__always) func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
     let yTrunc = Array(y.suffix(timescale))
     var yTotal: [CGFloat?] = []
 

@@ -243,9 +243,11 @@ final class DataStoreClass: Identifiable, ObservableObject {
         if self.processingTask != nil {
             self.processingTask?.cancel()
         }
-        self.processingTask = Task(priority: priority) {
-            await self.process()
-            self.processingTask = nil
+        DispatchQueue.main.async {
+            self.processingTask = Task(priority: priority) {
+                await self.process()
+                self.processingTask = nil
+            }
         }
     }
     

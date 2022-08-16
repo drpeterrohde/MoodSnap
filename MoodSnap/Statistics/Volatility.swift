@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Calculate the volatility (standard deviation) of `data`, nil if no data.
  */
-func volatility(data: [CGFloat?]) -> CGFloat? {
+@inline(__always) func volatility(data: [CGFloat?]) -> CGFloat? {
     var sum: CGFloat = 0
     var count: CGFloat = 0
     let average: CGFloat? = average(data: data)
@@ -29,7 +29,7 @@ func volatility(data: [CGFloat?]) -> CGFloat? {
 /**
  Calculate the volatiliy (standard deviation) of `moodSnaps`, nil if no data.
  */
-func volatility(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
+@inline(__always) func volatility(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
     var dataE: [CGFloat] = []
     var dataD: [CGFloat] = []
     var dataA: [CGFloat] = []

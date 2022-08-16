@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Calculate the average of `data`, nil if no data.
  */
-func average(data: [CGFloat?]) -> CGFloat? {
+@inline(__always) func average(data: [CGFloat?]) -> CGFloat? {
     var sum: CGFloat = 0
     var count: CGFloat = 0
 
@@ -24,7 +24,7 @@ func average(data: [CGFloat?]) -> CGFloat? {
 /**
  Average `type` of `healthSnaps`
  */
-func average(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> CGFloat? {
+@inline(__always) func average(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> CGFloat? {
     var data: [CGFloat?] = []
     
     for healthSnap in healthSnaps {
@@ -50,7 +50,7 @@ func average(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> CGFloat? 
 /**
  Calculate the joint average of `dataX` and `dataY`, nil if no data.
  */
-func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+@inline(__always) func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
     var sum: CGFloat = 0
     var count: CGFloat = 0
 
@@ -71,7 +71,7 @@ func average(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
 /**
  Calculate the mood averages of `moodSnaps`, nil if no data.
  */
-func average(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
+@inline(__always) func average(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
     var dataE: [CGFloat] = []
     var dataD: [CGFloat] = []
     var dataA: [CGFloat] = []
@@ -99,7 +99,7 @@ func average(moodSnaps: [MoodSnapStruct?]) -> [CGFloat?] {
 /**
  Generate an average series from an array of `series`.
  */
-func averageSeries(series: [[CGFloat?]]) -> [CGFloat?] {
+@inline(__always) func averageSeries(series: [[CGFloat?]]) -> [CGFloat?] {
     if series.count == 0 {
         return []
     }

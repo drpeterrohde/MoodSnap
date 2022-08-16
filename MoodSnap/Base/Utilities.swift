@@ -4,7 +4,7 @@ import SwiftUI
 /**
  The total number of recorded symptoms in a given `moodSnap`
  */
-func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
+@inline(__always) func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
     for i in 0 ..< symptomList.count {
         mask.append(moodSnap.symptoms[i] && settings.symptomVisibility[i])
@@ -16,7 +16,7 @@ func totalSymptoms(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
 /**
  The total number of recorded activities in a given `moodSnap`
  */
-func totalActivities(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
+@inline(__always) func totalActivities(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
     for i in 0 ..< activityList.count {
         mask.append(moodSnap.activities[i] && settings.activityVisibility[i])
@@ -28,7 +28,7 @@ func totalActivities(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int 
 /**
  The total number of recorded social activities in a given `moodSnap`
  */
-func totalSocial(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
+@inline(__always) func totalSocial(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
     var mask: [Bool] = []
     for i in 0 ..< socialList.count {
         mask.append(moodSnap.social[i] && settings.socialVisibility[i])
@@ -40,7 +40,7 @@ func totalSocial(moodSnap: MoodSnapStruct, settings: SettingsStruct) -> Int {
 /**
  How many visible symptoms are there?
  */
-func visibleSymptomsCount(settings: SettingsStruct) -> Int {
+@inline(__always) func visibleSymptomsCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
     for i in 0 ..< symptomList.count {
         if settings.symptomVisibility[i] {
@@ -53,7 +53,7 @@ func visibleSymptomsCount(settings: SettingsStruct) -> Int {
 /**
  How many visible activities are there?
  */
-func visibleActivitiesCount(settings: SettingsStruct) -> Int {
+@inline(__always) func visibleActivitiesCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
     for i in 0 ..< activityList.count {
         if settings.activityVisibility[i] {
@@ -66,7 +66,7 @@ func visibleActivitiesCount(settings: SettingsStruct) -> Int {
 /**
  How many visible social activities are there?
  */
-func visibleSocialCount(settings: SettingsStruct) -> Int {
+@inline(__always) func visibleSocialCount(settings: SettingsStruct) -> Int {
     var count: Int = 0
     for i in 0 ..< socialList.count {
         if settings.socialVisibility[i] {
@@ -79,14 +79,14 @@ func visibleSocialCount(settings: SettingsStruct) -> Int {
 /**
  Delete a `moodSnap` from an array of `moodSnaps`.
  */
-func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
+@inline(__always) func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
     return moodSnaps.filter { $0.id != moodSnap.id }
 }
 
 /**
  Format a mood level string to single decimal place accuracy.
  */
-func formatMoodLevelString(value: CGFloat?) -> String {
+@inline(__always) func formatMoodLevelString(value: CGFloat?) -> String {
     if value != nil {
         var floatVal: CGFloat = value!
 
@@ -110,7 +110,7 @@ func formatMoodLevelString(value: CGFloat?) -> String {
 /**
  Get list of events.
  */
-func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String, Date)] {
+@inline(__always) func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String, Date)] {
     var list: [(String, Date)] = []
 
     var filteredMoodSnaps: [MoodSnapStruct] = []
@@ -133,7 +133,7 @@ func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String,
 /**
  Get list of menstruation dates.
  */
-func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
+@inline(__always) func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
     var dates: [Date] = []
 
     for healthSnap in healthSnaps {
@@ -150,7 +150,7 @@ func getMenstrualDates(healthSnaps: [HealthSnapStruct]) -> [Date] {
 /**
  Does an array of `data` contain any non-nil entries?
  */
-func hasData(data: [CGFloat?]) -> Bool {
+@inline(__always) func hasData(data: [CGFloat?]) -> Bool {
     for item in data {
         if item != nil {
             return true
@@ -162,7 +162,7 @@ func hasData(data: [CGFloat?]) -> Bool {
 /**
  Make introductory MoodSnap with quick start information
  */
-func makeIntroSnap() -> [MoodSnapStruct] {
+@inline(__always) func makeIntroSnap() -> [MoodSnapStruct] {
     var mediaSnap = MoodSnapStruct()
     mediaSnap.snapType = .custom
     mediaSnap.customView = 1
@@ -172,7 +172,7 @@ func makeIntroSnap() -> [MoodSnapStruct] {
 /**
  How many user-created `moodSnaps` entries are there?
  */
-func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
+@inline(__always) func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
     var count: Int = 0
 
     for moodSnap in moodSnaps {
@@ -187,7 +187,7 @@ func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> 
 /**
  How many user-created `healthSnaps` entries are there of a given `type`?
  */
-func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> Int {
+@inline(__always) func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> Int {
     var count = 0
 
     for healthSnap in healthSnaps {
@@ -223,7 +223,7 @@ func countHealthSnaps(healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> 
 /**
  Minimum of a set of `data` that may contain nil values.
  */
-func minWithNils(data: [CGFloat?]) -> CGFloat? {
+@inline(__always) func minWithNils(data: [CGFloat?]) -> CGFloat? {
     var minimum: CGFloat?
 
     for item in data {
@@ -242,7 +242,7 @@ func minWithNils(data: [CGFloat?]) -> CGFloat? {
 /**
  Maximum of a set of `data` that may contain nil values.
  */
-func maxWithNils(data: [CGFloat?]) -> CGFloat? {
+@inline(__always) func maxWithNils(data: [CGFloat?]) -> CGFloat? {
     var maximum: CGFloat?
 
     for item in data {
@@ -261,7 +261,7 @@ func maxWithNils(data: [CGFloat?]) -> CGFloat? {
 /**
  Get string for weight `value` depending on type of `units`.
  */
-func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
+@inline(__always) func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     
     switch units {
@@ -277,7 +277,7 @@ func getWeightString(value: Double, units: MeasurementUnitsEnum) -> String {
 /**
  Get string for distance `value` depending on type of `units`.
  */
-func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
+@inline(__always) func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     
     switch units {
@@ -293,7 +293,7 @@ func getDistanceString(value: Double, units: MeasurementUnitsEnum) -> String {
 /**
  Get string for energy `value` depending on type of `units`.
  */
-func getEnergyString(value: Double, units: MeasurementUnitsEnum) -> String {
+@inline(__always) func getEnergyString(value: Double, units: MeasurementUnitsEnum) -> String {
     var str: String = ""
     
     switch units {

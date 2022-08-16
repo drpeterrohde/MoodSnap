@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Return a `MoodSnapStruct` of the average of those in a given `timescale`.
  */
-func averageMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
+@inline(__always) func averageMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
     let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps,
                                                date: Date(),
                                                windowStart: -timescale,
@@ -26,7 +26,7 @@ func averageMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
 /**
  Return a `MoodSnapStruct` of the volatility of those in a given `timescale`.
  */
-func averageVolatilityMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
+@inline(__always) func averageVolatilityMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
     let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps,
                                                date: Date(),
                                                windowStart: -timescale,
