@@ -45,6 +45,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     @Published var processingTask: Task<Void, Never>? = nil
+    var sequencedMoodSnaps: [[MoodSnapStruct]] = []
+    var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     
     init() {
         id = UUID()
@@ -52,8 +54,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
         uxState = UXStateStruct()
         moodSnaps = makeIntroSnap()
         healthSnaps = []
-        
-        //???process()
         
         do {
             let retrieved = try Disk.retrieve(
@@ -76,8 +76,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process history
      */
     func processHistory() async -> Bool {
-        let history = await generateHistory(data: self)
-        //history = await newGenerateHistory(data: self)
+        let history = await newGenerateHistory(data: self)
 
         DispatchQueue.main.async {
             // Mood history
@@ -225,6 +224,11 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Pre-process data.
      */
     func process() async {
+        // Sequence MoodSnaps
+        self.sequencedMoodSnaps = await sequenceMoodSnaps(moodSnaps: self.moodSnaps)
+        self.flattenedSequencedMoodSnaps = await flattenSequence(sequence: self.sequencedMoodSnaps)
+        
+        // Processing
         async let historyComplete = processHistory()
         async let eventsComplete = processEvents()
         async let hashtagsComplete = processHashtags()
@@ -232,6 +236,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         async let socialComplete = processSocial()
         async let symptomsComplete = processSymptoms()
         
+        // Wait for all asynchronous threads to complete
         await _ = [historyComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
 
@@ -240,13 +245,17 @@ final class DataStoreClass: Identifiable, ObservableObject {
      */
     func startProcessing(priority: TaskPriority = .high) {
         self.save()
+        
         if self.processingTask != nil {
             self.processingTask?.cancel()
         }
+        
         DispatchQueue.main.async {
             self.processingTask = Task(priority: priority) {
                 await self.process()
-                self.processingTask = nil
+                DispatchQueue.main.async {
+                    self.processingTask = nil
+                }
             }
         }
     }

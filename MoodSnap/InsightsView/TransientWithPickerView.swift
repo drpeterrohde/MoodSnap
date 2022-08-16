@@ -33,6 +33,7 @@ struct TransientWithPickerView: View {
                                          selectedSocial: $selectedSocial,
                                          selectedSymptom: $selectedSymptom,
                                          selectedEvent: $selectedEvent,
+                                         selectedHashtag: $selectedHashtag,
                                          selectionType: $selectionType)
         }
     }

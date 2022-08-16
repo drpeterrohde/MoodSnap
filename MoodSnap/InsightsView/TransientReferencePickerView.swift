@@ -8,11 +8,13 @@ struct TransientReferencePickerView: View {
     @Binding var selectedSocial: Int
     @Binding var selectedSymptom: Int
     @Binding var selectedEvent: Int
+    @Binding var selectedHashtag: Int
     @Binding var selectionType: InfluenceTypeEnum
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         let eventsList = getEventsList(moodSnaps: data.moodSnaps)
+        let hashtagList = getHashtags(data: data)
 
         HStack {
             Picker("", selection: $selectionType) {
@@ -22,6 +24,10 @@ struct TransientReferencePickerView: View {
                     .tag(InfluenceTypeEnum.social)
                 Text("symptom")
                     .tag(InfluenceTypeEnum.symptom)
+                if hashtagList.count > 0 {
+                    Text("hashtag")
+                        .tag(InfluenceTypeEnum.hashtag)
+                }
                 if eventsList.count > 0 {
                     Text("event")
                         .tag(InfluenceTypeEnum.event)
@@ -30,6 +36,16 @@ struct TransientReferencePickerView: View {
 
             Spacer()
 
+            // Hashtags
+            if selectionType == InfluenceTypeEnum.hashtag {
+                Picker("", selection: $selectedHashtag) {
+                    ForEach(0 ..< hashtagList.count, id: \.self) { i in
+                        Text("\(hashtagList[i])")
+                            .tag(i)
+                    }
+                }.padding(.trailing, 10)
+            }
+            
             // Events
             if selectionType == InfluenceTypeEnum.event {
                 Picker("", selection: $selectedEvent) {
