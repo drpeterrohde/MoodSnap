@@ -15,7 +15,7 @@ struct MenstrualView: View {
                                     timescale: timescale)
         let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
         let butterfly = averageMenstrualTransientForDates(dates: dates,
-                                                          moodSnaps: data.moodSnaps,
+                                                          data: data,
                                                           maxWindow: menstrualTransientWindow)
 
         let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)

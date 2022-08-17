@@ -8,11 +8,15 @@ struct TallyView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let windowMoodSnaps = getMoodSnapsByDateWindow(
-            moodSnaps: data.moodSnaps,
-            date: Date(),
-            windowStart: -timescale,
-            windowEnd: 0)
+        let windowMoodSnaps = getMoodSnapsByDateWindow(data: data,
+                                                       date: Date(),
+                                                       windowStart: -timescale,
+                                                       windowEnd: 0)
+//        let windowMoodSnaps = getMoodSnapsByDateWindow(
+//            moodSnaps: data.moodSnaps,
+//            date: Date(),
+//            windowStart: -timescale,
+//            windowEnd: 0)
         let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps,
                                                                                                data: data)
         let hashtagList: [String] = getHashtags(data: data)

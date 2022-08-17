@@ -111,7 +111,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             let dates = [eventList[i].1]
             var thisButterfly = averageTransientForDates(
                 dates: dates,
-                moodSnaps: self.moodSnaps,
+                data: self,
                 maxWindow: butterflyWindowLong)
             thisButterfly.activity = eventList[i].0
             thisButterfly.timestamp = eventList[i].1
@@ -136,7 +136,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
                 moodSnaps: self.moodSnaps)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
-                moodSnaps: self.moodSnaps,
+                data: self,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = hashtags[i]
             hashtagButterflies.append(thisButterfly)
@@ -160,7 +160,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
                 moodSnaps: self.moodSnaps)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
-                moodSnaps: self.moodSnaps,
+                data: self,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = activityList[i]
             activityButterflies.append(thisButterfly)
@@ -184,7 +184,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
                 moodSnaps: self.moodSnaps)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
-                moodSnaps: self.moodSnaps,
+                data: self,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = symptomList[i]
             symptomButterflies.append(thisButterfly)
@@ -208,7 +208,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
                 moodSnaps: self.moodSnaps)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
-                moodSnaps: self.moodSnaps,
+                data: self,
                 maxWindow: butterflyWindowShort)
             thisButterfly.activity = socialList[i]
             socialButterflies.append(thisButterfly)
