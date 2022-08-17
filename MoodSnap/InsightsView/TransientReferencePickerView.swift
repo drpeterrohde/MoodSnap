@@ -13,7 +13,7 @@ struct TransientReferencePickerView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let eventsList = getEventsList(moodSnaps: data.moodSnaps)
+        let eventsList = getEventsList(data: data)
         let hashtagList = getHashtags(data: data)
 
         HStack {

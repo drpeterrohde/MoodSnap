@@ -16,16 +16,16 @@ import SwiftUI
 /**
  Get a `[Date]` array for all instances of a `type` and type `item`.
  */
-@inline(__always) func getDatesForType(type: InfluenceTypeEnum, item: Int, moodSnaps: [MoodSnapStruct]) -> [Date] {
+@inline(__always) func getDatesForType(type: InfluenceTypeEnum, item: Int, data: DataStoreClass) -> [Date] {
     var dates: [Date] = []
 
     if type == .event {
-        let event = getEventsList(moodSnaps: moodSnaps)[item]
+        let event = getEventsList(data: data)[item]
         dates.append(event.1)
         return dates
     }
 
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         switch type {
         case .activity:
             if moodSnap.activities[item] {

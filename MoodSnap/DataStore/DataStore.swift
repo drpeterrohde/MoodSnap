@@ -105,7 +105,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process events
      */
     func processEvents() async -> Bool {
-        let eventList = getEventsList(moodSnaps: self.moodSnaps)
+        let eventList = getEventsList(data: self)
         var eventButterflies: [ButterflyEntryStruct] = []
         for i in 0 ..< eventList.count {
             let dates = [eventList[i].1]
@@ -157,7 +157,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             let dates = getDatesForType(
                 type: .activity,
                 item: i,
-                moodSnaps: self.moodSnaps)
+                data: self)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
                 data: self,
@@ -181,7 +181,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             let dates = getDatesForType(
                 type: .symptom,
                 item: i,
-                moodSnaps: self.moodSnaps)
+                data: self)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
                 data: self,
@@ -205,7 +205,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             let dates = getDatesForType(
                 type: .social,
                 item: i,
-                moodSnaps: self.moodSnaps)
+                data: self)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
                 data: self,

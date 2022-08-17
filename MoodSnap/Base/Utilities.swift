@@ -110,15 +110,15 @@ import SwiftUI
 /**
  Get list of events.
  */
-@inline(__always) func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String, Date)] {
+@inline(__always) func getEventsList(data: DataStoreClass, window: Int? = nil) -> [(String, Date)] {
     var list: [(String, Date)] = []
 
     var filteredMoodSnaps: [MoodSnapStruct] = []
 
     if window == nil {
-        filteredMoodSnaps = moodSnaps
+        filteredMoodSnaps = data.moodSnaps
     } else {
-        filteredMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -window!, windowEnd: 0)
+        filteredMoodSnaps = getMoodSnapsByDateWindow(data: data, date: Date(), windowStart: -window!, windowEnd: 0)
     }
 
     for moodSnap in sortByDate(moodSnaps: filteredMoodSnaps) {

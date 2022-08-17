@@ -91,21 +91,6 @@ import SwiftUI
 /**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
  */
-@inline(__always) func getMoodSnapsByDateWindow(moodSnaps: [MoodSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
-    var filtered: [MoodSnapStruct] = []
-    
-    for time in windowStart ... windowEnd {
-        let thisDate = date.addDays(days: time)
-        let theseSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: thisDate, flatten: flatten)
-        filtered.append(contentsOf: theseSnaps)
-    }
-    
-    return filtered
-}
-
-/**
- Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
- */
 @inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
     var moodSnaps: [MoodSnapStruct?] = []
