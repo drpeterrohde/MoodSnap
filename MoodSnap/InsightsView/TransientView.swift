@@ -11,10 +11,10 @@ struct TransientView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let entriesButterflyE = makeLineData2(y: butterfly.elevation, timescale: timescale)
-        let entriesButterflyD = makeLineData2(y: butterfly.depression, timescale: timescale)
-        let entriesButterflyA = makeLineData2(y: butterfly.anxiety, timescale: timescale)
-        let entriesButterflyI = makeLineData2(y: butterfly.irritability, timescale: timescale)
+        let entriesButterflyE = makeLineData(y: butterfly.elevation, timescale: timescale)
+        let entriesButterflyD = makeLineData(y: butterfly.depression, timescale: timescale)
+        let entriesButterflyA = makeLineData(y: butterfly.anxiety, timescale: timescale)
+        let entriesButterflyI = makeLineData(y: butterfly.irritability, timescale: timescale)
         let entries = [entriesButterflyE, entriesButterflyD, entriesButterflyA, entriesButterflyI]
 
         let color = moodUIColors(settings: data.settings)

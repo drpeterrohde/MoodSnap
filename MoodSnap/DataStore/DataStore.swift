@@ -76,7 +76,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process history
      */
     func processHistory() async -> Bool {
-        let history = await newGenerateHistory(data: self)
+        let history = await generateHistory(data: self)
 
         DispatchQueue.main.async {
             // Mood history

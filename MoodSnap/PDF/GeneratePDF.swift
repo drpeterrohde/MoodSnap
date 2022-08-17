@@ -35,7 +35,7 @@ func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: 
                                blackAndWhite: blackAndWhite)
 //    if data.settings.reportIncludeInterpretation {
 //        generateInterpretationGuideContent(document: document, data: data)
-//    } ???
+//    } 
     generateMoodContent(document: document,
                         data: data,
                         timescale: timescale,
