@@ -275,19 +275,15 @@
 		CA496B1327EBEF290067EE63 /* InsightsView */ = {
 			isa = PBXGroup;
 			children = (
+				CABF5E2128ACABAE004D7A0F /* HealthView */,
 				CA527AA328AA7CDE007AD6DC /* InfluencesView */,
-				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
-				CA496B1627EBEF290067EE63 /* ActiveEnergyView.swift */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
-				CA496B1B27EBEF290067EE63 /* SleepView.swift */,
 				CA496B1C27EBEF290067EE63 /* InsightsView.swift */,
 				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
 				CA496B1E27EBEF290067EE63 /* TallyView.swift */,
 				CA496B1F27EBEF290067EE63 /* TransientView.swift */,
 				CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */,
-				CA496B2027EBEF290067EE63 /* MenstrualView.swift */,
-				CA496B2227EBEF290067EE63 /* WeightView.swift */,
 				CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */,
 				CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */,
 			);
@@ -445,6 +441,18 @@
 				CA7775AE280CDB380045A202 /* HealthKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CABF5E2128ACABAE004D7A0F /* HealthView */ = {
+			isa = PBXGroup;
+			children = (
+				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
+				CA496B1627EBEF290067EE63 /* ActiveEnergyView.swift */,
+				CA496B1B27EBEF290067EE63 /* SleepView.swift */,
+				CA496B2027EBEF290067EE63 /* MenstrualView.swift */,
+				CA496B2227EBEF290067EE63 /* WeightView.swift */,
+			);
+			path = HealthView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
