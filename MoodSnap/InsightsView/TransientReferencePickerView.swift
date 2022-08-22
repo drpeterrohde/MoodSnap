@@ -13,9 +13,6 @@ struct TransientReferencePickerView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let eventsList = getEventsList(data: data)
-        let hashtagList = getHashtags(data: data)
-
         HStack {
             Picker("", selection: $selectionType) {
                 Text("activity")
@@ -24,11 +21,11 @@ struct TransientReferencePickerView: View {
                     .tag(InfluenceTypeEnum.social)
                 Text("symptom")
                     .tag(InfluenceTypeEnum.symptom)
-                if hashtagList.count > 0 {
+                if data.hashtagList.count > 0 {
                     Text("hashtag")
                         .tag(InfluenceTypeEnum.hashtag)
                 }
-                if eventsList.count > 0 {
+                if data.eventsList.count > 0 {
                     Text("event")
                         .tag(InfluenceTypeEnum.event)
                 }
@@ -39,8 +36,8 @@ struct TransientReferencePickerView: View {
             // Hashtags
             if selectionType == InfluenceTypeEnum.hashtag {
                 Picker("", selection: $selectedHashtag) {
-                    ForEach(0 ..< hashtagList.count, id: \.self) { i in
-                        Text("\(hashtagList[i])")
+                    ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
+                        Text("\(data.hashtagList[i])")
                             .tag(i)
                     }
                 }.padding(.trailing, 10)
@@ -49,8 +46,8 @@ struct TransientReferencePickerView: View {
             // Events
             if selectionType == InfluenceTypeEnum.event {
                 Picker("", selection: $selectedEvent) {
-                    ForEach(0 ..< eventsList.count, id: \.self) { i in
-                        Text("\(eventsList[i].0) (\(eventsList[i].1.dateString()))")
+                    ForEach(0 ..< data.eventsList.count, id: \.self) { i in
+                        Text("\(data.eventsList[i].0) (\(data.eventsList[i].1.dateString()))")
                             .tag(i)
                     }
                 }.padding(.trailing, 10)

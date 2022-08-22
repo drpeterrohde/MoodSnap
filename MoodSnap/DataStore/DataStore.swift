@@ -45,6 +45,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     @Published var processingTask: Task<Void, Never>? = nil
+    @Published var hashtagList: [String] = []
+    @Published var eventsList: [(String,Date)] = []
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     
@@ -105,20 +107,21 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process events
      */
     func processEvents() async -> Bool {
-        let eventList = getEventsList(data: self)
+        let eventsListUI = getEventsList(data: self)
         var eventButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< eventList.count {
-            let dates = [eventList[i].1]
+        for i in 0 ..< eventsListUI.count {
+            let dates = [eventsListUI[i].1]
             var thisButterfly = averageTransientForDates(
                 dates: dates,
                 data: self,
                 maxWindow: butterflyWindowLong)
-            thisButterfly.activity = eventList[i].0
-            thisButterfly.timestamp = eventList[i].1
+            thisButterfly.activity = eventsListUI[i].0
+            thisButterfly.timestamp = eventsListUI[i].1
             eventButterflies.append(thisButterfly)
         }
         let eventButterfliesUI = eventButterflies
         DispatchQueue.main.async {
+            self.eventsList = eventsListUI
             self.processedData.eventButterfly = eventButterfliesUI
         }
         return true
@@ -128,21 +131,22 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process hashtags
      */
     func processHashtags() async -> Bool {
-        let hashtags = getHashtags(data: self)
+        let hashtagListUI = getHashtags(data: self)
         var hashtagButterflies: [ButterflyEntryStruct] = []
-        for i in 0 ..< hashtags.count {
+        for i in 0 ..< hashtagListUI.count {
             let dates = getDatesForHashtag(
-                hashtag: hashtags[i],
+                hashtag: hashtagListUI[i],
                 moodSnaps: self.moodSnaps)
             var thisButterfly = averageTransientForDates(
                 dates: dates,
                 data: self,
                 maxWindow: butterflyWindowShort)
-            thisButterfly.activity = hashtags[i]
+            thisButterfly.activity = hashtagListUI[i]
             hashtagButterflies.append(thisButterfly)
         }
         let hashtagButterfliesUI = hashtagButterflies
         DispatchQueue.main.async {
+            self.hashtagList = hashtagListUI
             self.processedData.hashtagButterfly = hashtagButterfliesUI
         }
         return true

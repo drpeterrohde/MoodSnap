@@ -14,8 +14,8 @@ struct TallyView: View {
                                                        windowEnd: 0)
         let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps,
                                                                                                data: data)
-        let hashtagList: [String] = getHashtags(data: data)
-        let hashtagOccurrences: [Int] = countHashtagOccurrences(hashtags: hashtagList,
+       // let hashtagList: [String] = getHashtags(data: data)
+        let hashtagOccurrences: [Int] = countHashtagOccurrences(hashtags: data.hashtagList,
                                                                 moodSnaps: windowMoodSnaps)
         let eventsList = getEventsList(data: data,
                                        window: timescale)
@@ -157,15 +157,15 @@ struct TallyView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
-                        ForEach(0 ..< hashtagList.count, id: \.self) { i in
+                        ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
                             if hashtagOccurrences[i] > 0 {
-                                Text(hashtagList[i] + "  ")
+                                Text(data.hashtagList[i] + "  ")
                                     .font(.caption)
                             }
                         }
                     }
                     VStack(alignment: .leading) {
-                        ForEach(0 ..< hashtagList.count, id: \.self) { i in
+                        ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
                             if hashtagOccurrences[i] > 0 {
                                 Text(String(hashtagOccurrences[i]))
                                     .font(numericFont)
