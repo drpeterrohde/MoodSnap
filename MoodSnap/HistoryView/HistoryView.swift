@@ -10,7 +10,7 @@ struct HistoryView: View {
     @Binding var searchText: String
     @EnvironmentObject var data: DataStoreClass
     @State var searchPrompt: String = "search_all"
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -31,7 +31,7 @@ struct HistoryView: View {
                     filter = .none
                     searchText = ""
                     searchPrompt = "search_all"
-                } // Not doing anything ???
+                }
             }
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
@@ -77,11 +77,7 @@ struct HistoryView: View {
                                 .font(.subheadline)
                         }
                     } label: { Image(systemName: "line.3.horizontal.decrease")
-                            //.resizable()
-                            //.scaledToFill()
-                            //.frame(width: 15, height: 15)
-                            //.foregroundColor(Color.primary)
-                        }
+                    }
                 }
             }
         }
