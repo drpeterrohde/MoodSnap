@@ -1,8 +1,20 @@
 import HealthKit
 import SwiftUI
 
-class HealthManager: ObservableObject {
-    public var healthSnaps: [HealthSnapStruct] = []
+final class HealthManager: ObservableObject {
+    var healthSnaps: [HealthSnapStruct] = []
+    @Published var processingTask: Task<Void, Never>? = nil
+
+    @Published var weightSamples: Int = 0
+    @Published var weightAverage: CGFloat = 0
+    @Published var weightAverageStr: String = ""
+    @Published var minimumWeightStr: String = ""
+    @Published var maximumWeightStr: String = ""
+    @Published var weightCorrelationsMood: [CGFloat?] = [nil, nil, nil, nil]
+    @Published var weightData: [CGFloat?] = []
+    @Published var minWeight: CGFloat = 0
+    @Published var maxWeight: CGFloat = 0
+
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
@@ -13,11 +25,11 @@ class HealthManager: ObservableObject {
                                   HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!]
 
         healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
-            if success {
-                print("Authorization complete")
-            } else {
-                print("Authorization error: \(String(describing: error?.localizedDescription))")
-            }
+            //            if success {
+            //                print("Authorization complete")
+            //            } else {
+            //                print("Authorization error: \(String(describing: error?.localizedDescription))")
+            //            }
         })
     }
 
@@ -27,10 +39,16 @@ class HealthManager: ObservableObject {
 
         healthSnaps = []
 
+        //        let group = DispatchGroup()
+
         while date >= earliest {
             makeHealthSnapForDate(date: date)
             date = date.addDays(days: -1)
         }
+
+        //        group.notify(queue: DispatchQueue.global()) {
+        //          // handler: self.processHealth()
+        //        }
     }
 
     func makeHealthSnapForDate(date: Date) {
@@ -52,82 +70,82 @@ class HealthManager: ObservableObject {
                                               limit: HKObjectQueryNoLimit,
                                               sortDescriptors: nil,
                                               resultsHandler: { _, results, _ in
-                                                  DispatchQueue.main.async {
-                                                      let maxWeight = self.maxWeight(results: results)
-                                                      if maxWeight != nil {
-                                                          var healthSnap = HealthSnapStruct()
-                                                          healthSnap.timestamp = date
-                                                          healthSnap.weight = CGFloat(maxWeight!)
-                                                          self.healthSnaps.append(healthSnap)
-                                                      }
-                                                  }
-                                              })
+            DispatchQueue.global(qos: .userInteractive).async {
+                let maxWeight = self.maxWeight(results: results)
+                if maxWeight != nil {
+                    var healthSnap = HealthSnapStruct()
+                    healthSnap.timestamp = date
+                    healthSnap.weight = CGFloat(maxWeight!)
+                    self.healthSnaps.append(healthSnap)
+                }
+            }
+        })
 
         let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance,
                                                 predicate: predicate,
                                                 limit: HKObjectQueryNoLimit,
                                                 sortDescriptors: nil,
                                                 resultsHandler: { _, results, _ in
-                                                    DispatchQueue.main.async {
-                                                        let distance = self.totalDistance(results: results)
-                                                        if distance != nil {
-                                                            var healthSnap = HealthSnapStruct()
-                                                            healthSnap.timestamp = date
-                                                            healthSnap.walkingRunningDistance = CGFloat(distance!)
-                                                            self.healthSnaps.append(healthSnap)
-                                                        }
-                                                    }
-                                                })
+            DispatchQueue.global(qos: .userInteractive).async {
+                let distance = self.totalDistance(results: results)
+                if distance != nil {
+                    var healthSnap = HealthSnapStruct()
+                    healthSnap.timestamp = date
+                    healthSnap.walkingRunningDistance = CGFloat(distance!)
+                    self.healthSnaps.append(healthSnap)
+                }
+            }
+        })
 
         let sampleQueryActiveEnergy = HKSampleQuery(sampleType: quantityTypeActiveEnergy,
                                                     predicate: predicate,
                                                     limit: HKObjectQueryNoLimit,
                                                     sortDescriptors: nil,
                                                     resultsHandler: { _, results, _ in
-                                                        DispatchQueue.main.async {
-                                                            let energy = self.totalEnergy(results: results)
-                                                            if energy != nil {
-                                                                var healthSnap = HealthSnapStruct()
-                                                                healthSnap.timestamp = date
-                                                                healthSnap.activeEnergy = CGFloat(energy!)
-                                                                self.healthSnaps.append(healthSnap)
-                                                            }
-                                                        }
-                                                    })
+            DispatchQueue.global(qos: .userInteractive).async {
+                let energy = self.totalEnergy(results: results)
+                if energy != nil {
+                    var healthSnap = HealthSnapStruct()
+                    healthSnap.timestamp = date
+                    healthSnap.activeEnergy = CGFloat(energy!)
+                    self.healthSnaps.append(healthSnap)
+                }
+            }
+        })
 
         let sampleQueryMenstrual = HKSampleQuery(sampleType: quantityTypeMenstrual,
                                                  predicate: predicate,
                                                  limit: HKObjectQueryNoLimit,
                                                  sortDescriptors: nil,
                                                  resultsHandler: { _, results, _ in
-                                                     DispatchQueue.main.async {
-                                                         let menstrual = self.maxMenstrual(results: results)
-                                                         if menstrual != nil {
-                                                             var healthSnap = HealthSnapStruct()
-                                                             healthSnap.timestamp = date
-                                                             healthSnap.menstrual = CGFloat(menstrual!)
-                                                             if healthSnap.menstrual != 0 {
-                                                                 self.healthSnaps.append(healthSnap)
-                                                             }
-                                                         }
-                                                     }
-                                                 })
+            DispatchQueue.global(qos: .userInteractive).async {
+                let menstrual = self.maxMenstrual(results: results)
+                if menstrual != nil {
+                    var healthSnap = HealthSnapStruct()
+                    healthSnap.timestamp = date
+                    healthSnap.menstrual = CGFloat(menstrual!)
+                    if healthSnap.menstrual != 0 {
+                        self.healthSnaps.append(healthSnap)
+                    }
+                }
+            }
+        })
 
         let sampleQuerySleep = HKSampleQuery(sampleType: quantityTypeSleep,
                                              predicate: predicate,
                                              limit: HKObjectQueryNoLimit,
                                              sortDescriptors: nil,
                                              resultsHandler: { _, results, _ in
-                                                 DispatchQueue.main.async {
-                                                     let sleep = self.totalSleep(results: results)
-                                                     if sleep != nil {
-                                                         var healthSnap = HealthSnapStruct()
-                                                         healthSnap.timestamp = date
-                                                         healthSnap.sleepHours = CGFloat(sleep!)
-                                                         self.healthSnaps.append(healthSnap)
-                                                     }
-                                                 }
-                                             })
+            DispatchQueue.global(qos: .userInteractive).async {
+                let sleep = self.totalSleep(results: results)
+                if sleep != nil {
+                    var healthSnap = HealthSnapStruct()
+                    healthSnap.timestamp = date
+                    healthSnap.sleepHours = CGFloat(sleep!)
+                    self.healthSnaps.append(healthSnap)
+                }
+            }
+        })
 
         healthStore.execute(sampleQueryWeight)
         healthStore.execute(sampleQueryDistance)
@@ -249,5 +267,57 @@ class HealthManager: ObservableObject {
         }
 
         return Double(flow)
+    }
+
+    /**
+     Pre-process data.
+     */
+    func process(data: DataStoreClass) async {
+        // Weight
+        let weightSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .weight)
+        let weightAverageUI = average(healthSnaps: self.healthSnaps, type: .weight) ?? 0.0
+        let weightAverageStrUI = getWeightString(value: weightAverage, units: data.settings.healthUnits)
+        let weightCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .weight)
+        let weightDataUI = getWeightData(data: data, health: self)
+        let minWeightUI = minWithNils(data: self.weightData) ?? 0
+        let maxWeightUI = maxWithNils(data: self.weightData) ?? 0
+        let minimumWeightStrUI = getWeightString(value: self.minWeight, units: data.settings.healthUnits)
+        let maximumWeightStrUI = getWeightString(value: self.maxWeight, units: data.settings.healthUnits)
+
+        DispatchQueue.main.async {
+            self.weightSamples = weightSamplesUI
+            self.weightAverage = weightAverageUI
+            self.weightAverageStr = weightAverageStrUI
+            self.weightCorrelationsMood = weightCorrelationsMoodUI
+            self.weightData = weightDataUI
+            self.minWeight = minWeightUI
+            self.maxWeight = maxWeightUI
+            self.minimumWeightStr = minimumWeightStrUI
+            self.maximumWeightStr = maximumWeightStrUI
+        }
+
+        // Processing
+        //        async let historyComplete = processHistory()
+
+        // Wait for all asynchronous threads to complete
+        //  await _ = [historyComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
+    }
+
+    /**
+     Start asynchronous processing of data
+     */
+    func startProcessing(priority: TaskPriority = .high, data: DataStoreClass) {
+        if self.processingTask != nil {
+            self.processingTask?.cancel()
+        }
+
+        DispatchQueue.main.async {
+            self.processingTask = Task(priority: priority) {
+                await self.process(data: data)
+                DispatchQueue.main.async {
+                    self.processingTask = nil
+                }
+            }
+        }
     }
 }

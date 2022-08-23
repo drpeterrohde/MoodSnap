@@ -5,18 +5,20 @@ import SwiftUI
  */
 struct TallyView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let windowMoodSnaps = getMoodSnapsByDateWindow(
-            moodSnaps: data.moodSnaps,
-            date: Date(),
-            windowStart: -timescale,
-            windowEnd: 0)
-        let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps, data: data)
-        let hashtagList: [String] = getHashtags(data: data)
-        let hashtagOccurrences: [Int] = countHashtagOccurrences(hashtags: hashtagList, moodSnaps: windowMoodSnaps)
-        let eventsList = getEventsList(moodSnaps: windowMoodSnaps, window: timescale)
+        let windowMoodSnaps = getMoodSnapsByDateWindow(data: data,
+                                                       date: Date(),
+                                                       windowStart: -timescale,
+                                                       windowEnd: 0)
+        let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps,
+                                                                                               data: data)
+       // let hashtagList: [String] = getHashtags(data: data)
+        let hashtagOccurrences: [Int] = countHashtagOccurrences(hashtags: data.hashtagList,
+                                                                moodSnaps: windowMoodSnaps)
+        let eventsList = getEventsList(data: data,
+                                       window: timescale)
 
         let activityTotal = activityOccurrences.reduce(0, +)
         let socialTotal = socialOccurrences.reduce(0, +)
@@ -155,15 +157,15 @@ struct TallyView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
-                        ForEach(0 ..< hashtagList.count, id: \.self) { i in
+                        ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
                             if hashtagOccurrences[i] > 0 {
-                                Text(hashtagList[i] + "  ")
+                                Text(data.hashtagList[i] + "  ")
                                     .font(.caption)
                             }
                         }
                     }
                     VStack(alignment: .leading) {
-                        ForEach(0 ..< hashtagList.count, id: \.self) { i in
+                        ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
                             if hashtagOccurrences[i] > 0 {
                                 Text(String(hashtagOccurrences[i]))
                                     .font(numericFont)

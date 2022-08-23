@@ -4,7 +4,7 @@ import SwiftUI
 /**
  Filter mestrual dates to jump consective `dates`.
  */
-func filterMenstrualDates(dates: [Date], data: DataStoreClass, health: HealthManager) -> [Date] {
+@inline(__always) func filterMenstrualDates(dates: [Date], data: DataStoreClass, health: HealthManager) -> [Date] {
     var date: Date = getFirstDate(moodSnaps: data.moodSnaps)
     let latest: Date = getLastDate(moodSnaps: data.moodSnaps)
     var dates: [Date] = []
@@ -27,7 +27,7 @@ func filterMenstrualDates(dates: [Date], data: DataStoreClass, health: HealthMan
 /**
  Make menstrual butterfly plot.
  */
-func makeMenstrualButterfly(entriesE: [CGFloat?], entriesD: [CGFloat?], entriesA: [CGFloat?], entriesI: [CGFloat?]) -> ButterflyEntryStruct {
+@inline(__always) func makeMenstrualButterfly(entriesE: [CGFloat?], entriesD: [CGFloat?], entriesA: [CGFloat?], entriesI: [CGFloat?]) -> ButterflyEntryStruct {
     var butterfly = ButterflyEntryStruct()
     butterfly.elevation = entriesE
     butterfly.depression = entriesD

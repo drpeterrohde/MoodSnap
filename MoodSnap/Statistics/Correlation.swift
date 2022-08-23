@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Get `health` correlations for a given health `type`.
  */
-func getCorrelation(data: DataStoreClass, health: HealthManager, type: HealthTypeEnum) -> [CGFloat?] {
+@inline(__always) func getCorrelation(data: DataStoreClass, health: HealthManager, type: HealthTypeEnum) -> [CGFloat?] {
     var samples: [CGFloat] = []
     var elevationSamples: [CGFloat] = []
     var depressionSamples: [CGFloat] = []
@@ -80,7 +80,7 @@ func getCorrelation(data: DataStoreClass, health: HealthManager, type: HealthTyp
 /**
  Calculate the slope of the line of best fit from `dataX` and `dataY`.
  */
-func slope(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+@inline(__always) func slope(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
     let (reducedX, reducedY) = reduceNils(dataX: dataX, dataY: dataY)
 
     if reducedX.count == 0 || reducedY.count == 0 || reducedX.count != reducedY.count {
@@ -110,7 +110,7 @@ func slope(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
 /**
  Calculate the Pearson correlation coefficient from `dataX` and `dataY`.
  */
-func pearson(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
+@inline(__always) func pearson(dataX: [CGFloat?], dataY: [CGFloat?]) -> CGFloat? {
     let (reducedX, reducedY) = reduceNils(dataX: dataX, dataY: dataY)
 
     if reducedX.count == 0 || reducedY.count == 0 || reducedX.count != reducedY.count {

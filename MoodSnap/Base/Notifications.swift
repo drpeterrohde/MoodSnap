@@ -21,8 +21,6 @@ func toggleReminder(which: Int, settings: SettingsStruct) {
  Update reminder notifications.
  */
 func updateNotifications(settings: SettingsStruct) {
-    print("Updating notifications")
-
     let center = UNUserNotificationCenter.current()
     center.removeAllPendingNotificationRequests()
 

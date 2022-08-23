@@ -43,22 +43,18 @@ struct MoodSnapView: View {
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].elevationColor)
                         Slider(value: $moodSnap.elevation, in: 0 ... 4, step: 1)
-                        //TickSlider(value: $moodSnap.elevation)
                         Text("depression")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].depressionColor)
                         Slider(value: $moodSnap.depression, in: 0 ... 4, step: 1)
-                        //TickSlider(value: $moodSnap.depression)
                         Text("anxiety")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].anxietyColor)
                         Slider(value: $moodSnap.anxiety, in: 0 ... 4, step: 1)
-                        //TickSlider(value: $moodSnap.anxiety)
                         Text("irritability")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].irritabilityColor)
                         Slider(value: $moodSnap.irritability, in: 0 ... 4, step: 1)
-                        //TickSlider(value: $moodSnap.irritability)
                     }
                 }
 
@@ -143,17 +139,14 @@ struct MoodSnapView: View {
                         moodSnap.snapType = .mood
                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                         data.moodSnaps.append(moodSnap)
-                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps) // ??? added
+                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         data.settings.addedSnaps += 1
                         let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
                         if quoteSnap != nil {
                             data.moodSnaps.append(quoteSnap!)
                         }
                         data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                        //DispatchQueue.global(qos: .userInteractive).async {
-                        Task(priority: .high) {
-                            await data.process()
-                        }
+                        data.startProcessing()
                     }
                     dismiss()
                 } label: { Image(systemName: "arrowtriangle.right.circle")

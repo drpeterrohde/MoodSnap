@@ -1,35 +1,35 @@
 import SwiftUI
 
 /**
- View showing active energy.
+ View showing walking & running distance.
  */
-struct ActiveEnergyView: View {
+struct WalkingRunningDistanceView: View {
     var timescale: Int
-    var data: DataStoreClass
-    var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .energy)
-        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .energy) ?? 0.0
-        let averageStr: String = getEnergyString(value: average, units: data.settings.healthUnits)
-        let energyData: [CGFloat?] = getEnergyData(data: data, health: health)
-        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .energy)
-        let entries = makeChartData(y: energyData, timescale: timescale)
+        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance)
+        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
+        let averageStr: String = getDistanceString(value: average, units: data.settings.healthUnits)
+        let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
+        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .distance)
+        let entries = makeChartData(y: distanceData, timescale: timescale)
 
         if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let maxEnergy: CGFloat = maxWithNils(data: energyData) ?? 0
-            let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits)
-
-            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
+            let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0
+            let maximumStr: String = getDistanceString(value: maxDistance, units: data.settings.healthUnits)
+            
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
                 .frame(height: 60)
 
             Spacer()
             HStack {
-                Text("Average_energy")
+                Text("Average_distance")
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
@@ -38,7 +38,7 @@ struct ActiveEnergyView: View {
                     .foregroundColor(.primary)
             }
             HStack {
-                Text("Maximum_energy")
+                Text("Maximum_distance")
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()

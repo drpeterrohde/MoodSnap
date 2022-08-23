@@ -1,16 +1,13 @@
 import SwiftUI
 
 /**
- View showing social influences.
+ View for dislpaying event influences.
  */
-struct InfluencesSocialView: View {
-    var data: DataStoreClass
+struct InfluencesEventsView: View {
+    @EnvironmentObject var data: DataStoreClass
     
     var body: some View {
-        let butterflies = data.processedData.socialButterfly
-        let occurrenceCount = countAllOccurrences(butterflies: butterflies)
-        
-        if (occurrenceCount == 0) {
+        if data.eventOccurrenceCount == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -19,29 +16,20 @@ struct InfluencesSocialView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
-            HStack{
+            HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            Text(.init(butterfly.activity)).font(.caption)
-                        }
-                    }
-                }
-                // Occurrences
-                VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            Text("(\(butterfly.occurrences))").font(.caption)
-                        }
+                    ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
+                        let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
+                        Text(butterfly.activity + dateString)
+                            .font(.caption)
                     }
                 }
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            HStack {
+                    ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
+                        HStack {
                             Text(formatMoodLevelString(value: butterfly.influence()[0]))
                                 .font(numericFont)
                                 .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[1]))
@@ -51,8 +39,7 @@ struct InfluencesSocialView: View {
                                 .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[3]))
                                 .font(numericFont)
                                 .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                            }.frame(width: 150)
-                        }
+                        }.frame(width: 150)
                     }
                 }
             }
@@ -66,26 +53,17 @@ struct InfluencesSocialView: View {
             HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            Text(.init(butterfly.activity)).font(.caption)
-                        }
-                    }
-                }
-                // Occurrences
-                VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            Text("(\(butterfly.occurrences))").font(.caption)
-                        }
+                    ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
+                        let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
+                        Text(butterfly.activity + dateString)
+                            .font(.caption)
                     }
                 }
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence()) {
-                            HStack {
+                    ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
+                        HStack {
                             Text(formatMoodLevelString(value: butterfly.influence()[4]))
                                 .font(numericFont)
                                 .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: butterfly.influence()[5]))
@@ -95,8 +73,7 @@ struct InfluencesSocialView: View {
                                 .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: butterfly.influence()[7]))
                                 .font(numericFont)
                                 .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                            }.frame(width: 150)
-                        }
+                        }.frame(width: 150)
                     }
                 }
             }

@@ -1,37 +1,35 @@
 import SwiftUI
 
 /**
- View showing sleeping time.
+ View showing active energy.
  */
-struct SleepView: View {
+struct ActiveEnergyView: View {
     var timescale: Int
-    var data: DataStoreClass
-    var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .sleep)
-        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .sleep) ?? 0.0
-        let averageStr: String = String(format: "%.1f", average) + "hrs"
-        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .sleep)
-        let sleepData: [CGFloat?] = getSleepData(data: data, health: health)
-        let entries = makeChartData(y: sleepData, timescale: timescale)
+        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .energy)
+        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .energy) ?? 0.0
+        let averageStr: String = getEnergyString(value: average, units: data.settings.healthUnits)
+        let energyData: [CGFloat?] = getEnergyData(data: data, health: health)
+        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .energy)
+        let entries = makeChartData(y: energyData, timescale: timescale)
 
         if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let maxSleep: CGFloat = maxWithNils(data: sleepData) ?? 0
+            let maxEnergy: CGFloat = maxWithNils(data: energyData) ?? 0
+            let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits)
 
-            VerticalBarChart(values: entries,
-                             color: themes[data.settings.theme].buttonColor,
-                             min: 0,
-                             max: maxSleep,
-                             settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
                 .frame(height: 60)
+
             Spacer()
             HStack {
-                Text("Average_sleep")
+                Text("Average_energy")
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
@@ -39,7 +37,15 @@ struct SleepView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
-
+            HStack {
+                Text("Maximum_energy")
+                    .font(.caption)
+                    .foregroundColor(.primary)
+                Spacer()
+                Text(maximumStr)
+                    .font(.caption)
+                    .foregroundColor(.primary)
+            }
             Divider()
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)

@@ -1,16 +1,13 @@
 import SwiftUI
 
 /**
- View for dislpaying hashtag influences.
+ View showing symptom influences.
  */
-struct InfluencesHashtagView: View {
-    var data: DataStoreClass
-    
+struct InfluencesSymptomView: View {
+    @EnvironmentObject var data: DataStoreClass
+
     var body: some View {
-        let butterflies = data.processedData.hashtagButterfly
-        let occurrenceCount = countAllOccurrences(butterflies: butterflies)
-        
-        if occurrenceCount == 0 {
+        if data.symptomOccurrenceCount == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -19,30 +16,28 @@ struct InfluencesHashtagView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
-            HStack{
+            HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text(butterfly.activity)
-                                .font(.caption)
+                            Text(.init(butterfly.activity)).font(.caption)
                         }
                     }
                 }
                 // Occurrences
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence())  {
-                            Text("(\(butterfly.occurrences))")
-                                .font(.caption)
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
+                        if hasData(data: butterfly.influence()) {
+                            Text("(\(butterfly.occurrences))").font(.caption)
                         }
                     }
                 }
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) {butterfly in
-                        if hasData(data: butterfly.influence())  {
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
+                        if hasData(data: butterfly.influence()) {
                             HStack {
                                 Text(formatMoodLevelString(value: butterfly.influence()[0]))
                                     .font(numericFont)
@@ -58,36 +53,34 @@ struct InfluencesHashtagView: View {
                     }
                 }
             }
-            
+
             Divider()
             Label("volatility", systemImage: "waveform.path.ecg")
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()
-            
+
             HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text(butterfly.activity)
-                                .font(.caption)
+                            Text(.init(butterfly.activity)).font(.caption)
                         }
                     }
                 }
                 // Occurrences
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
-                            Text("(\(butterfly.occurrences))")
-                                .font(.caption)
+                            Text("(\(butterfly.occurrences))").font(.caption)
                         }
                     }
                 }
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) {butterfly in
+                    ForEach(data.processedData.symptomButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             HStack {
                                 Text(formatMoodLevelString(value: butterfly.influence()[4]))

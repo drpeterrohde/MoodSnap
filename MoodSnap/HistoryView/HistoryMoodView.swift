@@ -9,7 +9,7 @@ struct HistoryMoodView: View {
 
     var body: some View {
         Divider()
-        MoodLevelsView(moodSnap: moodSnap, dataParse: data)
+        MoodLevelsView(moodSnap: moodSnap, theme: themes[data.settings.theme])
 
         Group {
             if totalSymptoms(moodSnap: moodSnap, settings: data.settings) != 0 {

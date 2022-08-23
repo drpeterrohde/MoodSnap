@@ -14,9 +14,11 @@ struct MoodSnapApp: App {
         WindowGroup {
             if !isUnlocked && data.settings.useFaceID {
                 UnlockView(isUnlocked: $isUnlocked)
+                    .environmentObject(data)
             } else {
                 ContentView()
                     .environmentObject(data)
+                    .environmentObject(health)
             }
         }.onChange(of: scenePhase) { value in
             if value == .background {
@@ -26,30 +28,25 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
+                data.startProcessing(priority: .background)
             }
             
             if value == .active {
-                if HKHealthStore.isHealthDataAvailable() {
-                    print("HealthKit is Available")
-                    health.requestPermissions()
-                    health.makeHealthSnaps(data: data)
-                    data.healthSnaps = health.healthSnaps
-                } else {
-                    print("There is a problem accessing HealthKit")
-                }
-                //DispatchQueue.global(qos: .userInteractive).async {
-                Task(priority: .high) {
-                    await data.process()
-                }
+//                if HKHealthStore.isHealthDataAvailable() {
+//                    health.requestPermissions()
+//                    health.makeHealthSnaps(data: data)
+//                    data.healthSnaps = health.healthSnaps
+//                }
+                StoreReviewHelper.incrementAppOpenedCount()
+                StoreReviewHelper.checkAndAskForReview()
+                data.startProcessing()
             }
             
             if value == .inactive {
                 DispatchQueue.main.async {
                     isUnlocked = false
                 }
-                //Task(priority: .background) {
-                //    await data.process()
-                //}
+                data.startProcessing(priority: .background)
             }
         }
     }

@@ -3,14 +3,14 @@ import SwiftUI
 struct PDFSingleMoodHistoryBarView: View {
     var type: MoodsEnum
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool
 
     var body: some View {
-        let entries = [Array(data.processedData.levelE.suffix(28)),
-                       Array(data.processedData.levelD.suffix(28)),
-                       Array(data.processedData.levelA.suffix(28)),
-                       Array(data.processedData.levelI.suffix(28))]
+        let entries = [Array(data.processedData.levelE.suffix(timescale)),
+                       Array(data.processedData.levelD.suffix(timescale)),
+                       Array(data.processedData.levelA.suffix(timescale)),
+                       Array(data.processedData.levelI.suffix(timescale))]
 
         if blackAndWhite {
             VerticalBarChart(values: entries[type.rawValue],

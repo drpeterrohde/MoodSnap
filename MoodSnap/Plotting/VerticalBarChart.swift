@@ -79,13 +79,15 @@ struct VerticalBarChart: View {
                     let thisColor = self.lineColor.opacity(opacity)
                     Path { path in
                         if values[i] != nil {
-                            let barWidth: CGFloat = (CGFloat(width) - spacing * (CGFloat(values.count) + 1.0)) / CGFloat(values.count)//, 1.0].max()!
-
+                            let barWidth: CGFloat = (CGFloat(width) - spacing * (CGFloat(values.count) + 1.0)) / CGFloat(values.count)
                             var barHeight: CGFloat
-                            if values[i]! == 0 {
+                            if values[i] == 0 {
                                 barHeight = (values[i]! + zeroGraphicalBarOffset - min) * CGFloat(height) / (max - min)
                             } else {
                                 barHeight = (values[i]! - min) * CGFloat(height) / (max - min)
+                            }
+                            if values[i] == nil {
+                                barHeight = 0
                             }
                             let xPos: CGFloat = spacing + CGFloat(i) * (barWidth + spacing)
                             let rect = CGRect(origin: CGPoint(x: xPos,

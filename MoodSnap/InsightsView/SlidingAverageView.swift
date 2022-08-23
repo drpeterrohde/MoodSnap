@@ -5,15 +5,14 @@ import SwiftUI
  */
 struct SlidingAverageView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let entriesE = makeLineData2(y: data.processedData.averageE, timescale: timescale)
-        let entriesD = makeLineData2(y: data.processedData.averageD, timescale: timescale)
-        let entriesA = makeLineData2(y: data.processedData.averageA, timescale: timescale)
-        let entriesI = makeLineData2(y: data.processedData.averageI, timescale: timescale)
+        let entriesE = makeLineData(y: data.processedData.averageE, timescale: timescale)
+        let entriesD = makeLineData(y: data.processedData.averageD, timescale: timescale)
+        let entriesA = makeLineData(y: data.processedData.averageA, timescale: timescale)
+        let entriesI = makeLineData(y: data.processedData.averageI, timescale: timescale)
         let entries = [entriesE, entriesD, entriesA, entriesI]
-
         let color = moodUIColors(settings: data.settings)
 
         if data.moodSnaps.count == 0 {

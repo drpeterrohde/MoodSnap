@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Count the total occurrences of symptoms and activites within the array of `butterflies`.
  */
-func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
+@inline(__always) func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
     var occurrences: Int = 0
     for butterfly in butterflies {
         occurrences += butterfly.occurrences
@@ -14,7 +14,7 @@ func countAllOccurrences(butterflies: [ButterflyEntryStruct]) -> Int {
 /**
  Count the total occurrences of symptoms, activites & social within the array `moodSnaps`.
  */
-func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreClass) -> ([Int], [Int], [Int]) {
+@inline(__always) func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreClass) -> ([Int], [Int], [Int]) {
     var symptomCount: [Int] = Array(repeating: 0, count: symptomList.count)
     var activityCount: [Int] = Array(repeating: 0, count: activityList.count)
     var socialCount: [Int] = Array(repeating: 0, count: socialList.count)

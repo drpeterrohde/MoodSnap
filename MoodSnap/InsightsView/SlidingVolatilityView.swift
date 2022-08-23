@@ -5,15 +5,14 @@ import SwiftUI
  */
 struct SlidingVolatilityView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     
     var body: some View {
-        let entriesE = makeLineData2(y: data.processedData.volatilityE, timescale: timescale)
-        let entriesD = makeLineData2(y: data.processedData.volatilityD, timescale: timescale)
-        let entriesA = makeLineData2(y: data.processedData.volatilityA, timescale: timescale)
-        let entriesI = makeLineData2(y: data.processedData.volatilityI, timescale: timescale)
+        let entriesE = makeLineData(y: data.processedData.volatilityE, timescale: timescale)
+        let entriesD = makeLineData(y: data.processedData.volatilityD, timescale: timescale)
+        let entriesA = makeLineData(y: data.processedData.volatilityA, timescale: timescale)
+        let entriesI = makeLineData(y: data.processedData.volatilityI, timescale: timescale)
         let entries = [entriesE, entriesD, entriesA, entriesI]
-        
         let color = moodUIColors(settings: data.settings)
         
         if (data.moodSnaps.count == 0) {

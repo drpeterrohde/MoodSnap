@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct HistoryQuoteView: View {
     let moodSnap: MoodSnapStruct
-  //  @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
         Group {

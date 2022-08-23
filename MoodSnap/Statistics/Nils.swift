@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Eliminate nils from two sequences
  */
-func reduceNils(dataX: [CGFloat?], dataY: [CGFloat?]) -> ([CGFloat?], [CGFloat?]) {
+@inline(__always) func reduceNils(dataX: [CGFloat?], dataY: [CGFloat?]) -> ([CGFloat?], [CGFloat?]) {
     var newDataX: [CGFloat?] = []
     var newDataY: [CGFloat?] = []
 
@@ -22,7 +22,7 @@ func reduceNils(dataX: [CGFloat?], dataY: [CGFloat?]) -> ([CGFloat?], [CGFloat?]
 /**
  How many non-nil joint samples are there?
  */
-func nonNilSamples(dataX: [CGFloat?], dataY: [CGFloat?]) -> Int {
+@inline(__always) func nonNilSamples(dataX: [CGFloat?], dataY: [CGFloat?]) -> Int {
     let (reducedX, _) = reduceNils(dataX: dataX, dataY: dataY)
     return reducedX.count
 }

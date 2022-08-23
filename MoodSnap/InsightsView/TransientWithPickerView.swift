@@ -5,14 +5,14 @@ import SwiftUI
  */
 struct TransientWithPickerView: View {
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     @State private var selectedActivity: Int = 0
     @State private var selectedSocial: Int = 0
     @State private var selectedSymptom: Int = 0
     @State private var selectedEvent: Int = 0
     @State private var selectedHashtag: Int = 0
     @State private var selectionType: InfluenceTypeEnum = .activity
-
+    
     var body: some View {
         let butterfly = transientByType(
             type: selectionType,
@@ -22,20 +22,18 @@ struct TransientWithPickerView: View {
             event: selectedEvent,
             hashtag: selectedHashtag,
             processedData: data.processedData)
-
         let (label, int) = transientLabel(selectionType: selectionType)
-
+        
         VStack {
             TransientView(butterfly: butterfly,
                           label: label,
-                          timescale: 2 * int + 1,
-                          data: data)
+                          timescale: 2 * int + 1)
             TransientReferencePickerView(selectedActivity: $selectedActivity,
                                          selectedSocial: $selectedSocial,
                                          selectedSymptom: $selectedSymptom,
                                          selectedEvent: $selectedEvent,
-                                         selectionType: $selectionType,
-                                         data: data)
+                                         selectedHashtag: $selectedHashtag,
+                                         selectionType: $selectionType)
         }
     }
 }
@@ -46,7 +44,7 @@ struct TransientWithPickerView: View {
 func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
     var str: String = ""
     var int: Int = 0
-
+    
     if selectionType == .event {
         str = "pm_30_days"
         int = butterflyWindowLong
@@ -54,6 +52,6 @@ func transientLabel(selectionType: InfluenceTypeEnum) -> (String, Int) {
         str = "pm_7_days"
         int = butterflyWindowShort
     }
-
+    
     return (str, int)
 }

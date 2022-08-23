@@ -5,7 +5,7 @@ import SwiftUI
  */
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
-    @Binding var data: DataStoreStruct
+    @EnvironmentObject var data: DataStoreClass
     @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
@@ -38,9 +38,9 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("accessibility")) {
-//                    Toggle(isOn: $data.settings.useFaceID, label: {
-//                        Text("use_lockscreen")
-//                    })
+                    Toggle(isOn: $data.settings.useFaceID, label: {
+                        Text("use_lockscreen")
+                    })
 
                     Picker("theme", selection: $data.settings.theme) {
                         ForEach(0 ..< themes.count, id: \.self) { i in
@@ -56,7 +56,7 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.quoteVisibility, label: {
                         Text("show_quotes")
                     })
-                    
+
                     Picker("measurement_units", selection: $data.settings.healthUnits) {
                         Text("metric")
                             .tag(MeasurementUnitsEnum.metric)
@@ -82,9 +82,9 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
                         Text("black_and_white")
                     })
-                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
-                        Text("include_guide")
-                    })
+//                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
+//                        Text("include_guide")
+//                    })
                     Toggle(isOn: $data.settings.includeNotes, label: {
                         Text("include_notes")
                     })
@@ -94,7 +94,7 @@ struct SettingsView: View {
                     }) {
                         Text("generate_PDF_report")
                     }.sheet(isPresented: $showingReportSheet) {
-                        ReportView(data: data, timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
+                        ReportView(timescale: data.settings.reportPeriod, blackAndWhite: data.settings.reportBlackAndWhite)
                     }
                 }
 
@@ -116,29 +116,31 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Health")) {
-                    Toggle(isOn: $data.settings.useHealthKit, label: {
-                        Text("Use Apple Health")
-                    })
-                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
-                        Text("Walking & running distance")
-                    })
-                        .disabled(!data.settings.useHealthKit)
-                    Toggle(isOn: $data.settings.healthSleepOn, label: {
-                        Text("Sleep")
-                    })
-                        .disabled(!data.settings.useHealthKit)
-                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
-                        Text("Active energy")
-                    })
-                        .disabled(!data.settings.useHealthKit)
-                    Toggle(isOn: $data.settings.healthWeightOn, label: {
-                        Text("Weight")
-                    })
-                        .disabled(!data.settings.useHealthKit)
-                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
-                        Text("Menstrual cycle")
-                    })
-                        .disabled(!data.settings.useHealthKit)
+                    Text("Apple Health integeration is being saved for a future version pending major redesign of the functionality.")
+                        .font(.caption)
+//                    Toggle(isOn: $data.settings.useHealthKit, label: {
+//                        Text("Use Apple Health")
+//                    })
+//                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
+//                        Text("Walking & running distance")
+//                    })
+//                        .disabled(!data.settings.useHealthKit)
+//                    Toggle(isOn: $data.settings.healthSleepOn, label: {
+//                        Text("Sleep")
+//                    })
+//                        .disabled(!data.settings.useHealthKit)
+//                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
+//                        Text("Active energy")
+//                    })
+//                        .disabled(!data.settings.useHealthKit)
+//                    Toggle(isOn: $data.settings.healthWeightOn, label: {
+//                        Text("Weight")
+//                    })
+//                        .disabled(!data.settings.useHealthKit)
+//                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
+//                        Text("Menstrual cycle")
+//                    })
+//                        .disabled(!data.settings.useHealthKit)
                 }
 
                 Group {
@@ -202,11 +204,8 @@ struct SettingsView: View {
                 Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
-                            //DispatchQueue.global(qos: .userInteractive).async {
                             data.moodSnaps = makeDemoData()
-                            Task(priority: .high) {
-                                await data.process()
-                            }
+                            data.startProcessing()
                         } else {
                             showingImportAlert.toggle()
                         }
@@ -221,32 +220,35 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
-                        //DispatchQueue.global(qos: .userInteractive).async {
                         data.moodSnaps = []
-                        Task(priority: .high) {
-                            await data.process()
-                        }
+                        data.startProcessing()
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
             }.fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(data: data)), contentType: .plainText) { result in
-                switch result {
-                case .success:
-                    break
-                case let .failure(error):
-                    print(error.localizedDescription)
-                }
+//                switch result {
+//                case .success:
+//                    break
+//                case let .failure(error):
+//                    break
+//                    //print(error.localizedDescription)
+//                }
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
-                    data = decodeJSONString(url: fileUrl)
-                    //DispatchQueue.global(qos: .userInteractive).async {
-                    Task(priority: .high) {
-                        await data.process()
-                    }
+                    let retrieved = decodeJSONString(url: fileUrl)
+
+                    data.id = retrieved.id
+                    data.version = retrieved.version
+                    data.settings = retrieved.settings
+                    data.uxState = retrieved.uxState
+                    data.moodSnaps = retrieved.moodSnaps
+                    data.healthSnaps = retrieved.healthSnaps
+                    data.processedData = retrieved.processedData
+                    data.startProcessing()
                 } catch {
-                    print("Failed to import backup file")
-                    print(error.localizedDescription)
+                    //print("Failed to import backup file")
+                    //print(error.localizedDescription)
                 }
                 dismiss()
             }.alert(isPresented: $showingImportAlert) {

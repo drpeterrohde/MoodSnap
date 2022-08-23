@@ -8,12 +8,11 @@ struct TransientReferencePickerView: View {
     @Binding var selectedSocial: Int
     @Binding var selectedSymptom: Int
     @Binding var selectedEvent: Int
+    @Binding var selectedHashtag: Int
     @Binding var selectionType: InfluenceTypeEnum
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let eventsList = getEventsList(moodSnaps: data.moodSnaps)
-
         HStack {
             Picker("", selection: $selectionType) {
                 Text("activity")
@@ -22,7 +21,11 @@ struct TransientReferencePickerView: View {
                     .tag(InfluenceTypeEnum.social)
                 Text("symptom")
                     .tag(InfluenceTypeEnum.symptom)
-                if eventsList.count > 0 {
+                if data.hashtagList.count > 0 {
+                    Text("hashtag")
+                        .tag(InfluenceTypeEnum.hashtag)
+                }
+                if data.eventsList.count > 0 {
                     Text("event")
                         .tag(InfluenceTypeEnum.event)
                 }
@@ -30,11 +33,21 @@ struct TransientReferencePickerView: View {
 
             Spacer()
 
+            // Hashtags
+            if selectionType == InfluenceTypeEnum.hashtag {
+                Picker("", selection: $selectedHashtag) {
+                    ForEach(0 ..< data.hashtagList.count, id: \.self) { i in
+                        Text("\(data.hashtagList[i])")
+                            .tag(i)
+                    }
+                }.padding(.trailing, 10)
+            }
+            
             // Events
             if selectionType == InfluenceTypeEnum.event {
                 Picker("", selection: $selectedEvent) {
-                    ForEach(0 ..< eventsList.count, id: \.self) { i in
-                        Text("\(eventsList[i].0) (\(eventsList[i].1.dateString()))")
+                    ForEach(0 ..< data.eventsList.count, id: \.self) { i in
+                        Text("\(data.eventsList[i].0) (\(data.eventsList[i].1.dateString()))")
                             .tag(i)
                     }
                 }.padding(.trailing, 10)

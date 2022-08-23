@@ -5,8 +5,8 @@ import SwiftUI
  */
 struct MenstrualView: View {
     var timescale: Int
-    var data: DataStoreClass
-    var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
 
     var body: some View {
         let menstrualData: [CGFloat?] = getMenstrualData(data: data,
@@ -15,7 +15,7 @@ struct MenstrualView: View {
                                     timescale: timescale)
         let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
         let butterfly = averageMenstrualTransientForDates(dates: dates,
-                                                          moodSnaps: data.moodSnaps,
+                                                          data: data,
                                                           maxWindow: menstrualTransientWindow)
 
         let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)
@@ -42,8 +42,7 @@ struct MenstrualView: View {
             TransientView(butterfly: butterfly,
                           label: "pm_14_days",
                           timescale: 2 * menstrualTransientWindow + 1,
-                          showNumbers: false,
-                          data: data)
+                          showNumbers: false)
         }
     }
 }

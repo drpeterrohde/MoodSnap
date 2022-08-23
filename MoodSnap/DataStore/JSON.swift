@@ -29,42 +29,42 @@ struct JSONFile: FileDocument {
  */
 func encodeJSONString(data: DataStoreClass) -> String {
     do {
-        let jsonData = try JSONEncoder().encode(data)
+        let jsonData = try JSONEncoder().encode(data.toStruct())
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return jsonString
     } catch {
-        print("JSON encoding error")
+        //print("JSON encoding error")
     }
     return ""
 }
 
 /**
- Decode a JSON `url`  into a `DataStoreStruct`.
+ Decode a JSON `url`  into a `DataStoreClass`.
  */
 func decodeJSONString(url: URL) -> DataStoreStruct {
     var data = DataStoreStruct()
     do {
-        url.startAccessingSecurityScopedResource()
+        _ = url.startAccessingSecurityScopedResource()
         let rawData = try Data(contentsOf: url)
         data = try JSONDecoder().decode(DataStoreStruct.self, from: rawData)
         url.stopAccessingSecurityScopedResource()
     } catch {
-        print("Failed to import backup file")
-        print(error.localizedDescription)
+        //print("Failed to import backup file")
+        //print(error.localizedDescription)
     }
     return data
 }
 
-///**
-// Decode JSON `data` into a `DataStoreSturct`.
-// */
-//func decodeJSONString(data: Data) -> DataStoreClass {
-//    var decodedData = DataStoreClass()
-//    do {
-//        decodedData = try JSONDecoder().decode(DataStoreClass.self, from: data)
-//    } catch {
-//        print("Failed to import backup file")
-//        print(error.localizedDescription)
-//    }
-//    return decodedData
-//}
+/**
+ Decode JSON `data` into a `DataStoreSturct`.
+ */
+func decodeJSONString(data: Data) -> DataStoreStruct {
+    var decodedData = DataStoreStruct()
+    do {
+        decodedData = try JSONDecoder().decode(DataStoreStruct.self, from: data)
+    } catch {
+        //print("Failed to import backup file")
+        //print(error.localizedDescription)
+    }
+    return decodedData
+}

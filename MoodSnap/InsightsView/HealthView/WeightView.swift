@@ -5,32 +5,21 @@ import SwiftUI
  */
 struct WeightView: View {
     var timescale: Int
-    var data: DataStoreClass
-    var health: HealthManager
+    @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .weight)
-        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .weight) ?? 0.0
-        let averageStr: String = getWeightString(value: average, units: data.settings.healthUnits)
-        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .weight)
-        let weightData: [CGFloat?] = getWeightData(data: data, health: health)
-        let entries = makeChartData(y: weightData, timescale: timescale)
+        let entries = makeChartData(y: health.weightData, timescale: timescale)
 
-        if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
+        if health.weightSamples == 0 || health.weightCorrelationsMood[0] == nil || health.weightCorrelationsMood[1] == nil || health.weightCorrelationsMood[2] == nil || health.weightCorrelationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let minWeight: CGFloat = minWithNils(data: weightData) ?? 0
-            let maxWeight: CGFloat = maxWithNils(data: weightData) ?? 0
-
-            let minimumStr: String = getWeightString(value: minWeight, units: data.settings.healthUnits)
-            let maximumStr: String = getWeightString(value: maxWeight, units: data.settings.healthUnits)
-
             VerticalBarChart(values: entries,
                              color: themes[data.settings.theme].buttonColor,
                              min: 0/*minWeight - 0.5*/,
-                             max: maxWeight,
+                             max: health.maxWeight,
                              settings: data.settings)
                 .frame(height: 60)
 
@@ -40,7 +29,7 @@ struct WeightView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(averageStr)
+                Text(health.weightAverageStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -49,7 +38,7 @@ struct WeightView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(minimumStr)
+                Text(health.minimumWeightStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -58,7 +47,7 @@ struct WeightView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(maximumStr)
+                Text(health.maximumWeightStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -69,17 +58,17 @@ struct WeightView: View {
             HStack {
                 Text("Correlation")
                     .font(.caption)
-                Text("(\(samples))")
+                Text("(\(health.weightSamples))")
                     .font(.caption)
                 Spacer()
                 HStack {
-                    Text(formatMoodLevelString(value: correlationsMood[0]!))
+                    Text(formatMoodLevelString(value: health.weightCorrelationsMood[0]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: correlationsMood[1]!))
+                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: health.weightCorrelationsMood[1]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: correlationsMood[2]!))
+                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: health.weightCorrelationsMood[2]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: correlationsMood[3]!))
+                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.weightCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
                 }.frame(width: 150)

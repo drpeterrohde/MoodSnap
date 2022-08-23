@@ -16,19 +16,19 @@ struct ControlView: View {
     @State private var showingMediaSheet: Bool = false
     @State private var showingIntroPopover: Bool = false
 
-    init() {
-        //_data = data
-        //_health = health
-        showingMoodSnapSheet = false
-        showingSettingsSheet = false
-        showingStatsSheet = false
-        showingEmergencySheet = false
-        showingHelpSheet = false
-        showingNoteSheet = false
-        showingEventSheet = false
-        showingMediaSheet = false
-        showingIntroPopover = self.data.settings.firstUse
-    }
+//    init(data: DataStoreClass, health: HealthManager) {
+//        //data = data
+//        //health = health
+//        showingMoodSnapSheet = false
+//        showingSettingsSheet = false
+//        showingStatsSheet = false
+//        showingEmergencySheet = false
+//        showingHelpSheet = false
+//        showingNoteSheet = false
+//        showingEventSheet = false
+//        showingMediaSheet = false
+//        showingIntroPopover = self.data.settings.firstUse
+//    }
 
     var body: some View {
         Divider()
@@ -136,7 +136,7 @@ struct ControlView: View {
                 Spacer()
             }
         }.sheet(isPresented: $showingIntroPopover) {
-            IntroPopoverView(data: data)
+            IntroPopoverView()
         }
     }
 }

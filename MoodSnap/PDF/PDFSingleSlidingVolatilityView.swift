@@ -3,14 +3,14 @@ import SwiftUI
 struct PDFSingleSlidingVolatilityView: View {
     var type: MoodsEnum
     var timescale: Int
-    var data: DataStoreClass
+    @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool
     
     var body: some View {
-        let entries = [Array(data.processedData.volatilityE.suffix(28)),
-                       Array(data.processedData.volatilityD.suffix(28)),
-                       Array(data.processedData.volatilityA.suffix(28)),
-                       Array(data.processedData.volatilityI.suffix(28))]
+        let entries = [Array(data.processedData.volatilityE.suffix(timescale)),
+                       Array(data.processedData.volatilityD.suffix(timescale)),
+                       Array(data.processedData.volatilityA.suffix(timescale)),
+                       Array(data.processedData.volatilityI.suffix(timescale))]
         
         if blackAndWhite {
             VerticalBarChart(values: entries[type.rawValue],

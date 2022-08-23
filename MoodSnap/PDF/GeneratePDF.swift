@@ -1,12 +1,15 @@
 import SwiftUI
 import TPPDF
 
-func generatePDF(data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) -> URL? {
+func generatePDF(data: DataStoreClass, timescale: Int, blackAndWhite: Bool) -> URL? {
     let document = PDFDocument(format: .a4)
     document.info.author = "MoodSnap"
     document.info.title = "moodsnap_report"
 
-    generatePDFContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
+    generatePDFContent(document: document,
+                       data: data,
+                       timescale: timescale,
+                       blackAndWhite: blackAndWhite)
 
     let generator = PDFGenerator(document: document)
     var url: URL?
@@ -14,22 +17,33 @@ func generatePDF(data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawV
     do {
         try url = generator.generateURL(filename: "MoodSnap report.pdf")
     } catch {
-        print("PDF error")
+        // print("PDF error")
     }
 
     return url
 }
 
-func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
-    generateTitleHeaderFooterContent(document: document, data: data)
-    generateInfluencesContent(document: document, data: data, timescale: timescale)
-    generateAverageMoodContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
-    if data.settings.reportIncludeInterpretation {
-        generateInterpretationGuideContent(document: document, data: data)
-    }
-    generateMoodContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
+func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: Int, blackAndWhite: Bool) {
+    generateTitleHeaderFooterContent(document: document,
+                                     data: data)
+    generateInfluencesContent(document: document,
+                              data: data,
+                              timescale: timescale)
+    generateAverageMoodContent(document: document,
+                               data: data, timescale:
+                                timescale,
+                               blackAndWhite: blackAndWhite)
+//    if data.settings.reportIncludeInterpretation {
+//        generateInterpretationGuideContent(document: document, data: data)
+//    } 
+    generateMoodContent(document: document,
+                        data: data,
+                        timescale: timescale,
+                        blackAndWhite: blackAndWhite)
     if data.settings.includeNotes {
-        generateNotesContent(document: document, data: data, timescale: timescale)
+        generateNotesContent(document: document,
+                             data: data,
+                             timescale: timescale)
     }
 }
 
@@ -46,13 +60,15 @@ func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreClas
     if data.settings.username != "" {
         headerStr += " for \(data.settings.username)"
     }
+    headerStr += " " + Date().dateTimeString()
     let attributedHeader = NSAttributedString(string: headerStr, attributes: headerAttributes)
     var textElement = PDFAttributedText(text: attributedHeader)
     document.add(.headerCenter, attributedTextObject: textElement)
 
     // Footer
-    let footerStr = NSLocalizedString("report_generated_on", comment: "Report generated on ") + Date().dateTimeString()
-
+    //let footerStr = NSLocalizedString("report_generated_on", comment: "Report generated on ") + " " + Date().dateTimeString()
+    let footerStr = NSLocalizedString("interpretation_guide_at", comment: "Interpretation guide ")
+    
     let attributedFooter = NSAttributedString(string: footerStr, attributes: headerAttributes)
     textElement = PDFAttributedText(text: attributedFooter)
     document.add(.footerRight, attributedTextObject: textElement)
@@ -63,7 +79,7 @@ func generateTitleHeaderFooterContent(document: PDFDocument, data: DataStoreClas
     document.add(.contentCenter, attributedTextObject: textElement)
 }
 
-func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
+func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int, blackAndWhite: Bool) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -100,11 +116,17 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         let pageHeight = pageSize.height - pageMargin.top - pageMargin.bottom
         let graphHeight = pageHeight / 5
 
-        let view1 = PDFSingleMoodHistoryBarView(type: mood, timescale: timescale, data: data, blackAndWhite: blackAndWhite)
+        let view1 = PDFSingleMoodHistoryBarView(type: mood,
+                                                timescale: timescale,
+                                                blackAndWhite: blackAndWhite)
+            .environmentObject(data)
             .frame(width: pageWidth)
             .background(Color.white)
         let image1 = view1.asImage()
-        addImage(document: document, image: image1, width: pageWidth, height: graphHeight)
+        addImage(document: document,
+                 image: image1,
+                 width: pageWidth,
+                 height: graphHeight)
 
         // Sliding average
 
@@ -112,7 +134,10 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         textElement = PDFAttributedText(text: slidingAverageAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
-        let view2 = PDFSingleSlidingAverageView(type: mood, timescale: timescale, data: data, blackAndWhite: blackAndWhite).frame(width: 400).background(Color.white)
+        let view2 = PDFSingleSlidingAverageView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite)
+            .environmentObject(data)
+            .frame(width: 400)
+            .background(Color.white)
         let image2 = view2.asImage()
         addImage(document: document, image: image2, width: pageWidth, height: graphHeight)
 
@@ -122,13 +147,16 @@ func generateMoodContent(document: PDFDocument, data: DataStoreClass, timescale:
         textElement = PDFAttributedText(text: volatilityAttributedString)
         document.add(.contentCenter, attributedTextObject: textElement)
 
-        let view3 = PDFSingleSlidingVolatilityView(type: mood, timescale: timescale, data: data, blackAndWhite: blackAndWhite).frame(width: 400).background(Color.white)
+        let view3 = PDFSingleSlidingVolatilityView(type: mood, timescale: timescale, blackAndWhite: blackAndWhite)
+            .environmentObject(data)
+            .frame(width: 400)
+            .background(Color.white)
         let image3 = view3.asImage()
         addImage(document: document, image: image3, width: pageWidth, height: graphHeight)
     }
 }
 
-func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue) {
+func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, timescale: Int) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -174,7 +202,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(columnLabels[column], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
     }
 
@@ -188,7 +216,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(activityList[activityCount], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
 
         // Numerical cells
@@ -200,7 +228,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
-                print("PDF table eror")
+                // print("PDF table eror")
             }
         }
     }
@@ -215,7 +243,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
             try tableContent = PDFTableContent(content: NSLocalizedString(socialList[socialCount], comment: ""))
             cell.content = tableContent
         } catch {
-            print("PDF table eror")
+            // print("PDF table eror")
         }
 
         // Numerical cells
@@ -227,7 +255,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
                 cell.content = tableContent
                 cell.style = PDFTableCellStyle(font: UIFont.monospacedSystemFont(ofSize: 8, weight: .regular))
             } catch {
-                print("PDF table eror")
+                // print("PDF table eror")
             }
         }
     }
@@ -235,7 +263,7 @@ func generateInfluencesContent(document: PDFDocument, data: DataStoreClass, time
     document.add(.contentCenter, table: table)
 }
 
-func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue, blackAndWhite: Bool) {
+func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, timescale: Int, blackAndWhite: Bool) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
 
     // Font styles
@@ -253,7 +281,8 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, tim
     let textElement = PDFAttributedText(text: attributedMood)
     document.add(.contentLeft, attributedTextObject: textElement)
 
-    let view1 = PDFAverageMoodView(timescale: timescale, data: data, blackAndWhite: blackAndWhite)
+    let view1 = PDFAverageMoodView(timescale: timescale, blackAndWhite: blackAndWhite)
+        .environmentObject(data)
         .frame(width: 400, height: 200)
         .background(Color.white)
     let image1 = view1.asImage()
@@ -265,14 +294,15 @@ func generateAverageMoodContent(document: PDFDocument, data: DataStoreClass, tim
     let textElement2 = PDFAttributedText(text: attributedLevels)
     document.add(.contentLeft, attributedTextObject: textElement2)
 
-    let view2 = PDFMoodHistoryBarView(timescale: timescale, data: data, blackAndWhite: blackAndWhite)
+    let view2 = PDFMoodHistoryBarView(timescale: timescale, blackAndWhite: blackAndWhite)
+        .environmentObject(data)
         .frame(width: 500)
         .background(Color.white)
     let image2 = view2.asImage()
     addImage(document: document, image: image2, width: pageWidth / 2)
 }
 
-func generateNotesContent(document: PDFDocument, data: DataStoreClass, timescale: Int = TimeScaleEnum.month.rawValue) {
+func generateNotesContent(document: PDFDocument, data: DataStoreClass, timescale: Int) {
     let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
     let descriptorBody = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
         .withDesign(.serif)

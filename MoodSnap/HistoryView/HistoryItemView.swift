@@ -10,40 +10,38 @@ struct HistoryItemView: View {
     @EnvironmentObject var data: DataStoreClass
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
-    
+
     var body: some View {
         if snapFilter(moodSnap: moodSnap, filter: filter, searchText: searchText) && !(moodSnap.snapType == .quote && !data.settings.quoteVisibility) {
             GroupBox {
                 Group {
                     HStack {
-                        Group {
-                            if moodSnap.snapType == .mood {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "brain.head.profile")
-                                    .font(.caption)
-                            }
-                            if moodSnap.snapType == .note {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "note.text")
-                                    .font(.caption)
-                            }
-                            if moodSnap.snapType == .event {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "star.fill")
-                                    .font(.caption)
-                            }
-                            if moodSnap.snapType == .media {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo.on.rectangle.angled")
-                                    .font(.caption)
-                            }
-                            if moodSnap.snapType == .custom {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
-                                    .font(.caption)
-                            }
-                            if moodSnap.snapType == .quote && data.settings.quoteVisibility {
-                                Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
-                                    .labelStyle(.iconOnly)
-                                    .font(.caption)
-                            }
+                        if moodSnap.snapType == .mood {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "brain.head.profile")
+                                .font(.caption)
                         }
-                        
+                        if moodSnap.snapType == .note {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "note.text")
+                                .font(.caption)
+                        }
+                        if moodSnap.snapType == .event {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "star.fill")
+                                .font(.caption)
+                        }
+                        if moodSnap.snapType == .media {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "photo.on.rectangle.angled")
+                                .font(.caption)
+                        }
+                        if moodSnap.snapType == .custom {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "eye")
+                                .font(.caption)
+                        }
+                        if moodSnap.snapType == .quote && data.settings.quoteVisibility {
+                            Label(moodSnap.timestamp.dateTimeString(), systemImage: "quote.opening")
+                                .labelStyle(.iconOnly)
+                                .font(.caption)
+                        }
+
                         Spacer()
                         Menu {
                             if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event {
@@ -54,7 +52,7 @@ struct HistoryItemView: View {
                                     Text("edit")
                                 })
                             }
-                            
+
                             Button(role: .destructive, action: {
                                 showingDeleteAlert = true
                             }, label: {
@@ -62,10 +60,10 @@ struct HistoryItemView: View {
                                 Text("delete")
                             })
                         } label: { Image(systemName: "gearshape")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 15, height: 15)
-                                .foregroundColor(Color.primary)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 15, height: 15)
+                            .foregroundColor(Color.primary)
                         }
                         .sheet(isPresented: $showingMoodSnapSheet) {
                             switch moodSnap.snapType {
@@ -90,17 +88,14 @@ struct HistoryItemView: View {
                                     Text("delete"),
                                     action: {
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                                        //DispatchQueue.global(qos: .userInteractive).async {
-                                        Task(priority: .high) {
-                                            await data.process()
-                                        }
+                                        data.startProcessing()
                                     }
                                 )
                             )
                         }
                     }
                 }
-                
+
                 Group {
                     if moodSnap.snapType == .event {
                         HistoryEventView(moodSnap: moodSnap)

@@ -1,16 +1,13 @@
 import SwiftUI
 
 /**
- View showing symptom influences.
+ View showing activity influences.
  */
-struct InfluencesSymptomView: View {
-    var data: DataStoreClass
+struct InfluencesActivityView: View {
+    @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        let butterflies = data.processedData.symptomButterfly
-        let occurrenceCount = countAllOccurrences(butterflies: butterflies)
-
-        if occurrenceCount == 0 {
+        if data.activityOccurrenceCount == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -22,7 +19,7 @@ struct InfluencesSymptomView: View {
             HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             Text(.init(butterfly.activity)).font(.caption)
                         }
@@ -30,7 +27,7 @@ struct InfluencesSymptomView: View {
                 }
                 // Occurrences
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             Text("(\(butterfly.occurrences))").font(.caption)
                         }
@@ -39,7 +36,7 @@ struct InfluencesSymptomView: View {
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             HStack {
                                 Text(formatMoodLevelString(value: butterfly.influence()[0]))
@@ -66,7 +63,7 @@ struct InfluencesSymptomView: View {
             HStack {
                 // Activity
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             Text(.init(butterfly.activity)).font(.caption)
                         }
@@ -74,7 +71,7 @@ struct InfluencesSymptomView: View {
                 }
                 // Occurrences
                 VStack(alignment: .leading) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             Text("(\(butterfly.occurrences))").font(.caption)
                         }
@@ -83,7 +80,7 @@ struct InfluencesSymptomView: View {
                 Spacer()
                 // Numbers
                 VStack(alignment: .trailing) {
-                    ForEach(butterflies, id: \.id) { butterfly in
+                    ForEach(data.processedData.activityButterfly, id: \.id) { butterfly in
                         if hasData(data: butterfly.influence()) {
                             HStack {
                                 Text(formatMoodLevelString(value: butterfly.influence()[4]))
