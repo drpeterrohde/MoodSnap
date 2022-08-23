@@ -37,6 +37,8 @@ struct MoodSnapApp: App {
 //                    health.makeHealthSnaps(data: data)
 //                    data.healthSnaps = health.healthSnaps
 //                }
+                StoreReviewHelper.incrementAppOpenedCount()
+                StoreReviewHelper.checkAndAskForReview()
                 data.startProcessing()
             }
             

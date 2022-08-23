@@ -76,7 +76,8 @@ struct HistoryView: View {
                             Label("Search media", systemImage: "photo.on.rectangle.angled")
                                 .font(.subheadline)
                         }
-                    } label: { Image(systemName: "line.3.horizontal.decrease")
+                    } label: {
+                        Image(systemName: "line.3.horizontal.decrease")
                     }
                 }
             }
