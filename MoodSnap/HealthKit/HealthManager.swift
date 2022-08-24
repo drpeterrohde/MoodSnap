@@ -22,6 +22,22 @@ final class HealthManager: ObservableObject {
     @Published var sleepData: [CGFloat?] = []
     @Published var maxSleep: CGFloat = 0
     
+    @Published var energySamples: Int = 0
+    @Published var energyAverage: CGFloat = 0
+    @Published var energyAverageStr: String = ""
+    @Published var energyData: [CGFloat?] = []
+    @Published var energyCorrelationsMood: [CGFloat?] = [nil, nil, nil, nil]
+    @Published var maxEnergy: CGFloat = 0
+    @Published var maxEnergyStr: String = ""
+    
+    @Published var distanceSamples: Int = 0
+    @Published var distanceAverage: CGFloat = 0
+    @Published var distanceAverageStr: String = ""
+    @Published var distanceData: [CGFloat?] = []
+    @Published var distanceCorrelationsMood: [CGFloat?] = [nil, nil, nil, nil]
+    @Published var maxDistance: CGFloat = 0
+    @Published var maxDistanceStr: String = ""
+    
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
@@ -311,6 +327,22 @@ final class HealthManager: ObservableObject {
         let sleepDataUI = getSleepData(data: data, health: self)
         let maxSleepUI = maxWithNils(data: sleepDataUI) ?? 0
         
+        let energySamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
+        let energyAverageUI = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
+        let energyAverageStrUI = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
+        let energyDataUI = getEnergyData(data: data, health: self)
+        let energyCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .energy)
+        let maxEnergyUI = maxWithNils(data: energyDataUI) ?? 0
+        let maxEnergyStrUI = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
+
+        let distanceSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
+        let distanceAverageUI = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
+        let distanceAverageStrUI = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
+        let distanceDataUI = getDistanceData(data: data, health: self)
+        let distanceCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .distance)
+        let maxDistanceUI = maxWithNils(data: distanceDataUI) ?? 0
+        let maxDistanceStrUI = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
+        
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
             self.weightAverage = weightAverageUI
@@ -328,6 +360,22 @@ final class HealthManager: ObservableObject {
             self.sleepCorrelationsMood = sleepCorrelationsMoodUI
             self.sleepData = sleepDataUI
             self.maxSleep = maxSleepUI
+            
+            self.energySamples = energySamplesUI
+            self.energyAverage = energyAverageUI
+            self.energyAverageStr = energyAverageStrUI
+            self.energyData = energyDataUI
+            self.energyCorrelationsMood = energyCorrelationsMoodUI
+            self.maxEnergy = maxEnergyUI
+            self.maxEnergyStr = maxEnergyStrUI
+            
+            self.distanceSamples = distanceSamplesUI
+            self.distanceAverage = distanceAverageUI
+            self.distanceAverageStr = distanceAverageStrUI
+            self.distanceData = distanceDataUI
+            self.distanceCorrelationsMood = distanceCorrelationsMoodUI
+            self.maxDistance = maxDistanceUI
+            self.maxDistanceStr = maxDistanceStrUI
         }
 
         // Processing

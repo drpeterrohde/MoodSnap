@@ -9,22 +9,14 @@ struct WalkingRunningDistanceView: View {
     @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .distance)
-        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .distance) ?? 0.0
-        let averageStr: String = getDistanceString(value: average, units: data.settings.healthUnits)
-        let distanceData: [CGFloat?] = getDistanceData(data: data, health: health)
-        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .distance)
-        let entries = makeChartData(y: distanceData, timescale: timescale)
+        let entries = makeChartData(y: health.distanceData, timescale: timescale)
 
-        if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
+        if health.distanceSamples == 0 || health.distanceCorrelationsMood[0] == nil || health.distanceCorrelationsMood[1] == nil || health.distanceCorrelationsMood[2] == nil || health.distanceCorrelationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let maxDistance: CGFloat = maxWithNils(data: distanceData) ?? 0
-            let maximumStr: String = getDistanceString(value: maxDistance, units: data.settings.healthUnits)
-            
-            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxDistance, settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: health.maxDistance, settings: data.settings)
                 .frame(height: 60)
 
             Spacer()
@@ -33,7 +25,7 @@ struct WalkingRunningDistanceView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(averageStr)
+                Text(health.distanceAverageStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -42,7 +34,7 @@ struct WalkingRunningDistanceView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(maximumStr)
+                Text(health.maxDistanceStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -53,17 +45,17 @@ struct WalkingRunningDistanceView: View {
             HStack {
                 Text("Correlation")
                     .font(.caption)
-                Text("(\(samples))")
+                Text("(\(health.distanceSamples))")
                     .font(.caption)
                 Spacer()
                 HStack {
-                    Text(formatMoodLevelString(value: correlationsMood[0]!))
+                    Text(formatMoodLevelString(value: health.distanceCorrelationsMood[0]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: correlationsMood[1]!))
+                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: health.distanceCorrelationsMood[1]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: correlationsMood[2]!))
+                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: health.distanceCorrelationsMood[2]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: correlationsMood[3]!))
+                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.distanceCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
                 }.frame(width: 150)

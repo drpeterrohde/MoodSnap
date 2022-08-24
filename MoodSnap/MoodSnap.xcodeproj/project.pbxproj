@@ -459,8 +459,8 @@
 			children = (
 				CA496B1B27EBEF290067EE63 /* SleepView.swift */,
 				CA496B2227EBEF290067EE63 /* WeightView.swift */,
-				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
 				CA496B1627EBEF290067EE63 /* ActiveEnergyView.swift */,
+				CA496B1527EBEF290067EE63 /* WalkingRunningDistanceView.swift */,
 				CA496B2027EBEF290067EE63 /* MenstrualView.swift */,
 			);
 			path = HealthView;

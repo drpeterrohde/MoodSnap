@@ -9,22 +9,14 @@ struct ActiveEnergyView: View {
     @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let samples: Int = countHealthSnaps(healthSnaps: health.healthSnaps, type: .energy)
-        let average: CGFloat = average(healthSnaps: health.healthSnaps, type: .energy) ?? 0.0
-        let averageStr: String = getEnergyString(value: average, units: data.settings.healthUnits)
-        let energyData: [CGFloat?] = getEnergyData(data: data, health: health)
-        let correlationsMood: [CGFloat?] = getCorrelation(data: data, health: health, type: .energy)
-        let entries = makeChartData(y: energyData, timescale: timescale)
+        let entries = makeChartData(y: health.energyData, timescale: timescale)
 
-        if samples == 0 || correlationsMood[0] == nil || correlationsMood[1] == nil || correlationsMood[2] == nil || correlationsMood[3] == nil {
+        if health.energySamples == 0 || health.energyCorrelationsMood[0] == nil || health.energyCorrelationsMood[1] == nil || health.energyCorrelationsMood[2] == nil || health.energyCorrelationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            let maxEnergy: CGFloat = maxWithNils(data: energyData) ?? 0
-            let maximumStr: String = getEnergyString(value: maxEnergy, units: data.settings.healthUnits)
-
-            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: maxEnergy, settings: data.settings)
+            VerticalBarChart(values: entries, color: themes[data.settings.theme].buttonColor, min: 0, max: health.maxEnergy, settings: data.settings)
                 .frame(height: 60)
 
             Spacer()
@@ -33,7 +25,7 @@ struct ActiveEnergyView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(averageStr)
+                Text(health.energyAverageStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -42,7 +34,7 @@ struct ActiveEnergyView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
                 Spacer()
-                Text(maximumStr)
+                Text(health.maxEnergyStr)
                     .font(.caption)
                     .foregroundColor(.primary)
             }
@@ -53,17 +45,17 @@ struct ActiveEnergyView: View {
             HStack {
                 Text("Correlation")
                     .font(.caption)
-                Text("(\(samples))")
+                Text("(\(health.energySamples))")
                     .font(.caption)
                 Spacer()
                 HStack {
-                    Text(formatMoodLevelString(value: correlationsMood[0]!))
+                    Text(formatMoodLevelString(value: health.energyCorrelationsMood[0]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: correlationsMood[1]!))
+                        .foregroundColor(themes[data.settings.theme].elevationColor) + Text(formatMoodLevelString(value: health.energyCorrelationsMood[1]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: correlationsMood[2]!))
+                        .foregroundColor(themes[data.settings.theme].depressionColor) + Text(formatMoodLevelString(value: health.energyCorrelationsMood[2]!))
                         .font(numericFont)
-                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: correlationsMood[3]!))
+                        .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.energyCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
                 }.frame(width: 150)

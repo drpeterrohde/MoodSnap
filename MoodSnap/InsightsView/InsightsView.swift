@@ -456,77 +456,77 @@ struct InsightsView: View {
                                     }
                                 }
                                 
-//                                if data.settings.healthDistanceOn {
-//                                    GroupBox {
-//                                        HStack {
-//                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
-//                                            HStack {
-//                                                Image(systemName: "figure.walk")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: iconWidth, height: iconWidth)
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    .font(.subheadline.bold())
-//                                                Text("Walking_running_distance")
-//                                                    .font(.subheadline.bold())
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                Spacer()
-//                                            }
-//                                            Spacer()
-//                                            Button(action: {
-//                                                withAnimation(.easeInOut) {
-//                                                    data.uxState.isWalkingRunningDistanceExpanded.toggle()
-//                                                }
-//                                            }) {
-//                                                if data.uxState.isWalkingRunningDistanceExpanded {
-//                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                } else {
-//                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                }
-//                                            }
-//                                        }
-//                                        if data.uxState.isWalkingRunningDistanceExpanded {
-//                                            //Divider()
-//                                            WalkingRunningDistanceView(timescale: timescale)
-//                                        }
-//                                    }
-//                                }
+                                if data.settings.healthDistanceOn {
+                                    GroupBox {
+                                        HStack {
+                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
+                                            HStack {
+                                                Image(systemName: "figure.walk")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
+                                                Text("Walking_running_distance")
+                                                    .font(.subheadline.bold())
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isWalkingRunningDistanceExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isWalkingRunningDistanceExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isWalkingRunningDistanceExpanded {
+                                            //Divider()
+                                            WalkingRunningDistanceView(timescale: timescale)
+                                        }
+                                    }
+                                }
                                 
-//                                if data.settings.healthEnergyOn {
-//                                    GroupBox {
-//                                        HStack {
-//                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
-//                                            HStack {
-//                                                Image(systemName: "bolt.heart")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: iconWidth, height: iconWidth)
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    .font(.subheadline.bold())
-//                                                Text("Active_energy")
-//                                                    .font(.subheadline.bold())
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                Spacer()
-//                                            }
-//                                            Spacer()
-//                                            Button(action: {
-//                                                withAnimation(.easeInOut) {
-//                                                    data.uxState.isActiveEnergyExpanded.toggle()
-//                                                }
-//                                            }) {
-//                                                if data.uxState.isActiveEnergyExpanded {
-//                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                } else {
-//                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                }
-//                                            }
-//                                        }
-//                                        if data.uxState.isActiveEnergyExpanded {
-//                                            //Divider()
-//                                            ActiveEnergyView(timescale: timescale)
-//                                        }
-//                                    }
-//                                }
+                                if data.settings.healthEnergyOn {
+                                    GroupBox {
+                                        HStack {
+                                            // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
+                                            HStack {
+                                                Image(systemName: "bolt.heart")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
+                                                Text("Active_energy")
+                                                    .font(.subheadline.bold())
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isActiveEnergyExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isActiveEnergyExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isActiveEnergyExpanded {
+                                            //Divider()
+                                            ActiveEnergyView(timescale: timescale)
+                                        }
+                                    }
+                                }
                                 
                                 if data.settings.healthSleepOn {
                                     GroupBox {
