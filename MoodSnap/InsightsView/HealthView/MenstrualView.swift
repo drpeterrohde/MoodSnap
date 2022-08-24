@@ -9,15 +9,7 @@ struct MenstrualView: View {
     @EnvironmentObject var health: HealthManager
 
     var body: some View {
-        let menstrualData: [CGFloat?] = getMenstrualData(data: data,
-                                                         health: health)
-        let entries = makeChartData(y: menstrualData,
-                                    timescale: timescale)
-        let dates = getMenstrualDates(healthSnaps: health.healthSnaps)
-        let butterfly = averageMenstrualTransientForDates(dates: dates,
-                                                          data: data,
-                                                          maxWindow: menstrualTransientWindow)
-
+        let entries = makeChartData(y: health.menstrualData, timescale: timescale)
         let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)
         let entriesD = makeChartData(y: data.processedData.levelD, timescale: timescale)
         let entriesA = makeChartData(y: data.processedData.levelA, timescale: timescale)
@@ -26,7 +18,7 @@ struct MenstrualView: View {
 
         let color = moodUIColors(settings: data.settings)
 
-        if dates.count == 0 {
+        if health.menstrualDates.count == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -39,7 +31,7 @@ struct MenstrualView: View {
                                       settings: data.settings)
                 .frame(height: 100)
             Spacer(minLength: 20)
-            TransientView(butterfly: butterfly,
+            TransientView(butterfly: health.menstrualButterfly,
                           label: "pm_14_days",
                           timescale: 2 * menstrualTransientWindow + 1,
                           showNumbers: false)

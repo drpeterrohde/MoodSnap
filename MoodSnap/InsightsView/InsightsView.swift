@@ -408,8 +408,8 @@ struct InsightsView: View {
                             }
                         }
                         
-//                        Group {
-//                            if data.settings.useHealthKit && (data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn) {
+                        Group {
+                            if data.settings.useHealthKit && (data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn) {
                                 HStack {
                                     Text("HEALTH")
                                         .font(.caption)
@@ -419,7 +419,7 @@ struct InsightsView: View {
                                 .padding(.leading, 10)
                                 .padding(.top, 2)
                                 .padding(.bottom, -5)
-
+                                
                                 if data.settings.healthWeightOn {
                                     GroupBox {
                                         HStack {
@@ -563,42 +563,42 @@ struct InsightsView: View {
                                     }
                                 }
                                 
-//                                if data.settings.healthMenstrualOn {
-//                                    GroupBox {
-//                                        HStack {
-//                                            HStack {
-//                                                Image(systemName: "staroflife")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: iconWidth, height: iconWidth)
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    .font(.subheadline.bold())
-//                                                Text("Menstrual_cycle")
-//                                                    .font(.subheadline.bold())
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                Spacer()
-//                                            }
-//                                            Spacer()
-//                                            Button(action: {
-//                                                withAnimation(.easeInOut) {
-//                                                    data.uxState.isMenstrualExpanded.toggle()
-//                                                }
-//                                            }) {
-//                                                if data.uxState.isMenstrualExpanded {
-//                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                } else {
-//                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                }
-//                                            }
-//                                        }
-//                                        if data.uxState.isMenstrualExpanded {
-//                                            //Divider()
-//                                            MenstrualView(timescale: timescale)
-//                                        }
-//                                    }
-//                                }
-                           // }
-                      //  }
+                                if data.settings.healthMenstrualOn {
+                                    GroupBox {
+                                        HStack {
+                                            HStack {
+                                                Image(systemName: "staroflife")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
+                                                Text("Menstrual_cycle")
+                                                    .font(.subheadline.bold())
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isMenstrualExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isMenstrualExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isMenstrualExpanded {
+                                            //Divider()
+                                            MenstrualView(timescale: timescale)
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -38,6 +38,10 @@ final class HealthManager: ObservableObject {
     @Published var maxDistance: CGFloat = 0
     @Published var maxDistanceStr: String = ""
     
+    @Published var menstrualData: [CGFloat?] = []
+    @Published var menstrualDates: [Date] = []
+    @Published var menstrualButterfly: ButterflyEntryStruct = ButterflyEntryStruct()
+    
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
@@ -320,6 +324,7 @@ final class HealthManager: ObservableObject {
         let minimumWeightStrUI = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
         let maximumWeightStrUI = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
 
+        // Sleep
         let sleepSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
         let sleepAverageUI = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
         let sleepAverageStrUI = String(format: "%.1f", sleepAverageUI) + "hrs"
@@ -327,6 +332,7 @@ final class HealthManager: ObservableObject {
         let sleepDataUI = getSleepData(data: data, health: self)
         let maxSleepUI = maxWithNils(data: sleepDataUI) ?? 0
         
+        // Active energy
         let energySamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
         let energyAverageUI = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
         let energyAverageStrUI = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
@@ -335,6 +341,7 @@ final class HealthManager: ObservableObject {
         let maxEnergyUI = maxWithNils(data: energyDataUI) ?? 0
         let maxEnergyStrUI = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
 
+        // Walking & running distance
         let distanceSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
         let distanceAverageUI = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
         let distanceAverageStrUI = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
@@ -342,6 +349,11 @@ final class HealthManager: ObservableObject {
         let distanceCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .distance)
         let maxDistanceUI = maxWithNils(data: distanceDataUI) ?? 0
         let maxDistanceStrUI = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
+        
+        // Menstrual
+        let menstrualDataUI = getMenstrualData(data: data, health: self)
+        let menstrualDatesUI = getMenstrualDates(healthSnaps: self.healthSnaps)
+        let menstrualButterflyUI = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
@@ -376,13 +388,11 @@ final class HealthManager: ObservableObject {
             self.distanceCorrelationsMood = distanceCorrelationsMoodUI
             self.maxDistance = maxDistanceUI
             self.maxDistanceStr = maxDistanceStrUI
+            
+            self.menstrualData = menstrualDataUI
+            self.menstrualDates = menstrualDatesUI
+            self.menstrualButterfly = menstrualButterflyUI
         }
-
-        // Processing
-        //        async let historyComplete = processHistory()
-
-        // Wait for all asynchronous threads to complete
-        //  await _ = [historyComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
 
     /**
