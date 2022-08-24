@@ -4,7 +4,6 @@ import SwiftUI
 final class HealthManager: ObservableObject {
     var healthSnaps: [HealthSnapStruct] = []
     @Published var processingTask: Task<Void, Never>? = nil
-
     @Published var weightSamples: Int = 0
     @Published var weightAverage: CGFloat = 0
     @Published var weightAverageStr: String = ""
@@ -39,19 +38,23 @@ final class HealthManager: ObservableObject {
 
         healthSnaps = []
 
-        //        let group = DispatchGroup()
+        let group = DispatchGroup()
 
         while date >= earliest {
-            makeHealthSnapForDate(date: date)
+            makeHealthSnapForDate(date: date, group: group)
             date = date.addDays(days: -1)
         }
 
-        //        group.notify(queue: DispatchQueue.global()) {
-        //          // handler: self.processHealth()
-        //        }
+        group.notify(queue: DispatchQueue.global()) {
+            print("Finished dispatchgroup")
+            DispatchQueue.main.async {
+                data.healthSnaps = self.healthSnaps
+            }
+            self.startProcessing(data: data)
+        }
     }
 
-    func makeHealthSnapForDate(date: Date) {
+    func makeHealthSnapForDate(date: Date, group: DispatchGroup) {
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
 
@@ -65,6 +68,7 @@ final class HealthManager: ObservableObject {
                                                     end: endDate,
                                                     options: .strictStartDate)
 
+        group.enter()
         let sampleQueryWeight = HKSampleQuery(sampleType: quantityTypeWeight,
                                               predicate: predicate,
                                               limit: HKObjectQueryNoLimit,
@@ -78,9 +82,11 @@ final class HealthManager: ObservableObject {
                     healthSnap.weight = CGFloat(maxWeight!)
                     self.healthSnaps.append(healthSnap)
                 }
+                group.leave()
             }
         })
 
+        group.enter()
         let sampleQueryDistance = HKSampleQuery(sampleType: quantityTypeDistance,
                                                 predicate: predicate,
                                                 limit: HKObjectQueryNoLimit,
@@ -94,9 +100,11 @@ final class HealthManager: ObservableObject {
                     healthSnap.walkingRunningDistance = CGFloat(distance!)
                     self.healthSnaps.append(healthSnap)
                 }
+                group.leave()
             }
         })
 
+        group.enter()
         let sampleQueryActiveEnergy = HKSampleQuery(sampleType: quantityTypeActiveEnergy,
                                                     predicate: predicate,
                                                     limit: HKObjectQueryNoLimit,
@@ -110,9 +118,11 @@ final class HealthManager: ObservableObject {
                     healthSnap.activeEnergy = CGFloat(energy!)
                     self.healthSnaps.append(healthSnap)
                 }
+                group.leave()
             }
         })
 
+        group.enter()
         let sampleQueryMenstrual = HKSampleQuery(sampleType: quantityTypeMenstrual,
                                                  predicate: predicate,
                                                  limit: HKObjectQueryNoLimit,
@@ -128,9 +138,11 @@ final class HealthManager: ObservableObject {
                         self.healthSnaps.append(healthSnap)
                     }
                 }
+                group.leave()
             }
         })
 
+        group.enter()
         let sampleQuerySleep = HKSampleQuery(sampleType: quantityTypeSleep,
                                              predicate: predicate,
                                              limit: HKObjectQueryNoLimit,
@@ -144,6 +156,7 @@ final class HealthManager: ObservableObject {
                     healthSnap.sleepHours = CGFloat(sleep!)
                     self.healthSnaps.append(healthSnap)
                 }
+                group.leave()
             }
         })
 

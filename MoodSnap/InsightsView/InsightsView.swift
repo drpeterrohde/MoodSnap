@@ -10,8 +10,6 @@ struct InsightsView: View {
     @State var timescale: Int = TimeScaleEnum.month.rawValue
     
     var body: some View {
-        //let _ = health.startProcessing(data: data)
-        
         NavigationView {
             // ScrollView {
             VStack {
