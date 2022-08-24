@@ -528,40 +528,40 @@ struct InsightsView: View {
 //                                    }
 //                                }
                                 
-//                                if data.settings.healthSleepOn {
-//                                    GroupBox {
-//                                        HStack {
-//                                            HStack {
-//                                                Image(systemName: "bed.double")
-//                                                    .resizable()
-//                                                    .scaledToFit()
-//                                                    .frame(width: iconWidth, height: iconWidth)
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    .font(.subheadline.bold())
-//                                                Text("Sleep")
-//                                                    .font(.subheadline.bold())
-//                                                    .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                Spacer()
-//                                            }
-//                                            Spacer()
-//                                            Button(action: {
-//                                                withAnimation(.easeInOut) {
-//                                                    data.uxState.isSleepExpanded.toggle()
-//                                                }
-//                                            }) {
-//                                                if data.uxState.isSleepExpanded {
-//                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                } else {
-//                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                }
-//                                            }
-//                                        }
-//                                        if data.uxState.isSleepExpanded {
-//                                            //Divider()
-//                                            SleepView(timescale: timescale)
-//                                        }
-//                                    }
-//                                }
+                                if data.settings.healthSleepOn {
+                                    GroupBox {
+                                        HStack {
+                                            HStack {
+                                                Image(systemName: "bed.double")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .frame(width: iconWidth, height: iconWidth)
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    .font(.subheadline.bold())
+                                                Text("Sleep")
+                                                    .font(.subheadline.bold())
+                                                    .foregroundColor(themes[data.settings.theme].iconColor)
+                                                Spacer()
+                                            }
+                                            Spacer()
+                                            Button(action: {
+                                                withAnimation(.easeInOut) {
+                                                    data.uxState.isSleepExpanded.toggle()
+                                                }
+                                            }) {
+                                                if data.uxState.isSleepExpanded {
+                                                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                } else {
+                                                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                }
+                                            }
+                                        }
+                                        if data.uxState.isSleepExpanded {
+                                            //Divider()
+                                            SleepView(timescale: timescale)
+                                        }
+                                    }
+                                }
                                 
 //                                if data.settings.healthMenstrualOn {
 //                                    GroupBox {

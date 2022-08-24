@@ -4,6 +4,7 @@ import SwiftUI
 final class HealthManager: ObservableObject {
     var healthSnaps: [HealthSnapStruct] = []
     @Published var processingTask: Task<Void, Never>? = nil
+    
     @Published var weightSamples: Int = 0
     @Published var weightAverage: CGFloat = 0
     @Published var weightAverageStr: String = ""
@@ -13,7 +14,14 @@ final class HealthManager: ObservableObject {
     @Published var weightData: [CGFloat?] = []
     @Published var minWeight: CGFloat = 0
     @Published var maxWeight: CGFloat = 0
-
+    
+    @Published var sleepSamples: Int = 0
+    @Published var sleepAverage: CGFloat = 0
+    @Published var sleepAverageStr: String = ""
+    @Published var sleepCorrelationsMood: [CGFloat?] = [nil, nil, nil, nil]
+    @Published var sleepData: [CGFloat?] = []
+    @Published var maxSleep: CGFloat = 0
+    
     public let healthStore = HKHealthStore()
 
     public func requestPermissions() {
@@ -36,7 +44,7 @@ final class HealthManager: ObservableObject {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
-        healthSnaps = []
+        self.healthSnaps = []
 
         let group = DispatchGroup()
 
@@ -296,6 +304,13 @@ final class HealthManager: ObservableObject {
         let minimumWeightStrUI = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
         let maximumWeightStrUI = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
 
+        let sleepSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
+        let sleepAverageUI = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
+        let sleepAverageStrUI = String(format: "%.1f", sleepAverageUI) + "hrs"
+        let sleepCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .sleep)
+        let sleepDataUI = getSleepData(data: data, health: self)
+        let maxSleepUI = maxWithNils(data: sleepDataUI) ?? 0
+        
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
             self.weightAverage = weightAverageUI
@@ -306,6 +321,13 @@ final class HealthManager: ObservableObject {
             self.maxWeight = maxWeightUI
             self.minimumWeightStr = minimumWeightStrUI
             self.maximumWeightStr = maximumWeightStrUI
+            
+            self.sleepSamples = sleepSamplesUI
+            self.sleepAverage = sleepAverageUI
+            self.sleepAverageStr = sleepAverageStrUI
+            self.sleepCorrelationsMood = sleepCorrelationsMoodUI
+            self.sleepData = sleepDataUI
+            self.maxSleep = maxSleepUI
         }
 
         // Processing
