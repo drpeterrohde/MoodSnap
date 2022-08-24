@@ -13,71 +13,78 @@ struct HistoryView: View {
     
     var body: some View {
         NavigationView {
-            ScrollView {
-                ForEach(data.moodSnaps, id: \.id) { moodSnap in
-                    HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText)
+            ScrollViewReader { scrollView in
+                ScrollView {
+                    ForEach(data.moodSnaps, id: \.id) { moodSnap in
+                        HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText)
+                    }
+                    Spacer()
                 }
-                Spacer()
-            }
-            .navigationBarTitle(Text("history"))
-            .navigationBarTitleDisplayMode(.inline)
-            .searchable(
-                text: $searchText,
-                placement: .navigationBarDrawer(displayMode: .always),
-                prompt: LocalizedStringKey(searchPrompt)
-            )
-            .onChange(of: isSearching) { newValue in
-                if !newValue {
-                    filter = .none
-                    searchText = ""
-                    searchPrompt = "search_all"
+                .navigationBarTitle(Text("history"))
+                .navigationBarTitleDisplayMode(.inline)
+                .searchable(
+                    text: $searchText,
+                    placement: .navigationBarDrawer(displayMode: .always),
+                    prompt: LocalizedStringKey(searchPrompt)
+                )
+                .onChange(of: isSearching) { newValue in
+                    if !newValue {
+                        filter = .none
+                        searchText = ""
+                        searchPrompt = "search_all"
+                    }
                 }
-            }
-            .toolbar {
-                ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
-                    Menu() {
-                        Button(action: {
-                            filter = .none
-                            searchText = ""
-                            searchPrompt = "Search all"
-                        }) {
-                            Label("Search all", systemImage: "magnifyingglass")
-                                .font(.subheadline)
+                .onTapGesture(count: 2) {
+                    withAnimation(.easeOut(duration: 1.0)) {
+                        scrollView.scrollTo(0, anchor: .bottom)
+                    }
+                }
+                .toolbar {
+                    ToolbarItem(placement: ToolbarItemPlacement.navigationBarTrailing) {
+                        Menu() {
+                            Button(action: {
+                                filter = .none
+                                searchText = ""
+                                searchPrompt = "Search all"
+                            }) {
+                                Label("Search all", systemImage: "magnifyingglass")
+                                    .font(.subheadline)
+                            }
+                            Button(action: {
+                                filter = .mood
+                                searchText = ""
+                                searchPrompt = "Search MoodSnaps"
+                            }) {
+                                Label("Search MoodSnaps", systemImage: "brain.head.profile")
+                                    .font(.subheadline)
+                            }
+                            Button(action: {
+                                filter = .event
+                                searchText = ""
+                                searchPrompt = "Search events"
+                            }) {
+                                Label("Search events", systemImage: "star.fill")
+                                    .font(.subheadline)
+                            }
+                            Button(action: {
+                                filter = .note
+                                searchText = ""
+                                searchPrompt = "Search notes"
+                            }) {
+                                Label("Search notes", systemImage: "note.text")
+                                    .font(.subheadline)
+                            }
+                            Button(action: {
+                                filter = .media
+                                searchText = ""
+                                searchPrompt = "Search media"
+                            }) {
+                                Label("Search media", systemImage: "photo.on.rectangle.angled")
+                                    .font(.subheadline)
+                            }
+                        } label: {
+                            Image(systemName: "line.3.horizontal.decrease")
                         }
-                        Button(action: {
-                            filter = .mood
-                            searchText = ""
-                            searchPrompt = "Search MoodSnaps"
-                        }) {
-                            Label("Search MoodSnaps", systemImage: "brain.head.profile")
-                                .font(.subheadline)
-                        }
-                        Button(action: {
-                            filter = .event
-                            searchText = ""
-                            searchPrompt = "Search events"
-                        }) {
-                            Label("Search events", systemImage: "star.fill")
-                                .font(.subheadline)
-                        }
-                        Button(action: {
-                            filter = .note
-                            searchText = ""
-                            searchPrompt = "Search notes"
-                        }) {
-                            Label("Search notes", systemImage: "note.text")
-                                .font(.subheadline)
-                        }
-                        Button(action: {
-                            filter = .media
-                            searchText = ""
-                            searchPrompt = "Search media"
-                        }) {
-                            Label("Search media", systemImage: "photo.on.rectangle.angled")
-                                .font(.subheadline)
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease")
                     }
                 }
             }
