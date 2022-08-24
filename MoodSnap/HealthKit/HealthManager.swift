@@ -46,7 +46,6 @@ final class HealthManager: ObservableObject {
         }
 
         group.notify(queue: DispatchQueue.global()) {
-            print("Finished dispatchgroup")
             DispatchQueue.main.async {
                 data.healthSnaps = self.healthSnaps
             }
@@ -289,13 +288,13 @@ final class HealthManager: ObservableObject {
         // Weight
         let weightSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .weight)
         let weightAverageUI = average(healthSnaps: self.healthSnaps, type: .weight) ?? 0.0
-        let weightAverageStrUI = getWeightString(value: weightAverage, units: data.settings.healthUnits)
+        let weightAverageStrUI = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
         let weightCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .weight)
         let weightDataUI = getWeightData(data: data, health: self)
-        let minWeightUI = minWithNils(data: self.weightData) ?? 0
-        let maxWeightUI = maxWithNils(data: self.weightData) ?? 0
-        let minimumWeightStrUI = getWeightString(value: self.minWeight, units: data.settings.healthUnits)
-        let maximumWeightStrUI = getWeightString(value: self.maxWeight, units: data.settings.healthUnits)
+        let minWeightUI = minWithNils(data: weightDataUI) ?? 0
+        let maxWeightUI = maxWithNils(data: weightDataUI) ?? 0
+        let minimumWeightStrUI = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
+        let maximumWeightStrUI = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
 
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
