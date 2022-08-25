@@ -60,6 +60,9 @@ final class HealthManager: ObservableObject {
         })
     }
 
+    /**
+     Generate `HealthSnapStruct`s for all dates and start processing.
+     */
     func makeHealthSnaps(data: DataStoreClass) {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
@@ -81,6 +84,9 @@ final class HealthManager: ObservableObject {
         }
     }
 
+    /**
+     Generate `HealthSnapStruct`s for a given date.
+     */
     func makeHealthSnapForDate(date: Date, group: DispatchGroup) {
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
@@ -314,46 +320,46 @@ final class HealthManager: ObservableObject {
      */
     func process(data: DataStoreClass) async {
         // Weight
-        let weightSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .weight)
-        let weightAverageUI = average(healthSnaps: self.healthSnaps, type: .weight) ?? 0.0
-        let weightAverageStrUI = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
-        let weightCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .weight)
-        let weightDataUI = getWeightData(data: data, health: self)
-        let minWeightUI = minWithNils(data: weightDataUI) ?? 0
-        let maxWeightUI = maxWithNils(data: weightDataUI) ?? 0
-        let minimumWeightStrUI = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
-        let maximumWeightStrUI = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
+        let weightSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .weight)
+        let weightAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .weight) ?? 0.0
+        let weightAverageStrUI: String = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
+        let weightCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .weight)
+        let weightDataUI: [CGFloat?] = getWeightData(data: data, health: self)
+        let minWeightUI: CGFloat = minWithNils(data: weightDataUI) ?? 0
+        let maxWeightUI: CGFloat = maxWithNils(data: weightDataUI) ?? 0
+        let minimumWeightStrUI: String = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
+        let maximumWeightStrUI: String = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
 
         // Sleep
-        let sleepSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
-        let sleepAverageUI = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
-        let sleepAverageStrUI = String(format: "%.1f", sleepAverageUI) + "hrs"
-        let sleepCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .sleep)
-        let sleepDataUI = getSleepData(data: data, health: self)
-        let maxSleepUI = maxWithNils(data: sleepDataUI) ?? 0
+        let sleepSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
+        let sleepAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
+        let sleepAverageStrUI: String = String(format: "%.1f", sleepAverageUI) + "hrs"
+        let sleepCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .sleep)
+        let sleepDataUI: [CGFloat?] = getSleepData(data: data, health: self)
+        let maxSleepUI: CGFloat = maxWithNils(data: sleepDataUI) ?? 0
         
         // Active energy
-        let energySamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
-        let energyAverageUI = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
-        let energyAverageStrUI = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
-        let energyDataUI = getEnergyData(data: data, health: self)
-        let energyCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .energy)
-        let maxEnergyUI = maxWithNils(data: energyDataUI) ?? 0
-        let maxEnergyStrUI = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
+        let energySamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
+        let energyAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
+        let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
+        let energyDataUI: [CGFloat?] = getEnergyData(data: data, health: self)
+        let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .energy)
+        let maxEnergyUI: CGFloat = maxWithNils(data: energyDataUI) ?? 0
+        let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
 
         // Walking & running distance
-        let distanceSamplesUI = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
-        let distanceAverageUI = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
-        let distanceAverageStrUI = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
-        let distanceDataUI = getDistanceData(data: data, health: self)
-        let distanceCorrelationsMoodUI = getCorrelation(data: data, health: self, type: .distance)
-        let maxDistanceUI = maxWithNils(data: distanceDataUI) ?? 0
-        let maxDistanceStrUI = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
+        let distanceSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
+        let distanceAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
+        let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
+        let distanceDataUI: [CGFloat?] = getDistanceData(data: data, health: self)
+        let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .distance)
+        let maxDistanceUI: CGFloat = maxWithNils(data: distanceDataUI) ?? 0
+        let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
         
         // Menstrual
-        let menstrualDataUI = getMenstrualData(data: data, health: self)
-        let menstrualDatesUI = getMenstrualDates(healthSnaps: self.healthSnaps)
-        let menstrualButterflyUI = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
+        let menstrualDataUI: [CGFloat?] = getMenstrualData(data: data, health: self)
+        let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: self.healthSnaps)
+        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI

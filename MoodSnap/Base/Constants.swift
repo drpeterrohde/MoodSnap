@@ -1,8 +1,5 @@
 import SwiftUI
 
-/// Version
-let versionString = "1.1"
-
 /// Quote frequency
 let quoteFrequency = 11
 
