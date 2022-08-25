@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="moodsnap_logo" translatesAutoresizingMaskIntoConstraints="NO" id="HSq-sW-6RA">
-                                <rect key="frame" x="98" y="207" width="198" height="114"/>
+                                <rect key="frame" x="102" y="272" width="198" height="114"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
