@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		CA0C523D281614A000B1595C /* SuperimposedBarLineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA4547FF2817CE78006037DA /* Menstrual.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4547FE2817CE78006037DA /* Menstrual.swift */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
@@ -104,7 +103,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperimposedBarLineChart.swift; sourceTree = "<group>"; };
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA4547FE2817CE78006037DA /* Menstrual.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menstrual.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
@@ -299,7 +297,6 @@
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
 				CA87642B2814D7A1000FEEEC /* LineChart.swift */,
 				CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */,
-				CA0C523C281614A000B1595C /* SuperimposedBarLineChart.swift */,
 			);
 			path = Plotting;
 			sourceTree = "<group>";
@@ -623,7 +620,6 @@
 				CA496B8E27EBEF2A0067EE63 /* HistoryView.swift in Sources */,
 				CA496B8027EBEF2A0067EE63 /* MoodHistoryBarView.swift in Sources */,
 				CA58162028B4E04D000E4C8A /* AppStoreReview.swift in Sources */,
-				CA0C523D281614A000B1595C /* SuperimposedBarLineChart.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
 				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
