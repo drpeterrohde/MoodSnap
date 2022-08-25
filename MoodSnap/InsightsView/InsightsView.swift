@@ -613,7 +613,7 @@ struct InsightsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                    if data.processingTask != nil {
+                    if data.processingTask != nil || health.processingTask != nil {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                     }
