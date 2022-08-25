@@ -23,14 +23,20 @@ struct MenstrualView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            SuperimposedBarLineChart(barData: entries,
+            /*SuperimposedBarLineChart(barData: entries,
                                       lineData: moodEntries,
                                       barColor: themes[data.settings.theme].buttonColor,
                                       lineColor: [Color(color[0]), Color(color[1]), Color(color[2]), Color(color[3])],
                                       shaded: true,
                                       settings: data.settings)
-                .frame(height: 100)
-            Spacer(minLength: 20)
+                .frame(height: 100)*/
+            VerticalBarChart(values: entries,
+                             color: themes[data.settings.theme].buttonColor,
+                             min: 0,
+                             max: 1,
+                             settings: data.settings)
+                .frame(height: 60)
+            //Spacer(minLength: 20)
             TransientView(butterfly: health.menstrualButterfly,
                           label: "pm_14_days",
                           timescale: 2 * menstrualTransientWindow + 1,

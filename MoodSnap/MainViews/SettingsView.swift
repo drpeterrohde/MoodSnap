@@ -116,31 +116,31 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Health")) {
-                    Text("Apple Health integeration is being saved for a future version pending major redesign of the functionality.")
-                        .font(.caption)
-//                    Toggle(isOn: $data.settings.useHealthKit, label: {
-//                        Text("Use Apple Health")
-//                    })
-//                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
-//                        Text("Walking & running distance")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthSleepOn, label: {
-//                        Text("Sleep")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
-//                        Text("Active energy")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthWeightOn, label: {
-//                        Text("Weight")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
-//                        Text("Menstrual cycle")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
+                   // Text("Apple Health integeration is being saved for a future version pending major redesign of the functionality.")
+                     //   .font(.caption)
+                    Toggle(isOn: $data.settings.useHealthKit, label: {
+                        Text("Use Apple Health")
+                    })
+                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
+                        Text("Walking & running distance")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthSleepOn, label: {
+                        Text("Sleep")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
+                        Text("Active energy")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthWeightOn, label: {
+                        Text("Weight")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
+                        Text("Menstrual cycle")
+                    })
+                        .disabled(!data.settings.useHealthKit)
                 }
 
                 Group {
