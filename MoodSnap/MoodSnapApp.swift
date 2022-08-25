@@ -32,10 +32,10 @@ struct MoodSnapApp: App {
             }
             
             if value == .active {
-                if HKHealthStore.isHealthDataAvailable() {
-                    health.requestPermissions()
-                    health.makeHealthSnaps(data: data)
-                }
+//                if HKHealthStore.isHealthDataAvailable() {
+//                    health.requestPermissions()
+//                    health.makeHealthSnaps(data: data)
+//                }
                 StoreReviewHelper.incrementAppOpenedCount()
                 StoreReviewHelper.checkAndAskForReview()
                 data.startProcessing()
