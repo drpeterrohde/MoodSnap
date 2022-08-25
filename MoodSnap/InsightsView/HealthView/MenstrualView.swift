@@ -10,13 +10,13 @@ struct MenstrualView: View {
 
     var body: some View {
         let entries = makeChartData(y: health.menstrualData, timescale: timescale)
-        let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)
-        let entriesD = makeChartData(y: data.processedData.levelD, timescale: timescale)
-        let entriesA = makeChartData(y: data.processedData.levelA, timescale: timescale)
-        let entriesI = makeChartData(y: data.processedData.levelI, timescale: timescale)
-        let moodEntries = [entriesE, entriesD, entriesA, entriesI]
+        // let entriesE = makeChartData(y: data.processedData.levelE, timescale: timescale)
+        // let entriesD = makeChartData(y: data.processedData.levelD, timescale: timescale)
+        // let entriesA = makeChartData(y: data.processedData.levelA, timescale: timescale)
+        // let entriesI = makeChartData(y: data.processedData.levelI, timescale: timescale)
+        // let moodEntries = [entriesE, entriesD, entriesA, entriesI]
 
-        let color = moodUIColors(settings: data.settings)
+        //let color = moodUIColors(settings: data.settings)
 
         if health.menstrualDates.count == 0 {
             Text("insufficient_data")

@@ -316,10 +316,9 @@ final class HealthManager: ObservableObject {
     }
 
     /**
-     Pre-process data.
+     Process weight data.
      */
-    func process(data: DataStoreClass) async {
-        // Weight
+    func processWeight(data: DataStoreClass) async -> Bool {
         let weightSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .weight)
         let weightAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .weight) ?? 0.0
         let weightAverageStrUI: String = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
@@ -329,37 +328,6 @@ final class HealthManager: ObservableObject {
         let maxWeightUI: CGFloat = maxWithNils(data: weightDataUI) ?? 0
         let minimumWeightStrUI: String = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
         let maximumWeightStrUI: String = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
-
-        // Sleep
-        let sleepSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
-        let sleepAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
-        let sleepAverageStrUI: String = String(format: "%.1f", sleepAverageUI) + "hrs"
-        let sleepCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .sleep)
-        let sleepDataUI: [CGFloat?] = getSleepData(data: data, health: self)
-        let maxSleepUI: CGFloat = maxWithNils(data: sleepDataUI) ?? 0
-        
-        // Active energy
-        let energySamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
-        let energyAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
-        let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
-        let energyDataUI: [CGFloat?] = getEnergyData(data: data, health: self)
-        let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .energy)
-        let maxEnergyUI: CGFloat = maxWithNils(data: energyDataUI) ?? 0
-        let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
-
-        // Walking & running distance
-        let distanceSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
-        let distanceAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
-        let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
-        let distanceDataUI: [CGFloat?] = getDistanceData(data: data, health: self)
-        let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .distance)
-        let maxDistanceUI: CGFloat = maxWithNils(data: distanceDataUI) ?? 0
-        let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
-        
-        // Menstrual
-        let menstrualDataUI: [CGFloat?] = getMenstrualData(data: data, health: self)
-        let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: self.healthSnaps)
-        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
@@ -371,14 +339,47 @@ final class HealthManager: ObservableObject {
             self.maxWeight = maxWeightUI
             self.minimumWeightStr = minimumWeightStrUI
             self.maximumWeightStr = maximumWeightStrUI
-            
+        }
+        
+        return true
+    }
+        
+    /**
+     Process sleep data
+     */
+    func processSleep(data: DataStoreClass) async -> Bool {
+        let sleepSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .sleep)
+        let sleepAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .sleep) ?? 0.0
+        let sleepAverageStrUI: String = String(format: "%.1f", sleepAverageUI) + "hrs"
+        let sleepCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .sleep)
+        let sleepDataUI: [CGFloat?] = getSleepData(data: data, health: self)
+        let maxSleepUI: CGFloat = maxWithNils(data: sleepDataUI) ?? 0
+
+        DispatchQueue.main.async {
             self.sleepSamples = sleepSamplesUI
             self.sleepAverage = sleepAverageUI
             self.sleepAverageStr = sleepAverageStrUI
             self.sleepCorrelationsMood = sleepCorrelationsMoodUI
             self.sleepData = sleepDataUI
             self.maxSleep = maxSleepUI
-            
+        }
+        
+        return true
+    }
+    
+    /**
+     Process active energy data.
+     */
+    func processEnergy(data: DataStoreClass) async -> Bool {
+        let energySamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .energy)
+        let energyAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .energy) ?? 0.0
+        let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
+        let energyDataUI: [CGFloat?] = getEnergyData(data: data, health: self)
+        let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .energy)
+        let maxEnergyUI: CGFloat = maxWithNils(data: energyDataUI) ?? 0
+        let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
+        
+        DispatchQueue.main.async {
             self.energySamples = energySamplesUI
             self.energyAverage = energyAverageUI
             self.energyAverageStr = energyAverageStrUI
@@ -386,7 +387,24 @@ final class HealthManager: ObservableObject {
             self.energyCorrelationsMood = energyCorrelationsMoodUI
             self.maxEnergy = maxEnergyUI
             self.maxEnergyStr = maxEnergyStrUI
-            
+        }
+        
+        return true
+    }
+    
+    /**
+     Process walking/running distance data.
+     */
+    func processDistance(data: DataStoreClass) async -> Bool {
+        let distanceSamplesUI: Int = countHealthSnaps(healthSnaps: self.healthSnaps, type: .distance)
+        let distanceAverageUI: CGFloat = average(healthSnaps: self.healthSnaps, type: .distance) ?? 0.0
+        let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
+        let distanceDataUI: [CGFloat?] = getDistanceData(data: data, health: self)
+        let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .distance)
+        let maxDistanceUI: CGFloat = maxWithNils(data: distanceDataUI) ?? 0
+        let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
+        
+        DispatchQueue.main.async {
             self.distanceSamples = distanceSamplesUI
             self.distanceAverage = distanceAverageUI
             self.distanceAverageStr = distanceAverageStrUI
@@ -394,11 +412,40 @@ final class HealthManager: ObservableObject {
             self.distanceCorrelationsMood = distanceCorrelationsMoodUI
             self.maxDistance = maxDistanceUI
             self.maxDistanceStr = maxDistanceStrUI
-            
+        }
+        
+        return true
+    }
+    
+    /**
+     Process menstrual data.
+     */
+    func processMenstrual(data: DataStoreClass) async -> Bool {
+        let menstrualDataUI: [CGFloat?] = getMenstrualData(data: data, health: self)
+        let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: self.healthSnaps)
+        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
+        
+        DispatchQueue.main.async {
             self.menstrualData = menstrualDataUI
             self.menstrualDates = menstrualDatesUI
             self.menstrualButterfly = menstrualButterflyUI
         }
+        
+        return true
+    }
+        
+    /**
+     Pre-process data.
+     */
+    func process(data: DataStoreClass) async {
+        async let weightComplete = processWeight(data: data)
+        async let sleepComplete = processSleep(data: data)
+        async let energyComplete = processEnergy(data: data)
+        async let distanceComplete = processDistance(data: data)
+        async let processMenstrual = processMenstrual(data: data)
+        
+        // Wait for all asynchronous threads to complete
+        await _ = [weightComplete, sleepComplete, energyComplete, distanceComplete, processMenstrual]
     }
 
     /**
