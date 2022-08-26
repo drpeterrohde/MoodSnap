@@ -244,7 +244,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Start asynchronous processing of data
      */
-    func startProcessing(priority: TaskPriority = .high) {
+    @inline(__always) func startProcessing(priority: TaskPriority = .high) {
         self.save()
         
         self.stopProcessing()
@@ -262,7 +262,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Stop asynchronous processing of data.
      */
-    func stopProcessing() {
+    @inline(__always) func stopProcessing() {
         if self.processingTask != nil {
             self.processingTask?.cancel()
         }
@@ -274,7 +274,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Dave `DataStoreClass` to disk.
      */
-    func save() {
+    @inline(__always) func save() {
         do {
             try Disk.save(self.toStruct(),
                           to: .documents,

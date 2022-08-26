@@ -68,14 +68,14 @@ final class HealthManager: ObservableObject {
         let group = DispatchGroup()
 
         while date >= earliest {
-            makeHealthSnapForDate(date: date, group: group)
+            await makeHealthSnapForDate(date: date, group: group)
             date = date.addDays(days: -1)
         }
 
         group.notify(queue: DispatchQueue.global()) {
-            DispatchQueue.main.async {
+            //DispatchQueue.main.async {
                 data.healthSnaps = self.healthSnaps
-            }
+            //}
             self.startProcessing(data: data)
         }
     }
@@ -83,7 +83,7 @@ final class HealthManager: ObservableObject {
     /**
      Generate `HealthSnapStruct`s for a given date.
      */
-    func makeHealthSnapForDate(date: Date, group: DispatchGroup) {
+    @inline(__always) func makeHealthSnapForDate(date: Date, group: DispatchGroup) async {
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
 
@@ -199,7 +199,7 @@ final class HealthManager: ObservableObject {
     /**
      Maximum weight for given HealthKit `results`
      */
-    func maxWeight(results: [HKSample]?) -> Double? {
+    @inline(__always) func maxWeight(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
         }
@@ -222,7 +222,7 @@ final class HealthManager: ObservableObject {
     /**
      Total sleep for given HealthKit `results`
      */
-    func totalSleep(results: [HKSample]?) -> Double? {
+    @inline(__always) func totalSleep(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
         }
@@ -249,7 +249,7 @@ final class HealthManager: ObservableObject {
     /**
      Total distance for given HealthKit `results`
      */
-    func totalDistance(results: [HKSample]?) -> Double? {
+    @inline(__always) func totalDistance(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
         }
@@ -271,7 +271,7 @@ final class HealthManager: ObservableObject {
     /**
      Total active energy for given HealthKit `results`
      */
-    func totalEnergy(results: [HKSample]?) -> Double? {
+    @inline(__always) func totalEnergy(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
         }
@@ -293,7 +293,7 @@ final class HealthManager: ObservableObject {
     /**
      Maximum menstrual flow for given HealthKit `results`
      */
-    func maxMenstrual(results: [HKSample]?) -> Double? {
+    @inline(__always) func maxMenstrual(results: [HKSample]?) -> Double? {
         if results == nil {
             return nil
         }
