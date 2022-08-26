@@ -93,6 +93,8 @@ final class HealthManager: ObservableObject {
         let quantityTypeMenstrual = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!
         let quantityTypeSleep = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
 
+        let queue = DispatchQueue(label: "thread-safe-array")
+        
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
                                                     options: .strictStartDate)
@@ -109,7 +111,10 @@ final class HealthManager: ObservableObject {
                     var healthSnap = HealthSnapStruct()
                     healthSnap.timestamp = date
                     healthSnap.weight = CGFloat(maxWeight!)
-                    self.healthSnaps.append(healthSnap)
+                    let healthSnapUI = healthSnap
+                    queue.async() {
+                        self.healthSnaps.append(healthSnapUI)
+                    }
                 }
                 group.leave()
             }
@@ -127,7 +132,10 @@ final class HealthManager: ObservableObject {
                     var healthSnap = HealthSnapStruct()
                     healthSnap.timestamp = date
                     healthSnap.walkingRunningDistance = CGFloat(distance!)
-                    self.healthSnaps.append(healthSnap)
+                    let healthSnapUI = healthSnap
+                    queue.async() {
+                        self.healthSnaps.append(healthSnapUI)
+                    }
                 }
                 group.leave()
             }
@@ -145,7 +153,10 @@ final class HealthManager: ObservableObject {
                     var healthSnap = HealthSnapStruct()
                     healthSnap.timestamp = date
                     healthSnap.activeEnergy = CGFloat(energy!)
-                    self.healthSnaps.append(healthSnap)
+                    let healthSnapUI = healthSnap
+                    queue.async() {
+                        self.healthSnaps.append(healthSnapUI)
+                    }
                 }
                 group.leave()
             }
@@ -164,7 +175,10 @@ final class HealthManager: ObservableObject {
                     healthSnap.timestamp = date
                     healthSnap.menstrual = CGFloat(menstrual!)
                     if healthSnap.menstrual != 0 {
-                        self.healthSnaps.append(healthSnap)
+                        let healthSnapUI = healthSnap
+                        queue.async() {
+                            self.healthSnaps.append(healthSnapUI)
+                        }
                     }
                 }
                 group.leave()
@@ -183,7 +197,10 @@ final class HealthManager: ObservableObject {
                     var healthSnap = HealthSnapStruct()
                     healthSnap.timestamp = date
                     healthSnap.sleepHours = CGFloat(sleep!)
-                    self.healthSnaps.append(healthSnap)
+                    let healthSnapUI = healthSnap
+                    queue.async() {
+                        self.healthSnaps.append(healthSnapUI)
+                    }
                 }
                 group.leave()
             }
