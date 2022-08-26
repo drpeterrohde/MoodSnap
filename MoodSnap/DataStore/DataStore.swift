@@ -247,9 +247,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     func startProcessing(priority: TaskPriority = .high) {
         self.save()
         
-        if self.processingTask != nil {
-            self.processingTask?.cancel()
-        }
+        self.stopProcessing()
         
         DispatchQueue.main.async {
             self.processingTask = Task(priority: priority) {
@@ -258,6 +256,18 @@ final class DataStoreClass: Identifiable, ObservableObject {
                     self.processingTask = nil
                 }
             }
+        }
+    }
+    
+    /**
+     Stop asynchronous processing of data.
+     */
+    func stopProcessing() {
+        if self.processingTask != nil {
+            self.processingTask?.cancel()
+        }
+        DispatchQueue.main.async {
+            self.processingTask = nil
         }
     }
     

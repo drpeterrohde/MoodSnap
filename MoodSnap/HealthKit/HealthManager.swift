@@ -61,7 +61,7 @@ final class HealthManager: ObservableObject {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
-        self.processingTask?.cancel()
+        self.stopProcessing()
         
         self.healthSnaps = []
 
@@ -447,10 +447,8 @@ final class HealthManager: ObservableObject {
      Start asynchronous processing of data
      */
     func startProcessing(priority: TaskPriority = .high, data: DataStoreClass) {
-        if self.processingTask != nil {
-            self.processingTask?.cancel()
-        }
-
+        self.stopProcessing()
+        
         DispatchQueue.main.async {
             self.processingTask = Task(priority: priority) {
                 await self.process(data: data)
@@ -458,6 +456,18 @@ final class HealthManager: ObservableObject {
                     self.processingTask = nil
                 }
             }
+        }
+    }
+    
+    /**
+     Stop asynchronous processing of data.
+     */
+    func stopProcessing() {
+        if self.processingTask != nil {
+            self.processingTask?.cancel()
+        }
+        DispatchQueue.main.async {
+            self.processingTask = nil
         }
     }
 }
