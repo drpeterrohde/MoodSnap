@@ -61,6 +61,8 @@ final class HealthManager: ObservableObject {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
+        self.processingTask?.cancel()
+        
         self.healthSnaps = []
 
         let group = DispatchGroup()
