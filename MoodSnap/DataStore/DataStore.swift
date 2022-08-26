@@ -25,7 +25,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var settings: SettingsStruct = SettingsStruct()
     @Published var uxState: UXStateStruct = UXStateStruct()
     @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
-    @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     @Published var processingTask: Task<Void, Never>? = nil
     @Published var hashtagList: [String] = []
@@ -37,7 +36,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var eventOccurrenceCount: Int = 0
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
-    
+    var healthSnaps: [HealthSnapStruct] = []
+
     init() {
         id = UUID()
         settings = SettingsStruct()

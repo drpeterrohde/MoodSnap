@@ -57,7 +57,7 @@ final class HealthManager: ObservableObject {
     /**
      Generate `HealthSnapStruct`s for all dates and start processing.
      */
-    func makeHealthSnaps(data: DataStoreClass) {
+    func makeHealthSnaps(data: DataStoreClass) async {
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 

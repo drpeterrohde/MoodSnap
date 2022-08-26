@@ -28,13 +28,15 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
-                data.startProcessing(priority: .background)
+                //data.startProcessing(priority: .background)
             }
             
             if value == .active {
                 if HKHealthStore.isHealthDataAvailable() {
                     health.requestPermissions()
-                    health.makeHealthSnaps(data: data)
+                    Task {
+                        await health.makeHealthSnaps(data: data)
+                    }
                 }
                 StoreReviewHelper.incrementAppOpenedCount()
                 StoreReviewHelper.checkAndAskForReview()
@@ -45,7 +47,7 @@ struct MoodSnapApp: App {
                 DispatchQueue.main.async {
                     isUnlocked = false
                 }
-                data.startProcessing(priority: .background)
+                //data.startProcessing(priority: .background)
             }
         }
     }
