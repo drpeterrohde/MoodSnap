@@ -6,7 +6,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var data: DataStoreClass
-    @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
     @State private var showingExporter = false
@@ -82,9 +81,6 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
                         Text("black_and_white")
                     })
-//                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
-//                        Text("include_guide")
-//                    })
                     Toggle(isOn: $data.settings.includeNotes, label: {
                         Text("include_notes")
                     })
@@ -116,8 +112,6 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Health")) {
-                   // Text("Apple Health integeration is being saved for a future version pending major redesign of the functionality.")
-                     //   .font(.caption)
                     Toggle(isOn: $data.settings.useHealthKit, label: {
                         Text("Use Apple Health")
                     })
@@ -226,13 +220,6 @@ struct SettingsView: View {
                     }, secondaryButton: .cancel())
                 }
             }.fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(data: data)), contentType: .plainText) { result in
-//                switch result {
-//                case .success:
-//                    break
-//                case let .failure(error):
-//                    break
-//                    //print(error.localizedDescription)
-//                }
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
@@ -247,8 +234,6 @@ struct SettingsView: View {
                     data.processedData = retrieved.processedData
                     data.startProcessing()
                 } catch {
-                    //print("Failed to import backup file")
-                    //print(error.localizedDescription)
                 }
                 dismiss()
             }.alert(isPresented: $showingImportAlert) {

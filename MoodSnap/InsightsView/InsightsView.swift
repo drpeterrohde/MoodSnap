@@ -11,7 +11,6 @@ struct InsightsView: View {
     
     var body: some View {
         NavigationView {
-            // ScrollView {
             VStack {
                 Picker("", selection: $timescale) {
                     Text("1mo").tag(TimeScaleEnum.month.rawValue)
@@ -61,7 +60,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isAverageMoodExpanded {
-                                        //Divider()
                                         AverageMoodView(timescale: timescale)
                                     }
                                 }
@@ -94,7 +92,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMoodHistoryExpanded {
-                                        //Divider()
                                         MoodHistoryBarView(timescale: timescale)
                                     }
                                 }
@@ -127,7 +124,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMovingAverageExpanded {
-                                        //Divider()
                                         SlidingAverageView(timescale: timescale)
                                     }
                                 }
@@ -160,7 +156,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isVolatilityExpanded {
-                                        //Divider()
                                         SlidingVolatilityView(timescale: timescale)
                                     }
                                 }
@@ -403,7 +398,6 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isButterflyAverageExpanded {
-                                    //Divider()
                                     TransientWithPickerView(timescale: timescale)
                                     EmptyView()
                                 }
@@ -424,7 +418,6 @@ struct InsightsView: View {
                                     if data.settings.healthWeightOn {
                                         GroupBox {
                                             HStack {
-                                                // Label("Weight", systemImage: "scalemass").font(.subheadline)
                                                 HStack {
                                                     Image(systemName: "scalemass")
                                                         .resizable()
@@ -451,7 +444,6 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isWeightExpanded {
-                                                //Divider()
                                                 WeightView(timescale: timescale)
                                             }
                                         }
@@ -460,7 +452,6 @@ struct InsightsView: View {
                                     if data.settings.healthDistanceOn {
                                         GroupBox {
                                             HStack {
-                                                // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
                                                 HStack {
                                                     Image(systemName: "figure.walk")
                                                         .resizable()
@@ -487,7 +478,6 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isWalkingRunningDistanceExpanded {
-                                                //Divider()
                                                 WalkingRunningDistanceView(timescale: timescale)
                                             }
                                         }
@@ -496,7 +486,6 @@ struct InsightsView: View {
                                     if data.settings.healthEnergyOn {
                                         GroupBox {
                                             HStack {
-                                                // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
                                                 HStack {
                                                     Image(systemName: "bolt.heart")
                                                         .resizable()
@@ -523,7 +512,6 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isActiveEnergyExpanded {
-                                                //Divider()
                                                 ActiveEnergyView(timescale: timescale)
                                             }
                                         }
@@ -558,7 +546,6 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isSleepExpanded {
-                                                //Divider()
                                                 SleepView(timescale: timescale)
                                             }
                                         }
@@ -593,7 +580,6 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isMenstrualExpanded {
-                                                //Divider()
                                                 MenstrualView(timescale: timescale)
                                             }
                                         }

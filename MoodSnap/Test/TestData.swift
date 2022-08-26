@@ -31,7 +31,6 @@ func makeDemoData() -> [MoodSnapStruct] {
         moodSnap.anxiety = round(CGFloat.random(in: 0 ... 0.6))
         moodSnap.irritability = round(CGFloat.random(in: 1 ... 1.6))
         moodSnap.timestamp = Date().addDays(days: -i)
-        // moodSnap.notes = "Test notes round 1"
         if demoDataRandomMiss < CGFloat.random(in: 0.0 ..< 1.0) {
             moodSnaps.append(moodSnap)
         }
@@ -41,11 +40,10 @@ func makeDemoData() -> [MoodSnapStruct] {
     for i in 1 ... max {
         var moodSnap = MoodSnapStruct()
         moodSnap.elevation = round(CGFloat(Int.random(in: 0 ... 4)) * CGFloat(i) / CGFloat(max))
-        moodSnap.depression = 0 // 4.0-round(CGFloat(Int.random(in: 0...4))*CGFloat(i)/CGFloat(max))
+        moodSnap.depression = 0
         moodSnap.anxiety = CGFloat(Int.random(in: 3 ... 4))
         moodSnap.irritability = round(CGFloat.random(in: 2 ... 2.5))
         moodSnap.timestamp = Date().addDays(days: -(i + max))
-        // moodSnap.notes = "Test notes round 1"
         if demoDataRandomMiss < CGFloat.random(in: 0.0 ..< 1.0) {
             moodSnaps.append(moodSnap)
         }

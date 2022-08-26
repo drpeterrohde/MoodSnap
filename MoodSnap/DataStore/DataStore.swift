@@ -13,23 +13,6 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
-    
-    /**
-     Convert struct to class
-     */
-    func toClass() -> DataStoreClass {
-        let dataStore: DataStoreClass = DataStoreClass()
-        
-        dataStore.id = self.id
-        dataStore.version = self.version
-        dataStore.settings = self.settings
-        dataStore.uxState = self.uxState
-        dataStore.moodSnaps = self.moodSnaps
-        dataStore.healthSnaps = self.healthSnaps
-        dataStore.processedData = self.processedData
-        
-        return dataStore
-    }
 }
 
 /**
@@ -75,7 +58,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.healthSnaps = retrieved.healthSnaps
             self.processedData = retrieved.processedData
         } catch {
-            //print("Load failed")
         }
     }
 

@@ -33,7 +33,6 @@ func encodeJSONString(data: DataStoreClass) -> String {
         let jsonString = String(data: jsonData, encoding: .utf8)!
         return jsonString
     } catch {
-        //print("JSON encoding error")
     }
     return ""
 }
@@ -49,8 +48,6 @@ func decodeJSONString(url: URL) -> DataStoreStruct {
         data = try JSONDecoder().decode(DataStoreStruct.self, from: rawData)
         url.stopAccessingSecurityScopedResource()
     } catch {
-        //print("Failed to import backup file")
-        //print(error.localizedDescription)
     }
     return data
 }
@@ -63,8 +60,6 @@ func decodeJSONString(data: Data) -> DataStoreStruct {
     do {
         decodedData = try JSONDecoder().decode(DataStoreStruct.self, from: data)
     } catch {
-        //print("Failed to import backup file")
-        //print(error.localizedDescription)
     }
     return decodedData
 }

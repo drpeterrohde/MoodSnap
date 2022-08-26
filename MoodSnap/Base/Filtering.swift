@@ -114,18 +114,3 @@ import SwiftUI
     
     return filtered
 }
-
-/**
- Returns an array of elements from `healthSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
- */
-@inline(__always) func getHealthSnapsByDateWindow(healthSnaps: [HealthSnapStruct], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [HealthSnapStruct] {
-    var filtered: [HealthSnapStruct] = []
-    
-    for time in windowStart ... windowEnd {
-        let thisDate = date.addDays(days: time)
-        let theseSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps, date: thisDate, flatten: flatten)
-        filtered.append(contentsOf: theseSnaps)
-    }
-    
-    return filtered
-}

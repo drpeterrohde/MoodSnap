@@ -51,13 +51,7 @@ final class HealthManager: ObservableObject {
                                   HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!,
                                   HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!]
 
-        healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in
-            //            if success {
-            //                print("Authorization complete")
-            //            } else {
-            //                print("Authorization error: \(String(describing: error?.localizedDescription))")
-            //            }
-        })
+        healthStore.requestAuthorization(toShare: nil, read: readDataTypes, completion: { success, error in })
     }
 
     /**
@@ -444,7 +438,6 @@ final class HealthManager: ObservableObject {
         async let distanceComplete = processDistance(data: data)
         async let processMenstrual = processMenstrual(data: data)
         
-        // Wait for all asynchronous threads to complete
         await _ = [weightComplete, sleepComplete, energyComplete, distanceComplete, processMenstrual]
     }
 
