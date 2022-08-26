@@ -31,6 +31,7 @@ struct NoteView: View {
 
             Button {
                 DispatchQueue.main.async {
+                    data.stopProcessing()
                     moodSnap.snapType = .note
                     data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                     data.moodSnaps.append(moodSnap)

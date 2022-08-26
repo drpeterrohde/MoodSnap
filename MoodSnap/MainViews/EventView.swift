@@ -35,6 +35,7 @@ struct EventView: View {
 
             Button {
                 DispatchQueue.main.async {
+                    data.stopProcessing()
                     moodSnap.snapType = .event
                     data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                     data.moodSnaps.append(moodSnap)

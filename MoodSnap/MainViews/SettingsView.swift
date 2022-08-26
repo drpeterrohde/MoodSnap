@@ -198,6 +198,7 @@ struct SettingsView: View {
                 Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
+                            data.stopProcessing()
                             data.moodSnaps = makeDemoData()
                             data.startProcessing()
                         } else {
@@ -214,6 +215,7 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
+                        data.stopProcessing()
                         data.moodSnaps = []
                         data.startProcessing()
                         dismiss()
@@ -225,6 +227,7 @@ struct SettingsView: View {
                     let fileUrl = try res.get()
                     let retrieved = decodeJSONString(url: fileUrl)
 
+                    data.stopProcessing()
                     data.id = retrieved.id
                     data.version = retrieved.version
                     data.settings = retrieved.settings
