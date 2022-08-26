@@ -109,7 +109,7 @@ final class HealthManager: ObservableObject {
                 healthSnap.timestamp = date
                 healthSnap.weight = CGFloat(maxWeight!)
                 let healthSnapUI = healthSnap
-                queue.async() {
+                queue.sync() {
                     self.healthSnaps.append(healthSnapUI)
                 }
             }
@@ -128,7 +128,7 @@ final class HealthManager: ObservableObject {
                 healthSnap.timestamp = date
                 healthSnap.walkingRunningDistance = CGFloat(distance!)
                 let healthSnapUI = healthSnap
-                queue.async() {
+                queue.sync() {
                     self.healthSnaps.append(healthSnapUI)
                 }
             }
@@ -147,7 +147,7 @@ final class HealthManager: ObservableObject {
                 healthSnap.timestamp = date
                 healthSnap.activeEnergy = CGFloat(energy!)
                 let healthSnapUI = healthSnap
-                queue.async() {
+                queue.sync() {
                     self.healthSnaps.append(healthSnapUI)
                 }
             }
@@ -167,7 +167,7 @@ final class HealthManager: ObservableObject {
                 healthSnap.menstrual = CGFloat(menstrual!)
                 if healthSnap.menstrual != 0 {
                     let healthSnapUI = healthSnap
-                    queue.async() {
+                    queue.sync() {
                         self.healthSnaps.append(healthSnapUI)
                     }
                 }
@@ -187,7 +187,7 @@ final class HealthManager: ObservableObject {
                 healthSnap.timestamp = date
                 healthSnap.sleepHours = CGFloat(sleep!)
                 let healthSnapUI = healthSnap
-                queue.async() {
+                queue.sync() {
                     self.healthSnaps.append(healthSnapUI)
                 }
             }
@@ -451,7 +451,7 @@ final class HealthManager: ObservableObject {
     /**
      Start asynchronous processing of data
      */
-    func startProcessing(priority: TaskPriority = .high, data: DataStoreClass) {
+    @inline(__always) func startProcessing(priority: TaskPriority = .high, data: DataStoreClass) {
         self.stopProcessing()
         
         DispatchQueue.main.async {
@@ -467,7 +467,7 @@ final class HealthManager: ObservableObject {
     /**
      Stop asynchronous processing of data.
      */
-    func stopProcessing() {
+    @inline(__always) func stopProcessing() {
         if self.processingTask != nil {
             self.processingTask?.cancel()
         }

@@ -245,7 +245,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Start asynchronous processing of data
      */
     @inline(__always) func startProcessing(priority: TaskPriority = .high) {
-        self.save()
+        //self.save()
         
         self.stopProcessing()
         
@@ -287,7 +287,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Convert class to struct
      */
-    func toStruct() -> DataStoreStruct {
+    @inline(__always) func toStruct() -> DataStoreStruct {
         var dataStore: DataStoreStruct = DataStoreStruct()
         
         dataStore.id = self.id
