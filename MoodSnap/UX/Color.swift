@@ -18,7 +18,7 @@ extension Color {
 /**
  Return the mood colors as `UIColor`.
  */
-func moodUIColors(settings: SettingsStruct) -> [UIColor] {
+@inline(__always) func moodUIColors(settings: SettingsStruct) -> [UIColor] {
     let colorE = UIColor(themes[settings.theme].elevationColor.opacity(lineChartOpacity))
     let colorD = UIColor(themes[settings.theme].depressionColor.opacity(lineChartOpacity))
     let colorA = UIColor(themes[settings.theme].anxietyColor.opacity(lineChartOpacity))

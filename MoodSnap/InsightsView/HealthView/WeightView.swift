@@ -71,7 +71,8 @@ struct WeightView: View {
                         .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.weightCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                }.frame(width: 150)
+                }
+                .frame(width: 150)
             }
         }
     }

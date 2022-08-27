@@ -7,10 +7,10 @@ struct SleepView: View {
     var timescale: Int
     @EnvironmentObject var data: DataStoreClass
     @EnvironmentObject var health: HealthManager
-
+    
     var body: some View {
         let entries = makeChartData(y: health.sleepData, timescale: timescale)
-
+        
         if health.sleepSamples == 0 || health.sleepCorrelationsMood[0] == nil || health.sleepCorrelationsMood[1] == nil || health.sleepCorrelationsMood[2] == nil || health.sleepCorrelationsMood[3] == nil {
             Text("insufficient_data")
                 .font(.caption)
@@ -21,7 +21,7 @@ struct SleepView: View {
                              min: 0,
                              max: health.maxSleep,
                              settings: data.settings)
-                .frame(height: 60)
+            .frame(height: 60)
             Spacer()
             HStack {
                 Text("Average_sleep")
@@ -32,7 +32,7 @@ struct SleepView: View {
                     .font(.caption)
                     .foregroundColor(.primary)
             }
-
+            
             Divider()
             Label("mood_levels", systemImage: "brain.head.profile")
                 .font(.caption)
@@ -53,7 +53,8 @@ struct SleepView: View {
                         .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.sleepCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                }.frame(width: 150)
+                }
+                .frame(width: 150)
             }
         }
     }
