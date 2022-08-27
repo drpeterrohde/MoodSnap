@@ -66,9 +66,10 @@ final class HealthManager: ObservableObject {
         self.healthSnaps = []
         
         let group = DispatchGroup()
-        
+        let queue = DispatchQueue(label: "thread-safe-array")
+
         while date >= earliest {
-            await makeHealthSnapForDate(date: date, group: group)
+            await makeHealthSnapForDate(date: date, group: group, queue: queue)
             date = date.addDays(days: -1)
         }
         
@@ -81,7 +82,7 @@ final class HealthManager: ObservableObject {
     /**
      Generate `HealthSnapStruct`s for a given date.
      */
-    @inline(__always) func makeHealthSnapForDate(date: Date, group: DispatchGroup) async {
+    @inline(__always) func makeHealthSnapForDate(date: Date, group: DispatchGroup, queue: DispatchQueue) async {
         let startDate = date.startOfDay()
         let endDate = date.endOfDay()
         
@@ -90,9 +91,7 @@ final class HealthManager: ObservableObject {
         let quantityTypeActiveEnergy = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
         let quantityTypeMenstrual = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!
         let quantityTypeSleep = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
-        
-        let queue = DispatchQueue(label: "thread-safe-array")
-        
+                
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
                                                     options: .strictStartDate)
