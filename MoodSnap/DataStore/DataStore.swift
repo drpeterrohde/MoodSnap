@@ -245,9 +245,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Start asynchronous processing of data
      */
     @inline(__always) func startProcessing(priority: TaskPriority = .high) {
-        //self.save()
-        
         self.stopProcessing()
+        self.save()
         
         DispatchQueue.main.async {
             self.processingTask = Task(priority: priority) {
