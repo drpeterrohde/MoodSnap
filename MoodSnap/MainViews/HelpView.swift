@@ -234,11 +234,13 @@ struct HelpView: View {
                                     Label("health_data", systemImage: "heart.text.square")
                                         .foregroundColor(themes[data.settings.theme].iconColor)
                                     Spacer()
-                                    Text(.init("apple_health_info"))
+                                    Text(.init("apple_health_info_1"))
                                         .font(.subheadline)
                                     Image("apple_health")
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
+                                    Text(.init("apple_health_info_2"))
+                                        .font(.subheadline)
                                 }
                             }
                         }
