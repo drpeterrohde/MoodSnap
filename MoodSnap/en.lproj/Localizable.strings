@@ -71,7 +71,7 @@
 "analysis" = "Analysis";
 "anxiety" = "Anxiety";
 "apple_health_info_1" = "The health section optionally correlates your mood with your Apple Health data, including weight, walking & running distance, active energy, sleep and menstrual cycle. In this example, walking & running distance positively correlates with elevation and negatively correlates with anxiety and irritablity levels. Menstrual cycle data is shown as a transient plot where the reference point is menstruation.";
-"apple_health_info_2" = "The analysis and visibility of health data can enabled or disabled in the _settings_ page.";
+"apple_health_info_2" = "The analysis and visibility of health data can be enabled or disabled in the _settings_ page.";
 "average_mood" = "Average mood";
 "average_mood_string" = "The average mood graph displays your average mood and volatility levels over the specified time period. You can adjust the displayed timescale using the tabs at the top of the page.";
 "average_mood_volatility" = "Average mood level / volatility";
