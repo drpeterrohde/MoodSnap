@@ -99,6 +99,7 @@
 		CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
+		CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,7 @@
 		CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientWithPickerView.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
+		CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendsView.swift; path = InfluencesView/TrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +280,7 @@
 				CABF5E2128ACABAE004D7A0F /* HealthView */,
 				CA527AA328AA7CDE007AD6DC /* InfluencesView */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
+				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
 				CA496B1C27EBEF290067EE63 /* InsightsView.swift */,
 				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
@@ -619,6 +622,7 @@
 				CA58162028B4E04D000E4C8A /* AppStoreReview.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
+				CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */,
 				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
