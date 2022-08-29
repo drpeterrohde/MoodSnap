@@ -10,8 +10,10 @@ import SwiftUI
     var sequence: [[MoodSnapStruct]] = Array(repeating: [], count: length)
     
     for moodSnap in moodSnaps {
-        let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: moodSnap.timestamp, to: Date())
-        sequence[offset].append(moodSnap)
+        if moodSnap.snapType == .mood {
+            let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: moodSnap.timestamp, to: Date())
+            sequence[offset].append(moodSnap)
+        }
     }
     
     return sequence

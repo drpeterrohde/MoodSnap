@@ -58,7 +58,9 @@ import SwiftUI
     let dateComponents = date.getComponents()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp.getComponents() == dateComponents {
-            filtered.append(moodSnap)
+            if moodSnap.snapType == .mood {
+                filtered.append(moodSnap)
+            }
         }
     }
     if flatten {
@@ -107,7 +109,9 @@ import SwiftUI
     for moodSnap in moodSnaps {
         if moodSnap != nil {
             if moodSnap!.timestamp >= startDate && moodSnap!.timestamp <= endDate {
-                filtered.append(moodSnap!)
+                if moodSnap!.snapType == .mood {
+                    filtered.append(moodSnap!)
+                }
             }
         }
     }
