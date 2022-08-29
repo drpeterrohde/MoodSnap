@@ -70,6 +70,7 @@
 "add_event" = "Add event";
 "analysis" = "Analysis";
 "anxiety" = "Anxiety";
+"apple_health_info" = "The health section optionally correlates your mood with your Apple Health data, including weight, walking & running distance, active energy, sleep and menstrual cycle. In this example, walking & running distance positively correlates with elevation and negatively correlates with anxiety and irritablity levels. Menstrual cycle data is shown as a transient plot where the reference point is menstruation.";
 "average_mood" = "Average mood";
 "average_mood_string" = "The average mood graph displays your average mood and volatility levels over the specified time period. You can adjust the displayed timescale using the tabs at the top of the page.";
 "average_mood_volatility" = "Average mood level / volatility";
@@ -100,6 +101,7 @@
 "grid_columns" = "Grid columns:";
 "hashtag" = "Hashtag";
 "hashtags" = "Hashtags";
+"health_data" = "Health data";
 "help" = "Help";
 "help_events_string" = "_Events_ are any major life changes that you might want to look back upon as points of reference in your mood history. These could include changes in jobs, relationships, place of residence, lifestyle changes, family situations, or changes in medication, treatment or health.\n\nIn the _insight_ panel these can be chosen as focus points for comparing mood history before and after the event. It is recommended to keep event titles very concise, a few words at most, putting further details into the associated notes field.";
 "help_how_to_use_moodsnap_string" = "MoodSnap records your mood history by taking _MoodSnaps_, a single sheet questionaire about your mood levels, symptoms and activities.\n\nFor the analytics tools to work correctly it is best to take MoodSnaps on a regular basis, for example at the same time every evening. You can enable reminders for this in the _settings_ page.\n\nWhen taking a MoodSnap your entries should reflect the _maximum_ respective degrees experienced _since the most recent_ MoodSnap and _within the last 24 hours_.\n\nFor people with mood disorders it is recommended taking additional MoodSnaps anytime you become aware of significant changes in mood levels or symptoms, as this additional data benefits analysis. There aren't any limits on how often you can take MoodSnaps.\n\nFurther details can be found on the MoodSnap homepage: [www.moodsnap.app](https://www.moodsnap.app)";
@@ -215,8 +217,8 @@
 "sliding_average" = "Sliding average";
 "social" = "Social";
 "social_visibility" = "Social visibility";
-"statistics_butterfly_average_string_1" = "The _transients_ plot is centered around a particular event or type of activity, showing the mood trend going backwards and forward in time around that point. The value is calculated as the average between the reference point (indicated by the central vertical bar) and the time shown on the axis.\n\nThe dropdown menu below the plot allows you to specify which activity type or event to center around.";
-"statistics_butterfly_average_string_2" = "The example above is centered around the event of changing job, indicating that depression levels rapidly decreased following the event and then gradually increased over time.\n\nThe transients plot captures the same information as the _influences_ values, but with a variable timescale.";
+"statistics_butterfly_average_string_1" = "The _transients_ plot is centered around a particular event, symptom or activity type, showing the mood trend going backwards and forward in time around that point. The value is calculated as the average between the reference point (indicated by the central vertical bar) and the time shown on the axis.\n\nThe dropdown menu below the plot allows you to specify which activity type or event to center around.";
+"statistics_butterfly_average_string_2" = "The example above is centered around the event of changing medication, indicating that anxiety and depression levels rapidly decreased following the event and then slightly increased over time.\n\nThe transients plot captures the same information as the _influences_ values, but with a variable timescale. The numbers show the respective influence values.";
 "statistics_intro_string" = "The _insights_ tab provides a number of graphs that visualise your mood history and several statistical indicators that can be helpful in understanding how different activites and life events affect your mood.";
 "statistics_mood_history_string" = "The _mood history_ plot presents the four mood indicators as bar charts in units of days.";
 "statistics_moving_average_string" = "The _moving average_ plot shows a sliding moving average of the same four indicators, capturing trends over time.";

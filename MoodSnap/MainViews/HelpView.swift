@@ -6,7 +6,7 @@ import SwiftUI
 struct HelpView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var data: DataStoreClass
-
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -17,7 +17,7 @@ struct HelpView: View {
                             .font(.subheadline)
                     }
                 }
-
+                
                 GroupBox(label: Label("how_to_use_moodsnap", systemImage: "info.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Group {
                         Divider()
@@ -27,7 +27,7 @@ struct HelpView: View {
                         }
                     }
                 }
-
+                
                 Group {
                     GroupBox(label: Label("controls", systemImage: "gearshape").foregroundColor(themes[data.settings.theme].iconColor)) {
                         Group {
@@ -60,7 +60,7 @@ struct HelpView: View {
                                     .font(.subheadline)
                             }
                         }
-
+                        
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
@@ -71,7 +71,7 @@ struct HelpView: View {
                                     .font(.subheadline)
                             }
                         }
-
+                        
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
@@ -82,7 +82,7 @@ struct HelpView: View {
                                     .font(.subheadline)
                             }
                         }
-
+                        
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
@@ -92,7 +92,7 @@ struct HelpView: View {
                                     .font(.subheadline)
                             }
                         }
-
+                        
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
@@ -103,7 +103,7 @@ struct HelpView: View {
                                     .font(.subheadline)
                             }
                         }
-
+                        
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
@@ -116,120 +116,134 @@ struct HelpView: View {
                         }
                     }
                 }
-
+                
                 Group {
                     GroupBox(label: Label("insights", systemImage: "waveform.path.ecg.rectangle")
                         .foregroundColor(themes[data.settings.theme].iconColor)) {
-                        Group {
-                            Divider()
-                            Text(.init("statistics_intro_string"))
-                                .font(.subheadline)
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("average_mood", systemImage: "brain.head.profile")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("average_mood_string"))
-                                    .font(.subheadline)
-                                Image("average_mood")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("mood_history", systemImage: "chart.bar.xaxis")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("statistics_mood_history_string"))
-                                    .font(.subheadline)
-                                Image("mood_history")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("moving_average", systemImage: "chart.line.uptrend.xyaxis")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("statistics_moving_average_string"))
-                                    .font(.subheadline)
-                                Image("moving_average")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("volatility", systemImage: "waveform.path.ecg")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("statistics_volatility_string_1"))
-                                    .font(.subheadline)
-                                Image("volatility")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                Text(.init("statistics_volatility_string_2"))
+                            Group {
+                                Divider()
+                                Text(.init("statistics_intro_string"))
                                     .font(.subheadline)
                             }
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("tally", systemImage: "chart.bar.doc.horizontal")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer() // tally
-                                Text(.init("statistics_tally_string"))
-                                    .font(.subheadline)
-                                Image("tally")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("average_mood", systemImage: "brain.head.profile")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("average_mood_string"))
+                                        .font(.subheadline)
+                                    Image("average_mood")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("mood_history", systemImage: "chart.bar.xaxis")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("statistics_mood_history_string"))
+                                        .font(.subheadline)
+                                    Image("mood_history")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("moving_average", systemImage: "chart.line.uptrend.xyaxis")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("statistics_moving_average_string"))
+                                        .font(.subheadline)
+                                    Image("moving_average")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("volatility", systemImage: "waveform.path.ecg")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("statistics_volatility_string_1"))
+                                        .font(.subheadline)
+                                    Image("volatility")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                    Text(.init("statistics_volatility_string_2"))
+                                        .font(.subheadline)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("tally", systemImage: "chart.bar.doc.horizontal")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer() // tally
+                                    Text(.init("statistics_tally_string"))
+                                        .font(.subheadline)
+                                    Image("tally")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("influences", systemImage: "eye")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("influences_string"))
+                                        .font(.subheadline)
+                                    Image("influences")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("transients", systemImage: "waveform.path.ecg.rectangle")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("statistics_butterfly_average_string_1"))
+                                        .font(.subheadline)
+                                    Image("transients")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                    Text(.init("statistics_butterfly_average_string_2"))
+                                        .font(.subheadline)
+                                }
+                            }
+                            
+                            Group {
+                                Divider()
+                                VStack(alignment: .leading) {
+                                    Label("health_data", systemImage: "heart.text.square")
+                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                    Spacer()
+                                    Text(.init("apple_health_info"))
+                                        .font(.subheadline)
+                                    Image("apple_health")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                }
                             }
                         }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("influences", systemImage: "eye")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("influences_string"))
-                                    .font(.subheadline)
-                                Image("influences")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                        }
-
-                        Group {
-                            Divider()
-                            VStack(alignment: .leading) {
-                                Label("transients", systemImage: "waveform.path.ecg.rectangle")
-                                    .foregroundColor(themes[data.settings.theme].iconColor)
-                                Spacer()
-                                Text(.init("statistics_butterfly_average_string_1"))
-                                    .font(.subheadline)
-                                Image("transients")
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                                Text(.init("statistics_butterfly_average_string_2"))
-                                    .font(.subheadline)
-                            }
-                        }
-                    }
                 }
-
+                
                 GroupBox(label: Label("PDF_reports", systemImage: "doc").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
@@ -237,7 +251,7 @@ struct HelpView: View {
                             .font(.subheadline)
                     }
                 }
-
+                
                 GroupBox(label: Label("privacy", systemImage: "lock.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
@@ -245,7 +259,7 @@ struct HelpView: View {
                             .font(.subheadline)
                     }
                 }
-
+                
                 GroupBox(label: Label("disclaimer", systemImage: "exclamationmark.circle").foregroundColor(themes[data.settings.theme].iconColor)) {
                     Divider()
                     VStack(alignment: .leading) {
