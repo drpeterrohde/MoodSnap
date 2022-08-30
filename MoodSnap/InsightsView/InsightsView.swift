@@ -10,6 +10,8 @@ struct InsightsView: View {
     @State var timescale: Int = TimeScaleEnum.month.rawValue
     
     var body: some View {
+        let convertedTimescale: Int = getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)
+        
         NavigationView {
             VStack {
                 Picker("", selection: $timescale) {
@@ -17,6 +19,7 @@ struct InsightsView: View {
                     Text("3mo").tag(TimeScaleEnum.threeMonths.rawValue)
                     Text("6mo").tag(TimeScaleEnum.sixMonths.rawValue)
                     Text("1yr").tag(TimeScaleEnum.year.rawValue)
+                    Text("All").tag(TimeScaleEnum.all.rawValue)
                 }.pickerStyle(SegmentedPickerStyle())
                 
                 ScrollViewReader { scrollView in
@@ -60,7 +63,7 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isAverageMoodExpanded {
-                                        AverageMoodView(timescale: timescale)
+                                        AverageMoodView(timescale: convertedTimescale)
                                     }
                                 }
                                 
@@ -92,7 +95,7 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMoodHistoryExpanded {
-                                        MoodHistoryBarView(timescale: timescale)
+                                        MoodHistoryBarView(timescale: convertedTimescale)
                                     }
                                 }
                                 
@@ -124,7 +127,7 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMovingAverageExpanded {
-                                        SlidingAverageView(timescale: timescale)
+                                        SlidingAverageView(timescale: convertedTimescale)
                                     }
                                 }
                                 
@@ -156,7 +159,7 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isVolatilityExpanded {
-                                        SlidingVolatilityView(timescale: timescale)
+                                        SlidingVolatilityView(timescale: convertedTimescale)
                                     }
                                 }
                                 
@@ -188,7 +191,7 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isTallyExpanded {
-                                        TallyView(timescale: timescale)
+                                        TallyView(timescale: convertedTimescale)
                                     }
                                 }
                             }
@@ -398,8 +401,8 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isButterflyAverageExpanded {
-                                    TransientWithPickerView(timescale: timescale)
-                                    EmptyView()
+                                    TransientWithPickerView(timescale: convertedTimescale)
+                                    EmptyView() // ???
                                 }
                             }
                             
@@ -444,7 +447,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isWeightExpanded {
-                                                WeightView(timescale: timescale)
+                                                WeightView(timescale: convertedTimescale)
                                             }
                                         }
                                     }
@@ -478,7 +481,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isWalkingRunningDistanceExpanded {
-                                                WalkingRunningDistanceView(timescale: timescale)
+                                                WalkingRunningDistanceView(timescale: convertedTimescale)
                                             }
                                         }
                                     }
@@ -512,7 +515,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isActiveEnergyExpanded {
-                                                ActiveEnergyView(timescale: timescale)
+                                                ActiveEnergyView(timescale: convertedTimescale)
                                             }
                                         }
                                     }
@@ -546,7 +549,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isSleepExpanded {
-                                                SleepView(timescale: timescale)
+                                                SleepView(timescale: convertedTimescale)
                                             }
                                         }
                                     }
@@ -580,7 +583,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isMenstrualExpanded {
-                                                MenstrualView(timescale: timescale)
+                                                MenstrualView(timescale: getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)) // convertedTimescale???
                                             }
                                         }
                                     }

@@ -100,12 +100,10 @@ extension Calendar {
 /**
  Convert `timescale` to days.
  */
-@inline(__always) func getTimescale(timescale: TimeScaleEnum, moodSnaps: [MoodSnapStruct]) -> Int {
-    var days: Int = timescale.rawValue
-    
-    if timescale == .all {
-        days = dateRange(moodSnaps: moodSnaps)
+@inline(__always) func getTimescale(timescale: Int, moodSnaps: [MoodSnapStruct]) -> Int {
+    if timescale == TimeScaleEnum.all.rawValue {
+        return max(dateRange(moodSnaps: moodSnaps), TimeScaleEnum.month.rawValue)
+    } else {
+        return timescale
     }
-        
-    return days
 }

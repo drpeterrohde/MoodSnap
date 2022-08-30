@@ -118,7 +118,7 @@ func chooseSpacing(values: [CGFloat?]) -> CGFloat {
     if values.count <= TimeScaleEnum.year.rawValue {
         return 0.0
     }
-    return 2.0
+    return 0.0
 }
 
 /**
