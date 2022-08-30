@@ -11,7 +11,8 @@ struct InsightsView: View {
     
     var body: some View {
         let convertedTimescale: Int = getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)
-        
+        let convertedTimescaleCopy: Int = convertedTimescale
+
         NavigationView {
             VStack {
                 Picker("", selection: $timescale) {
@@ -583,7 +584,7 @@ struct InsightsView: View {
                                                 }
                                             }
                                             if data.uxState.isMenstrualExpanded {
-                                                MenstrualView(timescale: getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)) // convertedTimescale???
+                                                MenstrualView(timescale: convertedTimescaleCopy)
                                             }
                                         }
                                     }
