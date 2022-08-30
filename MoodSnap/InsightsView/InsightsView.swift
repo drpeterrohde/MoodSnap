@@ -7,7 +7,7 @@ struct InsightsView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var data: DataStoreClass
     @EnvironmentObject var health: HealthManager
-    @State var timescale: Int = TimeScaleEnum.month.rawValue
+    @State var timescale: Int = TimeScaleEnum.all.rawValue
     
     var body: some View {
         let convertedTimescale: Int = getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)
