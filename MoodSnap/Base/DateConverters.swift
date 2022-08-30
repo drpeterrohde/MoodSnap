@@ -33,21 +33,21 @@ extension DateComponents: Comparable {
  Extra utilities for `Date` type.
  */
 extension Date {
-    func getComponents() -> DateComponents {
+    @inline(__always) func getComponents() -> DateComponents {
         return Calendar.current.dateComponents([.day, .month, .year], from: self)
     }
 
-    func addDays(days: Int) -> Date {
+    @inline(__always) func addDays(days: Int) -> Date {
         let daysComponents = DateComponents(day: days)
         return Calendar.current.date(byAdding: daysComponents, to: self)!
     }
     
-    func addSeconds(seconds: Int) -> Date {
+    @inline(__always) func addSeconds(seconds: Int) -> Date {
         let daysComponents = DateComponents(second: seconds)
         return Calendar.current.date(byAdding: daysComponents, to: self)!
     }
 
-    func dateString() -> String {
+    @inline(__always) func dateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .none
@@ -55,7 +55,7 @@ extension Date {
         return dateString
     }
 
-    func dateTimeString() -> String {
+    @inline(__always) func dateTimeString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
@@ -63,12 +63,12 @@ extension Date {
         return dateString
     }
     
-    func startOfDay() -> Date {
+    @inline(__always) func startOfDay() -> Date {
         let start = Calendar.current.startOfDay(for: self)
         return start
     }
     
-    func endOfDay() -> Date {
+    @inline(__always) func endOfDay() -> Date {
         var end = Calendar.current.startOfDay(for: self)
         end = end.addDays(days: 1)
         end = end.addSeconds(seconds: -1)
@@ -80,10 +80,32 @@ extension Date {
  Extra utilities for `Calendar` type.
  */
 extension Calendar {
-    func numberOfDaysBetween(from: Date, to: Date) -> Int {
+    @inline(__always) func numberOfDaysBetween(from: Date, to: Date) -> Int {
         let fromDate = startOfDay(for: from)
         let toDate = startOfDay(for: to)
         let numberOfDays = dateComponents([.day], from: fromDate, to: toDate)
         return numberOfDays.day!
     }
+}
+
+/**
+ Get date range of `moodSnaps` in days.
+ */
+@inline(__always) func dateRange(moodSnaps: [MoodSnapStruct]) -> Int {
+    let first = getFirstDate(moodSnaps: moodSnaps)
+    let days = Calendar.current.numberOfDaysBetween(from: first, to: Date()) + 1
+    return days
+}
+
+/**
+ Convert `timescale` to days.
+ */
+@inline(__always) func getTimescale(timescale: TimeScaleEnum, moodSnaps: [MoodSnapStruct]) -> Int {
+    var days: Int = timescale.rawValue
+    
+    if timescale == .all {
+        days = dateRange(moodSnaps: moodSnaps)
+    }
+        
+    return days
 }

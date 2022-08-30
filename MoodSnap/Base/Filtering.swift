@@ -31,7 +31,9 @@ import SwiftUI
     var firstDate = Date().startOfDay()
     for moodSnap in moodSnaps {
         if moodSnap.timestamp < firstDate {
-            firstDate = moodSnap.timestamp
+            if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
+                firstDate = moodSnap.timestamp
+            }
         }
     }
     return firstDate
