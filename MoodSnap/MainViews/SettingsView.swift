@@ -228,6 +228,7 @@ struct SettingsView: View {
                     let retrieved = decodeJSONString(url: fileUrl)
 
                     data.stopProcessing()
+                    
                     data.id = retrieved.id
                     data.version = retrieved.version
                     data.settings = retrieved.settings
@@ -235,6 +236,7 @@ struct SettingsView: View {
                     data.moodSnaps = retrieved.moodSnaps
                     data.healthSnaps = retrieved.healthSnaps
                     data.processedData = retrieved.processedData
+                    
                     data.startProcessing()
                 } catch {
                 }
