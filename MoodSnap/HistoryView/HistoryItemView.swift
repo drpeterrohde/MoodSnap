@@ -87,6 +87,7 @@ struct HistoryItemView: View {
                                 secondaryButton: .destructive(
                                     Text("delete"),
                                     action: {
+                                        data.stopProcessing()
                                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                         data.startProcessing()
                                     }

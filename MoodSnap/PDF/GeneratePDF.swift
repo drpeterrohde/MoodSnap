@@ -326,26 +326,26 @@ func generateNotesContent(document: PDFDocument, data: DataStoreClass, timescale
     }
 }
 
-func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreClass) {
-    document.createNewPage()
-
-    let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
-    let descriptorBody = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
-        .withDesign(.serif)
-    let subtitleAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: subtitleFontSizePDF)]
-
-    let attributedSubtitle = NSAttributedString(string: "\n" + NSLocalizedString("interpretation_guide", comment: "") + "\n", attributes: subtitleAttributes)
-    let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
-    var textElement = PDFAttributedText(text: attributedSubtitle)
-    document.add(.contentLeft, attributedTextObject: textElement)
-
-    document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
-
-    let attributedNotes = NSAttributedString(string: NSLocalizedString("notes_on_interpretation_string", comment: ""), attributes: notesAttributes)
-
-    textElement = PDFAttributedText(text: attributedNotes)
-    document.add(.contentLeft, attributedTextObject: textElement)
-}
+//func generateInterpretationGuideContent(document: PDFDocument, data: DataStoreClass) {
+//    document.createNewPage()
+//
+//    let lineStyle = PDFLineStyle(type: .full, color: .darkGray, width: 0.5)
+//    let descriptorBody = UIFontDescriptor.preferredFontDescriptor(withTextStyle: .body)
+//        .withDesign(.serif)
+//    let subtitleAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: subtitleFontSizePDF)]
+//
+//    let attributedSubtitle = NSAttributedString(string: "\n" + NSLocalizedString("interpretation_guide", comment: "") + "\n", attributes: subtitleAttributes)
+//    let notesAttributes = [NSAttributedString.Key.font: UIFont(descriptor: descriptorBody!, size: notesFontSizePDF)]
+//    var textElement = PDFAttributedText(text: attributedSubtitle)
+//    document.add(.contentLeft, attributedTextObject: textElement)
+//
+//    document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
+//
+//    let attributedNotes = NSAttributedString(string: NSLocalizedString("notes_on_interpretation_string", comment: ""), attributes: notesAttributes)
+//
+//    textElement = PDFAttributedText(text: attributedNotes)
+//    document.add(.contentLeft, attributedTextObject: textElement)
+//}
 
 func addImage(document: PDFDocument, image: UIImage, width: CGFloat? = nil, height: CGFloat? = nil) {
     if width == nil {

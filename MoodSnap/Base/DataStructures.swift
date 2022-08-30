@@ -106,7 +106,7 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
 
-    var timestamp: Date = Date() // Only used for events
+    var timestamp: Date = Date()
 
     var activity: String = ""
     var occurrences: Int = 0

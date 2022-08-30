@@ -58,7 +58,8 @@ struct ActiveEnergyView: View {
                         .foregroundColor(themes[data.settings.theme].anxietyColor) + Text(formatMoodLevelString(value: health.energyCorrelationsMood[3]!))
                         .font(numericFont)
                         .foregroundColor(themes[data.settings.theme].irritabilityColor)
-                }.frame(width: 150)
+                }
+                .frame(width: 150)
             }
         }
     }

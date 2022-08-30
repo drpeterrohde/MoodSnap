@@ -21,7 +21,7 @@ struct ThemeStruct: Identifiable {
     var iconColor: Color = Color.primary
     var controlColor: Color = Color.primary
     var emergencyColor: Color = Color.red
-    var logoColor: Color = Color(0x2D65AF) // Color(0x3069AC)
+    var logoColor: Color = Color(0x2D65AF)
 
     // Dimensions
     var hBarHeight: CGFloat = 11

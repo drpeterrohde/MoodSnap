@@ -47,12 +47,10 @@ struct UnlockView: View {
      FaceID authentication
      */
     func authenticate() {
-        // If we're using authentication and we're locked
         if data.settings.useFaceID && !isUnlocked {
             let context = LAContext()
             var error: NSError?
 
-            // Is authentication available?
             if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
                 let reason = "Unlock to acces MoodSnap."
 

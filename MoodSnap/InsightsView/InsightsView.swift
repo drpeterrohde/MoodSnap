@@ -11,7 +11,6 @@ struct InsightsView: View {
     
     var body: some View {
         NavigationView {
-            // ScrollView {
             VStack {
                 Picker("", selection: $timescale) {
                     Text("1mo").tag(TimeScaleEnum.month.rawValue)
@@ -61,7 +60,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isAverageMoodExpanded {
-                                        //Divider()
                                         AverageMoodView(timescale: timescale)
                                     }
                                 }
@@ -94,7 +92,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMoodHistoryExpanded {
-                                        //Divider()
                                         MoodHistoryBarView(timescale: timescale)
                                     }
                                 }
@@ -127,7 +124,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMovingAverageExpanded {
-                                        //Divider()
                                         SlidingAverageView(timescale: timescale)
                                     }
                                 }
@@ -160,7 +156,6 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isVolatilityExpanded {
-                                        //Divider()
                                         SlidingVolatilityView(timescale: timescale)
                                     }
                                 }
@@ -403,203 +398,194 @@ struct InsightsView: View {
                                     }
                                 }
                                 if data.uxState.isButterflyAverageExpanded {
-                                    //Divider()
                                     TransientWithPickerView(timescale: timescale)
                                     EmptyView()
                                 }
                             }
                             
-//                            Group {
-//                                if data.settings.useHealthKit && (data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn) {
-//                                    HStack {
-//                                        Text("HEALTH")
-//                                            .font(.caption)
-//                                            .foregroundColor(.secondary)
-//                                        Spacer()
-//                                    }
-//                                    .padding(.leading, 10)
-//                                    .padding(.top, 2)
-//                                    .padding(.bottom, -5)
-//
-//                                    if data.settings.healthWeightOn {
-//                                        GroupBox {
-//                                            HStack {
-//                                                // Label("Weight", systemImage: "scalemass").font(.subheadline)
-//                                                HStack {
-//                                                    Image(systemName: "scalemass")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(width: iconWidth, height: iconWidth)
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                        .font(.subheadline.bold())
-//                                                    Text("Weight")
-//                                                        .font(.subheadline.bold())
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    Spacer()
-//                                                }
-//                                                Spacer()
-//                                                Button(action: {
-//                                                    withAnimation(.easeInOut) {
-//                                                        data.uxState.isWeightExpanded.toggle()
-//                                                    }
-//                                                }) {
-//                                                    if data.uxState.isWeightExpanded {
-//                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                    } else {
-//                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                    }
-//                                                }
-//                                            }
-//                                            if data.uxState.isWeightExpanded {
-//                                                //Divider()
-//                                                WeightView(timescale: timescale)
-//                                            }
-//                                        }
-//                                    }
-//
-//                                    if data.settings.healthDistanceOn {
-//                                        GroupBox {
-//                                            HStack {
-//                                                // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
-//                                                HStack {
-//                                                    Image(systemName: "figure.walk")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(width: iconWidth, height: iconWidth)
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                        .font(.subheadline.bold())
-//                                                    Text("Walking_running_distance")
-//                                                        .font(.subheadline.bold())
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    Spacer()
-//                                                }
-//                                                Spacer()
-//                                                Button(action: {
-//                                                    withAnimation(.easeInOut) {
-//                                                        data.uxState.isWalkingRunningDistanceExpanded.toggle()
-//                                                    }
-//                                                }) {
-//                                                    if data.uxState.isWalkingRunningDistanceExpanded {
-//                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                    } else {
-//                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                    }
-//                                                }
-//                                            }
-//                                            if data.uxState.isWalkingRunningDistanceExpanded {
-//                                                //Divider()
-//                                                WalkingRunningDistanceView(timescale: timescale)
-//                                            }
-//                                        }
-//                                    }
-//
-//                                    if data.settings.healthEnergyOn {
-//                                        GroupBox {
-//                                            HStack {
-//                                                // Label("Walking & running distance", systemImage: "figure.walk").font(.subheadline)
-//                                                HStack {
-//                                                    Image(systemName: "bolt.heart")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(width: iconWidth, height: iconWidth)
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                        .font(.subheadline.bold())
-//                                                    Text("Active_energy")
-//                                                        .font(.subheadline.bold())
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    Spacer()
-//                                                }
-//                                                Spacer()
-//                                                Button(action: {
-//                                                    withAnimation(.easeInOut) {
-//                                                        data.uxState.isActiveEnergyExpanded.toggle()
-//                                                    }
-//                                                }) {
-//                                                    if data.uxState.isActiveEnergyExpanded {
-//                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                    } else {
-//                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                    }
-//                                                }
-//                                            }
-//                                            if data.uxState.isActiveEnergyExpanded {
-//                                                //Divider()
-//                                                ActiveEnergyView(timescale: timescale)
-//                                            }
-//                                        }
-//                                    }
-//
-//                                    if data.settings.healthSleepOn {
-//                                        GroupBox {
-//                                            HStack {
-//                                                HStack {
-//                                                    Image(systemName: "bed.double")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(width: iconWidth, height: iconWidth)
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                        .font(.subheadline.bold())
-//                                                    Text("Sleep")
-//                                                        .font(.subheadline.bold())
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    Spacer()
-//                                                }
-//                                                Spacer()
-//                                                Button(action: {
-//                                                    withAnimation(.easeInOut) {
-//                                                        data.uxState.isSleepExpanded.toggle()
-//                                                    }
-//                                                }) {
-//                                                    if data.uxState.isSleepExpanded {
-//                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                    } else {
-//                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                    }
-//                                                }
-//                                            }
-//                                            if data.uxState.isSleepExpanded {
-//                                                //Divider()
-//                                                SleepView(timescale: timescale)
-//                                            }
-//                                        }
-//                                    }
-//
-//                                    if data.settings.healthMenstrualOn {
-//                                        GroupBox {
-//                                            HStack {
-//                                                HStack {
-//                                                    Image(systemName: "staroflife")
-//                                                        .resizable()
-//                                                        .scaledToFit()
-//                                                        .frame(width: iconWidth, height: iconWidth)
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                        .font(.subheadline.bold())
-//                                                    Text("Menstrual_cycle")
-//                                                        .font(.subheadline.bold())
-//                                                        .foregroundColor(themes[data.settings.theme].iconColor)
-//                                                    Spacer()
-//                                                }
-//                                                Spacer()
-//                                                Button(action: {
-//                                                    withAnimation(.easeInOut) {
-//                                                        data.uxState.isMenstrualExpanded.toggle()
-//                                                    }
-//                                                }) {
-//                                                    if data.uxState.isMenstrualExpanded {
-//                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
-//                                                    } else {
-//                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
-//                                                    }
-//                                                }
-//                                            }
-//                                            if data.uxState.isMenstrualExpanded {
-//                                                //Divider()
-//                                                MenstrualView(timescale: timescale)
-//                                            }
-//                                        }
-//                                    }
-//                                }
-//                            }
+                            Group {
+                                if data.settings.useHealthKit && (data.settings.healthWeightOn || data.settings.healthEnergyOn || data.settings.healthMenstrualOn || data.settings.healthSleepOn || data.settings.healthDistanceOn) {
+                                    HStack {
+                                        Text("HEALTH")
+                                            .font(.caption)
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                    }
+                                    .padding(.leading, 10)
+                                    .padding(.top, 2)
+                                    .padding(.bottom, -5)
+                                    
+                                    if data.settings.healthWeightOn {
+                                        GroupBox {
+                                            HStack {
+                                                HStack {
+                                                    Image(systemName: "scalemass")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: iconWidth, height: iconWidth)
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                        .font(.subheadline.bold())
+                                                    Text("Weight")
+                                                        .font(.subheadline.bold())
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                                Button(action: {
+                                                    withAnimation(.easeInOut) {
+                                                        data.uxState.isWeightExpanded.toggle()
+                                                    }
+                                                }) {
+                                                    if data.uxState.isWeightExpanded {
+                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                    } else {
+                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                    }
+                                                }
+                                            }
+                                            if data.uxState.isWeightExpanded {
+                                                WeightView(timescale: timescale)
+                                            }
+                                        }
+                                    }
+                                    
+                                    if data.settings.healthDistanceOn {
+                                        GroupBox {
+                                            HStack {
+                                                HStack {
+                                                    Image(systemName: "figure.walk")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: iconWidth, height: iconWidth)
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                        .font(.subheadline.bold())
+                                                    Text("Walking_running_distance")
+                                                        .font(.subheadline.bold())
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                                Button(action: {
+                                                    withAnimation(.easeInOut) {
+                                                        data.uxState.isWalkingRunningDistanceExpanded.toggle()
+                                                    }
+                                                }) {
+                                                    if data.uxState.isWalkingRunningDistanceExpanded {
+                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                    } else {
+                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                    }
+                                                }
+                                            }
+                                            if data.uxState.isWalkingRunningDistanceExpanded {
+                                                WalkingRunningDistanceView(timescale: timescale)
+                                            }
+                                        }
+                                    }
+                                    
+                                    if data.settings.healthEnergyOn {
+                                        GroupBox {
+                                            HStack {
+                                                HStack {
+                                                    Image(systemName: "bolt.heart")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: iconWidth, height: iconWidth)
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                        .font(.subheadline.bold())
+                                                    Text("Active_energy")
+                                                        .font(.subheadline.bold())
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                                Button(action: {
+                                                    withAnimation(.easeInOut) {
+                                                        data.uxState.isActiveEnergyExpanded.toggle()
+                                                    }
+                                                }) {
+                                                    if data.uxState.isActiveEnergyExpanded {
+                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                    } else {
+                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                    }
+                                                }
+                                            }
+                                            if data.uxState.isActiveEnergyExpanded {
+                                                ActiveEnergyView(timescale: timescale)
+                                            }
+                                        }
+                                    }
+                                    
+                                    if data.settings.healthSleepOn {
+                                        GroupBox {
+                                            HStack {
+                                                HStack {
+                                                    Image(systemName: "bed.double")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: iconWidth, height: iconWidth)
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                        .font(.subheadline.bold())
+                                                    Text("Sleep")
+                                                        .font(.subheadline.bold())
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                                Button(action: {
+                                                    withAnimation(.easeInOut) {
+                                                        data.uxState.isSleepExpanded.toggle()
+                                                    }
+                                                }) {
+                                                    if data.uxState.isSleepExpanded {
+                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                    } else {
+                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                    }
+                                                }
+                                            }
+                                            if data.uxState.isSleepExpanded {
+                                                SleepView(timescale: timescale)
+                                            }
+                                        }
+                                    }
+                                    
+                                    if data.settings.healthMenstrualOn {
+                                        GroupBox {
+                                            HStack {
+                                                HStack {
+                                                    Image(systemName: "staroflife")
+                                                        .resizable()
+                                                        .scaledToFit()
+                                                        .frame(width: iconWidth, height: iconWidth)
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                        .font(.subheadline.bold())
+                                                    Text("Menstrual_cycle")
+                                                        .font(.subheadline.bold())
+                                                        .foregroundColor(themes[data.settings.theme].iconColor)
+                                                    Spacer()
+                                                }
+                                                Spacer()
+                                                Button(action: {
+                                                    withAnimation(.easeInOut) {
+                                                        data.uxState.isMenstrualExpanded.toggle()
+                                                    }
+                                                }) {
+                                                    if data.uxState.isMenstrualExpanded {
+                                                        Image(systemName: "chevron.down").foregroundColor(.secondary)
+                                                    } else {
+                                                        Image(systemName: "chevron.right").foregroundColor(.secondary)
+                                                    }
+                                                }
+                                            }
+                                            if data.uxState.isMenstrualExpanded {
+                                                MenstrualView(timescale: timescale)
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                     .onTapGesture(count: 2) {
@@ -613,7 +599,7 @@ struct InsightsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                    if data.processingTask != nil {
+                    if data.processingTask != nil || health.processingTask != nil {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                     }

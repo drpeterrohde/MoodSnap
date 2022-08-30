@@ -13,23 +13,6 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
-    
-    /**
-     Convert struct to class
-     */
-    func toClass() -> DataStoreClass {
-        let dataStore: DataStoreClass = DataStoreClass()
-        
-        dataStore.id = self.id
-        dataStore.version = self.version
-        dataStore.settings = self.settings
-        dataStore.uxState = self.uxState
-        dataStore.moodSnaps = self.moodSnaps
-        dataStore.healthSnaps = self.healthSnaps
-        dataStore.processedData = self.processedData
-        
-        return dataStore
-    }
 }
 
 /**
@@ -42,7 +25,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var settings: SettingsStruct = SettingsStruct()
     @Published var uxState: UXStateStruct = UXStateStruct()
     @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
-    @Published var healthSnaps: [HealthSnapStruct] = []
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     @Published var processingTask: Task<Void, Never>? = nil
     @Published var hashtagList: [String] = []
@@ -54,7 +36,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var eventOccurrenceCount: Int = 0
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
-    
+    var healthSnaps: [HealthSnapStruct] = []
+
     init() {
         id = UUID()
         settings = SettingsStruct()
@@ -75,7 +58,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.healthSnaps = retrieved.healthSnaps
             self.processedData = retrieved.processedData
         } catch {
-            //print("Load failed")
         }
     }
 
@@ -262,12 +244,9 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Start asynchronous processing of data
      */
-    func startProcessing(priority: TaskPriority = .high) {
+    @inline(__always) func startProcessing(priority: TaskPriority = .high) {
+        self.stopProcessing()
         self.save()
-        
-        if self.processingTask != nil {
-            self.processingTask?.cancel()
-        }
         
         DispatchQueue.main.async {
             self.processingTask = Task(priority: priority) {
@@ -280,9 +259,21 @@ final class DataStoreClass: Identifiable, ObservableObject {
     }
     
     /**
+     Stop asynchronous processing of data.
+     */
+    @inline(__always) func stopProcessing() {
+        if self.processingTask != nil {
+            self.processingTask?.cancel()
+        }
+        DispatchQueue.main.async {
+            self.processingTask = nil
+        }
+    }
+    
+    /**
      Dave `DataStoreClass` to disk.
      */
-    func save() {
+    @inline(__always) func save() {
         do {
             try Disk.save(self.toStruct(),
                           to: .documents,
@@ -295,7 +286,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Convert class to struct
      */
-    func toStruct() -> DataStoreStruct {
+    @inline(__always) func toStruct() -> DataStoreStruct {
         var dataStore: DataStoreStruct = DataStoreStruct()
         
         dataStore.id = self.id

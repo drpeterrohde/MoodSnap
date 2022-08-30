@@ -6,7 +6,6 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var data: DataStoreClass
-    @State var firstname: String = ""
     @State private var showingReportSheet = false
     @State private var showingImporter = false
     @State private var showingExporter = false
@@ -82,9 +81,6 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.reportBlackAndWhite, label: {
                         Text("black_and_white")
                     })
-//                    Toggle(isOn: $data.settings.reportIncludeInterpretation, label: {
-//                        Text("include_guide")
-//                    })
                     Toggle(isOn: $data.settings.includeNotes, label: {
                         Text("include_notes")
                     })
@@ -116,31 +112,29 @@ struct SettingsView: View {
                 }
 
                 Section(header: Text("Health")) {
-                    Text("Apple Health integeration is being saved for a future version pending major redesign of the functionality.")
-                        .font(.caption)
-//                    Toggle(isOn: $data.settings.useHealthKit, label: {
-//                        Text("Use Apple Health")
-//                    })
-//                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
-//                        Text("Walking & running distance")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthSleepOn, label: {
-//                        Text("Sleep")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
-//                        Text("Active energy")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthWeightOn, label: {
-//                        Text("Weight")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
-//                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
-//                        Text("Menstrual cycle")
-//                    })
-//                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.useHealthKit, label: {
+                        Text("Use Apple Health")
+                    })
+                    Toggle(isOn: $data.settings.healthDistanceOn, label: {
+                        Text("Walking & running distance")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthSleepOn, label: {
+                        Text("Sleep")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthEnergyOn, label: {
+                        Text("Active energy")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthWeightOn, label: {
+                        Text("Weight")
+                    })
+                        .disabled(!data.settings.useHealthKit)
+                    Toggle(isOn: $data.settings.healthMenstrualOn, label: {
+                        Text("Menstrual cycle")
+                    })
+                        .disabled(!data.settings.useHealthKit)
                 }
 
                 Group {
@@ -204,6 +198,7 @@ struct SettingsView: View {
                 Section(header: Text("danger_zone")) {
                     Button(action: {
                         if data.moodSnaps.count == 0 {
+                            data.stopProcessing()
                             data.moodSnaps = makeDemoData()
                             data.startProcessing()
                         } else {
@@ -220,24 +215,19 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
+                        data.stopProcessing()
                         data.moodSnaps = []
                         data.startProcessing()
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
             }.fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(data: data)), contentType: .plainText) { result in
-//                switch result {
-//                case .success:
-//                    break
-//                case let .failure(error):
-//                    break
-//                    //print(error.localizedDescription)
-//                }
             }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do {
                     let fileUrl = try res.get()
                     let retrieved = decodeJSONString(url: fileUrl)
 
+                    data.stopProcessing()
                     data.id = retrieved.id
                     data.version = retrieved.version
                     data.settings = retrieved.settings
@@ -247,8 +237,6 @@ struct SettingsView: View {
                     data.processedData = retrieved.processedData
                     data.startProcessing()
                 } catch {
-                    //print("Failed to import backup file")
-                    //print(error.localizedDescription)
                 }
                 dismiss()
             }.alert(isPresented: $showingImportAlert) {

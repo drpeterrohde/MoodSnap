@@ -136,6 +136,7 @@ struct MoodSnapView: View {
                 // Save button
                 Button {
                     DispatchQueue.main.async {
+                        data.stopProcessing()
                         moodSnap.snapType = .mood
                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                         data.moodSnaps.append(moodSnap)
