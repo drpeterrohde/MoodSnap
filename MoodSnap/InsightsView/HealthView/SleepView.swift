@@ -17,7 +17,7 @@ struct SleepView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: themes[data.settings.theme].buttonColor,
+                             color: .cyan, //themes[data.settings.theme].buttonColor,
                              min: 0,
                              max: health.maxSleep,
                              settings: data.settings)
