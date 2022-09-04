@@ -98,36 +98,36 @@ struct VerticalBarChart: View {
                     }.fill(thisColor)
                 }
             }
-        }.frame(height: 60)
+        }//.frame(height: 60)
     }
 }
 
 /**
- Choose bar spcaing for differen timecsales given by number of elements in `values`.
- */
+Choose bar spcaing for differen timecsales given by number of elements in `values`.
+*/
 func chooseSpacing(values: [CGFloat?]) -> CGFloat {
-    if values.count <= TimeScaleEnum.month.rawValue {
-        return 2.0
-    }
-    if values.count <= TimeScaleEnum.threeMonths.rawValue {
-        return 1.0
-    }
-    if values.count <= TimeScaleEnum.sixMonths.rawValue {
-        return 0.0
-    }
-    if values.count <= TimeScaleEnum.year.rawValue {
-        return 0.0
-    }
-    return 0.0
+   if values.count <= TimeScaleEnum.month.rawValue {
+       return 2.0
+   }
+   if values.count <= TimeScaleEnum.threeMonths.rawValue {
+       return 1.0
+   }
+   if values.count <= TimeScaleEnum.sixMonths.rawValue {
+       return 0.0
+   }
+   if values.count <= TimeScaleEnum.year.rawValue {
+       return 0.0
+   }
+   return 0.0
 }
 
 /**
- Choose the opacity of bars.
- */
+Choose the opacity of bars.
+*/
 func chooseOpacity(value: CGFloat, shaded: Bool, offset: CGFloat, max: CGFloat = 4, settings: SettingsStruct) -> CGFloat {
-    var opacity: CGFloat = 1.0
-    if shaded {
-        opacity = (value + offset) / (themes[settings.theme].barShadeOffset + max)
-    }
-    return opacity
+   var opacity: CGFloat = 1.0
+   if shaded {
+       opacity = (value + offset) / (themes[settings.theme].barShadeOffset + max)
+   }
+   return opacity
 }

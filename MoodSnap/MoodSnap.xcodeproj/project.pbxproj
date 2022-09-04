@@ -86,6 +86,7 @@
 		CA496BB927EBEF2B0067EE63 /* Influence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6C27EBEF2A0067EE63 /* Influence.swift */; };
 		CA496BBB27EBEF2B0067EE63 /* AverageMoodSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */; };
 		CA496BC227EBF1F30067EE63 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA496BC127EBF1F30067EE63 /* TPPDF */; };
+		CA4E451F28C4F85500245FCD /* DotChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4E451E28C4F85500245FCD /* DotChart.swift */; };
 		CA58162028B4E04D000E4C8A /* AppStoreReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58161F28B4E04D000E4C8A /* AppStoreReview.swift */; };
 		CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA58D46827ECFC4300D071B3 /* UnlockView.swift */; };
 		CA5C61A82802464F003151FD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
@@ -181,6 +182,7 @@
 		CA496B6A27EBEF2A0067EE63 /* Average.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		CA496B6C27EBEF2A0067EE63 /* Influence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Influence.swift; sourceTree = "<group>"; };
 		CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageMoodSnap.swift; sourceTree = "<group>"; };
+		CA4E451E28C4F85500245FCD /* DotChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotChart.swift; sourceTree = "<group>"; };
 		CA58161F28B4E04D000E4C8A /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -195,7 +197,7 @@
 		CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransientWithPickerView.swift; sourceTree = "<group>"; };
 		CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Correlation.swift; sourceTree = "<group>"; };
 		CACD6FED27F1619500D71730 /* QuoteSnap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteSnap.swift; sourceTree = "<group>"; };
-		CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TrendsView.swift; path = InfluencesView/TrendsView.swift; sourceTree = "<group>"; };
+		CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA4E452028C502CE00245FCD /* Unused */,
 				CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */,
 				CA7775AC280CDB370045A202 /* MoodSnap.entitlements */,
 				CA5C61AA2802464F003151FD /* Localizable.strings */,
@@ -280,7 +283,6 @@
 				CABF5E2128ACABAE004D7A0F /* HealthView */,
 				CA527AA328AA7CDE007AD6DC /* InfluencesView */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
-				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
 				CA496B1C27EBEF290067EE63 /* InsightsView.swift */,
 				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
@@ -412,6 +414,15 @@
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		CA4E452028C502CE00245FCD /* Unused */ = {
+			isa = PBXGroup;
+			children = (
+				CA4E451E28C4F85500245FCD /* DotChart.swift */,
+				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
+			);
+			path = Unused;
 			sourceTree = "<group>";
 		};
 		CA527AA328AA7CDE007AD6DC /* InfluencesView */ = {
@@ -588,6 +599,7 @@
 				CA496BB727EBEF2B0067EE63 /* Average.swift in Sources */,
 				CA69217928154B8500E99864 /* Nils.swift in Sources */,
 				CA496B0E27EBEEEF0067EE63 /* DateConverters.swift in Sources */,
+				CA4E451F28C4F85500245FCD /* DotChart.swift in Sources */,
 				CA496B8F27EBEF2A0067EE63 /* HistoryQuoteView.swift in Sources */,
 				CA496BB427EBEF2B0067EE63 /* Volatility.swift in Sources */,
 				CA496BBB27EBEF2B0067EE63 /* AverageMoodSnap.swift in Sources */,
