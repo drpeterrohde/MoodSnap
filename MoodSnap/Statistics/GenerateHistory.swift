@@ -80,3 +80,21 @@ import SwiftUI
         
     return history
 }
+
+/**
+ Generate a binary timeline baed on a sequence of dates.
+ `nil` where there is no `date`, `1` otherwise.
+ */
+@inline(__always) func generateTimelineForDates(moodSnaps: [MoodSnapStruct], dates: [Date], timescale: Int) -> [CGFloat?] {
+    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
+    let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
+    var sequence: [CGFloat?] = Array(repeating: nil, count: length)
+    
+    for date in dates {
+        let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: date, to: Date())
+        sequence[offset] = 1
+    }
+    
+    let data = makeChartData(y: sequence, timescale: timescale)
+    return data
+}

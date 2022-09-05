@@ -22,7 +22,13 @@ struct ThemeStruct: Identifiable {
     var controlColor: Color = Color.primary
     var emergencyColor: Color = Color.red
     var logoColor: Color = Color(0x2D65AF)
-
+    
+    var menstrualColor: Color = Color(0xF47157)
+    var walkingRunningColor: Color = Color(0xFE6532)
+    var energyColor: Color = Color(0xFE6532)
+    var weightColor: Color = Color(0xB15FE9)
+    var sleepColor: Color = Color(0x86E2E0)
+    
     // Dimensions
     var hBarHeight: CGFloat = 11
     var hBarRadius: CGFloat = 5

@@ -23,8 +23,24 @@ struct TransientWithPickerView: View {
             hashtag: selectedHashtag,
             processedData: data.processedData)
         let (label, int) = transientLabel(selectionType: selectionType)
+        let dates = getDatesForType(type: selectionType,
+                                    activity: selectedActivity,
+                                    social: selectedSocial,
+                                    symptom: selectedSymptom,
+                                    event: selectedEvent,
+                                    hashtag: selectedHashtag,
+                                    data: data)
+        let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps,
+                                                dates: dates,
+                                                timescale: timescale)
         
         VStack {
+            VerticalBarChart(values: timeline,
+                             color: themes[data.settings.theme].buttonColor,
+                             min: 0,
+                             max: 1,
+                             settings: data.settings)
+            .frame(height: 10)
             TransientView(butterfly: butterfly,
                           label: label,
                           timescale: 2 * int + 1)

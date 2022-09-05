@@ -17,7 +17,7 @@ struct WalkingRunningDistanceView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: Color(0xFE6532), //themes[data.settings.theme].buttonColor,
+                             color: themes[data.settings.theme].walkingRunningColor,
                              min: 0,
                              max: health.maxDistance,
                              settings: data.settings)

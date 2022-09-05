@@ -17,11 +17,11 @@ struct MenstrualView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: Color(0xF47157),
+                             color: themes[data.settings.theme].menstrualColor,
                              min: 0,
                              max: 1,
                              settings: data.settings)
-            .frame(height: 30)
+            .frame(height: 10)
             TransientView(butterfly: health.menstrualButterfly,
                           label: "pm_14_days",
                           timescale: 2 * menstrualTransientWindow + 1,
