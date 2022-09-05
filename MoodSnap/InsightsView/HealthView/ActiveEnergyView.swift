@@ -17,7 +17,7 @@ struct ActiveEnergyView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: .orange,//themes[data.settings.theme].buttonColor,
+                             color: Color(0xFE6532),//themes[data.settings.theme].buttonColor,
                              min: 0,
                              max: health.maxEnergy,
                              settings: data.settings)

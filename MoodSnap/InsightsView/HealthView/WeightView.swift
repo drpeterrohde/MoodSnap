@@ -17,7 +17,7 @@ struct WeightView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: .purple,//themes[data.settings.theme].buttonColor,
+                             color: Color(0xB15FE9),//themes[data.settings.theme].buttonColor,
                              min: health.minWeight - 0.5,
                              max: health.maxWeight,
                              settings: data.settings)

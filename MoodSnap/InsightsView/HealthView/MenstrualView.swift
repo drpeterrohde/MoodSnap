@@ -17,7 +17,7 @@ struct MenstrualView: View {
                 .foregroundColor(.secondary)
         } else {
             VerticalBarChart(values: entries,
-                             color: .red,
+                             color: Color(0xF47157),
                              min: 0,
                              max: 1,
                              settings: data.settings)
