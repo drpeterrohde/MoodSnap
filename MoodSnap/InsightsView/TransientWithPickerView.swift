@@ -32,7 +32,7 @@ struct TransientWithPickerView: View {
                                     data: data)
         let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps,
                                                 dates: dates,
-                                                timescale: timescale)
+                                                timescale: timescale) // ??? Preprocess
         
         VStack {
             VerticalBarChart(values: timeline,
