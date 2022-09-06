@@ -26,6 +26,9 @@ import SwiftUI
     thisButterfly.irritabilityVolatility = butterflyVolatility[3]
 
     thisButterfly.occurrences = dates.count
+    
+    let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps, dates: dates)
+    thisButterfly.timeline = timeline
 
     return thisButterfly
 }
@@ -56,7 +59,10 @@ import SwiftUI
     thisButterfly.irritabilityVolatility = butterflyVolatility[3]
 
     thisButterfly.occurrences = dates.count
-
+    
+    let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps, dates: dates)
+    thisButterfly.timeline = timeline
+    
     return thisButterfly
 }
 

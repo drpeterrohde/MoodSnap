@@ -22,8 +22,12 @@ import SwiftUI
 /**
  Make bar chart data using `y` coordinates, truncated and padded to given `timescale`.
  */
-@inline(__always) func makeChartData(y: [CGFloat?], timescale: Int) -> [CGFloat?] {
-    let yTrunc = Array(y.suffix(timescale))
+@inline(__always) func makeChartData(y: [CGFloat?]?, timescale: Int) -> [CGFloat?] {
+    if y == nil {
+        return []
+    }
+    
+    let yTrunc = Array(y!.suffix(timescale)) // ???
     var yTotal: [CGFloat?] = []
 
     if timescale > yTrunc.count {

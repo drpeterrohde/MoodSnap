@@ -9,14 +9,14 @@ struct MenstrualView: View {
     @EnvironmentObject var health: HealthManager
     
     var body: some View {
-        let entries = makeChartData(y: health.menstrualData, timescale: timescale)
+        let timeline = makeChartData(y: health.menstrualButterfly.timeline, timescale: timescale)
         
         if health.menstrualDates.count == 0 {
             Text("insufficient_data")
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            VerticalBarChart(values: entries,
+            VerticalBarChart(values: timeline,
                              color: themes[data.settings.theme].menstrualColor,
                              min: 0,
                              max: 1,

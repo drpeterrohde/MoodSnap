@@ -423,7 +423,9 @@ final class HealthManager: ObservableObject {
     func processMenstrual(data: DataStoreClass) async -> Bool {
         let menstrualDataUI: [CGFloat?] = getMenstrualData(data: data, health: self)
         let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: self.healthSnaps)
-        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
+        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI,
+                                                                                           data: data,
+                                                                                           maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.menstrualData = menstrualDataUI

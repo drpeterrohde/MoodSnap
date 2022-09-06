@@ -120,6 +120,8 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var depressionVolatility: [CGFloat?] = []
     var anxietyVolatility: [CGFloat?] = []
     var irritabilityVolatility: [CGFloat?] = []
+    
+    var timeline: [CGFloat?]? = []
 }
 
 /**
