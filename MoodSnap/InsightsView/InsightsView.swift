@@ -563,11 +563,11 @@ struct InsightsView: View {
                                                         .resizable()
                                                         .scaledToFit()
                                                         .frame(width: iconWidth, height: iconWidth)
-                                                        .foregroundColor(themes[data.settings.theme].menstrualColor)
+                                                        .foregroundColor(themes[data.settings.theme].menstrualLabelColor)
                                                         .font(.subheadline.bold())
                                                     Text("Menstrual_cycle")
                                                         .font(.subheadline.bold())
-                                                        .foregroundColor(themes[data.settings.theme].menstrualColor)
+                                                        .foregroundColor(themes[data.settings.theme].menstrualLabelColor)
                                                     Spacer()
                                                 }
                                                 Spacer()

@@ -24,6 +24,7 @@ struct ThemeStruct: Identifiable {
     var logoColor: Color = Color(0x2D65AF)
     
     var menstrualColor: Color = Color(0xF47157)
+    var menstrualLabelColor: Color = Color(0x5D5BDD)
     var walkingRunningColor: Color = Color(0xFE6532)
     var energyColor: Color = Color(0xFE6532)
     var weightColor: Color = Color(0xB15FE9)
