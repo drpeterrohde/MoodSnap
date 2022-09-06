@@ -194,7 +194,7 @@ struct SettingsView: View {
                         }
                     }
                     HStack {
-                        Text("App version")
+                        Text("app_version")
                         Spacer()
                         Text(UIApplication.appVersion)
                             .foregroundColor(.secondary)
