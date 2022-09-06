@@ -305,3 +305,13 @@ import SwiftUI
     
     return str
 }
+
+/**
+ Get app version number.
+ */
+extension UIApplication {
+    static var appVersion: String {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        return version ?? "-"
+    }
+}

@@ -193,6 +193,12 @@ struct SettingsView: View {
                                 .foregroundColor(.secondary)
                         }
                     }
+                    HStack {
+                        Text("App version")
+                        Spacer()
+                        Text(UIApplication.appVersion)
+                            .foregroundColor(.secondary)
+                    }
                 }
 
                 Section(header: Text("danger_zone")) {
