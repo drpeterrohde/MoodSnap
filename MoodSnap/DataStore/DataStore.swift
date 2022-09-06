@@ -216,7 +216,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         let socialOccurrenceCountUI = countAllOccurrences(butterflies: socialButterflies)
         DispatchQueue.main.async {
             self.processedData.socialButterfly = socialButterfliesUI
-            self.symptomOccurrenceCount = socialOccurrenceCountUI
+            self.socialOccurrenceCount = socialOccurrenceCountUI
         }
         return true
     }
