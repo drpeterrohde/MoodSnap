@@ -101,6 +101,7 @@
 "first_moodsnap" = "First MoodSnap";
 "generate_PDF_report" = "Generate PDF report";
 "grid_columns" = "Grid columns:";
+"haptic_feedback" = "Haptic feedback";
 "hashtag" = "Hashtag";
 "hashtags" = "Hashtags";
 "health_data" = "Health data";

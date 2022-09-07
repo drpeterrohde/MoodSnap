@@ -18,10 +18,10 @@ struct StoreReviewHelper {
         }
         
         switch appOpenCount {
-        case 20, 50:
+        case 20, 50, 100:
             StoreReviewHelper.requestReview()
-        case _ where appOpenCount % 100 == 0:
-            StoreReviewHelper.requestReview()
+        //case _ where appOpenCount % 100 == 0:
+        //    StoreReviewHelper.requestReview()
         default:
             break
         }

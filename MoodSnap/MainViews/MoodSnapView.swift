@@ -43,18 +43,30 @@ struct MoodSnapView: View {
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].elevationColor)
                         Slider(value: $moodSnap.elevation, in: 0 ... 4, step: 1)
+                            .onChange(of: moodSnap.elevation) { _ in
+                                hapticResponse(data: data)
+                            }
                         Text("depression")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].depressionColor)
                         Slider(value: $moodSnap.depression, in: 0 ... 4, step: 1)
+                            .onChange(of: moodSnap.depression) { _ in
+                                hapticResponse(data: data)
+                            }
                         Text("anxiety")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].anxietyColor)
                         Slider(value: $moodSnap.anxiety, in: 0 ... 4, step: 1)
+                            .onChange(of: moodSnap.anxiety) { _ in
+                                hapticResponse(data: data)
+                            }
                         Text("irritability")
                             .font(Font.caption.bold())
                             .foregroundColor(themes[data.settings.theme].irritabilityColor)
                         Slider(value: $moodSnap.irritability, in: 0 ... 4, step: 1)
+                            .onChange(of: moodSnap.irritability) { _ in
+                                hapticResponse(data: data)
+                            }
                     }
                 }
 
@@ -74,6 +86,9 @@ struct MoodSnapView: View {
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
                                         .padding(1)
+                                        .onChange(of: moodSnap.symptoms[i]) { _ in
+                                            hapticResponse(data: data)
+                                        }
                                 }
                             }
                         }
@@ -95,6 +110,9 @@ struct MoodSnapView: View {
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
+                                        .onChange(of: moodSnap.activities[i]) { _ in
+                                            hapticResponse(data: data)
+                                        }
                                 }
                             }
                         }
@@ -116,6 +134,9 @@ struct MoodSnapView: View {
                                         .toggleStyle(.button)
                                         .tint(themes[data.settings.theme].buttonColor)
                                         .font(.caption)
+                                        .onChange(of: moodSnap.social[i]) { _ in
+                                            hapticResponse(data: data)
+                                        }
                                 }
                             }
                         }
@@ -135,6 +156,7 @@ struct MoodSnapView: View {
 
                 // Save button
                 Button {
+                    hapticResponse(data: data)
                     DispatchQueue.main.async {
                         data.stopProcessing()
                         moodSnap.snapType = .mood

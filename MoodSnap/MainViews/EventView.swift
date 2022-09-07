@@ -34,6 +34,7 @@ struct EventView: View {
             }
 
             Button {
+                hapticResponse(data: data)
                 DispatchQueue.main.async {
                     data.stopProcessing()
                     moodSnap.snapType = .event
