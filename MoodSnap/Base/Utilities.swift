@@ -315,11 +315,3 @@ extension UIApplication {
         return version ?? "-"
     }
 }
-
-/**
- Generate haptic feedback if haptics are enabled.
- */
-@inline(__always) func hapticResponse(data: DataStoreClass) {
-    let impact = UIImpactFeedbackGenerator(style: .light)
-    impact.impactOccurred()
-}

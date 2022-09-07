@@ -30,7 +30,7 @@ struct NoteView: View {
             }
 
             Button {
-                hapticResponse(data: data)
+                hapticResponseSuccess(data: data)
                 DispatchQueue.main.async {
                     data.stopProcessing()
                     moodSnap.snapType = .note
