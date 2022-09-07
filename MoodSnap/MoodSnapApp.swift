@@ -42,6 +42,7 @@ struct MoodSnapApp: App {
                 StoreReviewHelper.incrementAppOpenedCount()
                 StoreReviewHelper.checkAndAskForReview()
                 data.startProcessing()
+                data.hapticGeneratorLight.prepare()
             }
             
             if value == .inactive {

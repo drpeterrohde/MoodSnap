@@ -156,7 +156,7 @@ struct MoodSnapView: View {
 
                 // Save button
                 Button {
-                    hapticResponseSuccess(data: data)
+                    hapticResponseLight(data: data)
                     DispatchQueue.main.async {
                         data.stopProcessing()
                         moodSnap.snapType = .mood
