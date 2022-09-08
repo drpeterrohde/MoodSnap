@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA254E6328B7FD03006DBC8D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */; };
+		CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
@@ -107,6 +108,7 @@
 /* Begin PBXFileReference section */
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCorrelationsView.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
 		CA496AF927EBEEEE0067EE63 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -424,6 +426,7 @@
 			children = (
 				CA4E451E28C4F85500245FCD /* DotChart.swift */,
 				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
+				CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -628,6 +631,7 @@
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
 				CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */,
+				CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */,
 				CA496B8C27EBEF2A0067EE63 /* HistoryNoteView.swift in Sources */,
 				CA496B0927EBEEEF0067EE63 /* Sorting.swift in Sources */,
 				CA496B8B27EBEF2A0067EE63 /* HistorySocialView.swift in Sources */,

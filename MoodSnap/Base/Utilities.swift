@@ -108,6 +108,30 @@ import SwiftUI
 }
 
 /**
+ Format a correlation level string to two decimal place accuracy.
+ */
+@inline(__always) func formatCorrelationString(value: CGFloat?) -> String {
+    if value != nil {
+        var floatVal: CGFloat = value!
+
+        floatVal = CGFloat(round(100 * floatVal) / 100)
+
+        var str = ""
+        if floatVal < 0 {
+            str = String(format: " %.2f", floatVal)
+        } else if floatVal > 0 {
+            str = String(format: " +%.2f", floatVal)
+        } else {
+            str = String(format: "  %.2f", abs(floatVal))
+        }
+
+        return str
+    } else {
+        return "     -"
+    }
+}
+
+/**
  Get list of events.
  */
 @inline(__always) func getEventsList(data: DataStoreClass, window: Int? = nil) -> [(String, Date)] {
