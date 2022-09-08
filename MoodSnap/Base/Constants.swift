@@ -3,6 +3,9 @@ import SwiftUI
 /// Quote frequency
 let quoteFrequency = 11
 
+/// Haptics
+let hapticsEnabled = false
+
 /// Time windows
 let influenceWindowShort = 7
 let butterflyWindowShort = 7

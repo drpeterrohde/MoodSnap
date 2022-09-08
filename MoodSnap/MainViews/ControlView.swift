@@ -16,20 +16,6 @@ struct ControlView: View {
     @State private var showingMediaSheet: Bool = false
     @State private var showingIntroPopover: Bool = false
 
-//    init(data: DataStoreClass, health: HealthManager) {
-//        //data = data
-//        //health = health
-//        showingMoodSnapSheet = false
-//        showingSettingsSheet = false
-//        showingStatsSheet = false
-//        showingEmergencySheet = false
-//        showingHelpSheet = false
-//        showingNoteSheet = false
-//        showingEventSheet = false
-//        showingMediaSheet = false
-//        showingIntroPopover = self.data.settings.firstUse
-//    }
-
     var body: some View {
         Divider()
         HStack {
@@ -74,6 +60,11 @@ struct ControlView: View {
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingEventSheet) {
                     EventView(moodSnap: MoodSnapStruct())
+                        .onAppear {
+                            if hapticsEnabled {
+                                data.hapticGeneratorLight.prepare()
+                            }
+                        }
                 }
 
                 Spacer()
@@ -89,6 +80,11 @@ struct ControlView: View {
                     .foregroundColor(themes[data.settings.theme].controlColor)
             }.sheet(isPresented: $showingMoodSnapSheet) {
                 MoodSnapView(moodSnap: MoodSnapStruct())
+                    .onAppear {
+                        if hapticsEnabled {
+                            data.hapticGeneratorLight.prepare()
+                        }
+                    }
             }
 
             Group {
@@ -104,6 +100,11 @@ struct ControlView: View {
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingNoteSheet) {
                     NoteView(moodSnap: MoodSnapStruct())
+                        .onAppear {
+                            if hapticsEnabled {
+                                data.hapticGeneratorLight.prepare()
+                            }
+                        }
                 }
 
                 Spacer()
