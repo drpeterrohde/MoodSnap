@@ -107,7 +107,7 @@ struct HelpView: View {
                         Group {
                             Divider()
                             VStack(alignment: .leading) {
-                                Label("Settings", systemImage: "slider.horizontal.3")
+                                Label("settings", systemImage: "slider.horizontal.3")
                                     .foregroundColor(themes[data.settings.theme].iconColor)
                                 Spacer()
                                 Text(.init("help_settings_string"))

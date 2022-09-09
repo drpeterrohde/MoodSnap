@@ -45,41 +45,41 @@ struct HistoryView: View {
                             Button(action: {
                                 filter = .none
                                 searchText = ""
-                                searchPrompt = "Search all"
+                                searchPrompt = "Search_all"
                             }) {
-                                Label("Search all", systemImage: "magnifyingglass")
+                                Label("Search_all", systemImage: "magnifyingglass")
                                     .font(.subheadline)
                             }
                             Button(action: {
                                 filter = .mood
                                 searchText = ""
-                                searchPrompt = "Search MoodSnaps"
+                                searchPrompt = "Search_MoodSnaps"
                             }) {
-                                Label("Search MoodSnaps", systemImage: "brain.head.profile")
+                                Label("Search_MoodSnaps", systemImage: "brain.head.profile")
                                     .font(.subheadline)
                             }
                             Button(action: {
                                 filter = .event
                                 searchText = ""
-                                searchPrompt = "Search events"
+                                searchPrompt = "Search_events"
                             }) {
-                                Label("Search events", systemImage: "star.fill")
+                                Label("Search_events", systemImage: "star.fill")
                                     .font(.subheadline)
                             }
                             Button(action: {
                                 filter = .note
                                 searchText = ""
-                                searchPrompt = "Search notes"
+                                searchPrompt = "Search_notes"
                             }) {
-                                Label("Search notes", systemImage: "note.text")
+                                Label("Search_notes", systemImage: "note.text")
                                     .font(.subheadline)
                             }
                             Button(action: {
                                 filter = .media
                                 searchText = ""
-                                searchPrompt = "Search media"
+                                searchPrompt = "Search_media"
                             }) {
-                                Label("Search media", systemImage: "photo.on.rectangle.angled")
+                                Label("Search_media", systemImage: "photo.on.rectangle.angled")
                                     .font(.subheadline)
                             }
                         } label: {
