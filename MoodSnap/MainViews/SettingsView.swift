@@ -113,10 +113,10 @@ struct SettingsView: View {
 
                 Section(header: Text("Health")) {
                     Toggle(isOn: $data.settings.useHealthKit, label: {
-                        Text("Use Apple Health")
+                        Text("Use_Apple_Health")
                     })
                     Toggle(isOn: $data.settings.healthDistanceOn, label: {
-                        Text("Walking & running distance")
+                        Text("Walking_running_distance")
                     })
                         .disabled(!data.settings.useHealthKit)
                     Toggle(isOn: $data.settings.healthSleepOn, label: {
@@ -124,7 +124,7 @@ struct SettingsView: View {
                     })
                         .disabled(!data.settings.useHealthKit)
                     Toggle(isOn: $data.settings.healthEnergyOn, label: {
-                        Text("Active energy")
+                        Text("Active_energy")
                     })
                         .disabled(!data.settings.useHealthKit)
                     Toggle(isOn: $data.settings.healthWeightOn, label: {
@@ -132,7 +132,7 @@ struct SettingsView: View {
                     })
                         .disabled(!data.settings.useHealthKit)
                     Toggle(isOn: $data.settings.healthMenstrualOn, label: {
-                        Text("Menstrual cycle")
+                        Text("Menstrual_cycle")
                     })
                         .disabled(!data.settings.useHealthKit)
                 }
