@@ -18,6 +18,10 @@ let quotes = ["quote_1", "quote_2", "quote_3", "quote_4", "quote_5",
  Generate a QuoteSnap bsaed on MoodSnap `count` and `quoteFrequency`.
  */
 func getQuoteSnap(count: Int) -> MoodSnapStruct? {
+    if Locale.current.languageCode != "en" {
+            return nil
+    }
+    
     let remainder: Int = count % quoteFrequency
     let multiple: Int = (count / quoteFrequency - 1) % quotes.count
 

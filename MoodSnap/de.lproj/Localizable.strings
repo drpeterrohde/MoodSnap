@@ -176,7 +176,7 @@
 "sliding_average" = "Stimmmungsverlauf";
 "social" = "Soziales";
 "social_visibility" = "Soziale Sichtbarkeit";
-"statistics_butterfly_average_string_1" = "Die _Einflüsse_ werden als Transientendiagramm um ein bestimmtes Ereignis, ein Symptom oder eine Aktivitätsart zentriert und zeigen den Stimmungstrend zeitlich vorwärts und rückwärts zu diesem Punkt. Der Wert wird als Durchschnitt zwischen dem Referenzpunkt (angezeigt durch den zentralen vertikalen Balken) und der auf der Achse angezeigten Zeit berechnet.\n\nMit dem Dropdown-Menü unter der Darstellung kannst du angeben, um welche Aktivitätsart oder welches Ereignis es gehen soll.";
+"statistics_butterfly_average_string_1" = "Das _Einflussdiagramm_ wird als Transientendiagramm um ein bestimmtes Ereignis, ein Symptom oder eine Aktivitätsart zentriert und zeigen den Stimmungstrend zeitlich vorwärts und rückwärts zu diesem Punkt. Der Wert wird als Durchschnitt zwischen dem Referenzpunkt (angezeigt durch den zentralen vertikalen Balken) und der auf der Achse angezeigten Zeit berechnet.\n\nMit dem Dropdown-Menü unter der Darstellung kannst du angeben, um welche Aktivitätsart oder welches Ereignis es gehen soll.";
 "statistics_butterfly_average_string_2" = "Das obige Beispiel konzentriert sich auf das Ereignis eines Arbeitsplatzwechsels und zeigt, dass die Angst- und Depressionswerte nach dem Ereignis schnell abgenommen haben und dann im Laufe der Zeit leicht angestiegen sind.\n\nDie Zeitleiste zeigt, wann die jeweiligen Ereignisse stattgefunden haben.\n\nDas Transientendiagramm erfasst dieselben Informationen, wie die Werte für _Einflüsse_, jedoch mit einer variablen Zeitskala. Die Zahlen zeigen die jeweiligen Einflusswerte an.";
 "statistics_intro_string" = "Auf der Registerkarte _Einblicke_ findest du eine Reihe von Diagrammen, die dein Stimmungstagebuch visualisieren, sowie verschiedene statistische Indikatoren, die hilfreich sein können, um zu verstehen, wie verschiedene Aktivitäten und Lebensereignisse deine Stimmung beeinflussen.";
 "statistics_mood_history_string" = "Die Darstellung _Stimmungstagebuch_ zeigt die vier Stimmungsindikatoren als Balkendiagramme in Einheiten von Tagen.";
@@ -194,7 +194,7 @@
 "taking_moodsnaps" = "MoodSnaps aufnehmen";
 "tally" = "Liste";
 "theme" = "Thema";
-"transients" = "Einflüsse";
+"transients" = "Einflussdiagramm";
 "Twitter" = "Twitter";
 "unable_import_warning" = "Du kannst nur Daten in ein leeren MoodSnap-Verlauf importieren.Lösche zuerst die Daten.";
 "unable_to_import" = "Importieren nicht möglich";

@@ -52,9 +52,11 @@ struct SettingsView: View {
                         Text("grid_columns") + Text(" \(data.settings.numberOfGridColumns)")
                     })
 
-                    Toggle(isOn: $data.settings.quoteVisibility, label: {
-                        Text("show_quotes")
-                    })
+                    if Locale.current.languageCode == "en" {
+                        Toggle(isOn: $data.settings.quoteVisibility, label: {
+                            Text("show_quotes")
+                        })
+                    }
 
                     Picker("measurement_units", selection: $data.settings.healthUnits) {
                         Text("metric")
