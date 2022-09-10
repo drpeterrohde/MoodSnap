@@ -24,7 +24,7 @@
 "Excercise" = "Bewegung";
 "Fatigue" = "Müdigkeit";
 "Flashbacks" = "Flashbacks";
-"Flattening" = "Gefühlsreduktion";
+"Flattening" = "Gefühls\U00ADreduktion";
 "HISTORY" = "HISTORIE";
 "Headaches" = "Kopfschmerzen";
 "Hypersomnia" = "Hypersomnie";
@@ -57,11 +57,11 @@
 "Reduced_appetite" = "Reduzierter Appetit";
 "Restless" = "Unruhe";
 "Rumination" = "Grübeln";
-"Self_harm" = "Selbstverletzung";
+"Self_harm" = "Selbst\U00ADverletzung";
 "Sexual_activity" = "Sexuelle Aktivität";
 "Sleep" = "Schlaf";
 "Substance_use" = "Konsum von Substanzen";
-"Suicidal_thoughts" = "Selbstverletzende Gedanken";
+"Suicidal_thoughts" = "Selbst\U00ADverletzende Gedanken";
 "Therapy" = "Therapie";
 "about" = "Über";
 "accessibility" = "Bedienungshilfe";
