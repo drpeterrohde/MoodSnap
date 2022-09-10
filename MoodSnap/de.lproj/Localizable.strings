@@ -94,7 +94,7 @@
 "edit" = "Bearbeiten";
 "edit_timestamp" = "Zeitstempel bearbeiten";
 "elevation" = "Glücksgefühl";
-"emergency_string" = "Wenn du dich unsicher oder gefährdet fühlst:\n\n • Rufe einen Freund oder eine Freundin, ein Familienmitglied, einen Arzt oder eine Vertrauensperson an.\n • Wähle den Notruf (112) oder die nächste Hilfe-Hotline an.\n\n Eine Liste von Telefonnummern findest du [hier](https://www.opencounseling.com/suicide-hotlines).";
+"emergency_string" = "Wenn du dich unsicher oder gefährdet fühlst:\n\n • Rufe einen Freund oder eine Freundin, ein Familienmitglied, einen Arzt oder eine Vertrauensperson an.\n • Wähle den Notruf oder die nächste Hilfe-Hotline an.\n\n Eine Liste von Telefonnummern findest du [hier](https://www.opencounseling.com/suicide-hotlines).";
 "evening" = "Abends";
 "event" = "Ereignis";
 "events" = "Ereignisse";
