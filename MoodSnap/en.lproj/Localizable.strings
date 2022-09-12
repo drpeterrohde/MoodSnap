@@ -216,6 +216,11 @@
 "save" = "Save";
 "save_to_camera_roll" = "Save media to camera roll";
 "search_all" = "Search all";
+"Search_media" = "Search media";
+"Search_notes" = "Search notes";
+"Search_events" = "Search events";
+"Search_MoodSnaps" = "Search MoodSnaps";
+"Search_all" = "Search all";
 "settings" = "Settings";
 "show_quotes" = "Show quotes";
 "sliding_average" = "Sliding average";
