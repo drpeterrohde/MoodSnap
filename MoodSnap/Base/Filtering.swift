@@ -120,3 +120,12 @@ import SwiftUI
     
     return filtered
 }
+
+/**
+ Does `string` contain `hashtag`.
+ */
+@inline(__always) func containsHashtag(string: String, hashtag: String) -> Bool {
+    let hashtags = getHashtags(string: string.lowercased())
+    let result = hashtags.contains(hashtag)
+    return result
+}

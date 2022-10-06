@@ -40,7 +40,8 @@ func countHashtagOccurrences(hashtag: String, moodSnaps: [MoodSnapStruct]) -> In
     var occurrences = 0
 
     for moodSnap in moodSnaps {
-        if moodSnap.notes.contains(hashtag) || moodSnap.event.contains(hashtag) {
+        if containsHashtag(string: moodSnap.notes, hashtag: hashtag) || containsHashtag(string: moodSnap.event, hashtag: hashtag) {
+        //if moodSnap.notes.contains(hashtag) || moodSnap.event.contains(hashtag) {
             occurrences += 1
         }
     }

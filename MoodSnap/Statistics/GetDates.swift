@@ -6,7 +6,8 @@ import SwiftUI
 @inline(__always) func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] {
     var dates: [Date] = []
     for moodSnap in moodSnaps {
-        if moodSnap.notes.lowercased().contains(hashtag) || moodSnap.event.lowercased().contains(hashtag) {
+        if containsHashtag(string: moodSnap.notes, hashtag: hashtag) || containsHashtag(string: moodSnap.event, hashtag: hashtag) {
+        //if moodSnap.notes.lowercased().contains(hashtag) || moodSnap.event.lowercased().contains(hashtag) {
             dates.append(moodSnap.timestamp)
         }
     }
