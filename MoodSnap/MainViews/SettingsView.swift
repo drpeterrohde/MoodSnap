@@ -223,9 +223,11 @@ struct SettingsView: View {
                     }
                 }.alert(isPresented: $showingDeleteData) {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
-                        data.stopProcessing()
-                        data.moodSnaps = []
-                        data.startProcessing()
+                        DispatchQueue.main.async {
+                            data.stopProcessing()
+                            data.moodSnaps = []
+                            data.startProcessing()
+                        }
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
