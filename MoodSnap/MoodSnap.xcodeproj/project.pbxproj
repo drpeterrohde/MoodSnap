@@ -189,6 +189,7 @@
 		CA58161F28B4E04D000E4C8A /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA5F1C632905EC080063B526 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA69217628154B2900E99864 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		CA69217828154B8500E99864 /* Nils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nils.swift; sourceTree = "<group>"; };
 		CA70912E28C843C200214B4D /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
@@ -532,6 +533,7 @@
 				en,
 				Base,
 				de,
+				es,
 			);
 			mainGroup = CA0FA5DC27EBEA1700B5EEE1;
 			packageReferences = (
@@ -666,6 +668,7 @@
 			children = (
 				CA5C61A92802464F003151FD /* en */,
 				CAA2E88628CB5A3F007AC145 /* de */,
+				CA5F1C632905EC080063B526 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -825,7 +828,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -874,7 +877,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5;
+				MARKETING_VERSION = 2.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";

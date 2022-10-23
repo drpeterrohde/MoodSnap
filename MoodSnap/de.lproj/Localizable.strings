@@ -104,6 +104,7 @@
 "grid_columns" = "Tabellenspalten:";
 "hashtag" = "Hashtag";
 "hashtags" = "Hashtags";
+"HEALTH" = "GESUNDHEIT";
 "health_data" = "Gesundheitsdaten";
 "help" = "Hilfe";
 "help_events_string" = "_Ereignisse_ sind alle wichtigen Veränderungen im Leben, auf die du als Bezugspunkte in deiner Stimmungsgeschichte zurückblicken kannst. Dazu können Veränderungen am Arbeitsplatz, in der Beziehung, am Wohnort, in der Lebensweise, in der Familie, in der Medikation, in der Behandlung oder im Gesundheitszustand gehören. Im Feld _Einblick_ können diese Ereignisse als Bezugspunkte für den Vergleich der Stimmungsgeschichte vor und nach dem Ereignis gewählt werden. Es wird empfohlen, die Titel der Ereignisse sehr kurz zu halten, höchstens ein paar Worte, und weitere Details in das zugehörige Notizfeld zu schreiben.";

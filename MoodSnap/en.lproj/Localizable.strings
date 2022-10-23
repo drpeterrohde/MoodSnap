@@ -105,6 +105,7 @@
 "haptic_feedback" = "Haptic feedback";
 "hashtag" = "Hashtag";
 "hashtags" = "Hashtags";
+"HEALTH" = "HEALTH";
 "health_data" = "Health data";
 "help" = "Help";
 "help_events_string" = "_Events_ are any major life changes that you might want to look back upon as points of reference in your mood history. These could include changes in jobs, relationships, place of residence, lifestyle changes, family situations, or changes in medication, treatment or health.\n\nIn the _insight_ panel these can be chosen as focus points for comparing mood history before and after the event. It is recommended to keep event titles very concise, a few words at most, putting further details into the associated notes field.";
