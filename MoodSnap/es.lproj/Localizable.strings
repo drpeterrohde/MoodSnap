@@ -29,7 +29,7 @@
 "Headaches" = "Dolores de cabeza";
 "Hypersomnia" = "Hipersomnia";
 "Hypomania" = "Hipomanía";
-"INFLUENCES" = "Influencias";
+"INFLUENCES" = "INFLUENCIAS"; 
 "Increased_appetite" = "Aumento del apetito";
 "Insomnia" = "Insomnio";
 "Isolation" = "Aislamiento";
@@ -47,8 +47,8 @@
 "Nightmares" = "Pesadillas";
 "No_in_person_contact" = "Cero contacto personal";
 "OK" = "OK";
-"PDF_report" = "reporte PDF";
-"PDF_reports" = "reportes PDF";
+"PDF_report" = "Reporte PDF";
+"PDF_reports" = "Reportes PDF";
 "Panic_attacks" = "Ataques de pánico";
 "Paranoia" = "Paranoia";
 "Physical" = "Síntomas físicos";
@@ -167,6 +167,8 @@
 "save" = "Guardar";
 "save_to_camera_roll" = "Guardar en galería";
 "search_all" = "Buscar todo";
+"Search_all" = "Buscar todo";
+"Search_events" = "Buscar eventos";
 "Search_media" = "Buscar documentos";
 "Search_notes" = "Buscar notas";
 "Search_MoodSnaps" = "Buscar MoodSnaps";
