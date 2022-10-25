@@ -40,17 +40,18 @@ final class DataStoreClass: Identifiable, ObservableObject {
     var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
     
     init() {
-        id = UUID()
-        settings = SettingsStruct()
-        uxState = UXStateStruct()
-        moodSnaps = makeIntroSnap()
-        healthSnaps = []
+        self.id = UUID()
+        self.settings = SettingsStruct()
+        self.uxState = UXStateStruct()
+        self.moodSnaps = makeIntroSnap()
+        self.healthSnaps = []
         
         do {
             let retrieved = try Disk.retrieve(
                 "data.json",
                 from: .documents,
                 as: DataStoreStruct.self)
+               
             self.id = retrieved.id
             self.version = retrieved.version
             self.settings = retrieved.settings
