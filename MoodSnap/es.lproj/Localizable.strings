@@ -45,7 +45,7 @@
 "Negative_socialising" = "Socialización negativa";
 "Nicotine" = "Nicotina";
 "Nightmares" = "Pesadillas";
-"No_in_person_contact" = "Cero contacto personal";
+"No_in_person_contact" = "Sin contacto en persona";
 "OK" = "OK";
 "PDF_report" = "Reporte PDF";
 "PDF_reports" = "Reportes PDF";
@@ -55,7 +55,7 @@
 "Positive_socialising" = "Socialización positiva";
 "Psychosis" = "Psicosis";
 "Reduced_appetite" = "Reducción del apetito";
-"Restless" = "Insomnio";
+"Restless" = "Inquieto/a";
 "Rumination" = "Pensamientos obsesivos";
 "Self_harm" = "Autoagresión";
 "Sexual_activity" = "Actividad sexual";
@@ -110,7 +110,7 @@
 "help" = "Ayuda";
 "help_events_string" = "_Eventos_ son cualquier cambio significativo en el diario vivir que tal vez quieras tomar como puntos de referencia en tu historial del estado de ánimo. Estos podrían incluir cambio de trabajo, relaciones interpersonales, lugar de residencia, estilo de vida, situaciones familiares, o cambios en la medicación, tratamiento o salud.\n\nEn el panel de _Revisión_ estos pueden ser tomados como puntos de concentración para separar el historial del estado de ánimo antes y después del evento. Se recomienda mantener los títulos de los eventos lo más concisos posible, un poco de palabras como mucho, poniendo los detalles en el campo de notas asociado.";
 "help_how_to_use_moodsnap_string" = "Moodsnap registra tu historial del estado de ánimo tomando _Moodsnaps_, un sencillo cuestionario sobre tus niveles del estado de ánimo, síntomas y actividades.\n\nPara que las herramientas analíticas funcionen correctamente, lo mejor es tomar Moodsnaps regularmente, por ejemplo, a la misma hora cada tarde-noche. También puedes habilitar recordatorios para este propósito en la opción de _ajustes_.\n\nCuando tomas un Moodsnap, tus entradas deberían reflejar los respectivos grados máximos experimentados, _desde el Moodsnap más reciente_ y _dentro de las últimas 24 horas_.\n\nPara personas con desórdenes del estado de ánimo, se recomienda tomar Moodsnaps adicionales cualquier momento que se nota algún cambio significativo en los síntomas o niveles del estado de ánimo, ya que estos datos adicionales benefician el análisis. No hay límites en qué tan seguido puedes tomar Moodsnaps.\n\nPuedes encontrar más detalles en la página de Moodsnap: [www.moodsnap.app](https://www.moodsnap.app)";
-"help_notes_string" = "Las notas fechadas con día y hora son para anotar cualquier cosa. Podría ser una nota rápida sobre algo importante que afecta tu estado de ánimo en un momento, o podría usarse para mantener un diario. El dictado por voz es una forma rápida y sencilla de tomar notas aquí inmediatamente.";
+"help_notes_string" = "Las notas fechadas con día y hora son para anotar cualquier cosa. Podría ser una nota rapida de algo importante que te afectó el ánimo en ese momento, o podría usarse para mantener un diario. Aquí el dictado por voz es una forma rápida de tomar notas.";
 "help_settings_string" = "Aquí puede ajustar recordatorios para seguir tomando Moodsnaps regularmente, ajustar la interfaz del usuario, e importar y exportar respaldos de tus datos. Tambien puedes alternar la visibilidad de los artículos en las listas de actividades y síntomas. Ya que no todos los artículos disponibles son relevantes o de interés de todos, esto puede ayudar a despejar la interfaz para enfocarse en lo que es relevante para tí. Esconder artículos no borra ningún dato registrado.";
 "help_taking_moodsnaps_string" = "Las diapositivas en la parte superior del panel _Moodsnap_ se ajustan a cinco incrementos, comenzando desde _ninguno_ hasta el _máximo posible_. Los botones para activar y desactivar te permiten especificar síntomas que has experimentado y actividades que has realizado en el mismo periodo de tiempo. Ya que muchas de estas etiquetas no son relevantes para todos, puedes alternar su visibilidad en la opción de _ajustes_. Los síntomas y actividades personalizados se pueden ingresar usando #hashtags en cualquier campo de texto.";
 "history" = "Historial";
@@ -179,7 +179,7 @@
 "social_visibility" = "Visibilidad del panel de socialización";
 "statistics_butterfly_average_string_1" = "La gráfica de _respuesta temporal_ se centra alrededor de un evento, síntoma o tipo de actividad en particular, indicando la tendencia del estado de ánimo en regresión y avance en el tiempo alrededor de ese punto. El valor se calcula como la media entre el punto de referencia (indicado por una barra central vertical) y el tiempo que se indica en el eje.\n\nEl menú desplegable bajo la gráfica te permite especificar sobre qué tipo de actividad o evento centrarse.";
 "statistics_butterfly_average_string_2" = "El ejemplo anterior está centrado alrededor de un eventual cambio de trabajo, indicando que los niveles de ansiedad y depresión disminuyen rápidamente tras el evento, y después incrementándose ligeramente sobre el tiempo.\n\nLa línea de tiempo que se muestra arriba de la gráfica de respuesta temporal marca cuando los respectivos eventos tomaron lugar.\n\nLa gráfica de respuesta temporal captura la misma información que los valores de _influencias_, pero con una escala de tiempo variable. Los números indican los respectivos valores de influencia.";
-"statistics_intro_string" = "La pestaña de _Revisión_ provee un número de gráficas que visualizan tu historial del estado de ánimo y varios indicadores estadísticos que pueden ser de gran ayuda al entender cómo diferentes actividades y eventos de la vida diaria afectan tu estado de ánimo.";
+"statistics_intro_string" = "La pestaña de _Revisión_ provee un número de gráficas que visualizan tu historial del estado de ánimo y varios indicadores estadísticos que pueden ser de gran ayuda para entender cómo diferentes actividades y eventos de la vida diaria afectan tu estado de ánimo.";
 "statistics_mood_history_string" = "La gráfica del _historial del estado de ánimo_ presenta los cuatro indicadores del estado de ánimo en barras, en unidades diarias.";
 "statistics_moving_average_string" = "La gráfica de la _media móvil_ indica la media móvil de los mismos cuatro indicadores, capturando patrones destacables sobre el tiempo.";
 "statistics_tally_string" = "El contador indica el número de ocurrencias de diferentes actividades, síntomas, eventos sociales y eventos marcados con un hashtag dentro de una ventana de tiempo especificada.";
