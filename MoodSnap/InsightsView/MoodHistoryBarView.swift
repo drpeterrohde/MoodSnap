@@ -26,7 +26,7 @@ struct MoodHistoryBarView: View {
                                      horizontalGridLines: 3,
                                      shaded: true,
                                      settings: data.settings)
-                        .frame(height: 60)
+                      //  .frame(height: 60)
                     Text("elevation")
                         .font(.caption)
                         .foregroundColor(Color(color[0]))
@@ -38,7 +38,7 @@ struct MoodHistoryBarView: View {
                                      horizontalGridLines: 3,
                                      shaded: true,
                                      settings: data.settings)
-                        .frame(height: 60)
+                      //  .frame(height: 60)
                     Text("depression")
                         .font(.caption)
                         .foregroundColor(Color(color[1]))
@@ -50,7 +50,7 @@ struct MoodHistoryBarView: View {
                                      horizontalGridLines: 3,
                                      shaded: true,
                                      settings: data.settings)
-                        .frame(height: 60)
+                      //  .frame(height: 60)
                     Text("anxiety")
                         .font(.caption)
                         .foregroundColor(Color(color[2]))
@@ -62,7 +62,7 @@ struct MoodHistoryBarView: View {
                                      horizontalGridLines: 3,
                                      shaded: true,
                                      settings: data.settings)
-                        .frame(height: 60)
+                       // .frame(height: 60)
                     Text("irritability")
                         .font(.caption)
                         .foregroundColor(Color(color[3]))

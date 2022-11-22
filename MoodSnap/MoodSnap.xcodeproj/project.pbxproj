@@ -96,6 +96,51 @@
 		CA70912F28C843C200214B4D /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70912E28C843C200214B4D /* Haptic.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthManager.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
+		CA78D034292D89B600FBD566 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78D033292D89B600FBD566 /* WidgetKit.framework */; };
+		CA78D036292D89B600FBD566 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78D035292D89B600FBD566 /* SwiftUI.framework */; };
+		CA78D039292D89B600FBD566 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D038292D89B600FBD566 /* WidgetBundle.swift */; };
+		CA78D03B292D89B600FBD566 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */; };
+		CA78D03D292D89B600FBD566 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03C292D89B600FBD566 /* Widget.swift */; };
+		CA78D040292D89B700FBD566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA78D03F292D89B700FBD566 /* Assets.xcassets */; };
+		CA78D042292D89B700FBD566 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03E292D89B600FBD566 /* Widget.intentdefinition */; };
+		CA78D043292D89B700FBD566 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03E292D89B600FBD566 /* Widget.intentdefinition */; };
+		CA78D046292D89B700FBD566 /* WidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = CA78D032292D89B600FBD566 /* WidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		CA78D04B292D8A5800FBD566 /* Localizable.strings in Sources */ = {isa = PBXBuildFile; fileRef = CA5C61AA2802464F003151FD /* Localizable.strings */; };
+		CA78D04C292D8A5800FBD566 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5227EBEF2A0067EE63 /* JSON.swift */; };
+		CA78D04D292D8A5800FBD566 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B5427EBEF2A0067EE63 /* DataStore.swift */; };
+		CA78D04E292D8A5800FBD566 /* Hashtags.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6327EBEF2A0067EE63 /* Hashtags.swift */; };
+		CA78D04F292D8A5800FBD566 /* SlidingAverageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */; };
+		CA78D050292D8A5800FBD566 /* MoodHistoryBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */; };
+		CA78D051292D8A5800FBD566 /* MoodLevelsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */; };
+		CA78D052292D8A5800FBD566 /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
+		CA78D053292D8A5800FBD566 /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
+		CA78D054292D8A5800FBD566 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
+		CA78D055292D8A5800FBD566 /* Transients.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6627EBEF2A0067EE63 /* Transients.swift */; };
+		CA78D056292D8A5800FBD566 /* Volatility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6727EBEF2A0067EE63 /* Volatility.swift */; };
+		CA78D057292D8A5800FBD566 /* GenerateHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */; };
+		CA78D058292D8A5800FBD566 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6A27EBEF2A0067EE63 /* Average.swift */; };
+		CA78D059292D8A5800FBD566 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
+		CA78D05A292D8A5800FBD566 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
+		CA78D05B292D8A5800FBD566 /* Influence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6C27EBEF2A0067EE63 /* Influence.swift */; };
+		CA78D05C292D8A5800FBD566 /* AverageMoodSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */; };
+		CA78D05D292D8A5800FBD566 /* UX.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4927EBEF2A0067EE63 /* UX.swift */; };
+		CA78D05E292D8A5800FBD566 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B4A27EBEF2A0067EE63 /* Color.swift */; };
+		CA78D05F292D8A5800FBD566 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AF927EBEEEE0067EE63 /* Constants.swift */; };
+		CA78D060292D8A5800FBD566 /* DataStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFA27EBEEEE0067EE63 /* DataStructures.swift */; };
+		CA78D061292D8A5800FBD566 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFB27EBEEEE0067EE63 /* Utilities.swift */; };
+		CA78D062292D8A5800FBD566 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70912E28C843C200214B4D /* Haptic.swift */; };
+		CA78D063292D8A5800FBD566 /* Counting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFC27EBEEEE0067EE63 /* Counting.swift */; };
+		CA78D064292D8A5800FBD566 /* Sorting.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFD27EBEEEE0067EE63 /* Sorting.swift */; };
+		CA78D065292D8A5800FBD566 /* Enumerations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFE27EBEEEE0067EE63 /* Enumerations.swift */; };
+		CA78D066292D8A5800FBD566 /* Filtering.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AFF27EBEEEE0067EE63 /* Filtering.swift */; };
+		CA78D067292D8A5800FBD566 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B0027EBEEEE0067EE63 /* Notifications.swift */; };
+		CA78D068292D8A5800FBD566 /* DateConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B0227EBEEEE0067EE63 /* DateConverters.swift */; };
+		CA78D069292D8A5800FBD566 /* GraphDataConverters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B0327EBEEEE0067EE63 /* GraphDataConverters.swift */; };
+		CA78D06A292D8A5800FBD566 /* Merging.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496B0427EBEEEE0067EE63 /* Merging.swift */; };
+		CA78D06C292D8BFB00FBD566 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthManager.swift */; };
+		CA78D06D292D8BFB00FBD566 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217628154B2900E99864 /* HealthData.swift */; };
+		CA78D06F292D8C4200FBD566 /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA78D06E292D8C4200FBD566 /* Disk */; };
+		CA78D071292D8C4700FBD566 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA78D070292D8C4700FBD566 /* TPPDF */; };
 		CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
@@ -104,6 +149,30 @@
 		CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACD6FED27F1619500D71730 /* QuoteSnap.swift */; };
 		CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CA78D044292D89B700FBD566 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA0FA5DD27EBEA1700B5EEE1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CA78D031292D89B600FBD566;
+			remoteInfo = WidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CA78D047292D89B700FBD566 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				CA78D046292D89B700FBD566 /* WidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +265,16 @@
 		CA7775AA280CD44C0045A202 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		CA78D032292D89B600FBD566 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA78D033292D89B600FBD566 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		CA78D035292D89B600FBD566 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		CA78D038292D89B600FBD566 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
+		CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveActivity.swift; sourceTree = "<group>"; };
+		CA78D03C292D89B600FBD566 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
+		CA78D03E292D89B600FBD566 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
+		CA78D03F292D89B700FBD566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CA78D041292D89B700FBD566 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA78D06B292D8A8700FBD566 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CAA2E88628CB5A3F007AC145 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -217,12 +296,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA78D02F292D89B600FBD566 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA78D036292D89B600FBD566 /* SwiftUI.framework in Frameworks */,
+				CA78D06F292D8C4200FBD566 /* Disk in Frameworks */,
+				CA78D034292D89B600FBD566 /* WidgetKit.framework in Frameworks */,
+				CA78D071292D8C4700FBD566 /* TPPDF in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		CA0FA5DC27EBEA1700B5EEE1 = {
 			isa = PBXGroup;
 			children = (
+				CA78D06B292D8A8700FBD566 /* WidgetExtension.entitlements */,
 				CA4E452028C502CE00245FCD /* Unused */,
 				CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */,
 				CA7775AC280CDB370045A202 /* MoodSnap.entitlements */,
@@ -244,6 +335,7 @@
 				CA496B4427EBEF2A0067EE63 /* Test */,
 				CA496B4727EBEF2A0067EE63 /* UX */,
 				CA496AF827EBEEEE0067EE63 /* Base */,
+				CA78D037292D89B600FBD566 /* Widget */,
 				CA0FA5E627EBEA1700B5EEE1 /* Products */,
 				CA7775AD280CDB380045A202 /* Frameworks */,
 			);
@@ -253,6 +345,7 @@
 			isa = PBXGroup;
 			children = (
 				CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */,
+				CA78D032292D89B600FBD566 /* WidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -466,8 +559,23 @@
 			isa = PBXGroup;
 			children = (
 				CA7775AE280CDB380045A202 /* HealthKit.framework */,
+				CA78D033292D89B600FBD566 /* WidgetKit.framework */,
+				CA78D035292D89B600FBD566 /* SwiftUI.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CA78D037292D89B600FBD566 /* Widget */ = {
+			isa = PBXGroup;
+			children = (
+				CA78D038292D89B600FBD566 /* WidgetBundle.swift */,
+				CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */,
+				CA78D03C292D89B600FBD566 /* Widget.swift */,
+				CA78D03E292D89B600FBD566 /* Widget.intentdefinition */,
+				CA78D03F292D89B700FBD566 /* Assets.xcassets */,
+				CA78D041292D89B700FBD566 /* Info.plist */,
+			);
+			path = Widget;
 			sourceTree = "<group>";
 		};
 		CABF5E2128ACABAE004D7A0F /* HealthView */ = {
@@ -492,10 +600,12 @@
 				CA0FA5E127EBEA1700B5EEE1 /* Sources */,
 				CA0FA5E227EBEA1700B5EEE1 /* Frameworks */,
 				CA0FA5E327EBEA1700B5EEE1 /* Resources */,
+				CA78D047292D89B700FBD566 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				CA78D045292D89B700FBD566 /* PBXTargetDependency */,
 			);
 			name = MoodSnap;
 			packageProductDependencies = (
@@ -505,6 +615,27 @@
 			productName = "XC MoodSnap";
 			productReference = CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */;
 			productType = "com.apple.product-type.application";
+		};
+		CA78D031292D89B600FBD566 /* WidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA78D04A292D89B700FBD566 /* Build configuration list for PBXNativeTarget "WidgetExtension" */;
+			buildPhases = (
+				CA78D02E292D89B600FBD566 /* Sources */,
+				CA78D02F292D89B600FBD566 /* Frameworks */,
+				CA78D030292D89B600FBD566 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WidgetExtension;
+			packageProductDependencies = (
+				CA78D06E292D8C4200FBD566 /* Disk */,
+				CA78D070292D8C4700FBD566 /* TPPDF */,
+			);
+			productName = WidgetExtension;
+			productReference = CA78D032292D89B600FBD566 /* WidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -516,12 +647,15 @@
 				KnownAssetTags = (
 					New,
 				);
-				LastSwiftUpdateCheck = 1330;
+				LastSwiftUpdateCheck = 1410;
 				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					CA0FA5E427EBEA1700B5EEE1 = {
 						CreatedOnToolsVersion = 13.3;
 						LastSwiftMigration = 1330;
+					};
+					CA78D031292D89B600FBD566 = {
+						CreatedOnToolsVersion = 14.1;
 					};
 				};
 			};
@@ -545,6 +679,7 @@
 			projectRoot = "";
 			targets = (
 				CA0FA5E427EBEA1700B5EEE1 /* MoodSnap */,
+				CA78D031292D89B600FBD566 /* WidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -557,6 +692,14 @@
 				CA254E6328B7FD03006DBC8D /* Launch Screen.storyboard in Resources */,
 				CA496B1227EBEEFC0067EE63 /* Assets.xcassets in Resources */,
 				CA5C61A82802464F003151FD /* Localizable.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CA78D030292D89B600FBD566 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA78D040292D89B700FBD566 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -646,6 +789,7 @@
 				CA58162028B4E04D000E4C8A /* AppStoreReview.swift in Sources */,
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
+				CA78D043292D89B700FBD566 /* Widget.intentdefinition in Sources */,
 				CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */,
 				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
@@ -660,7 +804,60 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CA78D02E292D89B600FBD566 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA78D06C292D8BFB00FBD566 /* HealthManager.swift in Sources */,
+				CA78D06D292D8BFB00FBD566 /* HealthData.swift in Sources */,
+				CA78D04B292D8A5800FBD566 /* Localizable.strings in Sources */,
+				CA78D04C292D8A5800FBD566 /* JSON.swift in Sources */,
+				CA78D04D292D8A5800FBD566 /* DataStore.swift in Sources */,
+				CA78D04E292D8A5800FBD566 /* Hashtags.swift in Sources */,
+				CA78D04F292D8A5800FBD566 /* SlidingAverageView.swift in Sources */,
+				CA78D050292D8A5800FBD566 /* MoodHistoryBarView.swift in Sources */,
+				CA78D051292D8A5800FBD566 /* MoodLevelsView.swift in Sources */,
+				CA78D052292D8A5800FBD566 /* LineChart.swift in Sources */,
+				CA78D053292D8A5800FBD566 /* VerticalBarChart.swift in Sources */,
+				CA78D054292D8A5800FBD566 /* GetDates.swift in Sources */,
+				CA78D055292D8A5800FBD566 /* Transients.swift in Sources */,
+				CA78D056292D8A5800FBD566 /* Volatility.swift in Sources */,
+				CA78D057292D8A5800FBD566 /* GenerateHistory.swift in Sources */,
+				CA78D058292D8A5800FBD566 /* Average.swift in Sources */,
+				CA78D059292D8A5800FBD566 /* Correlation.swift in Sources */,
+				CA78D05A292D8A5800FBD566 /* Nils.swift in Sources */,
+				CA78D05B292D8A5800FBD566 /* Influence.swift in Sources */,
+				CA78D05C292D8A5800FBD566 /* AverageMoodSnap.swift in Sources */,
+				CA78D05D292D8A5800FBD566 /* UX.swift in Sources */,
+				CA78D05E292D8A5800FBD566 /* Color.swift in Sources */,
+				CA78D05F292D8A5800FBD566 /* Constants.swift in Sources */,
+				CA78D060292D8A5800FBD566 /* DataStructures.swift in Sources */,
+				CA78D061292D8A5800FBD566 /* Utilities.swift in Sources */,
+				CA78D062292D8A5800FBD566 /* Haptic.swift in Sources */,
+				CA78D063292D8A5800FBD566 /* Counting.swift in Sources */,
+				CA78D064292D8A5800FBD566 /* Sorting.swift in Sources */,
+				CA78D065292D8A5800FBD566 /* Enumerations.swift in Sources */,
+				CA78D066292D8A5800FBD566 /* Filtering.swift in Sources */,
+				CA78D067292D8A5800FBD566 /* Notifications.swift in Sources */,
+				CA78D068292D8A5800FBD566 /* DateConverters.swift in Sources */,
+				CA78D069292D8A5800FBD566 /* GraphDataConverters.swift in Sources */,
+				CA78D06A292D8A5800FBD566 /* Merging.swift in Sources */,
+				CA78D042292D89B700FBD566 /* Widget.intentdefinition in Sources */,
+				CA78D03B292D89B600FBD566 /* WidgetLiveActivity.swift in Sources */,
+				CA78D039292D89B600FBD566 /* WidgetBundle.swift in Sources */,
+				CA78D03D292D89B600FBD566 /* Widget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CA78D045292D89B700FBD566 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CA78D031292D89B600FBD566 /* WidgetExtension */;
+			targetProxy = CA78D044292D89B700FBD566 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		CA5C61AA2802464F003151FD /* Localizable.strings */ = {
@@ -795,6 +992,7 @@
 		CA0FA5F427EBEA1A00B5EEE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -844,6 +1042,7 @@
 		CA0FA5F527EBEA1A00B5EEE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
@@ -889,6 +1088,67 @@
 			};
 			name = Release;
 		};
+		CA78D048292D89B700FBD566 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ULMGDWJT46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA78D049292D89B700FBD566 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = ULMGDWJT46;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Widget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Widget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap.Widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -906,6 +1166,15 @@
 			buildConfigurations = (
 				CA0FA5F427EBEA1A00B5EEE1 /* Debug */,
 				CA0FA5F527EBEA1A00B5EEE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA78D04A292D89B700FBD566 /* Build configuration list for PBXNativeTarget "WidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA78D048292D89B700FBD566 /* Debug */,
+				CA78D049292D89B700FBD566 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -938,6 +1207,16 @@
 			productName = Disk;
 		};
 		CA496BC127EBF1F30067EE63 /* TPPDF */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA496BC027EBF1F30067EE63 /* XCRemoteSwiftPackageReference "TPPDF" */;
+			productName = TPPDF;
+		};
+		CA78D06E292D8C4200FBD566 /* Disk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CA3CD64227EC0074008F0AAE /* XCRemoteSwiftPackageReference "Disk" */;
+			productName = Disk;
+		};
+		CA78D070292D8C4700FBD566 /* TPPDF */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CA496BC027EBF1F30067EE63 /* XCRemoteSwiftPackageReference "TPPDF" */;
 			productName = TPPDF;

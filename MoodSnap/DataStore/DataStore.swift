@@ -1,5 +1,6 @@
 import Disk
 import SwiftUI
+import WidgetKit
 
 /**
  Struct for main data storage type.
@@ -39,7 +40,31 @@ final class DataStoreClass: Identifiable, ObservableObject {
     var healthSnaps: [HealthSnapStruct] = []
     var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
     
-    init() {
+//    init() {
+//        self.id = UUID()
+//        self.settings = SettingsStruct()
+//        self.uxState = UXStateStruct()
+//        self.moodSnaps = makeIntroSnap()
+//        self.healthSnaps = []
+//
+//        do {
+//            let retrieved = try Disk.retrieve(
+//                "data.json",
+//                from: .documents,
+//                as: DataStoreStruct.self)
+//
+//            self.id = retrieved.id
+//            self.version = retrieved.version
+//            self.settings = retrieved.settings
+//            self.uxState = retrieved.uxState
+//            self.moodSnaps = retrieved.moodSnaps
+//            self.healthSnaps = retrieved.healthSnaps
+//            self.processedData = retrieved.processedData
+//        } catch {
+//        }
+//    }
+    
+    init(shared: Bool = false, process: Bool = false) {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
@@ -47,19 +72,38 @@ final class DataStoreClass: Identifiable, ObservableObject {
         self.healthSnaps = []
         
         do {
-            let retrieved = try Disk.retrieve(
-                "data.json",
-                from: .documents,
-                as: DataStoreStruct.self)
-               
-            self.id = retrieved.id
-            self.version = retrieved.version
-            self.settings = retrieved.settings
-            self.uxState = retrieved.uxState
-            self.moodSnaps = retrieved.moodSnaps
-            self.healthSnaps = retrieved.healthSnaps
-            self.processedData = retrieved.processedData
+            if shared == false {
+                let retrieved = try Disk.retrieve(
+                    "data.json",
+                    from: .documents,
+                    as: DataStoreStruct.self)
+                
+                self.id = retrieved.id
+                self.version = retrieved.version
+                self.settings = retrieved.settings
+                self.uxState = retrieved.uxState
+                self.moodSnaps = retrieved.moodSnaps
+                self.healthSnaps = retrieved.healthSnaps
+                self.processedData = retrieved.processedData
+            } else {
+                let retrieved = try Disk.retrieve(
+                    "data.json",
+                    from: .sharedContainer(appGroupName: "group.MoodSnap"),
+                    as: DataStoreStruct.self)
+                
+                self.id = retrieved.id
+                self.version = retrieved.version
+                self.settings = retrieved.settings
+                self.uxState = retrieved.uxState
+                self.moodSnaps = retrieved.moodSnaps
+                self.healthSnaps = retrieved.healthSnaps
+                self.processedData = retrieved.processedData
+            }
         } catch {
+        }
+        
+        if process {
+            self.startProcessing()
         }
     }
 
@@ -281,8 +325,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
                           to: .documents,
                           as: "data.json")
         } catch {
-            //print("Saving failed")
         }
+        
+        do {
+            try Disk.save(self.toStruct(),
+                          to: .sharedContainer(appGroupName: "group.MoodSnap"),
+                          as: "data.json")
+        } catch {
+        }
+        
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     /**

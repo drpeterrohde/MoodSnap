@@ -97,6 +97,7 @@ struct InsightsView: View {
                                     }
                                     if data.uxState.isMoodHistoryExpanded {
                                         MoodHistoryBarView(timescale: convertedTimescale)
+                                            .frame(height: 360)
                                     }
                                 }
                                 
@@ -129,6 +130,7 @@ struct InsightsView: View {
                                     }
                                     if data.uxState.isMovingAverageExpanded {
                                         SlidingAverageView(timescale: convertedTimescale)
+                                            .frame(height: 170)
                                     }
                                 }
                                 
