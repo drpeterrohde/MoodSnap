@@ -60,11 +60,9 @@ struct ControlView: View {
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingEventSheet) {
                     EventView(moodSnap: MoodSnapStruct())
-//                        .onAppear {
-//                            if hapticsEnabled {
-//                                data.hapticGeneratorLight.prepare()
-//                            }
-//                        }
+                        .onAppear {
+                            hapticPrepare(data: data)
+                        }
                 }
 
                 Spacer()
@@ -80,11 +78,9 @@ struct ControlView: View {
                     .foregroundColor(themes[data.settings.theme].controlColor)
             }.sheet(isPresented: $showingMoodSnapSheet) {
                 MoodSnapView(moodSnap: MoodSnapStruct())
-//                    .onAppear {
-//                        if hapticsEnabled {
-//                            data.hapticGeneratorLight.prepare()
-//                        }
-//                    }
+                    .onAppear {
+                        hapticPrepare(data: data)
+                    }
             }
 
             Group {
@@ -100,11 +96,9 @@ struct ControlView: View {
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingNoteSheet) {
                     NoteView(moodSnap: MoodSnapStruct())
-//                        .onAppear {
-//                            if hapticsEnabled {
-//                                data.hapticGeneratorLight.prepare()
-//                            }
-//                        }
+                        .onAppear {
+                            hapticPrepare(data: data)
+                        }
                 }
 
                 Spacer()

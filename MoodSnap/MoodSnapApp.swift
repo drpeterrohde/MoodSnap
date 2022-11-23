@@ -31,9 +31,7 @@ struct MoodSnapApp: App {
             }
             
             if value == .active {
-                //if hapticsEnabled {
-                //    data.hapticGeneratorLight.prepare()
-                //}
+                hapticPrepare(data: data)
                 if data.settings.useHealthKit {
                     if HKHealthStore.isHealthDataAvailable() {
                         health.requestPermissions()
