@@ -25,7 +25,6 @@ struct SlidingAverageView: View {
                        horizontalGridLines: 3,
                        verticalGridLines: 0,
                        settings: data.settings)
-               // .frame(height: 170)
         }
     }
 }

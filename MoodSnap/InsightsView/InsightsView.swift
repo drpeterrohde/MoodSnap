@@ -163,6 +163,7 @@ struct InsightsView: View {
                                     }
                                     if data.uxState.isVolatilityExpanded {
                                         SlidingVolatilityView(timescale: convertedTimescale)
+                                            .frame(height: 170)
                                     }
                                 }
                                 

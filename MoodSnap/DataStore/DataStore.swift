@@ -40,31 +40,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     var healthSnaps: [HealthSnapStruct] = []
     var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
     
-//    init() {
-//        self.id = UUID()
-//        self.settings = SettingsStruct()
-//        self.uxState = UXStateStruct()
-//        self.moodSnaps = makeIntroSnap()
-//        self.healthSnaps = []
-//
-//        do {
-//            let retrieved = try Disk.retrieve(
-//                "data.json",
-//                from: .documents,
-//                as: DataStoreStruct.self)
-//
-//            self.id = retrieved.id
-//            self.version = retrieved.version
-//            self.settings = retrieved.settings
-//            self.uxState = retrieved.uxState
-//            self.moodSnaps = retrieved.moodSnaps
-//            self.healthSnaps = retrieved.healthSnaps
-//            self.processedData = retrieved.processedData
-//        } catch {
-//        }
-//    }
-    
-    init(shared: Bool = false, process: Bool = false, async: Bool = true) {
+    init(shared: Bool = false, process: Bool = false) {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
@@ -103,7 +79,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         }
         
         if process {
-            self.startProcessing(async: async)
+            self.startProcessing()
         }
     }
 
@@ -290,32 +266,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Start asynchronous processing of data
      */
-    @inline(__always) func startProcessing(priority: TaskPriority = .high, async: Bool = true) {
+    @inline(__always) func startProcessing(priority: TaskPriority = .high) {
         self.stopProcessing()
         self.save()
         
-        if async {
-            DispatchQueue.main.async {
-                self.processingTask = Task(priority: priority) {
-                    await self.process()
-                    DispatchQueue.main.async {
-                        self.processingTask = nil
-                    }
-                }
-            }
-        } else {
-            let group = DispatchGroup()
-            group.enter()
-            
-            Task(priority: priority) {
+        DispatchQueue.main.async {
+            self.processingTask = Task(priority: priority) {
                 await self.process()
-                group.leave()
-            }
-            
-            group.wait()
-            
-            DispatchQueue.main.async {
-                self.processingTask = nil
+                DispatchQueue.main.async {
+                    self.processingTask = nil
+                }
             }
         }
     }
