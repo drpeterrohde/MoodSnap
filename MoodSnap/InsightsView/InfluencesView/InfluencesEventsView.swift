@@ -20,8 +20,8 @@ struct InfluencesEventsView: View {
                 // Activity
                 VStack(alignment: .leading) {
                     ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
-                        let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
-                        Text(butterfly.activity + dateString)
+                        //let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
+                        Text(butterfly.activity) //+ dateString)
                             .font(.caption)
                     }
                 }
@@ -54,8 +54,8 @@ struct InfluencesEventsView: View {
                 // Activity
                 VStack(alignment: .leading) {
                     ForEach(data.processedData.eventButterfly, id: \.id) {butterfly in
-                        let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
-                        Text(butterfly.activity + dateString)
+                        //let dateString: String = " (" + butterfly.timestamp.dateString() + ")"
+                        Text(butterfly.activity) //+ dateString)
                             .font(.caption)
                     }
                 }
