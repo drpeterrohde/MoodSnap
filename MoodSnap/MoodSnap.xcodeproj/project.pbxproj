@@ -99,7 +99,6 @@
 		CA78D034292D89B600FBD566 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78D033292D89B600FBD566 /* WidgetKit.framework */; };
 		CA78D036292D89B600FBD566 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78D035292D89B600FBD566 /* SwiftUI.framework */; };
 		CA78D039292D89B600FBD566 /* WidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D038292D89B600FBD566 /* WidgetBundle.swift */; };
-		CA78D03B292D89B600FBD566 /* WidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */; };
 		CA78D03D292D89B600FBD566 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03C292D89B600FBD566 /* Widget.swift */; };
 		CA78D040292D89B700FBD566 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA78D03F292D89B700FBD566 /* Assets.xcassets */; };
 		CA78D042292D89B700FBD566 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = CA78D03E292D89B600FBD566 /* Widget.intentdefinition */; };
@@ -269,7 +268,6 @@
 		CA78D033292D89B600FBD566 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		CA78D035292D89B600FBD566 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		CA78D038292D89B600FBD566 /* WidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetBundle.swift; sourceTree = "<group>"; };
-		CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetLiveActivity.swift; sourceTree = "<group>"; };
 		CA78D03C292D89B600FBD566 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		CA78D03E292D89B600FBD566 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		CA78D03F292D89B700FBD566 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -569,7 +567,6 @@
 			isa = PBXGroup;
 			children = (
 				CA78D038292D89B600FBD566 /* WidgetBundle.swift */,
-				CA78D03A292D89B600FBD566 /* WidgetLiveActivity.swift */,
 				CA78D03C292D89B600FBD566 /* Widget.swift */,
 				CA78D03E292D89B600FBD566 /* Widget.intentdefinition */,
 				CA78D03F292D89B700FBD566 /* Assets.xcassets */,
@@ -843,7 +840,6 @@
 				CA78D069292D8A5800FBD566 /* GraphDataConverters.swift in Sources */,
 				CA78D06A292D8A5800FBD566 /* Merging.swift in Sources */,
 				CA78D042292D89B700FBD566 /* Widget.intentdefinition in Sources */,
-				CA78D03B292D89B600FBD566 /* WidgetLiveActivity.swift in Sources */,
 				CA78D039292D89B600FBD566 /* WidgetBundle.swift in Sources */,
 				CA78D03D292D89B600FBD566 /* Widget.swift in Sources */,
 			);
@@ -1108,7 +1104,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1139,7 +1135,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "Peter-Rohde.MoodSnap.Widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

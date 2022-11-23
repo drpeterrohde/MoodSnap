@@ -15,6 +15,7 @@ struct Provider: IntentTimelineProvider {
     }
 
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+       // WidgetCenter.shared.reloadAllTimelines()
         let date = Date()
         let entry = SimpleEntry(date: date,
                                 configuration: configuration)

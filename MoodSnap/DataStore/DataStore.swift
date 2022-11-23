@@ -64,7 +64,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
 //        }
 //    }
     
-    init(shared: Bool = false, process: Bool = false) {
+    init(shared: Bool = false, process: Bool = false, async: Bool = true) {
         self.id = UUID()
         self.settings = SettingsStruct()
         self.uxState = UXStateStruct()
@@ -103,7 +103,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         }
         
         if process {
-            self.startProcessing()
+            self.startProcessing(async: async)
         }
     }
 
@@ -290,16 +290,32 @@ final class DataStoreClass: Identifiable, ObservableObject {
     /**
      Start asynchronous processing of data
      */
-    @inline(__always) func startProcessing(priority: TaskPriority = .high) {
+    @inline(__always) func startProcessing(priority: TaskPriority = .high, async: Bool = true) {
         self.stopProcessing()
         self.save()
         
-        DispatchQueue.main.async {
-            self.processingTask = Task(priority: priority) {
-                await self.process()
-                DispatchQueue.main.async {
-                    self.processingTask = nil
+        if async {
+            DispatchQueue.main.async {
+                self.processingTask = Task(priority: priority) {
+                    await self.process()
+                    DispatchQueue.main.async {
+                        self.processingTask = nil
+                    }
                 }
+            }
+        } else {
+            let group = DispatchGroup()
+            group.enter()
+            
+            Task(priority: priority) {
+                await self.process()
+                group.leave()
+            }
+            
+            group.wait()
+            
+            DispatchQueue.main.async {
+                self.processingTask = nil
             }
         }
     }
