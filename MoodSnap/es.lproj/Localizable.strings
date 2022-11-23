@@ -207,3 +207,6 @@
 "Walking_running_distance" = "Distancia de caminata y trote";
 "website" = "Sitio Web";
 "Weight" = "Peso";
+"30_day_trend" = "One month trend";
+"90_day_trend" = "Three month trend";
+"all_data" = "All data";

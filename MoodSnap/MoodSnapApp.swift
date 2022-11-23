@@ -40,9 +40,9 @@ struct MoodSnapApp: App {
                         }
                     }
                 }
+                data.startProcessing()
                 StoreReviewHelper.incrementAppOpenedCount()
                 StoreReviewHelper.checkAndAskForReview()
-                data.startProcessing()
             }
             
             if value == .inactive {
