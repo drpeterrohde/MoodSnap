@@ -7,13 +7,13 @@ struct Provider: IntentTimelineProvider {
         SimpleEntry(date: Date(),
                     configuration: ConfigurationIntent())
     }
-
+    
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
         let entry = SimpleEntry(date: Date(),
                                 configuration: configuration)
         completion(entry)
     }
-
+    
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
         WidgetCenter.shared.reloadAllTimelines()
         let date = Date()
@@ -34,45 +34,115 @@ struct SimpleEntry: TimelineEntry {
 struct WidgetsEntryView : View {
     @Environment(\.widgetFamily) var family: WidgetFamily
     var entry: Provider.Entry
+    var type: WidgetTypeEnum
     @EnvironmentObject var data: DataStoreClass
-
+    
     var body: some View {
-        let timescale = getTimescale(timescale: TimeScaleEnum.all.rawValue,
-                                     moodSnaps: data.moodSnaps)
+        let timescaleAll = getTimescale(timescale: TimeScaleEnum.all.rawValue,
+                                        moodSnaps: data.moodSnaps)
         ZStack {
-            if family == .systemLarge {
-                MoodHistoryBarView(timescale: timescale)
+            switch type {
+            case .moodHistoryLargeAll:
+                MoodHistoryBarView(timescale: timescaleAll)
                     .padding([.top, .bottom, .leading, .trailing], 10)
-            }
-            if family == .systemMedium {
-                SlidingAverageView(timescale: timescale)
+            case .moodHistoryLargeNinety:
+                MoodHistoryBarView(timescale: TimeScaleEnum.threeMonths.rawValue)
+                    .padding([.top, .bottom, .leading, .trailing], 10)
+            case .movingAverageMediumAll:
+                SlidingAverageView(timescale: timescaleAll)
+                    .padding([.top, .bottom, .leading, .trailing], 10)
+            case .movingAverageMediumNinety:
+                SlidingAverageView(timescale: TimeScaleEnum.threeMonths.rawValue)
+                    .padding([.top, .bottom, .leading, .trailing], 10)
+            case .movingAverageSmallThirty:
+                SlidingAverageView(timescale: TimeScaleEnum.month.rawValue)
                     .padding([.top, .bottom, .leading, .trailing], 10)
             }
         }
     }
 }
 
-struct Widgets: Widget {
-    let kind: String = "MoodSnap widgets"
+struct WidgetsMoodHistoryLargeAll: Widget {
+    let kind: String = "Mood history large all"
     let data: DataStoreClass = DataStoreClass(shared: true, process: true)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
                             intent: ConfigurationIntent.self,
                             provider: Provider()) { entry in
-            WidgetsEntryView(entry: entry)
+            WidgetsEntryView(entry: entry, type: .moodHistoryLargeAll)
                 .environmentObject(data)
         }
-        .configurationDisplayName("MoodSnap widget")
-        .description("MoodSnap widget")
-        .supportedFamilies([.systemMedium, .systemLarge])
+                            .configurationDisplayName("mood_history")
+                            .description("all_data")
+                            .supportedFamilies([.systemLarge])
     }
 }
 
-struct Widgets_Previews: PreviewProvider {
-    static var previews: some View {
-        WidgetsEntryView(entry: SimpleEntry(date: Date(),
-                                            configuration: ConfigurationIntent()))
-            .previewContext(WidgetPreviewContext(family: .systemMedium))
+struct WidgetsMoodHistoryLargeNinety: Widget {
+    let kind: String = "Mood history large ninety"
+    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind,
+                            intent: ConfigurationIntent.self,
+                            provider: Provider()) { entry in
+            WidgetsEntryView(entry: entry, type: .moodHistoryLargeNinety)
+                .environmentObject(data)
+        }
+                            .configurationDisplayName("mood_history")
+                            .description("90_day_trend")
+                            .supportedFamilies([.systemLarge])
+    }
+}
+
+struct WidgetsMovingAverageMediumAll: Widget {
+    let kind: String = "Moving average medium all"
+    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind,
+                            intent: ConfigurationIntent.self,
+                            provider: Provider()) { entry in
+            WidgetsEntryView(entry: entry, type: .movingAverageMediumAll)
+                .environmentObject(data)
+        }
+                            .configurationDisplayName("moving_average")
+                            .description("all_data")
+                            .supportedFamilies([.systemMedium])
+    }
+}
+
+struct WidgetsMovingAverageMediumNinety: Widget {
+    let kind: String = "Moving average medium ninety"
+    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind,
+                            intent: ConfigurationIntent.self,
+                            provider: Provider()) { entry in
+            WidgetsEntryView(entry: entry, type: .movingAverageMediumNinety)
+                .environmentObject(data)
+        }
+                            .configurationDisplayName("moving_average")
+                            .description("90_day_trend")
+                            .supportedFamilies([.systemMedium])
+    }
+}
+
+struct WidgetsMovingAverageSmallThirty: Widget {
+    let kind: String = "Moving average small thirty"
+    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    
+    var body: some WidgetConfiguration {
+        IntentConfiguration(kind: kind,
+                            intent: ConfigurationIntent.self,
+                            provider: Provider()) { entry in
+            WidgetsEntryView(entry: entry, type: .movingAverageSmallThirty)
+                .environmentObject(data)
+        }
+                            .configurationDisplayName("moving_average")
+                            .description("30_day_trend")
+                            .supportedFamilies([.systemSmall])
     }
 }

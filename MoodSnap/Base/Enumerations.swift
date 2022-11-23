@@ -64,3 +64,14 @@ enum TimeScaleEnum: Int, Codable {
     case sixMonths = 180
     case year = 365
 }
+
+/**
+ Enumerations for widget types.
+ */
+enum WidgetTypeEnum: Int, Codable {
+    case movingAverageSmallThirty = 1
+    case movingAverageMediumNinety = 2
+    case movingAverageMediumAll = 3
+    case moodHistoryLargeNinety = 4
+    case moodHistoryLargeAll = 5
+}

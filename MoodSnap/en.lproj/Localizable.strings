@@ -257,3 +257,6 @@
 "Walking_running_distance" = "Walking & running distance";
 "website" = "Website";
 "Weight" = "Weight";
+"30_day_trend" = "One month trend";
+"90_day_trend" = "Three month trend";
+"all_data" = "All data";
