@@ -73,8 +73,8 @@ struct WidgetsMoodHistoryLargeAll: Widget {
             WidgetsEntryView(entry: entry, type: .moodHistoryLargeAll)
                 .environmentObject(data)
         }
-                            .configurationDisplayName("mood_history")
-                            .description("all_data")
+                            .configurationDisplayName(LocalizedStringKey("mood_history"))
+                            .description(LocalizedStringKey("all_data"))
                             .supportedFamilies([.systemLarge])
     }
 }
@@ -90,8 +90,8 @@ struct WidgetsMoodHistoryLargeNinety: Widget {
             WidgetsEntryView(entry: entry, type: .moodHistoryLargeNinety)
                 .environmentObject(data)
         }
-                            .configurationDisplayName("mood_history")
-                            .description("90_day_trend")
+                            .configurationDisplayName(LocalizedStringKey("mood_history"))
+                            .description(LocalizedStringKey("90_day_trend"))
                             .supportedFamilies([.systemLarge])
     }
 }
@@ -107,8 +107,8 @@ struct WidgetsMovingAverageMediumAll: Widget {
             WidgetsEntryView(entry: entry, type: .movingAverageMediumAll)
                 .environmentObject(data)
         }
-                            .configurationDisplayName("moving_average")
-                            .description("all_data")
+                            .configurationDisplayName(LocalizedStringKey("moving_average"))
+                            .description(LocalizedStringKey("all_data"))
                             .supportedFamilies([.systemMedium])
     }
 }
@@ -124,8 +124,8 @@ struct WidgetsMovingAverageMediumNinety: Widget {
             WidgetsEntryView(entry: entry, type: .movingAverageMediumNinety)
                 .environmentObject(data)
         }
-                            .configurationDisplayName("moving_average")
-                            .description("90_day_trend")
+                            .configurationDisplayName(LocalizedStringKey("moving_average"))
+                            .description(LocalizedStringKey("90_day_trend"))
                             .supportedFamilies([.systemMedium])
     }
 }
@@ -141,8 +141,8 @@ struct WidgetsMovingAverageSmallThirty: Widget {
             WidgetsEntryView(entry: entry, type: .movingAverageSmallThirty)
                 .environmentObject(data)
         }
-                            .configurationDisplayName("moving_average")
-                            .description("30_day_trend")
+                            .configurationDisplayName(LocalizedStringKey("moving_average"))
+                            .description(LocalizedStringKey("30_day_trend"))
                             .supportedFamilies([.systemSmall])
     }
 }
