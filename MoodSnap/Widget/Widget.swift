@@ -15,7 +15,7 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        WidgetCenter.shared.reloadAllTimelines()
+        //WidgetCenter.shared.reloadAllTimelines()
         let date = Date()
         let entry = SimpleEntry(date: date,
                                 configuration: configuration)
@@ -64,7 +64,7 @@ struct WidgetsEntryView : View {
 
 struct WidgetsMoodHistoryLargeAll: Widget {
     let kind: String = "Mood history large all"
-    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    let data: DataStoreClass = DataStoreClass(shared: true, process: false)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -81,7 +81,7 @@ struct WidgetsMoodHistoryLargeAll: Widget {
 
 struct WidgetsMoodHistoryLargeNinety: Widget {
     let kind: String = "Mood history large ninety"
-    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    let data: DataStoreClass = DataStoreClass(shared: true, process: false)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -98,7 +98,7 @@ struct WidgetsMoodHistoryLargeNinety: Widget {
 
 struct WidgetsMovingAverageMediumAll: Widget {
     let kind: String = "Moving average medium all"
-    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    let data: DataStoreClass = DataStoreClass(shared: true, process: false)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -115,7 +115,7 @@ struct WidgetsMovingAverageMediumAll: Widget {
 
 struct WidgetsMovingAverageMediumNinety: Widget {
     let kind: String = "Moving average medium ninety"
-    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    let data: DataStoreClass = DataStoreClass(shared: true, process: false)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,
@@ -132,7 +132,7 @@ struct WidgetsMovingAverageMediumNinety: Widget {
 
 struct WidgetsMovingAverageSmallThirty: Widget {
     let kind: String = "Moving average small thirty"
-    let data: DataStoreClass = DataStoreClass(shared: true, process: true)
+    let data: DataStoreClass = DataStoreClass(shared: true, process: false)
     
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind,

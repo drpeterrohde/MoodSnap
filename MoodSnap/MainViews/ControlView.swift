@@ -15,13 +15,13 @@ struct ControlView: View {
     @State private var showingEventSheet: Bool = false
     @State private var showingMediaSheet: Bool = false
     @State private var showingIntroPopover: Bool = false
-
+    
     var body: some View {
         Divider()
         HStack {
             Group {
                 Spacer()
-
+                
                 Button(action: {
                     showingSettingsSheet.toggle()
                 }) {
@@ -33,9 +33,9 @@ struct ControlView: View {
                 }.sheet(isPresented: $showingSettingsSheet) {
                     SettingsView()
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     showingStatsSheet.toggle()
                 }) {
@@ -47,9 +47,9 @@ struct ControlView: View {
                 }.sheet(isPresented: $showingStatsSheet) {
                     InsightsView()
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     showingEventSheet.toggle()
                 }) {
@@ -64,10 +64,10 @@ struct ControlView: View {
                             hapticPrepare(data: data)
                         }
                 }
-
+                
                 Spacer()
             }
-
+            
             Button(action: {
                 showingMoodSnapSheet.toggle()
             }) {
@@ -82,10 +82,10 @@ struct ControlView: View {
                         hapticPrepare(data: data)
                     }
             }
-
+            
             Group {
                 Spacer()
-
+                
                 Button(action: {
                     showingNoteSheet.toggle()
                 }) {
@@ -100,9 +100,9 @@ struct ControlView: View {
                             hapticPrepare(data: data)
                         }
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     showingMediaSheet.toggle()
                 }) {
@@ -113,10 +113,13 @@ struct ControlView: View {
                         .foregroundColor(themes[data.settings.theme].controlColor)
                 }.sheet(isPresented: $showingMediaSheet) {
                     MediaView(moodSnap: MoodSnapStruct())
+                        .onAppear {
+                            hapticPrepare(data: data)
+                        }
                 }
-
+                
                 Spacer()
-
+                
                 Button(action: {
                     showingHelpSheet.toggle()
                 }) {
