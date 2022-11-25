@@ -158,18 +158,20 @@ struct MoodSnapView: View {
                 Button {
                     hapticResponseLight(data: data)
                     DispatchQueue.main.async {
-                        data.stopProcessing()
-                        moodSnap.snapType = .mood
-                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                        data.moodSnaps.append(moodSnap)
-                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                        data.settings.addedSnaps += 1
-                        let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
-                        if quoteSnap != nil {
-                            data.moodSnaps.append(quoteSnap!)
+                        withAnimation {
+                            data.stopProcessing()
+                            moodSnap.snapType = .mood
+                            data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                            data.moodSnaps.append(moodSnap)
+                            data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+                            data.settings.addedSnaps += 1
+                            let quoteSnap = getQuoteSnap(count: data.settings.addedSnaps)
+                            if quoteSnap != nil {
+                                data.moodSnaps.append(quoteSnap!)
+                            }
+                            data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+                            data.startProcessing()
                         }
-                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                        data.startProcessing()
                     }
                     dismiss()
                 } label: { Image(systemName: "arrowtriangle.right.circle")

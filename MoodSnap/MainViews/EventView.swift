@@ -36,12 +36,14 @@ struct EventView: View {
             Button {
                 hapticResponseLight(data: data)
                 DispatchQueue.main.async {
-                    data.stopProcessing()
-                    moodSnap.snapType = .event
-                    data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                    data.moodSnaps.append(moodSnap)
-                    data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
-                    data.startProcessing()
+                    withAnimation {
+                        data.stopProcessing()
+                        moodSnap.snapType = .event
+                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                        data.moodSnaps.append(moodSnap)
+                        data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+                        data.startProcessing()
+                    }
                 }
                 dismiss()
             } label: { Image(systemName: "arrowtriangle.right.circle")

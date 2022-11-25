@@ -88,9 +88,11 @@ struct HistoryItemView: View {
                                     Text("delete"),
                                     action: {
                                         DispatchQueue.main.async {
-                                            data.stopProcessing()
-                                            data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
-                                            data.startProcessing()
+                                            withAnimation {
+                                                data.stopProcessing()
+                                                data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                                                data.startProcessing()
+                                            }
                                         }
                                     }
                                 )
