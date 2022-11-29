@@ -6,6 +6,7 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State private var showingReportSheet = false
     @State private var showingImporter = false
     @State private var showingExporter = false
@@ -208,8 +209,12 @@ struct SettingsView: View {
                         if data.moodSnaps.count == 0 {
                             DispatchQueue.main.async {
                                 data.stopProcessing()
+                                health.stopProcessing()
+                                
                                 data.moodSnaps = makeDemoData()
+                                
                                 data.startProcessing()
+                                health.startProcessing(data: data)
                             }
                         } else {
                             showingImportAlert.toggle()
@@ -227,8 +232,12 @@ struct SettingsView: View {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         DispatchQueue.main.async {
                             data.stopProcessing()
+                            health.stopProcessing()
+                            
                             data.moodSnaps = []
+                            
                             data.startProcessing()
+                            health.startProcessing(data: data)
                         }
                         dismiss()
                     }, secondaryButton: .cancel())
@@ -241,6 +250,7 @@ struct SettingsView: View {
 
                     DispatchQueue.main.async {
                         data.stopProcessing()
+                        health.stopProcessing()
                         
                         data.id = retrieved.id
                         data.version = retrieved.version
@@ -251,6 +261,7 @@ struct SettingsView: View {
                         data.processedData = retrieved.processedData
                         
                         data.startProcessing()
+                        health.startProcessing(data: data)
                     }
                 } catch {
                 }
