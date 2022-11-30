@@ -98,7 +98,7 @@
 "evening" = "Avond";
 "event" = "Gebeurtenis";
 "events" = "Gebeurtenissen";
-"export_backup_file" = "Exporteer backup file";
+"export_backup_file" = "Exporteer backup bestand";
 "first_moodsnap" = "Eerste MoodSnap";
 "generate_PDF_report" = "Genereer PDF verslag";
 "grid_columns" = "Rasterkolommen:";
@@ -201,11 +201,11 @@
 "Walking_running_distance" = "Wandel & hardloop afstand";
 "website" = "Website";
 "Weight" = "Gewicht";
-"30_day_trend" = "One month trend";
-"90_day_trend" = "Three month trend";
-"all_data" = "All data";
-"Search_media" = "Search media";
-"Search_notes" = "Search notes";
-"Search_events" = "Search events";
-"Search_MoodSnaps" = "Search MoodSnaps";
 "Search_all" = "Alles doorzoeken";
+"30_day_trend" = "Trend in een maand";
+"90_day_trend" = "Trend in drie maanden";
+"all_data" = "Alle data";
+"Search_media" = "Zoek media";
+"Search_notes" = "Zoek notities";
+"Search_events" = "Zoek gebeurtenissen";
+"Search_MoodSnaps" = "Zoek MoodSnaps";
