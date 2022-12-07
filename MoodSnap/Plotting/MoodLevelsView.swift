@@ -4,10 +4,12 @@ import SwiftUI
  View showing mood levels for `moodSnap`.
  */
 struct MoodLevelsView: View {
-    let moodSnap: MoodSnapStruct
     @EnvironmentObject var data: DataStoreClass
+    let moodSnapFlat: MoodSnapStruct
+    let moodSnapAll: MoodSnapStruct
     let theme: ThemeStruct
     let blackAndWhite: Bool
+    let double: Bool
 
     private var fontColor: Color
     private var elevationColor: Color
@@ -16,10 +18,12 @@ struct MoodLevelsView: View {
     private var irritabilityColor: Color
     private var gridColor: Color
 
-    init(moodSnap: MoodSnapStruct, theme: ThemeStruct, blackAndWhite: Bool = false) {
-        self.moodSnap = moodSnap
+    init(moodSnapFlat: MoodSnapStruct, moodSnapAll: MoodSnapStruct, theme: ThemeStruct, blackAndWhite: Bool = false, double: Bool = false) {
+        self.moodSnapFlat = moodSnapFlat
+        self.moodSnapAll = moodSnapAll
         self.theme = theme
         self.blackAndWhite = blackAndWhite
+        self.double = double
 
         fontColor = Color.secondary
         elevationColor = theme.elevationColor
@@ -72,33 +76,71 @@ struct MoodLevelsView: View {
                     HStack {
                         Text("E").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.elevationColor)
-                            .frame(width: moodSnap.elevation * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                                .foregroundColor(self.elevationColor)
+                                .frame(width: moodSnapFlat.elevation * hBarStep + hBarHeight, height: hBarHeight)
+//                            if double {
+//                                HStack {
+//                                    RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+//                                        .foregroundColor(self.elevationColor)
+//                                        .opacity(1.0)
+//                                        .frame(width: moodSnapFlat.elevation * hBarStep, height: hBarHeight, alignment: .topLeading)
+//                                    RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+//                                        .foregroundColor(self.elevationColor)
+//                                        .brightness(0.25)
+//                                        .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
+//                                }
+//                            }
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("D").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.depressionColor)
-                            .frame(width: moodSnap.depression * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                                .foregroundColor(self.depressionColor)
+                                .frame(width: moodSnapFlat.depression * hBarStep + hBarHeight, height: hBarHeight)
+//                            if double {
+//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+//                                    .foregroundColor(self.depressionColor)
+//                                    .brightness(0.25)
+//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
+//                            }
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("A").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.anxietyColor)
-                            .frame(width: moodSnap.anxiety * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                                .foregroundColor(self.anxietyColor)
+                                .frame(width: moodSnapFlat.anxiety * hBarStep + hBarHeight, height: hBarHeight)
+//                            if double {
+//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+//                                    .foregroundColor(self.anxietyColor)
+//                                    .brightness(0.25)
+//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
+//                            }
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("I").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.irritabilityColor)
-                            .frame(width: moodSnap.irritability * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+                                .foregroundColor(self.irritabilityColor)
+                                .frame(width: moodSnapFlat.irritability * hBarStep + hBarHeight, height: hBarHeight)
+//                            if double {
+//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
+//                                    .foregroundColor(self.irritabilityColor)
+//                                    .brightness(0.25)
+//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
+//                            }
+                        }
                     }
                 }
             }
