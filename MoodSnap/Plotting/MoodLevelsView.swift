@@ -77,21 +77,10 @@ struct MoodLevelsView: View {
                         Text("E").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
                         ZStack(alignment: .topLeading) {
-                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                                .foregroundColor(self.elevationColor)
-                                .frame(width: moodSnapFlat.elevation * hBarStep + hBarHeight, height: hBarHeight)
-//                            if double {
-//                                HStack {
-//                                    RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-//                                        .foregroundColor(self.elevationColor)
-//                                        .opacity(1.0)
-//                                        .frame(width: moodSnapFlat.elevation * hBarStep, height: hBarHeight, alignment: .topLeading)
-//                                    RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-//                                        .foregroundColor(self.elevationColor)
-//                                        .brightness(0.25)
-//                                        .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
-//                                }
-//                            }
+                                RoundedRectangleDot(widthOuter: moodSnapFlat.elevation * hBarStep + hBarHeight,
+                                                    widthInner: moodSnapAll.elevation * hBarStep + hBarHeight,
+                                                    color: self.elevationColor,
+                                                    withDot: double)
                         }
                         Spacer()
                     }
@@ -99,15 +88,10 @@ struct MoodLevelsView: View {
                         Text("D").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
                         ZStack(alignment: .topLeading) {
-                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                                .foregroundColor(self.depressionColor)
-                                .frame(width: moodSnapFlat.depression * hBarStep + hBarHeight, height: hBarHeight)
-//                            if double {
-//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-//                                    .foregroundColor(self.depressionColor)
-//                                    .brightness(0.25)
-//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
-//                            }
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.depression * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.depression * hBarStep + hBarHeight,
+                                                color: self.depressionColor,
+                                                withDot: double)
                         }
                         Spacer()
                     }
@@ -115,15 +99,10 @@ struct MoodLevelsView: View {
                         Text("A").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
                         ZStack(alignment: .topLeading) {
-                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                                .foregroundColor(self.anxietyColor)
-                                .frame(width: moodSnapFlat.anxiety * hBarStep + hBarHeight, height: hBarHeight)
-//                            if double {
-//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-//                                    .foregroundColor(self.anxietyColor)
-//                                    .brightness(0.25)
-//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
-//                            }
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.anxiety * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.anxiety * hBarStep + hBarHeight,
+                                                color: self.anxietyColor,
+                                                withDot: double)
                         }
                         Spacer()
                     }
@@ -131,19 +110,39 @@ struct MoodLevelsView: View {
                         Text("I").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
                         ZStack(alignment: .topLeading) {
-                            RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                                .foregroundColor(self.irritabilityColor)
-                                .frame(width: moodSnapFlat.irritability * hBarStep + hBarHeight, height: hBarHeight)
-//                            if double {
-//                                RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-//                                    .foregroundColor(self.irritabilityColor)
-//                                    .brightness(0.25)
-//                                    .frame(width: hBarHeight, height: hBarHeight, alignment: .topLeading)
-//                            }
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.irritability * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.irritability * hBarStep + hBarHeight,
+                                                color: self.irritabilityColor,
+                                                withDot: double)
                         }
                     }
                 }
             }
         }.frame(height: 60)
+    }
+}
+
+/**
+ View for rounded rectangle with superimposed dot.
+ */
+struct RoundedRectangleDot: View {
+    var widthOuter: CGFloat
+    var widthInner: CGFloat
+    var color: Color
+    var withDot: Bool = false
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 10.0, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                .frame(width: widthOuter, height: 10)
+                .foregroundColor(color)
+            if withDot {
+                RoundedRectangle(cornerRadius: 10.0, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .frame(width: 10, height: 10, alignment: .topLeading)
+                    .brightness(0.2)
+                    .foregroundColor(color)
+                    .padding(.leading, max(0, widthInner - 10))
+            }
+        }
     }
 }
