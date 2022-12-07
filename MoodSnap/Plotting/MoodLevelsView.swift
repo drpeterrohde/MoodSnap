@@ -79,6 +79,8 @@ struct MoodLevelsView: View {
                         ZStack(alignment: .topLeading) {
                                 RoundedRectangleDot(widthOuter: moodSnapFlat.elevation * hBarStep + hBarHeight,
                                                     widthInner: moodSnapAll.elevation * hBarStep + hBarHeight,
+                                                    radius: hBarRadius,
+                                                    height: hBarHeight,
                                                     color: self.elevationColor,
                                                     withDot: double)
                         }
@@ -90,6 +92,8 @@ struct MoodLevelsView: View {
                         ZStack(alignment: .topLeading) {
                             RoundedRectangleDot(widthOuter: moodSnapFlat.depression * hBarStep + hBarHeight,
                                                 widthInner: moodSnapAll.depression * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
                                                 color: self.depressionColor,
                                                 withDot: double)
                         }
@@ -101,6 +105,8 @@ struct MoodLevelsView: View {
                         ZStack(alignment: .topLeading) {
                             RoundedRectangleDot(widthOuter: moodSnapFlat.anxiety * hBarStep + hBarHeight,
                                                 widthInner: moodSnapAll.anxiety * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
                                                 color: self.anxietyColor,
                                                 withDot: double)
                         }
@@ -112,6 +118,8 @@ struct MoodLevelsView: View {
                         ZStack(alignment: .topLeading) {
                             RoundedRectangleDot(widthOuter: moodSnapFlat.irritability * hBarStep + hBarHeight,
                                                 widthInner: moodSnapAll.irritability * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
                                                 color: self.irritabilityColor,
                                                 withDot: double)
                         }
@@ -128,20 +136,22 @@ struct MoodLevelsView: View {
 struct RoundedRectangleDot: View {
     var widthOuter: CGFloat
     var widthInner: CGFloat
+    var radius: CGFloat
+    var height: CGFloat
     var color: Color
     var withDot: Bool = false
     
     var body: some View {
         ZStack(alignment: .leading) {
-            RoundedRectangle(cornerRadius: 10.0, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                .frame(width: widthOuter, height: 10)
+            RoundedRectangle(cornerRadius: radius, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                .frame(width: widthOuter, height: height)
                 .foregroundColor(color)
             if withDot {
-                RoundedRectangle(cornerRadius: 10.0, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
-                    .frame(width: 10, height: 10, alignment: .topLeading)
+                RoundedRectangle(cornerRadius: radius, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .frame(width: height, height: height, alignment: .topLeading)
                     .brightness(0.2)
                     .foregroundColor(color)
-                    .padding(.leading, max(0, widthInner - 10))
+                    .padding(.leading, max(0, widthInner - radius))
             }
         }
     }
