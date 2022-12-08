@@ -142,6 +142,8 @@
 		CA78D071292D8C4700FBD566 /* TPPDF in Frameworks */ = {isa = PBXBuildFile; productRef = CA78D070292D8C4700FBD566 /* TPPDF */; };
 		CA87642C2814D7A1000FEEEC /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642B2814D7A1000FEEEC /* LineChart.swift */; };
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
+		CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
+		CA8D880D29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
@@ -275,6 +277,7 @@
 		CA78D06B292D8A8700FBD566 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
+		CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleDot.swift; sourceTree = "<group>"; };
 		CAA2E88628CB5A3F007AC145 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAA9963D2936A1F800420A0A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
@@ -398,6 +401,7 @@
 			isa = PBXGroup;
 			children = (
 				CA496B3727EBEF290067EE63 /* MoodLevelsView.swift */,
+				CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */,
 				CA87642B2814D7A1000FEEEC /* LineChart.swift */,
 				CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */,
 			);
@@ -726,6 +730,7 @@
 				CA69217728154B2900E99864 /* HealthData.swift in Sources */,
 				CA496B7327EBEF2A0067EE63 /* InfluencesActivityView.swift in Sources */,
 				CA70912F28C843C200214B4D /* Haptic.swift in Sources */,
+				CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
 				CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */,
@@ -814,6 +819,7 @@
 				CA78D04D292D8A5800FBD566 /* DataStore.swift in Sources */,
 				CA78D04E292D8A5800FBD566 /* Hashtags.swift in Sources */,
 				CA78D04F292D8A5800FBD566 /* SlidingAverageView.swift in Sources */,
+				CA8D880D29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */,
 				CA78D050292D8A5800FBD566 /* MoodHistoryBarView.swift in Sources */,
 				CA78D051292D8A5800FBD566 /* MoodLevelsView.swift in Sources */,
 				CA78D052292D8A5800FBD566 /* LineChart.swift in Sources */,
