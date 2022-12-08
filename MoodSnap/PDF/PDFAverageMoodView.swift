@@ -29,7 +29,8 @@ struct PDFAverageMoodView: View {
                         data: data)
 
                     if averageMoodSnap != nil {
-                        MoodLevelsView(moodSnap: averageMoodSnap!,
+                        MoodLevelsView(moodSnapFlat: averageMoodSnap!,
+                                       moodSnapAll: averageMoodSnap!,
                                        theme: themes[data.settings.theme],
                                        blackAndWhite: blackAndWhite)
                     } else {
@@ -59,7 +60,8 @@ struct PDFAverageMoodView: View {
                         data: data)
                     if averageVolatilityMoodSnap != nil {
                         Divider()
-                        MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
+                        MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnap!,
+                                       moodSnapAll: averageVolatilityMoodSnap!,
                                        theme: themes[data.settings.theme],
                                        blackAndWhite: blackAndWhite)
                     } else {

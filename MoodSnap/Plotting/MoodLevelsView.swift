@@ -4,10 +4,12 @@ import SwiftUI
  View showing mood levels for `moodSnap`.
  */
 struct MoodLevelsView: View {
-    let moodSnap: MoodSnapStruct
     @EnvironmentObject var data: DataStoreClass
+    let moodSnapFlat: MoodSnapStruct
+    let moodSnapAll: MoodSnapStruct
     let theme: ThemeStruct
     let blackAndWhite: Bool
+    let double: Bool
 
     private var fontColor: Color
     private var elevationColor: Color
@@ -16,10 +18,12 @@ struct MoodLevelsView: View {
     private var irritabilityColor: Color
     private var gridColor: Color
 
-    init(moodSnap: MoodSnapStruct, theme: ThemeStruct, blackAndWhite: Bool = false) {
-        self.moodSnap = moodSnap
+    init(moodSnapFlat: MoodSnapStruct, moodSnapAll: MoodSnapStruct, theme: ThemeStruct, blackAndWhite: Bool = false, double: Bool = false) {
+        self.moodSnapFlat = moodSnapFlat
+        self.moodSnapAll = moodSnapAll
         self.theme = theme
         self.blackAndWhite = blackAndWhite
+        self.double = double
 
         fontColor = Color.secondary
         elevationColor = theme.elevationColor
@@ -72,36 +76,83 @@ struct MoodLevelsView: View {
                     HStack {
                         Text("E").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.elevationColor)
-                            .frame(width: moodSnap.elevation * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                                RoundedRectangleDot(widthOuter: moodSnapFlat.elevation * hBarStep + hBarHeight,
+                                                    widthInner: moodSnapAll.elevation * hBarStep + hBarHeight,
+                                                    radius: hBarRadius,
+                                                    height: hBarHeight,
+                                                    color: self.elevationColor,
+                                                    withDot: double)
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("D").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.depressionColor)
-                            .frame(width: moodSnap.depression * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.depression * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.depression * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
+                                                color: self.depressionColor,
+                                                withDot: double)
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("A").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.anxietyColor)
-                            .frame(width: moodSnap.anxiety * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.anxiety * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.anxiety * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
+                                                color: self.anxietyColor,
+                                                withDot: double)
+                        }
                         Spacer()
                     }
                     HStack {
                         Text("I").font(Font.system(size: hBarFontSize, design: .monospaced))
                             .foregroundColor(self.fontColor)
-                        RoundedRectangle(cornerRadius: hBarRadius, style: .continuous)
-                            .foregroundColor(self.irritabilityColor)
-                            .frame(width: moodSnap.irritability * hBarStep + hBarHeight, height: hBarHeight)
+                        ZStack(alignment: .topLeading) {
+                            RoundedRectangleDot(widthOuter: moodSnapFlat.irritability * hBarStep + hBarHeight,
+                                                widthInner: moodSnapAll.irritability * hBarStep + hBarHeight,
+                                                radius: hBarRadius,
+                                                height: hBarHeight,
+                                                color: self.irritabilityColor,
+                                                withDot: double)
+                        }
                     }
                 }
             }
         }.frame(height: 60)
+    }
+}
+
+/**
+ View for rounded rectangle with superimposed dot.
+ */
+struct RoundedRectangleDot: View {
+    var widthOuter: CGFloat
+    var widthInner: CGFloat
+    var radius: CGFloat
+    var height: CGFloat
+    var color: Color
+    var withDot: Bool = false
+    
+    var body: some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: radius, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                .frame(width: widthOuter, height: height)
+                .foregroundColor(color)
+            if withDot {
+                RoundedRectangle(cornerRadius: radius, style: /*@START_MENU_TOKEN@*/.continuous/*@END_MENU_TOKEN@*/)
+                    .frame(width: height, height: height, alignment: .topLeading)
+                    .brightness(0.2)
+                    .foregroundColor(color)
+                    .padding(.leading, max(0, widthInner - radius))
+            }
+        }
     }
 }

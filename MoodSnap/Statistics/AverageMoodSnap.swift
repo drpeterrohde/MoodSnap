@@ -3,12 +3,12 @@ import SwiftUI
 /**
  Return a `MoodSnapStruct` of the average of those in a given `timescale`.
  */
-@inline(__always) func averageMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
+@inline(__always) func averageMoodSnap(timescale: Int, data: DataStoreClass, flatten: Bool = true) -> MoodSnapStruct? {
     let windowSnaps = getMoodSnapsByDateWindow(data: data,
                                                date: Date(),
                                                windowStart: -timescale,
                                                windowEnd: 0,
-                                               flatten: true)
+                                               flatten: flatten)
     let average: [CGFloat?] = average(moodSnaps: windowSnaps)
 
     if (average[0] == nil) || (average[1] == nil) || (average[2] == nil) || (average[3] == nil) {

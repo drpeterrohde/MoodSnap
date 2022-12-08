@@ -9,6 +9,15 @@ struct AverageMoodView: View {
     var blackAndWhite: Bool = false
 
     var body: some View {
+        let averageMoodSnapFlat = averageMoodSnap(
+            timescale: timescale,
+            data: data,
+            flatten: true)
+        let averageMoodSnapAll = averageMoodSnap(
+            timescale: timescale,
+            data: data,
+            flatten: false)
+        
         if data.moodSnaps.count == 0 {
             Spacer()
             Text("insufficient_data")
@@ -25,14 +34,12 @@ struct AverageMoodView: View {
                     .foregroundColor(.secondary)
             }
 
-            let averageMoodSnap = averageMoodSnap(
-                timescale: timescale,
-                data: data)
-
-            if averageMoodSnap != nil {
-                MoodLevelsView(moodSnap: averageMoodSnap!,
+            if averageMoodSnapFlat != nil && averageMoodSnapAll != nil {
+                MoodLevelsView(moodSnapFlat: averageMoodSnapFlat!,
+                               moodSnapAll: averageMoodSnapAll!,
                                theme: themes[data.settings.theme],
-                               blackAndWhite: blackAndWhite)
+                               blackAndWhite: blackAndWhite,
+                               double: true)
             } else {
                 VStack(alignment: .center) {
                     Text("insufficient_data")
@@ -54,9 +61,11 @@ struct AverageMoodView: View {
                 timescale: timescale,
                 data: data)
             if averageVolatilityMoodSnap != nil {
-                MoodLevelsView(moodSnap: averageVolatilityMoodSnap!,
+                MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnap!,
+                               moodSnapAll: averageVolatilityMoodSnap!,
                                theme: themes[data.settings.theme],
-                               blackAndWhite: blackAndWhite)
+                               blackAndWhite: blackAndWhite,
+                               double: false)
             } else {
                 VStack(alignment: .center) {
                     Spacer()
