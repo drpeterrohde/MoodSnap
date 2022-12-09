@@ -35,6 +35,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var socialOccurrenceCount: Int = 0
     @Published var hashtagOccurrenceCount: Int = 0
     @Published var eventOccurrenceCount: Int = 0
+    @Published var averageMood: AverageMoodDataStruct = AverageMoodDataStruct()
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     var healthSnaps: [HealthSnapStruct] = []
@@ -244,6 +245,71 @@ final class DataStoreClass: Identifiable, ObservableObject {
     }
     
     /**
+     Process average mood/volatility.
+     */
+    func processAverages() async -> Bool {
+        var averages: AverageMoodDataStruct = AverageMoodDataStruct()
+        
+        // All data
+        averages.flatAll = averageMoodSnap(
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            data: self,
+            flatten: true)
+        averages.allAll = averageMoodSnap(
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            data: self,
+            flatten: false)
+        
+        // Year
+        averages.flatYear = averageMoodSnap(
+            timescale: TimeScaleEnum.year.rawValue,
+            data: self,
+            flatten: true)
+        averages.allYear = averageMoodSnap(
+            timescale: TimeScaleEnum.year.rawValue,
+            data: self,
+            flatten: false)
+        
+        // Month
+        averages.flatMonth = averageMoodSnap(
+            timescale: TimeScaleEnum.month.rawValue,
+            data: self,
+            flatten: true)
+        averages.allMonth = averageMoodSnap(
+            timescale: TimeScaleEnum.month.rawValue,
+            data: self,
+            flatten: false)
+        
+        // Three months
+        averages.flatThreeMonths = averageMoodSnap(
+            timescale: TimeScaleEnum.threeMonths.rawValue,
+            data: self,
+            flatten: true)
+        averages.allThreeMonths = averageMoodSnap(
+            timescale: TimeScaleEnum.threeMonths.rawValue,
+            data: self,
+            flatten: false)
+        
+        // Six months
+        averages.flatSixMonths = averageMoodSnap(
+            timescale: TimeScaleEnum.sixMonths.rawValue,
+            data: self,
+            flatten: true)
+        averages.allSixMonths = averageMoodSnap(
+            timescale: TimeScaleEnum.sixMonths.rawValue,
+            data: self,
+            flatten: false)
+        
+        let averagesUI = averages
+        
+        DispatchQueue.main.async {
+            self.averageMood = averagesUI
+        }
+        
+        return true
+    }
+    
+    /**
      Pre-process data.
      */
     func process() async {
@@ -253,6 +319,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         // Processing
         async let historyComplete = processHistory()
+        async let averagesComplete = processAverages()
         async let eventsComplete = processEvents()
         async let hashtagsComplete = processHashtags()
         async let activitiesComplete = processActivities()
@@ -260,7 +327,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         async let symptomsComplete = processSymptoms()
         
         // Wait for all asynchronous threads to complete
-        await _ = [historyComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
+        await _ = [historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
 
     /**

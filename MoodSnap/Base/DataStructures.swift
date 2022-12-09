@@ -227,3 +227,43 @@ struct ProcessedDataStruct: Codable, Identifiable, Hashable {
     var eventButterfly: [ButterflyEntryStruct] = []
     var hashtagButterfly: [ButterflyEntryStruct] = []
 }
+
+/**
+ Struct for average mood data.
+ */
+struct AverageMoodDataStruct: Codable, Hashable {
+    var flatAll: MoodSnapStruct? = MoodSnapStruct()
+    var allAll: MoodSnapStruct? = MoodSnapStruct()
+    
+    var flatMonth: MoodSnapStruct? = MoodSnapStruct()
+    var allMonth: MoodSnapStruct? = MoodSnapStruct()
+    
+    var flatThreeMonths: MoodSnapStruct? = MoodSnapStruct()
+    var allThreeMonths: MoodSnapStruct? = MoodSnapStruct()
+    
+    var flatSixMonths: MoodSnapStruct? = MoodSnapStruct()
+    var allSixMonths: MoodSnapStruct? = MoodSnapStruct()
+    
+    var flatYear: MoodSnapStruct? = MoodSnapStruct()
+    var allYear: MoodSnapStruct? = MoodSnapStruct()
+    
+    /**
+     Get average mood and volatility by `timescale`.
+     */
+    func getByTimescale(timescale: Int) -> (MoodSnapStruct?, MoodSnapStruct?) {
+        switch timescale {
+        case TimeScaleEnum.all.rawValue:
+            return (flatAll, allAll)
+        case TimeScaleEnum.month.rawValue:
+            return (flatMonth, allMonth)
+        case TimeScaleEnum.threeMonths.rawValue:
+            return (flatThreeMonths, allThreeMonths)
+        case TimeScaleEnum.sixMonths.rawValue:
+            return (flatSixMonths, allSixMonths)
+        case TimeScaleEnum.year.rawValue:
+            return (flatYear, allYear)
+        default:
+            return (flatAll, allAll)
+        }
+    }
+}

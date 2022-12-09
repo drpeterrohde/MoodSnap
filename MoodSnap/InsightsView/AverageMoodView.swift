@@ -9,14 +9,7 @@ struct AverageMoodView: View {
     var blackAndWhite: Bool = false
 
     var body: some View {
-        let averageMoodSnapFlat = averageMoodSnap(
-            timescale: timescale,
-            data: data,
-            flatten: true)
-        let averageMoodSnapAll = averageMoodSnap(
-            timescale: timescale,
-            data: data,
-            flatten: false)
+        let (averageMoodSnapFlat, averageMoodSnapAll) = data.averageMood.getByTimescale(timescale: timescale)
         
         if data.moodSnaps.count == 0 {
             Spacer()
