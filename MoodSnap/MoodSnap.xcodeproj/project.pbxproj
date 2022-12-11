@@ -259,6 +259,7 @@
 		CA58161F28B4E04D000E4C8A /* AppStoreReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreReview.swift; sourceTree = "<group>"; };
 		CA58D46827ECFC4300D071B3 /* UnlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnlockView.swift; sourceTree = "<group>"; };
 		CA5C61A92802464F003151FD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA5D3A5D29468A1200D5688B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA5F1C632905EC080063B526 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA69217628154B2900E99864 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		CA69217828154B8500E99864 /* Nils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nils.swift; sourceTree = "<group>"; };
@@ -671,6 +672,7 @@
 				de,
 				es,
 				nl,
+				fr,
 			);
 			mainGroup = CA0FA5DC27EBEA1700B5EEE1;
 			packageReferences = (
@@ -871,6 +873,7 @@
 				CAA2E88628CB5A3F007AC145 /* de */,
 				CA5F1C632905EC080063B526 /* es */,
 				CAA9963D2936A1F800420A0A /* nl */,
+				CA5D3A5D29468A1200D5688B /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
