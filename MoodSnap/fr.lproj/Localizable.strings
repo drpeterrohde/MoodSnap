@@ -8,7 +8,7 @@
 "6mo" = "6mo";
 "Active_energy" = "Énergie active";
 "Affection" = "Affection";
-"Alcohol" = "alcool";
+"Alcohol" = "Alcool";
 "All" = "Tout";
 "Anhedonia" = "Anhédonie";
 "Average_distance" = "Distance moyenne";
@@ -90,11 +90,11 @@
 "diary" = "Agenda";
 "diary_entry" = "Entrée de journal";
 "disclaimer" = "Clause de non-responsabilité";
-"disclaimer_string" = "L'application MoodSnap est gratuite, open source et est fournie telle quelle. Bien que tous les efforts aient été faits pour garantir la qualité du logiciel, aucune garantie n'est faite et aucune responsabilité n'est acceptée du fait de son utilisation.\n\nL'application MoodSnap est destinée à supporter la conscience de soi et ne doit pas être utilisée comme un outil médical. Les décisions médicales ne doivent être prises qu'en consultation avec des professionnels de la santé.\n\nLe code source de l'application MoodSnap Source Code est disponible sur [github] (https://github.com/peterrohde/moodsnap).";
+"disclaimer_string" = "L'application MoodSnap est gratuite, open source et est fournie telle quelle. Bien que tous les efforts aient été faits pour garantir la qualité du logiciel, aucune garantie n'est faite et aucune responsabilité n'est acceptée du fait de son utilisation.\n\nL'application MoodSnap est destinée à supporter la conscience de soi et ne doit pas être utilisée comme un outil médical. Les décisions médicales ne doivent être prises qu'en consultation avec des professionnels de la santé.\n\nLe code source de l'application MoodSnap Source Code est disponible sur [GitHub](https://github.com/peterrohde/moodsnap).";
 "edit" = "Éditer";
 "edit_timestamp" = "Modifier le temps de l'événement";
 "elevation" = "Élévation";
-"emergency_string" = "Si vous vous sentez en danger :\n\n• Appelez un ami, un membre de votre famille, un médecin ou quelqu'un en qui vous avez confiance.\n• Appelez votre service d'urgence local ou votre ligne d'assistance.\n\nLa liste des lignes d'assistance internationale et les numéros d'urgence peuvent être trouvés [ici] (https://www.opencounseling.com/suicide-hotlines).";
+"emergency_string" = "Si vous vous sentez en danger :\n\n• Appelez un ami, un membre de votre famille, un médecin ou quelqu'un en qui vous avez confiance.\n• Appelez votre service d'urgence local ou votre ligne d'assistance.\n\nLa liste des lignes d'assistance internationale et les numéros d'urgence peuvent être trouvés [ici](https://www.opencounseling.com/suicide-hotlines).";
 "evening" = "Soirée";
 "event" = "Événement";
 "events" = "Événements";
@@ -102,7 +102,7 @@
 "first_moodsnap" = "Premier MoodSnap";
 "generate_PDF_report" = "Générer un rapport PDF";
 "grid_columns" = "Colonnes de grille:";
-"haptic_feedback" = "Retour d' information haptique";
+"haptic_feedback" = "Feedback haptique";
 "hashtag" = "Hashtag";
 "hashtags" = "Hashtags";
 "HEALTH" = "SANTÉ";
@@ -195,7 +195,7 @@
 "taking_moodsnaps" = "Prenant des MoodSnaps";
 "tally" = "Compte";
 "theme" = "Thème";
-"transients" = "Diagramme de transitions";
+"transients" = "Graphique transitoire";
 "Twitter" = "Twitter";
 "unable_import_warning" = "Vous ne pouvez importer des données que dans une historique MoodSnap vide. Vous devez d'abord supprimer les données existantes.";
 "unable_to_import" = "Impossible d'importer";
