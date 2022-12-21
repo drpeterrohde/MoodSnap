@@ -114,7 +114,7 @@ struct SettingsView: View {
                     }
                 }
 
-                Section(header: Text("Health")) {
+                Section(header: Text("HEALTH")) {
                     Toggle(isOn: $data.settings.useHealthKit, label: {
                         Text("Use_Apple_Health")
                     })
