@@ -35,7 +35,7 @@
 //}
 //
 ///**
-// Get the trend for moving average `averages`.
+// Get the trend for moving `averages`.
 // */
 //func getTrend(averages: [CGFloat?]) -> Image? {
 //    var diff: CGFloat = 0
