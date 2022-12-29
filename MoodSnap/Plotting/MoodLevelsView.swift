@@ -44,11 +44,11 @@ struct MoodLevelsView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            let hBarStep: CGFloat = (geometry.size.width - 35) / 4
+            let hBarStep: CGFloat = max(0, (geometry.size.width - 35) / 4)
             let hBarRadius = themes[data.settings.theme].hBarRadius
             let hBarHeight = themes[data.settings.theme].hBarHeight
             let hBarFontSize = themes[data.settings.theme].hBarFontSize
-
+            
             ZStack {
                 // Grid
                 Path { path in
