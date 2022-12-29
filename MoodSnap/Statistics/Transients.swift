@@ -70,10 +70,7 @@ import SwiftUI
  Differential (average) foccused on `date`.
  */
 @inline(__always) func averageDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
-    var today: [MoodSnapStruct] = getMoodSnapsByDate(
-        data: data,
-        date: date,
-        flatten: true)
+    var today: [MoodSnapStruct] = getMoodSnapsByDate(data: data, date: date, flatten: true)
     
     let todayCount = today.count
     
