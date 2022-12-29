@@ -27,7 +27,6 @@ struct MoodSnapApp: App {
                     data.settings.firstUse = false
                     data.healthSnaps = health.healthSnaps
                 }
-                data.startProcessing()
             }
             
             if value == .active {
