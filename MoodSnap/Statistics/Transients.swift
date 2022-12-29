@@ -27,7 +27,7 @@ import SwiftUI
 
     thisButterfly.occurrences = dates.count
     
-    let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps, dates: dates)
+    let timeline = generateTimelineForDates(data: data, dates: dates)
     thisButterfly.timeline = timeline
 
     return thisButterfly
@@ -60,7 +60,7 @@ import SwiftUI
 
     thisButterfly.occurrences = dates.count
     
-    let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps, dates: dates)
+    let timeline = generateTimelineForDates(data: data, dates: dates)
     thisButterfly.timeline = timeline
     
     return thisButterfly
@@ -70,10 +70,7 @@ import SwiftUI
  Differential (average) foccused on `date`.
  */
 @inline(__always) func averageDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
-    var today: [MoodSnapStruct] = getMoodSnapsByDate(
-        moodSnaps: data.moodSnaps,
-        date: date,
-        flatten: true)
+    var today: [MoodSnapStruct] = getMoodSnapsByDate(data: data, date: date, flatten: true)
     
     let todayCount = today.count
     

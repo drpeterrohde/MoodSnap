@@ -6,11 +6,11 @@ import SwiftUI
 @inline(__always) func getWeightData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var weightData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps).endOfDay()
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(data: data).endOfDay()
+    let earliest: Date = getFirstDate(data: data)
 
     while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
         if thisHealthSnap.count > 0 {
             weightData.append(thisHealthSnap[0].weight)
         }
@@ -26,11 +26,11 @@ import SwiftUI
 @inline(__always) func getSleepData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var sleepData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(data: data)
+    let earliest: Date = getFirstDate(data: data)
 
     while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
         if thisHealthSnap.count > 0 {
             sleepData.append(thisHealthSnap[0].sleepHours)
         }
@@ -46,11 +46,11 @@ import SwiftUI
 @inline(__always) func getDistanceData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var distanceData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(data: data)
+    let earliest: Date = getFirstDate(data: data)
 
     while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
         if thisHealthSnap.count > 0 {
             distanceData.append(thisHealthSnap[0].walkingRunningDistance)
         }
@@ -66,11 +66,11 @@ import SwiftUI
 @inline(__always) func getEnergyData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var energyData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(data: data)
+    let earliest: Date = getFirstDate(data: data)
 
     while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
         if thisHealthSnap.count > 0 {
             energyData.append(thisHealthSnap[0].activeEnergy)
         }
@@ -86,11 +86,11 @@ import SwiftUI
 @inline(__always) func getMenstrualData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var menstrualData: [CGFloat?] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(data: data)
+    let earliest: Date = getFirstDate(data: data)
 
     while date >= earliest {
-        let thisHealthSnap = getHealthSnapsByDate(healthSnaps: health.healthSnaps, date: date, flatten: true)
+        let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
         if thisHealthSnap.count > 0 {
             menstrualData.append(thisHealthSnap[0].menstrual)
         }

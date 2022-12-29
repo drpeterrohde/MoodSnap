@@ -10,7 +10,7 @@ struct InsightsView: View {
     @State var timescale: Int = TimeScaleEnum.all.rawValue
     
     var body: some View {
-        let convertedTimescale: Int = getTimescale(timescale: timescale, moodSnaps: data.moodSnaps)
+        let convertedTimescale: Int = getTimescale(timescale: timescale, data: data)
         let convertedTimescaleCopy: Int = convertedTimescale
 
         NavigationView {
