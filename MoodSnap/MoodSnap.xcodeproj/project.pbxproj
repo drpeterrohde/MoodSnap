@@ -94,6 +94,7 @@
 		CA69217728154B2900E99864 /* HealthData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217628154B2900E99864 /* HealthData.swift */; };
 		CA69217928154B8500E99864 /* Nils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA69217828154B8500E99864 /* Nils.swift */; };
 		CA70912F28C843C200214B4D /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70912E28C843C200214B4D /* Haptic.swift */; };
+		CA71E8F5295D640900166B2F /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA71E8F4295D640900166B2F /* BackgroundTask.swift */; };
 		CA7775AB280CD44C0045A202 /* HealthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7775AA280CD44C0045A202 /* HealthManager.swift */; };
 		CA7775AF280CDB380045A202 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7775AE280CDB380045A202 /* HealthKit.framework */; };
 		CA78D034292D89B600FBD566 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA78D033292D89B600FBD566 /* WidgetKit.framework */; };
@@ -264,6 +265,7 @@
 		CA69217628154B2900E99864 /* HealthData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthData.swift; sourceTree = "<group>"; };
 		CA69217828154B8500E99864 /* Nils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nils.swift; sourceTree = "<group>"; };
 		CA70912E28C843C200214B4D /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
+		CA71E8F4295D640900166B2F /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
 		CA7775AA280CD44C0045A202 /* HealthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthManager.swift; sourceTree = "<group>"; };
 		CA7775AC280CDB370045A202 /* MoodSnap.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MoodSnap.entitlements; sourceTree = "<group>"; };
 		CA7775AE280CDB380045A202 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
@@ -376,6 +378,7 @@
 				CA496B0227EBEEEE0067EE63 /* DateConverters.swift */,
 				CA496B0327EBEEEE0067EE63 /* GraphDataConverters.swift */,
 				CA496B0427EBEEEE0067EE63 /* Merging.swift */,
+				CA71E8F4295D640900166B2F /* BackgroundTask.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -766,6 +769,7 @@
 				CA496B0627EBEEEE0067EE63 /* DataStructures.swift in Sources */,
 				CA496BA427EBEF2B0067EE63 /* JSON.swift in Sources */,
 				CA496BA227EBEF2B0067EE63 /* FileSystem.swift in Sources */,
+				CA71E8F5295D640900166B2F /* BackgroundTask.swift in Sources */,
 				CA496BA327EBEF2B0067EE63 /* ImagePicker.swift in Sources */,
 				CA496B7827EBEF2A0067EE63 /* TransientReferencePickerView.swift in Sources */,
 				CA496B9F27EBEF2B0067EE63 /* Color.swift in Sources */,
@@ -1015,6 +1019,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MoodSnap-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "For taking photo diaries";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";
@@ -1065,6 +1070,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MoodSnap-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "For taking photo diaries";
 				INFOPLIST_KEY_NSDocumentsFolderUsageDescription = "For saving data";

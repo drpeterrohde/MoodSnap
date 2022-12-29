@@ -4,7 +4,9 @@ import LocalAuthentication
 import SwiftUI
 
 @main
-struct MoodSnapApp: App {
+
+@available(iOS 16, *)
+struct MoodSnapAppNew: App {
     @Environment(\.scenePhase) var scenePhase
     @StateObject private var data: DataStoreClass = DataStoreClass()
     @StateObject private var health: HealthManager = HealthManager()
@@ -20,7 +22,68 @@ struct MoodSnapApp: App {
                     .environmentObject(data)
                     .environmentObject(health)
             }
-        }.onChange(of: scenePhase) { value in
+        }
+        .backgroundTask(.appRefresh("moodSnapRefresh")) {
+            await backgroundProcess(data: data)
+        }
+        .onChange(of: scenePhase) { value in
+            if value == .background {
+                DispatchQueue.main.async {
+                    isUnlocked = false
+                    data.settings.firstUse = false
+                    data.healthSnaps = health.healthSnaps
+                }
+                data.stopProcessing()
+                print("background iOS 16")
+                scheduleAppRefresh()
+            }
+            
+            if value == .active {
+                hapticPrepare(data: data)
+                if data.settings.useHealthKit {
+                    if HKHealthStore.isHealthDataAvailable() {
+                        health.requestPermissions()
+                        Task {
+                            await health.makeHealthSnaps(data: data)
+                        }
+                    }
+                }
+                data.startProcessing()
+                StoreReviewHelper.incrementAppOpenedCount()
+                StoreReviewHelper.checkAndAskForReview()
+            }
+            
+            if value == .inactive {
+                DispatchQueue.main.async {
+                    isUnlocked = false
+                    data.settings.firstUse = false
+                    data.healthSnaps = health.healthSnaps
+                    data.save()
+                }
+            }
+        }
+    }
+}
+
+@available(iOS 15, *)
+struct MoodSnapAppOld: App {
+    @Environment(\.scenePhase) var scenePhase
+    @StateObject private var data: DataStoreClass = DataStoreClass()
+    @StateObject private var health: HealthManager = HealthManager()
+    @State private var isUnlocked: Bool = false
+    
+    var body: some Scene {
+        WindowGroup {
+            if !isUnlocked && data.settings.useFaceID {
+                UnlockView(isUnlocked: $isUnlocked)
+                    .environmentObject(data)
+            } else {
+                ContentView()
+                    .environmentObject(data)
+                    .environmentObject(health)
+            }
+        }
+        .onChange(of: scenePhase) { value in
             if value == .background {
                 DispatchQueue.main.async {
                     isUnlocked = false
