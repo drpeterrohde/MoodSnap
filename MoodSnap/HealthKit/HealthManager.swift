@@ -67,7 +67,7 @@ final class HealthManager: ObservableObject {
         
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "thread-safe-array")
-
+        
         while date >= earliest {
             await makeHealthSnapForDate(date: date, group: group, queue: queue)
             date = date.addDays(days: -1)
@@ -91,7 +91,7 @@ final class HealthManager: ObservableObject {
         let quantityTypeActiveEnergy = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.activeEnergyBurned)!
         let quantityTypeMenstrual = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.menstrualFlow)!
         let quantityTypeSleep = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
-                
+        
         let predicate = HKQuery.predicateForSamples(withStart: startDate,
                                                     end: endDate,
                                                     options: .strictStartDate)
@@ -423,9 +423,9 @@ final class HealthManager: ObservableObject {
     func processMenstrual(data: DataStoreClass) async -> Bool {
         let menstrualDataUI: [CGFloat?] = getMenstrualData(data: data, health: self)
         let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: self.healthSnaps)
-        let menstrualButterflyUI: ButterflyEntryStruct = averageMenstrualTransientForDates(dates: menstrualDatesUI,
-                                                                                           data: data,
-                                                                                           maxWindow: menstrualTransientWindow)
+        let menstrualButterflyUI: ButterflyEntryStruct = averageTransientForDates(dates: menstrualDatesUI,
+                                                                                  data: data,
+                                                                                  maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.menstrualData = menstrualDataUI
