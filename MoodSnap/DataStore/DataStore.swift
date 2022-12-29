@@ -252,11 +252,11 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         // All data
         averages.flatAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, data: self),
             data: self,
             flatten: true)
         averages.allAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, data: self),
             data: self,
             flatten: false)
         
@@ -314,7 +314,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      */
     func process() async {
         // Sequence MoodSnaps
-        self.sequencedMoodSnaps = await sequenceMoodSnaps(moodSnaps: self.moodSnaps)
+        self.sequencedMoodSnaps = await sequenceMoodSnaps(data: self)
         self.flattenedSequencedMoodSnaps = await flattenSequence(sequence: self.sequencedMoodSnaps)
         
         // Processing

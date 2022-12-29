@@ -4,12 +4,12 @@ import SwiftUI
  Sequence `moodSnaps` into chronological array.
 
  */
-@inline(__always) func sequenceMoodSnaps(moodSnaps: [MoodSnapStruct]) async -> [[MoodSnapStruct]] {
-    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
+@inline(__always) func sequenceMoodSnaps(data: DataStoreClass) async -> [[MoodSnapStruct]] {
+    let earliest: Date = getFirstDate(data: data)
     let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
     var sequence: [[MoodSnapStruct]] = Array(repeating: [], count: length)
     
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         if moodSnap.snapType == .mood {
             let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: moodSnap.timestamp, to: Date())
             sequence[offset].append(moodSnap)
@@ -85,8 +85,8 @@ import SwiftUI
  Generate a binary timeline baed on a sequence of dates.
  `nil` where there is no `date`, `1` otherwise.
  */
-@inline(__always) func generateTimelineForDates(moodSnaps: [MoodSnapStruct], dates: [Date]) -> [CGFloat?] {
-    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
+@inline(__always) func generateTimelineForDates(data: DataStoreClass, dates: [Date]) -> [CGFloat?] {
+    let earliest: Date = getFirstDate(data: data)
     let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
     var timeline: [CGFloat?] = Array(repeating: nil, count: length)
     

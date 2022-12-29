@@ -161,7 +161,7 @@ struct MoodSnapView: View {
                         withAnimation {
                             data.stopProcessing()
                             moodSnap.snapType = .mood
-                            data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
+                            deleteHistoryItem(data: data, moodSnap: moodSnap)
                             data.moodSnaps.append(moodSnap)
                             data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                             data.settings.addedSnaps += 1

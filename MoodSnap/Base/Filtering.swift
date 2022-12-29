@@ -27,9 +27,9 @@ import SwiftUI
 /**
  Returns the earliest `Date` amongst `moodSnaps`.
  */
-@inline(__always) func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
+@inline(__always) func getFirstDate(data: DataStoreClass) -> Date {
     var firstDate = Date().startOfDay()
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         if moodSnap.timestamp < firstDate {
             if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
                 firstDate = moodSnap.timestamp
@@ -42,9 +42,9 @@ import SwiftUI
 /**
  Returns the most recent `Date` amongst `moodSnaps`.
  */
-@inline(__always) func getLastDate(moodSnaps: [MoodSnapStruct]) -> Date {
+@inline(__always) func getLastDate(data: DataStoreClass) -> Date {
     var lastDate = Date().endOfDay()
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         if moodSnap.timestamp > lastDate {
             lastDate = moodSnap.timestamp
         }
@@ -55,10 +55,10 @@ import SwiftUI
 /**
  Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-@inline(__always) func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
+@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
     let dateComponents = date.getComponents()
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         if moodSnap.timestamp.getComponents() == dateComponents {
             if moodSnap.snapType == .mood {
                 filtered.append(moodSnap)
@@ -76,10 +76,10 @@ import SwiftUI
 /**
  Returns an array of elements from `healthSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-@inline(__always) func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
+@inline(__always) func getHealthSnapsByDate(data: HealthManager, date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
     var filtered: [HealthSnapStruct] = []
     let dateComponents = date.getComponents()
-    for healthSnap in healthSnaps {
+    for healthSnap in data.healthSnaps {
         if healthSnap.timestamp.getComponents() == dateComponents {
             filtered.append(healthSnap)
         }

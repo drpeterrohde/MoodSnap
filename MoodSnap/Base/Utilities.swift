@@ -79,8 +79,8 @@ import SwiftUI
 /**
  Delete a `moodSnap` from an array of `moodSnaps`.
  */
-@inline(__always) func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
-    return moodSnaps.filter { $0.id != moodSnap.id }
+@inline(__always) func deleteHistoryItem(data: DataStoreClass, moodSnap: MoodSnapStruct) {
+    data.moodSnaps = data.moodSnaps.filter { $0.id != moodSnap.id }
 }
 
 /**
@@ -196,10 +196,10 @@ import SwiftUI
 /**
  How many user-created `moodSnaps` entries are there?
  */
-@inline(__always) func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
+@inline(__always) func countMoodSnaps(data: DataStoreClass, type: SnapTypeEnum = .mood) -> Int {
     var count: Int = 0
 
-    for moodSnap in moodSnaps {
+    for moodSnap in data.moodSnaps {
         if moodSnap.snapType == type {
             count += 1
         }
