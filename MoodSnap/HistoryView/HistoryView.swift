@@ -15,10 +15,12 @@ struct HistoryView: View {
         NavigationView {
             ScrollViewReader { scrollView in
                 ScrollView {
-                    ForEach(data.moodSnaps, id: \.id) { moodSnap in
-                        HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText)
+                    LazyVStack {
+                        ForEach(data.moodSnaps, id: \.id) { moodSnap in
+                            HistoryItemView(moodSnap: moodSnap, filter: $filter, searchText: $searchText)
+                        }
+                        Spacer()
                     }
-                    Spacer()
                 }
                 .navigationBarTitle(Text("history"))
                 .navigationBarTitleDisplayMode(.inline)
@@ -36,7 +38,7 @@ struct HistoryView: View {
                 }
                 .onTapGesture(count: 2) {
                     withAnimation(.easeOut(duration: 1.0)) {
-                        scrollView.scrollTo(0, anchor: .bottom)
+                        scrollView.scrollTo(data.moodSnaps[0].id, anchor: .bottom)
                     }
                 }
                 .toolbar {
