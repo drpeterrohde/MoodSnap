@@ -12,7 +12,7 @@ import SwiftUI
         data: data,
         dates: dates,
         maxWindow: maxWindow)
-
+    
     var thisButterfly = ButterflyEntryStruct()
 
     thisButterfly.elevation = butterflyMood[0]
@@ -198,6 +198,36 @@ import SwiftUI
     }
 
     return [seriesE, seriesD, seriesA, seriesI]
+}
+
+/**
+ Calculate the occurences of symptoms and activites relative to a `date` with given `maxWindow`.
+ */
+@inline(__always) func deltaOccurences(data: DataStoreClass, date: Date, maxWindow: Int) -> OccurencesStruct {
+    let beforeMoodSnaps = getMoodSnapsByDateWindow(data: data, date: date, windowStart: -maxWindow, windowEnd: 0)
+    let afterMoodSnaps = getMoodSnapsByDateWindow(data: data, date: date, windowStart: 0, windowEnd: maxWindow)
+    
+    let beforeOccurences = countAllOccurrences(moodSnaps: beforeMoodSnaps, data: data)
+    let afterOccurences = countAllOccurrences(moodSnaps: afterMoodSnaps, data: data)
+    let deltaOccurences = (zip(beforeOccurences.0, afterOccurences.0).map(-),
+                           zip(beforeOccurences.1, afterOccurences.1).map(-),
+                           zip(beforeOccurences.2, afterOccurences.2).map(-))
+    
+    var occurences = OccurencesStruct()
+    
+    occurences.beforeSymptoms = beforeOccurences.0
+    occurences.beforeActivities = beforeOccurences.1
+    occurences.beforeSocial = beforeOccurences.2
+
+    occurences.afterSymptoms = afterOccurences.0
+    occurences.afterActivities = afterOccurences.1
+    occurences.afterSocial = afterOccurences.2
+    
+    occurences.deltaSymptoms = deltaOccurences.0
+    occurences.deltaActivities = deltaOccurences.1
+    occurences.deltaSocial = deltaOccurences.2
+    
+    return occurences
 }
 
 /**

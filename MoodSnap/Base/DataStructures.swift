@@ -125,6 +125,25 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
 }
 
 /**
+ Data strcuture for transient occurences.
+ */
+struct OccurencesStruct: Identifiable, Codable, Hashable {
+    var id: UUID = UUID()
+    
+    var beforeSymptoms: [Int] = []
+    var beforeActivities: [Int] = []
+    var beforeSocial: [Int] = []
+    
+    var afterSymptoms: [Int] = []
+    var afterActivities: [Int] = []
+    var afterSocial: [Int] = []
+    
+    var deltaSymptoms: [Int] = []
+    var deltaActivities: [Int] = []
+    var deltaSocial: [Int] = []
+}
+
+/**
  Data structure for user interface state.
  */
 struct UXStateStruct: Identifiable, Codable, Hashable {
