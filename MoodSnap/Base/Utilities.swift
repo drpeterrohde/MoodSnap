@@ -79,8 +79,8 @@ import SwiftUI
 /**
  Delete a `moodSnap` from an array of `moodSnaps`.
  */
-@inline(__always) func deleteHistoryItem(data: DataStoreClass, moodSnap: MoodSnapStruct) {
-    data.moodSnaps = data.moodSnaps.filter { $0.id != moodSnap.id }
+@inline(__always) func deleteHistoryItem(data: DataStoreClass, moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
+    return data.moodSnaps.filter { $0.id != moodSnap.id }
 }
 
 /**

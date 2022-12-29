@@ -4,7 +4,7 @@ import SwiftUI
 let quoteFrequency = 11
 
 /// Haptics
-let hapticsEnabled = true
+let hapticsEnabled = false
 
 /// Time windows
 let influenceWindowShort = 7

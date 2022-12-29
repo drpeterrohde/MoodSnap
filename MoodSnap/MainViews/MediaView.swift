@@ -28,7 +28,7 @@ struct MediaView: View {
                                 if data.settings.saveMediaToCameraRoll {
                                     UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
                                 }
-                                deleteHistoryItem(data: data, moodSnap: moodSnap)
+                                data.moodSnaps = deleteHistoryItem(data: data, moodSnap: moodSnap)
                                 data.moodSnaps.append(moodSnap)
                                 data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                             }
