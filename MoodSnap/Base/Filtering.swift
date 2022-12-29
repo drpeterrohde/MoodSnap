@@ -5,20 +5,19 @@ import SwiftUI
  */
 @inline(__always) func snapFilter(moodSnap: MoodSnapStruct, filter: SnapTypeEnum, searchText: String) -> Bool {
     let filterOutcome =
-        (filter == .mood && moodSnap.snapType == .mood) ||
-        (filter == .event && moodSnap.snapType == .event) ||
-        (filter == .note && moodSnap.snapType == .note) ||
-        (filter == .media && moodSnap.snapType == .media)
+    (filter == .mood && moodSnap.snapType == .mood) ||
+    (filter == .event && moodSnap.snapType == .event) ||
+    (filter == .note && moodSnap.snapType == .note) ||
+    (filter == .media && moodSnap.snapType == .media) ||
+    filter == .none
 
-    if filterOutcome { return true }
+    if filterOutcome {
+        if searchText == "" { return true }
+        
+        let eventTextOutcome = moodSnap.event.lowercased().contains(searchText.lowercased())
+        let notesTextOutcome = moodSnap.notes.lowercased().contains(searchText.lowercased())
 
-    if filter == .none {
-        let eventTextOutcome = moodSnap.event.lowercased().contains(searchText.lowercased()) || (searchText == "")
-        let notesTextOutcome = moodSnap.notes.lowercased().contains(searchText.lowercased()) || (searchText == "")
-
-        if eventTextOutcome || notesTextOutcome {
-            return true
-        }
+        if (eventTextOutcome || notesTextOutcome) { return true }
     }
 
     return false

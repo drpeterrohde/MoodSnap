@@ -1025,7 +1025,6 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -1076,7 +1075,6 @@
 				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Health data for insights";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "For adding photos to camera roll";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "For adding photos to photo diary";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
