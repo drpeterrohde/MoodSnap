@@ -34,43 +34,10 @@ import SwiftUI
 }
 
 /**
- Average `ButterflyEntryStruct` from data centered around an array of `dates`.
- */
-@inline(__always) func averageMenstrualTransientForDates(dates: [Date], data: DataStoreClass, maxWindow: Int) -> ButterflyEntryStruct {
-    let butterflyMood = averageDifferentialWindowForDates(
-        data: data,
-        dates: dates,
-        maxWindow: maxWindow)
-    let butterflyVolatility = volatilityDifferentialWindowForDates(
-        data: data,
-        dates: dates,
-        maxWindow: maxWindow)
-
-    var thisButterfly = ButterflyEntryStruct()
-
-    thisButterfly.elevation = butterflyMood[0]
-    thisButterfly.depression = butterflyMood[1]
-    thisButterfly.anxiety = butterflyMood[2]
-    thisButterfly.irritability = butterflyMood[3]
-
-    thisButterfly.elevationVolatility = butterflyVolatility[0]
-    thisButterfly.depressionVolatility = butterflyVolatility[1]
-    thisButterfly.anxietyVolatility = butterflyVolatility[2]
-    thisButterfly.irritabilityVolatility = butterflyVolatility[3]
-
-    thisButterfly.occurrences = dates.count
-    
-    let timeline = generateTimelineForDates(data: data, dates: dates)
-    thisButterfly.timeline = timeline
-    
-    return thisButterfly
-}
-
-/**
  Differential (average) foccused on `date`.
  */
-@inline(__always) func averageDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
-    var today: [MoodSnapStruct] = getMoodSnapsByDate(data: data, date: date, flatten: true)
+@inline(__always) func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
+    var today: [MoodSnapStruct] = getMoodSnapsByDate(moodSnaps: moodSnaps, date: date, flatten: true)
     
     let todayCount = today.count
     
@@ -81,16 +48,17 @@ import SwiftUI
     }
 
     var samples: [MoodSnapStruct] = []
+    
     if window >= 0 {
         samples = getMoodSnapsByDateWindow(
-            data: data,
+            moodSnaps: moodSnaps,
             date: date,
             windowStart: 0,
             windowEnd: window,
             flatten: true)
     } else {
         samples = getMoodSnapsByDateWindow(
-            data: data,
+            moodSnaps: moodSnaps,
             date: date,
             windowStart: window,
             windowEnd: 0,
@@ -128,19 +96,19 @@ import SwiftUI
 /**
  Differential (volatility) foccused on `date`.
  */
-@inline(__always) func volatilityDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
+@inline(__always) func volatilityDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     var samples: [MoodSnapStruct] = []
 
     if window >= 0 {
         samples = getMoodSnapsByDateWindow(
-            data: data,
+            moodSnaps: moodSnaps,
             date: date,
             windowStart: 0,
             windowEnd: window,
             flatten: false)
     } else {
         samples = getMoodSnapsByDateWindow(
-            data: data,
+            moodSnaps: moodSnaps,
             date: date,
             windowStart: window,
             windowEnd: 0,
@@ -215,10 +183,12 @@ import SwiftUI
     var seriesD: [CGFloat?] = []
     var seriesA: [CGFloat?] = []
     var seriesI: [CGFloat?] = []
+    
+    let windowSnaps = getMoodSnapsByDateWindow(data: data, date: date, windowStart: -maxWindow, windowEnd: maxWindow)
 
     for window in -maxWindow ... maxWindow {
         let thisDiff: [CGFloat?] = averageDifferential(
-            data: data,
+            moodSnaps: windowSnaps,
             date: date,
             window: window)
         seriesE.append(thisDiff[0])
@@ -239,15 +209,24 @@ import SwiftUI
     var seriesA: [CGFloat?] = []
     var seriesI: [CGFloat?] = []
 
+    let windowSnaps = getMoodSnapsByDateWindow(data: data, date: date, windowStart: -maxWindow, windowEnd: maxWindow)
+    
     for window in -maxWindow ... maxWindow {
-        let thisDiff: [CGFloat?] = volatilityDifferential(
-            data: data,
-            date: date,
-            window: window)
-        seriesE.append(thisDiff[0])
-        seriesD.append(thisDiff[1])
-        seriesA.append(thisDiff[2])
-        seriesI.append(thisDiff[3])
+        if window == -maxWindow || window == maxWindow {
+            let thisDiff: [CGFloat?] = volatilityDifferential(
+                moodSnaps: windowSnaps,
+                date: date,
+                window: window)
+            seriesE.append(thisDiff[0])
+            seriesD.append(thisDiff[1])
+            seriesA.append(thisDiff[2])
+            seriesI.append(thisDiff[3])
+        } else {
+            seriesE.append(nil)
+            seriesD.append(nil)
+            seriesA.append(nil)
+            seriesI.append(nil)
+        }
     }
 
     return [seriesE, seriesD, seriesA, seriesI]
