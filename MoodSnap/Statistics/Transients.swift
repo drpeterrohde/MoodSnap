@@ -36,65 +36,6 @@ import SwiftUI
 /**
  Differential (average) foccused on `date`.
  */
-@inline(__always) func averageDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
-    var today: [MoodSnapStruct] = getMoodSnapsByDate(data: data, date: date, flatten: true)
-    
-    let todayCount = today.count
-    
-    var todaySnap = MoodSnapStruct()
-    if todayCount == 0 {
-        todaySnap.timestamp = date
-        today = [todaySnap]
-    }
-
-    var samples: [MoodSnapStruct] = []
-    if window >= 0 {
-        samples = getMoodSnapsByDateWindow(
-            data: data,
-            date: date,
-            windowStart: 0,
-            windowEnd: window,
-            flatten: true)
-    } else {
-        samples = getMoodSnapsByDateWindow(
-            data: data,
-            date: date,
-            windowStart: window,
-            windowEnd: 0,
-            flatten: true)
-    }
-    
-    if todayCount == 0 {
-        samples.append(todaySnap)
-    }
-
-    let todayAverage = average(moodSnaps: today)
-    let windowAverage = average(moodSnaps: samples)
-
-    var diffE: CGFloat?
-    var diffD: CGFloat?
-    var diffA: CGFloat?
-    var diffI: CGFloat?
-
-    if todayAverage[0] != nil && windowAverage[0] != nil {
-        diffE = windowAverage[0]! - todayAverage[0]!
-    }
-    if todayAverage[1] != nil && windowAverage[1] != nil {
-        diffD = windowAverage[1]! - todayAverage[1]!
-    }
-    if todayAverage[2] != nil && windowAverage[2] != nil {
-        diffA = windowAverage[2]! - todayAverage[2]!
-    }
-    if todayAverage[3] != nil && windowAverage[3] != nil {
-        diffI = windowAverage[3]! - todayAverage[3]!
-    }
-
-    return [diffE, diffD, diffA, diffI]
-}
-
-/**
- Differential (average) foccused on `date`.
- */
 @inline(__always) func averageDifferential(moodSnaps: [MoodSnapStruct], date: Date, window: Int) -> [CGFloat?] {
     var today: [MoodSnapStruct] = getMoodSnapsByDate(moodSnaps: moodSnaps, date: date, flatten: true)
     
@@ -107,6 +48,7 @@ import SwiftUI
     }
 
     var samples: [MoodSnapStruct] = []
+    
     if window >= 0 {
         samples = getMoodSnapsByDateWindow(
             moodSnaps: moodSnaps,
@@ -149,33 +91,6 @@ import SwiftUI
     }
 
     return [diffE, diffD, diffA, diffI]
-}
-
-
-/**
- Differential (volatility) foccused on `date`.
- */
-@inline(__always) func volatilityDifferential(data: DataStoreClass, date: Date, window: Int) -> [CGFloat?] {
-    var samples: [MoodSnapStruct] = []
-
-    if window >= 0 {
-        samples = getMoodSnapsByDateWindow(
-            data: data,
-            date: date,
-            windowStart: 0,
-            windowEnd: window,
-            flatten: false)
-    } else {
-        samples = getMoodSnapsByDateWindow(
-            data: data,
-            date: date,
-            windowStart: window,
-            windowEnd: 0,
-            flatten: false)
-    }
-
-    let windowVolatility = volatility(moodSnaps: samples)
-    return windowVolatility
 }
 
 /**
@@ -307,10 +222,10 @@ import SwiftUI
             seriesA.append(thisDiff[2])
             seriesI.append(thisDiff[3])
         } else {
-            seriesE.append(0)
-            seriesD.append(0)
-            seriesA.append(0)
-            seriesI.append(0)
+            seriesE.append(nil)
+            seriesD.append(nil)
+            seriesA.append(nil)
+            seriesI.append(nil)
         }
     }
 
