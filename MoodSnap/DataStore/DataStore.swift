@@ -11,7 +11,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
 
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
-    var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
+    var moodSnaps: ContiguousArray<MoodSnapStruct> = makeIntroSnap()
     var healthSnaps: [HealthSnapStruct] = []
     var processedData: ProcessedDataStruct = ProcessedDataStruct()
 }
@@ -25,7 +25,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
 
     @Published var settings: SettingsStruct = SettingsStruct()
     @Published var uxState: UXStateStruct = UXStateStruct()
-    @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
+    @Published var moodSnaps: ContiguousArray<MoodSnapStruct> = makeIntroSnap()
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
     @Published var processingTask: Task<Void, Never>? = nil
     @Published var hashtagList: [String] = []

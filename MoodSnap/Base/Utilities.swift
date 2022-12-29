@@ -137,7 +137,7 @@ import SwiftUI
 @inline(__always) func getEventsList(data: DataStoreClass, window: Int? = nil) -> [(String, Date)] {
     var list: [(String, Date)] = []
 
-    var filteredMoodSnaps: [MoodSnapStruct] = []
+    var filteredMoodSnaps: ContiguousArray<MoodSnapStruct> = []
 
     if window == nil {
         filteredMoodSnaps = data.moodSnaps
@@ -186,7 +186,7 @@ import SwiftUI
 /**
  Make introductory MoodSnap with quick start information
  */
-@inline(__always) func makeIntroSnap() -> [MoodSnapStruct] {
+@inline(__always) func makeIntroSnap() -> ContiguousArray<MoodSnapStruct> {
     var mediaSnap = MoodSnapStruct()
     mediaSnap.snapType = .custom
     mediaSnap.customView = 1

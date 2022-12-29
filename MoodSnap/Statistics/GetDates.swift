@@ -3,7 +3,7 @@ import SwiftUI
 /**
  Get a `[Date]` array for all instances of a `hashtag`.
  */
-@inline(__always) func getDatesForHashtag(hashtag: String, moodSnaps: [MoodSnapStruct]) -> [Date] {
+@inline(__always) func getDatesForHashtag(hashtag: String, moodSnaps: ContiguousArray<MoodSnapStruct>) -> [Date] {
     var dates: [Date] = []
     for moodSnap in moodSnaps {
         if containsHashtag(string: moodSnap.notes, hashtag: hashtag) || containsHashtag(string: moodSnap.event, hashtag: hashtag) {

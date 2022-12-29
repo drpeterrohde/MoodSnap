@@ -96,7 +96,7 @@ import SwiftUI
  */
 @inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
-    var moodSnaps: [MoodSnapStruct?] = []
+    var moodSnaps: ContiguousArray<MoodSnapStruct?> = []
     
     if flatten {
         moodSnaps = data.flattenedSequencedMoodSnaps
