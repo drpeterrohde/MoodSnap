@@ -132,23 +132,23 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
 struct OccurencesStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     
-    var beforeSymptoms: [Int] = []
-    var beforeActivities: [Int] = []
-    var beforeSocial: [Int] = []
-    var beforeEvents: [Int] = []
-    var beforeHashtags: [Int] = []
+    var beforeSymptoms: [Double] = []
+    var beforeActivities: [Double] = []
+    var beforeSocial: [Double] = []
+    var beforeEvents: [Double] = []
+    var beforeHashtags: [Double] = []
     
-    var afterSymptoms: [Int] = []
-    var afterActivities: [Int] = []
-    var afterSocial: [Int] = []
-    var afterEvents: [Int] = []
-    var afterHashtags: [Int] = []
+    var afterSymptoms: [Double] = []
+    var afterActivities: [Double] = []
+    var afterSocial: [Double] = []
+    var afterEvents: [Double] = []
+    var afterHashtags: [Double] = []
     
-    var deltaSymptoms: [Int] = []
-    var deltaActivities: [Int] = []
-    var deltaSocial: [Int] = []
-    var deltaEvents: [Int] = []
-    var deltaHashtags: [Int] = []
+    var deltaSymptoms: [Double] = []
+    var deltaActivities: [Double] = []
+    var deltaSocial: [Double] = []
+    var deltaEvents: [Double] = []
+    var deltaHashtags: [Double] = []
 }
 
 /**

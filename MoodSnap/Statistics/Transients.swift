@@ -30,8 +30,9 @@ import SwiftUI
     let timeline = generateTimelineForDates(data: data, dates: dates)
     thisButterfly.timeline = timeline
     
-    var deltas = deltaOccurences(data: data, dates: dates, maxWindow: maxWindow)
-
+    let deltas = deltaOccurences(data: data, dates: dates, maxWindow: maxWindow)
+    thisButterfly.deltas = deltas
+    
     return thisButterfly
 }
 
@@ -217,17 +218,18 @@ import SwiftUI
     
     var occurences = OccurencesStruct()
     
-    occurences.beforeSymptoms = beforeOccurences.0
-    occurences.beforeActivities = beforeOccurences.1
-    occurences.beforeSocial = beforeOccurences.2
+    occurences.beforeSymptoms = beforeOccurences.0.map { Double($0) }
+    occurences.beforeActivities = beforeOccurences.1.map { Double($0) }
+    occurences.beforeSocial = beforeOccurences.2.map { Double($0) }
+    // ??? event, hashtags
 
-    occurences.afterSymptoms = afterOccurences.0
-    occurences.afterActivities = afterOccurences.1
-    occurences.afterSocial = afterOccurences.2
+    occurences.afterSymptoms = afterOccurences.0.map { Double($0) }
+    occurences.afterActivities = afterOccurences.1.map { Double($0) }
+    occurences.afterSocial = afterOccurences.2.map { Double($0) }
     
-    occurences.deltaSymptoms = deltaOccurences.0
-    occurences.deltaActivities = deltaOccurences.1
-    occurences.deltaSocial = deltaOccurences.2
+    occurences.deltaSymptoms = deltaOccurences.0.map { Double($0) }
+    occurences.deltaActivities = deltaOccurences.1.map { Double($0) }
+    occurences.deltaSocial = deltaOccurences.2.map { Double($0) }
     
     return occurences
 }
@@ -252,12 +254,27 @@ import SwiftUI
  Calculate the average `OccurenceStruct` from an array of `[OccurenceStruct]`s.
  */
 @inline(__always) func averageDelta(deltas: [OccurencesStruct]) -> OccurencesStruct {
-    var averageDelta: OccurencesStruct = OccurencesStruct()
-    
-    // ???? todo
-    averageDelta = deltas[0]
-    
-    return averageDelta
+    if deltas.count == 0 {
+        return OccurencesStruct()
+    } else {
+        var average: OccurencesStruct = deltas[0]
+        
+        for i in 1...deltas.count {
+            average.beforeActivities = zip(average.beforeActivities, deltas[i].beforeActivities).map(+)
+            average.beforeSymptoms = zip(average.beforeSymptoms, deltas[i].beforeSymptoms).map(+)
+            average.beforeSocial = zip(average.beforeSocial, deltas[i].beforeSocial).map(+)
+            average.beforeEvents = zip(average.beforeEvents, deltas[i].beforeEvents).map(+)
+            average.beforeHashtags = zip(average.beforeHashtags, deltas[i].beforeHashtags).map(+)
+        }
+        
+        average.beforeActivities = average.beforeActivities.map {Double($0) / Double(deltas.count)}
+        average.beforeSymptoms = average.beforeSymptoms.map {Double($0) / Double(deltas.count)}
+        average.beforeSocial = average.beforeSocial.map {Double($0) / Double(deltas.count)}
+        average.beforeEvents = average.beforeEvents.map {Double($0) / Double(deltas.count)}
+        average.beforeHashtags = average.beforeHashtags.map {Double($0) / Double(deltas.count)}
+        
+        return average
+    }
 }
 
 /**
