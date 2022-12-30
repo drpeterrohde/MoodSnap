@@ -84,6 +84,28 @@ import SwiftUI
 }
 
 /**
+ Format a count string to single decimal place accuracy.
+ */
+@inline(__always) func formatCountString(value: CGFloat?) -> String {
+    if value != nil {
+        var floatVal: CGFloat = value!
+
+        floatVal = CGFloat(round(10 * floatVal) / 10)
+
+        var str = ""
+        if floatVal < 0 {
+            str = String(format: " %.1f", floatVal)
+        } else {
+            str = String(format: "  %.1f", floatVal)
+        }
+
+        return str
+    } else {
+        return "    -"
+    }
+}
+
+/**
  Format a mood level string to single decimal place accuracy.
  */
 @inline(__always) func formatMoodLevelString(value: CGFloat?) -> String {

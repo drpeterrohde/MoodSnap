@@ -135,19 +135,16 @@ struct OccurencesStruct: Identifiable, Codable, Hashable {
     var beforeSymptoms: [Double] = []
     var beforeActivities: [Double] = []
     var beforeSocial: [Double] = []
-    var beforeEvents: [Double] = []
     var beforeHashtags: [Double] = []
     
     var afterSymptoms: [Double] = []
     var afterActivities: [Double] = []
     var afterSocial: [Double] = []
-    var afterEvents: [Double] = []
     var afterHashtags: [Double] = []
     
     var deltaSymptoms: [Double] = []
     var deltaActivities: [Double] = []
     var deltaSocial: [Double] = []
-    var deltaEvents: [Double] = []
     var deltaHashtags: [Double] = []
 }
 

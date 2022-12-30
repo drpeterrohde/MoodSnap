@@ -144,6 +144,10 @@
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
 		CA8D880D29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
+		CA9552D6295FA42100DDF17E /* DeltasActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D5295FA42100DDF17E /* DeltasActivityView.swift */; };
+		CA9552D8295FA58100DDF17E /* DeltasSocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D7295FA58100DDF17E /* DeltasSocialView.swift */; };
+		CA9552DA295FA64400DDF17E /* DeltasSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D9295FA64400DDF17E /* DeltasSymptomView.swift */; };
+		CA9552DC295FACF600DDF17E /* DeltasHashtagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552DB295FACF600DDF17E /* DeltasHashtagView.swift */; };
 		CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAA2D1927F284380096AD22 /* GetDates.swift */; };
 		CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */; };
 		CAB7F2DA280DFFFF00E8A823 /* Correlation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */; };
@@ -280,6 +284,10 @@
 		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleDot.swift; sourceTree = "<group>"; };
+		CA9552D5295FA42100DDF17E /* DeltasActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasActivityView.swift; sourceTree = "<group>"; };
+		CA9552D7295FA58100DDF17E /* DeltasSocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasSocialView.swift; sourceTree = "<group>"; };
+		CA9552D9295FA64400DDF17E /* DeltasSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasSymptomView.swift; sourceTree = "<group>"; };
+		CA9552DB295FACF600DDF17E /* DeltasHashtagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasHashtagView.swift; sourceTree = "<group>"; };
 		CAA2E88628CB5A3F007AC145 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAA9963D2936A1F800420A0A /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CAAA2D1927F284380096AD22 /* GetDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDates.swift; sourceTree = "<group>"; };
@@ -385,16 +393,13 @@
 		CA496B1327EBEF290067EE63 /* InsightsView */ = {
 			isa = PBXGroup;
 			children = (
+				CA9552D4295FA3F100DDF17E /* TransientView */,
 				CABF5E2128ACABAE004D7A0F /* HealthView */,
 				CA527AA328AA7CDE007AD6DC /* InfluencesView */,
 				CA496B1727EBEF290067EE63 /* SlidingAverageView.swift */,
 				CA496B1A27EBEF290067EE63 /* AverageMoodView.swift */,
 				CA496B1C27EBEF290067EE63 /* InsightsView.swift */,
-				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
-				CACD5D8F295F87E400074612 /* DeltasView.swift */,
 				CA496B1E27EBEF290067EE63 /* TallyView.swift */,
-				CA496B1F27EBEF290067EE63 /* TransientView.swift */,
-				CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */,
 				CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */,
 				CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */,
 			);
@@ -584,6 +589,21 @@
 			path = Widget;
 			sourceTree = "<group>";
 		};
+		CA9552D4295FA3F100DDF17E /* TransientView */ = {
+			isa = PBXGroup;
+			children = (
+				CAB7DB9D28184C04004866B3 /* TransientWithPickerView.swift */,
+				CA496B1D27EBEF290067EE63 /* TransientReferencePickerView.swift */,
+				CA496B1F27EBEF290067EE63 /* TransientView.swift */,
+				CACD5D8F295F87E400074612 /* DeltasView.swift */,
+				CA9552D5295FA42100DDF17E /* DeltasActivityView.swift */,
+				CA9552DB295FACF600DDF17E /* DeltasHashtagView.swift */,
+				CA9552D7295FA58100DDF17E /* DeltasSocialView.swift */,
+				CA9552D9295FA64400DDF17E /* DeltasSymptomView.swift */,
+			);
+			path = TransientView;
+			sourceTree = "<group>";
+		};
 		CABF5E2128ACABAE004D7A0F /* HealthView */ = {
 			isa = PBXGroup;
 			children = (
@@ -721,6 +741,7 @@
 				CA496B7D27EBEF2A0067EE63 /* WeightView.swift in Sources */,
 				CA496B0727EBEEEE0067EE63 /* Utilities.swift in Sources */,
 				CAAA2D1A27F284380096AD22 /* GetDates.swift in Sources */,
+				CA9552D8295FA58100DDF17E /* DeltasSocialView.swift in Sources */,
 				CA58D46927ECFC4300D071B3 /* UnlockView.swift in Sources */,
 				CA496B0827EBEEEF0067EE63 /* Counting.swift in Sources */,
 				CACD6FEE27F1619500D71730 /* QuoteSnap.swift in Sources */,
@@ -728,6 +749,7 @@
 				CA496BAB27EBEF2B0067EE63 /* PDFAverageMoodView.swift in Sources */,
 				CA496BB527EBEF2B0067EE63 /* GenerateHistory.swift in Sources */,
 				CA496B8727EBEF2A0067EE63 /* HistoryMoodView.swift in Sources */,
+				CA9552D6295FA42100DDF17E /* DeltasActivityView.swift in Sources */,
 				CA496B0C27EBEEEF0067EE63 /* Notifications.swift in Sources */,
 				CA496B8827EBEF2A0067EE63 /* HistorySymptomsView.swift in Sources */,
 				CA496B9927EBEF2B0067EE63 /* HelpView.swift in Sources */,
@@ -737,6 +759,7 @@
 				CA70912F28C843C200214B4D /* Haptic.swift in Sources */,
 				CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
+				CA9552DC295FACF600DDF17E /* DeltasHashtagView.swift in Sources */,
 				CA496B9A27EBEF2B0067EE63 /* ContentView.swift in Sources */,
 				CA496B9127EBEF2A0067EE63 /* EventView.swift in Sources */,
 				CA496B9427EBEF2A0067EE63 /* NoteView.swift in Sources */,
@@ -783,6 +806,7 @@
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA7775AB280CD44C0045A202 /* HealthManager.swift in Sources */,
+				CA9552DA295FA64400DDF17E /* DeltasSymptomView.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,

@@ -41,7 +41,12 @@ struct TransientWithPickerView: View {
                                          selectedEvent: $selectedEvent,
                                          selectedHashtag: $selectedHashtag,
                                          selectionType: $selectionType)
-            DeltasView()
+            DeltasView(selectedActivity: $selectedActivity,
+                       selectedSocial: $selectedSocial,
+                       selectedSymptom: $selectedSymptom,
+                       selectedEvent: $selectedEvent,
+                       selectedHashtag: $selectedHashtag,
+                       selectionType: $selectionType)
         }
     }
 }

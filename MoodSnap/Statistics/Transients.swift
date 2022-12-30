@@ -212,24 +212,29 @@ import SwiftUI
     
     let beforeOccurences = countAllOccurrences(moodSnaps: beforeMoodSnaps, data: data)
     let afterOccurences = countAllOccurrences(moodSnaps: afterMoodSnaps, data: data)
-    let deltaOccurences = (zip(beforeOccurences.0, afterOccurences.0).map(-),
-                           zip(beforeOccurences.1, afterOccurences.1).map(-),
-                           zip(beforeOccurences.2, afterOccurences.2).map(-))
-    
+    let deltaOccurences = (zip(afterOccurences.0, beforeOccurences.0).map(-),
+                           zip(afterOccurences.1, beforeOccurences.1).map(-),
+                           zip(afterOccurences.2, beforeOccurences.2).map(-))
+    let beforeHashtags = countHashtagOccurrences(hashtags: data.hashtagList, moodSnaps: beforeMoodSnaps)
+    let afterHashtags = countHashtagOccurrences(hashtags: data.hashtagList, moodSnaps: afterMoodSnaps)
+    let deltaHashtags = zip(afterHashtags, beforeHashtags).map(-)
+
     var occurences = OccurencesStruct()
     
     occurences.beforeSymptoms = beforeOccurences.0.map { Double($0) }
     occurences.beforeActivities = beforeOccurences.1.map { Double($0) }
     occurences.beforeSocial = beforeOccurences.2.map { Double($0) }
-    // ??? event, hashtags
+    occurences.beforeHashtags = beforeHashtags.map { Double($0) }
 
     occurences.afterSymptoms = afterOccurences.0.map { Double($0) }
     occurences.afterActivities = afterOccurences.1.map { Double($0) }
     occurences.afterSocial = afterOccurences.2.map { Double($0) }
+    occurences.afterHashtags = afterHashtags.map { Double($0) }
     
     occurences.deltaSymptoms = deltaOccurences.0.map { Double($0) }
     occurences.deltaActivities = deltaOccurences.1.map { Double($0) }
     occurences.deltaSocial = deltaOccurences.2.map { Double($0) }
+    occurences.deltaHashtags = deltaHashtags.map { Double($0) }
     
     return occurences
 }
@@ -239,7 +244,7 @@ import SwiftUI
  */
 @inline(__always) func deltaOccurences(data: DataStoreClass, dates: [Date], maxWindow: Int) -> OccurencesStruct {
     var deltas: [OccurencesStruct] = []
-    
+        
     for date in dates {
         let thisDelta = deltaOccurences(data: data, date: date, maxWindow: maxWindow)
         deltas.append(thisDelta)
@@ -259,19 +264,37 @@ import SwiftUI
     } else {
         var average: OccurencesStruct = deltas[0]
         
-        for i in 1...deltas.count {
+        for i in 1 ..< deltas.count {
             average.beforeActivities = zip(average.beforeActivities, deltas[i].beforeActivities).map(+)
             average.beforeSymptoms = zip(average.beforeSymptoms, deltas[i].beforeSymptoms).map(+)
             average.beforeSocial = zip(average.beforeSocial, deltas[i].beforeSocial).map(+)
-            average.beforeEvents = zip(average.beforeEvents, deltas[i].beforeEvents).map(+)
             average.beforeHashtags = zip(average.beforeHashtags, deltas[i].beforeHashtags).map(+)
+            
+            average.afterActivities = zip(average.afterActivities, deltas[i].afterActivities).map(+)
+            average.afterSymptoms = zip(average.afterSymptoms, deltas[i].afterSymptoms).map(+)
+            average.afterSocial = zip(average.afterSocial, deltas[i].afterSocial).map(+)
+            average.afterHashtags = zip(average.afterHashtags, deltas[i].afterHashtags).map(+)
+            
+            average.deltaActivities = zip(average.deltaActivities, deltas[i].deltaActivities).map(+)
+            average.deltaSymptoms = zip(average.deltaSymptoms, deltas[i].deltaSymptoms).map(+)
+            average.deltaSocial = zip(average.deltaSocial, deltas[i].deltaSocial).map(+)
+            average.deltaHashtags = zip(average.deltaHashtags, deltas[i].deltaHashtags).map(+)
         }
         
         average.beforeActivities = average.beforeActivities.map {Double($0) / Double(deltas.count)}
         average.beforeSymptoms = average.beforeSymptoms.map {Double($0) / Double(deltas.count)}
         average.beforeSocial = average.beforeSocial.map {Double($0) / Double(deltas.count)}
-        average.beforeEvents = average.beforeEvents.map {Double($0) / Double(deltas.count)}
         average.beforeHashtags = average.beforeHashtags.map {Double($0) / Double(deltas.count)}
+        
+        average.afterActivities = average.afterActivities.map {Double($0) / Double(deltas.count)}
+        average.afterSymptoms = average.afterSymptoms.map {Double($0) / Double(deltas.count)}
+        average.afterSocial = average.afterSocial.map {Double($0) / Double(deltas.count)}
+        average.afterHashtags = average.afterHashtags.map {Double($0) / Double(deltas.count)}
+        
+        average.deltaActivities = average.deltaActivities.map {Double($0) / Double(deltas.count)}
+        average.deltaSymptoms = average.deltaSymptoms.map {Double($0) / Double(deltas.count)}
+        average.deltaSocial = average.deltaSocial.map {Double($0) / Double(deltas.count)}
+        average.deltaHashtags = average.deltaHashtags.map {Double($0) / Double(deltas.count)}
         
         return average
     }
