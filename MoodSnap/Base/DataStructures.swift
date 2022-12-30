@@ -121,6 +121,8 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var anxietyVolatility: [CGFloat?] = []
     var irritabilityVolatility: [CGFloat?] = []
     
+    var deltas: OccurencesStruct? = nil
+    
     var timeline: [CGFloat?]? = []
 }
 
@@ -133,14 +135,20 @@ struct OccurencesStruct: Identifiable, Codable, Hashable {
     var beforeSymptoms: [Int] = []
     var beforeActivities: [Int] = []
     var beforeSocial: [Int] = []
+    var beforeEvents: [Int] = []
+    var beforeHashtags: [Int] = []
     
     var afterSymptoms: [Int] = []
     var afterActivities: [Int] = []
     var afterSocial: [Int] = []
+    var afterEvents: [Int] = []
+    var afterHashtags: [Int] = []
     
     var deltaSymptoms: [Int] = []
     var deltaActivities: [Int] = []
     var deltaSocial: [Int] = []
+    var deltaEvents: [Int] = []
+    var deltaHashtags: [Int] = []
 }
 
 /**

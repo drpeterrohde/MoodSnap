@@ -29,6 +29,8 @@ import SwiftUI
     
     let timeline = generateTimelineForDates(data: data, dates: dates)
     thisButterfly.timeline = timeline
+    
+    var deltas = deltaOccurences(data: data, dates: dates, maxWindow: maxWindow)
 
     return thisButterfly
 }
@@ -228,6 +230,34 @@ import SwiftUI
     occurences.deltaSocial = deltaOccurences.2
     
     return occurences
+}
+
+/**
+ Calculate the occurences of symptoms and activites relative to `dates` with given `maxWindow`.
+ */
+@inline(__always) func deltaOccurences(data: DataStoreClass, dates: [Date], maxWindow: Int) -> OccurencesStruct {
+    var deltas: [OccurencesStruct] = []
+    
+    for date in dates {
+        let thisDelta = deltaOccurences(data: data, date: date, maxWindow: maxWindow)
+        deltas.append(thisDelta)
+    }
+    
+    let averageDelta = averageDelta(deltas: deltas)
+    
+    return averageDelta
+}
+
+/**
+ Calculate the average `OccurenceStruct` from an array of `[OccurenceStruct]`s.
+ */
+@inline(__always) func averageDelta(deltas: [OccurencesStruct]) -> OccurencesStruct {
+    var averageDelta: OccurencesStruct = OccurencesStruct()
+    
+    // ???? todo
+    averageDelta = deltas[0]
+    
+    return averageDelta
 }
 
 /**
