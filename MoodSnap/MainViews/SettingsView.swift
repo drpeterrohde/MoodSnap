@@ -266,6 +266,8 @@ struct SettingsView: View {
                     }
                 } catch {
                     do { // Attempt to import as [MoodSnapStruct]
+                        print("importing as [MS]")
+
                         let fileUrl = try res.get()
                         let retrieved: [MoodSnapStruct] = decodeJSONString(url: fileUrl)
                         
@@ -278,6 +280,8 @@ struct SettingsView: View {
                             data.startProcessing()
                             health.startProcessing(data: data)
                         }
+                        
+                        print(retrieved)
                     } catch {
                     }
                 }
