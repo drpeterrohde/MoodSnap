@@ -38,6 +38,19 @@ func encodeJSONString(data: DataStoreClass) -> String {
 }
 
 /**
+ Encode `data` struct into a JSON `String`.
+ */
+func encodeJSONString(moodSnaps: [MoodSnapStruct]) -> String {
+    do {
+        let jsonData = try JSONEncoder().encode(cleanMoodSnaps(moodSnaps: moodSnaps))
+        let jsonString = String(data: jsonData, encoding: .utf8)!
+        return jsonString
+    } catch {
+    }
+    return ""
+}
+
+/**
  Decode a JSON `url`  into a `DataStoreClass`.
  */
 func decodeJSONString(url: URL) -> DataStoreStruct {
@@ -53,13 +66,43 @@ func decodeJSONString(url: URL) -> DataStoreStruct {
 }
 
 /**
- Decode JSON `data` into a `DataStoreSturct`.
+ Decode a JSON `url`  into a `[MoodSnap]` array.
  */
-func decodeJSONString(data: Data) -> DataStoreStruct {
-    var decodedData = DataStoreStruct()
+func decodeJSONString(url: URL) -> [MoodSnapStruct] {
+    var data: [MoodSnapStruct] = []
     do {
-        decodedData = try JSONDecoder().decode(DataStoreStruct.self, from: data)
+        _ = url.startAccessingSecurityScopedResource()
+        let rawData = try Data(contentsOf: url)
+        data = try JSONDecoder().decode([MoodSnapStruct].self, from: rawData)
+        url.stopAccessingSecurityScopedResource()
     } catch {
     }
-    return decodedData
+    return data
 }
+
+/**
+ Strip a `[MoodSnapStruct]` array of quotes and custom items.
+ */
+func cleanMoodSnaps(moodSnaps: [MoodSnapStruct]) -> [MoodSnapStruct] {
+    var filtered: [MoodSnapStruct] = []
+    
+    for moodSnap in moodSnaps {
+        if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
+            filtered.append(moodSnap)
+        }
+    }
+    
+    return filtered
+}
+
+/**
+ Decode JSON `data` into a `DataStoreSturct`.
+ */
+//func decodeJSONStringDataStoreStruct(data: Data) -> DataStoreStruct {
+//    var decodedData = DataStoreStruct()
+//    do {
+//        decodedData = try JSONDecoder().decode(DataStoreStruct.self, from: data)
+//    } catch {
+//    }
+//    return decodedData
+//}
