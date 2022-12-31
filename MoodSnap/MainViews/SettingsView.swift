@@ -247,7 +247,7 @@ struct SettingsView: View {
             .fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
                 do { // Attempt to import as DataStoreStruct
                     let fileUrl = try res.get()
-                    let retrieved: DataStoreStruct = decodeJSONString(url: fileUrl)
+                    let retrieved: DataStoreStruct = try decodeJSONString(url: fileUrl)
 
                     DispatchQueue.main.async {
                         data.stopProcessing()
@@ -266,10 +266,8 @@ struct SettingsView: View {
                     }
                 } catch {
                     do { // Attempt to import as [MoodSnapStruct]
-                        print("importing as [MS]")
-
                         let fileUrl = try res.get()
-                        let retrieved: [MoodSnapStruct] = decodeJSONString(url: fileUrl)
+                        let retrieved: [MoodSnapStruct] = try decodeJSONString(url: fileUrl)
                         
                         DispatchQueue.main.async {
                             data.stopProcessing()
@@ -280,8 +278,6 @@ struct SettingsView: View {
                             data.startProcessing()
                             health.startProcessing(data: data)
                         }
-                        
-                        print(retrieved)
                     } catch {
                     }
                 }

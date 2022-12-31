@@ -53,30 +53,30 @@ func encodeJSONString(moodSnaps: [MoodSnapStruct]) -> String {
 /**
  Decode a JSON `url`  into a `DataStoreClass`.
  */
-func decodeJSONString(url: URL) -> DataStoreStruct {
+func decodeJSONString(url: URL) throws -> DataStoreStruct  {
     var data = DataStoreStruct()
-    do {
+    //do {
         _ = url.startAccessingSecurityScopedResource()
         let rawData = try Data(contentsOf: url)
         data = try JSONDecoder().decode(DataStoreStruct.self, from: rawData)
         url.stopAccessingSecurityScopedResource()
-    } catch {
-    }
+  //  } catch {
+   // }
     return data
 }
 
 /**
  Decode a JSON `url`  into a `[MoodSnap]` array.
  */
-func decodeJSONString(url: URL) -> [MoodSnapStruct] {
+func decodeJSONString(url: URL) throws -> [MoodSnapStruct] {
     var data: [MoodSnapStruct] = []
-    do {
+  //  do {
         _ = url.startAccessingSecurityScopedResource()
         let rawData = try Data(contentsOf: url)
         data = try JSONDecoder().decode([MoodSnapStruct].self, from: rawData)
         url.stopAccessingSecurityScopedResource()
-    } catch {
-    }
+   // } catch {
+   // }
     return data
 }
 
