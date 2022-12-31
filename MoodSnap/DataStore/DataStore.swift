@@ -8,7 +8,7 @@ import WidgetKit
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
-
+    
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
@@ -22,7 +22,7 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
 final class DataStoreClass: Identifiable, ObservableObject {
     var id: UUID = UUID()
     var version: Int = 1
-
+    
     @Published var settings: SettingsStruct = SettingsStruct()
     @Published var uxState: UXStateStruct = UXStateStruct()
     @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
@@ -83,17 +83,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.startProcessing()
         }
     }
-
+    
     /**
      Process history
      */
     func processHistory() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.history = true
-        }
-        
         let history = await generateHistory(data: self)
-
+        
         DispatchQueue.main.async {
             // Mood history
             self.processedData.levelE = history.levelE
@@ -189,7 +185,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         return true
     }
-
+    
     /**
      Process activities
      */
@@ -385,7 +381,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         // Wait for all asynchronous threads to complete
         await _ = [historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
-
+    
     /**
      Start asynchronous processing of data
      */
@@ -394,6 +390,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
         self.save()
         
         DispatchQueue.main.async {
+            self.processingStatus.history = true
+            self.processingStatus.averages = true
+            self.processingStatus.social = true
+            self.processingStatus.activities = true
+            self.processingStatus.symptoms = true
+            self.processingStatus.hashtags = true
+            self.processingStatus.events = true
             self.processingStatus.data = Task(priority: priority) {
                 await self.process()
                 DispatchQueue.main.async {
@@ -411,6 +414,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.data?.cancel()
         }
         DispatchQueue.main.async {
+            self.processingStatus.data = nil
             self.processingStatus.history = false
             self.processingStatus.averages = false
             self.processingStatus.social = false
@@ -418,7 +422,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.symptoms = false
             self.processingStatus.hashtags = false
             self.processingStatus.events = false
-            self.processingStatus.data = nil
         }
     }
     

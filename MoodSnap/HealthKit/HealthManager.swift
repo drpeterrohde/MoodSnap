@@ -468,6 +468,11 @@ final class HealthManager: ObservableObject {
         self.stopProcessing(data: data)
         
         DispatchQueue.main.async {
+            data.processingStatus.weight = true
+            data.processingStatus.distance = true
+            data.processingStatus.energy = true
+            data.processingStatus.sleep = true
+            data.processingStatus.menstrual = true
             data.processingStatus.health = Task(priority: priority) {
                 await self.process(data: data)
                 DispatchQueue.main.async {
@@ -486,6 +491,11 @@ final class HealthManager: ObservableObject {
         }
         DispatchQueue.main.async {
             data.processingStatus.health = nil
+            data.processingStatus.weight = false
+            data.processingStatus.distance = false
+            data.processingStatus.energy = false
+            data.processingStatus.sleep = false
+            data.processingStatus.menstrual = false
         }
     }
 }
