@@ -209,7 +209,7 @@ struct SettingsView: View {
                         if data.moodSnaps.count == 0 {
                             DispatchQueue.main.async {
                                 data.stopProcessing()
-                                health.stopProcessing()
+                                health.stopProcessing(data: data)
                                 
                                 data.moodSnaps = makeDemoData()
                                 
@@ -232,7 +232,7 @@ struct SettingsView: View {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         DispatchQueue.main.async {
                             data.stopProcessing()
-                            health.stopProcessing()
+                            health.stopProcessing(data: data)
                             
                             data.moodSnaps = []
                             
@@ -251,7 +251,7 @@ struct SettingsView: View {
 
                     DispatchQueue.main.async {
                         data.stopProcessing()
-                        health.stopProcessing()
+                        health.stopProcessing(data: data)
                         
                         data.id = retrieved.id
                         data.version = retrieved.version
@@ -271,7 +271,7 @@ struct SettingsView: View {
                         
                         DispatchQueue.main.async {
                             data.stopProcessing()
-                            health.stopProcessing()
+                            health.stopProcessing(data: data)
                             
                             data.moodSnaps = retrieved
                             

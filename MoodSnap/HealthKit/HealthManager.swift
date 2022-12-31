@@ -3,7 +3,6 @@ import SwiftUI
 
 final class HealthManager: ObservableObject {
     var healthSnaps: [HealthSnapStruct] = []
-    @Published var processingTask: Task<Void, Never>? = nil
     
     @Published var weightSamples: Int = 0
     @Published var weightAverage: CGFloat = 0
@@ -58,10 +57,18 @@ final class HealthManager: ObservableObject {
      Generate `HealthSnapStruct`s for all dates and start processing.
      */
     func makeHealthSnaps(data: DataStoreClass) async {
+        DispatchQueue.main.async {
+            data.processingStatus.weight = true
+            data.processingStatus.sleep = true
+            data.processingStatus.energy = true
+            data.processingStatus.distance = true
+            data.processingStatus.menstrual = true
+        }
+        
         var date: Date = getLastDate(data: data)
         let earliest: Date = getFirstDate(data: data)
         
-        self.stopProcessing()
+        self.stopProcessing(data: data)
         
         self.healthSnaps = []
         
@@ -339,6 +346,7 @@ final class HealthManager: ObservableObject {
             self.maxWeight = maxWeightUI
             self.minimumWeightStr = minimumWeightStrUI
             self.maximumWeightStr = maximumWeightStrUI
+            data.processingStatus.weight = false
         }
         
         return true
@@ -362,6 +370,7 @@ final class HealthManager: ObservableObject {
             self.sleepCorrelationsMood = sleepCorrelationsMoodUI
             self.sleepData = sleepDataUI
             self.maxSleep = maxSleepUI
+            data.processingStatus.sleep = false
         }
         
         return true
@@ -387,6 +396,7 @@ final class HealthManager: ObservableObject {
             self.energyCorrelationsMood = energyCorrelationsMoodUI
             self.maxEnergy = maxEnergyUI
             self.maxEnergyStr = maxEnergyStrUI
+            data.processingStatus.energy = false
         }
         
         return true
@@ -412,6 +422,7 @@ final class HealthManager: ObservableObject {
             self.distanceCorrelationsMood = distanceCorrelationsMoodUI
             self.maxDistance = maxDistanceUI
             self.maxDistanceStr = maxDistanceStrUI
+            data.processingStatus.distance = false
         }
         
         return true
@@ -431,6 +442,7 @@ final class HealthManager: ObservableObject {
             self.menstrualData = menstrualDataUI
             self.menstrualDates = menstrualDatesUI
             self.menstrualButterfly = menstrualButterflyUI
+            data.processingStatus.menstrual = false
         }
         
         return true
@@ -453,13 +465,18 @@ final class HealthManager: ObservableObject {
      Start asynchronous processing of data
      */
     @inline(__always) func startProcessing(priority: TaskPriority = .high, data: DataStoreClass) {
-        self.stopProcessing()
+        self.stopProcessing(data: data)
         
         DispatchQueue.main.async {
-            self.processingTask = Task(priority: priority) {
+            data.processingStatus.weight = true
+            data.processingStatus.distance = true
+            data.processingStatus.energy = true
+            data.processingStatus.sleep = true
+            data.processingStatus.menstrual = true
+            data.processingStatus.health = Task(priority: priority) {
                 await self.process(data: data)
                 DispatchQueue.main.async {
-                    self.processingTask = nil
+                    data.processingStatus.health = nil
                 }
             }
         }
@@ -468,12 +485,17 @@ final class HealthManager: ObservableObject {
     /**
      Stop asynchronous processing of data.
      */
-    @inline(__always) func stopProcessing() {
-        if self.processingTask != nil {
-            self.processingTask?.cancel()
+    @inline(__always) func stopProcessing(data: DataStoreClass) {
+        if data.processingStatus.health != nil {
+            data.processingStatus.health?.cancel()
         }
         DispatchQueue.main.async {
-            self.processingTask = nil
+            data.processingStatus.health = nil
+            data.processingStatus.weight = false
+            data.processingStatus.distance = false
+            data.processingStatus.energy = false
+            data.processingStatus.sleep = false
+            data.processingStatus.menstrual = false
         }
     }
 }

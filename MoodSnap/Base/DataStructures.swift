@@ -1,6 +1,28 @@
 import SwiftUI
 
 /**
+ Data structure represnting processing status.
+ */
+struct ProcessingStatus {
+    var data: Task<Void, Never>? = nil // All data processing processes
+    var health: Task<Void, Never>? = nil // All health processing processes
+    
+    var history: Bool = false
+    var averages: Bool = false
+    var events: Bool = false
+    var hashtags: Bool = false
+    var activities: Bool = false
+    var social: Bool = false
+    var symptoms: Bool = false
+    
+    var weight: Bool = false
+    var distance: Bool = false
+    var energy: Bool = false
+    var sleep: Bool = false
+    var menstrual: Bool = false
+}
+
+/**
  Data structure for settings.
  */
 struct SettingsStruct: Identifiable, Codable, Hashable {
