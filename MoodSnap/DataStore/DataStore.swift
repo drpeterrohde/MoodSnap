@@ -8,7 +8,7 @@ import WidgetKit
 struct DataStoreStruct: Identifiable, Codable, Hashable {
     var id: UUID = UUID()
     var version: Int = 1
-
+    
     var settings: SettingsStruct = SettingsStruct()
     var uxState: UXStateStruct = UXStateStruct()
     var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
@@ -22,12 +22,12 @@ struct DataStoreStruct: Identifiable, Codable, Hashable {
 final class DataStoreClass: Identifiable, ObservableObject {
     var id: UUID = UUID()
     var version: Int = 1
-
+    
     @Published var settings: SettingsStruct = SettingsStruct()
     @Published var uxState: UXStateStruct = UXStateStruct()
     @Published var moodSnaps: [MoodSnapStruct] = makeIntroSnap()
     @Published var processedData: ProcessedDataStruct = ProcessedDataStruct()
-    @Published var processingTask: Task<Void, Never>? = nil
+    @Published var processingStatus: ProcessingStatus = ProcessingStatus()
     @Published var hashtagList: [String] = []
     @Published var eventsList: [(String,Date)] = []
     @Published var symptomOccurrenceCount: Int = 0
@@ -83,13 +83,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.startProcessing()
         }
     }
-
+    
     /**
      Process history
      */
     func processHistory() async -> Bool {
         let history = await generateHistory(data: self)
-
+        
         DispatchQueue.main.async {
             // Mood history
             self.processedData.levelE = history.levelE
@@ -108,6 +108,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processedData.volatilityD = history.volatilityD
             self.processedData.volatilityA = history.volatilityA
             self.processedData.volatilityI = history.volatilityI
+            
+            self.processingStatus.history = false
         }
         
         return true
@@ -117,8 +119,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process events
      */
     func processEvents() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.events = true
+        }
+        
         let eventsListUI = getEventsList(data: self)
         var eventButterflies: [ButterflyEntryStruct] = []
+        
         for i in 0 ..< eventsListUI.count {
             let dates = [eventsListUI[i].1]
             var thisButterfly = averageTransientForDates(
@@ -129,13 +136,17 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.timestamp = eventsListUI[i].1
             eventButterflies.append(thisButterfly)
         }
+        
         let eventButterfliesUI = eventButterflies
         let eventOccurrenceCountUI = countAllOccurrences(butterflies: eventButterflies)
+        
         DispatchQueue.main.async {
             self.eventsList = eventsListUI
             self.processedData.eventButterfly = eventButterfliesUI
             self.eventOccurrenceCount = eventOccurrenceCountUI
+            self.processingStatus.events = false
         }
+        
         return true
     }
     
@@ -143,8 +154,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process hashtags
      */
     func processHashtags() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.hashtags = true
+        }
+        
         let hashtagListUI = getHashtags(data: self)
         var hashtagButterflies: [ButterflyEntryStruct] = []
+        
         for i in 0 ..< hashtagListUI.count {
             let dates = getDatesForHashtag(
                 hashtag: hashtagListUI[i],
@@ -156,21 +172,30 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = hashtagListUI[i]
             hashtagButterflies.append(thisButterfly)
         }
+        
         let hashtagButterfliesUI = hashtagButterflies
         let hashtagOccurrenceCountUI = countAllOccurrences(butterflies: hashtagButterflies)
+        
         DispatchQueue.main.async {
             self.hashtagList = hashtagListUI
             self.processedData.hashtagButterfly = hashtagButterfliesUI
             self.hashtagOccurrenceCount = hashtagOccurrenceCountUI
+            self.processingStatus.hashtags = false
         }
+        
         return true
     }
-
+    
     /**
      Process activities
      */
     func processActivities() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.activities = true
+        }
+        
         var activityButterflies: [ButterflyEntryStruct] = []
+        
         for i in 0 ..< activityList.count {
             let dates = getDatesForType(
                 type: .activity,
@@ -183,12 +208,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = activityList[i]
             activityButterflies.append(thisButterfly)
         }
+        
         let activityButterfliesUI = activityButterflies
         let activityOccurrenceCountUI = countAllOccurrences(butterflies: activityButterflies)
+        
         DispatchQueue.main.async {
             self.processedData.activityButterfly = activityButterfliesUI
             self.activityOccurrenceCount = activityOccurrenceCountUI
+            self.processingStatus.activities = false
         }
+        
         return true
     }
     
@@ -196,7 +225,12 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process symptoms
      */
     func processSymptoms() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.symptoms = true
+        }
+        
         var symptomButterflies: [ButterflyEntryStruct] = []
+        
         for i in 0 ..< symptomList.count {
             let dates = getDatesForType(
                 type: .symptom,
@@ -209,12 +243,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = symptomList[i]
             symptomButterflies.append(thisButterfly)
         }
+        
         let symptomButterfliesUI = symptomButterflies
         let symptomOccurrenceCountUI = countAllOccurrences(butterflies: symptomButterflies)
+        
         DispatchQueue.main.async {
             self.processedData.symptomButterfly = symptomButterfliesUI
             self.symptomOccurrenceCount = symptomOccurrenceCountUI
+            self.processingStatus.symptoms = false
         }
+        
         return true
     }
     
@@ -222,7 +260,12 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process social
      */
     func processSocial() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.social = true
+        }
+        
         var socialButterflies: [ButterflyEntryStruct] = []
+        
         for i in 0 ..< socialList.count {
             let dates = getDatesForType(
                 type: .social,
@@ -235,12 +278,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
             thisButterfly.activity = socialList[i]
             socialButterflies.append(thisButterfly)
         }
+        
         let socialButterfliesUI = socialButterflies
         let socialOccurrenceCountUI = countAllOccurrences(butterflies: socialButterflies)
+        
         DispatchQueue.main.async {
             self.processedData.socialButterfly = socialButterfliesUI
             self.socialOccurrenceCount = socialOccurrenceCountUI
+            self.processingStatus.social = false
         }
+        
         return true
     }
     
@@ -248,6 +295,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process average mood/volatility.
      */
     func processAverages() async -> Bool {
+        DispatchQueue.main.async {
+            self.processingStatus.averages = true
+        }
+        
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
         
         // All data
@@ -304,6 +355,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         DispatchQueue.main.async {
             self.averageMood = averagesUI
+            self.processingStatus.averages = false
         }
         
         return true
@@ -329,7 +381,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         // Wait for all asynchronous threads to complete
         await _ = [historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
     }
-
+    
     /**
      Start asynchronous processing of data
      */
@@ -338,10 +390,17 @@ final class DataStoreClass: Identifiable, ObservableObject {
         self.save()
         
         DispatchQueue.main.async {
-            self.processingTask = Task(priority: priority) {
+            self.processingStatus.history = true
+            self.processingStatus.averages = true
+            self.processingStatus.social = true
+            self.processingStatus.activities = true
+            self.processingStatus.symptoms = true
+            self.processingStatus.hashtags = true
+            self.processingStatus.events = true
+            self.processingStatus.data = Task(priority: priority) {
                 await self.process()
                 DispatchQueue.main.async {
-                    self.processingTask = nil
+                    self.processingStatus.data = nil
                 }
             }
         }
@@ -351,11 +410,18 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Stop asynchronous processing of data.
      */
     @inline(__always) func stopProcessing() {
-        if self.processingTask != nil {
-            self.processingTask?.cancel()
+        if self.processingStatus.data != nil {
+            self.processingStatus.data?.cancel()
         }
         DispatchQueue.main.async {
-            self.processingTask = nil
+            self.processingStatus.data = nil
+            self.processingStatus.history = false
+            self.processingStatus.averages = false
+            self.processingStatus.social = false
+            self.processingStatus.activities = false
+            self.processingStatus.symptoms = false
+            self.processingStatus.hashtags = false
+            self.processingStatus.events = false
         }
     }
     

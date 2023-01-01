@@ -124,7 +124,7 @@ import SwiftUI
     var timeline: [CGFloat?] = Array(repeating: nil, count: length)
     
     for date in dates {
-        let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: date, to: Date())
+        let offset = max(0, length - 1 - Calendar.current.numberOfDaysBetween(from: date, to: Date())) // hack
         timeline[offset] = 1
     }
     

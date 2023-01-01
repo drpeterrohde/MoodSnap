@@ -8,6 +8,7 @@ struct TallyView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
+        // Shift processing outside of view ???
         let windowMoodSnaps = getMoodSnapsByDateWindow(data: data,
                                                        date: Date(),
                                                        windowStart: -timescale,

@@ -25,7 +25,7 @@ struct InsightsView: View {
                 
                 ScrollViewReader { scrollView in
                     ScrollView(.vertical) {
-                        VStack {
+                        LazyVStack {
                             Group {
                                 HStack {
                                     Text("HISTORY")
@@ -51,6 +51,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.averages {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isAverageMoodExpanded.toggle()
@@ -83,6 +88,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.history {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isMoodHistoryExpanded.toggle()
@@ -116,6 +126,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.history {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isMovingAverageExpanded.toggle()
@@ -149,6 +164,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.history {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isVolatilityExpanded.toggle()
@@ -226,6 +246,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.activities {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isActivitiesExpanded.toggle()
@@ -259,6 +284,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.social {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isSocialExpanded.toggle()
@@ -292,6 +322,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.symptoms {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isSymptomSummaryExpanded.toggle()
@@ -325,6 +360,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.events {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isEventSummaryExpanded.toggle()
@@ -358,6 +398,11 @@ struct InsightsView: View {
                                             Spacer()
                                         }
                                         Spacer()
+                                        if data.processingStatus.hashtags {
+                                            ProgressView()
+                                                .progressViewStyle(CircularProgressViewStyle())
+                                            Text(" ")
+                                        }
                                         Button(action: {
                                             withAnimation(.easeInOut) {
                                                 data.uxState.isHashtagSummaryExpanded.toggle()
@@ -392,6 +437,11 @@ struct InsightsView: View {
                                         Spacer()
                                     }
                                     Spacer()
+                                    if data.processingStatus.data != nil {
+                                        ProgressView()
+                                            .progressViewStyle(CircularProgressViewStyle())
+                                        Text(" ")
+                                    }
                                     Button(action: {
                                         withAnimation(.easeInOut) {
                                             data.uxState.isButterflyAverageExpanded.toggle()
@@ -438,6 +488,11 @@ struct InsightsView: View {
                                                     Spacer()
                                                 }
                                                 Spacer()
+                                                if data.processingStatus.weight {
+                                                    ProgressView()
+                                                        .progressViewStyle(CircularProgressViewStyle())
+                                                    Text(" ")
+                                                }
                                                 Button(action: {
                                                     withAnimation(.easeInOut) {
                                                         data.uxState.isWeightExpanded.toggle()
@@ -472,6 +527,11 @@ struct InsightsView: View {
                                                     Spacer()
                                                 }
                                                 Spacer()
+                                                if data.processingStatus.distance {
+                                                    ProgressView()
+                                                        .progressViewStyle(CircularProgressViewStyle())
+                                                    Text(" ")
+                                                }
                                                 Button(action: {
                                                     withAnimation(.easeInOut) {
                                                         data.uxState.isWalkingRunningDistanceExpanded.toggle()
@@ -506,6 +566,11 @@ struct InsightsView: View {
                                                     Spacer()
                                                 }
                                                 Spacer()
+                                                if data.processingStatus.energy {
+                                                    ProgressView()
+                                                        .progressViewStyle(CircularProgressViewStyle())
+                                                    Text(" ")
+                                                }
                                                 Button(action: {
                                                     withAnimation(.easeInOut) {
                                                         data.uxState.isActiveEnergyExpanded.toggle()
@@ -540,6 +605,11 @@ struct InsightsView: View {
                                                     Spacer()
                                                 }
                                                 Spacer()
+                                                if data.processingStatus.sleep {
+                                                    ProgressView()
+                                                        .progressViewStyle(CircularProgressViewStyle())
+                                                    Text(" ")
+                                                }
                                                 Button(action: {
                                                     withAnimation(.easeInOut) {
                                                         data.uxState.isSleepExpanded.toggle()
@@ -574,6 +644,11 @@ struct InsightsView: View {
                                                     Spacer()
                                                 }
                                                 Spacer()
+                                                if data.processingStatus.menstrual {
+                                                    ProgressView()
+                                                        .progressViewStyle(CircularProgressViewStyle())
+                                                    Text(" ")
+                                                }
                                                 Button(action: {
                                                     withAnimation(.easeInOut) {
                                                         data.uxState.isMenstrualExpanded.toggle()
@@ -606,7 +681,7 @@ struct InsightsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: ToolbarItemPlacement.automatic) {
-                    if data.processingTask != nil || health.processingTask != nil {
+                    if data.processingStatus.data != nil || data.processingStatus.health != nil {
                         ProgressView()
                             .progressViewStyle(CircularProgressViewStyle())
                     }

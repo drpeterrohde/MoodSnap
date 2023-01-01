@@ -209,7 +209,7 @@ struct SettingsView: View {
                         if data.moodSnaps.count == 0 {
                             DispatchQueue.main.async {
                                 data.stopProcessing()
-                                health.stopProcessing()
+                                health.stopProcessing(data: data)
                                 
                                 data.moodSnaps = makeDemoData()
                                 
@@ -232,7 +232,7 @@ struct SettingsView: View {
                     Alert(title: Text("sure_delete"), message: Text("cant_be_undone"), primaryButton: .destructive(Text("delete")) {
                         DispatchQueue.main.async {
                             data.stopProcessing()
-                            health.stopProcessing()
+                            health.stopProcessing(data: data)
                             
                             data.moodSnaps = []
                             
@@ -242,15 +242,16 @@ struct SettingsView: View {
                         dismiss()
                     }, secondaryButton: .cancel())
                 }
-            }.fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(data: data)), contentType: .plainText) { result in
-            }.fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
-                do {
+            }
+            .fileExporter(isPresented: $showingExporter, document: JSONFile(string: encodeJSONString(moodSnaps: data.moodSnaps)), contentType: .json) { result in }
+            .fileImporter(isPresented: $showingImporter, allowedContentTypes: [.json]) { res in
+                do { // Attempt to import as DataStoreStruct
                     let fileUrl = try res.get()
-                    let retrieved = decodeJSONString(url: fileUrl)
+                    let retrieved: DataStoreStruct = try decodeJSONString(url: fileUrl)
 
                     DispatchQueue.main.async {
                         data.stopProcessing()
-                        health.stopProcessing()
+                        health.stopProcessing(data: data)
                         
                         data.id = retrieved.id
                         data.version = retrieved.version
@@ -264,6 +265,21 @@ struct SettingsView: View {
                         health.startProcessing(data: data)
                     }
                 } catch {
+                    do { // Attempt to import as [MoodSnapStruct]
+                        let fileUrl = try res.get()
+                        let retrieved: [MoodSnapStruct] = try decodeJSONString(url: fileUrl)
+                        
+                        DispatchQueue.main.async {
+                            data.stopProcessing()
+                            health.stopProcessing(data: data)
+                            
+                            data.moodSnaps = retrieved
+                            
+                            data.startProcessing()
+                            health.startProcessing(data: data)
+                        }
+                    } catch {
+                    }
                 }
                 dismiss()
             }.alert(isPresented: $showingImportAlert) {
