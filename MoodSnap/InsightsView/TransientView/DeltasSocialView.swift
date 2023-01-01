@@ -31,6 +31,8 @@ struct DeltasSocialView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
+                        Text(" ")
+                            .font(.caption)
                         ForEach(0 ..< butterfly.deltas!.beforeSocial.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSocial[i],
                                                        after: butterfly.deltas!.afterSocial[i])
@@ -40,7 +42,10 @@ struct DeltasSocialView: View {
                         }
                     }
                     Spacer()
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2190} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.beforeSocial.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSocial[i],
                                                        after: butterfly.deltas!.afterSocial[i])
@@ -50,7 +55,10 @@ struct DeltasSocialView: View {
                             }
                         }
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2192} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.afterSocial.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSocial[i],
                                                        after: butterfly.deltas!.afterSocial[i])
@@ -60,13 +68,15 @@ struct DeltasSocialView: View {
                             }
                         }
                     }
-                    Text("   ")
                     VStack(alignment: .trailing) {
+                        Text("\u{0394} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.deltaSocial.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSocial[i],
                                                        after: butterfly.deltas!.afterSocial[i])
                             if display && data.settings.socialVisibility[i] {
-                                Text("Δ =" + formatCountString(value: butterfly.deltas!.deltaSocial[i]))
+                                Text(formatCountString(value: butterfly.deltas!.deltaSocial[i]))
                                     .font(numericFont)
                             }
                         }

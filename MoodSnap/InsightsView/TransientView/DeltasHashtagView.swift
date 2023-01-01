@@ -32,6 +32,8 @@ struct DeltasHashtagView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
+                        Text(" ")
+                            .font(.caption)
                         ForEach(0 ..< butterfly.deltas!.beforeHashtags.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeHashtags[i],
                                                        after: butterfly.deltas!.afterHashtags[i])
@@ -41,7 +43,10 @@ struct DeltasHashtagView: View {
                         }
                     }
                     Spacer()
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2190} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.beforeHashtags.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeHashtags[i],
                                                        after: butterfly.deltas!.afterHashtags[i])
@@ -51,7 +56,10 @@ struct DeltasHashtagView: View {
                             }
                         }
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2192} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.afterHashtags.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeHashtags[i],
                                                        after: butterfly.deltas!.afterHashtags[i])
@@ -61,13 +69,15 @@ struct DeltasHashtagView: View {
                             }
                         }
                     }
-                    Text("   ")
                     VStack(alignment: .trailing) {
+                        Text("\u{0394} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.deltaHashtags.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeHashtags[i],
                                                        after: butterfly.deltas!.afterHashtags[i])
                             if display && hashtagOccurrences[i] > 0  {
-                                Text("Δ =" + formatCountString(value: butterfly.deltas!.deltaHashtags[i]))
+                                Text(formatCountString(value: butterfly.deltas!.deltaHashtags[i]))
                                     .font(numericFont)
                             }
                         }

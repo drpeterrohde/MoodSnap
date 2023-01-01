@@ -31,6 +31,8 @@ struct DeltasSymptomView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
+                        Text(" ")
+                            .font(.caption)
                         ForEach(0 ..< butterfly.deltas!.beforeSymptoms.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSymptoms[i],
                                                        after: butterfly.deltas!.afterSymptoms[i])
@@ -40,7 +42,10 @@ struct DeltasSymptomView: View {
                         }
                     }
                     Spacer()
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2190} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.beforeSymptoms.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSymptoms[i],
                                                        after: butterfly.deltas!.afterSymptoms[i])
@@ -50,7 +55,10 @@ struct DeltasSymptomView: View {
                             }
                         }
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2192} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.afterSymptoms.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSymptoms[i],
                                                        after: butterfly.deltas!.afterSymptoms[i])
@@ -60,13 +68,15 @@ struct DeltasSymptomView: View {
                             }
                         }
                     }
-                    Text("   ")
                     VStack(alignment: .trailing) {
+                        Text("\u{0394} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.deltaSymptoms.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeSymptoms[i],
                                                        after: butterfly.deltas!.afterSymptoms[i])
                             if display && data.settings.symptomVisibility[i] {
-                                Text("Δ =" + formatCountString(value: butterfly.deltas!.deltaSymptoms[i]))
+                                Text(formatCountString(value: butterfly.deltas!.deltaSymptoms[i]))
                                     .font(numericFont)
                             }
                         }

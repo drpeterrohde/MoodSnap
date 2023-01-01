@@ -31,6 +31,8 @@ struct DeltasActivityView: View {
                 Spacer()
                 HStack {
                     VStack(alignment: .leading) {
+                        Text(" ")
+                            .font(.caption)
                         ForEach(0 ..< butterfly.deltas!.beforeActivities.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeActivities[i],
                                                        after: butterfly.deltas!.afterActivities[i])
@@ -40,7 +42,10 @@ struct DeltasActivityView: View {
                         }
                     }
                     Spacer()
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2190} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.beforeActivities.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeActivities[i],
                                                        after: butterfly.deltas!.afterActivities[i])
@@ -50,7 +55,10 @@ struct DeltasActivityView: View {
                             }
                         }
                     }
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .trailing) {
+                        Text("\u{2192} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.afterActivities.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeActivities[i],
                                                        after: butterfly.deltas!.afterActivities[i])
@@ -60,13 +68,15 @@ struct DeltasActivityView: View {
                             }
                         }
                     }
-                    Text("   ")
                     VStack(alignment: .trailing) {
+                        Text("\u{0394} ")
+                            .font(numericFont)
+                            .foregroundColor(.secondary)
                         ForEach(0 ..< butterfly.deltas!.deltaActivities.count, id: \.self) { i in
                             let display = displayDelta(before: butterfly.deltas!.beforeActivities[i],
                                                        after: butterfly.deltas!.afterActivities[i])
                             if display && data.settings.activityVisibility[i] {
-                                Text("Δ =" + formatCountString(value: butterfly.deltas!.deltaActivities[i]))
+                                Text(formatCountString(value: butterfly.deltas!.deltaActivities[i]))
                                     .font(numericFont)
                             }
                         }
