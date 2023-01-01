@@ -25,7 +25,7 @@ struct InsightsView: View {
                 
                 ScrollViewReader { scrollView in
                     ScrollView(.vertical) {
-                        VStack {
+                        LazyVStack {
                             Group {
                                 HStack {
                                     Text("HISTORY")
