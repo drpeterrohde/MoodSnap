@@ -26,8 +26,9 @@ struct MoodSnapApp: App {
                     isUnlocked = false
                     data.settings.firstUse = false
                     data.healthSnaps = health.healthSnaps
+                    data.save()
                 }
-                data.stopProcessing()
+               // data.stopProcessing()
             }
             
             if value == .active {
@@ -52,7 +53,7 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
-                data.stopProcessing()
+               // data.stopProcessing()
             }
         }
     }
