@@ -6,7 +6,7 @@ MoodSnap is a mood diary redesigned. 100% free, made for everybody, written with
 
 # Dutch
 
-MoodSnap stemming dagboek
+MoodSnap stemmingsdagboek
 
 MoodSnap is een digitaal stemmingsdagboek, 100% gratis, voor iedereen, maar in het bijzonder ontwikkeld voor mensen met een stemmingsstoornis. MoodSnap biedt analyses om je inzicht te geven in wat je stemming beïnvloedt, en hoe je stemming wisselt na bepaalde activiteiten en life events. Je kunt MoodSnap gebruiken als een normaal dagboek, als een fotodagboek, en als een stemmingsdagboek. Alle data blijven bij jou en worden alleen lokaal opgeslagen, verwerkt en in verschillende grafieken getoond. De app kan gekoppeld worden met Apple Health, om je stemming met je gezondsheidsdata te correleren. 
 
