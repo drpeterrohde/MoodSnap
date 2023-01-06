@@ -45,6 +45,7 @@ struct TransientWithPickerView: View {
                                          selectedHashtag: $selectedHashtag,
                                          selectionType: $selectionType)
             
+            Spacer()
             Button(action: {
                 withAnimation(.easeInOut) {
                     drawerOpen.toggle()
