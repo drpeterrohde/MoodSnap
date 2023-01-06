@@ -39,7 +39,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     var healthSnaps: [HealthSnapStruct] = []
-    var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
+    //var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
     
     init(shared: Bool = false, process: Bool = false) {
         self.id = UUID()
