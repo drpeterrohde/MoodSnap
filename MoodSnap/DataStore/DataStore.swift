@@ -366,8 +366,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
      */
     func process() async {
         // Sequence MoodSnaps
-        self.sequencedMoodSnaps = await sequenceMoodSnaps(data: self)
-        self.flattenedSequencedMoodSnaps = await flattenSequence(sequence: self.sequencedMoodSnaps)
+        self.sequencedMoodSnaps = sequenceMoodSnaps(moodSnaps: self.moodSnaps)
+        self.flattenedSequencedMoodSnaps = flattenSequence(sequence: self.sequencedMoodSnaps)
         
         // Processing
         async let historyComplete = processHistory()

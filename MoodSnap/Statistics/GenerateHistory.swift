@@ -2,26 +2,6 @@ import SwiftUI
 
 /**
  Sequence `moodSnaps` into chronological array.
-
- */
-@inline(__always) func sequenceMoodSnaps(data: DataStoreClass) async -> [[MoodSnapStruct]] {
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
-    let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
-    var sequence: [[MoodSnapStruct]] = Array(repeating: [], count: length)
-    
-    for moodSnap in data.moodSnaps {
-        if moodSnap.snapType == .mood {
-            let offset = length - 1 - Calendar.current.numberOfDaysBetween(from: moodSnap.timestamp, to: Date())
-            sequence[offset].append(moodSnap)
-        }
-    }
-    
-    return sequence
-}
-
-/**
- Sequence `moodSnaps` into chronological array.
-
  */
 @inline(__always) func sequenceMoodSnaps(moodSnaps: [MoodSnapStruct]) -> [[MoodSnapStruct]] {
     let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
@@ -36,20 +16,6 @@ import SwiftUI
     }
     
     return sequence
-}
-
-/**
- Flatten sequence of MoodSnaps on a per-day basis.
- */
-@inline(__always) func flattenSequence(sequence: [[MoodSnapStruct]]) async -> [MoodSnapStruct?] {
-    var flattenedSequence: [MoodSnapStruct?] = []
-    
-    for snaps in sequence {
-        let flattened: MoodSnapStruct? = mergeMoodSnaps(moodSnaps: snaps)
-        flattenedSequence.append(flattened)
-    }
-    
-    return flattenedSequence
 }
 
 /**
@@ -72,8 +38,11 @@ import SwiftUI
 @inline(__always) func generateHistory(data: DataStoreClass) async -> HistoryStruct {
     var history: HistoryStruct = HistoryStruct()
         
+    let flattenedSequencedMoodSnaps = data.flattenedSequencedMoodSnaps
+    let sequencedMoodSnaps = data.sequencedMoodSnaps
+    
     // Mood levels
-    for moodSnap in data.flattenedSequencedMoodSnaps {
+    for moodSnap in flattenedSequencedMoodSnaps {
         if moodSnap != nil {
             history.levelE.append(moodSnap!.elevation)
             history.levelD.append(moodSnap!.depression)
@@ -88,9 +57,9 @@ import SwiftUI
     }
     
     // Moving averages
-    for index in 0..<data.flattenedSequencedMoodSnaps.count {
+    for index in 0..<flattenedSequencedMoodSnaps.count {
         let start: Int = max(0, index - data.settings.slidingWindowSize + 1)
-        let moodSnaps: [MoodSnapStruct?] = Array(data.flattenedSequencedMoodSnaps[start...index])
+        let moodSnaps: [MoodSnapStruct?] = Array(flattenedSequencedMoodSnaps[start...index])
         let averages: [CGFloat?] = average(moodSnaps: moodSnaps)
         
         history.averageE.append(averages[0])
@@ -100,9 +69,9 @@ import SwiftUI
     }
     
     // Moving volatilities
-    for index in 0..<data.sequencedMoodSnaps.count {
+    for index in 0..<sequencedMoodSnaps.count {
         let start: Int = max(0, index - data.settings.slidingWindowSize + 1)
-        let moodSnaps: [MoodSnapStruct?] = Array(data.sequencedMoodSnaps[start...index].joined())
+        let moodSnaps: [MoodSnapStruct?] = Array(sequencedMoodSnaps[start...index].joined())
         let volatilities = volatility(moodSnaps: moodSnaps)
         
         history.volatilityE.append(volatilities[0])
