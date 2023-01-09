@@ -39,7 +39,7 @@ struct EventView: View {
                     withAnimation {
                         data.stopProcessing()
                         moodSnap.snapType = .event
-                        data.moodSnaps = deleteHistoryItem(data: data, moodSnap: moodSnap)
+                        data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                         data.moodSnaps.append(moodSnap)
                         data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                         data.startProcessing()

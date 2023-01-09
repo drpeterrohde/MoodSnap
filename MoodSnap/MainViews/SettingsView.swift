@@ -185,7 +185,7 @@ struct SettingsView: View {
                     HStack {
                         Text("moodsnaps_taken")
                         Spacer()
-                        Text("\(countMoodSnaps(data: data))")
+                        Text("\(countMoodSnaps(moodSnaps: data.moodSnaps))")
                             .foregroundColor(.secondary)
                     }
                     if data.moodSnaps.count > 0 {

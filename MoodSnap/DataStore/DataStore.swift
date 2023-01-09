@@ -123,7 +123,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.events = true
         }
         
-        let eventsListUI = getEventsList(data: self)
+        let eventsListUI = getEventsList(moodSnaps: self.moodSnaps)
         var eventButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< eventsListUI.count {

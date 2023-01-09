@@ -115,31 +115,31 @@ import SwiftUI
 /**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
  */
-@inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
-    var filtered: [MoodSnapStruct] = []
-    var moodSnaps: [MoodSnapStruct?] = []
-    
-    if flatten {
-        moodSnaps = data.flattenedSequencedMoodSnaps
-    } else {
-        moodSnaps = data.moodSnaps
-    }
-
-    let startDate = date.addDays(days: windowStart).startOfDay()
-    let endDate = date.addDays(days: windowEnd).endOfDay()
-
-    for moodSnap in moodSnaps {
-        if moodSnap != nil {
-            if moodSnap!.timestamp >= startDate && moodSnap!.timestamp <= endDate {
-                if moodSnap!.snapType == .mood {
-                    filtered.append(moodSnap!)
-                }
-            }
-        }
-    }
-    
-    return filtered
-}
+//@inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
+//    var filtered: [MoodSnapStruct] = []
+//    var moodSnaps: [MoodSnapStruct?] = []
+//
+//    if flatten {
+//        moodSnaps = data.flattenedSequencedMoodSnaps
+//    } else {
+//        moodSnaps = data.moodSnaps
+//    }
+//
+//    let startDate = date.addDays(days: windowStart).startOfDay()
+//    let endDate = date.addDays(days: windowEnd).endOfDay()
+//
+//    for moodSnap in moodSnaps {
+//        if moodSnap != nil {
+//            if moodSnap!.timestamp >= startDate && moodSnap!.timestamp <= endDate {
+//                if moodSnap!.snapType == .mood {
+//                    filtered.append(moodSnap!)
+//                }
+//            }
+//        }
+//    }
+//
+//    return filtered
+//}
 
 /**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.

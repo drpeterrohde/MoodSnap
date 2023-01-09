@@ -79,8 +79,8 @@ import SwiftUI
 /**
  Delete a `moodSnap` from an array of `moodSnaps`.
  */
-@inline(__always) func deleteHistoryItem(data: DataStoreClass, moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
-    return data.moodSnaps.filter { $0.id != moodSnap.id }
+@inline(__always) func deleteHistoryItem(moodSnaps: [MoodSnapStruct], moodSnap: MoodSnapStruct) -> [MoodSnapStruct] {
+    return moodSnaps.filter { $0.id != moodSnap.id }
 }
 
 /**
@@ -156,15 +156,15 @@ import SwiftUI
 /**
  Get list of events.
  */
-@inline(__always) func getEventsList(data: DataStoreClass, window: Int? = nil) -> [(String, Date)] {
+@inline(__always) func getEventsList(moodSnaps: [MoodSnapStruct], window: Int? = nil) -> [(String, Date)] {
     var list: [(String, Date)] = []
 
     var filteredMoodSnaps: [MoodSnapStruct] = []
 
     if window == nil {
-        filteredMoodSnaps = data.moodSnaps
+        filteredMoodSnaps = moodSnaps
     } else {
-        filteredMoodSnaps = getMoodSnapsByDateWindow(data: data, date: Date(), windowStart: -window!, windowEnd: 0)
+        filteredMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -window!, windowEnd: 0)
     }
 
     for moodSnap in sortByDate(moodSnaps: filteredMoodSnaps) {
@@ -218,10 +218,10 @@ import SwiftUI
 /**
  How many user-created `moodSnaps` entries are there?
  */
-@inline(__always) func countMoodSnaps(data: DataStoreClass, type: SnapTypeEnum = .mood) -> Int {
+@inline(__always) func countMoodSnaps(moodSnaps: [MoodSnapStruct], type: SnapTypeEnum = .mood) -> Int {
     var count: Int = 0
 
-    for moodSnap in data.moodSnaps {
+    for moodSnap in moodSnaps {
         if moodSnap.snapType == type {
             count += 1
         }
