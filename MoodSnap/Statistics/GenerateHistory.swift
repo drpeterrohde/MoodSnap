@@ -87,8 +87,8 @@ import SwiftUI
  Generate a binary timeline baed on a sequence of dates.
  `nil` where there is no `date`, `1` otherwise.
  */
-@inline(__always) func generateTimelineForDates(data: DataStoreClass, dates: [Date]) -> [CGFloat?] {
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+@inline(__always) func generateTimelineForDates(moodSnaps: [MoodSnapStruct], dates: [Date]) -> [CGFloat?] {
+    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
     let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
     var timeline: [CGFloat?] = Array(repeating: nil, count: length)
     

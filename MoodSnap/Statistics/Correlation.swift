@@ -20,10 +20,10 @@ import SwiftUI
             dayOffset = 1
         }
         
-        let healthSnaps = getHealthSnapsByDate(data: health,
+        let healthSnaps = getHealthSnapsByDate(healthSnaps: health.healthSnaps,
                                                date: date,
                                                flatten: true)
-        let moodSnaps = getMoodSnapsByDate(data: data,
+        let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps,
                                            date: date.addDays(days: dayOffset),
                                            flatten: true)
 

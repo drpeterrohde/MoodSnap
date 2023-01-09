@@ -54,23 +54,23 @@ import SwiftUI
 /**
  Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
-    var filtered: [MoodSnapStruct] = []
-    let dateComponents = date.getComponents()
-    for moodSnap in data.moodSnaps {
-        if moodSnap.timestamp.getComponents() == dateComponents {
-            if moodSnap.snapType == .mood {
-                filtered.append(moodSnap)
-            }
-        }
-    }
-    if flatten {
-        if filtered.count > 0 {
-            filtered = [mergeMoodSnaps(moodSnaps: filtered)!]
-        }
-    }
-    return filtered
-}
+//@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
+//    var filtered: [MoodSnapStruct] = []
+//    let dateComponents = date.getComponents()
+//    for moodSnap in data.moodSnaps {
+//        if moodSnap.timestamp.getComponents() == dateComponents {
+//            if moodSnap.snapType == .mood {
+//                filtered.append(moodSnap)
+//            }
+//        }
+//    }
+//    if flatten {
+//        if filtered.count > 0 {
+//            filtered = [mergeMoodSnaps(moodSnaps: filtered)!]
+//        }
+//    }
+//    return filtered
+//}
 
 /**
  Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
@@ -96,10 +96,10 @@ import SwiftUI
 /**
  Returns an array of elements from `healthSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-@inline(__always) func getHealthSnapsByDate(data: HealthManager, date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
+@inline(__always) func getHealthSnapsByDate(healthSnaps: [HealthSnapStruct], date: Date, flatten: Bool = false) -> [HealthSnapStruct] {
     var filtered: [HealthSnapStruct] = []
     let dateComponents = date.getComponents()
-    for healthSnap in data.healthSnaps {
+    for healthSnap in healthSnaps {
         if healthSnap.timestamp.getComponents() == dateComponents {
             filtered.append(healthSnap)
         }
