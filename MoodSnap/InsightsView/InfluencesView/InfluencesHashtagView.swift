@@ -12,7 +12,7 @@ struct InfluencesHashtagView: View {
                 .font(.caption)
                 .foregroundColor(.secondary)
         } else {
-            Label("mood_levels", systemImage: "brain.head.profile")
+            Label("mood_levels", systemImage: "number")
                 .font(.caption)
                 .foregroundColor(.secondary)
             Spacer()

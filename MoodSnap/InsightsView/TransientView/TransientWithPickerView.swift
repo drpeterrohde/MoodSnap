@@ -12,6 +12,7 @@ struct TransientWithPickerView: View {
     @State private var selectedEvent: Int = 0
     @State private var selectedHashtag: Int = 0
     @State private var selectionType: InfluenceTypeEnum = .activity
+    @State private var drawerOpen: Bool = false
     
     var body: some View {
         let butterfly = transientByType(
@@ -32,15 +33,40 @@ struct TransientWithPickerView: View {
                              max: 1,
                              settings: data.settings)
             .frame(height: 10)
+            
             TransientView(butterfly: butterfly,
                           label: label,
                           timescale: 2 * int + 1)
+            
             TransientReferencePickerView(selectedActivity: $selectedActivity,
                                          selectedSocial: $selectedSocial,
                                          selectedSymptom: $selectedSymptom,
                                          selectedEvent: $selectedEvent,
                                          selectedHashtag: $selectedHashtag,
                                          selectionType: $selectionType)
+            
+            Spacer()
+            Button(action: {
+                withAnimation(.easeInOut) {
+                    drawerOpen.toggle()
+                }
+            }) {
+                if drawerOpen {
+                    Image(systemName: "chevron.down").foregroundColor(.secondary)
+                } else {
+                    Image(systemName: "chevron.right").foregroundColor(.secondary)
+                }
+            }
+            
+            if drawerOpen {
+                Spacer()
+                DeltasView(selectedActivity: $selectedActivity,
+                           selectedSocial: $selectedSocial,
+                           selectedSymptom: $selectedSymptom,
+                           selectedEvent: $selectedEvent,
+                           selectedHashtag: $selectedHashtag,
+                           selectionType: $selectionType)
+            }
         }
     }
 }

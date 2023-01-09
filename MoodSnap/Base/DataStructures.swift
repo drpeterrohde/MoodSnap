@@ -143,7 +143,31 @@ struct ButterflyEntryStruct: Identifiable, Codable, Hashable {
     var anxietyVolatility: [CGFloat?] = []
     var irritabilityVolatility: [CGFloat?] = []
     
+    var deltas: OccurencesStruct? = nil
+    
     var timeline: [CGFloat?]? = []
+}
+
+/**
+ Data strcuture for transient occurences.
+ */
+struct OccurencesStruct: Identifiable, Codable, Hashable {
+    var id: UUID = UUID()
+    
+    var beforeSymptoms: [Double] = []
+    var beforeActivities: [Double] = []
+    var beforeSocial: [Double] = []
+    var beforeHashtags: [Double] = []
+    
+    var afterSymptoms: [Double] = []
+    var afterActivities: [Double] = []
+    var afterSocial: [Double] = []
+    var afterHashtags: [Double] = []
+    
+    var deltaSymptoms: [Double] = []
+    var deltaActivities: [Double] = []
+    var deltaSocial: [Double] = []
+    var deltaHashtags: [Double] = []
 }
 
 /**
