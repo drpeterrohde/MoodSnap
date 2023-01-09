@@ -5,7 +5,7 @@ import SwiftUI
 
  */
 @inline(__always) func sequenceMoodSnaps(data: DataStoreClass) async -> [[MoodSnapStruct]] {
-    let earliest: Date = getFirstDate(data: data)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
     let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
     var sequence: [[MoodSnapStruct]] = Array(repeating: [], count: length)
     
@@ -119,7 +119,7 @@ import SwiftUI
  `nil` where there is no `date`, `1` otherwise.
  */
 @inline(__always) func generateTimelineForDates(data: DataStoreClass, dates: [Date]) -> [CGFloat?] {
-    let earliest: Date = getFirstDate(data: data)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
     let length: Int = Calendar.current.numberOfDaysBetween(from: earliest, to: Date()) + 1
     var timeline: [CGFloat?] = Array(repeating: nil, count: length)
     

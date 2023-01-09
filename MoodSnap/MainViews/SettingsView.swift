@@ -192,7 +192,7 @@ struct SettingsView: View {
                         HStack {
                             Text("first_moodsnap")
                             Spacer()
-                            Text("\(getFirstDate(data: data).dateString())")
+                            Text("\(getFirstDate(moodSnaps: data.moodSnaps).dateString())")
                                 .foregroundColor(.secondary)
                         }
                     }

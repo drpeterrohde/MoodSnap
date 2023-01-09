@@ -26,21 +26,6 @@ import SwiftUI
 /**
  Returns the earliest `Date` amongst `moodSnaps`.
  */
-@inline(__always) func getFirstDate(data: DataStoreClass) -> Date {
-    var firstDate = Date().startOfDay()
-    for moodSnap in data.moodSnaps {
-        if moodSnap.timestamp < firstDate {
-            if moodSnap.snapType == .mood || moodSnap.snapType == .note || moodSnap.snapType == .event || moodSnap.snapType == .media {
-                firstDate = moodSnap.timestamp
-            }
-        }
-    }
-    return firstDate
-}
-
-/**
- Returns the earliest `Date` amongst `moodSnaps`.
- */
 @inline(__always) func getFirstDate(moodSnaps: [MoodSnapStruct]) -> Date {
     var firstDate = Date().startOfDay()
     for moodSnap in moodSnaps {
@@ -51,19 +36,6 @@ import SwiftUI
         }
     }
     return firstDate
-}
-
-/**
- Returns the most recent `Date` amongst `moodSnaps`.
- */
-@inline(__always) func getLastDate(data: DataStoreClass) -> Date {
-    var lastDate = Date().endOfDay()
-    for moodSnap in data.moodSnaps {
-        if moodSnap.timestamp > lastDate {
-            lastDate = moodSnap.timestamp
-        }
-    }
-    return lastDate
 }
 
 /**

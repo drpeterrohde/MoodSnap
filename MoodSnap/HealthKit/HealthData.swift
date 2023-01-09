@@ -6,8 +6,8 @@ import SwiftUI
 @inline(__always) func getWeightData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var weightData: [CGFloat?] = []
 
-    var date: Date = getLastDate(data: data).endOfDay()
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps).endOfDay()
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
@@ -26,8 +26,8 @@ import SwiftUI
 @inline(__always) func getSleepData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var sleepData: [CGFloat?] = []
 
-    var date: Date = getLastDate(data: data)
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
@@ -46,8 +46,8 @@ import SwiftUI
 @inline(__always) func getDistanceData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var distanceData: [CGFloat?] = []
 
-    var date: Date = getLastDate(data: data)
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
@@ -66,8 +66,8 @@ import SwiftUI
 @inline(__always) func getEnergyData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var energyData: [CGFloat?] = []
 
-    var date: Date = getLastDate(data: data)
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)
@@ -86,8 +86,8 @@ import SwiftUI
 @inline(__always) func getMenstrualData(data: DataStoreClass, health: HealthManager) -> [CGFloat?] {
     var menstrualData: [CGFloat?] = []
 
-    var date: Date = getLastDate(data: data)
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         let thisHealthSnap = getHealthSnapsByDate(data: health, date: date, flatten: true)

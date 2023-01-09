@@ -10,8 +10,8 @@ import SwiftUI
     var anxietySamples: [CGFloat] = []
     var irritabilitySamples: [CGFloat] = []
 
-    var date: Date = getLastDate(data: data)
-    let earliest: Date = getFirstDate(data: data)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         var dayOffset: Int = 0

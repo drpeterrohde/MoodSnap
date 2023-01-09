@@ -92,7 +92,7 @@ extension Calendar {
  Get date range of `moodSnaps` in days.
  */
 @inline(__always) func dateRange(data: DataStoreClass) -> Int {
-    let first = getFirstDate(data: data)
+    let first = getFirstDate(moodSnaps: data.moodSnaps)
     let days = Calendar.current.numberOfDaysBetween(from: first, to: Date()) + 1
     return days
 }

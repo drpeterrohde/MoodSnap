@@ -65,8 +65,8 @@ final class HealthManager: ObservableObject {
             data.processingStatus.menstrual = true
         }
         
-        var date: Date = getLastDate(data: data)
-        let earliest: Date = getFirstDate(data: data)
+        var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+        let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
         
         self.stopProcessing(data: data)
         
