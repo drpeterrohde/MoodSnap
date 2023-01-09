@@ -77,58 +77,50 @@ func displayDelta(before: Double, after: Double)  -> Bool {
  Display activites?
  */
 func displayActivities(delta: OccurencesStruct) -> Bool {
-    var display: Bool = false
-    
     for i in 0 ..< delta.beforeActivities.count {
         if displayDelta(before: delta.beforeActivities[i], after: delta.afterActivities[i]) {
-            display = true
+            return true
         }
     }
     
-    return display
+    return false
 }
 
 /**
  Display social?
  */
 func displaySocial(delta: OccurencesStruct) -> Bool {
-    var display: Bool = false
-    
     for i in 0 ..< delta.beforeSocial.count {
         if displayDelta(before: delta.beforeSocial[i], after: delta.afterSocial[i]) {
-            display = true
+            return true
         }
     }
     
-    return display
+    return false
 }
 
 /**
  Display symptoms?
  */
 func displaySymptoms(delta: OccurencesStruct) -> Bool {
-    var display: Bool = false
-    
     for i in 0 ..< delta.beforeSymptoms.count {
         if displayDelta(before: delta.beforeSymptoms[i], after: delta.afterSymptoms[i]) {
-            display = true
+            return true
         }
     }
     
-    return display
+    return false
 }
 
 /**
  Display hashtags?
  */
 func displayHashtags(delta: OccurencesStruct) -> Bool {
-    var display: Bool = false
-    
     for i in 0 ..< delta.beforeHashtags.count {
         if delta.beforeHashtags[i] > 0 || delta.afterHashtags[i] > 0 {
-            display = true
+            return true
         }
     }
     
-    return display
+    return false
 }
