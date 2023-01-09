@@ -28,7 +28,6 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
-               // data.stopProcessing()
             }
             
             if value == .active {
@@ -53,7 +52,6 @@ struct MoodSnapApp: App {
                     data.healthSnaps = health.healthSnaps
                     data.save()
                 }
-               // data.stopProcessing()
             }
         }
     }
