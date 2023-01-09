@@ -4,12 +4,13 @@ import SwiftUI
  Average `ButterflyEntryStruct` from data centered around an array of `dates`.
  */
 @inline(__always) func averageTransientForDates(dates: [Date], data: DataStoreClass, maxWindow: Int) -> ButterflyEntryStruct {
+    let moodSnaps = data.moodSnaps
     let butterflyMood = averageDifferentialWindowForDates(
-        moodSnaps: data.moodSnaps,
+        moodSnaps: moodSnaps,
         dates: dates,
         maxWindow: maxWindow)
     let butterflyVolatility = volatilityDifferentialWindowForDates(
-        moodSnaps: data.moodSnaps,
+        moodSnaps: moodSnaps,
         dates: dates,
         maxWindow: maxWindow)
     
@@ -26,12 +27,8 @@ import SwiftUI
     thisButterfly.irritabilityVolatility = butterflyVolatility[3]
 
     thisButterfly.occurrences = dates.count
-    
-    let timeline = generateTimelineForDates(moodSnaps: data.moodSnaps, dates: dates)
-    thisButterfly.timeline = timeline
-    
-    let deltas = deltaOccurences(data: data, dates: dates, maxWindow: maxWindow)
-    thisButterfly.deltas = deltas
+    thisButterfly.timeline = generateTimelineForDates(moodSnaps: moodSnaps, dates: dates)
+    thisButterfly.deltas = deltaOccurences(data: data, dates: dates, maxWindow: maxWindow)
     
     return thisButterfly
 }
@@ -118,8 +115,7 @@ import SwiftUI
             flatten: false)
     }
 
-    let windowVolatility = volatility(moodSnaps: samples)
-    return windowVolatility
+    return volatility(moodSnaps: samples)
 }
 
 /**
@@ -210,8 +206,8 @@ import SwiftUI
     let beforeMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps, date: date, windowStart: -maxWindow, windowEnd: 0)
     let afterMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps, date: date, windowStart: 0, windowEnd: maxWindow)
     
-    let beforeOccurences = countAllOccurrences(moodSnaps: beforeMoodSnaps, data: data)
-    let afterOccurences = countAllOccurrences(moodSnaps: afterMoodSnaps, data: data)
+    let beforeOccurences = countAllOccurrences(moodSnaps: beforeMoodSnaps, settings: data.settings)
+    let afterOccurences = countAllOccurrences(moodSnaps: afterMoodSnaps, settings: data.settings)
     let deltaOccurences = (zip(afterOccurences.0, beforeOccurences.0).map(-),
                            zip(afterOccurences.1, beforeOccurences.1).map(-),
                            zip(afterOccurences.2, beforeOccurences.2).map(-))

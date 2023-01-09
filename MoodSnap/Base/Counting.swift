@@ -14,26 +14,26 @@ import SwiftUI
 /**
  Count the total occurrences of symptoms, activites & social within the array `moodSnaps`.
  */
-@inline(__always) func countAllOccurrences(moodSnaps: [MoodSnapStruct], data: DataStoreClass) -> ([Int], [Int], [Int]) {
+@inline(__always) func countAllOccurrences(moodSnaps: [MoodSnapStruct], settings: SettingsStruct) -> ([Int], [Int], [Int]) {
     var symptomCount: [Int] = Array(repeating: 0, count: symptomList.count)
     var activityCount: [Int] = Array(repeating: 0, count: activityList.count)
     var socialCount: [Int] = Array(repeating: 0, count: socialList.count)
 
     for moodSnap in moodSnaps {
         for i in 0 ..< symptomList.count {
-            if moodSnap.symptoms[i] && data.settings.symptomVisibility[i] {
+            if moodSnap.symptoms[i] && settings.symptomVisibility[i] {
                 symptomCount[i] += 1
             }
         }
 
         for i in 0 ..< activityList.count {
-            if moodSnap.activities[i] && data.settings.activityVisibility[i] {
+            if moodSnap.activities[i] && settings.activityVisibility[i] {
                 activityCount[i] += 1
             }
         }
 
         for i in 0 ..< socialList.count {
-            if moodSnap.social[i] && data.settings.socialVisibility[i] {
+            if moodSnap.social[i] && settings.socialVisibility[i] {
                 socialCount[i] += 1
             }
         }
