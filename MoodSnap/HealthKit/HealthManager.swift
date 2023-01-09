@@ -332,7 +332,7 @@ final class HealthManager: ObservableObject {
         let weightSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .weight)
         let weightAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .weight) ?? 0.0
         let weightAverageStrUI: String = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
-        let weightCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .weight)
+        let weightCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .weight)
         let weightDataUI: [CGFloat?] = getWeightData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let minWeightUI: CGFloat = minWithNils(data: weightDataUI) ?? 0
         let maxWeightUI: CGFloat = maxWithNils(data: weightDataUI) ?? 0
@@ -365,7 +365,7 @@ final class HealthManager: ObservableObject {
         let sleepSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .sleep)
         let sleepAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .sleep) ?? 0.0
         let sleepAverageStrUI: String = String(format: "%.1f", sleepAverageUI) + "hrs"
-        let sleepCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .sleep)
+        let sleepCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .sleep)
         let sleepDataUI: [CGFloat?] = getSleepData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let maxSleepUI: CGFloat = maxWithNils(data: sleepDataUI) ?? 0
         
@@ -393,7 +393,7 @@ final class HealthManager: ObservableObject {
         let energyAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .energy) ?? 0.0
         let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
         let energyDataUI: [CGFloat?] = getEnergyData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
-        let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .energy)
+        let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .energy)
         let maxEnergyUI: CGFloat = maxWithNils(data: energyDataUI) ?? 0
         let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
         
@@ -422,7 +422,7 @@ final class HealthManager: ObservableObject {
         let distanceAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .distance) ?? 0.0
         let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
         let distanceDataUI: [CGFloat?] = getDistanceData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
-        let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(data: data, health: self, type: .distance)
+        let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .distance)
         let maxDistanceUI: CGFloat = maxWithNils(data: distanceDataUI) ?? 0
         let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
         

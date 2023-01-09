@@ -3,15 +3,15 @@ import SwiftUI
 /**
  Get `health` correlations for a given health `type`.
  */
-@inline(__always) func getCorrelation(data: DataStoreClass, health: HealthManager, type: HealthTypeEnum) -> [CGFloat?] {
+@inline(__always) func getCorrelation(moodSnaps: [MoodSnapStruct], healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> [CGFloat?] {
     var samples: [CGFloat] = []
     var elevationSamples: [CGFloat] = []
     var depressionSamples: [CGFloat] = []
     var anxietySamples: [CGFloat] = []
     var irritabilitySamples: [CGFloat] = []
 
-    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    var date: Date = getLastDate(moodSnaps: moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
 
     while date >= earliest {
         var dayOffset: Int = 0
@@ -20,46 +20,46 @@ import SwiftUI
             dayOffset = 1
         }
         
-        let healthSnaps = getHealthSnapsByDate(healthSnaps: health.healthSnaps,
+        let theseHealthSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps,
                                                date: date,
                                                flatten: true)
-        let moodSnaps = getMoodSnapsByDate(moodSnaps: data.moodSnaps,
+        let theseMoodSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps,
                                            date: date.addDays(days: dayOffset),
                                            flatten: true)
 
-        if healthSnaps.count != 0 && moodSnaps.count != 0 {
+        if theseHealthSnaps.count != 0 && theseMoodSnaps.count != 0 {
             switch type {
             case .weight:
-                if healthSnaps[0].weight != nil {
-                    samples.append(healthSnaps[0].weight!)
-                    elevationSamples.append(moodSnaps[0].elevation)
-                    depressionSamples.append(moodSnaps[0].depression)
-                    anxietySamples.append(moodSnaps[0].anxiety)
-                    irritabilitySamples.append(moodSnaps[0].irritability)
+                if theseHealthSnaps[0].weight != nil {
+                    samples.append(theseHealthSnaps[0].weight!)
+                    elevationSamples.append(theseMoodSnaps[0].elevation)
+                    depressionSamples.append(theseMoodSnaps[0].depression)
+                    anxietySamples.append(theseMoodSnaps[0].anxiety)
+                    irritabilitySamples.append(theseMoodSnaps[0].irritability)
                 }
             case .distance:
-                if healthSnaps[0].walkingRunningDistance != nil {
-                    samples.append(healthSnaps[0].walkingRunningDistance!)
-                    elevationSamples.append(moodSnaps[0].elevation)
-                    depressionSamples.append(moodSnaps[0].depression)
-                    anxietySamples.append(moodSnaps[0].anxiety)
-                    irritabilitySamples.append(moodSnaps[0].irritability)
+                if theseHealthSnaps[0].walkingRunningDistance != nil {
+                    samples.append(theseHealthSnaps[0].walkingRunningDistance!)
+                    elevationSamples.append(theseMoodSnaps[0].elevation)
+                    depressionSamples.append(theseMoodSnaps[0].depression)
+                    anxietySamples.append(theseMoodSnaps[0].anxiety)
+                    irritabilitySamples.append(theseMoodSnaps[0].irritability)
                 }
             case .energy:
-                if healthSnaps[0].activeEnergy != nil {
-                    samples.append(healthSnaps[0].activeEnergy!)
-                    elevationSamples.append(moodSnaps[0].elevation)
-                    depressionSamples.append(moodSnaps[0].depression)
-                    anxietySamples.append(moodSnaps[0].anxiety)
-                    irritabilitySamples.append(moodSnaps[0].irritability)
+                if theseHealthSnaps[0].activeEnergy != nil {
+                    samples.append(theseHealthSnaps[0].activeEnergy!)
+                    elevationSamples.append(theseMoodSnaps[0].elevation)
+                    depressionSamples.append(theseMoodSnaps[0].depression)
+                    anxietySamples.append(theseMoodSnaps[0].anxiety)
+                    irritabilitySamples.append(theseMoodSnaps[0].irritability)
                 }
             case .sleep:
-                if healthSnaps[0].sleepHours != nil {
-                    samples.append(healthSnaps[0].sleepHours!)
-                    elevationSamples.append(moodSnaps[0].elevation)
-                    depressionSamples.append(moodSnaps[0].depression)
-                    anxietySamples.append(moodSnaps[0].anxiety)
-                    irritabilitySamples.append(moodSnaps[0].irritability)
+                if theseHealthSnaps[0].sleepHours != nil {
+                    samples.append(theseHealthSnaps[0].sleepHours!)
+                    elevationSamples.append(theseMoodSnaps[0].elevation)
+                    depressionSamples.append(theseMoodSnaps[0].depression)
+                    anxietySamples.append(theseMoodSnaps[0].anxiety)
+                    irritabilitySamples.append(theseMoodSnaps[0].irritability)
                 }
             default:
                 break
