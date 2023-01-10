@@ -168,7 +168,6 @@ struct MoodSnapView: View {
                             if quoteSnap != nil {
                                 data.moodSnaps.append(quoteSnap!)
                             }
-                            data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
                             data.startProcessing()
                         }
                     }

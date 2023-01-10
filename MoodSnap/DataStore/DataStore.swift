@@ -299,56 +299,57 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.averages = true
         }
         
+        let moodSnaps = self.moodSnaps
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
         
         // All data
         averages.flatAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, data: self),
-            data: self,
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps),
+            moodSnaps: moodSnaps,
             flatten: true)
         averages.allAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, data: self),
-            data: self,
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            moodSnaps: moodSnaps,
             flatten: false)
         
         // Year
         averages.flatYear = averageMoodSnap(
             timescale: TimeScaleEnum.year.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: true)
         averages.allYear = averageMoodSnap(
             timescale: TimeScaleEnum.year.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: false)
         
         // Month
         averages.flatMonth = averageMoodSnap(
             timescale: TimeScaleEnum.month.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: true)
         averages.allMonth = averageMoodSnap(
             timescale: TimeScaleEnum.month.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: false)
         
         // Three months
         averages.flatThreeMonths = averageMoodSnap(
             timescale: TimeScaleEnum.threeMonths.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: true)
         averages.allThreeMonths = averageMoodSnap(
             timescale: TimeScaleEnum.threeMonths.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: false)
         
         // Six months
         averages.flatSixMonths = averageMoodSnap(
             timescale: TimeScaleEnum.sixMonths.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: true)
         averages.allSixMonths = averageMoodSnap(
             timescale: TimeScaleEnum.sixMonths.rawValue,
-            data: self,
+            moodSnaps: moodSnaps,
             flatten: false)
         
         let averagesUI = averages
@@ -390,6 +391,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         self.save()
         
         DispatchQueue.main.async {
+            self.moodSnaps = sortByDate(moodSnaps: self.moodSnaps)
             self.processingStatus.history = true
             self.processingStatus.averages = true
             self.processingStatus.social = true

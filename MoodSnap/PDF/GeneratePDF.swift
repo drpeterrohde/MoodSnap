@@ -317,7 +317,7 @@ func generateNotesContent(document: PDFDocument, data: DataStoreClass, timescale
 
     document.addLineSeparator(PDFContainer.contentLeft, style: lineStyle)
 
-    for moodSnap in sortByDate(moodSnaps: data.moodSnaps) {
+    for moodSnap in data.moodSnaps {
         if moodSnap.notes != "" && moodSnap.snapType != .quote && moodSnap.snapType != .custom {
             let attributedNotes = NSAttributedString(string: "\n" + moodSnap.timestamp.dateTimeString() + "\n" + moodSnap.notes + "\n", attributes: notesAttributes)
             let textElement = PDFAttributedText(text: attributedNotes)

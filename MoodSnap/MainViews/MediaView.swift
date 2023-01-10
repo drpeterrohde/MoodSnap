@@ -30,7 +30,7 @@ struct MediaView: View {
                                 }
                                 data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                 data.moodSnaps.append(moodSnap)
-                                data.moodSnaps = sortByDate(moodSnaps: data.moodSnaps)
+                                data.startProcessing()
                             }
                         }
                         dismiss()

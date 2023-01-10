@@ -52,7 +52,7 @@ struct AverageMoodView: View {
             }
             let averageVolatilityMoodSnap = averageVolatilityMoodSnap(
                 timescale: timescale,
-                data: data)
+                moodSnaps: data.moodSnaps)
             if averageVolatilityMoodSnap != nil {
                 MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnap!,
                                moodSnapAll: averageVolatilityMoodSnap!,

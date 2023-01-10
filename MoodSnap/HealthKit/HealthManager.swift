@@ -326,7 +326,7 @@ final class HealthManager: ObservableObject {
      */
     func processWeight(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
-        let healthSnaps = self.healthSnaps
+        let healthSnaps = data.healthSnaps
         
         let weightSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .weight)
         let weightAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .weight) ?? 0.0
@@ -359,7 +359,7 @@ final class HealthManager: ObservableObject {
      */
     func processSleep(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
-        let healthSnaps = self.healthSnaps
+        let healthSnaps = data.healthSnaps
         
         let sleepSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .sleep)
         let sleepAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .sleep) ?? 0.0
@@ -386,7 +386,7 @@ final class HealthManager: ObservableObject {
      */
     func processEnergy(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
-        let healthSnaps = self.healthSnaps
+        let healthSnaps = data.healthSnaps
    
         let energySamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .energy)
         let energyAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .energy) ?? 0.0
@@ -415,7 +415,7 @@ final class HealthManager: ObservableObject {
      */
     func processDistance(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
-        let healthSnaps = self.healthSnaps
+        let healthSnaps = data.healthSnaps
    
         let distanceSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .distance)
         let distanceAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .distance) ?? 0.0
@@ -444,7 +444,7 @@ final class HealthManager: ObservableObject {
      */
     func processMenstrual(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
-        let healthSnaps = self.healthSnaps
+        let healthSnaps = data.healthSnaps
    
         let menstrualDataUI: [CGFloat?] = getMenstrualData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: healthSnaps)

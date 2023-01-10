@@ -38,7 +38,7 @@ struct WidgetsEntryView : View {
     
     var body: some View {
         let timescaleAll = getTimescale(timescale: TimeScaleEnum.all.rawValue,
-                                        data: data)
+                                        moodSnaps: data.moodSnaps)
         ZStack {
             switch type {
             case .moodHistoryLargeAll:

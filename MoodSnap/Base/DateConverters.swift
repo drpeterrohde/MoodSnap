@@ -91,8 +91,8 @@ extension Calendar {
 /**
  Get date range of `moodSnaps` in days.
  */
-@inline(__always) func dateRange(data: DataStoreClass) -> Int {
-    let first = getFirstDate(moodSnaps: data.moodSnaps)
+@inline(__always) func dateRange(moodSnaps: [MoodSnapStruct]) -> Int {
+    let first = getFirstDate(moodSnaps: moodSnaps)
     let days = Calendar.current.numberOfDaysBetween(from: first, to: Date()) + 1
     return days
 }
@@ -100,9 +100,9 @@ extension Calendar {
 /**
  Convert `timescale` to days.
  */
-@inline(__always) func getTimescale(timescale: Int, data: DataStoreClass) -> Int {
+@inline(__always) func getTimescale(timescale: Int, moodSnaps: [MoodSnapStruct]) -> Int {
     if timescale == TimeScaleEnum.all.rawValue {
-        return max(dateRange(data: data), TimeScaleEnum.month.rawValue)
+        return max(dateRange(moodSnaps: moodSnaps), TimeScaleEnum.month.rawValue)
     } else {
         return timescale
     }

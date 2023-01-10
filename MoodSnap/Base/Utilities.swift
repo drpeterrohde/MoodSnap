@@ -167,7 +167,7 @@ import SwiftUI
         filteredMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: Date(), windowStart: -window!, windowEnd: 0)
     }
 
-    for moodSnap in sortByDate(moodSnaps: filteredMoodSnaps) {
+    for moodSnap in filteredMoodSnaps {
         if moodSnap.snapType == .event {
             list.append((moodSnap.event, moodSnap.timestamp))
         }

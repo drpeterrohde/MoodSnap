@@ -26,7 +26,7 @@ struct PDFAverageMoodView: View {
 
                     let averageMoodSnap = averageMoodSnap(
                         timescale: timescale,
-                        data: data)
+                        moodSnaps: data.moodSnaps)
 
                     if averageMoodSnap != nil {
                         MoodLevelsView(moodSnapFlat: averageMoodSnap!,
@@ -57,7 +57,7 @@ struct PDFAverageMoodView: View {
 
                     let averageVolatilityMoodSnap = averageVolatilityMoodSnap(
                         timescale: timescale,
-                        data: data)
+                        moodSnaps: data.moodSnaps)
                     if averageVolatilityMoodSnap != nil {
                         Divider()
                         MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnap!,
