@@ -69,7 +69,6 @@ final class HealthManager: ObservableObject {
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
         
         self.stopProcessing(data: data)
-        
         self.healthSnaps = []
         
         let group = DispatchGroup()
