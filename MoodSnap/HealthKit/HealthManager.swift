@@ -80,6 +80,7 @@ final class HealthManager: ObservableObject {
         }
         
         group.notify(queue: DispatchQueue.global()) {
+            self.healthSnaps = sortByDate(healthSnaps: self.healthSnaps)
             data.healthSnaps = self.healthSnaps
             self.startProcessing(data: data)
         }
