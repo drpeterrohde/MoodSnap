@@ -328,16 +328,17 @@ final class HealthManager: ObservableObject {
     func processWeight(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
         let healthSnaps = data.healthSnaps
+        let units = data.settings.healthUnits
         
         let weightSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .weight)
         let weightAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .weight) ?? 0.0
-        let weightAverageStrUI: String = getWeightString(value: weightAverageUI, units: data.settings.healthUnits)
+        let weightAverageStrUI: String = getWeightString(value: weightAverageUI, units: units)
         let weightCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .weight)
         let weightDataUI: [CGFloat?] = getWeightData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let minWeightUI: CGFloat = minWithNils(data: weightDataUI) ?? 0
         let maxWeightUI: CGFloat = maxWithNils(data: weightDataUI) ?? 0
-        let minimumWeightStrUI: String = getWeightString(value: minWeightUI, units: data.settings.healthUnits)
-        let maximumWeightStrUI: String = getWeightString(value: maxWeightUI, units: data.settings.healthUnits)
+        let minimumWeightStrUI: String = getWeightString(value: minWeightUI, units: units)
+        let maximumWeightStrUI: String = getWeightString(value: maxWeightUI, units: units)
         
         DispatchQueue.main.async {
             self.weightSamples = weightSamplesUI
@@ -388,14 +389,15 @@ final class HealthManager: ObservableObject {
     func processEnergy(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
         let healthSnaps = data.healthSnaps
+        let units = data.settings.healthUnits
    
         let energySamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .energy)
         let energyAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .energy) ?? 0.0
-        let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: data.settings.healthUnits)
+        let energyAverageStrUI: String = getEnergyString(value: energyAverageUI, units: units)
         let energyDataUI: [CGFloat?] = getEnergyData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let energyCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .energy)
         let maxEnergyUI: CGFloat = maxWithNils(data: energyDataUI) ?? 0
-        let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: data.settings.healthUnits)
+        let maxEnergyStrUI: String = getEnergyString(value: maxEnergyUI, units: units)
         
         DispatchQueue.main.async {
             self.energySamples = energySamplesUI
@@ -417,14 +419,15 @@ final class HealthManager: ObservableObject {
     func processDistance(data: DataStoreClass) async -> Bool {
         let moodSnaps = data.moodSnaps
         let healthSnaps = data.healthSnaps
+        let units = data.settings.healthUnits
    
         let distanceSamplesUI: Int = countHealthSnaps(healthSnaps: healthSnaps, type: .distance)
         let distanceAverageUI: CGFloat = average(healthSnaps: healthSnaps, type: .distance) ?? 0.0
-        let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: data.settings.healthUnits)
+        let distanceAverageStrUI: String = getDistanceString(value: distanceAverageUI, units: units)
         let distanceDataUI: [CGFloat?] = getDistanceData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let distanceCorrelationsMoodUI: [CGFloat?] = getCorrelation(moodSnaps: moodSnaps, healthSnaps: healthSnaps, type: .distance)
         let maxDistanceUI: CGFloat = maxWithNils(data: distanceDataUI) ?? 0
-        let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: data.settings.healthUnits)
+        let maxDistanceStrUI: String = getDistanceString(value: maxDistanceUI, units: units)
         
         DispatchQueue.main.async {
             self.distanceSamples = distanceSamplesUI
@@ -474,6 +477,10 @@ final class HealthManager: ObservableObject {
         async let processMenstrual = processMenstrual(data: data)
         
         await _ = [weightComplete, sleepComplete, energyComplete, distanceComplete, processMenstrual]
+        
+        DispatchQueue.main.async {
+            data.processingStatus.health = nil
+        }
     }
     
     /**
@@ -490,9 +497,6 @@ final class HealthManager: ObservableObject {
             data.processingStatus.menstrual = true
             data.processingStatus.health = Task(priority: priority) {
                 await self.process(data: data)
-                DispatchQueue.main.async {
-                    data.processingStatus.health = nil
-                }
             }
         }
     }

@@ -381,6 +381,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         // Wait for all asynchronous threads to complete
         await _ = [historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
+        
+        DispatchQueue.main.async {
+            self.processingStatus.data = nil
+        }
     }
     
     /**
@@ -401,9 +405,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.events = true
             self.processingStatus.data = Task(priority: priority) {
                 await self.process()
-                DispatchQueue.main.async {
-                    self.processingStatus.data = nil
-                }
             }
         }
     }
