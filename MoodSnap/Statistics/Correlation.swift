@@ -20,12 +20,8 @@ import SwiftUI
             dayOffset = 1
         }
         
-        let theseHealthSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps,
-                                               date: date,
-                                               flatten: true)
-        let theseMoodSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps,
-                                           date: date.addDays(days: dayOffset),
-                                           flatten: true)
+        let theseHealthSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps, date: date, flatten: true)
+        let theseMoodSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: date.addDays(days: dayOffset), flatten: true)
 
         if theseHealthSnaps.count != 0 && theseMoodSnaps.count != 0 {
             switch type {
