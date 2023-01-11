@@ -25,12 +25,13 @@ struct MoodSnapApp: App {
                 DispatchQueue.main.async {
                     isUnlocked = false
                     data.settings.firstUse = false
-                    data.healthSnaps = health.healthSnaps
                     data.save()
                 }
             }
             
             if value == .active {
+                data.stopProcessing()
+                health.stopProcessing(data: data)
                 hapticPrepare(data: data)
                 if data.settings.useHealthKit {
                     if HKHealthStore.isHealthDataAvailable() {
@@ -49,7 +50,6 @@ struct MoodSnapApp: App {
                 DispatchQueue.main.async {
                     isUnlocked = false
                     data.settings.firstUse = false
-                    data.healthSnaps = health.healthSnaps
                     data.save()
                 }
             }

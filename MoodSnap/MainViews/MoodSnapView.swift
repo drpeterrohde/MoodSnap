@@ -7,6 +7,7 @@ struct MoodSnapView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
     @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State private var showingDatePickerSheet = false
 
     var body: some View {
@@ -160,6 +161,7 @@ struct MoodSnapView: View {
                     DispatchQueue.main.async {
                         withAnimation {
                             data.stopProcessing()
+                            health.stopProcessing(data: data)
                             moodSnap.snapType = .mood
                             data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                             data.moodSnaps.append(moodSnap)
@@ -169,6 +171,7 @@ struct MoodSnapView: View {
                                 data.moodSnaps.append(quoteSnap!)
                             }
                             data.startProcessing()
+                            health.startProcessing(data: data)
                         }
                     }
                     dismiss()

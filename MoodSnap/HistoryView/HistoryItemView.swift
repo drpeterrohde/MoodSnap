@@ -8,6 +8,7 @@ struct HistoryItemView: View {
     @Binding var filter: SnapTypeEnum
     @Binding var searchText: String
     @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State private var showingDeleteAlert: Bool = false
     @State private var showingMoodSnapSheet: Bool = false
 
@@ -90,8 +91,10 @@ struct HistoryItemView: View {
                                         DispatchQueue.main.async {
                                             withAnimation {
                                                 data.stopProcessing()
+                                                health.stopProcessing(data: data)
                                                 data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                                 data.startProcessing()
+                                                health.startProcessing(data: data)
                                             }
                                         }
                                     }

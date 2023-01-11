@@ -158,7 +158,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.hashtags = true
         }
         
-        let hashtagListUI = getHashtags(data: self)
+        let hashtagListUI = getHashtags(moodSnaps: self.moodSnaps)
         var hashtagButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< hashtagListUI.count {
@@ -308,7 +308,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
             moodSnaps: moodSnaps,
             flatten: true)
         averages.allAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: self.moodSnaps),
+            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps),
             moodSnaps: moodSnaps,
             flatten: false)
         

@@ -210,9 +210,7 @@ struct SettingsView: View {
                             DispatchQueue.main.async {
                                 data.stopProcessing()
                                 health.stopProcessing(data: data)
-                                
                                 data.moodSnaps = makeDemoData()
-                                
                                 data.startProcessing()
                                 health.startProcessing(data: data)
                             }
@@ -233,9 +231,7 @@ struct SettingsView: View {
                         DispatchQueue.main.async {
                             data.stopProcessing()
                             health.stopProcessing(data: data)
-                            
                             data.moodSnaps = []
-                            
                             data.startProcessing()
                             health.startProcessing(data: data)
                         }
