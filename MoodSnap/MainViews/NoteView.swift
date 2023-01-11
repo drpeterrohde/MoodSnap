@@ -7,6 +7,7 @@ struct NoteView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
     @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State private var showingDatePickerSheet = false
 
     var body: some View {
@@ -34,10 +35,12 @@ struct NoteView: View {
                 DispatchQueue.main.async {
                     withAnimation {
                         data.stopProcessing()
+                        health.stopProcessing(data: data)
                         moodSnap.snapType = .note
                         data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                         data.moodSnaps.append(moodSnap)
                         data.startProcessing()
+                        health.startProcessing(data: data)
                     }
                 }
                 dismiss()

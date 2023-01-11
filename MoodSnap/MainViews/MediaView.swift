@@ -7,6 +7,7 @@ struct MediaView: View {
     @Environment(\.dismiss) var dismiss
     @State var moodSnap: MoodSnapStruct
     @EnvironmentObject var data: DataStoreClass
+    @EnvironmentObject var health: HealthManager
     @State var image: UIImage? = nil
 
     var body: some View {
@@ -28,9 +29,12 @@ struct MediaView: View {
                                 if data.settings.saveMediaToCameraRoll {
                                     UIImageWriteToSavedPhotosAlbum(image!, nil, nil, nil)
                                 }
+                                data.stopProcessing()
+                                health.stopProcessing(data: data)
                                 data.moodSnaps = deleteHistoryItem(moodSnaps: data.moodSnaps, moodSnap: moodSnap)
                                 data.moodSnaps.append(moodSnap)
                                 data.startProcessing()
+                                health.startProcessing(data: data)
                             }
                         }
                         dismiss()

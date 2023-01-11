@@ -91,19 +91,16 @@ final class DataStoreClass: Identifiable, ObservableObject {
         let history = await generateHistory(data: self)
         
         DispatchQueue.main.async {
-            // Mood history
             self.processedData.levelE = history.levelE
             self.processedData.levelD = history.levelD
             self.processedData.levelA = history.levelA
             self.processedData.levelI = history.levelI
             
-            // Sliding average history
             self.processedData.averageE = history.averageE
             self.processedData.averageD = history.averageD
             self.processedData.averageA = history.averageA
             self.processedData.averageI = history.averageI
             
-            // Volatility history
             self.processedData.volatilityE = history.volatilityE
             self.processedData.volatilityD = history.volatilityD
             self.processedData.volatilityA = history.volatilityA
@@ -128,10 +125,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         for i in 0 ..< eventsListUI.count {
             let dates = [eventsListUI[i].1]
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                data: self,
-                maxWindow: butterflyWindowLong)
+            var thisButterfly = averageTransientForDates(dates: dates, data: self, maxWindow: butterflyWindowLong)
             thisButterfly.activity = eventsListUI[i].0
             thisButterfly.timestamp = eventsListUI[i].1
             eventButterflies.append(thisButterfly)
@@ -158,17 +152,13 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processingStatus.hashtags = true
         }
         
-        let hashtagListUI = getHashtags(moodSnaps: self.moodSnaps)
+        let moodSnaps = self.moodSnaps
+        let hashtagListUI = getHashtags(moodSnaps: moodSnaps)
         var hashtagButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< hashtagListUI.count {
-            let dates = getDatesForHashtag(
-                hashtag: hashtagListUI[i],
-                moodSnaps: self.moodSnaps)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                data: self,
-                maxWindow: butterflyWindowShort)
+            let dates = getDatesForHashtag(hashtag: hashtagListUI[i], moodSnaps: moodSnaps)
+            var thisButterfly = averageTransientForDates(dates: dates, data: self, maxWindow: butterflyWindowShort)
             thisButterfly.activity = hashtagListUI[i]
             hashtagButterflies.append(thisButterfly)
         }
@@ -197,14 +187,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
         var activityButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< activityList.count {
-            let dates = getDatesForType(
-                type: .activity,
-                item: i,
-                data: self)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                data: self,
-                maxWindow: butterflyWindowShort)
+            let dates = getDatesForType(type: .activity, item: i, data: self)
+            var thisButterfly = averageTransientForDates(dates: dates, data: self, maxWindow: butterflyWindowShort)
             thisButterfly.activity = activityList[i]
             activityButterflies.append(thisButterfly)
         }
@@ -232,14 +216,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
         var symptomButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< symptomList.count {
-            let dates = getDatesForType(
-                type: .symptom,
-                item: i,
-                data: self)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                data: self,
-                maxWindow: butterflyWindowShort)
+            let dates = getDatesForType(type: .symptom, item: i, data: self)
+            var thisButterfly = averageTransientForDates(dates: dates, data: self, maxWindow: butterflyWindowShort)
             thisButterfly.activity = symptomList[i]
             symptomButterflies.append(thisButterfly)
         }
@@ -267,14 +245,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
         var socialButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< socialList.count {
-            let dates = getDatesForType(
-                type: .social,
-                item: i,
-                data: self)
-            var thisButterfly = averageTransientForDates(
-                dates: dates,
-                data: self,
-                maxWindow: butterflyWindowShort)
+            let dates = getDatesForType(type: .social, item: i, data: self)
+            var thisButterfly = averageTransientForDates(dates: dates, data: self, maxWindow: butterflyWindowShort)
             thisButterfly.activity = socialList[i]
             socialButterflies.append(thisButterfly)
         }
@@ -301,56 +273,22 @@ final class DataStoreClass: Identifiable, ObservableObject {
         
         let moodSnaps = self.moodSnaps
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
+        let allTimescale = getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps)
         
-        // All data
-        averages.flatAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps),
-            moodSnaps: moodSnaps,
-            flatten: true)
-        averages.allAll = averageMoodSnap(
-            timescale: getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps),
-            moodSnaps: moodSnaps,
-            flatten: false)
+        averages.flatAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: true)
+        averages.allAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: false)
         
-        // Year
-        averages.flatYear = averageMoodSnap(
-            timescale: TimeScaleEnum.year.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: true)
-        averages.allYear = averageMoodSnap(
-            timescale: TimeScaleEnum.year.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: false)
+        averages.flatYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: true)
+        averages.allYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: false)
         
-        // Month
-        averages.flatMonth = averageMoodSnap(
-            timescale: TimeScaleEnum.month.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: true)
-        averages.allMonth = averageMoodSnap(
-            timescale: TimeScaleEnum.month.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: false)
+        averages.flatMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: true)
+        averages.allMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: false)
         
-        // Three months
-        averages.flatThreeMonths = averageMoodSnap(
-            timescale: TimeScaleEnum.threeMonths.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: true)
-        averages.allThreeMonths = averageMoodSnap(
-            timescale: TimeScaleEnum.threeMonths.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: false)
+        averages.flatThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
+        averages.allThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
         
-        // Six months
-        averages.flatSixMonths = averageMoodSnap(
-            timescale: TimeScaleEnum.sixMonths.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: true)
-        averages.allSixMonths = averageMoodSnap(
-            timescale: TimeScaleEnum.sixMonths.rawValue,
-            moodSnaps: moodSnaps,
-            flatten: false)
+        averages.flatSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
+        averages.allSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
         
         let averagesUI = averages
         
@@ -393,9 +331,10 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @inline(__always) func startProcessing(priority: TaskPriority = .high) {
         self.stopProcessing()
         self.save()
+        let sorted = sortByDate(moodSnaps: self.moodSnaps)
         
         DispatchQueue.main.async {
-            self.moodSnaps = sortByDate(moodSnaps: self.moodSnaps)
+            self.moodSnaps = sorted
             self.processingStatus.history = true
             self.processingStatus.averages = true
             self.processingStatus.social = true
