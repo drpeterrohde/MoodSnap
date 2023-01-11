@@ -5,14 +5,8 @@ import SwiftUI
  */
 @inline(__always) func averageTransientForDates(dates: [Date], data: DataStoreClass, maxWindow: Int) -> ButterflyEntryStruct {
     let moodSnaps = data.moodSnaps
-    let butterflyMood = averageDifferentialWindowForDates(
-        moodSnaps: moodSnaps,
-        dates: dates,
-        maxWindow: maxWindow)
-    let butterflyVolatility = volatilityDifferentialWindowForDates(
-        moodSnaps: moodSnaps,
-        dates: dates,
-        maxWindow: maxWindow)
+    let butterflyMood = averageDifferentialWindowForDates(moodSnaps: moodSnaps, dates: dates, maxWindow: maxWindow)
+    let butterflyVolatility = volatilityDifferentialWindowForDates(moodSnaps: moodSnaps, dates: dates, maxWindow: maxWindow)
     
     var thisButterfly = ButterflyEntryStruct()
 

@@ -24,8 +24,7 @@ func generatePDF(data: DataStoreClass, timescale: Int, blackAndWhite: Bool) -> U
 }
 
 func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: Int, blackAndWhite: Bool) {
-    generateTitleHeaderFooterContent(document: document,
-                                     data: data)
+    generateTitleHeaderFooterContent(document: document, data: data)
     generateInfluencesContent(document: document,
                               data: data,
                               timescale: timescale)

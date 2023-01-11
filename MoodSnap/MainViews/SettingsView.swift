@@ -268,9 +268,7 @@ struct SettingsView: View {
                         DispatchQueue.main.async {
                             data.stopProcessing()
                             health.stopProcessing(data: data)
-                            
                             data.moodSnaps = retrieved
-                            
                             data.startProcessing()
                             health.startProcessing(data: data)
                         }
