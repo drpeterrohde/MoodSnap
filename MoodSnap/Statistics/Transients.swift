@@ -246,9 +246,7 @@ import SwiftUI
         deltas.append(thisDelta)
     }
     
-    let averageDelta = averageDelta(deltas: deltas)
-    
-    return averageDelta
+    return averageDelta(deltas: deltas)
 }
 
 /**

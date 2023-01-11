@@ -57,6 +57,9 @@ final class HealthManager: ObservableObject {
      Generate `HealthSnapStruct`s for all dates and start processing.
      */
     func makeHealthSnaps(data: DataStoreClass) async {
+        self.stopProcessing(data: data)
+        self.healthSnaps = []
+        
         DispatchQueue.main.async {
             data.processingStatus.weight = true
             data.processingStatus.sleep = true
@@ -67,9 +70,6 @@ final class HealthManager: ObservableObject {
         
         var date: Date = getLastDate(moodSnaps: data.moodSnaps)
         let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
-        
-        self.stopProcessing(data: data)
-        self.healthSnaps = []
         
         let group = DispatchGroup()
         let queue = DispatchQueue(label: "thread-safe-array")
