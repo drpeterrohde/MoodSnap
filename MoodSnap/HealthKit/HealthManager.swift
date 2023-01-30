@@ -452,9 +452,7 @@ final class HealthManager: ObservableObject {
    
         let menstrualDataUI: [CGFloat?] = getMenstrualData(moodSnaps: moodSnaps, healthSnaps: healthSnaps)
         let menstrualDatesUI: [Date] = getMenstrualDates(healthSnaps: healthSnaps)
-        let menstrualButterflyUI: ButterflyEntryStruct = averageTransientForDates(dates: menstrualDatesUI,
-                                                                                  data: data,
-                                                                                  maxWindow: menstrualTransientWindow)
+        let menstrualButterflyUI: ButterflyEntryStruct = averageTransientForDates(dates: menstrualDatesUI, data: data, maxWindow: menstrualTransientWindow)
         
         DispatchQueue.main.async {
             self.menstrualData = menstrualDataUI
