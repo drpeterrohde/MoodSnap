@@ -234,10 +234,17 @@ import SwiftUI
  */
 @inline(__always) func deltaOccurences(data: DataStoreClass, dates: [Date], maxWindow: Int) -> OccurencesStruct {
     var deltas: [OccurencesStruct] = []
-        
+    let endDate: Date = getLastDate(moodSnaps: data.moodSnaps).endOfDay()
+    let startDate: Date = getFirstDate(moodSnaps: data.moodSnaps)
+    
     for date in dates {
-        let thisDelta = deltaOccurences(data: data, date: date, maxWindow: maxWindow)
-        deltas.append(thisDelta)
+        let bufferStart = abs(Calendar.current.numberOfDaysBetween(from: startDate, to: date))
+        let bufferEnd = abs(Calendar.current.numberOfDaysBetween(from: date, to: endDate))
+        
+        if bufferStart >= maxWindow && bufferEnd >= maxWindow {
+            let thisDelta = deltaOccurences(data: data, date: date, maxWindow: maxWindow)
+            deltas.append(thisDelta)
+        }
     }
     
     return averageDelta(deltas: deltas)
