@@ -44,19 +44,9 @@ import SwiftUI
     var samples: [MoodSnapStruct] = []
     
     if window >= 0 {
-        samples = getMoodSnapsByDateWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            windowStart: 0,
-            windowEnd: window,
-            flatten: true)
+        samples = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: date, windowStart: 0, windowEnd: window, flatten: true)
     } else {
-        samples = getMoodSnapsByDateWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            windowStart: window,
-            windowEnd: 0,
-            flatten: true)
+        samples = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: date, windowStart: window, windowEnd: 0, flatten: true)
     }
     
     if todayCount == 0 {
