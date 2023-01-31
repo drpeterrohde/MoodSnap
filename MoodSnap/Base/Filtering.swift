@@ -54,27 +54,6 @@ import SwiftUI
 /**
  Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
  */
-//@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
-//    var filtered: [MoodSnapStruct] = []
-//    let dateComponents = date.getComponents()
-//    for moodSnap in data.moodSnaps {
-//        if moodSnap.timestamp.getComponents() == dateComponents {
-//            if moodSnap.snapType == .mood {
-//                filtered.append(moodSnap)
-//            }
-//        }
-//    }
-//    if flatten {
-//        if filtered.count > 0 {
-//            filtered = [mergeMoodSnaps(moodSnaps: filtered)!]
-//        }
-//    }
-//    return filtered
-//}
-
-/**
- Returns an array of elements from `moodSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
- */
 @inline(__always) func getMoodSnapsByDate(moodSnaps: [MoodSnapStruct], date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
     var filtered: [MoodSnapStruct] = []
     let dateComponents = date.getComponents()
@@ -91,6 +70,25 @@ import SwiftUI
         }
     }
     return filtered
+}
+
+@inline(__always) func getMoodSnapsByDate(sequencedMoodSnaps: [[MoodSnapStruct]], flattenedSequencedMoodSnaps: [MoodSnapStruct?], date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
+    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
+    
+    if offset < 0 || offset > sequencedMoodSnaps.count {
+        return []
+    }
+    
+    if flatten {
+        return sequencedMoodSnaps[-offset]
+    } else {
+        let flattenedSequenced = flattenedSequencedMoodSnaps[-offset]
+        if flattenedSequenced == nil {
+            return []
+        } else {
+            return [flattenedSequenced!]
+        }
+    }
 }
 
 /**
@@ -111,35 +109,6 @@ import SwiftUI
     }
     return filtered
 }
-
-/**
- Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
- */
-//@inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
-//    var filtered: [MoodSnapStruct] = []
-//    var moodSnaps: [MoodSnapStruct?] = []
-//
-//    if flatten {
-//        moodSnaps = data.flattenedSequencedMoodSnaps
-//    } else {
-//        moodSnaps = data.moodSnaps
-//    }
-//
-//    let startDate = date.addDays(days: windowStart).startOfDay()
-//    let endDate = date.addDays(days: windowEnd).endOfDay()
-//
-//    for moodSnap in moodSnaps {
-//        if moodSnap != nil {
-//            if moodSnap!.timestamp >= startDate && moodSnap!.timestamp <= endDate {
-//                if moodSnap!.snapType == .mood {
-//                    filtered.append(moodSnap!)
-//                }
-//            }
-//        }
-//    }
-//
-//    return filtered
-//}
 
 /**
  Returns an array of elements from `moodSnaps` that sit within a window of `windowStart` and `windowEnd` days after `date`. The optional `flatten` parameter merges them into their single day equivalents on a per-day basis.
@@ -168,6 +137,22 @@ import SwiftUI
     }
     
     return filtered
+}
+
+@inline(__always) func getMoodSnapsByDateWindow(sequencedMoodSnaps: [[MoodSnapStruct]], flattenedSequencedMoodSnaps: [MoodSnapStruct?], date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
+    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
+    var moodSnaps: [MoodSnapStruct] = []
+    
+    for i in (offset+windowStart)...(offset+windowEnd) {
+        let thisDate = date.addDays(days: i)
+        let theseSnaps = getMoodSnapsByDate(sequencedMoodSnaps: sequencedMoodSnaps,
+                                            flattenedSequencedMoodSnaps: flattenedSequencedMoodSnaps,
+                                            date: thisDate,
+                                            flatten: flatten)
+        moodSnaps += theseSnaps
+    }
+    
+    return moodSnaps
 }
 
 /**
