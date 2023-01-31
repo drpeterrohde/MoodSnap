@@ -84,19 +84,9 @@ import SwiftUI
     var samples: [MoodSnapStruct] = []
 
     if window >= 0 {
-        samples = getMoodSnapsByDateWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            windowStart: 0,
-            windowEnd: window,
-            flatten: false)
+        samples = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: date, windowStart: 0, windowEnd: window, flatten: false)
     } else {
-        samples = getMoodSnapsByDateWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            windowStart: window,
-            windowEnd: 0,
-            flatten: false)
+        samples = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: date, windowStart: window, windowEnd: 0, flatten: false)
     }
 
     return volatility(moodSnaps: samples)
@@ -112,10 +102,7 @@ import SwiftUI
     var diffsI: [[CGFloat?]] = []
 
     for date in dates {
-        let thisDiff = averageDifferentialWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            maxWindow: maxWindow)
+        let thisDiff = averageDifferentialWindow(moodSnaps: moodSnaps, date: date, maxWindow: maxWindow)
         diffsE.append(thisDiff[0])
         diffsD.append(thisDiff[1])
         diffsA.append(thisDiff[2])
@@ -140,10 +127,7 @@ import SwiftUI
     var diffsI: [[CGFloat?]] = []
 
     for date in dates {
-        let thisDiff = volatilityDifferentialWindow(
-            moodSnaps: moodSnaps,
-            date: date,
-            maxWindow: maxWindow)
+        let thisDiff = volatilityDifferentialWindow(moodSnaps: moodSnaps, date: date, maxWindow: maxWindow)
         diffsE.append(thisDiff[0])
         diffsD.append(thisDiff[1])
         diffsA.append(thisDiff[2])
@@ -170,10 +154,7 @@ import SwiftUI
     let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps, date: date, windowStart: -maxWindow, windowEnd: maxWindow)
 
     for window in -maxWindow ... maxWindow {
-        let thisDiff: [CGFloat?] = averageDifferential(
-            moodSnaps: windowSnaps,
-            date: date,
-            window: window)
+        let thisDiff: [CGFloat?] = averageDifferential(moodSnaps: windowSnaps, date: date, window: window)
         seriesE.append(thisDiff[0])
         seriesD.append(thisDiff[1])
         seriesA.append(thisDiff[2])
