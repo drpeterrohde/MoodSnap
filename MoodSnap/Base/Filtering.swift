@@ -72,24 +72,26 @@ import SwiftUI
     return filtered
 }
 
-//@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
-//    let sequencedMoodSnaps: [[MoodSnapStruct]] = data.sequencedMoodSnaps
-//    let flattenedSequencedMoodSnaps: [MoodSnapStruct?] = data.flattenedSequencedMoodSnaps
-//    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
-//
-//    if flatten {
-//        let index = flattenedSequencedMoodSnaps.endIndex - offset - 1
-//        let flattenedSequenced = flattenedSequencedMoodSnaps[index]
-//        if flattenedSequenced == nil {
-//            return []
-//        } else {
-//            return [flattenedSequenced!]
-//        }
-//    } else {
-//        let index = sequencedMoodSnaps.endIndex - offset - 1
-//        return sequencedMoodSnaps[index]
-//    }
-//}
+@inline(__always) func getMoodSnapsByDate(data: DataStoreClass, date: Date, flatten: Bool = false) -> [MoodSnapStruct] {
+    let sequenced: [[MoodSnapStruct]] = data.sequencedMoodSnaps
+    let flattened: [MoodSnapStruct?] = data.flattenedSequencedMoodSnaps
+    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
+    let index = flattened.endIndex - offset - 1
+    
+    if index < 0 || index > flattened.endIndex {
+        return []
+    }
+    
+    if flatten {
+        if flattened[index] == nil {
+            return []
+        } else {
+            return [flattened[index]!]
+        }
+    } else {
+        return sequenced[index]
+    }
+}
 
 /**
  Returns an array of elements from `healthSnaps` that coincide with the same day of `date`. The optional `flatten` parameter merges them into their single day equivalent.
@@ -139,18 +141,18 @@ import SwiftUI
     return filtered
 }
 
-//@inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
-//    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
-//    var moodSnaps: [MoodSnapStruct] = []
-//
-//    for i in (offset+windowStart)...(offset+windowEnd) {
-//        let thisDate = date.addDays(days: i)
-//        let theseSnaps = getMoodSnapsByDate(data: data, date: thisDate, flatten: flatten)
-//        moodSnaps += theseSnaps
-//    }
-//
-//    return moodSnaps
-//}
+@inline(__always) func getMoodSnapsByDateWindow(data: DataStoreClass, date: Date, windowStart: Int, windowEnd: Int, flatten: Bool = false) -> [MoodSnapStruct] {
+    let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
+    var moodSnaps: [MoodSnapStruct] = []
+
+    for i in (offset+windowStart)...(offset+windowEnd) {
+        let thisDate = date.addDays(days: i)
+        let theseSnaps = getMoodSnapsByDate(data: data, date: thisDate, flatten: flatten)
+        moodSnaps += theseSnaps
+    }
+
+    return moodSnaps
+}
 
 /**
  Does `string` contain `hashtag`.
