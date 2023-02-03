@@ -86,7 +86,13 @@ struct MoodHistoryBarView: View {
                         }
                     }
                     if isExpanded {
-                        MoodCorrelationsView()
+                        VStack(alignment: .center) {
+                            Spacer()
+                            Text("Correlations")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            MoodCorrelationsView()
+                        }
                     }
                 }
             }
