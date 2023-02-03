@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA0A3E7B298DA95600CB1C27 /* MoodCorrelationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */; };
 		CA254E6328B7FD03006DBC8D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */; };
 		CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
@@ -327,12 +328,12 @@
 			isa = PBXGroup;
 			children = (
 				CA78D06B292D8A8700FBD566 /* WidgetExtension.entitlements */,
-				CA4E452028C502CE00245FCD /* Unused */,
 				CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */,
 				CA7775AC280CDB370045A202 /* MoodSnap.entitlements */,
 				CA5C61AA2802464F003151FD /* Localizable.strings */,
 				CA496B1127EBEEFC0067EE63 /* Assets.xcassets */,
 				CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */,
+				CA4E452028C502CE00245FCD /* Unused */,
 				CA58161E28B4E03A000E4C8A /* AppStoreReview */,
 				CA7775A9280CD43B0045A202 /* HealthKit */,
 				CA1D6D8027EC6057002365AC /* Quotes */,
@@ -402,6 +403,7 @@
 				CA496B1E27EBEF290067EE63 /* TallyView.swift */,
 				CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */,
 				CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */,
+				CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */,
 			);
 			path = InsightsView;
 			sourceTree = "<group>";
@@ -533,7 +535,6 @@
 			children = (
 				CA4E451E28C4F85500245FCD /* DotChart.swift */,
 				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
-				CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -757,6 +758,7 @@
 				CA69217728154B2900E99864 /* HealthData.swift in Sources */,
 				CA496B7327EBEF2A0067EE63 /* InfluencesActivityView.swift in Sources */,
 				CA70912F28C843C200214B4D /* Haptic.swift in Sources */,
+				CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */,
 				CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */,
 				CA496B0F27EBEEEF0067EE63 /* GraphDataConverters.swift in Sources */,
 				CA9552DC295FACF600DDF17E /* DeltasHashtagView.swift in Sources */,
@@ -811,7 +813,6 @@
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
 				CA496B7A27EBEF2A0067EE63 /* TransientView.swift in Sources */,
 				CA496BA927EBEF2B0067EE63 /* PDFViewUI.swift in Sources */,
-				CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */,
 				CA496B8C27EBEF2A0067EE63 /* HistoryNoteView.swift in Sources */,
 				CA496B0927EBEEEF0067EE63 /* Sorting.swift in Sources */,
 				CA496B8B27EBEF2A0067EE63 /* HistorySocialView.swift in Sources */,
@@ -842,6 +843,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA0A3E7B298DA95600CB1C27 /* MoodCorrelationsView.swift in Sources */,
 				CA78D06C292D8BFB00FBD566 /* HealthManager.swift in Sources */,
 				CA78D06D292D8BFB00FBD566 /* HealthData.swift in Sources */,
 				CA78D04B292D8A5800FBD566 /* Localizable.strings in Sources */,

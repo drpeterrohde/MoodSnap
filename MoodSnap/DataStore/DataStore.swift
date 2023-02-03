@@ -36,6 +36,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var hashtagOccurrenceCount: Int = 0
     @Published var eventOccurrenceCount: Int = 0
     @Published var averageMood: AverageMoodDataStruct = AverageMoodDataStruct()
+    @Published var correlations: CorrelationsStruct = CorrelationsStruct()
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     var healthSnaps: [HealthSnapStruct] = []
@@ -85,11 +86,42 @@ final class DataStoreClass: Identifiable, ObservableObject {
     }
     
     /**
+     Process correlations
+     */
+    func processCorrelations() async -> CorrelationsStruct {
+        var correlations = CorrelationsStruct()
+        let processedData = self.processedData
+        
+        correlations.correlationEE = pearson(dataX: processedData.levelE, dataY: processedData.levelE)
+        correlations.correlationED = pearson(dataX: processedData.levelE, dataY: processedData.levelD)
+        correlations.correlationEA = pearson(dataX: processedData.levelE, dataY: processedData.levelA)
+        correlations.correlationEI = pearson(dataX: processedData.levelE, dataY: processedData.levelI)
+
+        correlations.correlationDE = correlations.correlationED
+        correlations.correlationDD = pearson(dataX: processedData.levelD, dataY: processedData.levelD)
+        correlations.correlationDA = pearson(dataX: processedData.levelD, dataY: processedData.levelA)
+        correlations.correlationDI = pearson(dataX: processedData.levelD, dataY: processedData.levelI)
+
+        correlations.correlationAE = correlations.correlationEA
+        correlations.correlationAD = correlations.correlationDA
+        correlations.correlationAA = pearson(dataX: processedData.levelA, dataY: processedData.levelA)
+        correlations.correlationAI = pearson(dataX: processedData.levelA, dataY: processedData.levelI)
+
+        correlations.correlationIE = correlations.correlationEI
+        correlations.correlationID = correlations.correlationDI
+        correlations.correlationIA = correlations.correlationAI
+        correlations.correlationII = pearson(dataX: processedData.levelI, dataY: processedData.levelI)
+        
+        return correlations
+    }
+    
+    /**
      Process history
      */
     func processHistory() async -> Bool {
         let history = await generateHistory(data: self)
-        
+        let correlations = await processCorrelations()
+
         DispatchQueue.main.async {
             self.processedData.levelE = history.levelE
             self.processedData.levelD = history.levelD
@@ -105,6 +137,8 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processedData.volatilityD = history.volatilityD
             self.processedData.volatilityA = history.volatilityA
             self.processedData.volatilityI = history.volatilityI
+            
+            self.correlations = correlations
             
             self.processingStatus.history = false
         }

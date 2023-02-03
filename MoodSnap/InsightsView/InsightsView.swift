@@ -106,8 +106,8 @@ struct InsightsView: View {
                                         }
                                     }
                                     if data.uxState.isMoodHistoryExpanded {
-                                        MoodHistoryBarView(timescale: convertedTimescale)
-                                            .frame(height: 360)
+                                        MoodHistoryBarView(timescale: convertedTimescale, isExpandable: true)
+                                            .frame(height: 380)
                                     }
                                 }
                                 

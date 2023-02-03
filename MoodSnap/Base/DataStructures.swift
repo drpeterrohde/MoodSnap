@@ -195,6 +195,28 @@ struct UXStateStruct: Identifiable, Codable, Hashable {
     var isSleepExpanded: Bool = true
 }
 
+struct CorrelationsStruct: Codable, Hashable {
+    var correlationEE: CGFloat? = nil
+    var correlationED: CGFloat? = nil
+    var correlationEA: CGFloat? = nil
+    var correlationEI: CGFloat? = nil
+
+    var correlationDE: CGFloat? = nil
+    var correlationDD: CGFloat? = nil
+    var correlationDA: CGFloat? = nil
+    var correlationDI: CGFloat? = nil
+
+    var correlationAE: CGFloat? = nil
+    var correlationAD: CGFloat? = nil
+    var correlationAA: CGFloat? = nil
+    var correlationAI: CGFloat? = nil
+
+    var correlationIE: CGFloat? = nil
+    var correlationID: CGFloat? = nil
+    var correlationIA: CGFloat? = nil
+    var correlationII: CGFloat? = nil
+}
+
 /**
  Data structure for statistics at a point.
  */
