@@ -78,7 +78,7 @@ import SwiftUI
     let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
     let index = flattened.endIndex - offset - 1
     
-    if index < 0 || index > flattened.endIndex {
+    if index < 0 || index >= flattened.endIndex {
         return []
     }
     

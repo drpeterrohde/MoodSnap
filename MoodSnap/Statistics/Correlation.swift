@@ -3,15 +3,15 @@ import SwiftUI
 /**
  Get `health` correlations for a given health `type`.
  */
-@inline(__always) func getCorrelation(moodSnaps: [MoodSnapStruct], healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> [CGFloat?] {
+@inline(__always) func getCorrelation(data: DataStoreClass, healthSnaps: [HealthSnapStruct], type: HealthTypeEnum) -> [CGFloat?] {
     var samples: [CGFloat] = []
     var elevationSamples: [CGFloat] = []
     var depressionSamples: [CGFloat] = []
     var anxietySamples: [CGFloat] = []
     var irritabilitySamples: [CGFloat] = []
 
-    var date: Date = getLastDate(moodSnaps: moodSnaps)
-    let earliest: Date = getFirstDate(moodSnaps: moodSnaps)
+    var date: Date = getLastDate(moodSnaps: data.moodSnaps)
+    let earliest: Date = getFirstDate(moodSnaps: data.moodSnaps)
 
     while date >= earliest {
         var dayOffset: Int = 0
@@ -21,7 +21,7 @@ import SwiftUI
         }
         
         let theseHealthSnaps = getHealthSnapsByDate(healthSnaps: healthSnaps, date: date, flatten: true)
-        let theseMoodSnaps = getMoodSnapsByDate(moodSnaps: moodSnaps, date: date.addDays(days: dayOffset), flatten: true)
+        let theseMoodSnaps = getMoodSnapsByDate(data: data, date: date.addDays(days: dayOffset), flatten: true)
 
         if theseHealthSnaps.count != 0 && theseMoodSnaps.count != 0 {
             switch type {
