@@ -287,6 +287,12 @@ struct ProcessedDataStruct: Codable, Identifiable, Hashable {
     var volatilityD: [CGFloat?] = []
     var volatilityA: [CGFloat?] = []
     var volatilityI: [CGFloat?] = []
+    
+    // Weekly trend
+    var elevationTrend: String? = "-"
+    var depressionTrend: String? = "-"
+    var anxietyTrend: String? = "-"
+    var irritabilityTrend: String? = "-"
 
     // Butterflies
     var activityButterfly: [ButterflyEntryStruct] = []

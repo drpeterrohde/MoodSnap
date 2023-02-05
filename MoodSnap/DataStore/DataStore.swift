@@ -121,7 +121,11 @@ final class DataStoreClass: Identifiable, ObservableObject {
     func processHistory() async -> Bool {
         let history = await generateHistory(data: self)
         let correlations = await processCorrelations()
-
+        let elevationTrend: String = getTrend(averages: history.averageE)
+        let depressionTrend: String = getTrend(averages: history.averageD)
+        let anxietyTrend: String = getTrend(averages: history.averageA)
+        let irritabilityTrend: String = getTrend(averages: history.averageI)
+        
         DispatchQueue.main.async {
             self.processedData.levelE = history.levelE
             self.processedData.levelD = history.levelD
@@ -137,6 +141,11 @@ final class DataStoreClass: Identifiable, ObservableObject {
             self.processedData.volatilityD = history.volatilityD
             self.processedData.volatilityA = history.volatilityA
             self.processedData.volatilityI = history.volatilityI
+            
+            self.processedData.elevationTrend = elevationTrend
+            self.processedData.depressionTrend = depressionTrend
+            self.processedData.anxietyTrend = anxietyTrend
+            self.processedData.irritabilityTrend = irritabilityTrend
             
             self.correlations = correlations
             

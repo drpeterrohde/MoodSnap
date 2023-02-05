@@ -30,8 +30,6 @@ struct MoodSnapApp: App {
             }
             
             if value == .active {
-                //data.stopProcessing()
-                //health.stopProcessing(data: data)
                 hapticPrepare(data: data)
                 if data.settings.useHealthKit {
                     if HKHealthStore.isHealthDataAvailable() {

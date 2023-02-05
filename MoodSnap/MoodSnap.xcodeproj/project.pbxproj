@@ -10,6 +10,9 @@
 		CA0A3E7B298DA95600CB1C27 /* MoodCorrelationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */; };
 		CA254E6328B7FD03006DBC8D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */; };
 		CA3382C128C9DA33004282D3 /* MoodCorrelationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */; };
+		CA3CD3BE298F8B38002964BF /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CD3BD298F8B38002964BF /* Trends.swift */; };
+		CA3CD3BF298F8B38002964BF /* Trends.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CD3BD298F8B38002964BF /* Trends.swift */; };
+		CA3CD3C0298F8BCF002964BF /* TrendsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */; };
 		CA3CD64427EC0074008F0AAE /* Disk in Frameworks */ = {isa = PBXBuildFile; productRef = CA3CD64327EC0074008F0AAE /* Disk */; };
 		CA496AB327EBED7B0067EE63 /* MoodSnapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */; };
 		CA496ADE27EBEEBE0067EE63 /* HistoryCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */; };
@@ -185,6 +188,7 @@
 		CA0FA5E527EBEA1700B5EEE1 /* MoodSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MoodSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA254E6228B7FD03006DBC8D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodCorrelationsView.swift; sourceTree = "<group>"; };
+		CA3CD3BD298F8B38002964BF /* Trends.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trends.swift; sourceTree = "<group>"; };
 		CA496AB227EBED7B0067EE63 /* MoodSnapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodSnapApp.swift; sourceTree = "<group>"; };
 		CA496ADC27EBEEBE0067EE63 /* HistoryCustomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCustomView.swift; sourceTree = "<group>"; };
 		CA496AF927EBEEEE0067EE63 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -404,6 +408,7 @@
 				CA496B2427EBEF290067EE63 /* SlidingVolatilityView.swift */,
 				CA496B2527EBEF290067EE63 /* MoodHistoryBarView.swift */,
 				CA3382C028C9DA33004282D3 /* MoodCorrelationsView.swift */,
+				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
 			);
 			path = InsightsView;
 			sourceTree = "<group>";
@@ -523,6 +528,7 @@
 				CA496B6827EBEF2A0067EE63 /* GenerateHistory.swift */,
 				CA496B6A27EBEF2A0067EE63 /* Average.swift */,
 				CAB7F2D9280DFFFF00E8A823 /* Correlation.swift */,
+				CA3CD3BD298F8B38002964BF /* Trends.swift */,
 				CA69217828154B8500E99864 /* Nils.swift */,
 				CA496B6C27EBEF2A0067EE63 /* Influence.swift */,
 				CA496B6E27EBEF2A0067EE63 /* AverageMoodSnap.swift */,
@@ -534,7 +540,6 @@
 			isa = PBXGroup;
 			children = (
 				CA4E451E28C4F85500245FCD /* DotChart.swift */,
-				CAE0D36F28BC6D7600AA0CA3 /* TrendsView.swift */,
 			);
 			path = Unused;
 			sourceTree = "<group>";
@@ -824,11 +829,12 @@
 				CA496BA627EBEF2B0067EE63 /* DataStore.swift in Sources */,
 				CAB7DB9E28184C04004866B3 /* TransientWithPickerView.swift in Sources */,
 				CA78D043292D89B700FBD566 /* Widget.intentdefinition in Sources */,
-				CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */,
+				CA3CD3BE298F8B38002964BF /* Trends.swift in Sources */,
 				CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */,
 				CA496BAF27EBEF2B0067EE63 /* ReportView.swift in Sources */,
 				CA496B0B27EBEEEF0067EE63 /* Filtering.swift in Sources */,
 				CACD5D90295F87E400074612 /* DeltasView.swift in Sources */,
+				CAE0D37028BC6D7600AA0CA3 /* TrendsView.swift in Sources */,
 				CA496B7527EBEF2A0067EE63 /* AverageMoodView.swift in Sources */,
 				CA496BA827EBEF2B0067EE63 /* PDFSingleSlidingVolatilityView.swift in Sources */,
 				CA496B7427EBEF2A0067EE63 /* InfluencesSocialView.swift in Sources */,
@@ -869,9 +875,11 @@
 				CA78D05E292D8A5800FBD566 /* Color.swift in Sources */,
 				CA78D05F292D8A5800FBD566 /* Constants.swift in Sources */,
 				CA78D060292D8A5800FBD566 /* DataStructures.swift in Sources */,
+				CA3CD3C0298F8BCF002964BF /* TrendsView.swift in Sources */,
 				CA78D061292D8A5800FBD566 /* Utilities.swift in Sources */,
 				CA78D062292D8A5800FBD566 /* Haptic.swift in Sources */,
 				CA78D063292D8A5800FBD566 /* Counting.swift in Sources */,
+				CA3CD3BF298F8B38002964BF /* Trends.swift in Sources */,
 				CA78D064292D8A5800FBD566 /* Sorting.swift in Sources */,
 				CA78D065292D8A5800FBD566 /* Enumerations.swift in Sources */,
 				CA78D066292D8A5800FBD566 /* Filtering.swift in Sources */,
