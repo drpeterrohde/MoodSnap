@@ -88,7 +88,7 @@ struct MoodHistoryBarView: View {
                     if isExpanded {
                         VStack(alignment: .center) {
                             Spacer()
-                            Text("Correlations")
+                            Label("Correlations", systemImage: "arrow.up.left.and.down.right.and.arrow.up.right.and.down.left")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             MoodCorrelationsView()
