@@ -7,6 +7,7 @@ struct AverageMoodView: View {
     var timescale: Int
     @EnvironmentObject var data: DataStoreClass
     var blackAndWhite: Bool = false
+    var showTrend: Bool = false
 
     var body: some View {
         let (averageMoodSnapFlat, averageMoodSnapAll) = data.averageMood.getByTimescale(timescale: timescale)
@@ -66,6 +67,14 @@ struct AverageMoodView: View {
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
+            }
+            
+            if showTrend {
+                Label("One_week_trend", systemImage: "chart.line.uptrend.xyaxis")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                Spacer()
+                TrendsView()
             }
         }
     }
