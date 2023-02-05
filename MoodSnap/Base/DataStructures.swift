@@ -289,10 +289,10 @@ struct ProcessedDataStruct: Codable, Identifiable, Hashable {
     var volatilityI: [CGFloat?] = []
     
     // Weekly trend
-    var elevationTrend: String? = "-"
-    var depressionTrend: String? = "-"
-    var anxietyTrend: String? = "-"
-    var irritabilityTrend: String? = "-"
+    var elevationTrend: String? = nil
+    var depressionTrend: String? = nil
+    var anxietyTrend: String? = nil
+    var irritabilityTrend: String? = nil
 
     // Butterflies
     var activityButterfly: [ButterflyEntryStruct] = []
