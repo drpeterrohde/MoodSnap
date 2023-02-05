@@ -20,20 +20,20 @@ struct SettingsView: View {
                     Toggle(isOn: $data.settings.reminderOn[0], label: {
                         DatePicker("morning", selection: $data.settings.reminderTime[0], displayedComponents: .hourAndMinute)
                     })
-                        .onChange(of: data.settings.reminderOn[0]) {
-                            _ in toggleReminder(which: 0, settings: data.settings)
+                        .onChange(of: data.settings.reminderOn[0]) { _ in
+                            toggleReminder(which: 0, settings: data.settings)
                         }
-                        .onChange(of: data.settings.reminderTime[0]) {
-                            _ in updateNotifications(settings: data.settings)
+                        .onChange(of: data.settings.reminderTime[0]) { _ in
+                            updateNotifications(settings: data.settings)
                         }
                     Toggle(isOn: $data.settings.reminderOn[1], label: {
                         DatePicker("evening", selection: $data.settings.reminderTime[1], displayedComponents: .hourAndMinute)
                     })
-                        .onChange(of: data.settings.reminderOn[1]) {
-                            _ in toggleReminder(which: 1, settings: data.settings)
+                        .onChange(of: data.settings.reminderOn[1]) { _ in
+                            toggleReminder(which: 1, settings: data.settings)
                         }
-                        .onChange(of: data.settings.reminderTime[1]) {
-                            _ in updateNotifications(settings: data.settings)
+                        .onChange(of: data.settings.reminderTime[1]) { _ in
+                            updateNotifications(settings: data.settings)
                         }
                 }
 
@@ -188,7 +188,7 @@ struct SettingsView: View {
                         Text("\(data.moodSnapCount)")
                             .foregroundColor(.secondary)
                     }
-                    if data.moodSnaps.count > 0 {
+                    if data.moodSnapCount > 0 {
                         HStack {
                             Text("first_moodsnap")
                             Spacer()
