@@ -37,9 +37,12 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var eventOccurrenceCount: Int = 0
     @Published var averageMood: AverageMoodDataStruct = AverageMoodDataStruct()
     @Published var correlations: CorrelationsStruct = CorrelationsStruct()
+    @Published var moodSnapCount: Int = 0
+    @Published var firstDate: String = Date().dateString()
     var sequencedMoodSnaps: [[MoodSnapStruct]] = []
     var flattenedSequencedMoodSnaps: [MoodSnapStruct?] = []
     var healthSnaps: [HealthSnapStruct] = []
+
     //var hapticGeneratorLight = UIImpactFeedbackGenerator(style: .light)
     
     init(shared: Bool = false, process: Bool = false) {
@@ -344,6 +347,21 @@ final class DataStoreClass: Identifiable, ObservableObject {
     }
     
     /**
+     Process MoodSnap stats
+     */
+    func processStats() async -> Bool {
+        let moodSnapCountUI = countMoodSnaps(moodSnaps: self.moodSnaps)
+        let firstDateUI = getFirstDate(moodSnaps: self.moodSnaps).dateString()
+        
+        DispatchQueue.main.async {
+            self.moodSnapCount = moodSnapCountUI
+            self.firstDate = firstDateUI
+        }
+        
+        return true
+    }
+    
+    /**
      Pre-process data.
      */
     func process() async {
@@ -352,6 +370,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         self.flattenedSequencedMoodSnaps = flattenSequence(sequence: self.sequencedMoodSnaps)
         
         // Processing
+        async let statsComplete = processStats()
         async let historyComplete = processHistory()
         async let averagesComplete = processAverages()
         async let eventsComplete = processEvents()
@@ -361,7 +380,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
         async let symptomsComplete = processSymptoms()
         
         // Wait for all asynchronous threads to complete
-        await _ = [historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
+        await _ = [statsComplete, historyComplete, averagesComplete, eventsComplete, hashtagsComplete, activitiesComplete, socialComplete, symptomsComplete]
         
         DispatchQueue.main.async {
             self.processingStatus.data = nil
