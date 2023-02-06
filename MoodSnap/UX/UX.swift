@@ -38,8 +38,6 @@ struct ThemeStruct: Identifiable {
     var controlBigIconSize: CGFloat = 40
     var closeButtonIconSize: CGFloat = 25
 
-    var vBarStep: CGFloat = 10
-
     var sliderSpacing: CGFloat = -5
     var historyGridSpacing: CGFloat = 7
     var moodSnapGridSpacing: CGFloat = 0

@@ -22,7 +22,7 @@ import SwiftUI
 /**
  How many non-nil joint samples are there?
  */
-@inline(__always) func nonNilSamples(dataX: [CGFloat?], dataY: [CGFloat?]) -> Int {
-    let (reducedX, _) = reduceNils(dataX: dataX, dataY: dataY)
-    return reducedX.count
-}
+//@inline(__always) func nonNilSamples(dataX: [CGFloat?], dataY: [CGFloat?]) -> Int {
+//    let (reducedX, _) = reduceNils(dataX: dataX, dataY: dataY)
+//    return reducedX.count
+//}

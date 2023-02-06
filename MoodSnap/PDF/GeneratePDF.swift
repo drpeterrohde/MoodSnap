@@ -25,24 +25,11 @@ func generatePDF(data: DataStoreClass, timescale: Int, blackAndWhite: Bool) -> U
 
 func generatePDFContent(document: PDFDocument, data: DataStoreClass, timescale: Int, blackAndWhite: Bool) {
     generateTitleHeaderFooterContent(document: document, data: data)
-    generateInfluencesContent(document: document,
-                              data: data,
-                              timescale: timescale)
-    generateAverageMoodContent(document: document,
-                               data: data, timescale:
-                                timescale,
-                               blackAndWhite: blackAndWhite)
-//    if data.settings.reportIncludeInterpretation {
-//        generateInterpretationGuideContent(document: document, data: data)
-//    } 
-    generateMoodContent(document: document,
-                        data: data,
-                        timescale: timescale,
-                        blackAndWhite: blackAndWhite)
+    generateInfluencesContent(document: document, data: data, timescale: timescale)
+    generateAverageMoodContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
+    generateMoodContent(document: document, data: data, timescale: timescale, blackAndWhite: blackAndWhite)
     if data.settings.includeNotes {
-        generateNotesContent(document: document,
-                             data: data,
-                             timescale: timescale)
+        generateNotesContent(document: document, data: data, timescale: timescale)
     }
 }
 

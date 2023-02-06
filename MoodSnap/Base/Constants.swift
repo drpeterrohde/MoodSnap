@@ -4,14 +4,11 @@ import SwiftUI
 let quoteFrequency = 11
 
 /// Haptics
-let hapticsEnabled = false
+let hapticsEnabled = true
 
 /// Time windows
-let influenceWindowShort = 7
 let butterflyWindowShort = 7
-let influenceWindowLong = 28
 let butterflyWindowLong = 28
-let healthWindow = 7
 let menstrualTransientWindow = 14
 
 /// PDF
@@ -22,19 +19,10 @@ let bodyFontSizePDF = 12.0
 let notesFontSizePDF = 10.0
 let headerFontSizePDF = 10.0
 
-/// Time intervals
-let dayInterval: CGFloat = 60 * 60 * 24
-let weekInterval: CGFloat = 7 * dayInterval
-let monthInterval: CGFloat = 4 * weekInterval
-let threeMonthInterval: CGFloat = 3 * monthInterval
-let sixMonthInterval: CGFloat = 6 * monthInterval
-let yearInterval: CGFloat = 365 * dayInterval
-
-let menstrualFilterJump = 10
+//let menstrualFilterJump = 10
 
 /// UX
 let zeroGraphicalBarOffset: CGFloat = 0.3
-let midLineWidth: CGFloat = 3.0
 let iconWidth: CGFloat = 15
 let faceIDWidth: CGFloat = 50
 let numericFont: Font = Font.system(.caption, design: .monospaced)

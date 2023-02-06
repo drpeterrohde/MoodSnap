@@ -34,8 +34,8 @@ struct StoreReviewHelper {
         }
     }
     
-    static func requestAppStoreReview() {
-        let url = URL(string: "https://apps.apple.com/au/app/moodsnap-mood-diary/id1616291944?action=write-review")!
-        UIApplication.shared.open(url)
-    }
+//    static func requestAppStoreReview() {
+//        let url = URL(string: "https://apps.apple.com/au/app/moodsnap-mood-diary/id1616291944?action=write-review")!
+//        UIApplication.shared.open(url)
+//    }
 }

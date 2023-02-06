@@ -39,7 +39,6 @@ struct SettingsStruct: Identifiable, Codable, Hashable {
     var includeEvents: Bool = true
     var reportPeriod: Int = TimeScaleEnum.month.rawValue
     var reportBlackAndWhite: Bool = true
-    var reportIncludeInterpretation: Bool = true
 
     // Visibility
     var symptomVisibility: [Bool] = [Bool](repeating: true, count: symptomList.count)
@@ -215,29 +214,6 @@ struct CorrelationsStruct: Codable, Hashable {
     var correlationID: CGFloat? = nil
     var correlationIA: CGFloat? = nil
     var correlationII: CGFloat? = nil
-}
-
-/**
- Data structure for statistics at a point.
- */
-struct StatsEntryStruct: Identifiable, Codable, Hashable {
-    var id: UUID = UUID()
-    var version: Int = 1
-
-    var levelE: CGFloat? = nil
-    var levelD: CGFloat? = nil
-    var levelA: CGFloat? = nil
-    var levelI: CGFloat? = nil
-
-    var averageE: CGFloat? = nil
-    var averageD: CGFloat? = nil
-    var averageA: CGFloat? = nil
-    var averageI: CGFloat? = nil
-
-    var volatilityE: CGFloat? = nil
-    var volatilityD: CGFloat? = nil
-    var volatilityA: CGFloat? = nil
-    var volatilityI: CGFloat? = nil
 }
 
 /**
