@@ -37,11 +37,11 @@ import SwiftUI
     if (volatility[0] == nil) || (volatility[1] == nil) || (volatility[2] == nil) || (volatility[3] == nil) {
         return nil
     } else {
-        var averageMoodSnap = MoodSnapStruct()
-        averageMoodSnap.elevation = 2 * volatility[0]!
-        averageMoodSnap.depression = 2 * volatility[1]!
-        averageMoodSnap.anxiety = 2 * volatility[2]!
-        averageMoodSnap.irritability = 2 * volatility[3]!
-        return averageMoodSnap
+        var averageVolatilityMoodSnap = MoodSnapStruct()
+        averageVolatilityMoodSnap.elevation = 2 * volatility[0]!
+        averageVolatilityMoodSnap.depression = 2 * volatility[1]!
+        averageVolatilityMoodSnap.anxiety = 2 * volatility[2]!
+        averageVolatilityMoodSnap.irritability = 2 * volatility[3]!
+        return averageVolatilityMoodSnap
     }
 }

@@ -35,7 +35,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
     @Published var socialOccurrenceCount: Int = 0
     @Published var hashtagOccurrenceCount: Int = 0
     @Published var eventOccurrenceCount: Int = 0
-    @Published var averageMood: AverageMoodDataStruct = AverageMoodDataStruct()
     @Published var correlations: CorrelationsStruct = CorrelationsStruct()
     @Published var moodSnapCount: Int = 0
     @Published var firstDate: String = Date().dateString()
@@ -294,27 +293,37 @@ final class DataStoreClass: Identifiable, ObservableObject {
     func processAverages() async -> Bool {
         let moodSnaps = self.moodSnaps
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
+        var volatilities: AverageMoodDataStruct = AverageMoodDataStruct()
         let allTimescale = getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps)
         
         averages.flatAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: true)
         averages.allAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: false)
-        
         averages.flatYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: true)
         averages.allYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: false)
-        
         averages.flatMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: true)
         averages.allMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: false)
-        
         averages.flatThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
         averages.allThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
-        
         averages.flatSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
         averages.allSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
         
+        volatilities.flatAll = averageVolatilityMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps)
+        volatilities.allAll = averageVolatilityMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps)
+        volatilities.flatYear = averageVolatilityMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps)
+        volatilities.allYear = averageVolatilityMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps)
+        volatilities.flatMonth = averageVolatilityMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps)
+        volatilities.allMonth = averageVolatilityMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps)
+        volatilities.flatThreeMonths = averageVolatilityMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps)
+        volatilities.allThreeMonths = averageVolatilityMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps)
+        volatilities.flatSixMonths = averageVolatilityMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps)
+        volatilities.allSixMonths = averageVolatilityMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps)
+        
         let averagesUI = averages
+        let volatilitiesUI = volatilities
         
         DispatchQueue.main.async {
-            self.averageMood = averagesUI
+            self.processedData.averageMood = averagesUI
+            self.processedData.averageVolatility = volatilitiesUI
             self.processingStatus.averages = false
         }
         

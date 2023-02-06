@@ -10,7 +10,8 @@ struct AverageMoodView: View {
     var showTrend: Bool = false
 
     var body: some View {
-        let (averageMoodSnapFlat, averageMoodSnapAll) = data.averageMood.getByTimescale(timescale: timescale)
+        let (averageMoodSnapFlat, averageMoodSnapAll) = getByTimescale(levels: data.processedData.averageMood, timescale: timescale)
+        let (_, averageVolatilityMoodSnapAll) = getByTimescale(levels: data.processedData.averageVolatility, timescale: timescale)
         
         if data.moodSnaps.count == 0 {
             Spacer()
@@ -51,12 +52,9 @@ struct AverageMoodView: View {
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
-            let averageVolatilityMoodSnap = averageVolatilityMoodSnap(
-                timescale: timescale,
-                moodSnaps: data.moodSnaps)
-            if averageVolatilityMoodSnap != nil {
-                MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnap!,
-                               moodSnapAll: averageVolatilityMoodSnap!,
+            if averageVolatilityMoodSnapAll != nil {
+                MoodLevelsView(moodSnapFlat: averageVolatilityMoodSnapAll!,
+                               moodSnapAll: averageVolatilityMoodSnapAll!,
                                theme: themes[data.settings.theme],
                                blackAndWhite: blackAndWhite,
                                double: false)

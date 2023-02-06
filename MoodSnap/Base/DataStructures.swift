@@ -270,6 +270,10 @@ struct ProcessedDataStruct: Codable, Identifiable, Hashable {
     var anxietyTrend: String? = nil
     var irritabilityTrend: String? = nil
 
+    // Average & volatility
+    var averageMood: AverageMoodDataStruct? = AverageMoodDataStruct()
+    var averageVolatility: AverageMoodDataStruct? = AverageMoodDataStruct()
+    
     // Butterflies
     var activityButterfly: [ButterflyEntryStruct] = []
     var socialButterfly: [ButterflyEntryStruct] = []
@@ -296,24 +300,5 @@ struct AverageMoodDataStruct: Codable, Hashable {
     
     var flatYear: MoodSnapStruct? = MoodSnapStruct()
     var allYear: MoodSnapStruct? = MoodSnapStruct()
-    
-    /**
-     Get average mood and volatility by `timescale`.
-     */
-    func getByTimescale(timescale: Int) -> (MoodSnapStruct?, MoodSnapStruct?) {
-        switch timescale {
-        case TimeScaleEnum.all.rawValue:
-            return (flatAll, allAll)
-        case TimeScaleEnum.month.rawValue:
-            return (flatMonth, allMonth)
-        case TimeScaleEnum.threeMonths.rawValue:
-            return (flatThreeMonths, allThreeMonths)
-        case TimeScaleEnum.sixMonths.rawValue:
-            return (flatSixMonths, allSixMonths)
-        case TimeScaleEnum.year.rawValue:
-            return (flatYear, allYear)
-        default:
-            return (flatAll, allAll)
-        }
-    }
 }
+

@@ -361,3 +361,27 @@ extension UIApplication {
         return version ?? "-"
     }
 }
+
+/**
+ Get the average mood from `levels` over `timescale`.
+ */
+func getByTimescale(levels: AverageMoodDataStruct?, timescale: Int) -> (MoodSnapStruct?, MoodSnapStruct?) {
+    if levels == nil {
+        return (nil, nil)
+    } else {
+        switch timescale {
+        case TimeScaleEnum.all.rawValue:
+            return (levels!.flatAll, levels!.allAll)
+        case TimeScaleEnum.month.rawValue:
+            return (levels!.flatMonth, levels!.allMonth)
+        case TimeScaleEnum.threeMonths.rawValue:
+            return (levels!.flatThreeMonths, levels!.allThreeMonths)
+        case TimeScaleEnum.sixMonths.rawValue:
+            return (levels!.flatSixMonths, levels!.allSixMonths)
+        case TimeScaleEnum.year.rawValue:
+            return (levels!.flatYear, levels!.allYear)
+        default:
+            return (levels!.flatAll, levels!.allAll)
+        }
+    }
+}
