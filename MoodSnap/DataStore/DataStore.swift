@@ -95,25 +95,25 @@ final class DataStoreClass: Identifiable, ObservableObject {
         var correlations = CorrelationsStruct()
         let processedData = self.processedData
         
-        correlations.correlationEE = pearson(dataX: processedData.levelE, dataY: processedData.levelE)
+        correlations.correlationEE = 1.0
         correlations.correlationED = pearson(dataX: processedData.levelE, dataY: processedData.levelD)
         correlations.correlationEA = pearson(dataX: processedData.levelE, dataY: processedData.levelA)
         correlations.correlationEI = pearson(dataX: processedData.levelE, dataY: processedData.levelI)
 
         correlations.correlationDE = correlations.correlationED
-        correlations.correlationDD = pearson(dataX: processedData.levelD, dataY: processedData.levelD)
+        correlations.correlationDD = 1.0
         correlations.correlationDA = pearson(dataX: processedData.levelD, dataY: processedData.levelA)
         correlations.correlationDI = pearson(dataX: processedData.levelD, dataY: processedData.levelI)
 
         correlations.correlationAE = correlations.correlationEA
         correlations.correlationAD = correlations.correlationDA
-        correlations.correlationAA = pearson(dataX: processedData.levelA, dataY: processedData.levelA)
+        correlations.correlationAA = 1.0
         correlations.correlationAI = pearson(dataX: processedData.levelA, dataY: processedData.levelI)
 
         correlations.correlationIE = correlations.correlationEI
         correlations.correlationID = correlations.correlationDI
         correlations.correlationIA = correlations.correlationAI
-        correlations.correlationII = pearson(dataX: processedData.levelI, dataY: processedData.levelI)
+        correlations.correlationII = 1.0
         
         return correlations
     }
@@ -162,10 +162,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process events
      */
     func processEvents() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.events = true
-        }
-        
         let eventsListUI = getEventsList(moodSnaps: self.moodSnaps)
         var eventButterflies: [ButterflyEntryStruct] = []
         
@@ -194,10 +190,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process hashtags
      */
     func processHashtags() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.hashtags = true
-        }
-        
         let moodSnaps = self.moodSnaps
         let hashtagListUI = getHashtags(moodSnaps: moodSnaps)
         var hashtagButterflies: [ButterflyEntryStruct] = []
@@ -226,10 +218,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process activities
      */
     func processActivities() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.activities = true
-        }
-        
         var activityButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< activityList.count {
@@ -255,10 +243,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process symptoms
      */
     func processSymptoms() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.symptoms = true
-        }
-        
         var symptomButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< symptomList.count {
@@ -284,10 +268,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process social
      */
     func processSocial() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.social = true
-        }
-        
         var socialButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< socialList.count {
@@ -313,10 +293,6 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process average mood/volatility.
      */
     func processAverages() async -> Bool {
-        DispatchQueue.main.async {
-            self.processingStatus.averages = true
-        }
-        
         let moodSnaps = self.moodSnaps
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
         let allTimescale = getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps)
