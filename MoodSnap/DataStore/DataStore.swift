@@ -162,7 +162,7 @@ final class DataStoreClass: Identifiable, ObservableObject {
      Process events
      */
     func processEvents() async -> Bool {
-        let eventsListUI = getEventsList(moodSnaps: self.moodSnaps)
+        let eventsListUI = getEventsList(data: self)
         var eventButterflies: [ButterflyEntryStruct] = []
         
         for i in 0 ..< eventsListUI.count {
@@ -297,20 +297,20 @@ final class DataStoreClass: Identifiable, ObservableObject {
         var averages: AverageMoodDataStruct = AverageMoodDataStruct()
         let allTimescale = getTimescale(timescale: TimeScaleEnum.all.rawValue, moodSnaps: moodSnaps)
         
-        averages.flatAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: true)
-        averages.allAll = averageMoodSnap(timescale: allTimescale, moodSnaps: moodSnaps, flatten: false)
+        averages.flatAll = averageMoodSnap(timescale: allTimescale, data: self, flatten: true)
+        averages.allAll = averageMoodSnap(timescale: allTimescale, data: self, flatten: false)
         
-        averages.flatYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: true)
-        averages.allYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, moodSnaps: moodSnaps, flatten: false)
+        averages.flatYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, data: self, flatten: true)
+        averages.allYear = averageMoodSnap(timescale: TimeScaleEnum.year.rawValue, data: self, flatten: false)
         
-        averages.flatMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: true)
-        averages.allMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, moodSnaps: moodSnaps, flatten: false)
+        averages.flatMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, data: self, flatten: true)
+        averages.allMonth = averageMoodSnap(timescale: TimeScaleEnum.month.rawValue, data: self, flatten: false)
         
-        averages.flatThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
-        averages.allThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
+        averages.flatThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, data: self, flatten: true)
+        averages.allThreeMonths = averageMoodSnap(timescale: TimeScaleEnum.threeMonths.rawValue, data: self, flatten: false)
         
-        averages.flatSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: true)
-        averages.allSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, moodSnaps: moodSnaps, flatten: false)
+        averages.flatSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, data: self, flatten: true)
+        averages.allSixMonths = averageMoodSnap(timescale: TimeScaleEnum.sixMonths.rawValue, data: self, flatten: false)
         
         let averagesUI = averages
         

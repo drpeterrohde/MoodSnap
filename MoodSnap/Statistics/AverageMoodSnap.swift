@@ -3,12 +3,8 @@ import SwiftUI
 /**
  Return a `MoodSnapStruct` of the average of those in a given `timescale`.
  */
-@inline(__always) func averageMoodSnap(timescale: Int, moodSnaps: [MoodSnapStruct], flatten: Bool = true) -> MoodSnapStruct? {
-    let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps,
-                                               date: Date(),
-                                               windowStart: -timescale,
-                                               windowEnd: 0,
-                                               flatten: flatten)
+@inline(__always) func averageMoodSnap(timescale: Int, data: DataStoreClass, flatten: Bool = true) -> MoodSnapStruct? {
+    let windowSnaps = getMoodSnapsByDateWindow(data: data, date: Date(), windowStart: -timescale, windowEnd: 0, flatten: flatten)
     let average: [CGFloat?] = average(moodSnaps: windowSnaps)
 
     if (average[0] == nil) || (average[1] == nil) || (average[2] == nil) || (average[3] == nil) {
@@ -26,12 +22,8 @@ import SwiftUI
 /**
  Return a `MoodSnapStruct` of the volatility of those in a given `timescale`.
  */
-@inline(__always) func averageVolatilityMoodSnap(timescale: Int, moodSnaps: [MoodSnapStruct]) -> MoodSnapStruct? {
-    let windowSnaps = getMoodSnapsByDateWindow(moodSnaps: moodSnaps,
-                                               date: Date(),
-                                               windowStart: -timescale,
-                                               windowEnd: 0,
-                                               flatten: false)
+@inline(__always) func averageVolatilityMoodSnap(timescale: Int, data: DataStoreClass) -> MoodSnapStruct? {
+    let windowSnaps = getMoodSnapsByDateWindow(data: data, date: Date(), windowStart: -timescale, windowEnd: 0, flatten: false)
     let volatility: [CGFloat?] = volatility(moodSnaps: windowSnaps)
 
     if (volatility[0] == nil) || (volatility[1] == nil) || (volatility[2] == nil) || (volatility[3] == nil) {

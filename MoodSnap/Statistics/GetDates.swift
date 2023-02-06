@@ -22,7 +22,7 @@ import SwiftUI
     let moodSnaps = data.moodSnaps
 
     if type == .event {
-        let event = getEventsList(moodSnaps: moodSnaps)[item]
+        let event = getEventsList(data: data)[item]
         dates.append(event.1)
         return dates
     }
@@ -76,7 +76,7 @@ import SwiftUI
     }
 
     if type == .event {
-        let event = getEventsList(moodSnaps: moodSnaps)[item]
+        let event = getEventsList(data: data)[item]
         dates.append(event.1)
         return dates
     }
