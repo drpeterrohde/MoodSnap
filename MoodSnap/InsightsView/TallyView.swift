@@ -8,11 +8,7 @@ struct TallyView: View {
     @EnvironmentObject var data: DataStoreClass
 
     var body: some View {
-        // Shift processing outside of view ???
-        let windowMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps,
-                                                       date: Date(),
-                                                       windowStart: -timescale,
-                                                       windowEnd: 0)
+        let windowMoodSnaps = getMoodSnapsByDateWindow(moodSnaps: data.moodSnaps, date: Date(), windowStart: -timescale, windowEnd: 0)
         let (symptomOccurrences, activityOccurrences, socialOccurrences) = countAllOccurrences(moodSnaps: windowMoodSnaps, settings: data.settings)
         let hashtagOccurrences: [Int] = countHashtagOccurrences(hashtags: data.hashtagList, moodSnaps: windowMoodSnaps)
         let eventsList = getEventsList(moodSnaps: data.moodSnaps, window: timescale)

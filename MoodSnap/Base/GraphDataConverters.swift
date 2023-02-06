@@ -27,7 +27,7 @@ import SwiftUI
         return []
     }
     
-    let yTrunc = Array(y!.suffix(timescale)) // ???
+    let yTrunc = Array(y!.suffix(timescale))
     var yTotal: [CGFloat?] = []
 
     if timescale > yTrunc.count {
