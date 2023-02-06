@@ -64,5 +64,6 @@ func makeDemoData() -> [MoodSnapStruct] {
         }
     }
 
-    return sortByDate(moodSnaps: moodSnaps)
+    let sorted = sortByDate(moodSnaps: moodSnaps)
+    return sorted
 }

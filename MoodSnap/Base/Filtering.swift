@@ -76,20 +76,19 @@ import SwiftUI
     let sequenced: [[MoodSnapStruct]] = data.sequencedMoodSnaps
     let flattened: [MoodSnapStruct?] = data.flattenedSequencedMoodSnaps
     let offset = Calendar.current.numberOfDaysBetween(from: date, to: Date())
-    let index = flattened.endIndex - offset - 1
     
-    if index < 0 || index > flattened.endIndex {
+    if offset < 0 || offset >= flattened.count {
         return []
     }
     
     if flatten {
-        if flattened[index] == nil {
+        if flattened[offset] == nil {
             return []
         } else {
-            return [flattened[index]!]
+            return [flattened[offset]!]
         }
     } else {
-        return sequenced[index]
+        return sequenced[offset]
     }
 }
 
