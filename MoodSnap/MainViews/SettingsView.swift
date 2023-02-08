@@ -53,7 +53,7 @@ struct SettingsView: View {
                         Text("grid_columns") + Text(" \(data.settings.numberOfGridColumns)")
                     })
 
-                    if Locale.current.languageCode == "en" {
+                    if Locale.current.language.languageCode?.identifier == "en" {
                         Toggle(isOn: $data.settings.quoteVisibility, label: {
                             Text("show_quotes")
                         })

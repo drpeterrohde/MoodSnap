@@ -20,13 +20,15 @@ struct MoodSnapApp: App {
                     .environmentObject(data)
                     .environmentObject(health)
             }
-        }.onChange(of: scenePhase) { value in
+        }
+        .onChange(of: scenePhase) { value in
             if value == .background {
                 DispatchQueue.main.async {
                     isUnlocked = false
                     data.settings.firstUse = false
                     data.save()
                 }
+                scheduleAppRefresh()
             }
             
             if value == .active {
@@ -51,6 +53,15 @@ struct MoodSnapApp: App {
                     data.save()
                 }
             }
+        }
+        .backgroundTask(.appRefresh("moodsnaprefresh")) {
+         //   await data.startProcessing()
+//            if await data.settings.useHealthKit {
+//                if HKHealthStore.isHealthDataAvailable() {
+//                    await health.requestPermissions()
+//                    await health.makeHealthSnaps(data: data)
+//                }
+//            }
         }
     }
 }

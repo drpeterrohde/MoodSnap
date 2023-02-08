@@ -148,6 +148,8 @@
 		CA87642E2814D7EC000FEEEC /* VerticalBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */; };
 		CA8D880C29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
 		CA8D880D29428E6B0048F455 /* RoundedRectangleDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */; };
+		CA90F2F02993268C00392DE3 /* BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA90F2EF2993268C00392DE3 /* BackgroundTasks.swift */; };
+		CA90F2F12993268C00392DE3 /* BackgroundTasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA90F2EF2993268C00392DE3 /* BackgroundTasks.swift */; };
 		CA9552D6295FA42100DDF17E /* DeltasActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D5295FA42100DDF17E /* DeltasActivityView.swift */; };
 		CA9552D8295FA58100DDF17E /* DeltasSocialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D7295FA58100DDF17E /* DeltasSocialView.swift */; };
 		CA9552DA295FA64400DDF17E /* DeltasSymptomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA9552D9295FA64400DDF17E /* DeltasSymptomView.swift */; };
@@ -289,6 +291,7 @@
 		CA87642B2814D7A1000FEEEC /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
 		CA87642D2814D7EC000FEEEC /* VerticalBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalBarChart.swift; sourceTree = "<group>"; };
 		CA8D880B29428E6B0048F455 /* RoundedRectangleDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleDot.swift; sourceTree = "<group>"; };
+		CA90F2EF2993268C00392DE3 /* BackgroundTasks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTasks.swift; sourceTree = "<group>"; };
 		CA9552D5295FA42100DDF17E /* DeltasActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasActivityView.swift; sourceTree = "<group>"; };
 		CA9552D7295FA58100DDF17E /* DeltasSocialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasSocialView.swift; sourceTree = "<group>"; };
 		CA9552D9295FA64400DDF17E /* DeltasSymptomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeltasSymptomView.swift; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 				CA496B0227EBEEEE0067EE63 /* DateConverters.swift */,
 				CA496B0327EBEEEE0067EE63 /* GraphDataConverters.swift */,
 				CA496B0427EBEEEE0067EE63 /* Merging.swift */,
+				CA90F2EF2993268C00392DE3 /* BackgroundTasks.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -813,6 +817,7 @@
 				CA496B9327EBEF2A0067EE63 /* MediaView.swift in Sources */,
 				CA496B7027EBEF2A0067EE63 /* WalkingRunningDistanceView.swift in Sources */,
 				CA7775AB280CD44C0045A202 /* HealthManager.swift in Sources */,
+				CA90F2F02993268C00392DE3 /* BackgroundTasks.swift in Sources */,
 				CA9552DA295FA64400DDF17E /* DeltasSymptomView.swift in Sources */,
 				CA496BAE27EBEF2B0067EE63 /* PDFSingleMoodHistoryBarView.swift in Sources */,
 				CA496B7B27EBEF2A0067EE63 /* MenstrualView.swift in Sources */,
@@ -867,6 +872,7 @@
 				CA78D056292D8A5800FBD566 /* Volatility.swift in Sources */,
 				CA78D057292D8A5800FBD566 /* GenerateHistory.swift in Sources */,
 				CA78D058292D8A5800FBD566 /* Average.swift in Sources */,
+				CA90F2F12993268C00392DE3 /* BackgroundTasks.swift in Sources */,
 				CA78D059292D8A5800FBD566 /* Correlation.swift in Sources */,
 				CA78D05A292D8A5800FBD566 /* Nils.swift in Sources */,
 				CA78D05B292D8A5800FBD566 /* Influence.swift in Sources */,
@@ -1069,7 +1075,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1119,7 +1125,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1151,7 +1157,7 @@
 				INFOPLIST_FILE = Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1183,7 +1189,7 @@
 				INFOPLIST_FILE = Widget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Widget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
